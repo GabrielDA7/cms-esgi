@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /3IW%20classe%202/
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ index.php [L,QSA]
