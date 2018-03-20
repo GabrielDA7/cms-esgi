@@ -21,7 +21,6 @@ class UserController{
 		if(isset($_POST['submit'])) {
 			extract($params['POST']);
 			$user = new User();
-
 			$user->setUserName($userName);
 			$user->setPwd($pwd);
 			$wrongPassword = $user->login();

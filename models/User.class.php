@@ -13,7 +13,7 @@
 		protected $dateInserted;
 		protected $dateUpdated;
 		protected $status=0;
-		protected $premium = false;
+		protected $premium;
 
 		public function __construct($userName, $name, $firstName, $email, $age, $pwd, $premium=false, $dateInserted=null) {
 			UserSql::__construct();
@@ -23,7 +23,7 @@
 			$this->email = $email;
 			$this->age = $age;
 			$this->setPwd($pwd);
-			$this->premium = $premium;
+			$this->setPremium($premium);
 			$this->dateInserted = $dateInserted;
 
 		}
@@ -226,7 +226,11 @@
 	     * @return self
 	     */
 	    public function setPremium($premium) {
-	        $this->premium = $premium;
+	    	if ($premium) {
+	    		$this->premium = 1;
+	    	} else {
+	    		$this->premium = 0;
+	    	}
 	    }
 	}
 ?>
