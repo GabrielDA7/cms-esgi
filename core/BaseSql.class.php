@@ -42,6 +42,23 @@ class BaseSql {
 	public function getAll() {
 		$query = $this->db->prepare("SELECT * FROM ".$this->table);
 		$query->execute();
-		return $query->fetchAll();
+		$response = $query->fetchAll();
+		$objectList = $this->getObjectListFromDBResponse($response);
+		return $objectList;
+	}
+
+	private function getObjectListFromDBResponse($response) {
+		$objectList = array();
+		foreach ($response as $key => $value) {
+			$object = new $this->table();
+			foreach ($value as $keyValue => $valueValue) {
+				if (!is_numeric($keyValue)) {
+					$setter = 'set'.ucfirst($keyValue);
+					$object->$setter($valueValue);
+				}
+			}
+			array_push($objectList, $object);
+		}
+		return $objectList;
 	}
 }

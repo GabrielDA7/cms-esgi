@@ -37,8 +37,7 @@ class UserController{
 
 	public function listAction($params){
 		$user  = new User();
-		$users = $user->getAll();
-
+		$users = $user->getAll("User");
 		$v = new View("listUsers","front");
 		$v->assign("users" ,$users);
 	}

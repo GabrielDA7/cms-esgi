@@ -1,7 +1,7 @@
 <?php
 	class User extends UserSql {
 
-		protected $id = null;
+		protected $idUser = null;
 		protected $userName;
 		protected $name;
 		protected $firstName;
@@ -10,13 +10,13 @@
 		protected $age=0;
 		protected $token=12345;
 
-		protected $date_inserted;
-		protected $date_updated;
+		protected $dateInserted;
+		protected $dateUpdated;
 		protected $status=0;
 		protected $premium;
 
 		public function __construct($userName=null, $name=null, $firstName=null, $email=null, $age=null, $pwd=null, $premium=null, 
-			$date_inserted=null) {
+			$dateInserted=null) {
 			UserSql::__construct();
 			$this->userName = $userName;
 			$this->name = $name;
@@ -25,7 +25,7 @@
 			$this->age = $age;
 			$this->pwd = $pwd;
 			$this->premium = $premium;
-			$this->date_inserted = $date_inserted;
+			$this->dateInserted = $dateInserted;
 
 		}
 
@@ -56,8 +56,8 @@
 	    /**
 	     * @return mixed
 	     */
-	    public function getId() {
-	        return $this->id;
+	    public function getIdUser() {
+	        return $this->idUser;
 	    }
 
 	    /**
@@ -65,8 +65,8 @@
 	     *
 	     * @return self
 	     */
-	    public function setId($id) {
-	        $this->id = $id;
+	    public function setIdUser($idUser) {
+	        $this->idUser = $idUser;
 	    }
 
 	    /**
@@ -178,15 +178,15 @@
 	     *
 	     * @return self
 	     */
-	    public function setDateInserted($date_inserted) {
-	        $this->date_inserted = $date_inserted;
+	    public function setDateInserted($dateInserted) {
+	        $this->dateInserted = $dateInserted;
 	    }
 
 	    /**
 	     * @return mixed
 	     */
 	    public function getDateUpdated() {
-	        return $this->date_updated;
+	        return $this->dateUpdated;
 	    }
 
 	    /**
@@ -194,8 +194,8 @@
 	     *
 	     * @return self
 	     */
-	    public function setDateUpdated($date_updated) {
-	        $this->date_updated = $date_updated;
+	    public function setDateUpdated($dateUpdated) {
+	        $this->dateUpdated = $dateUpdated;
 	    }
 
 	    /**
