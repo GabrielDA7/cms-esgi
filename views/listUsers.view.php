@@ -1,7 +1,7 @@
 <?php
 	foreach ($users as $user) {
 ?>
-                <div><?= $user->getIdUser(); ?></div>
+                <div><?= $user->getId(); ?></div>
                 <div><?= $user->getName(); ?></div>
                 <div><?= $user->getFirstName(); ?></div>
                 <div><?= $user->getAge(); ?></div>

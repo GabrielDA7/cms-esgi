@@ -12,7 +12,7 @@
 			if($user = $query->fetch()) {
 				$query->closeCursor();
 				$this->checkPremiumDate($user);
-				$_SESSION['userName'] = $user['username'];
+				$_SESSION['userName'] = $user['userName'];
 				$_SESSION['token'] = $user['token'];
 				$_SESSION['premium'] = $user['premium'];
 				header('Location: '.DIRNAME);
@@ -22,10 +22,10 @@
 		}
 
 		private function checkPremiumDate(&$user) {
-			$this->setId($user['idUser']);
+			$this->setIdUser($user['idUser']);
 			$queryString = "SELECT * FROM User u, Premium p WHERE p.User_idUser=u.idUser AND u.idUser=:id AND p.end_date>NOW()";
 			$query = $this->db->prepare($queryString);
-			$query->execute(array(":id" => $this->getId()));
+			$query->execute(array(":id" => $this->getIdUser()));
 			if($response = $query->fetch()) {
 				if($response['premium'] == false) {
 					$this->setPremium(true);

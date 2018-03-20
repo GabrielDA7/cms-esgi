@@ -22,7 +22,6 @@ class BaseSql {
 	
 	public function save() {
 		$this->setColumns();
-		
 		if ($this->getId()) {
 			$query = $this->db->prepare("UPDATE ".$this->table." SET ".implode("=:", array_keys($this->columns)));
 			$query->execute($this->columns);
@@ -35,7 +34,7 @@ class BaseSql {
 	}
 
 	public function delete() {
-		$query = $this->db->prepare("DELETE FROM ".$this->table." WHERE id".$this->table."=:id");
+		$query = $this->db->prepare("DELETE FROM ".$this->table." WHERE id=:id");
 		$query->execute(array(":id" => $this->getId()));
 	}
 
@@ -43,11 +42,11 @@ class BaseSql {
 		$query = $this->db->prepare("SELECT * FROM ".$this->table);
 		$query->execute();
 		$response = $query->fetchAll();
-		$objectList = $this->getObjectListFromDBResponse($response);
+		$objectList = $this->getObjectsListFromDBResponse($response);
 		return $objectList;
 	}
 
-	private function getObjectListFromDBResponse($response) {
+	private function getObjectsListFromDBResponse($response) {
 		$objectList = array();
 		foreach ($response as $key => $value) {
 			$object = new $this->table();

@@ -10,7 +10,7 @@ class UserController{
 			extract($params['POST']);
 			$date  = new DateTime();
 			$user  = new User($userName, $name, $firstName, $email, $age, $pwd, false, $date->format('Y-m-d H:i:s'));
-			$token = $user->generateToken();
+			$user->generateToken();
 			$user->save();
 		}
 		$v = new View("registerUser","front");
@@ -37,7 +37,7 @@ class UserController{
 
 	public function listAction($params){
 		$user  = new User();
-		$users = $user->getAll("User");
+		$users = $user->getAll();
 		$v = new View("listUsers","front");
 		$v->assign("users" ,$users);
 	}

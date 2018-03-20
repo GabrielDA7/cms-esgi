@@ -1,7 +1,7 @@
 <?php
 	class User extends UserSql {
 
-		protected $idUser = null;
+		protected $id = null;
 		protected $userName;
 		protected $name;
 		protected $firstName;
@@ -13,17 +13,16 @@
 		protected $dateInserted;
 		protected $dateUpdated;
 		protected $status=0;
-		protected $premium;
+		protected $premium = false;
 
-		public function __construct($userName=null, $name=null, $firstName=null, $email=null, $age=null, $pwd=null, $premium=null, 
-			$dateInserted=null) {
+		public function __construct($userName, $name, $firstName, $email, $age, $pwd, $premium=false, $dateInserted=null) {
 			UserSql::__construct();
 			$this->userName = $userName;
 			$this->name = $name;
 			$this->firstName = $firstName;
 			$this->email = $email;
 			$this->age = $age;
-			$this->pwd = $pwd;
+			$this->setPwd($pwd);
 			$this->premium = $premium;
 			$this->dateInserted = $dateInserted;
 
@@ -56,8 +55,8 @@
 	    /**
 	     * @return mixed
 	     */
-	    public function getIdUser() {
-	        return $this->idUser;
+	    public function getId() {
+	        return $this->id;
 	    }
 
 	    /**
@@ -65,8 +64,8 @@
 	     *
 	     * @return self
 	     */
-	    public function setIdUser($idUser) {
-	        $this->idUser = $idUser;
+	    public function setId($id) {
+	        $this->id = $id;
 	    }
 
 	    /**
