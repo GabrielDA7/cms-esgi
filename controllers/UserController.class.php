@@ -8,8 +8,8 @@ class UserController{
 	public function registerAction($params){
 		if(isset($_POST['submit'])) {
 			extract($params['POST']);
-			$date  = new DateTime();
-			$user  = new User($userName, $name, $firstName, $email, $age, $pwd, false, $date->format('Y-m-d H:i:s'));
+			$date = new DateTime();
+			$user = User::constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, false, $date->format('Y-m-d H:i:s'));
 			$user->generateToken();
 			$user->save();
 		}

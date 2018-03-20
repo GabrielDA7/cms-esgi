@@ -15,17 +15,21 @@
 		protected $status=0;
 		protected $premium;
 
-		public function __construct($userName, $name, $firstName, $email, $age, $pwd, $premium=false, $dateInserted=null) {
+		public function __construct() {
 			UserSql::__construct();
-			$this->userName = $userName;
-			$this->name = $name;
-			$this->firstName = $firstName;
-			$this->email = $email;
-			$this->age = $age;
-			$this->setPwd($pwd);
-			$this->setPremium($premium);
-			$this->dateInserted = $dateInserted;
+		}
 
+		public static function constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $premium=false, $dateInserted=null) {
+			$user = new self();
+			$user->setUserName($userName);
+			$user->setName($name);
+			$user->setFirstName($firstName);
+			$user->setEmail($email);
+			$user->setAge($age);
+			$user->setPwd($pwd);
+			$user->setPremium($premium);
+			$user->setDateInserted($dateInserted);
+			return $user;
 		}
 
 		public function __destruct() {
