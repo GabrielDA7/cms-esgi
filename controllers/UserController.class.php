@@ -8,10 +8,10 @@ class UserController{
 	public function registerAction($params){
 		if(isset($_POST['submit'])) {
 			extract($params['POST']);
-			$date  = new DateTime();
-			$user  = new User($userName, $name, $firstName, $email, $age, $pwd, false, $date->format('Y-m-d H:i:s'));
-			$token = $user->generateToken();
-			$user->save();
+			$date = new DateTime();
+			$user = User::constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, false, $date->format('Y-m-d H:i:s'), 0);
+			$user->generateToken();
+			$user->insert();
 		}
 		$v = new View("registerUser","front");
 	}
@@ -21,7 +21,6 @@ class UserController{
 		if(isset($_POST['submit'])) {
 			extract($params['POST']);
 			$user = new User();
-
 			$user->setUserName($userName);
 			$user->setPwd($pwd);
 			$wrongPassword = $user->login();
@@ -38,7 +37,6 @@ class UserController{
 	public function listAction($params){
 		$user  = new User();
 		$users = $user->getAll();
-
 		$v = new View("listUsers","front");
 		$v->assign("users" ,$users);
 	}

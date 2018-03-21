@@ -7,26 +7,30 @@
 		protected $firstName;
 		protected $pwd;
 		protected $email;
-		protected $age=0;
-		protected $token=12345;
+		protected $age;
+		protected $token;
 
-		protected $date_inserted;
-		protected $date_updated;
-		protected $status=0;
+		protected $dateInserted;
+		protected $dateUpdated;
+		protected $status;
 		protected $premium;
 
-		public function __construct($userName=null, $name=null, $firstName=null, $email=null, $age=null, $pwd=null, $premium=null, 
-			$date_inserted=null) {
+		public function __construct() {
 			UserSql::__construct();
-			$this->userName = $userName;
-			$this->name = $name;
-			$this->firstName = $firstName;
-			$this->email = $email;
-			$this->age = $age;
-			$this->pwd = $pwd;
-			$this->premium = $premium;
-			$this->date_inserted = $date_inserted;
+		}
 
+		public static function constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $premium=false, $dateInserted=null, $status) {
+			$user = new self();
+			$user->setUserName($userName);
+			$user->setName($name);
+			$user->setFirstName($firstName);
+			$user->setEmail($email);
+			$user->setAge($age);
+			$user->setPwd($pwd);
+			$user->setPremium($premium);
+			$user->setDateInserted($dateInserted);
+			$user->setStatus($status);
+			return $user;
 		}
 
 		public function __destruct() {
@@ -178,15 +182,15 @@
 	     *
 	     * @return self
 	     */
-	    public function setDateInserted($date_inserted) {
-	        $this->date_inserted = $date_inserted;
+	    public function setDateInserted($dateInserted) {
+	        $this->dateInserted = $dateInserted;
 	    }
 
 	    /**
 	     * @return mixed
 	     */
 	    public function getDateUpdated() {
-	        return $this->date_updated;
+	        return $this->dateUpdated;
 	    }
 
 	    /**
@@ -194,8 +198,8 @@
 	     *
 	     * @return self
 	     */
-	    public function setDateUpdated($date_updated) {
-	        $this->date_updated = $date_updated;
+	    public function setDateUpdated($dateUpdated) {
+	        $this->dateUpdated = $dateUpdated;
 	    }
 
 	    /**
@@ -227,7 +231,11 @@
 	     * @return self
 	     */
 	    public function setPremium($premium) {
-	        $this->premium = $premium;
+	    	if ($premium) {
+	    		$this->premium = 1;
+	    	} else {
+	    		$this->premium = 0;
+	    	}
 	    }
 	}
 ?>

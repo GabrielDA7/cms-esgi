@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /3IW%20classe%202/
+RewriteBase /Uteach/
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

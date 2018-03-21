@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Lun 19 Mars 2018 à 19:29
--- Version du serveur :  5.7.9
--- Version de PHP :  5.6.16
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mar. 20 mars 2018 à 19:30
+-- Version du serveur :  5.7.19
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -37,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `premium` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `premium`
+-- Déchargement des données de la table `premium`
 --
 
 INSERT INTO `premium` (`idPremium`, `start_date`, `end_date`, `User_idUser`) VALUES
@@ -53,25 +55,25 @@ INSERT INTO `premium` (`idPremium`, `start_date`, `end_date`, `User_idUser`) VAL
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `idUser` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(100) NOT NULL,
+  `firstName` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `username` varchar(100) NOT NULL,
+  `userName` varchar(100) NOT NULL,
   `pwd` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `age` tinyint(4) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '0',
-  `date_inserted` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `dateInserted` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateUpdated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `premium` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `user`
+-- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`idUser`, `firstname`, `name`, `email`, `username`, `pwd`, `token`, `age`, `status`, `date_inserted`, `date_updated`, `premium`) VALUES
+INSERT INTO `user` (`idUser`, `firstName`, `name`, `email`, `userName`, `pwd`, `token`, `age`, `status`, `dateInserted`, `dateUpdated`, `premium`) VALUES
 (12, 'LOUIS', 'LOUIS', 'louis@gmail.com', '', '$2y$10$ck.AkZx1n6T.sUTclyinIeZ/fdW6IYhQ7jWk1sWIl5UM.ZYBilT8q', '4doloa4pp0u8cwokg0csgo4sc8g4w84wckgwk8os0gswowgcsg', 20, 0, '2018-03-13 14:09:07', NULL, 0),
 (13, 'LOUIS', 'LOUIS', 'louis@gmail.com', '', '$2y$10$wg7y4dX5mIIBo9HgV/DboeuIA6/qkeS.W3EfMhO7RTmdkYadM5LYW', '5we9mm906ask00gcscg0kgww8sogwksksc88o0o8cc0400848o', 20, 0, '2018-03-13 14:09:07', NULL, 0),
 (14, 'LOUIS', 'LOUIS', 'louis@gmail.com', '', '$2y$10$WfIQa95hMn4e35qx4My87OnEFoAHDiNgvMESRVLrnPv6NaTqyKWiq', '2owtiywyzhk48g04wwo4sk08o0skwoggkcw0o8448cc0s8cgs0', 20, 0, '2018-03-13 14:09:08', NULL, 0),
@@ -82,7 +84,7 @@ INSERT INTO `user` (`idUser`, `firstname`, `name`, `email`, `username`, `pwd`, `
 (20, 'LOUIS', 'LOUIS', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '2v3wh6jleww0g8k4ow804gogg4w4owcw8owc0cgsggg44s0g40', 20, 0, '2018-03-14 12:20:10', NULL, 0);
 
 --
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables déchargées
 --
 
 --
@@ -90,6 +92,7 @@ INSERT INTO `user` (`idUser`, `firstname`, `name`, `email`, `username`, `pwd`, `
 --
 ALTER TABLE `premium`
   ADD CONSTRAINT `premium_ibfk_1` FOREIGN KEY (`User_idUser`) REFERENCES `user` (`idUser`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
