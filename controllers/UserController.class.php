@@ -9,9 +9,9 @@ class UserController{
 		if(isset($_POST['submit'])) {
 			extract($params['POST']);
 			$date = new DateTime();
-			$user = User::constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, false, $date->format('Y-m-d H:i:s'));
+			$user = User::constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, false, $date->format('Y-m-d H:i:s'), 0);
 			$user->generateToken();
-			$user->save();
+			$user->insert();
 		}
 		$v = new View("registerUser","front");
 	}

@@ -27,9 +27,9 @@
 			$query = $this->db->prepare($queryString);
 			$query->execute(array(":id" => $this->getId()));
 			if($response = $query->fetch()) {
-				if($response['premium'] == 1) {
+				if($response['premium'] == 0) {
 					$this->setPremium(true);
-					$this->save();
+					$this->update();
 					$user['premium'] = 1;
 				}
 			} else {	

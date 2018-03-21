@@ -20,17 +20,21 @@ class BaseSql {
 		$this->columns=array_diff_key(get_object_vars($this), $columnsExclude);
 	}
 	
-	public function save() {
+	public function insert() {
 		$this->setColumns();
-		if ($this->getId()) {
-			$query = $this->db->prepare("UPDATE ".$this->table." SET ".implode("=:", array_keys($this->columns)));
-			$query->execute($this->columns);
-		} else {
-			unset($this->columns['id']);
-			$query = $this->db->prepare("INSERT INTO ".$this->table."(".implode(',', array_keys($this->columns)).")
-				VALUES (:".implode(',:', array_keys($this->columns)).")");
-			$query->execute($this->columns);
-		}
+		unset($this->columns['id']);
+		$query = $this->db->prepare("INSERT INTO ".$this->table."(".implode(',', array_keys($this->columns)).")
+			VALUES (:".implode(',:', array_keys($this->columns)).")");
+		$query->execute($this->columns);
+		
+	}
+
+	public function update() {
+		$this->setColumns();
+		$this->columns = array_filter($this->columns,'strlen');
+		$request = $this->constructUpdateQuery($this->columns);
+		$query = $this->db->prepare("UPDATE ".$this->table." SET ".$request);
+		$query->execute($this->columns);
 	}
 
 	public function delete() {
@@ -59,5 +63,35 @@ class BaseSql {
 			array_push($objectList, $object);
 		}
 		return $objectList;
+	}
+
+	private function getObjectFromDBResponse($response) {
+		foreach ($response as $key => $value) {
+			$object = new $this->table();
+			if (!is_numeric($key)) {
+				$setter = 'set'.ucfirst($key);
+				$object->$setter($value);
+			}
+		}
+		return $object;
+	}
+
+	private function constructUpdateQuery($columns) {
+		$numberOfItems = count($this->columns);
+		$i = 0;
+		$request = "";
+		foreach ($this->columns as $key => $value) {
+			//skip id
+			if($i === 0) {
+				$i++;
+				continue;
+			}
+			$request .= $key."=:".$key;
+			if(!(++$i === $numberOfItems)) {
+	    		$request .= ",";
+	  		}
+		}	
+		$request .= " WHERE id=:id";
+		return $request;
 	}
 }

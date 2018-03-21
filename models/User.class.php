@@ -7,19 +7,19 @@
 		protected $firstName;
 		protected $pwd;
 		protected $email;
-		protected $age=0;
-		protected $token=12345;
+		protected $age;
+		protected $token;
 
 		protected $dateInserted;
 		protected $dateUpdated;
-		protected $status=0;
+		protected $status;
 		protected $premium;
 
 		public function __construct() {
 			UserSql::__construct();
 		}
 
-		public static function constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $premium=false, $dateInserted=null) {
+		public static function constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $premium=false, $dateInserted=null, $status) {
 			$user = new self();
 			$user->setUserName($userName);
 			$user->setName($name);
@@ -29,6 +29,7 @@
 			$user->setPwd($pwd);
 			$user->setPremium($premium);
 			$user->setDateInserted($dateInserted);
+			$user->setStatus($status);
 			return $user;
 		}
 
