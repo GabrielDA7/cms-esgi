@@ -31,6 +31,7 @@ class BaseSql {
 
 	public function update() {
 		$this->setColumns();
+		//Remove null columns
 		$this->columns = array_filter($this->columns,'strlen');
 		$request = $this->constructUpdateQuery($this->columns);
 		$query = $this->db->prepare("UPDATE ".$this->table." SET ".$request);
