@@ -13,13 +13,12 @@
 		protected $dateInserted;
 		protected $dateUpdated;
 		protected $status;
-		protected $premium;
 
 		public function __construct() {
 			UserSql::__construct();
 		}
 
-		public static function constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $premium=false, $dateInserted=null, $status) {
+		public static function constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $dateInserted=null, $status) {
 			$user = new self();
 			$user->setUserName($userName);
 			$user->setName($name);
@@ -27,7 +26,6 @@
 			$user->setEmail($email);
 			$user->setAge($age);
 			$user->setPwd($pwd);
-			$user->setPremium($premium);
 			$user->setDateInserted($dateInserted);
 			$user->setStatus($status);
 			return $user;
@@ -216,26 +214,6 @@
 	     */
 	    public function setStatus($status) {
 	        $this->status = $status;
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getPremium() {
-	        return $this->premium;
-	    }
-
-	    /**
-	     * @param mixed $status
-	     *
-	     * @return self
-	     */
-	    public function setPremium($premium) {
-	    	if ($premium) {
-	    		$this->premium = 1;
-	    	} else {
-	    		$this->premium = 0;
-	    	}
 	    }
 	}
 ?>
