@@ -16,7 +16,7 @@
             <a href="<?= DIRNAME;?>">Home</a>
           </li>
           <li>
-            <a href="<?= DIRNAME;?>user/register">inscription</a>
+            <a href="<?= DIRNAME;?>user/add">inscription</a>
           </li>
           <li>
             <a href="<?= DIRNAME;?>user/list">list</a>
@@ -29,11 +29,11 @@
           </li>
           <li>
             <a>
-            <?php 
+              <?php 
               if(isset($_SESSION['userName'])) { 
                 echo $_SESSION['userName']. "-".$_SESSION['premium'];
               } 
-            ?>
+              ?>
           </a>
           </li>
         </ul>

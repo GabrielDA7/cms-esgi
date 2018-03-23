@@ -5,7 +5,7 @@ class UserController{
 		
 	}
 	
-	public function registerAction($params){
+	public function addAction($params){
 		if(isset($_POST['submit'])) {
 			extract($params['POST']);
 			$date = new DateTime();
@@ -41,7 +41,7 @@ class UserController{
 		$v->assign("users" ,$users);
 	}
 
-	/*public function modifyAction($params){
+	/*public function editAction($params){
 		$user = new User();
 		extract($params['POST']);
 		$user->setId($id);
@@ -57,3 +57,4 @@ class UserController{
 		header('Location: list');
 	}
 }
+?>

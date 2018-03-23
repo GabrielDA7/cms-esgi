@@ -31,8 +31,7 @@ class BaseSql {
 
 	public function update() {
 		$this->setColumns();
-		//Remove null columns
-		$this->columns = array_filter($this->columns,'strlen');
+		$this->columns = $this->removeNullValues($this->columns);
 		$request = $this->constructUpdateQuery($this->columns);
 		$query = $this->db->prepare("UPDATE ".$this->table." SET ".$request);
 		$query->execute($this->columns);
@@ -82,12 +81,13 @@ class BaseSql {
 		$i = 0;
 		$request = "";
 		foreach ($this->columns as $key => $value) {
-			//skip id
+			// skip id
 			if($i === 0) {
 				$i++;
 				continue;
 			}
 			$request .= $key."=:".$key;
+			// !last index
 			if(!(++$i === $numberOfItems)) {
 	    		$request .= ",";
 	  		}
@@ -95,4 +95,9 @@ class BaseSql {
 		$request .= " WHERE id=:id";
 		return $request;
 	}
+
+	private function removeNullValues(&$columns) {
+		array_filter($columns,'strlen');
+	}
 }
+?>
