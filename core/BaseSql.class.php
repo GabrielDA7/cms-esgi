@@ -15,15 +15,12 @@ class BaseSql {
 		}
 	}
 
-	public function removeUnsusedColumns() {
-		$columnsExclude=get_class_vars(get_class());
-		$this->columns=array_diff_key(get_object_vars($this), $columnsExclude);
-		$this->columns = $this->removeNullValues($this->columns);
+	public function getColumns() {
+		return get_object_vars($this);
 	}
 	
 	public function insert() {
-		$this->removeUnsusedColumns();
-		unset($this->columns['id']);
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$query = $this->db->prepare("INSERT INTO ".$this->table."(".implode(',', array_keys($this->columns)).")
 			VALUES (:".implode(',:', array_keys($this->columns)).")");
 		$query->execute($this->columns);
@@ -31,20 +28,20 @@ class BaseSql {
 	}
 
 	public function update() {
-		$this->removeUnsusedColumns();
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$request = "UPDATE " . $this->table . " SET " . $this->constructConditionedQuery($this->columns, TRUE) . " WHERE id=:id";
 		$query = $this->db->prepare($request);
 		$query->execute($this->columns);
 	}
 
 	public function delete() {
-		$this->removeUnsusedColumns();
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$query = $this->db->prepare("DELETE FROM ".$this->table." WHERE id=:id");
 		$query->execute(array(":id" => $this->getId()));
 	}
 
 	public function getAll() {
-		$this->removeUnsusedColumns();
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$query = $this->db->prepare("SELECT * FROM ".$this->table);
 		$query->execute();
 		$response = $query->fetchAll();
@@ -53,7 +50,7 @@ class BaseSql {
 	}
 
 	public function getWithParameters() {
-		$this->removeUnsusedColumns();
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$request = "SELECT * FROM " . $this->table . " WHERE " . $this->constructConditionedQuery($this->columns, FALSE);
 		$query = $this->db->prepare($request);
 		$query->execute($this->columns);
@@ -63,41 +60,22 @@ class BaseSql {
 	}
 
 	public function getById() {
-		$this->removeUnsusedColumns();
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$request = "SELECT * FROM " . $this->table . " WHERE id=:id";
 		$query = $this->db->prepare($request);
 		$query->execute(array(":id" => $this->getId()));
 		$response = $query->fetch();
-		$object = $this->getObjectFromDBResponse($response);
+		$object = ClassUtils::constructObjectWithParameters($response, $this->table);
 		return $object;
 	}
 
 	private function getObjectsListFromDBResponse($response) {
 		$objectList = array();
-		foreach ($response as $key => $value) {
-			$object = new $this->table();
-			foreach ($value as $objectKey => $objectValue) {
-				if (!is_numeric($objectKey)) {
-					$objectKey = removeUdnerScoreFromForeignKeyColum($objectKey);
-					$setter = 'set'.ucfirst($objectKey);
-					$object->$setter($objectValue);
-				}
-			}
+		foreach ($response as $key => $values) {
+			$object = ClassUtils::constructObjectWithParameters($values, $this->table);
 			array_push($objectList, $object);
 		}
 		return $objectList;
-	}
-
-	private function getObjectFromDBResponse($response) {
-		foreach ($response as $key => $value) {
-			$object = new $this->table();
-			if (!is_numeric($key)) {
-				$objectKey = removeUdnerScoreFromForeignKeyColum($objectKey);
-				$setter = 'set'.ucfirst($key);
-				$object->$setter($value);
-			}
-		}
-		return $object;
 	}
 
 	private function constructConditionedQuery($columns, $update) {
@@ -123,12 +101,6 @@ class BaseSql {
 		return $request;
 	}
 
-	private function removeNullValues(&$columns) {
-		array_filter($columns,'strlen');
-	}
-
-	public function removeUdnerScoreFromForeignKeyColum(&$objectKey) {
-		str_replace('_', '', $objectKey);
-	}
+	
 }
 ?>

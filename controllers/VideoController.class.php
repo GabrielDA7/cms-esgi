@@ -15,8 +15,7 @@ class VideoController{
 
 	public function listAction($params){
 		if(isset($params['POST']['submit'])) {
-			extract($params['POST']);
-			$video = Video::constructWithParameters($title, $duration, $live, $url, $Lesson_Id);
+			$video = Video::constructWithParameters($params['POST']);
 			$videos = $video->getWithParameters();
 		} else {
 			$video = new Video();

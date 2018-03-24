@@ -16,7 +16,7 @@
 				$_SESSION['premium'] = $this->checkPremiumDate($user['id']);
 				header('Location: '.DIRNAME);
 			} else {
-				return true;
+				return TRUE;
 			}
 		}
 
@@ -25,9 +25,9 @@
 			$query = $this->db->prepare($queryString);
 			$query->execute(array(":id" => $id));
 			if($response = $query->fetch()) {
-				return 1
+				return TRUE;
 			} else {	
-				return 0;
+				return FALSE;
 			}
 		}
 	}

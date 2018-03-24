@@ -13,21 +13,9 @@ class Video extends BaseSql{
 		BaseSql::__construct();
 	}
 
-	public static function constructWithId($id) {
-		$video = new self();
-		$video->setId($id);
-		return $video;
-	}
-
-	public static function constructWithParameters($title, $duration, $live, $url, $Lesson_Id) {
-		$video = new self();
-		$video->setTitle($title);
-		$video->setDuration($duration);
-		$video->setLive($live);
-		$video->setUrl($url);
-		$video->setLessonId($Lesson_Id);
-		return $video;
-	}
+    public function getColumns() {
+        return get_object_vars($this);
+    }
 
     public function getId(){
     	return $this->id;
