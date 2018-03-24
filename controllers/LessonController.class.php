@@ -22,7 +22,7 @@ class LessonController{
 	public function lessonAction($params){
 	}
 
-	public function addCommentAction($params){
+	public function commentAction($params){
 	}
 }
 ?>

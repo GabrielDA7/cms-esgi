@@ -40,7 +40,7 @@ class VideoController{
 		$v->assign("video" ,$video);
 	}
 
-	public function addCommentAction($params){
+	public function commentAction($params){
 	}
 }
 ?>

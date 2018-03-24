@@ -28,7 +28,7 @@ class TrainningController{
 	public function lessonsAction($params){
 	}
 
-	public function addCommentAction($params){
+	public function commentAction($params){
 	}
 }
 ?>
