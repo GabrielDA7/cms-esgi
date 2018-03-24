@@ -17,15 +17,12 @@ class LessonController{
 	}
 
 	/**
-	 * Get the lesson by id 
+	 * Get the lesson by id or by parameters
 	 */
 	public function lessonAction($params){
 	}
 
-	/**
-	 * Add a comment to the current lesson
-	 */
-	public function commentAction($params){
+	public function addCommentAction($params){
 	}
 }
 ?>

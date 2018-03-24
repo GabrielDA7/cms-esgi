@@ -18,6 +18,12 @@
 			UserSql::__construct();
 		}
 
+		public static function constructWithId($id) {
+			$user = new self();
+			$user->setId($id);
+			return $user;
+		}
+
 		public static function constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $dateInserted=null, $status) {
 			$user = new self();
 			$user->setUserName($userName);
@@ -30,7 +36,7 @@
 			$user->setStatus($status);
 			return $user;
 		}
-
+		
 		public function __destruct() {
 
 		}

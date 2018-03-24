@@ -17,7 +17,7 @@ class TrainningController{
 	}
 
 	/**
-	 * Get the trainning by id 
+	 * Get the trainning by id or by parameters
 	 */
 	public function trainningAction($params){
 	}
@@ -28,10 +28,7 @@ class TrainningController{
 	public function lessonsAction($params){
 	}
 
-	/**
-	 * Add a comment to the current trainning 
-	 */
-	public function commentAction($params){
+	public function addCommentAction($params){
 	}
 }
 ?>

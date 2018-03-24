@@ -15,13 +15,14 @@ class BaseSql {
 		}
 	}
 
-	public function setColumns() {
+	public function removeUnsusedColumns() {
 		$columnsExclude=get_class_vars(get_class());
 		$this->columns=array_diff_key(get_object_vars($this), $columnsExclude);
+		$this->columns = $this->removeNullValues($this->columns);
 	}
 	
 	public function insert() {
-		$this->setColumns();
+		$this->removeUnsusedColumns();
 		unset($this->columns['id']);
 		$query = $this->db->prepare("INSERT INTO ".$this->table."(".implode(',', array_keys($this->columns)).")
 			VALUES (:".implode(',:', array_keys($this->columns)).")");
@@ -30,19 +31,20 @@ class BaseSql {
 	}
 
 	public function update() {
-		$this->setColumns();
-		$this->columns = $this->removeNullValues($this->columns);
-		$request = $this->constructUpdateQuery($this->columns);
-		$query = $this->db->prepare("UPDATE ".$this->table." SET ".$request);
+		$this->removeUnsusedColumns();
+		$request = "UPDATE " . $this->table . " SET " . $this->constructConditionedQuery($this->columns, TRUE) . " WHERE id=:id";
+		$query = $this->db->prepare($request);
 		$query->execute($this->columns);
 	}
 
 	public function delete() {
+		$this->removeUnsusedColumns();
 		$query = $this->db->prepare("DELETE FROM ".$this->table." WHERE id=:id");
 		$query->execute(array(":id" => $this->getId()));
 	}
 
 	public function getAll() {
+		$this->removeUnsusedColumns();
 		$query = $this->db->prepare("SELECT * FROM ".$this->table);
 		$query->execute();
 		$response = $query->fetchAll();
@@ -50,14 +52,35 @@ class BaseSql {
 		return $objectList;
 	}
 
+	public function getWithParameters() {
+		$this->removeUnsusedColumns();
+		$request = "SELECT * FROM " . $this->table . " WHERE " . $this->constructConditionedQuery($this->columns, FALSE);
+		$query = $this->db->prepare($request);
+		$query->execute($this->columns);
+		$response = $query->fetchAll();
+		$objectList = $this->getObjectsListFromDBResponse($response);
+		return $objectList;
+	}
+
+	public function getById() {
+		$this->removeUnsusedColumns();
+		$request = "SELECT * FROM " . $this->table . " WHERE id=:id";
+		$query = $this->db->prepare($request);
+		$query->execute(array(":id" => $this->getId()));
+		$response = $query->fetch();
+		$object = $this->getObjectFromDBResponse($response);
+		return $object;
+	}
+
 	private function getObjectsListFromDBResponse($response) {
 		$objectList = array();
 		foreach ($response as $key => $value) {
 			$object = new $this->table();
-			foreach ($value as $keyValue => $valueValue) {
-				if (!is_numeric($keyValue)) {
-					$setter = 'set'.ucfirst($keyValue);
-					$object->$setter($valueValue);
+			foreach ($value as $objectKey => $objectValue) {
+				if (!is_numeric($objectKey)) {
+					$objectKey = removeUdnerScoreFromForeignKeyColum($objectKey);
+					$setter = 'set'.ucfirst($objectKey);
+					$object->$setter($objectValue);
 				}
 			}
 			array_push($objectList, $object);
@@ -69,6 +92,7 @@ class BaseSql {
 		foreach ($response as $key => $value) {
 			$object = new $this->table();
 			if (!is_numeric($key)) {
+				$objectKey = removeUdnerScoreFromForeignKeyColum($objectKey);
 				$setter = 'set'.ucfirst($key);
 				$object->$setter($value);
 			}
@@ -76,7 +100,7 @@ class BaseSql {
 		return $object;
 	}
 
-	private function constructUpdateQuery($columns) {
+	private function constructConditionedQuery($columns, $update) {
 		$numberOfItems = count($this->columns);
 		$i = 0;
 		$request = "";
@@ -89,15 +113,22 @@ class BaseSql {
 			$request .= $key."=:".$key;
 			// !last index
 			if(!(++$i === $numberOfItems)) {
-	    		$request .= ",";
+				if ($update) {
+	    			$request .= ",";
+				} else {
+					$request .= " AND ";
+				}
 	  		}
 		}	
-		$request .= " WHERE id=:id";
 		return $request;
 	}
 
 	private function removeNullValues(&$columns) {
 		array_filter($columns,'strlen');
+	}
+
+	public function removeUdnerScoreFromForeignKeyColum(&$objectKey) {
+		str_replace('_', '', $objectKey);
 	}
 }
 ?>

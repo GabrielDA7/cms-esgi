@@ -6,7 +6,7 @@ class UserController{
 	}
 	
 	public function addAction($params){
-		if(isset($_POST['submit'])) {
+		if(isset($params['POST']['submit'])) {
 			extract($params['POST']);
 			$date = new DateTime();
 			$user = User::constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $date->format('Y-m-d H:i:s'), 0);
@@ -18,7 +18,7 @@ class UserController{
 
 	public function loginAction($params) {
 		$wrongPassword = false;
-		if(isset($_POST['submit'])) {
+		if(isset($params['POST']['submit'])) {
 			extract($params['POST']);
 			$user = new User();
 			$user->setUserName($userName);
@@ -35,8 +35,14 @@ class UserController{
 	}
 
 	public function listAction($params){
-		$user  = new User();
-		$users = $user->getAll();
+		if(isset($params['POST']['submit'])) {
+			extract($params['POST']);
+			$user = User::constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $dateInserted, $status);
+			$user = $user->getWithParameters();
+		} else {
+			$user  = new User();
+			$users = $user->getAll();
+		}
 		$v = new View("listUsers","front");
 		$v->assign("users" ,$users);
 	}
