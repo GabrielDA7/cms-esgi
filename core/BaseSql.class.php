@@ -14,10 +14,6 @@ class BaseSql {
 			die("Erreur SQL ".$e->getMessage());
 		}
 	}
-
-	public function getColumns() {
-		return get_object_vars($this);
-	}
 	
 	public function insert() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
@@ -45,7 +41,7 @@ class BaseSql {
 		$query = $this->db->prepare("SELECT * FROM ".$this->table);
 		$query->execute();
 		$response = $query->fetchAll();
-		$objectList = $this->getObjectsListFromDBResponse($response);
+		$objectList = $this->createObjectsListFromDBResponse($response);
 		return $objectList;
 	}
 
@@ -55,7 +51,7 @@ class BaseSql {
 		$query = $this->db->prepare($request);
 		$query->execute($this->columns);
 		$response = $query->fetchAll();
-		$objectList = $this->getObjectsListFromDBResponse($response);
+		$objectList = $this->createObjectsListFromDBResponse($response);
 		return $objectList;
 	}
 
@@ -69,7 +65,7 @@ class BaseSql {
 		return $object;
 	}
 
-	private function getObjectsListFromDBResponse($response) {
+	private function createObjectsListFromDBResponse($response) {
 		$objectList = array();
 		foreach ($response as $key => $values) {
 			$object = ClassUtils::constructObjectWithParameters($values, $this->table);
