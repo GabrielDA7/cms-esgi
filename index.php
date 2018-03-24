@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require "conf.inc.php";
+	require "constants.inc.php";
 
 	function myAutoloader($class){
 		$class = $class .".class.php";

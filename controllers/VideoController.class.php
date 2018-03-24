@@ -1,6 +1,8 @@
 <?php
 class VideoController{
 
+	public function __construct(){}
+
 	public function indexAction($params){
 	}
 	
@@ -15,7 +17,7 @@ class VideoController{
 
 	public function listAction($params){
 		if(isset($params['POST']['submit'])) {
-			$video = Video::constructWithParameters($params['POST']);
+			$video = ClassUtils::constructObjectWithParameters($params['POST'], VIDEO_CLASS_NAME);
 			$videos = $video->getWithParameters();
 		} else {
 			$video = new Video();
@@ -31,7 +33,7 @@ class VideoController{
 	public function videoAction($params){
 		if(isset($params['POST']['submit'])) {
 			extract($params['POST']);
-			$video = Video::constructWithId($id);
+			$video = ClassUtils::constructObjectWithId($id, VIDEO_CLASS_NAME);
 			$video = $video->getById();
 		}
 		$v = new View("video","front");

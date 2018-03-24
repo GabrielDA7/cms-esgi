@@ -9,7 +9,7 @@ class UserController{
 	
 	public function addAction($params){
 		if(isset($params['POST']['submit'])) {
-			$user = ClassUtils::constructObjectWithParameters($params['POST'], "User");
+			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->generateToken();
 			$user->insert();
 		}
@@ -20,7 +20,7 @@ class UserController{
 		$wrongPassword = false;
 		if(isset($params['POST']['submit'])) {
 			extract($params['POST']);
-			$user = ClassUtils::constructObjectWithParameters($params['POST'], "User");
+			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$wrongPassword = $user->login();
 		}
 		$v = new View("loginUser","front");
@@ -34,7 +34,7 @@ class UserController{
 
 	public function listAction($params){
 		if(isset($params['POST']['submit'])) {
-			$user = ClassUtils::constructObjectWithParameters($params['POST'], "User");
+			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user = $user->getWithParameters();
 		} else {
 			$user  = new User();
@@ -54,7 +54,7 @@ class UserController{
 
 	public function deleteAction($params) {
 		extract($params['POST']);
-		$user = ClassUtils::constructObjectWithId($id, "User");
+		$user = ClassUtils::constructObjectWithId($id, USER_CLASS_NAME);
 		$user->delete();	
 		header('Location: list');
 	}
