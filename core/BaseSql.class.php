@@ -25,8 +25,8 @@ class BaseSql {
 
 	public function update() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$request = "UPDATE " . $this->table . " SET " . $this->constructConditionedQuery($this->columns, TRUE) . " WHERE id=:id";
-		$query = $this->db->prepare($request);
+		$queryString = "UPDATE " . $this->table . " SET " . $this->constructConditionedQuery($this->columns, TRUE) . " WHERE id=:id";
+		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 	}
 
@@ -47,8 +47,8 @@ class BaseSql {
 
 	public function getWithParameters() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$request = "SELECT * FROM " . $this->table . " WHERE " . $this->constructConditionedQuery($this->columns, FALSE);
-		$query = $this->db->prepare($request);
+		$queryString = "SELECT * FROM " . $this->table . " WHERE " . $this->constructConditionedQuery($this->columns, FALSE);
+		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 		$response = $query->fetchAll();
 		$objectList = $this->createObjectsListFromDBResponse($response);
@@ -57,8 +57,8 @@ class BaseSql {
 
 	public function getById() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$request = "SELECT * FROM " . $this->table . " WHERE id=:id";
-		$query = $this->db->prepare($request);
+		$queryString = "SELECT * FROM " . $this->table . " WHERE id=:id";
+		$query = $this->db->prepare($queryString);
 		$query->execute(array(":id" => $this->getId()));
 		$response = $query->fetch();
 		$object = ClassUtils::constructObjectWithParameters($response, $this->table);
@@ -77,24 +77,24 @@ class BaseSql {
 	private function constructConditionedQuery($columns, $update) {
 		$numberOfItems = count($this->columns);
 		$i = 0;
-		$request = "";
+		$queryString = "";
 		foreach ($this->columns as $key => $value) {
 			// skip id
 			if($i === 0) {
 				$i++;
 				continue;
 			}
-			$request .= $key."=:".$key;
+			$queryString .= $key."=:".$key;
 			// !last index
 			if(!(++$i === $numberOfItems)) {
 				if ($update) {
-	    			$request .= ",";
+	    			$queryString .= ",";
 				} else {
-					$request .= " AND ";
+					$queryString .= " AND ";
 				}
 	  		}
 		}	
-		return $request;
+		return $queryString;
 	}
 
 	

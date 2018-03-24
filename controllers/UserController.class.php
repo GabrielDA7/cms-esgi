@@ -44,13 +44,11 @@ class UserController{
 		$v->assign("users" ,$users);
 	}
 
-	/*public function editAction($params){
-		$user = new User();
-		extract($params['POST']);
-		$user->setId($id);
-		$user->save();	
+	public function editAction($params){
+		$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
+		$user->update();	
 		header('Location: list');	
-	}*/
+	}
 
 	public function deleteAction($params) {
 		extract($params['POST']);
