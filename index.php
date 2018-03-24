@@ -30,20 +30,20 @@ function removeActionAndControllerFromUri(&$uriExploded) {
 }
 
 function getControllerAndAction($controllerName, $actionName, $params) {
-	if( file_exists("controllers/".$controllerName.".class.php") ){
+	if (file_exists("controllers/".$controllerName.".class.php")) {
 		include("controllers/".$controllerName.".class.php");
-		if(class_exists($controllerName)){
+		if (class_exists($controllerName)) {
 			$controller = new $controllerName();
-			if( method_exists($controller, $actionName) ){
+			if (method_exists($controller, $actionName)) {
 				$controller->$actionName($params);
-			}else{
-				die("L'action ".$controllerName." n'existe pas");
+			} else {
+				return404View($params);
 			}
-		}else{
-			die("La classe ".$controllerName." n'existe pas");
+		} else {
+			return404View($params);
 		}
-	}else{
-		die("Le controller ".$controllerName." n'existe pas");
+	} else {
+		return404View($params);
 	}
 }
 
@@ -53,6 +53,12 @@ function getUriExploded() {
 	$uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
 	$uriExploded = explode(DS, $uri);
 	return $uriExploded;
+}
+
+function return404View($params) {
+	include("controllers/indexController.class.php");
+	$indexController = new IndexController();
+	$indexController->errorAction($params);
 }
 
 spl_autoload_register('myAutoloader');
