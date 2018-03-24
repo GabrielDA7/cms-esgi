@@ -32,14 +32,16 @@ class VideoController{
 	 */
 	public function videoAction($params){
 		if(isset($params['POST']['submit'])) {
-			extract($params['POST']);
-			$video = ClassUtils::constructObjectWithId($id, VIDEO_CLASS_NAME);
+			$video = ClassUtils::constructObjectWithId($params['POST']['id'], VIDEO_CLASS_NAME);
 			$video = $video->getById();
 		}
 		$v = new View("video","front");
 		$v->assign("video" ,$video);
 	}
 
+	/**
+	 * Get the asssocieted comment at the current video 
+	 */
 	public function commentAction($params){
 	}
 }

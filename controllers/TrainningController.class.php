@@ -28,6 +28,9 @@ class TrainningController{
 	public function lessonsAction($params){
 	}
 
+	/**
+	 * Get the asssocieted comment at the current trainning 
+	 */
 	public function commentAction($params){
 	}
 }

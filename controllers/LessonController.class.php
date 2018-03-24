@@ -22,6 +22,9 @@ class LessonController{
 	public function lessonAction($params){
 	}
 
+	/**
+	 * Get the asssocieted comment at the current lesson 
+	 */
 	public function commentAction($params){
 	}
 }

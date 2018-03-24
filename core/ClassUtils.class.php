@@ -7,7 +7,7 @@ class classUtils {
 		$object = new $objectName();
 		foreach ($columns as $column => $value) {
 			if (!is_numeric($column)) {
-				self::removeUnderScoreFromForeignKeyColum($column);
+				self::removeUnderScoreFromForeignKeyColumn($column);
 				$setter = 'set'.ucfirst($column);
 				if (method_exists($object, $setter)) {
 					$object->$setter($value);
@@ -39,7 +39,7 @@ class classUtils {
 		}
 	}
 
-	public static function removeUnderScoreFromForeignKeyColum(&$column) {
+	public static function removeUnderScoreFromForeignKeyColumn(&$column) {
 		str_replace('_', '', $column);
 	}
 }
