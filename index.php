@@ -37,13 +37,13 @@ function getControllerAndAction($controllerName, $actionName, $params) {
 			if (method_exists($controller, $actionName)) {
 				$controller->$actionName($params);
 			} else {
-				return404View($params);
+				return404View();
 			}
 		} else {
-			return404View($params);
+			return404View();
 		}
 	} else {
-		return404View($params);
+		return404View();
 	}
 }
 
@@ -55,10 +55,8 @@ function getUriExploded() {
 	return $uriExploded;
 }
 
-function return404View($params) {
-	include("controllers/indexController.class.php");
-	$indexController = new IndexController();
-	$indexController->errorAction($params);
+function return404View() {
+	header('Location: '.DIRNAME.'index/error');
 }
 
 spl_autoload_register('myAutoloader');

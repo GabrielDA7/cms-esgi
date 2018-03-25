@@ -18,14 +18,14 @@ class UserController{
 	public function editAction($params){
 		$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 		$user->update();	
-		header('Location: list');	
+		header('Location:'.DIRNAME.'user/list');	
 	}
 
 	public function deleteAction($params) {
 		extract($params['POST']);
 		$user = ClassUtils::constructObjectWithId($id, USER_CLASS_NAME);
 		$user->delete();	
-		header('Location: list');
+		header('Location:'.DIRNAME.'user/list');
 	}
 
 	public function userAction($params) {
@@ -62,7 +62,7 @@ class UserController{
 
 	public function disconnectAction() {
 		session_destroy();
-		header('Location: '.DIRNAME);
+		header('Location:'.DIRNAME);
 	}
 }
 ?>

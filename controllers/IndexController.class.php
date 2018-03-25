@@ -2,7 +2,7 @@
 class IndexController{
 
 	public function indexAction($params){
-		$v = new View("default","front");
+		$v = new View("home","front");
 	}
 
 	public function errorAction($params){
