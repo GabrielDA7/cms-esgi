@@ -1,5 +1,5 @@
 <?php
-class View{
+class View {
 
 	private $v;
 	private $t;
@@ -8,14 +8,15 @@ class View{
 	public function __construct($v="default", $t="front") {
 		$this->v = $v.".view.php";
 		$this->t = $t.".tpl.php";
-
-		if (!file_exists("views/".$this->v)) {
+		$viewPath = searchFile(array('views'), $this->v);
+		$templatePath = searchFile(array('views/templates'), $this->t);
+		if (!isset($viewPath)) {
 			return404View();
 		}
-		if (!file_exists("views/templates/".$this->t)){
+		if (!isset($templatePath)) {
 			return404View();
-		}			
-
+		}
+		$this->assign("viewPath", $viewPath);
 	}
 
 	public function __destruct() {
@@ -26,6 +27,4 @@ class View{
 	public function assign($key, $value) {
 		$this->data[$key] = $value;
 	}
-
-
 }

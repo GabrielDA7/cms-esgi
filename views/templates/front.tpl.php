@@ -41,7 +41,7 @@
     </nav>
 
     <main role="main">
-      	<?php include "views/".$this->v; ?>
+      	<?php include $viewPath; ?>
     </main>
 
     <footer>

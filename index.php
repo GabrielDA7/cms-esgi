@@ -3,12 +3,30 @@ session_start();
 require "conf.inc.php";
 require "constants.inc.php";
 
-function myAutoloader($class){
+function autoLoadExistingClass($class) {
 	$class = $class .".class.php";
-	if( file_exists("core/".$class) ){
-		include "core/".$class;
-	}else if( file_exists( "models/".$class)){
-		include "models/".$class;
+	$path = searchFile(array('models', 'core'), $class);
+	if(isset($path)) {
+		include $path;
+	}
+}
+
+function searchFile($dirs, $file_to_search) {
+	foreach ($dirs as $dir) {
+		$files = scandir($dir);
+		foreach ($files as $key => $value) {
+			$path = realpath($dir.DS.$value);
+			if (!is_dir($path)) {
+				if($file_to_search == $value) {
+					return $path;
+				}
+			} else if ($value != "." && $value != "..") {
+				$path = searchFile(array($path), $file_to_search);
+				if (isset($path)) {
+					return $path;
+				}
+			}  
+		} 
 	}
 }
 
@@ -59,7 +77,7 @@ function return404View() {
 	header('Location: '.DIRNAME.'index/error');
 }
 
-spl_autoload_register('myAutoloader');
+spl_autoload_register('autoLoadExistingClass');
 
 $uriExploded = getUriExploded();
 

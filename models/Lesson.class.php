@@ -7,5 +7,6 @@ class Lesson extends BaseSql {
 	protected $autor;
 	protected $videos = array();
 	
+	protected $Trainning_Id = null;
 }
 ?>
