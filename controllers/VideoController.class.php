@@ -23,8 +23,8 @@ class VideoController {
 			$video = new Video();
 			$videos = $video->getAll();
 		}
-		$v = new View("listVideo","front");
-		$v->assign("videos" ,$videos);
+		$view = new View("listVideo","front");
+		$view->assign("videos" ,$videos);
 	}
 
 	/**
@@ -35,8 +35,8 @@ class VideoController {
 			$video = ClassUtils::constructObjectWithId($params['POST']['id'], VIDEO_CLASS_NAME);
 			$video = $video->getById();
 		}
-		$v = new View("video","front");
-		$v->assign("video" ,$video);
+		$view = new View("video","front");
+		$view->assign("video" ,$video);
 	}
 
 	/**

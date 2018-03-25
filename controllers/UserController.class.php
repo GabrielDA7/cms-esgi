@@ -12,29 +12,29 @@ class UserController {
 			$user->generateToken();
 			$user->insert();
 		}
-		$v = new View("registerUser","front");
+		$view = new View("registerUser","front");
 	}
 
 	public function editAction($params) {
-		$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
-		$user->update();	
-		header('Location:'.DIRNAME.'user/list');	
+		if(isset($params['POST']['edit'])) {
+			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
+			$user->update();
+			header('Location:' . DIRNAME . USER_LIST_LINK);		
+		} else if(isset($params['POST']['id'])) {
+			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
+			$user = $user->getById();
+			$view = new View("edit","front");
+			$view->assign("user" ,$user);
+		} else {
+			return404View();
+		}
 	}
 
 	public function deleteAction($params) {
 		extract($params['POST']);
 		$user = ClassUtils::constructObjectWithId($id, USER_CLASS_NAME);
 		$user->delete();	
-		header('Location:'.DIRNAME.'user/list');
-	}
-
-	public function userAction($params) {
-		if(isset($params['POST']['submit'])) {
-			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
-			$user = $user->getById();
-		}
-		$v = new View("user","front");
-		$v->assign("user" ,$user);
+		header('Location:' . DIRNAME . USER_LIST_LINK);
 	}
 
 	public function listAction($params) {
@@ -45,8 +45,8 @@ class UserController {
 			$user  = new User();
 			$users = $user->getAll();
 		}
-		$v = new View("listUsers","front");
-		$v->assign("users" ,$users);
+		$view = new View("listUsers","front");
+		$view->assign("users" ,$users);
 	}
 
 	public function loginAction($params) {
@@ -56,13 +56,13 @@ class UserController {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$wrongPassword = $user->login();
 		}
-		$v = new View("loginUser","front");
-		$v->assign("wrongPassword", $wrongPassword);
+		$view = new View("loginUser","front");
+		$view->assign("wrongPassword", $wrongPassword);
 	}
 
 	public function disconnectAction() {
 		session_destroy();
-		header('Location:'.DIRNAME);
+		header('Location:' . DIRNAME);
 	}
 }
 ?>

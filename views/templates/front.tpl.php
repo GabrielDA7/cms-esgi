@@ -16,16 +16,16 @@
             <a href="<?= DIRNAME;?>">Home</a>
           </li>
           <li>
-            <a href="<?= DIRNAME;?>user/add">inscription</a>
+            <a href="<?= DIRNAME.USER_ADD_LINK;?>">inscription</a>
           </li>
           <li>
-            <a href="<?= DIRNAME;?>user/list">list</a>
+            <a href="<?= DIRNAME.USER_LIST_LINK;?>">list</a>
           </li>
           <li>
-            <a href="<?= DIRNAME;?>user/login">connexion</a>
+            <a href="<?= DIRNAME.USER_LOGIN_LINK;?>">connexion</a>
           </li>
           <li>
-            <a href="<?= DIRNAME;?>user/disconnect">deconnexion</a>
+            <a href="<?= DIRNAME.USER_DISCONNECT_LINK;?>">deconnexion</a>
           </li>
           <li>
             <a>

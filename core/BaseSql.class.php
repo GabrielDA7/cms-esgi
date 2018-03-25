@@ -11,7 +11,7 @@ class BaseSql {
 		try {
 			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
 		} catch(Exception $e) {
-			die("Erreur SQL ".$e->getMessage());
+			return404View();
 		}
 	}
 	
@@ -77,7 +77,7 @@ class BaseSql {
 	private function constructConditionedQuery($columns, $update) {
 		$numberOfItems = count($this->columns);
 		$i = 0;
-		$queryString = "";
+		$queryString = '';
 		foreach ($this->columns as $key => $value) {
 			// skip id
 			if ($i === 0) {
@@ -88,7 +88,7 @@ class BaseSql {
 			// !last index
 			if (!(++$i === $numberOfItems)) {
 				if ($update) {
-	    			$queryString .= ",";
+	    			$queryString .= COMMA;
 				} else {
 					$queryString .= " AND ";
 				}

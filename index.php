@@ -4,10 +4,9 @@ require "conf.inc.php";
 require "constants.inc.php";
 
 function autoLoadExistingClass($class) {
-	$class = $class .".class.php";
-	$path = searchFile(array('models', 'core'), $class);
-	if(isset($path)) {
-		include $path;
+	$classPath = searchFile(array(MODELS_FOLDER_NAME, CORE_FOLDER_NAME), $class.CLASS_EXTENSION);
+	if(isset($classPath)) {
+		include $classPath;
 	}
 }
 
@@ -20,7 +19,7 @@ function searchFile($dirs, $file_to_search) {
 				if($file_to_search == $value) {
 					return $path;
 				}
-			} else if ($value != "." && $value != "..") {
+			} else if ($value != DOT && $value != DOUBLE_DOT) {
 				$path = searchFile(array($path), $file_to_search);
 				if (isset($path)) {
 					return $path;
@@ -31,14 +30,14 @@ function searchFile($dirs, $file_to_search) {
 }
 
 function getControllerName($uriExploded) {
-	$controllerName = (empty($uriExploded[0]))?"index":$uriExploded[0];
-	$controllerName = ucfirst(strtolower($controllerName))."Controller";
+	$controllerName = (empty($uriExploded[0]))?INDEX_LABEL:$uriExploded[0];
+	$controllerName = ucfirst(strtolower($controllerName)).CONTROLLER_LABEL;
 	return $controllerName;
 }
 
 function getActionName($uriExploded) {
-	$actionName = (empty($uriExploded[1]))?"index":$uriExploded[1];
-	$actionName = strtolower($actionName)."Action";
+	$actionName = (empty($uriExploded[1]))?INDEX_LABEL:$uriExploded[1];
+	$actionName = strtolower($actionName).ACTION_LABEL;
 	return $actionName;
 }
 
@@ -48,8 +47,9 @@ function removeActionAndControllerFromUri(&$uriExploded) {
 }
 
 function getControllerAndAction($controllerName, $actionName, $params) {
-	if (file_exists("controllers/".$controllerName.".class.php")) {
-		include("controllers/".$controllerName.".class.php");
+	$controllerPath = searchFile(array(CONTROLLERS_FOLDER_NAME), $controllerName.CLASS_EXTENSION);
+	if (isset($controllerPath)) {
+		include $controllerPath;
 		if (class_exists($controllerName)) {
 			$controller = new $controllerName();
 			if (method_exists($controller, $actionName)) {
@@ -67,14 +67,14 @@ function getControllerAndAction($controllerName, $actionName, $params) {
 
 function getUriExploded() {
 	$uri = $_SERVER["REQUEST_URI"];
-	$uri = explode("?", $uri);
-	$uri = str_ireplace(DIRNAME, "", urldecode($uri[0]));
+	$uri = explode(QUESTION_MARK, $uri);
+	$uri = str_ireplace(DIRNAME, '', urldecode($uri[0]));
 	$uriExploded = explode(DS, $uri);
 	return $uriExploded;
 }
 
 function return404View() {
-	header('Location: '.DIRNAME.'index/error');
+	header('Location:' . DIRNAME . INDEX_ERROR_LINK);
 }
 
 spl_autoload_register('autoLoadExistingClass');

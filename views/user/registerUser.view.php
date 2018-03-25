@@ -1,4 +1,4 @@
-<form action="<?= DIRNAME;?>user/add" method="POST">
+<form action="<?= DIRNAME.USER_ADD_LINK;?>" method="POST">
 	<label for="userName">	Pseudo</label>			<input type="text" 		name="userName" 	value="Lala"></br>
 	<label for="name">		Prenom</label>			<input type="text" 		name="name" 		value="Louis"></br>
 	<label for="firstName">	Nom</label>				<input type="text" 		name="firstName" 	value="Louis"></br>

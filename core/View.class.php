@@ -1,15 +1,15 @@
 <?php
 class View {
 
-	private $v;
-	private $t;
+	private $view;
+	private $template;
 	private $data = [];
 
-	public function __construct($v="default", $t="front") {
-		$this->v = $v.".view.php";
-		$this->t = $t.".tpl.php";
-		$viewPath = searchFile(array('views'), $this->v);
-		$templatePath = searchFile(array('views/templates'), $this->t);
+	public function __construct($view="default", $template="front") {
+		$this->view = $view . VIEW_EXTENSION;
+		$this->template = $template . TEMPLATE_EXTENSION;
+		$viewPath = searchFile(array(VIEWS_FOLDER_NAME), $this->view);
+		$templatePath = searchFile(array(VIEWS_TEMLATES_FOLDER_NAME), $this->template);
 		if (!isset($viewPath)) {
 			return404View();
 		}
@@ -17,11 +17,12 @@ class View {
 			return404View();
 		}
 		$this->assign("viewPath", $viewPath);
+		$this->assign("templatePath", $templatePath);
 	}
 
 	public function __destruct() {
 		extract($this->data);
-		include "views/templates/".$this->t;
+		include $templatePath;
 	}
 
 	public function assign($key, $value) {

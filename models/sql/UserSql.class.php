@@ -14,7 +14,7 @@
 				$_SESSION['userName'] = $user['userName'];
 				$_SESSION['token'] = $user['token'];
 				$_SESSION['premium'] = $this->checkPremiumDate($user['id']);
-				header('Location: '.DIRNAME);
+				header('Location:'.DIRNAME);
 			} else {
 				return TRUE;
 			}
