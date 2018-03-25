@@ -1,7 +1,7 @@
 <?php
 session_start();
-require "conf.inc.php";
 require "constants.inc.php";
+require "conf.inc.php";
 
 function autoLoadExistingClass($class) {
 	$classPath = searchFile(array(MODELS_FOLDER_NAME, CORE_FOLDER_NAME), $class.CLASS_EXTENSION);
@@ -74,7 +74,7 @@ function getUriExploded() {
 }
 
 function return404View() {
-	header('Location:' . DIRNAME . INDEX_ERROR_LINK);
+	header(LOCATION . DIRNAME . INDEX_ERROR_LINK);
 }
 
 spl_autoload_register('autoLoadExistingClass');

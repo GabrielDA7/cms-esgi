@@ -5,7 +5,7 @@ class View {
 	private $template;
 	private $data = [];
 
-	public function __construct($view="default", $template="front") {
+	public function __construct($view=HOME_VIEW, $template=DEFAULT_TEMPLATE) {
 		$this->view = $view . VIEW_EXTENSION;
 		$this->template = $template . TEMPLATE_EXTENSION;
 		$viewPath = searchFile(array(VIEWS_FOLDER_NAME), $this->view);

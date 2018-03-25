@@ -12,19 +12,19 @@ class UserController {
 			$user->generateToken();
 			$user->insert();
 		}
-		$view = new View("registerUser","front");
+		$view = new View(USER_REGISTER_VIEW, DEFAULT_TEMPLATE);
 	}
 
 	public function editAction($params) {
 		if(isset($params['POST']['edit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->update();
-			header('Location:' . DIRNAME . USER_LIST_LINK);		
+			header(LOCATION . DIRNAME . USER_LIST_LINK);		
 		} else if(isset($params['POST']['id'])) {
 			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
 			$user = $user->getById();
-			$view = new View("edit","front");
-			$view->assign("user" ,$user);
+			$view = new View(USER_EDIT_VIEW, DEFAULT_TEMPLATE);
+			$view->assign(USER_EDIT_VIEW ,$user);
 		} else {
 			return404View();
 		}
@@ -34,7 +34,7 @@ class UserController {
 		extract($params['POST']);
 		$user = ClassUtils::constructObjectWithId($id, USER_CLASS_NAME);
 		$user->delete();	
-		header('Location:' . DIRNAME . USER_LIST_LINK);
+		header(LOCATION . DIRNAME . USER_LIST_LINK);
 	}
 
 	public function listAction($params) {
@@ -45,7 +45,7 @@ class UserController {
 			$user  = new User();
 			$users = $user->getAll();
 		}
-		$view = new View("listUsers","front");
+		$view = new View(USER_LIST_VIEW, DEFAULT_TEMPLATE);
 		$view->assign("users" ,$users);
 	}
 
@@ -56,13 +56,13 @@ class UserController {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$wrongPassword = $user->login();
 		}
-		$view = new View("loginUser","front");
+		$view = new View(USER_LOGIN_VIEW, DEFAULT_TEMPLATE);
 		$view->assign("wrongPassword", $wrongPassword);
 	}
 
 	public function disconnectAction() {
 		session_destroy();
-		header('Location:' . DIRNAME);
+		header(LOCATION . DIRNAME);
 	}
 }
 ?>
