@@ -1,12 +1,13 @@
 <?php
 
-class BaseSql {
+class BaseSql extends QueryConstructorSql {
 
 	protected $table;
 	protected $db;
 	protected $columns;	
 
 	public function __construct() {
+		QueryConstructorSql::__construct();
 		$this->table = get_called_class();
 		try {
 			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
@@ -17,28 +18,29 @@ class BaseSql {
 	
 	public function insert() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$query = $this->db->prepare("INSERT INTO ".$this->table."(".implode(',', array_keys($this->columns)).")
-			VALUES (:".implode(',:', array_keys($this->columns)).")");
+		$queryString = $this->constructInsertQuery($this->table, $this->columns);
+		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 		
 	}
 
 	public function update() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = "UPDATE " . $this->table . " SET " . $this->constructConditionedQuery($this->columns, TRUE) . " WHERE id=:id";
+		$queryString = $this->constructUpdateQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 	}
 
 	public function delete() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$query = $this->db->prepare("DELETE FROM ".$this->table." WHERE id=:id");
-		$query->execute(array(":id" => $this->getId()));
+		$queryString = $this->constructDeleteQuery($this->table);
+		$query = $this->db->prepare($queryString);
+		$query->execute($this->columns);
 	}
 
 	public function getAll() {
-		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$query = $this->db->prepare("SELECT * FROM ".$this->table);
+		$queryString = $this->constructSelectQuery($this->table);
+		$query = $this->db->prepare($queryString);
 		$query->execute();
 		$response = $query->fetchAll();
 		$objectList = $this->createObjectsListFromDBResponse($response);
@@ -47,7 +49,7 @@ class BaseSql {
 
 	public function getWithParameters() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = "SELECT * FROM " . $this->table . " WHERE " . $this->constructConditionedQuery($this->columns, FALSE);
+		$queryString = $this->constructSelectQuery($this->table, ALL, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 		$response = $query->fetchAll();
@@ -57,9 +59,9 @@ class BaseSql {
 
 	public function getById() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = "SELECT * FROM " . $this->table . " WHERE id=:id";
+		$queryString = $this->constructSelectQuery($this->table, ALL, $this->columns);
 		$query = $this->db->prepare($queryString);
-		$query->execute(array(":id" => $this->getId()));
+		$query->execute($this->columns);
 		$response = $query->fetch();
 		$object = ClassUtils::constructObjectWithParameters($response, $this->table);
 		return $object;
@@ -72,29 +74,6 @@ class BaseSql {
 			array_push($objectList, $object);
 		}
 		return $objectList;
-	}
-
-	private function constructConditionedQuery($columns, $update) {
-		$numberOfItems = count($this->columns);
-		$i = 0;
-		$queryString = '';
-		foreach ($this->columns as $key => $value) {
-			// skip id
-			if ($i === 0) {
-				$i++;
-				continue;
-			}
-			$queryString .= $key."=:".$key;
-			// !last index
-			if (!(++$i === $numberOfItems)) {
-				if ($update) {
-	    			$queryString .= COMMA;
-				} else {
-					$queryString .= " AND ";
-				}
-	  		}
-		}	
-		return $queryString;
 	}
 }
 ?>

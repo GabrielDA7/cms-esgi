@@ -1,7 +1,7 @@
 <?php
 class Video extends BaseSql {
 
-	protected $id = null;
+	protected $id        = null;
 	protected $title;
 	protected $duration;
 	protected $live;
