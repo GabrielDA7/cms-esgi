@@ -7,7 +7,7 @@ class QueryConstructorSql {
 		$query = " SELECT " . $select;
 		$query .= " FROM " . $table;
 		if (isset($columns)) {
-			$query .= " WHERE " . $this->createSeparatorBetweenKeyValues($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE);
+			$query .= " WHERE " . $this->createSeparatorBetweenKeyValues($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 		}
 		if (isset($orderBy)) {
 			$query .= " ORDER BY " . $this->createSeparatorBetweenKeyValues($orderBy, "", SPACE, DOT);

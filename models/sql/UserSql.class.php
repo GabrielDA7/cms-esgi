@@ -6,8 +6,10 @@ class UserSql extends BaseSql {
 	}
 
 	public function login() {
-		$query = $this->db->prepare("SELECT * FROM User WHERE userName=:userName AND pwd=:pwd");
-		$query->execute(array(":userName" => $this->getUserName(),":pwd" => $this->getPwd()));
+		$columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
+		$queryString = $this->constructSelectQuery($this->table, ALL, $columns);
+		$query = $this->db->prepare($queryString);
+		$query->execute($columns);
 		if ($user = $query->fetch()) {
 			$query->closeCursor();
 			$_SESSION['userName'] = $user['userName'];
