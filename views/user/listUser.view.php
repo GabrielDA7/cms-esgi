@@ -9,6 +9,6 @@
         </form>
         <form action="<?= DIRNAME.USER_EDIT_LINK;?>" method="POST">
         	<input type="hidden" value="<?= $user->getId(); ?>" name="id">
-        	<input type="submit" name="edit" value="edit">
+        	<input type="submit" name="submit" value="edit">
         </form>
 <?php } ?>

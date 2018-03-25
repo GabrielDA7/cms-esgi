@@ -24,7 +24,7 @@ class UserController {
 			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
 			$user = $user->getById();
 			$view = new View(USER_EDIT_VIEW, DEFAULT_TEMPLATE);
-			$view->assign(USER_EDIT_VIEW ,$user);
+			$view->assign("user" ,$user);
 		} else {
 			return404View();
 		}
