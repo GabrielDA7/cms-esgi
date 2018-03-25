@@ -80,13 +80,13 @@ class BaseSql {
 		$queryString = "";
 		foreach ($this->columns as $key => $value) {
 			// skip id
-			if($i === 0) {
+			if ($i === 0) {
 				$i++;
 				continue;
 			}
 			$queryString .= $key."=:".$key;
 			// !last index
-			if(!(++$i === $numberOfItems)) {
+			if (!(++$i === $numberOfItems)) {
 				if ($update) {
 	    			$queryString .= ",";
 				} else {
@@ -96,7 +96,5 @@ class BaseSql {
 		}	
 		return $queryString;
 	}
-
-	
 }
 ?>

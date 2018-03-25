@@ -54,7 +54,7 @@ class User extends UserSql {
 		$this->name = ucfirst(strtolower($name));
 	}
 
-	public function getFirstName(){
+	public function getFirstName() {
 		return $this->firstName;
 	}
 

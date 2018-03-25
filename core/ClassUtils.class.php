@@ -32,8 +32,8 @@ class classUtils {
 	}
 
 	public static function removeNullColumns(&$columns) {
-		foreach($columns as $key=>$value) {
-		    if(is_null($value) || $value == '') {
+		foreach ($columns as $key=>$value) {
+		    if (is_null($value) || $value == '') {
 		        unset($columns[$key]);
 		    }
 		}

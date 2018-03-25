@@ -1,11 +1,11 @@
 <?php
-class IndexController{
+class IndexController {
 
-	public function indexAction($params){
+	public function indexAction($params) {
 		$v = new View("home","front");
 	}
 
-	public function errorAction($params){
+	public function errorAction($params) {
 		$v = new View("404","front");
 	}
 }

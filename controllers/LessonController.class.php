@@ -1,31 +1,31 @@
 <?php
-class LessonController{
+class LessonController {
 
-	public function indexAction($params){
+	public function indexAction($params) {
 	}
 	
-	public function addAction($params){
+	public function addAction($params) {
 	}
 
-	public function editAction($params){
+	public function editAction($params) {
 	}
 
 	public function deleteAction($params) {
 	}
 
-	public function listAction($params){
+	public function listAction($params) {
 	}
 
 	/**
 	 * Get the lesson by id or by parameters
 	 */
-	public function lessonAction($params){
-	}
+	public function lessonAction($params) {
+	} 
 
 	/**
 	 * Get the asssocieted comment at the current lesson 
 	 */
-	public function commentAction($params){
+	public function commentAction($params) {
 	}
 }
 ?>

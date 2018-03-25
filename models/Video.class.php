@@ -1,5 +1,5 @@
 <?php
-class Video extends BaseSql{
+class Video extends BaseSql {
 
 	protected $id = null;
 	protected $title;
@@ -17,11 +17,11 @@ class Video extends BaseSql{
         return get_object_vars($this);
     }
 
-    public function getId(){
+    public function getId() {
     	return $this->id;
     }
 
-    public function setId($id){
+    public function setId($id) {
     	$this->id = $id;
     }
 

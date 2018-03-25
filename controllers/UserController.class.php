@@ -1,13 +1,13 @@
 <?php
-class UserController{
+class UserController {
 
-	public function __construct(){}
+	public function __construct() {}
 
-	public function indexAction($params){
+	public function indexAction($params) {
 	}
 	
-	public function addAction($params){
-		if(isset($params['POST']['submit'])) {
+	public function addAction($params) {
+		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->generateToken();
 			$user->insert();
@@ -15,7 +15,7 @@ class UserController{
 		$v = new View("registerUser","front");
 	}
 
-	public function editAction($params){
+	public function editAction($params) {
 		$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 		$user->update();	
 		header('Location:'.DIRNAME.'user/list');	
@@ -37,7 +37,7 @@ class UserController{
 		$v->assign("user" ,$user);
 	}
 
-	public function listAction($params){
+	public function listAction($params) {
 		if(isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user = $user->getWithParameters();
@@ -51,7 +51,7 @@ class UserController{
 
 	public function loginAction($params) {
 		$wrongPassword = false;
-		if(isset($params['POST']['submit'])) {
+		if (isset($params['POST']['submit'])) {
 			extract($params['POST']);
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$wrongPassword = $user->login();
