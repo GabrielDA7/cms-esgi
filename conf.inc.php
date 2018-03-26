@@ -1,7 +1,7 @@
 <?php
 
 define("DBUSER","root");
-define("DBPWD","");
+define("DBPWD","gd78$#Ogc");
 define("DBHOST","localhost");
 define("DBNAME","projet_annuel");
 define("DBPORT","3306");

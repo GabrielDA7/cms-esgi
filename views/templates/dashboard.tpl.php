@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Uteach-Dashboard</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Cours 1 integration">
+        <meta name="keywords" content="CMS,Formation">
+        <meta name="author" content="Gabriel Daoud">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="public/css/main.css" type="text/css" rel="stylesheet">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" type="text/css" rel="stylesheet">
+    </head>
+
+    <body>
+
+
+        <nav id="dashboard-nav" class="container-fluid top-menu">
+            <div class="left-nav">
+                <img class="logo-nav" src="public/img/logo.svg" alt="logo" title="logo">
+                <p>Dashboard</p>
+            </div>
+
+            <div class="right-nav">
+                <div class="icon-bar">
+                    <a class="active" href="#"><i class="fas fa-home"></i></a>
+                    <a href="#"><i class="fas fa-user-circle"></i></a>
+                    <a href="#"><i class="far fa-bell"></i></a>
+                    <a href="#"><i class="fas fa-power-off"></i></a>
+                </div>
+            </div>
+        </nav>
+
+        <section id="dashboard-left-menu">
+            <div class="container-fluid">
+                  <nav>
+                      <ul id="main-left-menu">
+                         <li><a href=""><i class="fas fa-chart-area"></i>Statistics</a></li>
+                         <li><a href=""><i class="fas fa-columns"></i>Pages</a></li>
+                         <li><a href=""><i class="fas fa-graduation-cap"></i>Courses</a></li>
+                         <li><a href=""><i class="fas fa-graduation-cap"></i>Formations</a></li>
+                         <li><a href=""><i class="fas fa-film"></i>Videos</a></li>
+                         <li><a href=""><i class="fas fa-comments"></i>Comments</a></li>
+                         <li><a href=""><i class="fas fa-gem"></i>Premium</a></li>
+                         <li class="sub-menu">
+                           <a href="">
+                             <i class="fas fa-users"></i>Users<i class="fas fa-chevron-down"></i>
+                           </a>
+                           <ul>
+                             <li><a href="#">dsfs</a></li>
+                             <li><a href="#">dsfsd</a></li>
+                           </ul>
+                         </li>
+                         <li class="sub-menu">
+                           <a href="">
+                             <i class="fas fa-cogs"></i>Parameters<i class="fas fa-chevron-down"></i>
+                           </a>
+                           <ul>
+                             <li><a href="#">dsfs</a></li>
+                             <li><a href="#">dsfsd</a></li>
+                           </ul>
+                         </li>
+                      </ul>
+                  </nav>
+            </div>
+        </section>
+
+        <section id="dashboard-content">
+            <section class="container">
+                <?php  include "views/".$this->v; ?>
+            </section>
+        </section>
+
+        <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="node_modules/chart.js/dist/Chart.min.js"></script>
+        <script type="text/javascript" src="public/js/framework.js"></script>
+    </body>
+</html>
