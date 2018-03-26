@@ -1,5 +1,6 @@
 <?php
-class TrainningController {
+include "core/ControllerInterface.php";
+class TrainningController implements ControllerInterface {
 
 	public function indexAction($params) {
 	}
@@ -26,12 +27,6 @@ class TrainningController {
 	 * Get the asssocieted lessons at the current trainning 
 	 */
 	public function lessonsAction($params) {
-	}
-
-	/**
-	 * Get the asssocieted comment at the current trainning 
-	 */
-	public function commentAction($params) {
 	}
 }
 ?>

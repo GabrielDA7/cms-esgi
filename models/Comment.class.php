@@ -1,15 +1,15 @@
 <?php
 class Comment extends BaseSql {
 
-	protected $id 			= null;
+	protected $id = null;
 	protected $user;
 	protected $date;
 	protected $content;
-	protected $response 	= array();
+	protected $response = array();
 	
-	protected $Lesson_Id 	= null;
-	protected $Trainning_Id = null;
-	protected $Video_Id 	= null;
-	protected $Comment_Id 	= null;
+	protected $lesson_Id 	= null;
+	protected $rrainning_Id = null;
+	protected $video_Id 	= null;
+	protected $comment_Id 	= null;
 }
 ?>

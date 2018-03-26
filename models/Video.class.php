@@ -1,13 +1,13 @@
 <?php
 class Video extends BaseSql {
 
-	protected $id        = null;
+	protected $id = null;
 	protected $title;
 	protected $duration;
 	protected $live;
 	protected $url;
 
-	protected $Lesson_Id = null;
+	protected $lesson_Id = null;
 
 	public function __construct() {
 		BaseSql::__construct();

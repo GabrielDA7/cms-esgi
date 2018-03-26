@@ -4,7 +4,7 @@ class QueryConstructorSql {
 	public function __construct() {}
 
 	protected function constructSelectQuery($table, $select = ALL, $columns = null, $orderBy = null, $limit = null) {
-		$query = " SELECT " . $select;
+		$query = "SELECT " . $select;
 		$query .= " FROM " . $table;
 		if (isset($columns)) {
 			$query .= " WHERE " . $this->createSeparatorBetweenKeyValues($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
@@ -20,20 +20,20 @@ class QueryConstructorSql {
 
 	protected function constructUpdateQuery($table, $columns) {
 		unset($columns['id']);
-		$query = " UPDATE " . $table;
+		$query = "UPDATE " . $table;
 		$query .= " SET " . $this->createSeparatorBetweenKeyValues($columns, "", EQUAL.TWO_POINTS, COMMA, FALSE, TRUE);
 		$query .= " WHERE " . $this->createSeparatorBetweenKeyValues(array("id" => "id"), "", EQUAL.TWO_POINTS, "");
 		return $query;
 	}
 
 	protected function constructInsertQuery($table, $columns) {
-		$query = " INSERT INTO " . $table . "(" . $this->createSeparatorBetweenKeyValues($columns, "", COMMA, "", FALSE) . ")";
+		$query = "INSERT INTO " . $table . "(" . $this->createSeparatorBetweenKeyValues($columns, "", COMMA, "", FALSE) . ")";
 		$query .= " VALUES(" . $this->createSeparatorBetweenKeyValues($columns, TWO_POINTS, COMMA, "", FALSE) . ")";
 		return $query;
 	}
 
 	protected function constructDeleteQuery($table) {
-		$query = " DELETE FROM " . $this->table;
+		$query = "DELETE FROM " . $this->table;
 		$query .= " WHERE " . $this->createSeparatorBetweenKeyValues(array("id" => "id"), "", EQUAL.TWO_POINTS, "");
 		return $query;
 	}

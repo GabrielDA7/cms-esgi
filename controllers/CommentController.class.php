@@ -1,6 +1,6 @@
 <?php
 include "core/ControllerInterface.php";
-class LessonController implements ControllerInterface{
+class CommentController implements ControllerInterface {
 
 	public function indexAction($params) {
 	}
@@ -15,12 +15,6 @@ class LessonController implements ControllerInterface{
 	}
 
 	public function listAction($params) {
-	}
-
-	/**
-	 * Get the lesson by id or by parameters
-	 */
-	public function lessonAction($params) {
 	}
 }
 ?>

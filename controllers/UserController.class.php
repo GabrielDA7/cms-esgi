@@ -1,5 +1,6 @@
 <?php
-class UserController {
+include "core/ControllerInterface.php";
+class UserController implements ControllerInterface {
 
 	public function __construct() {}
 
@@ -7,12 +8,13 @@ class UserController {
 	}
 	
 	public function addAction($params) {
+		$viewName = ControllerUtils::isBackOfficeView($params['URL'], "", USER_REGISTER_VIEW);
 		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->generateToken();
 			$user->insert();
 		}
-		$view = new View(USER_REGISTER_VIEW, DEFAULT_TEMPLATE);
+		$view = new View($viewName, DEFAULT_TEMPLATE);
 	}
 
 	public function editAction($params) {
@@ -31,10 +33,13 @@ class UserController {
 	}
 
 	public function deleteAction($params) {
-		extract($params['POST']);
-		$user = ClassUtils::constructObjectWithId($id, USER_CLASS_NAME);
-		$user->delete();	
-		header(LOCATION . DIRNAME . USER_LIST_LINK);
+		if(isset($params['POST']['edit'])) {
+			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
+			$user->delete();	
+			header(LOCATION . DIRNAME . USER_LIST_LINK);
+		} else {
+			return404View();
+		}
 	}
 
 	public function listAction($params) {

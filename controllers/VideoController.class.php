@@ -1,5 +1,6 @@
 <?php
-class VideoController {
+include "core/ControllerInterface.php";
+class VideoController implements ControllerInterface {
 
 	public function __construct() {}
 
@@ -37,12 +38,6 @@ class VideoController {
 		}
 		$view = new View(VIDEO_VIEW, DEFAULT_TEMPLATE);
 		$view->assign("video" ,$video);
-	}
-
-	/**
-	 * Get the asssocieted comment at the current video 
-	 */
-	public function commentAction($params){
 	}
 }
 ?>

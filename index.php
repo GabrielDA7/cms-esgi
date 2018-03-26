@@ -83,7 +83,7 @@ $uriExploded = getUriExploded();
 
 $controllerName = getControllerName($uriExploded);
 $actionName = getActionName($uriExploded);
-
+removeActionAndControllerFromUri($uriExploded);
 $uriExploded = array_values($uriExploded);
 
 $params = ["POST" => $_POST, "GET"=>$_GET, "URL"=>$uriExploded];
