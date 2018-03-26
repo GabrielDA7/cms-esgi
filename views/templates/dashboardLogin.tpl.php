@@ -13,17 +13,16 @@
   </head>
 
   <body>
-      <main>
-          <section id="dashboard-login">
-              <div class="container-fluid">
-                  <?php include "views/".$this->v; ?>
-              </div>
-          </section>
-      </main>
+      <section id="dashboard-login">
+          <div class="container">
+              <?php include "views/".$this->v; ?>
+          </div>
+      </section>
 
-    <!-- Javascript -->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="public/js/framework.js"></script>
+
+      <!-- Javascript -->
+      <script src="node_modules/jquery/dist/jquery.min.js"></script>
+      <script src="public/js/framework.js"></script>
   </body>
 
 </html>

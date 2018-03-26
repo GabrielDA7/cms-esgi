@@ -9,7 +9,6 @@ class AdminController{
 	}
 
   public function loginAction($params){
-
+			header('Location: ' . DIRNAME . 'statistic');
   }
-
 }

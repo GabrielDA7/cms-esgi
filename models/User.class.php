@@ -13,6 +13,7 @@
 		protected $dateInserted;
 		protected $dateUpdated;
 		protected $status;
+		protected $role_id;
 
 		public function __construct() {
 			UserSql::__construct();
@@ -38,7 +39,7 @@
 		public function generateToken() {
 			$this->token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
 		}
-	
+
 		/**
 	     * @param mixed $id
 	     *
@@ -215,5 +216,21 @@
 	    public function setStatus($status) {
 	        $this->status = $status;
 	    }
+
+			/**
+			 * @return mixed
+			 */
+			public function getRoleId() {
+					return $this->role;
+			}
+
+			/**
+			 * @param mixed $status
+			 *
+			 * @return self
+			 */
+			public function setRoleId($role_id) {
+					$this->role_id = $role_id;
+			}
 	}
 ?>

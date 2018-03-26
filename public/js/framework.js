@@ -1,5 +1,4 @@
 $(function() {
-
   /* ChartJs */
   if ( $( ".myChart" ).length )
   {
@@ -7,17 +6,17 @@ $(function() {
       var chart = new Chart(canvas, {
         type: 'bar',
         data: {
-          labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+          labels: ["Course #1", "Trainning #1", "Trainning #2", "Course #3", "Video #1"],
           datasets: [
             {
-              label: "Nombre de vus",
+              label: "Number of views",
               backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
               data: [2478,5267,734,784,433]
             }
           ]
         },
         options: {
-          responsive: false,
+          responsive: true,
           maintainAspectRatio: false,
           legend: { display: false },
           title: {
@@ -25,6 +24,15 @@ $(function() {
           }
         }
       });
+  }
+
+  if ( $( "#dashboard-left-menu" ).length )
+  {
+    $('#main-left-menu li')
+    .css({cursor: "pointer"})
+    .on('click', function(){
+      $(this).find('ul').toggle();
+    })
   }
 
   /* Hambuger nav */
