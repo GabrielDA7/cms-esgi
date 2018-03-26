@@ -8,7 +8,7 @@ class UserController implements ControllerInterface {
 	}
 	
 	public function addAction($params) {
-		$viewName = ControllerUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW);
+		$viewName = ViewUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW);
 		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->generateToken();
@@ -26,7 +26,7 @@ class UserController implements ControllerInterface {
 			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
 			$user = $user->getById();
 			$view = new View(USER_EDIT_FRONT_VIEW, DEFAULT_TEMPLATE);
-			$view->assign("user" ,$user);
+			$view->assign("user", $user);
 		} else {
 			return404View();
 		}
@@ -51,7 +51,7 @@ class UserController implements ControllerInterface {
 			$users = $user->getAll();
 		}
 		$view = new View(USER_LIST_FRONT_VIEW, DEFAULT_TEMPLATE);
-		$view->assign("users" ,$users);
+		$view->assign("users", $users);
 	}
 
 	public function loginAction($params) {

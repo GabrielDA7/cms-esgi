@@ -1,5 +1,5 @@
 <?php
-class ControllerUtils {
+class ViewUtils {
 
 	public static function isBackOfficeView($url, $backOfficeView, $frontOfficeView) {
 		if (isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE) {
