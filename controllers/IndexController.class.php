@@ -12,5 +12,9 @@ class IndexController {
 	public function errorAction($params) {
 		$view = new View(NOT_FOUND_VIEW, DEFAULT_TEMPLATE);
 	}
+
+	public function backAction($params) {
+		$view = new View(NOT_FOUND_VIEW, DEFAULT_TEMPLATE);
+	}
 }
 ?>

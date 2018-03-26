@@ -33,7 +33,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function deleteAction($params) {
-		if(isset($params['POST']['edit'])) {
+		if(isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
 			$user->delete();	
 			header(LOCATION . DIRNAME . USER_LIST_LINK);
