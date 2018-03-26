@@ -8,7 +8,7 @@ class UserController implements ControllerInterface {
 	}
 	
 	public function addAction($params) {
-		$viewName = ControllerUtils::isBackOfficeView($params['URL'], "", USER_REGISTER_VIEW);
+		$viewName = ControllerUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW);
 		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->generateToken();
@@ -25,7 +25,7 @@ class UserController implements ControllerInterface {
 		} else if(isset($params['POST']['id'])) {
 			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
 			$user = $user->getById();
-			$view = new View(USER_EDIT_VIEW, DEFAULT_TEMPLATE);
+			$view = new View(USER_EDIT_FRONT_VIEW, DEFAULT_TEMPLATE);
 			$view->assign("user" ,$user);
 		} else {
 			return404View();
@@ -50,7 +50,7 @@ class UserController implements ControllerInterface {
 			$user  = new User();
 			$users = $user->getAll();
 		}
-		$view = new View(USER_LIST_VIEW, DEFAULT_TEMPLATE);
+		$view = new View(USER_LIST_FRONT_VIEW, DEFAULT_TEMPLATE);
 		$view->assign("users" ,$users);
 	}
 
@@ -61,7 +61,7 @@ class UserController implements ControllerInterface {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$wrongPassword = $user->login();
 		}
-		$view = new View(USER_LOGIN_VIEW, DEFAULT_TEMPLATE);
+		$view = new View(USER_LOGIN_FRONT_VIEW, DEFAULT_TEMPLATE);
 		$view->assign("wrongPassword", $wrongPassword);
 	}
 

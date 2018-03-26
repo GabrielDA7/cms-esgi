@@ -74,13 +74,18 @@ define("HOME_VIEW", "home");
 
 define("CONTACT_VIEW", "contact");
 
-define("USER_EDIT_VIEW", "editUser");
-define("USER_LIST_VIEW", "listUser");
-define("USER_LOGIN_VIEW", "loginUser");
-define("USER_REGISTER_VIEW", "registerUser");
+define("USER_EDIT_FRONT_VIEW", "editUser");
+define("USER_LIST_FRONT_VIEW", "listUser");
+define("USER_LOGIN_FRONT_VIEW", "loginUser");
+define("USER_ADD_FRONT_VIEW", "addUser");
 
-define("VIDEO_VIEW", "video");
-define("VIDEO_LIST_VIEW", "listVideo");
+define("USER_EDIT_BACK_VIEW", "editUserBack");
+define("USER_LIST_BACK_VIEW", "listUserBack");
+define("USER_LOGIN_BACK_VIEW", "loginUserBack");
+define("USER_ADD_BACK_VIEW", "addUserBack");
+
+define("VIDEO_FRONT_VIEW", "video");
+define("VIDEO_LIST_FRONT_VIEW", "listVideo");
 
 /***************************************************************************************************************************************************************************
 ************************************************************************************* TEMPLATES ****************************************************************************

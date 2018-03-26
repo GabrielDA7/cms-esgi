@@ -24,7 +24,7 @@ class VideoController implements ControllerInterface {
 			$video = new Video();
 			$videos = $video->getAll();
 		}
-		$view = new View(VIDEO_LIST_VIEW, DEFAULT_TEMPLATE);
+		$view = new View(VIDEO_LIST_FRONT_VIEW, DEFAULT_TEMPLATE);
 		$view->assign("videos" ,$videos);
 	}
 
@@ -36,7 +36,7 @@ class VideoController implements ControllerInterface {
 			$video = ClassUtils::constructObjectWithId($params['POST']['id'], VIDEO_CLASS_NAME);
 			$video = $video->getById();
 		}
-		$view = new View(VIDEO_VIEW, DEFAULT_TEMPLATE);
+		$view = new View(VIDEO_FRONT_VIEW, DEFAULT_TEMPLATE);
 		$view->assign("video" ,$video);
 	}
 }
