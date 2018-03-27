@@ -17,7 +17,7 @@
             <nav class="container-fluid" id="front-topnav">
                 <div class="left-nav">
                   <img class="logo-nav" src="public/img/logo.svg" alt="logo" title="logo">
-                  <a href="index.html" class="active">Accueil</a>
+                  <a href="<?= DIRNAME;?>" class="active">Accueil</a>
                   <a href="cours-list.html">Cours</a>
                   <a href="#formations">Formations</a>
                   <a href="#videos">Vidéos</a>
@@ -25,8 +25,13 @@
                 </div>
 
                 <div class="right-nav">
-                  <a class="btn-small btn-filled-orange btn" href="login.html">Se connecter</a>
-                  <a class="btn-extra-small btn-light-grey btn" href="register.html">S'inscrire</a>
+                  <?php  if(isset($_SESSION['userName'])) { ?>
+                    <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_LOGIN_LINK;?>"><?= $_SESSION['userName']; ?></a>
+                    <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.USER_DISCONNECT_LINK;?>">Se deconnecter</a>
+                  <?php } else { ?>
+                  <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_LOGIN_LINK;?>">Se connecter</a>
+                  <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.USER_ADD_LINK;?>">S'inscrire</a>
+                  <?php } ?>
                   <div class="wrapper-icon">
                       <i class="fas fa-search"></i>
                       <input class="input-medium input-icon" type="text">
@@ -36,7 +41,7 @@
     </header>
 
     <main>
-      <?php  include "views/".$this->v; ?>
+      <?php include $viewPath; ?>
     </main>
 
     <footer>
