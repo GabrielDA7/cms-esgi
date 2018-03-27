@@ -1,6 +1,6 @@
 <div class="row X--center M--center">
     <div class="M3">
-      <img src="public/img/logo.svg" alt="logo" title="logo">
+      <img src="<?= DIRNAME.LOGO_PATH;?>" alt="logo" title="logo">
     </div>
 </div>
 

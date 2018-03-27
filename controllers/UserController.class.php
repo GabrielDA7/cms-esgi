@@ -55,7 +55,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function loginAction($params) {
-		$viewAndTemplateName = ViewUtils::getLoginView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, DEFAULT_TEMPLATE, LOGIN_DASHBORD_TEMPLATE);
+		$viewAndTemplateName = ViewUtils::getLoginView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, LOGIN_DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
 		$wrongPassword = false;
 		if (isset($params['POST']['submit'])) {
 			extract($params['POST']);
