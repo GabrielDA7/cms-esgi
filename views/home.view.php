@@ -24,7 +24,7 @@
       <div class="M2 X12">
         <a href="cours.html" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -37,7 +37,7 @@
       <div class="M2 X12">
         <a href="cours.html" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -50,7 +50,7 @@
       <div class="M2 X12">
         <a href="cours.html" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -63,7 +63,7 @@
       <div class="M2 X12">
         <a href="cours.html" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -76,7 +76,7 @@
       <div class="M2 X12">
         <a href="cours.html" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -104,7 +104,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -117,7 +117,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -130,7 +130,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -143,7 +143,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -156,7 +156,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -184,7 +184,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -197,7 +197,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -210,7 +210,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -223,7 +223,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
@@ -236,7 +236,7 @@
       <div class="M2 X12">
         <a href="" class="card">
             <div class="card-image">
-              <img src="public/img/react.png" alt="Avatar">
+              <img src="public/img/home/logo-react.png" alt="Avatar">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
