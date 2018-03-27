@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="description" content="Cours 1 integration">
     <meta name="keywords" content="HTML,CSS,JavaScript">
-    <meta name="author" content="Gabriel Daoud">
+    <meta name="author" content="Louis Decultot">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="<?= DIRNAME.CSS_PATH;?>">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   </head>
 
@@ -16,9 +16,9 @@
     <header>
             <nav class="container-fluid" id="front-topnav">
                 <div class="left-nav">
-                  <img class="logo-nav" src="public/img/logo.svg" alt="logo" title="logo">
+                  <img class="logo-nav" src="<?= DIRNAME.LOGO_PATH;?>" alt="logo" title="logo">
                   <a href="<?= DIRNAME;?>" class="active">Accueil</a>
-                  <a href="cours-list.html">Cours</a>
+                  <a href="#cours">Cours</a>
                   <a href="#formations">Formations</a>
                   <a href="#videos">Vidéos</a>
                   <a href="#premium">Premium</a>

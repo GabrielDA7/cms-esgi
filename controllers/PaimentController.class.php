@@ -1,8 +1,8 @@
 <?php
-class ParameterController {
-	
+class PaimentController {
+
 	public function indexAction($params){
 	}
-
+	
 }
 ?>
