@@ -8,16 +8,17 @@ class UserController implements ControllerInterface {
 	}
 	
 	public function addAction($params) {
-		$viewName = ViewUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, DEFAULT_TEMPLATE, DASHBORD_TEMPLATE);
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
 		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->generateToken();
 			$user->insert();
 		}
-		$view = new View($viewName, DEFAULT_TEMPLATE);
+		$view = new View($viewAndTemplateName['view'], $viewAndTemplateName['template']);
 	}
 
 	public function editAction($params) {
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_EDIT_BACK_VIEW, USER_EDIT_FRONT_VIEW, DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
 		if(isset($params['POST']['edit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->update();
@@ -25,7 +26,7 @@ class UserController implements ControllerInterface {
 		} else if(isset($params['POST']['id'])) {
 			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
 			$user = $user->getById();
-			$view = new View(USER_EDIT_FRONT_VIEW, DEFAULT_TEMPLATE);
+			$view = new View($viewAndTemplateName['view'], $viewAndTemplateName['template']);
 			$view->assign("user", $user);
 		} else {
 			return404View();
@@ -43,6 +44,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function listAction($params) {
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LIST_BACK_VIEW, USER_LIST_FRONT_VIEW, DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
 		if(isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user = $user->getWithParameters();
@@ -50,12 +52,15 @@ class UserController implements ControllerInterface {
 			$user  = new User();
 			$users = $user->getAll();
 		}
-		$view = new View(USER_LIST_FRONT_VIEW, DEFAULT_TEMPLATE);
+		$view = new View($viewAndTemplateName['view'], $viewAndTemplateName['template']);
 		$view->assign("users", $users);
 	}
 
+	public function userAction($params) {
+	}
+
 	public function loginAction($params) {
-		$viewAndTemplateName = ViewUtils::getLoginView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, LOGIN_DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, LOGIN_DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
 		$wrongPassword = false;
 		if (isset($params['POST']['submit'])) {
 			extract($params['POST']);

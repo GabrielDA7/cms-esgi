@@ -16,10 +16,6 @@ class TrainningController implements ControllerInterface {
 
 	public function listAction($params) {
 	}
-
-	/**
-	 * Get the trainning by id or by parameters
-	 */
 	public function trainningAction($params) {
 	}
 
