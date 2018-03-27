@@ -1,236 +1,121 @@
 <?php
-	class User extends UserSql {
+class User extends UserSql {
 
-		protected $id = null;
-		protected $userName;
-		protected $name;
-		protected $firstName;
-		protected $pwd;
-		protected $email;
-		protected $age;
-		protected $token;
+	protected $id = null;
+	protected $userName;
+	protected $name;
+	protected $firstName;
+	protected $pwd;
+	protected $email;
+	protected $age;
+	protected $token;
 
-		protected $dateInserted;
-		protected $dateUpdated;
-		protected $status;
-		protected $role_id;
+	protected $dateInserted;
+	protected $dateUpdated;
+	protected $status;
 
-		public function __construct() {
-			UserSql::__construct();
-		}
+	public function __construct() {
+		UserSql::__construct();
+	}		
 
-		public static function constructWithParameters($userName, $name, $firstName, $email, $age, $pwd, $dateInserted=null, $status) {
-			$user = new self();
-			$user->setUserName($userName);
-			$user->setName($name);
-			$user->setFirstName($firstName);
-			$user->setEmail($email);
-			$user->setAge($age);
-			$user->setPwd($pwd);
-			$user->setDateInserted($dateInserted);
-			$user->setStatus($status);
-			return $user;
-		}
+	public function __destruct() {
 
-		public function __destruct() {
-
-		}
-
-		public function generateToken() {
-			$this->token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
-		}
-
-		/**
-	     * @param mixed $id
-	     *
-	     * @return self
-	     */
-	    public function setUserName($userName) {
-	        $this->userName = $userName;
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getUserName() {
-	        return $this->userName;
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getId() {
-	        return $this->id;
-	    }
-
-	    /**
-	     * @param mixed $id
-	     *
-	     * @return self
-	     */
-	    public function setId($id) {
-	        $this->id = $id;
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getName() {
-	        return $this->name;
-	    }
-
-	    /**
-	     * @param mixed $name
-	     *
-	     * @return self
-	     */
-	    public function setName($name) {
-	        $this->name = strtoupper(ucfirst($name));
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getFirstName(){
-	        return $this->firstName;
-	    }
-
-	    /**
-	     * @param mixed $firstName
-	     *
-	     * @return self
-	     */
-	    public function setFirstName($firstName) {
-	        $this->firstName = strtoupper(ucfirst($firstName));
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getPwd() {
-	        return $this->pwd;
-	    }
-
-	    /**
-	     * @param mixed $pwd
-	     *
-	     * @return self
-	     */
-	    public function setPwd($pwd) {
-	        $this->pwd = sha1($pwd);
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getEmail()
-	    {
-	        return $this->email;
-	    }
-
-	    /**
-	     * @param mixed $email
-	     *
-	     * @return self
-	     */
-	    public function setEmail($email) {
-	        $this->email = strtolower(trim($email));
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getAge() {
-	        return $this->age;
-	    }
-
-	    /**
-	     * @param mixed $age
-	     *
-	     * @return self
-	     */
-	    public function setAge($age) {
-	        $this->age = $age;
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getToken() {
-	        return $this->token;
-	    }
-
-	    /**
-	     * @param mixed $token
-	     *
-	     * @return self
-	     */
-	    public function setToken($token) {
-	        $this->token = $token;
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getDateInserted() {
-	        return $this->date_inserted;
-	    }
-
-	    /**
-	     * @param mixed $date_inserted
-	     *
-	     * @return self
-	     */
-	    public function setDateInserted($dateInserted) {
-	        $this->dateInserted = $dateInserted;
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getDateUpdated() {
-	        return $this->dateUpdated;
-	    }
-
-	    /**
-	     * @param mixed $date_updated
-	     *
-	     * @return self
-	     */
-	    public function setDateUpdated($dateUpdated) {
-	        $this->dateUpdated = $dateUpdated;
-	    }
-
-	    /**
-	     * @return mixed
-	     */
-	    public function getStatus() {
-	        return $this->status;
-	    }
-
-	    /**
-	     * @param mixed $status
-	     *
-	     * @return self
-	     */
-	    public function setStatus($status) {
-	        $this->status = $status;
-	    }
-
-			/**
-			 * @return mixed
-			 */
-			public function getRoleId() {
-					return $this->role;
-			}
-
-			/**
-			 * @param mixed $status
-			 *
-			 * @return self
-			 */
-			public function setRoleId($role_id) {
-					$this->role_id = $role_id;
-			}
 	}
+
+	public function getColumns() {
+		return get_object_vars($this);
+	}
+
+	public function generateToken() {
+		$this->token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
+	}
+
+	public function setUserName($userName) {
+		$this->userName = $userName;
+	}
+
+	public function getUserName() {
+		return $this->userName;
+	}
+
+	public function getId() {
+		return $this->id;
+	}
+
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	public function getName() {
+		return $this->name;
+	}
+
+	public function setName($name) {
+		$this->name = ucfirst(strtolower($name));
+	}
+
+	public function getFirstName() {
+		return $this->firstName;
+	}
+
+	public function setFirstName($firstName) {
+		$this->firstName = ucfirst(strtolower($firstName));
+	}
+
+	public function getPwd() {
+		return $this->pwd;
+	}
+
+	public function setPwd($pwd) {
+		$this->pwd = sha1($pwd);
+	}
+
+	public function getEmail() {
+		return $this->email;
+	}
+
+	public function setEmail($email) {
+		$this->email = strtolower(trim($email));
+	}
+
+	public function getAge() {
+		return $this->age;
+	}
+
+	public function setAge($age) {
+		$this->age = $age;
+	}
+
+	public function getToken() {
+		return $this->token;
+	}
+
+	public function setToken($token) {
+		$this->token = $token;
+	}
+
+	public function getDateInserted() {
+		return $this->date_inserted;
+	}
+
+	public function setDateInserted($dateInserted) {
+		$this->dateInserted = $dateInserted;
+	}
+
+	public function getDateUpdated() {
+		return $this->dateUpdated;
+	}
+
+	public function setDateUpdated($dateUpdated) {
+		$this->dateUpdated = $dateUpdated;
+	}
+
+	public function getStatus() {
+		return $this->status;
+	}
+
+	public function setStatus($status) {
+		$this->status = $status;
+	}
+}
 ?>

@@ -1,31 +1,31 @@
 <?php
-class View{
+class View {
 
-	private $v;
-	private $t;
+	private $view;
+	private $template;
 	private $data = [];
 
-	public function __construct($v="default", $t="front"){
-		$this->v = $v.".view.php";
-		$this->t = $t.".tpl.php";
-
-		if( !file_exists("views/".$this->v) ){
-			die("La vue :".$this->v." n'existe pas");
+	public function __construct($view=HOME_VIEW, $template=DEFAULT_TEMPLATE) {
+		$this->view = $view . VIEW_EXTENSION;
+		$this->template = $template . TEMPLATE_EXTENSION;
+		$viewPath = searchFile(array(VIEWS_FOLDER_NAME), $this->view);
+		$templatePath = searchFile(array(VIEWS_TEMLATES_FOLDER_NAME), $this->template);
+		if (!isset($viewPath)) {
+			return404View();
 		}
-		if( !file_exists("views/templates/".$this->t) ){
-			die("Le template :".$this->t." n'existe pas");
-		}			
-
+		if (!isset($templatePath)) {
+			return404View();
+		}
+		$this->assign("viewPath", $viewPath);
+		$this->assign("templatePath", $templatePath);
 	}
 
-	public function __destruct(){
+	public function __destruct() {
 		extract($this->data);
-		include "views/templates/".$this->t;
+		include $templatePath;
 	}
 
 	public function assign($key, $value) {
 		$this->data[$key] = $value;
 	}
-
-
 }
