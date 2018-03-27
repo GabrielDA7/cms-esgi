@@ -41,11 +41,6 @@ function getActionName($uriExploded) {
 	return $actionName;
 }
 
-function removeActionAndControllerFromUri(&$uriExploded) {
-	unset($uriExploded[0]);
-	unset($uriExploded[1]);
-}
-
 function getControllerAndAction($controllerName, $actionName, $params) {
 	$controllerPath = searchFile(array(CONTROLLERS_FOLDER_NAME), $controllerName.CLASS_EXTENSION);
 	if (isset($controllerPath)) {
@@ -83,7 +78,6 @@ $uriExploded = getUriExploded();
 
 $controllerName = getControllerName($uriExploded);
 $actionName = getActionName($uriExploded);
-removeActionAndControllerFromUri($uriExploded);
 $uriExploded = array_values($uriExploded);
 
 $params = ["POST" => $_POST, "GET"=>$_GET, "URL"=>$uriExploded];
