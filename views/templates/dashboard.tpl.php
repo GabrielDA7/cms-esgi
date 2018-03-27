@@ -8,7 +8,7 @@
         <meta name="keywords" content="CMS,Formation">
         <meta name="author" content="Gabriel Daoud">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="public/css/main.css" type="text/css" rel="stylesheet">
+        <link href="<?= DIRNAME.CSS_PATH;?>" type="text/css" rel="stylesheet">
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" type="text/css" rel="stylesheet">
     </head>
 
@@ -17,7 +17,7 @@
 
         <nav id="dashboard-nav" class="container-fluid top-menu">
             <div class="left-nav">
-                <img class="logo-nav" src="public/img/logo.svg" alt="logo" title="logo">
+                <img class="logo-nav" src="<?= DIRNAME.LOGO_PATH;?>" alt="logo" title="logo">
                 <p>Dashboard</p>
             </div>
 

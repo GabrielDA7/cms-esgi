@@ -8,7 +8,7 @@ class UserController implements ControllerInterface {
 	}
 	
 	public function addAction($params) {
-		$viewName = ViewUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW);
+		$viewName = ViewUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, DEFAULT_TEMPLATE, DASHBORD_TEMPLATE);
 		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->generateToken();
@@ -55,13 +55,14 @@ class UserController implements ControllerInterface {
 	}
 
 	public function loginAction($params) {
+		$viewAndTemplateName = ViewUtils::getLoginView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, DEFAULT_TEMPLATE, LOGIN_DASHBORD_TEMPLATE);
 		$wrongPassword = false;
 		if (isset($params['POST']['submit'])) {
 			extract($params['POST']);
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$wrongPassword = $user->login();
 		}
-		$view = new View(USER_LOGIN_FRONT_VIEW, DEFAULT_TEMPLATE);
+		$view = new View($viewAndTemplateName['view'], $viewAndTemplateName['template']);
 		$view->assign("wrongPassword", $wrongPassword);
 	}
 
