@@ -46,18 +46,17 @@
                            <a href="">
                              <i class="fas fa-users"></i>Users<i class="fas fa-chevron-down"></i>
                            </a>
-                           <ul>
-                             <li><a href="#">dsfs</a></li>
-                             <li><a href="#">dsfsd</a></li>
+                           <ul class="submenu-item">
+                             <li><a href="#">Role management</a></li>
                            </ul>
                          </li>
                          <li class="sub-menu">
                            <a href="">
                              <i class="fas fa-cogs"></i>Parameters<i class="fas fa-chevron-down"></i>
                            </a>
-                           <ul>
-                             <li><a href="#">dsfs</a></li>
-                             <li><a href="#">dsfsd</a></li>
+                           <ul class="submenu-item">
+                             <li><a href="#">General parameters</a></li>
+                             <li><a href="#">Appearance</a></li>
                            </ul>
                          </li>
                       </ul>

@@ -24,8 +24,8 @@ function searchFile($dirs, $file_to_search) {
 				if (isset($path)) {
 					return $path;
 				}
-			}  
-		} 
+			}
+		}
 	}
 }
 
@@ -90,16 +90,3 @@ $params = ["POST" => $_POST, "GET"=>$_GET, "URL"=>$uriExploded];
 
 getControllerAndAction($controllerName, $actionName, $params);
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-

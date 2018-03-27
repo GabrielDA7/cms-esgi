@@ -1,8 +1,8 @@
 <section id="slider" class="container-fluid">
-    <img class="mySlides" src="public/img/tab-co.png">
-    <img class="mySlides" src="public/img/HTML5.png">
-    <img class="mySlides" src="public/img/sf.png">
-    <img class="mySlides" src="public/img/javascript-logo-banner.jpg">
+    <img class="mySlides" src="public/img/slider/tab-co.png">
+    <img class="mySlides" src="public/img/slider/HTML5.png">
+    <img class="mySlides" src="public/img/slider/sf.png">
+    <img class="mySlides" src="public/img/slider/javascript-logo-banner.jpg">
     <a id="slider-left"><i class="fas fa-chevron-left"></i></a>
     <a id="slider-right"><i class="fas fa-chevron-right"></i></a>
 </section>
