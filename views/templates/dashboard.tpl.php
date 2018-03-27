@@ -67,7 +67,7 @@
 
         <section id="dashboard-content">
             <section class="container">
-                <?php  include "views/".$this->v; ?>
+                <?php include $viewPath; ?>
             </section>
         </section>
 

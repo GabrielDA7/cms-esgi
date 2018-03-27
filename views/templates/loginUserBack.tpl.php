@@ -15,7 +15,7 @@
   <body>
       <section id="dashboard-login">
           <div class="container">
-              <?php include "views/".$this->v; ?>
+              <?php include $viewPath; ?>
           </div>
       </section>
 
