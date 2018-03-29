@@ -23,7 +23,7 @@
 
             <div class="right-nav">
                 <div class="icon-bar">
-                    <a class="active" href="#"><i class="fas fa-home"></i></a>
+                    <a class="active" href="<?= DIRNAME;?>"><i class="fas fa-home"></i></a>
                     <a href="#"><i class="fas fa-user-circle"></i></a>
                     <a href="#"><i class="far fa-bell"></i></a>
                     <a href="#"><i class="fas fa-power-off"></i></a>

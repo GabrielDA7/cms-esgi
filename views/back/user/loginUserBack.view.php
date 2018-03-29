@@ -13,16 +13,16 @@
   <div class="row X--center M--center">
       <div class="M3">
 
-        <form action="<?= DIRNAME;?>admin/login" method="post">
+        <form action="<?= DIRNAME.USER_LOGIN_LINK;?>" method="post">
           <div class="form-group">
-              <label for="user_name">Username</label>
-              <input class="input" type="text" name="user_name">
+              <label for="userName">Username</label>
+              <input class="input" type="text" name="userName">
           </div>
           <div class="form-group">
-              <label for="password">Password</label>
-              <input class="input" type="password" name="password">
+              <label for="pwd">Password</label>
+              <input class="input" type="password" name="pwd">
           </div>
-          <input type="submit" class="form-group input-btn" name="sign_in" value="Sign in">
+          <input type="submit" class="form-group input-btn" name="submit" value="Connexion">
           </form>
 
       </div>

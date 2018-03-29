@@ -15,6 +15,7 @@ class UserSql extends BaseSql {
 			$_SESSION['userName'] = $user['userName'];
 			$_SESSION['token'] = $user['token'];
 			$_SESSION['premium'] = $this->checkPremiumDate($user['id']);
+			$_SESSION['admin'] = $this->checkAdminStatus($user['id']);
 			header(LOCATION . DIRNAME);
 		} else {
 			return TRUE;
@@ -25,11 +26,14 @@ class UserSql extends BaseSql {
 		$queryString = "SELECT * FROM User u, Premium p WHERE p.User_id=u.id AND u.id=:id AND p.end_date>NOW()";
 		$query = $this->db->prepare($queryString);
 		$query->execute(array(":id" => $id));
-		if ($response = $query->fetch()) {
-			return TRUE;
-		} else {	
-			return FALSE;
-		}
+		return $this->hasResult($query);
+	}
+
+	private function checkAdminStatus($id) {
+		$queryString = $this->constructSelectQuery($this->table, ALL, array("id" => "id", "status" => "status"));
+		$query = $this->db->prepare($queryString);
+		$query->execute(array(":id" => $id, "status" => ADMIN_STATUS));
+		return $this->hasResult($query);
 	}
 }
 ?>

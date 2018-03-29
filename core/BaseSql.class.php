@@ -75,5 +75,13 @@ class BaseSql extends QueryConstructorSql {
 		}
 		return $objectList;
 	}
+
+	protected function hasResult($query) {
+		if ($response = $query->fetch()) {
+			return TRUE;
+		} else {	
+			return FALSE;
+		}
+	}
 }
 ?>
