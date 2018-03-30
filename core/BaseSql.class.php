@@ -49,7 +49,7 @@ class BaseSql extends QueryConstructorSql {
 
 	public function getWithParameters() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = $this->constructSelectQuery($this->table, ALL, $this->columns);
+		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 		$response = $query->fetchAll();
@@ -59,7 +59,7 @@ class BaseSql extends QueryConstructorSql {
 
 	public function getById() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = $this->constructSelectQuery($this->table, ALL, $this->columns);
+		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 		$response = $query->fetch();

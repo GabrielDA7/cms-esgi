@@ -1,5 +1,5 @@
 <?php
-include "core/ControllerInterface.php";
+include "core/interfaces/ControllerInterface.php";
 class VideoController implements ControllerInterface {
 
 	public function __construct() {}

@@ -5,10 +5,10 @@ class Comment extends BaseSql {
 	protected $user;
 	protected $date;
 	protected $content;
-	protected $response = array();
+	protected $responses = array();
 	
 	protected $lesson_Id 	= null;
-	protected $rrainning_Id = null;
+	protected $trainning_Id = null;
 	protected $video_Id 	= null;
 	protected $comment_Id 	= null;
 }

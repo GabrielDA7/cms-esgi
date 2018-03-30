@@ -13,6 +13,7 @@ class User extends UserSql {
 	protected $dateInserted;
 	protected $dateUpdated;
 	protected $status;
+	protected $role;
 
 	public function __construct() {
 		UserSql::__construct();
@@ -30,92 +31,32 @@ class User extends UserSql {
 		$this->token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
 	}
 
-	public function setUserName($userName) {
-		$this->userName = $userName;
-	}
+	
+	public function getUserName() 	  { return $this->userName; 	 }
+	public function getId() 		  { return $this->id; 			 }
+    public function getName() 		  { return $this->name; 		 }
+    public function getFirstName() 	  { return $this->firstName; 	 }
+    public function getPwd() 		  { return $this->pwd; 			 }
+    public function getEmail() 		  { return $this->email;   		 }
+    public function getAge() 		  { return $this->age; 			 }
+    public function getToken() 		  { return $this->token; 		 }
+    public function getDateInserted() { return $this->date_inserted; }
+    public function getDateUpdated()  { return $this->dateUpdated;   }
+    public function getStatus()		  { return $this->status; 		 }
+    public function getRole()		  { return $this->role; 		 }
 
-	public function getUserName() {
-		return $this->userName;
-	}
 
-	public function getId() {
-		return $this->id;
-	}
-
-	public function setId($id) {
-		$this->id = $id;
-	}
-
-	public function getName() {
-		return $this->name;
-	}
-
-	public function setName($name) {
-		$this->name = ucfirst(strtolower($name));
-	}
-
-	public function getFirstName() {
-		return $this->firstName;
-	}
-
-	public function setFirstName($firstName) {
-		$this->firstName = ucfirst(strtolower($firstName));
-	}
-
-	public function getPwd() {
-		return $this->pwd;
-	}
-
-	public function setPwd($pwd) {
-		$this->pwd = sha1($pwd);
-	}
-
-	public function getEmail() {
-		return $this->email;
-	}
-
-	public function setEmail($email) {
-		$this->email = strtolower(trim($email));
-	}
-
-	public function getAge() {
-		return $this->age;
-	}
-
-	public function setAge($age) {
-		$this->age = $age;
-	}
-
-	public function getToken() {
-		return $this->token;
-	}
-
-	public function setToken($token) {
-		$this->token = $token;
-	}
-
-	public function getDateInserted() {
-		return $this->date_inserted;
-	}
-
-	public function setDateInserted($dateInserted) {
-		$this->dateInserted = $dateInserted;
-	}
-
-	public function getDateUpdated() {
-		return $this->dateUpdated;
-	}
-
-	public function setDateUpdated($dateUpdated) {
-		$this->dateUpdated = $dateUpdated;
-	}
-
-	public function getStatus() {
-		return $this->status;
-	}
-
-	public function setStatus($status) {
-		$this->status = $status;
-	}
+    public function setUserName($userName) 		   { $this->userName = $userName; 						 }
+    public function setId($id) 					   { $this->id = $id; 								  	 }
+	public function setName($name) 				   { $this->name = ucfirst(strtolower($name)); 			 }
+	public function setFirstName($firstName) 	   { $this->firstName = ucfirst(strtolower($firstName)); }
+	public function setPwd($pwd) 			 	   { $this->pwd = sha1($pwd); 							 }
+	public function setEmail($email) 			   { $this->email = strtolower(trim($email)); 			 }
+	public function setAge($age) 				   { $this->age = $age; 								 }
+	public function setToken($token) 			   { $this->token = $token; 							 }
+	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; 				 }
+	public function setDateUpdated($dateUpdated)   { $this->dateUpdated = $dateUpdated; 				 }
+	public function setStatus($status) 			   { $this->status = $status; 							 }
+	public function setRole($role) 			   	   { $this->role = $role; 							 	 }
 }
 ?>

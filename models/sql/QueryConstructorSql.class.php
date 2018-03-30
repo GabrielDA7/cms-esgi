@@ -3,14 +3,14 @@ class QueryConstructorSql {
 
 	public function __construct() {}
 
-	protected function constructSelectQuery($table, $select = ALL, $columns = null, $orderBy = null, $limit = null) {
+	protected function constructSelectQuery($table, $columns = null, $select = ALL, $orderBy = null, $limit = null) {
 		$query = "SELECT " . $select;
 		$query .= " FROM " . $table;
 		if (isset($columns)) {
 			$query .= " WHERE " . $this->createSeparatorBetweenKeyValues($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 		}
 		if (isset($orderBy)) {
-			$query .= " ORDER BY " . $this->createSeparatorBetweenKeyValues($orderBy, "", SPACE, DOT);
+			$query .= " ORDER BY " . $this->createSeparatorBetweenKeyValues($orderBy, "", SPACE, COMMA);
 		}
 		if (isset($limt)) {
 			$query .= " LIMIT " . $limit;
@@ -22,7 +22,7 @@ class QueryConstructorSql {
 		unset($columns['id']);
 		$query = "UPDATE " . $table;
 		$query .= " SET " . $this->createSeparatorBetweenKeyValues($columns, "", EQUAL.TWO_POINTS, COMMA, FALSE, TRUE);
-		$query .= " WHERE " . $this->createSeparatorBetweenKeyValues(array("id" => "id"), "", EQUAL.TWO_POINTS, "");
+		$query .= " WHERE id=:id";
 		return $query;
 	}
 
@@ -33,16 +33,16 @@ class QueryConstructorSql {
 	}
 
 	protected function constructDeleteQuery($table) {
-		$query = "DELETE FROM " . $this->table;
-		$query .= " WHERE " . $this->createSeparatorBetweenKeyValues(array("id" => "id"), "", EQUAL.TWO_POINTS, "");
+		$query = "DELETE FROM " . $table;
+		$query .= " WHERE id=:id";
 		return $query;
 	}
 
 	/* Pour plusieurs tables voir comment faire pour ajour la premiere lettre
 	*  de la table et . devant la cle du where (savoir a quelle table appartient cette cle) */
-	/*private function setWhereValuesWithTableName($objectList) {
+	private function setWhereValuesWithTableName($objectList) {
 
-	}*/
+	}
 
 	private function createSeparatorBetweenKeyValues($array, $separatorBefore, $separatorBetween, $separatorAfter, $flagValue = TRUE, $doubleKey = FALSE) {
 		$numberOfItems = count($array);

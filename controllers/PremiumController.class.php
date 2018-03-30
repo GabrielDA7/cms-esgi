@@ -1,5 +1,5 @@
 <?php
-include "core/ControllerInterface.php";
+include "core/interfaces/ControllerInterface.php";
 class PremiumController implements ControllerInterface {
 
 	public function indexAction($params) {

@@ -6,34 +6,37 @@ class UserSql extends BaseSql {
 	}
 
 	public function login() {
-		$columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = $this->constructSelectQuery($this->table, ALL, $columns);
-		$query = $this->db->prepare($queryString);
-		$query->execute($columns);
-		if ($user = $query->fetch()) {
-			$query->closeCursor();
-			$_SESSION['userName'] = $user['userName'];
-			$_SESSION['token'] = $user['token'];
-			$_SESSION['premium'] = $this->checkPremiumDate($user['id']);
-			$_SESSION['admin'] = $this->checkAdminStatus($user['id']);
+		$user = $this->getWithParameters();
+		if (!empty($user)) {
+			$this->setSession($user[0]);
 			header(LOCATION . DIRNAME);
 		} else {
 			return TRUE;
 		}
 	}
 
+	private function setSession($user) {
+		$_SESSION['userName'] = $user->getUserName();
+		$_SESSION['token'] = $user->getToken();
+		$_SESSION['premium'] = $this->checkPremiumDate($user->getid());
+		if ($this->checkAdminStatus($user->getid()) === TRUE) {
+			$_SESSION['admin'] = TRUE;
+			header(LOCATION . DIRNAME . STATISTIC_INDEX_BACK_LINK);
+			break;
+		}
+	}
+
 	private function checkPremiumDate($id) {
-		$queryString = "SELECT * FROM User u, Premium p WHERE p.User_id=u.id AND u.id=:id AND p.end_date>NOW()";
+		$queryString = "SELECT * FROM User u, Premium p WHERE p.User_id=u.id AND u.id=:id AND p.endDate>NOW()";
 		$query = $this->db->prepare($queryString);
 		$query->execute(array(":id" => $id));
 		return $this->hasResult($query);
 	}
 
 	private function checkAdminStatus($id) {
-		$queryString = $this->constructSelectQuery($this->table, ALL, array("id" => "id", "status" => "status"));
-		$query = $this->db->prepare($queryString);
-		$query->execute(array(":id" => $id, "status" => ADMIN_STATUS));
-		return $this->hasResult($query);
+		$adminUser = ClassUtils::constructObjectWithParameters(array("id" => $id, "role" => ADMIN_STATUS), USER_CLASS_NAME);
+		$adminUser = $adminUser->getWithParameters();
+		return (!empty($adminUser)? TRUE : FALSE);
 	}
 }
 ?>

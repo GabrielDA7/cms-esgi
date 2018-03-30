@@ -1,5 +1,5 @@
 <?php
-include "core/ControllerInterface.php";
+include "core/interfaces/ControllerInterface.php";
 class UserController implements ControllerInterface {
 
 	public function __construct() {}
@@ -34,7 +34,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function deleteAction($params) {
-		if(isset($params['POST']['submit'])) {
+		if(isset($params['POST']['submit']) && $_SESSION['admin'] === TRUE) {
 			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
 			$user->delete();	
 			header(LOCATION . DIRNAME . USER_LIST_LINK);

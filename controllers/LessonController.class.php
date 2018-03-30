@@ -1,5 +1,5 @@
 <?php
-include "core/ControllerInterface.php";
+include "core/interfaces/ControllerInterface.php";
 class LessonController implements ControllerInterface{
 
 	public function indexAction($params) {
