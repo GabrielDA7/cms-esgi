@@ -17,7 +17,7 @@ class VideoController implements ControllerInterface {
 	}
 
 	public function listAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], VIDEO_LIST_BACK_VIEW, VIDEO_LIST_FRONT_VIEW, DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], VIDEO_LIST_BACK_VIEW, VIDEO_LIST_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
 		if (isset($params['POST']['submit'])) {
 			$video = ClassUtils::constructObjectWithParameters($params['POST'], VIDEO_CLASS_NAME);
 			$videos = $video->getWithParameters();
@@ -37,7 +37,7 @@ class VideoController implements ControllerInterface {
 			$video = ClassUtils::constructObjectWithId($params['POST']['id'], VIDEO_CLASS_NAME);
 			$video = $video->getById();
 		}
-		$view = new View(VIDEO_FRONT_VIEW, DEFAULT_TEMPLATE);
+		$view = new View(VIDEO_FRONT_VIEW, FRONT_TEMPLATE);
 		$view->assign("video" ,$video);
 	}
 }

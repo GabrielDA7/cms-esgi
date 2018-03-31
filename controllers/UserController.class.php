@@ -8,7 +8,7 @@ class UserController implements ControllerInterface {
 	}
 	
 	public function addAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
 		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->generateToken();
@@ -18,12 +18,12 @@ class UserController implements ControllerInterface {
 	}
 
 	public function editAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_EDIT_BACK_VIEW, USER_EDIT_FRONT_VIEW, DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_EDIT_BACK_VIEW, USER_EDIT_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
 		if(isset($params['POST']['edit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->unsetRoleIfNotAdmin();
 			$user->update();
-			header(LOCATION . DIRNAME . USER_LIST_BACK_LINK);		
+			header(LOCATION . DIRNAME . USER_LIST_BACK_LINK);	
 		} else if(isset($params['POST']['id']) || isset($_SESSION['userId'])) {
 			$id = (isset($params['POST']['id'])) ? $params['POST']['id'] : $_SESSION['userId'];
 			$user = ClassUtils::constructObjectWithId($id, USER_CLASS_NAME);
@@ -46,7 +46,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function listAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LIST_BACK_VIEW, USER_LIST_FRONT_VIEW, DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LIST_BACK_VIEW, USER_LIST_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
 		if(isset($params['POST']['submit']) && !ViewUtils::isEmptyPost($params['POST'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$users = $user->getWithParameters();
@@ -62,7 +62,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function loginAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, LOGIN_DASHBORD_TEMPLATE, DEFAULT_TEMPLATE);
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, LOGIN_DASHBORD_TEMPLATE, FRONT_TEMPLATE);
 		$wrongPassword = false;
 		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
