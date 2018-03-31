@@ -76,8 +76,14 @@ spl_autoload_register('autoLoadExistingClass');
 
 $uriExploded = getUriExploded();
 
-$controllerName = getControllerName($uriExploded);
-$actionName = getActionName($uriExploded);
+if (!INSTALLATION_DONE && $uriExploded[0] != INSTALLATION_INDEX_LINK) {
+	$controllerName = "InstallationController";
+	$actionName = "indexAction";
+} else {
+	$controllerName = getControllerName($uriExploded);
+	$actionName = getActionName($uriExploded);
+}
+
 $uriExploded = array_values($uriExploded);
 
 $params = ["POST" => $_POST, "GET"=>$_GET, "URL"=>$uriExploded];

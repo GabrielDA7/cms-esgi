@@ -98,7 +98,7 @@ class InstallationController {
 	private function createDatabase() {
 		$fileContent = $this->getContentFromConfFile("install/projet_annuel.sql");
 		$BaseSql = new BaseSql(); 
-		$BaseSql->createDatabase($fileContent)
+		$BaseSql->createDatabase($fileContent);
 	}
 }
 ?>
