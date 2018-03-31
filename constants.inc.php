@@ -63,6 +63,7 @@ define("LOCATION", "Location:");
 define("INSTALLATION_INDEX_LINK", "installation");
 define("INSTALLATION_SETTING_LINK", "installation/setting");
 define("INSTALLATION_DATABASE_LINK", "installation/database");
+define("INSTALLATION_CREATE_DATABASE_LINK", "installation/createdatabase");
 define("INSTALLATION_ADMIN_LINK", "installation/admin");
 
 define("STATISTIC_INDEX_BACK_LINK", "statistic/index/back");
