@@ -5,6 +5,6 @@ class Premium {
 	protected $startDate;
 	protected $endDate;
 	
-	protected $user_id = null;
+	protected $user_Id = null;
 }
 ?>

@@ -39,7 +39,7 @@ class UserController implements ControllerInterface {
 		if(isset($params['POST']['submit']) && $_SESSION['admin'] === TRUE) {
 			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
 			$user->delete();	
-			header(LOCATION . DIRNAME . USER_LIST_LINK);
+			header(LOCATION . DIRNAME . USER_LIST_FRONT_LINK);
 		} else {
 			return404View();
 		}
@@ -62,7 +62,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function loginAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, LOGIN_DASHBORD_TEMPLATE, FRONT_TEMPLATE);
+		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, LOGIN_BACK_TEMPLATE, FRONT_TEMPLATE);
 		$wrongPassword = false;
 		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);

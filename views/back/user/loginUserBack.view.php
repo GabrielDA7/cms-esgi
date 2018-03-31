@@ -13,7 +13,7 @@
   <div class="row X--center M--center">
       <div class="M3">
 
-        <form action="<?= DIRNAME.USER_LOGIN_LINK;?>" method="post">
+        <form action="<?= DIRNAME.USER_LOGIN_FRONT_LINK;?>" method="post">
           <div class="form-group">
               <label for="userName">Username</label>
               <input class="input" type="text" name="userName">

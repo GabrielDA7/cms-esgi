@@ -1,11 +1,11 @@
 <?php 
-define("INSTALLATION_DONE", FALSE); 
+define("INSTALLATION_DONE", TRUE); 
 
 define("LANGUAGE","french"); 
 define("INSTALATION_TEMPLATE", "installation");
 define("FRONT_TEMPLATE", "defaultFront");
 define("BACK_TEMPLATE", "defaultBack");
-define("LOGIN_DASHBORD_TEMPLATE", "loginDashboard");
+define("LOGIN_BACK_TEMPLATE", "loginDashboard");
 
 define("DBUSER","root"); 
 define("DBPWD",""); 

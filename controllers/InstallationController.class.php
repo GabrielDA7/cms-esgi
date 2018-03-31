@@ -10,7 +10,7 @@ class InstallationController {
 	}
 
 	public function settingAction($params) {
-		if (!INSTALLATION_DONE || !$_SESSION['admin']) {
+		if (!INSTALLATION_DONE || (isset($_SESSION['admin']) && !$_SESSION['admin'])) {
 			if (isset($params['POST']['submit'])) {
 				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
 				$this->setConfData($installation);
@@ -23,7 +23,7 @@ class InstallationController {
 	}
 
 	public function databaseAction($params) {
-		if (!INSTALLATION_DONE || !$_SESSION['admin']) {
+		if (!INSTALLATION_DONE || (isset($_SESSION['admin']) && !$_SESSION['admin'])) {
 			if (isset($params['POST']['submit'])) {
 				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
 				$this->setConfData($installation);

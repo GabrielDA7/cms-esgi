@@ -30,6 +30,8 @@ define("MODELS_FOLDER_NAME", "models");
 define("CORE_FOLDER_NAME", "core");
 define("VIEWS_FOLDER_NAME", "views");
 define("VIEWS_TEMLATES_FOLDER_NAME", "views/templates");
+define("CSS_FOLDER_NAME", "public/css");
+define("IMAGE_FOLDER_NAME", "public/img");
 
 /***********************************************************************************************************************************************************************
 ************************************************************************************** CHARACTERS **********************************************************************
@@ -65,14 +67,16 @@ define("INSTALLATION_ADMIN_LINK", "installation/admin");
 
 define("STATISTIC_INDEX_BACK_LINK", "statistic/index/back");
 
-define("USER_LIST_LINK", "user/list");
+define("USER_LIST_FRONT_LINK", "user/list");
 define("USER_LIST_BACK_LINK", "user/list/back");
-define("USER_DELETE_LINK", "user/delete");
-define("USER_EDIT_LINK", "user/edit");
+define("USER_DELETE_BACK_LINK", "user/delete/back");
+define("USER_EDIT_FRONT_LINK", "user/edit");
 define("USER_EDIT_BACK_LINK", "user/edit/back");
-define("USER_ADD_LINK", "user/add");
+define("USER_ADD_FRONT_LINK", "user/add");
+define("USER_ADD_BACK_LINK", "user/add/back");
+define("USER_LOGIN_FRONT_LINK", "user/login");
+define("USER_LOGIN_BACK_LINK", "user/login/back");
 define("USER_DISCONNECT_LINK", "user/disconnect");
-define("USER_LOGIN_LINK", "user/login");
 
 define("INDEX_ERROR_LINK", "index/error");
 
@@ -95,13 +99,12 @@ define("HOME_VIEW", "home");
 define("CONTACT_VIEW", "contact");
 
 define("USER_EDIT_FRONT_VIEW", "editUser");
-define("USER_LIST_FRONT_VIEW", "listUser");
-define("USER_LOGIN_FRONT_VIEW", "loginUser");
-define("USER_ADD_FRONT_VIEW", "addUser");
-
 define("USER_EDIT_BACK_VIEW", "editUserBack");
+define("USER_LIST_FRONT_VIEW", "listUser");
 define("USER_LIST_BACK_VIEW", "listUserBack");
+define("USER_LOGIN_FRONT_VIEW", "loginUser");
 define("USER_LOGIN_BACK_VIEW", "loginUserBack");
+define("USER_ADD_FRONT_VIEW", "addUser");
 define("USER_ADD_BACK_VIEW", "addUserBack");
 
 define("VIDEO_FRONT_VIEW", "video");

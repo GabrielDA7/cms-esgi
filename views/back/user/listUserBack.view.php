@@ -25,7 +25,9 @@
                         <th><?= $user->getFirstName(); ?></th>
                         <th><?= $user->getAge(); ?></th>
                         <th>
-                                <form action="<?= DIRNAME.USER_DELETE_LINK;?>" method="POST">
+                                <form action="<?= DIRNAME.USER_DELETE_BACK_LINK
+
+;?>" method="POST">
                                         <input type="hidden" value="<?= $user->getId(); ?>" name="id">
                                         <input type="submit" name="submit" value="X">
                                 </form>
