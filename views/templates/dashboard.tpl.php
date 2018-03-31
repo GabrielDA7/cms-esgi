@@ -24,9 +24,9 @@
             <div class="right-nav">
                 <div class="icon-bar">
                     <a class="active" href="<?= DIRNAME;?>"><i class="fas fa-home"></i></a>
-                    <a href="#"><i class="fas fa-user-circle"></i></a>
+                    <a href="<?= DIRNAME.USER_EDIT_BACK_LINK;?>"><i class="fas fa-user-circle"></i></a>
                     <a href="#"><i class="far fa-bell"></i></a>
-                    <a href="#"><i class="fas fa-power-off"></i></a>
+                    <a href="<?= DIRNAME.USER_DISCONNECT_LINK;?>"><i class="fas fa-power-off"></i></a>
                 </div>
             </div>
         </nav>
@@ -35,7 +35,7 @@
             <div class="container-fluid">
                   <nav>
                       <ul id="main-left-menu">
-                         <li><a href=""><i class="fas fa-chart-area"></i>Statistics</a></li>
+                         <li><a href="<?= DIRNAME.STATISTIC_INDEX_BACK_LINK;?>"><i class="fas fa-chart-area"></i>Statistics</a></li>
                          <li><a href=""><i class="fas fa-columns"></i>Pages</a></li>
                          <li><a href=""><i class="fas fa-graduation-cap"></i>Courses</a></li>
                          <li><a href=""><i class="fas fa-graduation-cap"></i>Formations</a></li>
@@ -43,7 +43,7 @@
                          <li><a href=""><i class="fas fa-comments"></i>Comments</a></li>
                          <li><a href=""><i class="fas fa-gem"></i>Premium</a></li>
                          <li class="sub-menu">
-                           <a href="">
+                           <a href="<?= DIRNAME.USER_LIST_BACK_LINK;?>">
                              <i class="fas fa-users"></i>Users<i class="fas fa-chevron-down"></i>
                            </a>
                            <ul class="submenu-item">

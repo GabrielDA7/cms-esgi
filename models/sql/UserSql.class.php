@@ -15,9 +15,16 @@ class UserSql extends BaseSql {
 		}
 	}
 
+	public function disconnect() {
+		session_destroy();
+		$this->setConnectedStatus($this, DISCONNECTED_STATUS);
+	}
+
 	private function setSession($user) {
+		$this->setConnectedStatus($user, CONNECTED_STATUS);
 		$_SESSION['userName'] = $user->getUserName();
 		$_SESSION['token'] = $user->getToken();
+		$_SESSION['userId'] = $user->getid();
 		$_SESSION['premium'] = $this->checkPremiumDate($user->getid());
 		if ($this->checkAdminStatus($user->getid()) === TRUE) {
 			$_SESSION['admin'] = TRUE;
@@ -34,9 +41,15 @@ class UserSql extends BaseSql {
 	}
 
 	private function checkAdminStatus($id) {
-		$adminUser = ClassUtils::constructObjectWithParameters(array("id" => $id, "role" => ADMIN_STATUS), USER_CLASS_NAME);
+		$adminUser = ClassUtils::constructObjectWithParameters(array("id" => $id, "role" => ADMIN_ROLE), USER_CLASS_NAME);
 		$adminUser = $adminUser->getWithParameters();
 		return (!empty($adminUser)? TRUE : FALSE);
+	}
+
+	private function setConnectedStatus($user, $status) {
+		$user->setPwd(null);
+		$user->setStatus($status);
+		$user->update();
 	}
 }
 ?>

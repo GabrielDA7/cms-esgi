@@ -8,3 +8,7 @@
 	<label for="pwd">		Mot de passe </label> <input type="password" name="pwd" 	  placeholder="<?= $user->getPwd(); ?>" >      </br>
 	<input type="submit" name="edit" value="Modifier">
 </form>
+<form action="delete" method="POST">
+	<input type="hidden" value="<?= $user->getId(); ?>" name="id">
+	<input type="submit" name="submit" value="X">
+</form>

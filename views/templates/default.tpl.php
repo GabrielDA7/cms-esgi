@@ -26,7 +26,7 @@
 
                 <div class="right-nav">
                   <?php if(isset($_SESSION['userName'])) { ?>
-                    <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_LOGIN_LINK;?>"><?= $_SESSION['userName']; ?></a>
+                    <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_EDIT_LINK;?>"><?= $_SESSION['userName']; ?></a>
                     <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.USER_DISCONNECT_LINK;?>">Se deconnecter</a>
                   <?php } else { ?>
                   <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_LOGIN_LINK;?>">Se connecter</a>

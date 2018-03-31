@@ -7,5 +7,14 @@ class ViewUtils {
 		}
 		return array("view" => $frontOfficeView, "template" => $frontOfficeTemplate);
 	}
+
+	public static function isEmptyPost($post) {
+		foreach ($post as $key => $value) {
+			if ($key != "submit" && $value != "") {
+				return FALSE;
+			}
+		}
+		return TRUE;
+	}
 }
 ?>
