@@ -41,7 +41,9 @@ class InstallationController {
 				$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 				$user->generateToken();
 				$user->insert();
-				header(LOCATION . DIRNAME . STATISTIC_INDEX_BACK_LINK);
+				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
+				$this->setConfData($installation);
+				header(LOCATION . DIRNAME . USER_LOGIN_BACK_LINK);
 			}
 			$view = new View(INSTALLATION_ADMIN_VIEW, INSTALLATION_TEMPLATE);
 		} else {
@@ -77,9 +79,14 @@ class InstallationController {
 	}
 
 	private function replaceData(&$content, $installation) {
-		$columns = ClassUtils::removeUnsusedColumns($installation, get_class_vars(get_class()));
-		foreach ($columns as $key => $value) {
-			$content = str_replace(constant(strtoupper($key)), $value, $content);
+		if ($installation->getInstallationDone()) {
+			$content = str_replace("FALSE", "TRUE", $content);
+		} else {
+			$columns = ClassUtils::removeUnsusedColumns($installation, get_class_vars(get_class()));
+			foreach ($columns as $key => $value) {
+				var_dump($key . $value);
+				$content = str_replace(constant(strtoupper($key)), $value, $content);
+			}
 		}
 	}
 }

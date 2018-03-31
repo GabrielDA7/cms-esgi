@@ -1,5 +1,4 @@
 RewriteEngine On
 RewriteBase /Uteach/
 
-
 RewriteRule ^(.*)$ index.php [L,QSA]

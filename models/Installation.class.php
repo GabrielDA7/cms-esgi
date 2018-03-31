@@ -24,13 +24,13 @@ class Installation {
 	public function getInstallationDone() { return $this->installation_Done; }
 
 
- 	public function setLanguage($language) 					{ $this->language = $language; 					 }
-  	public function setFrontTemplate($front_Template) 		{ $this->front_Template = $front_Template; 	 	 }
-  	public function setBackTemplate($back_Template) 		{ $this->back_Template = $back_Template; 		 }
-  	public function setDbuser($dbuser) 						{ $this->dbuser = $dbuser; 						 }
-  	public function setDbpwd($dbpwd) 						{ $this->dbpwd = $dbpwd; 						 }
-  	public function setDbname($dbname) 						{ $this->dbname = $dbname; 						 }
-  	public function setDbport($dbport) 						{ $this->dbport = $dbport; 						 }
-  	public function setInstallationDone($installation_Done) { $this->installation_Done = $installation_Done; }
+ 	public function setLanguage($language) 					{ $this->language = $language; 					 					 }
+  	public function setFrontTemplate($front_Template) 		{ $this->front_Template = $front_Template; 	 	 					 }
+  	public function setBackTemplate($back_Template) 		{ $this->back_Template = $back_Template; 		 				     }
+  	public function setDbuser($dbuser) 						{ $this->dbuser = $dbuser; 						 					 }
+  	public function setDbpwd($dbpwd) 						{ $this->dbpwd = $dbpwd; 						 					 }
+  	public function setDbname($dbname) 						{ $this->dbname = $dbname; 						 					 }
+  	public function setDbport($dbport) 						{ $this->dbport = $dbport; 						 					 }
+  	public function setInstallationDone($installation_Done) { ($installation_Done == "true")?$this->installation_Done=TRUE:null; }
  }
 ?>
