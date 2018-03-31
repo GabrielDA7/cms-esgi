@@ -9,5 +9,6 @@
 	<label for="pwd">		Mot de passe </label> <input type="password" name="pwd" 	  value="aze" 		      required> </br>
 
 	<input type="hidden" name="role" value="<?=ADMIN_ROLE;?>" required> </br>
+	<input type="hidden" name="installation" value="TRUE" required> </br>
 	<input type="submit" name="submit" value="Valider">
 </form>
