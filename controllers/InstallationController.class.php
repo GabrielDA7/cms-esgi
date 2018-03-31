@@ -72,7 +72,7 @@ class InstallationController {
 	private function replaceData(&$content, $installation) {
 		$columns = ClassUtils::removeUnsusedColumns($installation, get_class_vars(get_class()));
 		foreach ($columns as $key => $value) {
-			$content = str_replace(constant($key), $value, $content);
+			$content = str_replace(constant(strtoupper($key)), $value, $content);
 		}
 	}
 

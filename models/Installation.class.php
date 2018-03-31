@@ -1,36 +1,36 @@
 <?php
 class Installation {
 
-	private $LANGUAGE;
-	private $FRONT_TEMPLATE;
-	private $BACK_TEMPLATE;
-	private $DBUSER;
-	private $DBPWD;
-	private $DBNAME;
-	private $DBPORT;
-	private $INSTALLATION_DONE;
+	private $language;
+	private $front_template;
+	private $back_template;
+	private $dbuser;
+	private $dbpwd;
+	private $dbname;
+	private $dbport;
+	private $installation_done;
 
 	public function getColumns() {
 		return get_object_vars($this);
 	}
-	
-	public function getLANGUAGE() 		  { return $this->LANGUAGE; 		 }
-	public function getFRONTTEMPLATE() 	  { return $this->FRONT_TEMPLATE; 	 }
-	public function getBACKTEMPLATE()     { return $this->BACK_TEMPLATE; 	 }
-	public function getDBUSER() 		  { return $this->DBUSER; 			 }
-	public function getDBPWD() 			  { return $this->DBPWD; 			 }
-	public function getDBNAME() 		  { return $this->DBNAME; 			 }
-	public function getDBPORT() 		  { return $this->DBPORT; 			 }
-	public function getINSTALLATIONDONE() { return $this->INSTALLATION_DONE; }
+
+	public function getLanguage() 		  { return $this->language; 		 }
+	public function getFronttemplate() 	  { return $this->front_template; 	 }
+	public function getBacktemplate()     { return $this->back_template; 	 }
+	public function getDbuser() 		  { return $this->dbuser; 			 }
+	public function getDbpwd() 			  { return $this->dbpwd; 			 }
+	public function getDbname() 		  { return $this->dbname; 			 }
+	public function getDbport() 		  { return $this->dbport; 			 }
+	public function getInstallationdone() { return $this->installation_done; }
 
 
- 	public function setLANGUAGE($LANGUAGE) 					{ $this->LANGUAGE = $LANGUAGE; 					 }
-  	public function setFRONTTEMPLATE($FRONT_TEMPLATE) 		{ $this->FRONT_TEMPLATE = $FRONT_TEMPLATE; 	 	 }
-  	public function setBACKTEMPLATE($BACK_TEMPLATE) 		{ $this->BACK_TEMPLATE = $BACK_TEMPLATE; 		 }
-  	public function setDBUSER($DBUSER) 						{ $this->DBUSER = $DBUSER; 						 }
-  	public function setDBPWD($DBPWD) 						{ $this->DBPWD = $DBPWD; 						 }
-  	public function setDBNAME($DBNAME) 						{ $this->DBNAME = $DBNAME; 						 }
-  	public function setDBPORT($DBPORT) 						{ $this->DBPORT = $DBPORT; 						 }
-  	public function setINSTALLATIONDONE($INSTALLATION_DONE) { $this->INSTALLATION_DONE = $INSTALLATION_DONE; }
+ 	public function setLanguage($language) 					{ $this->language = $language; 					 }
+  	public function setFronttemplate($front_template) 		{ $this->front_template = $front_template; 	 	 }
+  	public function setBacktemplate($back_template) 		{ $this->back_template = $back_template; 		 }
+  	public function setDbuser($dbuser) 						{ $this->dbuser = $dbuser; 						 }
+  	public function setDbpwd($dbpwd) 						{ $this->dbpwd = $dbpwd; 						 }
+  	public function setDbname($dbname) 						{ $this->dbname = $dbname; 						 }
+  	public function setDbport($dbport) 						{ $this->dbport = $dbport; 						 }
+  	public function setInstallationdone($installation_done) { $this->installation_done = $installation_done; }
  }
 ?>
