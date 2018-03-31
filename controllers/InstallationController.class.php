@@ -12,7 +12,8 @@ class InstallationController {
 	public function settingAction($params) {
 		if (!INSTALLATION_DONE || !$_SESSION['admin']) {
 			if (isset($params['POST']['submit'])) {
-				$this->setConfData($params['POST']);
+				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
+				$this->setConfData($installation);
 				header(LOCATION . DIRNAME . INSTALLATION_DATABASE_LINK);
 			}
 			$view = new View(INSTALLATION_SETTING_VIEW, INSTALATION_TEMPLATE);
@@ -24,8 +25,8 @@ class InstallationController {
 	public function databaseAction($params) {
 		if (!INSTALLATION_DONE || !$_SESSION['admin']) {
 			if (isset($params['POST']['submit'])) {
-				$this->setConfData($params['POST']);
-				$this->createDatabase();
+				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
+				$this->setConfData($installation);
 				header(LOCATION . DIRNAME . INSTALLATION_DATABASE_LINK);
 			}
 			$view = new View(INSTALLATION_DATABASE_VIEW, INSTALATION_TEMPLATE);
@@ -48,10 +49,10 @@ class InstallationController {
 		}
 	}
 
-	private function setConfData($data) {
+	private function setConfData($installation) {
 		$fname = "conf.inc.php";
 		$content = $this->getContentFromConfFile($fname);
-		$this->replaceData($content, $data);
+		$this->replaceData($content, $installation);
 		$this->overwriteContentFromConfFile($fname, $content);
 	}
 
@@ -68,30 +69,10 @@ class InstallationController {
 		fclose($fhandle);
 	}
 
-	private function replaceData(&$content, $data) {
-		if (isset($data['language'])) {
-			$content = str_replace(LANGUAGE, $data['language'], $content);
-		}
-		if (isset($data['templateFront'])) {
-			$content = str_replace(FRONT_TEMPLATE, $data['templateFront'], $content);
-		}
-		if (isset($data['templateBack'])) {
-			$content = str_replace(BACK_TEMPLATE, $data['templateBack'], $content);
-		}
-		if (isset($data['user'])) {
-			$content = str_replace(DBUSER, $data['user'], $content);
-		}
-		if (isset($data['pwd'])) {
-			$content = str_replace(DBPWD, $data['pwd'], $content);
-		}
-		if (isset($data['name'])) {
-			$content = str_replace(DBNAME, $data['name'], $content);
-		}
-		if (isset($data['port'])) {
-			$content = str_replace(DBPORT, $data['port'], $content);
-		}
-		if (isset($data['installation'])) {
-			$content = str_replace(INSTALLATION_DONE, TRUE, $content);
+	private function replaceData(&$content, $installation) {
+		$columns = ClassUtils::removeUnsusedColumns($installation, get_class_vars(get_class()));
+		foreach ($columns as $key => $value) {
+			$content = str_replace(constant($key), $value, $content);
 		}
 	}
 

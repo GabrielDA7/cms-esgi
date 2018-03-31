@@ -40,7 +40,7 @@ class classUtils {
 	}
 
 	public static function removeUnderScoreFromForeignKeyColumn(&$column) {
-		str_replace(UNDERSCORE, '', $column);
+		$column = str_replace(UNDERSCORE, "", $column);
 	}
 }
 ?>
