@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 30 mars 2018 à 18:14
+-- Généré le :  sam. 31 mars 2018 à 16:03
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `projet_annuel`
+-- Base de données :  `uteach`
 --
 
 -- --------------------------------------------------------
@@ -59,17 +59,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `dateUpdated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `role` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `firstName`, `name`, `email`, `userName`, `pwd`, `token`, `age`, `status`, `dateInserted`, `dateUpdated`, `role`) VALUES
-(20, 'Zqet', 'Qzetqzet', 'louis@gmail.com', 'zeqtf', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '2v3wh6jleww0g8k4ow804gogg4w4owcw8owc0cgsggg44s0g40', 20, 0, '2018-03-14 12:20:10', '2018-03-24 23:52:38', 0),
-(23, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '4k5qdza6baio0sg0sc4oc44ggowcc880o8ccsg044cc8skscsg', 20, 0, '2018-03-20 19:41:10', NULL, 0),
+(20, 'Zqet', 'Qzetqzet', 'louis@gmail.com', 'aaaaa', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '2v3wh6jleww0g8k4ow804gogg4w4owcw8owc0cgsggg44s0g40', 1, 0, '2018-03-14 12:20:10', '2018-03-30 21:41:16', 2),
+(23, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '4k5qdza6baio0sg0sc4oc44ggowcc880o8ccsg044cc8skscsg', 20, 1, '2018-03-20 19:41:10', '2018-03-30 21:48:46', 0),
 (24, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '66myo5znw64gwowkcwgkg44oo4wg0ogoksswgosw00kgs44ok4', 20, 0, '2018-03-20 19:44:31', NULL, 0),
-(25, 'Louis', 'Louis', 'louis@gmail.com', 'lol', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '3em0l2v33c4kg8wws8kcow8ss84g0004gw88coc8ogc0g0o80s', 20, 0, '2018-03-20 19:48:58', '2018-03-30 17:58:10', 2),
+(25, 'Louis', 'Louis', 'louis@gmail.com', 'lol', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '3em0l2v33c4kg8wws8kcow8ss84g0004gw88coc8ogc0g0o80s', 20, 1, '2018-03-20 19:48:58', '2018-03-30 20:42:35', 2),
 (26, 'LOUIS', 'LOUIS', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '2whcvk8hjtq8w0kwcs8ow80sws40cccgg8gkows0oc4kkwcssg', 20, 0, '2018-03-20 19:58:29', NULL, 0),
 (27, 'LOUIS', 'LOUIS', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', 'gpxzj6bqeygwsk0s0w8o8sggos04wkokw0ck88o080gswg008', 20, 0, '2018-03-21 18:58:02', NULL, 0),
 (28, 'ARETARET', 'ERATREAT', 'louis@gmail.com', 'teate', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '6auoeiaxbickogc044kowwsw0c08ock4s484k8ocsoowso0k4w', 2, 0, '2018-03-24 21:24:35', NULL, 0),
@@ -82,7 +82,8 @@ INSERT INTO `user` (`id`, `firstName`, `name`, `email`, `userName`, `pwd`, `toke
 (35, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', 'y4tci0mxs9cck844so48csggsosso8w4w004880csc8gk0k0s', 20, 0, '2018-03-25 20:30:28', NULL, 0),
 (36, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '208l9xzozmw0os0sg8gss8c00sgkgwwwkk0goo84scw0gw08go', 20, 0, '2018-03-25 20:44:50', NULL, 0),
 (37, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '250n00lacvtw0o8co4k8oc8ssg000so84g0w8ck8880gkckkc4', 20, 0, '2018-03-30 17:28:42', NULL, 0),
-(38, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '3qkozdnut0is40cccs440g44o8804c0s4kc8oc4ww0sk0wss0g', 20, 0, '2018-03-30 17:34:38', NULL, 0);
+(38, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '3qkozdnut0is40cccs440g44o8804c0s4kc8oc4ww0sk0wss0g', 20, 0, '2018-03-30 17:34:38', NULL, 0),
+(39, 'Louis', 'Louis', 'louis@gmail.com', 'admin', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '3mxstvh2hekg0okkcwg8gw8co4wo4k44s0kg04g8sksgss4wck', 20, 0, '2018-03-31 12:18:37', NULL, 2);
 
 --
 -- Contraintes pour les tables déchargées

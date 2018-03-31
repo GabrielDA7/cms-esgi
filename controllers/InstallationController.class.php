@@ -3,7 +3,7 @@ class InstallationController {
 
 	public function indexAction($params) {
 		if (!INSTALLATION_DONE) {
-			$view = new View(INSTALLATION_INDEX_VIEW, INSTALATION_TEMPLATE);
+			$view = new View(INSTALLATION_INDEX_VIEW, INSTALLATION_TEMPLATE);
 		} else {
 			return404View();
 		}
@@ -14,9 +14,10 @@ class InstallationController {
 			if (isset($params['POST']['submit'])) {
 				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
 				$this->setConfData($installation);
+				$this->createDatabase();
 				header(LOCATION . DIRNAME . INSTALLATION_DATABASE_LINK);
 			}
-			$view = new View(INSTALLATION_SETTING_VIEW, INSTALATION_TEMPLATE);
+			$view = new View(INSTALLATION_SETTING_VIEW, INSTALLATION_TEMPLATE);
 		} else {
 			return404View();
 		}
@@ -27,9 +28,9 @@ class InstallationController {
 			if (isset($params['POST']['submit'])) {
 				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
 				$this->setConfData($installation);
-				header(LOCATION . DIRNAME . INSTALLATION_DATABASE_LINK);
+				header(LOCATION . DIRNAME . INSTALLATION_ADMIN_LINK);
 			}
-			$view = new View(INSTALLATION_DATABASE_VIEW, INSTALATION_TEMPLATE);
+			$view = new View(INSTALLATION_DATABASE_VIEW, INSTALLATION_TEMPLATE);
 		} else {
 			return404View();
 		}
@@ -43,7 +44,7 @@ class InstallationController {
 				$user->insert();
 				header(LOCATION . DIRNAME . STATISTIC_INDEX_BACK_LINK);
 			}
-			$view = new View(INSTALLATION_ADMIN_VIEW, INSTALATION_TEMPLATE);
+			$view = new View(INSTALLATION_ADMIN_VIEW, INSTALLATION_TEMPLATE);
 		} else {
 			return404View();
 		}
@@ -77,7 +78,7 @@ class InstallationController {
 	}
 
 	private function createDatabase() {
-		$fileContent = $this->getContentFromConfFile("install/projet_annuel.sql");
+		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
 		$BaseSql = new BaseSql(); 
 		$BaseSql->createDatabase($fileContent);
 	}
