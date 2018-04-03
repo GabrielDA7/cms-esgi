@@ -10,7 +10,7 @@ class InstallationController {
 	}
 
 	public function settingAction($params) {
-		if (!INSTALLATION_DONE || (isset($_SESSION['admin']) && !$_SESSION['admin'])) {
+		if (!INSTALLATION_DONE) {
 			if (isset($params['POST']['submit'])) {
 				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
 				$this->setConfData($installation);
@@ -23,7 +23,7 @@ class InstallationController {
 	}
 
 	public function databaseAction($params) {
-		if (!INSTALLATION_DONE || (isset($_SESSION['admin']) && !$_SESSION['admin'])) {
+		if (!INSTALLATION_DONE) {
 			if (isset($params['POST']['submit'])) {
 				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
 				$this->setConfData($installation);
@@ -84,7 +84,6 @@ class InstallationController {
 		} else {
 			$columns = ClassUtils::removeUnsusedColumns($installation, get_class_vars(get_class()));
 			foreach ($columns as $key => $value) {
-				var_dump($key . $value);
 				$content = str_replace(constant(strtoupper($key)), $value, $content);
 			}
 		}

@@ -19,7 +19,6 @@ class BaseSql extends QueryConstructorSql {
 	public function createDatabase($fileContent) {
 		$query = $this->db->prepare($fileContent);
 		$query->execute();
-		
 	}
 
 	public function insert() {

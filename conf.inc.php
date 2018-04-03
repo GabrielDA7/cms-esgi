@@ -1,5 +1,5 @@
 <?php 
-define("INSTALLATION_DONE", TRUE); 
+define("INSTALLATION_DONE", FALSE); 
 
 define("LANGUAGE","french"); 
 define("INSTALLATION_TEMPLATE", "installation");
