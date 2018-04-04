@@ -10,10 +10,7 @@ class View {
 		$this->template = $template . TEMPLATE_EXTENSION;
 		$viewPath = searchFile(array(VIEWS_FOLDER_NAME), $this->view);
 		$templatePath = searchFile(array(VIEWS_TEMLATES_FOLDER_NAME), $this->template);
-		if (!isset($viewPath)) {
-			return404View();
-		}
-		if (!isset($templatePath)) {
+		if (!isset($viewPath) || !isset($templatePath)) {
 			return404View();
 		}
 		$this->assign("viewPath", $viewPath);

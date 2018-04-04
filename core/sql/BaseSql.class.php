@@ -92,11 +92,7 @@ class BaseSql extends QueryConstructorSql {
 	}
 
 	protected function hasResult($query) {
-		if ($response = $query->fetch()) {
-			return TRUE;
-		} else {	
-			return FALSE;
-		}
+		return $response = $query->fetch();
 	}
 }
 ?>
