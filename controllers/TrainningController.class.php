@@ -16,6 +16,7 @@ class TrainningController implements ControllerInterface {
 
 	public function listAction($params) {
 	}
+	
 	public function trainningAction($params) {
 	}
 

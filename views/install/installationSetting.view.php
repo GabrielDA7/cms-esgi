@@ -3,8 +3,8 @@
 <form action="<?= DIRNAME.INSTALLATION_SETTING_LINK;?>" method="POST">
 		<label for="language">Langue</label>
         <select name="language">
-  			<option value="french">Francais</option> 
-  			<option value="english">Anglais</option>
+  			<option value="fr">Francais</option> 
+  			<option value="en">Anglais</option>
 		</select>
 		<br>
 

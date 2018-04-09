@@ -52,10 +52,12 @@ class InstallationController {
 	}
 
 	public function createdatabaseAction() {
-		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
-		$BaseSql = new BaseSql(); 
-		$BaseSql->createDatabase($fileContent);
-		header(LOCATION . DIRNAME . INSTALLATION_ADMIN_LINK);
+		if (!INSTALLATION_DONE) {
+			$fileContent = $this->getContentFromConfFile("install/uteach.sql");
+			$BaseSql = new BaseSql(); 
+			$BaseSql->createDatabase($fileContent);
+			header(LOCATION . DIRNAME . INSTALLATION_ADMIN_LINK);
+		}
 	}
 
 	private function setConfData($installation) {
