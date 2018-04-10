@@ -2,62 +2,59 @@
 class InstallationController {
 
 	public function indexAction($params) {
-		if (!INSTALLATION_DONE) {
-			$view = new View(INSTALLATION_INDEX_VIEW, INSTALLATION_TEMPLATE);
-		} else {
+		if (INSTALLATION_DONE) {
 			return404View();
 		}
+		$view = new View(INSTALLATION_INDEX_VIEW, INSTALLATION_TEMPLATE);
 	}
 
 	public function settingAction($params) {
 		if (!INSTALLATION_DONE) {
-			if (isset($params['POST']['submit'])) {
-				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
-				$this->setConfData($installation);
-				header(LOCATION . DIRNAME . INSTALLATION_DATABASE_LINK);
-			}
-			$view = new View(INSTALLATION_SETTING_VIEW, INSTALLATION_TEMPLATE);
-		} else {
 			return404View();
 		}
+		if (isset($params['POST']['submit'])) {
+			$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
+			$this->setConfData($installation);
+			header(LOCATION . DIRNAME . INSTALLATION_DATABASE_LINK);
+		}
+		$view = new View(INSTALLATION_SETTING_VIEW, INSTALLATION_TEMPLATE);
 	}
 
 	public function databaseAction($params) {
-		if (!INSTALLATION_DONE) {
-			if (isset($params['POST']['submit'])) {
-				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
-				$this->setConfData($installation);
-				header(LOCATION . DIRNAME . INSTALLATION_CREATE_DATABASE_LINK);
-			}
-			$view = new View(INSTALLATION_DATABASE_VIEW, INSTALLATION_TEMPLATE);
-		} else {
+		if (INSTALLATION_DONE) {
 			return404View();
 		}
+		if (isset($params['POST']['submit'])) {
+			$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
+			$this->setConfData($installation);
+			header(LOCATION . DIRNAME . INSTALLATION_CREATE_DATABASE_LINK);
+		}
+		$view = new View(INSTALLATION_DATABASE_VIEW, INSTALLATION_TEMPLATE);
 	}
 
 	public function adminAction($params) {
-		if (!INSTALLATION_DONE) {
-			if (isset($params['POST']['submit'])) {
-				$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
-				$user->generateToken();
-				$user->insert();
-				$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
-				$this->setConfData($installation);
-				header(LOCATION . DIRNAME . USER_LOGIN_BACK_LINK);
-			}
-			$view = new View(INSTALLATION_ADMIN_VIEW, INSTALLATION_TEMPLATE);
-		} else {
+		if (INSTALLATION_DONE) {
 			return404View();
 		}
+		if (isset($params['POST']['submit'])) {
+			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
+			$user->generateToken();
+			$user->insert();
+			$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
+			$this->setConfData($installation);
+			header(LOCATION . DIRNAME . USER_LOGIN_BACK_LINK);
+		}
+		$view = new View(INSTALLATION_ADMIN_VIEW, INSTALLATION_TEMPLATE);
 	}
 
 	public function createdatabaseAction() {
-		if (!INSTALLATION_DONE) {
-			$fileContent = $this->getContentFromConfFile("install/uteach.sql");
-			$BaseSql = new BaseSql(); 
-			$BaseSql->createDatabase($fileContent);
-			header(LOCATION . DIRNAME . INSTALLATION_ADMIN_LINK);
+		if (INSTALLATION_DONE) {
+			return404View();
 		}
+		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
+		$BaseSql = new BaseSql(); 
+		$BaseSql->createDatabase($fileContent);
+		header(LOCATION . DIRNAME . INSTALLATION_ADMIN_LINK);
 	}
 
 	private function setConfData($installation) {

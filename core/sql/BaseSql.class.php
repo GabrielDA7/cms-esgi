@@ -72,16 +72,6 @@ class BaseSql extends QueryConstructorSql {
 		return $object;
 	}
 
-	public function checkDoneInstallation() {
-		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = $this->constructSelectQuery($this->table, $this->columns);
-		$query = $this->db->prepare($queryString);
-		$query->execute($this->columns);
-		$response = $query->fetch();
-		$object = ClassUtils::constructObjectWithParameters($response, $this->table);
-		return $object;
-	}
-
 	private function createObjectsListFromDBResponse($response) {
 		$objectList = array();
 		foreach ($response as $key => $values) {
