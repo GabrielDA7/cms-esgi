@@ -39,7 +39,7 @@ class UserController implements ControllerInterface {
 		if(isset($params['POST']['submit']) && $_SESSION['admin'] === TRUE) {
 			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
 			$user->delete();	
-			header(LOCATION . DIRNAME . USER_LIST_FRONT_LINK);
+			header(LOCATION . DIRNAME . USER_LIST_BACK_LINK);
 		} else {
 			return404View();
 		}

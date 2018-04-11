@@ -29,6 +29,7 @@ class User extends UserSql {
 
 	public function generateToken() {
 		$this->token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
+		return $this->token;
 	}
 
 	/**
