@@ -21,7 +21,7 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute();
 	}
 
-	public function insert() {
+	protected function insert() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructInsertQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
@@ -47,7 +47,7 @@ class BaseSql extends QueryConstructorSql {
 		}
 	}
 
-	public function getAll() {
+	protected function getAll() {
 		$queryString = $this->constructSelectQuery($this->table);
 		$query = $this->db->prepare($queryString);
 		$query->execute();
@@ -56,7 +56,7 @@ class BaseSql extends QueryConstructorSql {
 		return $objectList;
 	}
 
-	public function getWithParameters() {
+	protected function getWithParameters() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
@@ -66,7 +66,7 @@ class BaseSql extends QueryConstructorSql {
 		return $objectList;
 	}
 
-	public function getById() {
+	protected function getById() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
