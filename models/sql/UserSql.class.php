@@ -9,7 +9,6 @@ class UserSql extends BaseSql {
 		$user = $this->getWithParameters();
 		if (!empty($user)) {
 			$this->setSession($user[0]);
-			header(LOCATION . DIRNAME);
 		} else {
 			return TRUE;
 		}
@@ -29,7 +28,8 @@ class UserSql extends BaseSql {
 		if ($this->checkAdminStatus($user->getid()) === TRUE) {
 			$_SESSION['admin'] = TRUE;
 			header(LOCATION . DIRNAME . STATISTIC_INDEX_BACK_LINK);
-			break;
+		} else {
+			header(LOCATION . DIRNAME);
 		}
 	}
 
