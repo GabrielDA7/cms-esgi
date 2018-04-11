@@ -33,6 +33,12 @@ class UserSql extends BaseSql {
 		}
 	}
 
+	private function setConnectedStatus($user, $status) {
+		$user->setPwd(null);
+		$user->setStatus($status);
+		$user->update();
+	}
+
 	private function checkPremiumDate($id) {
 		$queryString = "SELECT * FROM User u, Premium p WHERE p.User_id=u.id AND u.id=:id AND p.endDate>NOW()";
 		$query = $this->db->prepare($queryString);
@@ -44,12 +50,6 @@ class UserSql extends BaseSql {
 		$adminUser = ClassUtils::constructObjectWithParameters(array("id" => $id, "role" => ADMIN_ROLE), USER_CLASS_NAME);
 		$adminUser = $adminUser->getWithParameters();
 		return (!empty($adminUser)? TRUE : FALSE);
-	}
-
-	private function setConnectedStatus($user, $status) {
-		$user->setPwd(null);
-		$user->setStatus($status);
-		$user->update();
 	}
 }
 ?>
