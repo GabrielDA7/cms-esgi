@@ -1,7 +1,7 @@
 <?php
 session_start();
-require "constants.inc.php";
-require "conf.inc.php";
+require "bin/constants.inc.php";
+require "bin/conf.inc.php";
 
 function autoLoadExistingClass($class) {
 	$classPath = searchFile(array(MODELS_FOLDER_NAME, CORE_FOLDER_NAME), $class.CLASS_EXTENSION);
