@@ -2,19 +2,25 @@
 include "core/interfaces/ControllerInterface.php";
 class UserController implements ControllerInterface {
 
-	public function __construct() {}
+	private $authenticationDelegate;
+	private $datas = array();
+
+	public function __construct() {
+		$this->authenticationDelegate = new AuthenticationDelegate();
+	}
 
 	public function indexAction($params) {
 	}
 	
 	public function addAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($datas, USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($datas, $params);
 		if (isset($params['POST']['submit'])) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$user->generateToken();
 			$user->insert();
 		}
-		$view = new View($viewAndTemplateName['view'], $viewAndTemplateName['template']);
+		$view = new View($datas['view'], $datas['template']);
 	}
 
 	public function editAction($params) {

@@ -30,21 +30,17 @@ class BaseSql extends QueryConstructorSql {
 	}
 
 	protected function update() {
-		if (isValidToken()) {
-			$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-			$queryString = $this->constructUpdateQuery($this->table, $this->columns);
-			$query = $this->db->prepare($queryString);
-			$query->execute($this->columns);
-		}
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
+		$queryString = $this->constructUpdateQuery($this->table, $this->columns);
+		$query = $this->db->prepare($queryString);
+		$query->execute($this->columns);
 	}
 
 	protected function delete() {
-		if (isValidToken()) {
-			$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-			$queryString = $this->constructDeleteQuery($this->table);
-			$query = $this->db->prepare($queryString);
-			$query->execute($this->columns);
-		}
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
+		$queryString = $this->constructDeleteQuery($this->table);
+		$query = $this->db->prepare($queryString);
+		$query->execute($this->columns);
 	}
 
 	protected function getAll() {
@@ -87,18 +83,6 @@ class BaseSql extends QueryConstructorSql {
 
 	protected function hasResult($query) {
 		return $response = $query->fetch();
-	}
-
-	private function isValidToken() {
-		$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
-		$user = $user->getById();
-		if (isset($_SESSION['token']) && $user->getToken() == $_SESSION['token']) {
-			$_SESSION['token'] = $user->generateToken();
-			$user->update();
-			return TRUE;
-		} else {
-			return FALSE;
-		}
 	}
 }
 ?>
