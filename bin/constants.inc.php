@@ -27,6 +27,7 @@ define("TEMPLATE_EXTENSION", ".tpl.php");
 ********** FOLDERS NAMES **********
 ***********************************/
 define("CONTROLLERS_FOLDER_NAME", "controllers");
+define("DELEGATES_FOLDER_NAME", "delegates");
 define("MODELS_FOLDER_NAME", "models");
 define("CORE_FOLDER_NAME", "core");
 define("VIEWS_FOLDER_NAME", "views");
