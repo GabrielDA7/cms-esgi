@@ -1,5 +1,4 @@
 <?php
-
 class BaseSql extends QueryConstructorSql {
 
 	protected $table;

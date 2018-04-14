@@ -128,5 +128,3 @@ define("ADMIN_ROLE", 2);
 *******************************/
 define("DISCONNECTED_STATUS", 0);
 define("CONNECTED_STATUS", 1);
-
-
