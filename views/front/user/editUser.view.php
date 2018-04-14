@@ -1,4 +1,4 @@
-<form action="<?= DIRNAME.USER_EDIT_FRONT_LINK;?>" method="POST">
+<form action="<?= DIRNAME.USER_UPDATE_LINK;?>" method="POST">
 	<input type="hidden" value="<?= $user->getId(); ?>" name="id">
 	<label for="userName">	Pseudo		 </label> <input type="text" 	 name="userName"  placeholder="<?= $user->getUserName(); ?>" > </br>
 	<label for="name">		Prenom		 </label> <input type="text" 	 name="name" 	  placeholder="<?= $user->getName(); ?>">	   </br>

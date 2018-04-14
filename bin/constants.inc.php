@@ -80,6 +80,7 @@ define("USER_ADD_BACK_LINK", "user/add/back");
 define("USER_LOGIN_FRONT_LINK", "user/login");
 define("USER_LOGIN_BACK_LINK", "user/login/back");
 define("USER_DISCONNECT_LINK", "user/disconnect");
+define("USER_UPDATE_LINK", "user/update");
 
 define("INDEX_ERROR_LINK", "index/error");
 
@@ -98,9 +99,7 @@ define("INSTALLATION_ADMIN_VIEW", "installationAdmin");
 
 define("NOT_FOUND_VIEW", "404");
 define("HOME_VIEW", "home");
-
 define("CONTACT_VIEW", "contact");
-
 define("USER_EDIT_FRONT_VIEW", "editUser");
 define("USER_EDIT_BACK_VIEW", "editUserBack");
 define("USER_LIST_FRONT_VIEW", "listUser");
