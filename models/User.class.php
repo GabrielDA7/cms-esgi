@@ -17,7 +17,7 @@ class User extends UserSql {
 
 	public function __construct() {
 		UserSql::__construct();
-	}		
+	}
 
 	public function __destruct() {
 
@@ -41,7 +41,63 @@ class User extends UserSql {
 		}
 	}
 
-	
+	/**
+	* Configuration of the form add user
+	*/
+	public static function configFormAdd(){
+		return [
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_ADD_FRONT_LINK, "submit"=>"Sign in"],
+					"input"=>[
+
+						"firstName"=>[
+										"type"=>"text",
+										"placeholder"=>"First name",
+										"required"=>true,
+										"maxString"=>100,
+										"minString"=>2
+									],
+						"lastname"=>[
+										"type"=>"text",
+										"placeholder"=>"Name",
+										"required"=>true,
+										"maxString"=>100,
+										"minString"=>2
+									],
+						"userName"=> [
+										"type"=>"text",
+										"placeholder"=>"Username",
+										"required"=>true,
+										"maxString"=>100,
+										"minString"=>2
+									],
+						"email"=>[
+										"type"=>"email",
+										"placeholder"=>"Email",
+										"required"=>true
+									],
+						"emailConfirmation"=>[
+										"type"=>"email",
+										"placeholder"=>"Confirmation of email",
+										"required"=>true,
+										"confirm"=>"email"
+										],
+						"pwd"=>[
+										"type"=>"password",
+										"placeholder"=>"Password",
+										"required"=>true
+									],
+						"pwdConfirmation"=>[
+										"type"=>"password",
+										"placeholder"=>"Confirmation of password",
+										"required"=>true,
+										"confirm"=>"pwd"
+									],
+					]
+		];
+
+	}
+
+
 	public function getUserName() 	  { return $this->userName; 	 }
 	public function getId() 		  { return $this->id; 			 }
     public function getName() 		  { return $this->name; 		 }

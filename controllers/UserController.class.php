@@ -27,10 +27,18 @@ class UserController implements ControllerInterface {
 	public function addAction($params) {
 		ViewUtils::setPossiblesViewsTemplates($datas, USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
 		$this->authenticationDelegate->process($datas, $params);
+
+		$config = User::configFormAdd();
+		$errors = [];
 		if(isset($params['POST']['submit'])) {
-			$this->objectDelegate->add($params, USER_CLASS_NAME);
+			$errors = Validate::checkForm($config, $params["POST"]);
+			if(empty($errors)) {
+				$this->objectDelegate->add($params, USER_CLASS_NAME);
+			}
 		}
 		$view = new View($datas['view'], $datas['template']);
+		$view->assign("config", $config);
+		$view->assign("errors", $errors);
 	}
 
 	public function editAction($params) {
