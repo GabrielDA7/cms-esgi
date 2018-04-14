@@ -72,6 +72,8 @@ define("STATISTIC_INDEX_BACK_LINK", "statistic/index/back");
 
 define("USER_USER_FRONT_LINK", "user/user");
 define("USER_USER_BACK_LINK", "user/user/back");
+define("USER_EDIT_FRONT_LINK", "user/edit");
+define("USER_EDIT_BACK_LINK", "user/edit/back");
 define("USER_LIST_FRONT_LINK", "user/list");
 define("USER_LIST_BACK_LINK", "user/list/back");
 define("USER_DELETE_BACK_LINK", "user/delete/back");
@@ -80,7 +82,7 @@ define("USER_ADD_BACK_LINK", "user/add/back");
 define("USER_LOGIN_FRONT_LINK", "user/login");
 define("USER_LOGIN_BACK_LINK", "user/login/back");
 define("USER_DISCONNECT_LINK", "user/disconnect");
-define("USER_EDIT_LINK", "user/edit");
+
 
 define("INDEX_ERROR_LINK", "index/error");
 

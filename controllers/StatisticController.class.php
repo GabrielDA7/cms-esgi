@@ -11,8 +11,9 @@ class StatisticController{
 	}
 	
 	public function indexAction($params){
-		$this->authenticationDelegate->process($datas, $params, TRUE);
-		$view = new View(STATISTIC_BACK_VIEW, BACK_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($data, STATISTIC_BACK_VIEW, BACK_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params, TRUE);
+		$view = new View($data);
 	}
 
 }

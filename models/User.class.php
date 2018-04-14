@@ -3,7 +3,7 @@ class User extends UserSql {
 
 	protected $id = null;
 	protected $userName;
-	protected $name;
+	protected $lastName;
 	protected $firstName;
 	protected $pwd;
 	protected $email;
@@ -42,65 +42,79 @@ class User extends UserSql {
 	}
 
 	/**
-	* Configuration of the form add user
+	* Configuration of the add form user
 	*/
-	public static function configFormAdd(){
-		return [
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_ADD_FRONT_LINK, "submit"=>"Sign in"],
-					"input"=>[
-
-						"firstName"=>[
-										"type"=>"text",
-										"placeholder"=>"First name",
-										"required"=>true,
-										"maxString"=>100,
-										"minString"=>2
-									],
-						"lastname"=>[
-										"type"=>"text",
-										"placeholder"=>"Name",
-										"required"=>true,
-										"maxString"=>100,
-										"minString"=>2
-									],
-						"userName"=> [
-										"type"=>"text",
-										"placeholder"=>"Username",
-										"required"=>true,
-										"maxString"=>100,
-										"minString"=>2
-									],
-						"email"=>[
-										"type"=>"email",
-										"placeholder"=>"Email",
-										"required"=>true
-									],
-						"emailConfirmation"=>[
-										"type"=>"email",
-										"placeholder"=>"Confirmation of email",
-										"required"=>true,
-										"confirm"=>"email"
-										],
-						"pwd"=>[
-										"type"=>"password",
-										"placeholder"=>"Password",
-										"required"=>true
-									],
-						"pwdConfirmation"=>[
-										"type"=>"password",
-										"placeholder"=>"Confirmation of password",
-										"required"=>true,
-										"confirm"=>"pwd"
-									],
-					]
-		];
-
+	public static function configAddForm(){
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_ADD_FRONT_LINK, "submit"=>"S'inscrire"],
+					"input"=>
+							[
+								"firstName"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"Prénom",
+												"required"=>true,
+												"maxString"=>100,
+												"minString"=>2
+											],
+								"lastName"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"Nom",
+												"required"=>true,
+												"maxString"=>100,
+												"minString"=>2
+											],
+								"age"=>
+											[
+												"type"=>"number",
+												"placeholder"=>"Age",
+												"required"=>true,
+												"maxNum"=>100,
+												"minNum"=>10
+											],
+								"userName"=> 
+											[
+												"type"=>"text",
+												"placeholder"=>"Pseudo",
+												"required"=>true,
+												"maxString"=>100,
+												"minString"=>2
+											],
+								"email"=>	
+											[
+												"type"=>"email",
+												"placeholder"=>"Email",
+												"required"=>true
+											],
+								"emailConfirmation"=>
+											[
+												"type"=>"email",
+												"placeholder"=>"Confirmation de l'email",
+												"required"=>true,
+												"confirm"=>"email"
+											],
+								"pwd"=>		
+											[
+												"type"=>"password",
+												"placeholder"=>"Mot de passe",
+												"required"=>true
+											],
+								"pwdConfirmation"=>
+											[
+												"type"=>"password",
+												"placeholder"=>"Confirmation du mot de passe",
+												"required"=>true,
+												"confirm"=>"pwd"
+											],
+							]
+				];
 	}
 
 
 	public function getUserName() 	  { return $this->userName; 	 }
 	public function getId() 		  { return $this->id; 			 }
-    public function getName() 		  { return $this->name; 		 }
+    public function getLastName() 	  { return $this->lastName;		 }
     public function getFirstName() 	  { return $this->firstName; 	 }
     public function getPwd() 		  { return $this->pwd; 			 }
     public function getEmail() 		  { return $this->email;   		 }
@@ -114,7 +128,7 @@ class User extends UserSql {
 
     public function setUserName($userName) 		   { $this->userName = $userName; 						 }
     public function setId($id) 					   { $this->id = $id; 								  	 }
-	public function setName($name) 				   { $this->name = ucfirst(strtolower($name)); 			 }
+	public function setLastName($lastName) 			   { $this->lastName = ucfirst(strtolower($lastName)); 	 }
 	public function setFirstName($firstName) 	   { $this->firstName = ucfirst(strtolower($firstName)); }
 	public function setPwd($pwd) 			 	   { $this->pwd = (isset($pwd))? sha1($pwd) : null; 	 }
 	public function setEmail($email) 			   { $this->email = strtolower(trim($email)); 			 }

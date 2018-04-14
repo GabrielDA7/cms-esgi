@@ -24,7 +24,7 @@
             <div class="right-nav">
                 <div class="icon-bar">
                     <a class="active" href="<?= DIRNAME;?>"><i class="fas fa-home"></i></a>
-                    <a href="<?= DIRNAME.USER_USER_BACK_LINK;?>"><i class="fas fa-user-circle"></i></a>
+                    <a href="<?= DIRNAME.USER_EDIT_BACK_LINK;?>"><i class="fas fa-user-circle"></i></a>
                     <a href="#"><i class="far fa-bell"></i></a>
                     <a href="<?= DIRNAME.USER_DISCONNECT_LINK;?>"><i class="fas fa-power-off"></i></a>
                 </div>

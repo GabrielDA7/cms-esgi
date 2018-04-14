@@ -4,7 +4,7 @@ class VideoController implements ControllerInterface {
 
 	private $authenticationDelegate;
 	private $objectDelegate;
-	private $datas = array();
+	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
@@ -21,31 +21,35 @@ class VideoController implements ControllerInterface {
 	}
 
 	public function deleteAction($params) {
+		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
+			return404View();
+		}
+		$this->authenticationDelegate->process($data, $params, TRUE);
+		$this->objectDelegate->delete($params, VIDEO_CLASS_NAME);
+		header(LOCATION . DIRNAME . USER_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($datas, VIDEO_LIST_BACK_VIEW, VIDEO_LIST_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
-		$this->authenticationDelegate->process($datas, $params);
+		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_LIST_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_LIST_BACK_VIEW, BACK_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params);
 		if (isset($params['POST']['submit'])) {
-			$this->objectDelegate->pushObjectsByParameters($datas, $params, VIDEO_CLASS_NAME);
+			$this->objectDelegate->pushObjectsByParameters($data, $params, VIDEO_CLASS_NAME);
 		} else {
-			$this->objectDelegate->pushAllObjects($datas, $params, VIDEO_CLASS_NAME);
+			$this->objectDelegate->pushAllObjects($data, $params, VIDEO_CLASS_NAME);
 		}
-		$view = new View($datas['view'], $datas['template']);
-		$view->assign("videos" ,$datas['objects']);
+		$view = new View($data);
 	}
 
 	/**
 	 * Get the video by id
 	 */
 	public function videoAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($datas, VIDEO_BACK_VIEW, VIDEO_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
-		$this->authenticationDelegate->process($datas, $params);
+		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_BACK_VIEW, BACK_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params);
 		if (isset($params['POST']['submit'])) {
-			$this->objectDelegate->pushObjectById($datas, $params, VIDEO_CLASS_NAME);
+			$this->objectDelegate->pushObjectById($data, $params, VIDEO_CLASS_NAME);
 		}
-		$view = new View(VIDEO_FRONT_VIEW, FRONT_TEMPLATE);
-		$view->assign("video" ,$datas['object']);
+		$view = new View($data);
 	}
 }
 ?>

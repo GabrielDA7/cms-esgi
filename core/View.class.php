@@ -5,9 +5,10 @@ class View {
 	private $template;
 	private $data = [];
 
-	public function __construct($view=HOME_VIEW, $template=DEFAULT_TEMPLATE) {
-		$this->view = $view . VIEW_EXTENSION;
-		$this->template = $template . TEMPLATE_EXTENSION;
+	public function __construct($data = []) {
+		$this->data = $data;
+		$this->view = $this->data['view'] . VIEW_EXTENSION;
+		$this->template = $this->data['template'] . TEMPLATE_EXTENSION;
 		$viewPath = searchFile(array(VIEWS_FOLDER_NAME), $this->view);
 		$templatePath = searchFile(array(VIEWS_TEMLATES_FOLDER_NAME), $this->template);
 		if (!isset($viewPath) || !isset($templatePath)) {

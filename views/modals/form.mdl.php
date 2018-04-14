@@ -1,15 +1,20 @@
-<?php
-	print_r($errors);
+<?php 
+	if (!empty($errors)): 
+		print_r($errors);
+	endif; 
 ?>
 
 
-<form method="<?php echo $config["config"]["method"]?>" action="<?php echo $config["config"]["action"]?>">
+<form method="<?= $config["config"]["method"] ?>" action="<?= $config["config"]["action"] ?>">
 
 	<?php foreach ($config["input"] as $name => $attributs):?>
 
 		<?php if($attributs["type"]=="text" || $attributs["type"]=="email" || $attributs["type"]=="number" || $attributs["type"]=="password"):?>
 
-			<input type="<?= $attributs["type"];?>" placeholder="<?= $attributs["placeholder"];?>" name="<?= $name;?>" <?= (isset($attributs["required"]))?"required='required'":"";?> >
+			<input type="<?= $attributs["type"];?>" 
+				   placeholder="<?= $attributs["placeholder"];?>" 
+				   name="<?= $name;?>" 
+				   <?= (isset($attributs["required"])) ? "required='required'" : ""; ?>>
 
 		<?php endif;?>
 

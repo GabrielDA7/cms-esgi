@@ -3,13 +3,15 @@ class AuthenticationDelegate {
 
 	public function __construct() {}
 
-	public function process(&$datas, $params, $checkToken = FALSE) {
+	public function process(&$data, $params, $checkToken = FALSE) {
 		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) { 
       		$this->checkTokenValidity(); 
     	} 
-    	if (!empty($datas)) { 
-      		$this->checkBackOfficeViewPermission($datas, $params['URL']); 
-   	 	} 
+    	if (!empty($data)) { 
+      		$this->getViewTemplateNames($data, $params['URL']); 
+   	 	} else {
+   	 		$this->setDefaultViewTemplateNames($data); 
+   	 	}
 	}
 
 	private function checkTokenValidity() {
@@ -28,14 +30,31 @@ class AuthenticationDelegate {
 		}
 	}
 
-	private function checkBackOfficeViewPermission(&$datas, $url) {
-		if ((isset($url[2]) && $url[2] === "back") && (isset($_SESSION['admin']) && $_SESSION['admin'] || isset($url[1]) && $url[1] === "login")) {
-			$datas['view']=$datas['backView'];
-			$datas['template']=$datas['backTemplate'];
+	private function getViewTemplateNames(&$data, $url) {
+		if ($this->checkBackOfficeViewPermission($url)) {
+			$data['view'] = $data['backView'];
+			$data['template'] = $data['backTemplate'];
 		} else {
-			$datas['view']=$datas['frontView'];
-			$datas['template']=$datas['frontTemplate'];
+			$data['view'] = $data['frontView'];
+			$data['template'] = $data['frontTemplate'];
 		}
+	}
+
+	private function checkBackOfficeViewPermission($url) {
+		if (isset($data['backView'])) {
+			if (isset($url[2]) && $url[2] === "back" || isset($url[1]) && $url[1] === "login") {
+				if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+					return TRUE;
+				}
+			} 
+		} else {
+			return FALSE;
+		}
+	}
+
+	private function setDefaultViewTemplateNames(&$data) {
+		$data['view'] = HOME_VIEW;
+		$data['template'] = FRONT_TEMPLATE;
 	}
 }
 ?>

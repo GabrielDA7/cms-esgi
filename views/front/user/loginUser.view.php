@@ -5,7 +5,7 @@
 </form>
 
 <?php 
-	if($wrongPassword === true) {
+	if(isset($wrongPassword) && $wrongPassword === TRUE) {
 		echo "Mauvais identifiants";
 	}
 ?>

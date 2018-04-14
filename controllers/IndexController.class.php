@@ -1,16 +1,29 @@
 <?php
 class IndexController {
 
+	private $authenticationDelegate;
+	private $data = [];
+
+	public function __construct() {
+		$this->authenticationDelegate = new AuthenticationDelegate();
+	}
+
 	public function indexAction($params) {
-		$view = new View(HOME_VIEW, FRONT_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($data, HOME_VIEW, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params);
+		$view = new View($data);
 	}
 
 	public function contactAction($params) {
-		$view = new View(CONTACT_VIEW, FRONT_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($data, CONTACT_VIEW, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params);
+		$view = new View($data);
 	}
 
 	public function errorAction($params) {
-		$view = new View(NOT_FOUND_VIEW, FRONT_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($data, NOT_FOUND_VIEW, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params);
+		$view = new View($data);
 	}
 }
 ?>

@@ -4,9 +4,11 @@
         <label for="firstName"> Nom              </label> <input type="text"     name="firstName"> </br>
         <label for="email">     Email            </label> <input type="email"    name="email">     </br>
         <label for="age">       Age              </label> <input type="number"   name="age">       </br>
-        <input type="submit" name="submit" value="rechercher">
+        <input type="submit" name="submit" value="Rechercher">
 </form>
-
+<form action="<?= DIRNAME.USER_LIST_BACK_LINK;?>" method="POST">
+        <input type="submit" name="reset" value="Reset">
+</form>
 <table>
         <tr>
                 <th>Id</th>
@@ -25,9 +27,7 @@
                         <th><?= $user->getFirstName(); ?></th>
                         <th><?= $user->getAge(); ?></th>
                         <th>
-                                <form action="<?= DIRNAME.USER_DELETE_BACK_LINK
-
-;?>" method="POST">
+                                <form action="<?= DIRNAME.USER_DELETE_BACK_LINK;?>" method="POST">
                                         <input type="hidden" value="<?= $user->getId(); ?>" name="id">
                                         <input type="submit" name="submit" value="X">
                                 </form>
