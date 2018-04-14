@@ -48,12 +48,13 @@ class ObjectDelegate {
 		}
 	}
 
-	public function delete($params, $objectName) {
+	public function delete($params, $objectName, $redirectFront, $redirectBack) {
 		$objects = ClassUtils::constructObjectWithId($params['POST']['id'], $objectName);
 		$objects->delete();
+		header(LOCATION . DIRNAME . (isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 	}
 
-	public function list(&$data, $params, $objectName) {
+	public function listAll(&$data, $params, $objectName) {
 		if (empty($data['errors'])) {
 			$this->pushObjectsByParameters($data, $params, $objectName);
 		} else {
@@ -71,6 +72,7 @@ class ObjectDelegate {
 	public function disconnect() {
 		$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
 		$user->disconnect();
+		header(LOCATION . DIRNAME);
 	}
 }
 ?>

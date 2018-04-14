@@ -15,6 +15,11 @@ class VideoController implements ControllerInterface {
 	}
 	
 	public function addAction($params) {
+		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_ADD_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_ADD_BACK_VIEW, BACK_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params);
+		$this->formDelegate->process($data, $params, VIDEO_CLASS_NAME);
+		$this->objectDelegate->add($params, VIDEO_CLASS_NAME);
+		$view = new View($data);
 	}
 
 	public function editAction($params) {
@@ -26,17 +31,13 @@ class VideoController implements ControllerInterface {
 		}
 		$this->authenticationDelegate->process($data, $params, TRUE);
 		$this->objectDelegate->delete($params, VIDEO_CLASS_NAME);
-		header(LOCATION . DIRNAME . USER_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
 		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_LIST_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_LIST_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
-		if (isset($params['POST']['submit'])) {
-			$this->objectDelegate->pushObjectsByParameters($data, $params, VIDEO_CLASS_NAME);
-		} else {
-			$this->objectDelegate->pushAllObjects($data, $params, VIDEO_CLASS_NAME);
-		}
+		$this->formDelegate->process($data, $params, VIDEO_CLASS_NAME);
+		$this->objectDelegate->listAll($data, $params, VIDEO_CLASS_NAME);
 		$view = new View($data);
 	}
 
@@ -44,11 +45,13 @@ class VideoController implements ControllerInterface {
 	 * Get the video by id
 	 */
 	public function videoAction($params) {
+		if (isset($params['POST']['id'])) {
+			return404View();
+		}
 		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
-		if (isset($params['POST']['submit'])) {
-			$this->objectDelegate->pushObjectById($data, $params, VIDEO_CLASS_NAME);
-		}
+		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
+		$this->objectDelegate->pushObjectById($data, $params, VIDEO_CLASS_NAME);
 		$view = new View($data);
 	}
 }
