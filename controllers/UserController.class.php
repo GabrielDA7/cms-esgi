@@ -13,42 +13,49 @@ class UserController implements ControllerInterface {
 	}
 	
 	public function addAction($params) {
+		if(!isset($params['POST']['submit'])) {
+			return404View();
+		}
 		ViewUtils::setPossiblesViewsTemplates($datas, USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
 		$this->authenticationDelegate->process($datas, $params);
-		if (isset($params['POST']['submit'])) {
-			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
-			$user->generateToken();
-			$user->insert();
-		}
+		$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
+		$user->generateToken();
+		$user->insert();
 		$view = new View($datas['view'], $datas['template']);
 	}
 
 	public function editAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_EDIT_BACK_VIEW, USER_EDIT_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
-		if(isset($params['POST']['edit'])) {
-			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
-			$user->unsetRoleIfNotAdmin();
-			$user->update();
-			header(LOCATION . DIRNAME . USER_LIST_BACK_LINK);	
-		} else if(isset($params['POST']['id']) || isset($_SESSION['userId'])) {
-			$id = (isset($params['POST']['id'])) ? $params['POST']['id'] : $_SESSION['userId'];
-			$user = ClassUtils::constructObjectWithId($id, USER_CLASS_NAME);
-			$user = $user->getById();
-			$view = new View($viewAndTemplateName['view'], $viewAndTemplateName['template']);
-			$view->assign("user", $user);
-		} else {
+		if(!isset($params['POST']['id']) && !isset($_SESSION['userId'])) {
 			return404View();
 		}
+		ViewUtils::setPossiblesViewsTemplates($datas, USER_EDIT_BACK_VIEW, USER_EDIT_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($datas, $params, TRUE);
+		$id = (isset($params['POST']['id'])) ? $params['POST']['id'] : $_SESSION['userId'];
+		$user = ClassUtils::constructObjectWithId($id, USER_CLASS_NAME);
+		$user = $user->getById();
+		$view = new View($datas['view'], $datas['template']);
+		$view->assign("user", $user);
+	}
+
+	public function updateAction($params) {
+		if(!isset($params['POST']['submit'])) {
+			return404View();
+		}
+		$this->authenticationDelegate->process($datas, $params, TRUE);
+		$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
+		$user->unsetRoleIfNotAdmin();
+		$user->update();
+		header(LOCATION . DIRNAME . (isset($url[2]) && $url[2] === "back") ? USER_LIST_BACK_LINK : "");
 	}
 
 	public function deleteAction($params) {
-		if(isset($params['POST']['submit']) && $_SESSION['admin'] === TRUE) {
-			$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
-			$user->delete();	
-			header(LOCATION . DIRNAME . USER_LIST_BACK_LINK);
-		} else {
+		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
 			return404View();
 		}
+		$this->authenticationDelegate->process($datas, $params, TRUE);
+		$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
+		$user->delete();	
+		header(LOCATION . DIRNAME . USER_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
@@ -79,13 +86,13 @@ class UserController implements ControllerInterface {
 	}
 
 	public function disconnectAction() {
-		if (isset($_SESSION['userId'])) {
-			$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
-			$user->disconnect();
-			header(LOCATION . DIRNAME);
-		} else {
+		if (!isset($_SESSION['userId'])) {
 			return404View();
 		}
+		$this->authenticationDelegate->process($datas, $params, TRUE);
+		$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
+		$user->disconnect();
+		header(LOCATION . DIRNAME);
 	}
 }
 ?>

@@ -6,5 +6,5 @@
 	<label for="email">		Email 		 </label> <input type="email" 	 name="email" 	  placeholder="<?= $user->getEmail(); ?>">	   </br>
 	<label for="age">		Age 		 </label> <input type="number" 	 name="age" 	  placeholder="<?= $user->getAge(); ?>"> 	   </br>
 	<label for="pwd">		Mot de passe </label> <input type="password" name="pwd" 	  placeholder="<?= $user->getPwd(); ?>" >      </br>
-	<input type="submit" name="edit" value="Modifier">
+	<input type="submit" name="submit" value="Modifier">
 </form>
