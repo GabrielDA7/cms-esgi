@@ -4,7 +4,7 @@ class Premium {
 	protected $id = null;
 	protected $startDate;
 	protected $endDate;
-	
+
 	protected $user_Id = null;
 
 
@@ -18,5 +18,5 @@ class Premium {
 	public function setStartDate($startDate) { $this->startDate = $startDate; }
 	public function setEndDate($endDate) 	 { $this->endDate = $endDate; 	  }
 	public function setUserId($user_Id) 	 { $this->user_Id = $user_Id; 	  }
-  }
+}
 ?>

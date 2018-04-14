@@ -25,5 +25,5 @@ class Lesson extends BaseSql {
 	public function setAutor($autor) 			  { $this->autor = $autor; 				 }
 	public function setVideos($videos) 			  { $this->videos = $videos; 			 }
 	public function setTrainningId($trainning_Id) { $this->trainning_Id = $trainning_Id; }
-  }
+}
 ?>
