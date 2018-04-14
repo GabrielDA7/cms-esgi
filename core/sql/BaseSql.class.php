@@ -20,7 +20,7 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute();
 	}
 
-	protected function insert() {
+	public function insert() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructInsertQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
@@ -28,21 +28,21 @@ class BaseSql extends QueryConstructorSql {
 		
 	}
 
-	protected function update() {
+	public function update() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructUpdateQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 	}
 
-	protected function delete() {
+	public function delete() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructDeleteQuery($this->table);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 	}
 
-	protected function getAll() {
+	public function getAll() {
 		$queryString = $this->constructSelectQuery($this->table);
 		$query = $this->db->prepare($queryString);
 		$query->execute();
@@ -51,7 +51,7 @@ class BaseSql extends QueryConstructorSql {
 		return $objectList;
 	}
 
-	protected function getWithParameters() {
+	public function getWithParameters() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
@@ -61,7 +61,7 @@ class BaseSql extends QueryConstructorSql {
 		return $objectList;
 	}
 
-	protected function getById() {
+	public function getById() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);

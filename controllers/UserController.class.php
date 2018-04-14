@@ -3,48 +3,42 @@ include "core/interfaces/ControllerInterface.php";
 class UserController implements ControllerInterface {
 
 	private $authenticationDelegate;
+	private $objectDelegate;
 	private $datas = array();
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
+		$this->objectDelegate = new ObjectDelegate();
 	}
 
-	public function indexAction($params) {
-	}
-	
-	public function addAction($params) {
-		if(!isset($params['POST']['submit'])) {
-			return404View();
-		}
-		ViewUtils::setPossiblesViewsTemplates($datas, USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
-		$this->authenticationDelegate->process($datas, $params);
-		$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
-		$user->generateToken();
-		$user->insert();
-		$view = new View($datas['view'], $datas['template']);
-	}
+	public function indexAction($params) {}
 
-	public function editAction($params) {
+	public function userAction($params) {
 		if(!isset($params['POST']['id']) && !isset($_SESSION['userId'])) {
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($datas, USER_EDIT_BACK_VIEW, USER_EDIT_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
 		$this->authenticationDelegate->process($datas, $params, TRUE);
-		$id = (isset($params['POST']['id'])) ? $params['POST']['id'] : $_SESSION['userId'];
-		$user = ClassUtils::constructObjectWithId($id, USER_CLASS_NAME);
-		$user = $user->getById();
+		$this->objectDelegate->pushObjectById($datas, $params, USER_CLASS_NAME);
 		$view = new View($datas['view'], $datas['template']);
-		$view->assign("user", $user);
+		$view->assign("user", $datas['object']);
 	}
 
-	public function updateAction($params) {
+	public function addAction($params) {
+		ViewUtils::setPossiblesViewsTemplates($datas, USER_ADD_BACK_VIEW, USER_ADD_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($datas, $params);
+		if(isset($params['POST']['submit'])) {
+			$this->objectDelegate->add($params, USER_CLASS_NAME);
+		}
+		$view = new View($datas['view'], $datas['template']);
+	}
+
+	public function editAction($params) {
 		if(!isset($params['POST']['submit'])) {
 			return404View();
 		}
 		$this->authenticationDelegate->process($datas, $params, TRUE);
-		$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
-		$user->unsetRoleIfNotAdmin();
-		$user->update();
+		$this->objectDelegate->update($params, USER_CLASS_NAME);
 		header(LOCATION . DIRNAME . (isset($url[2]) && $url[2] === "back") ? USER_LIST_BACK_LINK : "");
 	}
 
@@ -53,45 +47,38 @@ class UserController implements ControllerInterface {
 			return404View();
 		}
 		$this->authenticationDelegate->process($datas, $params, TRUE);
-		$user = ClassUtils::constructObjectWithId($params['POST']['id'], USER_CLASS_NAME);
-		$user->delete();	
+		$this->objectDelegate->delete($params, USER_CLASS_NAME);
 		header(LOCATION . DIRNAME . USER_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LIST_BACK_VIEW, USER_LIST_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($datas, USER_LIST_BACK_VIEW, USER_LIST_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($datas, $params, TRUE);
 		if(isset($params['POST']['submit']) && !ViewUtils::isEmptyPost($params['POST'])) {
-			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
-			$users = $user->getWithParameters();
+			$this->objectDelegate->pushObjectsByParameters($datas, $params, USER_CLASS_NAME);
 		} else {
-			$user  = new User();
-			$users = $user->getAll();
+			$this->objectDelegate->pushAllObjects($datas, $params, USER_CLASS_NAME);
 		}
-		$view = new View($viewAndTemplateName['view'], $viewAndTemplateName['template']);
-		$view->assign("users", $users);
-	}
-
-	public function userAction($params) {
+		$view = new View($datas['view'], $datas['template']);
+		$view->assign("users", $datas['objects']);
 	}
 
 	public function loginAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, LOGIN_BACK_TEMPLATE, FRONT_TEMPLATE);
-		$wrongPassword = false;
+		ViewUtils::setPossiblesViewsTemplates($datas, USER_LOGIN_BACK_VIEW, USER_LOGIN_FRONT_VIEW, LOGIN_BACK_TEMPLATE, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($datas, $params);
 		if (isset($params['POST']['submit'])) {
-			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
-			$wrongPassword = $user->login();
+			$this->objectDelegate->login($datas, $params);
 		}
-		$view = new View($viewAndTemplateName['view'], $viewAndTemplateName['template']);
-		$view->assign("wrongPassword", $wrongPassword);
+		$view = new View($datas['view'], $datas['template']);
+		$view->assign("wrongPassword", (isset($datas['wrongPassword']) ? $datas['wrongPassword'] : FALSE));
 	}
 
-	public function disconnectAction() {
+	public function disconnectAction($params) {
 		if (!isset($_SESSION['userId'])) {
 			return404View();
 		}
 		$this->authenticationDelegate->process($datas, $params, TRUE);
-		$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
-		$user->disconnect();
+		$this->objectDelegate->disconnect($datas, $params);
 		header(LOCATION . DIRNAME);
 	}
 }

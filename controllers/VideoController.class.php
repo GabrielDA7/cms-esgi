@@ -2,7 +2,14 @@
 include "core/interfaces/ControllerInterface.php";
 class VideoController implements ControllerInterface {
 
-	public function __construct() {}
+	private $authenticationDelegate;
+	private $objectDelegate;
+	private $datas = array();
+
+	public function __construct() {
+		$this->authenticationDelegate = new AuthenticationDelegate();
+		$this->objectDelegate = new ObjectDelegate();
+	}
 
 	public function indexAction($params) {
 	}
@@ -17,28 +24,28 @@ class VideoController implements ControllerInterface {
 	}
 
 	public function listAction($params) {
-		$viewAndTemplateName = ViewUtils::isBackOfficeView($params['URL'], VIDEO_LIST_BACK_VIEW, VIDEO_LIST_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($datas, VIDEO_LIST_BACK_VIEW, VIDEO_LIST_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($datas, $params);
 		if (isset($params['POST']['submit'])) {
-			$video = ClassUtils::constructObjectWithParameters($params['POST'], VIDEO_CLASS_NAME);
-			$videos = $video->getWithParameters();
+			$this->objectDelegate->pushObjectsByParameters($datas, $params, VIDEO_CLASS_NAME);
 		} else {
-			$video = new Video();
-			$videos = $video->getAll();
+			$this->objectDelegate->pushAllObjects($datas, $params, VIDEO_CLASS_NAME);
 		}
-		$view = new View($viewAndTemplateName['view'], $viewAndTemplateName['template']);
-		$view->assign("videos" ,$videos);
+		$view = new View($datas['view'], $datas['template']);
+		$view->assign("videos" ,$datas['objects']);
 	}
 
 	/**
 	 * Get the video by id
 	 */
 	public function videoAction($params) {
+		ViewUtils::setPossiblesViewsTemplates($datas, VIDEO_BACK_VIEW, VIDEO_FRONT_VIEW, BACK_TEMPLATE, FRONT_TEMPLATE);
+		$this->authenticationDelegate->process($datas, $params);
 		if (isset($params['POST']['submit'])) {
-			$video = ClassUtils::constructObjectWithId($params['POST']['id'], VIDEO_CLASS_NAME);
-			$video = $video->getById();
+			$this->objectDelegate->pushObjectById($datas, $params, VIDEO_CLASS_NAME);
 		}
 		$view = new View(VIDEO_FRONT_VIEW, FRONT_TEMPLATE);
-		$view->assign("video" ,$video);
+		$view->assign("video" ,$datas['object']);
 	}
 }
 ?>
