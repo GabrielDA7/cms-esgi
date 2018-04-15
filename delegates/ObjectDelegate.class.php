@@ -30,7 +30,7 @@ class ObjectDelegate {
 	}
 
 	public function add($data, $params, $objectName) {
-		if (empty($data['errors'])) {
+		if ($data['errors'] != null) {
 			$object = ClassUtils::constructObjectWithParameters($params['POST'], $objectName);
 			if ($objectName == USER_CLASS_NAME) {
 				$object->generateToken();
@@ -40,7 +40,7 @@ class ObjectDelegate {
 	}
 
 	public function update(&$data, $params, $objectName, $redirectFront, $redirectBack) {
-		if (empty($data['errors'])) {
+		if ($data['errors'] != null) {
 			$objects = ClassUtils::constructObjectWithParameters($params['POST'], $objectName);
 			if ($objectName == USER_CLASS_NAME) {
 				$objects->unsetRoleIfNotAdmin();
@@ -60,7 +60,7 @@ class ObjectDelegate {
 	}
 
 	public function listAll(&$data, $params, $objectName) {
-		if (empty($data['errors'])) {
+		if ($data['errors'] != null) {
 			$this->pushObjectsByParameters($data, $params, $objectName);
 		} else {
 			$this->pushAllObjects($data, $params, $objectName);
@@ -68,7 +68,7 @@ class ObjectDelegate {
 	}
 
 	public function login(&$data, $params) {
-		if (empty($data['errors'])) {
+		if ($data['errors'] != null) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$data['wrongPassword'] = $user->login();
 		}
@@ -99,7 +99,7 @@ class ObjectDelegate {
 		    $mail->Host = gethostbyname('smtp.gmail.com'); 					  // Specify main and backup SMTP servers
 		    $mail->SMTPAuth = true;                               // Enable SMTP authentication
 		    $mail->Username = 'decultot.louis@gmail.com';         // SMTP username
-		    $mail->Password = '';                         // SMTP password
+		    $mail->Password = 'Pqr7%zab';                         // SMTP password
 		    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 		    $mail->Port = 465;                                    // TCP port to connect to
 		    $mail->SMTPOptions = array(
