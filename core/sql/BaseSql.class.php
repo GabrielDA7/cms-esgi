@@ -25,6 +25,7 @@ class BaseSql extends QueryConstructorSql {
 		$queryString = $this->constructInsertQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
+		return $this->getById($this->db->lastInsertId());
 	}
 
 	public function update() {

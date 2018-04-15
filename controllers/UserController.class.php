@@ -5,12 +5,14 @@ class UserController implements ControllerInterface {
 	private $authenticationDelegate;
 	private $objectDelegate;
 	private $formDelegate;
+	private $emailDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->objectDelegate = new ObjectDelegate();
 		$this->formDelegate = new FormDelegate();
+		$this->emailDelegate = new EmailDelegate();
 	}
 
 	public function indexAction($params) {}
@@ -31,6 +33,7 @@ class UserController implements ControllerInterface {
 		$this->authenticationDelegate->process($data, $params);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->objectDelegate->add($data, $params, USER_CLASS_NAME);
+		$this->emailDelegate->sendMail($data);
 		$view = new View($data);
 	}
 
@@ -81,7 +84,7 @@ class UserController implements ControllerInterface {
 		if (!isset($params['GET']['id']) || !isset($params['GET']['emailConfirm'])) {
 			return404View();
 		}
-		$this->objectDelegate->checkEmailConfirmation($params);
+		$this->emailDelegate->checkEmailConfirmation($params);
 	}
 }
 ?>

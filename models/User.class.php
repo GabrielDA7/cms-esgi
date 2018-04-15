@@ -29,8 +29,17 @@ class User extends UserSql {
 	}
 
 	public function generateToken() {
-		$this->token = base_convert(hash('sha256', time() . mt_rand()), 16, 36);
+		$this->token = $this->randomCode();
 		return $this->token;
+	}
+
+	public function generateEmailConfirm() {
+		$this->emailConfirm = $this->randomCode();
+		return $this->emailConfirm;
+	}
+
+	public function randomCode() {
+		return base_convert(hash('sha256', time() . mt_rand()), 16, 36);
 	}
 
 	/**
@@ -134,7 +143,7 @@ class User extends UserSql {
 	public function setFirstName($firstName) 	   { $this->firstName = ucfirst(strtolower($firstName)); }
 	public function setPwd($pwd) 			 	   { $this->pwd = (isset($pwd))? sha1($pwd) : null; 	 }
 	public function setEmail($email) 			   { $this->email = strtolower(trim($email)); 			 }
-	public function setEmailConfirm($emailConfirm) { $this->emailConfirm = $emailConfirm;  				 }
+	public function setEmailConfirm($emailConfirm) { $this->emailConfirm = $emailConfirm;				 }
 	public function setAge($age) 				   { $this->age = $age; 								 }
 	public function setToken($token) 			   { $this->token = $token; 							 }
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; 				 }
