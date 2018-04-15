@@ -30,7 +30,7 @@ class UserController implements ControllerInterface {
 		ViewUtils::setPossiblesViewsTemplates($data, USER_ADD_FRONT_VIEW, FRONT_TEMPLATE, USER_ADD_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
-		$this->objectDelegate->add($params, USER_CLASS_NAME);
+		$this->objectDelegate->add($data, $params, USER_CLASS_NAME);
 		$view = new View($data);
 	}
 
@@ -74,7 +74,14 @@ class UserController implements ControllerInterface {
 			return404View();
 		}
 		$this->authenticationDelegate->process($data, $params, TRUE);
-		$this->objectDelegate->disconnect($datas, $params);
+		$this->objectDelegate->disconnect($data, $params);
+	}
+
+	public function emailAction($params) {
+		if (!isset($params['GET']['id']) || !isset($params['GET']['emailConfirm'])) {
+			return404View();
+		}
+		$this->objectDelegate->checkEmailConfirmation($params);
 	}
 }
 ?>
