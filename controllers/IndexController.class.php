@@ -2,10 +2,12 @@
 class IndexController {
 
 	private $authenticationDelegate;
+	private $objectDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
+		$this->objectDelegate = new ObjectDelegate();
 	}
 
 	public function indexAction($params) {

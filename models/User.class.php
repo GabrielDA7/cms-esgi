@@ -7,6 +7,7 @@ class User extends UserSql {
 	protected $firstName;
 	protected $pwd;
 	protected $email;
+	protected $emailConfirm;
 	protected $age;
 	protected $token;
 
@@ -118,6 +119,7 @@ class User extends UserSql {
     public function getFirstName() 	  { return $this->firstName; 	 }
     public function getPwd() 		  { return $this->pwd; 			 }
     public function getEmail() 		  { return $this->email;   		 }
+    public function getEmailConfirm() { return $this->emailConfirm;  }
     public function getAge() 		  { return $this->age; 			 }
     public function getToken() 		  { return $this->token; 		 }
     public function getDateInserted() { return $this->date_inserted; }
@@ -128,10 +130,11 @@ class User extends UserSql {
 
     public function setUserName($userName) 		   { $this->userName = $userName; 						 }
     public function setId($id) 					   { $this->id = $id; 								  	 }
-	public function setLastName($lastName) 			   { $this->lastName = ucfirst(strtolower($lastName)); 	 }
+	public function setLastName($lastName) 		   { $this->lastName = ucfirst(strtolower($lastName)); 	 }
 	public function setFirstName($firstName) 	   { $this->firstName = ucfirst(strtolower($firstName)); }
 	public function setPwd($pwd) 			 	   { $this->pwd = (isset($pwd))? sha1($pwd) : null; 	 }
 	public function setEmail($email) 			   { $this->email = strtolower(trim($email)); 			 }
+	public function setEmailConfirm($emailConfirm) { $this->emailConfirm = $emailConfirm;  				 }
 	public function setAge($age) 				   { $this->age = $age; 								 }
 	public function setToken($token) 			   { $this->token = $token; 							 }
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; 				 }
