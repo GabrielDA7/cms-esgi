@@ -30,7 +30,7 @@ class ObjectDelegate {
 	}
 
 	public function add($data, $params, $objectName) {
-		if ($data['errors'] != null) {
+		if ($data['errors'] === FALSE) {
 			$object = ClassUtils::constructObjectWithParameters($params['POST'], $objectName);
 			if ($objectName == USER_CLASS_NAME) {
 				$object->generateToken();
@@ -40,7 +40,7 @@ class ObjectDelegate {
 	}
 
 	public function update(&$data, $params, $objectName, $redirectFront, $redirectBack) {
-		if ($data['errors'] != null) {
+		if ($data['errors'] === FALSE) {
 			$objects = ClassUtils::constructObjectWithParameters($params['POST'], $objectName);
 			if ($objectName == USER_CLASS_NAME) {
 				$objects->unsetRoleIfNotAdmin();
@@ -60,7 +60,7 @@ class ObjectDelegate {
 	}
 
 	public function listAll(&$data, $params, $objectName) {
-		if ($data['errors'] != null) {
+		if ($data['errors'] === FALSE) {
 			$this->pushObjectsByParameters($data, $params, $objectName);
 		} else {
 			$this->pushAllObjects($data, $params, $objectName);
@@ -68,7 +68,7 @@ class ObjectDelegate {
 	}
 
 	public function login(&$data, $params) {
-		if ($data['errors'] != null) {
+		if ($data['errors'] === FALSE) {
 			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
 			$data['wrongPassword'] = $user->login();
 		}

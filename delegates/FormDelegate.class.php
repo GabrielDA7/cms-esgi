@@ -44,6 +44,9 @@ class FormDelegate {
 			}
 
 		}
+		if (empty($errorsMsg)) {
+			return FALSE;
+		}
 		return $errorsMsg;
 	}
 
