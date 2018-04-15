@@ -3,18 +3,18 @@ class BaseSql extends QueryConstructorSql {
 
 	protected $table;
 	protected $db;
-	protected $columns;	
+	protected $columns;
 
 	public function __construct() {
 		QueryConstructorSql::__construct();
-		$this->table = get_called_class();
+		$this->table = strtolower(get_called_class());
 		try {
 			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
 		} catch(Exception $e) {
 			return404View();
 		}
 	}
-	
+
 	public function createDatabase($fileContent) {
 		$query = $this->db->prepare($fileContent);
 		$query->execute();
@@ -25,7 +25,6 @@ class BaseSql extends QueryConstructorSql {
 		$queryString = $this->constructInsertQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
-		
 	}
 
 	public function update() {
