@@ -18,7 +18,7 @@ class VideoController implements ControllerInterface {
 		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_ADD_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_ADD_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
 		$this->formDelegate->process($data, $params, VIDEO_CLASS_NAME);
-		$this->objectDelegate->add($params, VIDEO_CLASS_NAME);
+		$this->objectDelegate->add($data, $params, VIDEO_CLASS_NAME);
 		$view = new View($data);
 	}
 

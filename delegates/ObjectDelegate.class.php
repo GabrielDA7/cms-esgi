@@ -46,7 +46,7 @@ class ObjectDelegate {
 			header(LOCATION . DIRNAME . (isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 			exit;
 		} else {
-			$this->objectDelegate->pushObjectById($data, $params, $objectName);
+			$this->pushObjectById($data, $params, $objectName);
 		}
 	}
 
@@ -54,6 +54,7 @@ class ObjectDelegate {
 		$objects = ClassUtils::constructObjectWithId($params['POST']['id'], $objectName);
 		$objects->delete();
 		header(LOCATION . DIRNAME . (isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
+		exit;
 	}
 
 	public function listAll(&$data, $params, $objectName) {
@@ -75,6 +76,57 @@ class ObjectDelegate {
 		$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
 		$user->disconnect();
 		header(LOCATION . DIRNAME);
+		exit;
+	}
+
+	public function setting(&$data, $params, $objectName, $redirect) {
+		if ($data['errors'] === FALSE) {
+			$installation = ClassUtils::constructObjectWithParameters($params['POST'], INSTALLATION_CLASS_NAME);
+			$this->setConfData($installation);
+			header(LOCATION . DIRNAME . $redirect);
+			exit;
+		}
+	}
+
+	public function createdatabaseAction() {
+		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
+		$BaseSql = new BaseSql(); 
+		$BaseSql->createDatabase($fileContent);
+		header(LOCATION . DIRNAME . INSTALLATION_ADMIN_LINK);
+		exit;
+	}
+
+
+
+	private function setConfData($installation) {
+		$fname = "conf.inc.php";
+		$content = $this->getContentFromConfFile($fname);
+		$this->replaceData($content, $installation);
+		$this->overwriteContentFromConfFile($fname, $content);
+	}
+
+	private function getContentFromConfFile($fname) {
+		$fhandle = fopen($fname,"r");
+		$content = fread($fhandle,filesize($fname));
+		fclose($fhandle);
+		return $content;
+	}
+
+	private function overwriteContentFromConfFile($fname, $content) {
+		$fhandle = fopen($fname,"w");
+		fwrite($fhandle,$content);
+		fclose($fhandle);
+	}
+
+	private function replaceData(&$content, $installation) {
+		if ($installation->getInstallationDone()) {
+			$content = str_replace("FALSE", "TRUE", $content);
+		} else {
+			$columns = ClassUtils::removeUnsusedColumns($installation, get_class_vars(get_class()));
+			foreach ($columns as $key => $value) {
+				$content = str_replace(constant(strtoupper($key)), $value, $content);
+			}
+		}
 	}
 }
 ?>
