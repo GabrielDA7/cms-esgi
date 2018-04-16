@@ -8,7 +8,7 @@ class User extends UserSql {
 	protected $pwd;
 	protected $email;
 	protected $emailConfirm;
-	protected $age;
+	protected $avatar;
 	protected $token;
 
 	protected $dateInserted;
@@ -56,7 +56,7 @@ class User extends UserSql {
 	*/
 	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_ADD_FRONT_LINK, "submit"=>"S'inscrire"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_ADD_FRONT_LINK,  "enctype" => "multipart/form-data", "submit"=>"S'inscrire"],
 					"input"=>
 							[
 								"firstName"=>
@@ -75,14 +75,6 @@ class User extends UserSql {
 												"maxString"=>100,
 												"minString"=>2
 											],
-								"age"=>
-											[
-												"type"=>"number",
-												"placeholder"=>"Age",
-												"required"=>true,
-												"maxNum"=>100,
-												"minNum"=>10
-											],
 								"userName"=> 
 											[
 												"type"=>"text",
@@ -100,7 +92,7 @@ class User extends UserSql {
 								"emailConfirmation"=>
 											[
 												"type"=>"email",
-												"placeholder"=>"Confirmation de l'email",
+												"placeholder"=>"Confirmation de email",
 												"required"=>true,
 												"confirm"=>"email"
 											],
@@ -113,10 +105,20 @@ class User extends UserSql {
 								"pwdConfirmation"=>
 											[
 												"type"=>"password",
-												"placeholder"=>"Confirmation du mot de passe",
+												"placeholder"=>"Confirmation de mot de passe",
 												"required"=>true,
 												"confirm"=>"pwd"
 											],
+								"avatar"=>
+											[
+												"type"=>"file",
+												"maxSize" => 1000000,
+												"extension" => [
+																	"jpg",
+																	"png",
+																	"jpeg"
+																]
+											]
 							]
 				];
 	}
@@ -144,7 +146,7 @@ class User extends UserSql {
 												"maxString"=>255,
 												"minString"=>6,
 												"required"=>true
-											],
+											]
 							]
 				];
 	}
@@ -161,6 +163,7 @@ class User extends UserSql {
 								"id"=> 
 											[
 												"type"=>"hidden",
+												"placeholder"=>$user->getId(),
 												"value"=>$user->getId(),
 												"required"=>true
 											],
@@ -188,20 +191,12 @@ class User extends UserSql {
 												"minString"=>2,
 												"required"=>true
 											],
-								"age"=>
-											[
-												"type"=>"number",
-												"placeholder"=>$user->getAge(),
-												"required"=>true,
-												"maxNum"=>100,
-												"minNum"=>10
-											],
 								"email"=>	
 											[
 												"type"=>"email",
 												"placeholder"=>$user->getEmail(),
 												"required"=>true
-											],
+											]
 							]
 				];
 	}
@@ -213,7 +208,7 @@ class User extends UserSql {
     public function getPwd() 		  { return $this->pwd; 			 }
     public function getEmail() 		  { return $this->email;   		 }
     public function getEmailConfirm() { return $this->emailConfirm;  }
-    public function getAge() 		  { return $this->age; 			 }
+    public function getAvatar()		  { return $this->avatar; 		 }
     public function getToken() 		  { return $this->token; 		 }
     public function getDateInserted() { return $this->date_inserted; }
     public function getDateUpdated()  { return $this->dateUpdated;   }
@@ -228,7 +223,7 @@ class User extends UserSql {
 	public function setPwd($pwd) 			 	   { $this->pwd = (isset($pwd))? sha1($pwd) : null; 	 }
 	public function setEmail($email) 			   { $this->email = strtolower(trim($email)); 			 }
 	public function setEmailConfirm($emailConfirm) { $this->emailConfirm = $emailConfirm;				 }
-	public function setAge($age) 				   { $this->age = $age; 								 }
+	public function setAvatar($avatar) 			   { $this->avatar = $avatar; 							 }
 	public function setToken($token) 			   { $this->token = $token; 							 }
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; 				 }
 	public function setDateUpdated($dateUpdated)   { $this->dateUpdated = $dateUpdated; 				 }

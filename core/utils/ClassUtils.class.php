@@ -5,16 +5,35 @@ class classUtils {
 
 	public static function constructObjectWithParameters($columns, $objectName) {
 		$object = new $objectName();
-		foreach ($columns as $column => $value) {
-			if (!is_numeric($column)) {
-				self::removeUnderScoreFromForeignKeyColumn($column);
-				$setter = 'set'.ucfirst($column);
-				if (method_exists($object, $setter)) {
-					$object->$setter($value);
+		self::setObjectColumns($object, $columns);
+		return $object;
+	}
+
+	public static function setObjectColumns(&$object, $columns) {
+		if (is_array($columns) || is_object($columns)) {
+			foreach ($columns as $column => $value) {
+				if (!is_numeric($column)) {
+					self::removeUnderScoreFromForeignKeyColumn($column);
+					$setter = 'set'.ucfirst($column);
+					if (method_exists($object, $setter)) {
+						$object->$setter($value);
+					}
 				}
 			}
 		}
-		return $object;
+	}
+
+	public static function setObjectColumnsWithFilesUrl(&$object, $files) {
+		$filesUrl = [];
+		foreach ($files as $key => $value) {
+		    if ($value['error'] == UPLOAD_ERR_OK) {
+		        $tmp_name = $value["tmp_name"];
+		        $name = basename($value["name"]);
+		        $filesUrl += [$key => IMAGE_FOLDER_NAME."/".$name];
+		        move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$name);
+		    }
+		}
+		ClassUtils::setObjectColumns($object, $filesUrl);
 	}
 
 	public static function constructObjectWithId($id, $objectName) {

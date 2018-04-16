@@ -18,13 +18,12 @@ class UserController implements ControllerInterface {
 	public function indexAction($params) {}
 
 	public function userAction($params) {
-		if (isset($params['POST']['id'])) {
+		if (!isset($params['POST']['id']) && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, USER_USER_FRONT_VIEW, FRONT_TEMPLATE, USER_USER_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
-		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->objectDelegate->pushObjectById($data, $params, USER_CLASS_NAME);
 		$view = new View($data);
 	}

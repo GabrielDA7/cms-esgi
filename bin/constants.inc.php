@@ -104,6 +104,8 @@ define("HOME_VIEW", "home");
 
 define("CONTACT_VIEW", "contact");
 
+define("USER_USER_FRONT_VIEW", "userUser");
+define("USER_USER_BACK_VIEW", "userUserBack");
 define("USER_EDIT_FRONT_VIEW", "editUser");
 define("USER_EDIT_BACK_VIEW", "editUserBack");
 define("USER_LIST_FRONT_VIEW", "listUser");

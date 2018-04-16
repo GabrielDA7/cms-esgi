@@ -5,18 +5,15 @@
 ?>
 
 
-<form method="<?= $config["config"]["method"] ?>" action="<?= $config["config"]["action"] ?>">
+<form method="<?= $config["config"]["method"] ?>" action="<?= $config["config"]["action"] ?>" enctype="<?= $config["config"]["enctype"] ?>">
 
 	<?php foreach ($config["input"] as $name => $attributs):?>
 
-		<?php if($attributs["type"]=="text" || $attributs["type"]=="email" || $attributs["type"]=="number" || $attributs["type"]=="password"):?>
-
 			<input type="<?= $attributs["type"];?>" 
-				   placeholder="<?= $attributs["placeholder"];?>" 
 				   name="<?= $name;?>" 
+				   <?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
+				   <?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
 				   <?= (isset($attributs["required"])) ? "required='required'" : ""; ?>>
-
-		<?php endif;?>
 
 	<?php endforeach;?>
 

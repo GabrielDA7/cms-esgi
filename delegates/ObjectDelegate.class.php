@@ -32,6 +32,9 @@ class ObjectDelegate {
 				$object->generateToken();
 				$object->generateEmailConfirm();
 			}
+			if (!empty($params['FILES'])) {
+				setObjectColumnsWithFilesUrl($object, $params['FILES']);
+			}
 			$data[lcfirst($objectName)] = $object->insert();
 		}
 	}

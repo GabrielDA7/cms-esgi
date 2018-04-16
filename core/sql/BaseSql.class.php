@@ -21,11 +21,16 @@ class BaseSql extends QueryConstructorSql {
 	}
 
 	public function insert() {
-		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = $this->constructInsertQuery($this->table, $this->columns);
-		$query = $this->db->prepare($queryString);
-		$query->execute($this->columns);
-		return $this->getById($this->db->lastInsertId());
+		try {
+			$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
+			$queryString = $this->constructInsertQuery($this->table, $this->columns);
+			$query = $this->db->prepare($queryString);
+			$query->execute($this->columns);
+			return $this->getById($this->db->lastInsertId());
+		} catch (Exception $e) {
+			LogsUtils::process("logs", "Insert", "Error :" . $e->getMessage());
+			return null;
+		}
 	}
 
 	public function update() {
