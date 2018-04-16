@@ -5,3 +5,59 @@ Action : Attempt access
 Value : False
 Date : 04/16/2018 08:20:59 am
 -------------------------------------------------------
+IP + Date : ::1 - April 16, 2018, 8:49 am
+-----------------
+Url : http://localhost:8080/Uteach/user/delete
+Action : Attempt access
+Value : Access denied
+Date : 04/16/2018 08:49:22 am
+-------------------------------------------------------
+IP + Date : ::1 - April 16, 2018, 8:50 am
+-----------------
+Url : http://localhost:8080/Uteach/user/edit
+Action : Attempt access
+Value : Access denied
+Date : 04/16/2018 08:50:43 am
+-------------------------------------------------------
+IP + Date : ::1 - April 16, 2018, 8:50 am
+-----------------
+Url : http://localhost:8080/Uteach/index/node_modules/jquery/dist/jquery.min.js
+Action : Attempt access
+Value : Access denied
+Date : 04/16/2018 08:50:44 am
+-------------------------------------------------------
+IP + Date : ::1 - April 16, 2018, 8:50 am
+-----------------
+Url : http://localhost:8080/Uteach/index/node_modules/chart.js/dist/Chart.min.js
+Action : Attempt access
+Value : Access denied
+Date : 04/16/2018 08:50:44 am
+-------------------------------------------------------
+IP + Date : ::1 - April 16, 2018, 8:50 am
+-----------------
+Url : http://localhost:8080/Uteach/index/public/js/framework.js
+Action : Attempt access
+Value : Access denied
+Date : 04/16/2018 08:50:44 am
+-------------------------------------------------------
+IP + Date : ::1 - April 16, 2018, 9:59 am
+-----------------
+Url : http://localhost:8080/Uteach/user/edit
+Action : Attempt access
+Value : Access denied
+Date : 04/16/2018 09:59:11 am
+-------------------------------------------------------
+IP + Date : ::1 - April 16, 2018, 10:07 am
+-----------------
+Url : http://localhost:8080/Uteach/user/edit
+Action : Attempt access
+Value : Access denied
+Date : 04/16/2018 10:07:06 am
+-------------------------------------------------------
+IP + Date : ::1 - April 16, 2018, 10:08 am
+-----------------
+Url : http://localhost:8080/Uteach/user/delete
+Action : Attempt access
+Value : Access denied
+Date : 04/16/2018 10:08:58 am
+-------------------------------------------------------

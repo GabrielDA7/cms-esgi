@@ -22,10 +22,10 @@ class UserController implements ControllerInterface {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_BACK_VIEW, BACK_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($data, USER_USER_FRONT_VIEW, FRONT_TEMPLATE, USER_USER_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
-		$this->objectDelegate->pushObjectById($data, $params, VIDEO_CLASS_NAME);
+		$this->objectDelegate->pushObjectById($data, $params, USER_CLASS_NAME);
 		$view = new View($data);
 	}
 
@@ -39,12 +39,13 @@ class UserController implements ControllerInterface {
 	}
 
 	public function editAction($params) {
-		if(!isset($params['POST']['id']) && !isset($_SESSION['userId'])) {
+		if((!isset($params['POST']['id']) || $_SESSION['admin'] !== TRUE)  && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, USER_EDIT_FRONT_VIEW, FRONT_TEMPLATE, USER_EDIT_BACK_VIEW , BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params, TRUE);
+		$this->objectDelegate->pushObjectById($data, $params, USER_CLASS_NAME);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->objectDelegate->update($data, $params, USER_CLASS_NAME, "", USER_LIST_BACK_LINK);
 		$view = new View($data);

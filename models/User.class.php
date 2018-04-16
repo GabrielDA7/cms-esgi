@@ -54,7 +54,7 @@ class User extends UserSql {
 	/**
 	* Configuration of the add form user
 	*/
-	public static function configAddForm(){
+	public static function configAddForm($data){
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_ADD_FRONT_LINK, "submit"=>"S'inscrire"],
 					"input"=>
@@ -121,6 +121,90 @@ class User extends UserSql {
 				];
 	}
 
+	/**
+	* Configuration of the login form user
+	*/
+	public static function configLoginForm($data){
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LOGIN_FRONT_LINK, "submit"=>"Se connecter"],
+					"input"=>
+							[
+								"userName"=> 
+											[
+												"type"=>"text",
+												"placeholder"=>"Pseudo",
+												"maxString"=>100,
+												"minString"=>2,
+												"required"=>true
+											],
+								"pwd"=>		
+											[
+												"type"=>"password",
+												"placeholder"=>"Mot de passe",
+												"maxString"=>255,
+												"minString"=>6,
+												"required"=>true
+											],
+							]
+				];
+	}
+
+	/**
+	* Configuration of the login form user
+	*/
+	public static function configEditForm($data){
+		$user = $data['user'];
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "submit"=>"Edit"],
+					"input"=>
+							[
+								"id"=> 
+											[
+												"type"=>"hidden",
+												"value"=>$user->getId(),
+												"required"=>true
+											],
+								"userName"=> 
+											[
+												"type"=>"text",
+												"placeholder"=>$user->getUserName(),
+												"maxString"=>100,
+												"minString"=>2,
+												"required"=>true
+											],
+								"firstName"=>		
+											[
+												"type"=>"password",
+												"placeholder"=>$user->getFirstName(),
+												"maxString"=>255,
+												"minString"=>2,
+												"required"=>true
+											],
+								"lastName"=>		
+											[
+												"type"=>"password",
+												"placeholder"=>$user->getLastName(),
+												"maxString"=>255,
+												"minString"=>2,
+												"required"=>true
+											],
+								"age"=>
+											[
+												"type"=>"number",
+												"placeholder"=>$user->getAge(),
+												"required"=>true,
+												"maxNum"=>100,
+												"minNum"=>10
+											],
+								"email"=>	
+											[
+												"type"=>"email",
+												"placeholder"=>$user->getEmail(),
+												"required"=>true
+											],
+							]
+				];
+	}
 
 	public function getUserName() 	  { return $this->userName; 	 }
 	public function getId() 		  { return $this->id; 			 }

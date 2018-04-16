@@ -5,7 +5,7 @@ class FormDelegate {
 
 	public function process(&$data, $params, $objectName) {
 		$configName = "config" . ucfirst($params['URL'][1]) . "Form";
-		$data['config'] = $objectName::$configName();
+		$data['config'] = $objectName::$configName($data);
 		$data['errors'] = null;
 		if(isset($params['POST']['submit'])) {
 			$data['errors'] = $this->checkForm($data['config'], $params["POST"]);
