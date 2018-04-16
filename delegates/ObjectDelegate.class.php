@@ -88,7 +88,7 @@ class ObjectDelegate {
 		}
 	}
 
-	public function createdatabaseAction() {
+	public function createdatabase() {
 		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
 		$BaseSql = new BaseSql(); 
 		$BaseSql->createDatabase($fileContent);

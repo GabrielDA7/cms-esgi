@@ -14,6 +14,7 @@ class InstallationController {
 
 	public function indexAction($params) {
 		if (INSTALLATION_DONE) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, INSTALLATION_INDEX_VIEW, INSTALLATION_TEMPLATE);
@@ -23,6 +24,7 @@ class InstallationController {
 
 	public function settingAction($params) {
 		if (INSTALLATION_DONE) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, INSTALLATION_SETTING_VIEW, INSTALLATION_TEMPLATE);
@@ -34,6 +36,7 @@ class InstallationController {
 
 	public function databaseAction($params) {
 		if (INSTALLATION_DONE) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, INSTALLATION_DATABASE_VIEW, INSTALLATION_TEMPLATE);
@@ -45,6 +48,7 @@ class InstallationController {
 
 	public function adminAction($params) {
 		if (INSTALLATION_DONE) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, INSTALLATION_ADMIN_VIEW, INSTALLATION_TEMPLATE);
@@ -57,9 +61,10 @@ class InstallationController {
 
 	public function createdatabaseAction() {
 		if (INSTALLATION_DONE) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->objectDelegate->setting();
+		$this->objectDelegate->createdatabase();
 	}
 }
 ?>

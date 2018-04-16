@@ -19,6 +19,7 @@ class UserController implements ControllerInterface {
 
 	public function userAction($params) {
 		if (isset($params['POST']['id'])) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_BACK_VIEW, BACK_TEMPLATE);
@@ -39,6 +40,7 @@ class UserController implements ControllerInterface {
 
 	public function editAction($params) {
 		if(!isset($params['POST']['id']) && !isset($_SESSION['userId'])) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, USER_EDIT_FRONT_VIEW, FRONT_TEMPLATE, USER_EDIT_BACK_VIEW , BACK_TEMPLATE);
@@ -50,6 +52,7 @@ class UserController implements ControllerInterface {
 
 	public function deleteAction($params) {
 		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		$this->authenticationDelegate->process($data, $params, TRUE);
@@ -82,6 +85,7 @@ class UserController implements ControllerInterface {
 
 	public function emailAction($params) {
 		if (!isset($params['GET']['id']) || !isset($params['GET']['emailConfirm'])) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
 		$this->emailDelegate->checkEmailConfirmation($params);

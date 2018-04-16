@@ -39,9 +39,9 @@ class EmailDelegate {
 			    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 			    $mail->send();
-			    LogsUtils::process("Send email", "true");
+			    LogsUtils::process("logs", "Send email", "true");
 			} catch (Exception $e) {
-				LogsUtils::process("Send email", $mail->ErrorInfo);
+				LogsUtils::process("logs", "Send email", $mail->ErrorInfo);
 			}
 		}
 	}
