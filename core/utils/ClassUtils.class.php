@@ -23,7 +23,7 @@ class classUtils {
 		}
 	}
 
-	public static function setObjectColumnsWithFilesUrl(&$object, $files) {
+	public static function setObjectColumnsWithFilesUrlAndMoveFile(&$object, $files) {
 		$filesUrl = [];
 		foreach ($files as $key => $value) {
 		    if ($value['error'] == UPLOAD_ERR_OK) {
@@ -33,7 +33,7 @@ class classUtils {
 		        move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$name);
 		    }
 		}
-		ClassUtils::setObjectColumns($object, $filesUrl);
+		self::setObjectColumns($object, $filesUrl);
 	}
 
 	public static function constructObjectWithId($id, $objectName) {

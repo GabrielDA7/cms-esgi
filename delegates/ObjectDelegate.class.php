@@ -33,7 +33,7 @@ class ObjectDelegate {
 				$object->generateEmailConfirm();
 			}
 			if (!empty($params['FILES'])) {
-				setObjectColumnsWithFilesUrl($object, $params['FILES']);
+				$this->manageFiles($object, $params['FILES']);
 			}
 			$data[lcfirst($objectName)] = $object->insert();
 		}
@@ -130,6 +130,24 @@ class ObjectDelegate {
 				$content = str_replace(constant(strtoupper($key)), $value, $content);
 			}
 		}
+	}
+
+	private function manageFiles($object, $files) {
+		$filesUrl = $this->uploadFiles($files);
+		ClassUtils::setObjectColumns($object, $filesUrl);
+	}
+
+	private function uploadFiles($files) {
+		$filesUrl = [];
+		foreach ($files as $key => $value) {
+		    if ($value['error'] == UPLOAD_ERR_OK) {
+		        $tmp_name = $value["tmp_name"];
+		        $name = basename($value["name"]);
+		        $filesUrl += [$key => IMAGE_FOLDER_NAME."/".$name];
+		        move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$name);
+		    }
+		}
+		return $filesUrl;
 	}
 }
 ?>
