@@ -102,7 +102,10 @@ class FormDelegate {
 
 	public static function checkFileExtension($file, $fileExtension) {
 		$path_parts = pathinfo($file['name']);
-		return in_array($path_parts['extension'], $fileExtension);
+		if (isset($path_parts['extension'])) {
+			return in_array($path_parts['extension'], $fileExtension);
+		}
+		return true;
 	}
 }
 ?>
