@@ -224,6 +224,13 @@ html,body
   padding-left: 80px;
 }
 
+.front-title h2 {
+  color: $color-secondary;
+  font-size: $font-size-L;
+  font-weight: 600;
+  line-height: 80px;
+}
+
 .login-container {
   background-color: $color-secondary;
 }
@@ -249,13 +256,6 @@ html,body
 }
 
 // Login front -----------------------------------------------------------------
-
-#front-add-user h2 {
-  color: $color-secondary;
-  font-size: $font-size-L;
-  font-weight: 600;
-  line-height: 80px;
-}
 
 #front-add-user h3 {
   color: $color-secondary;
