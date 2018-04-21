@@ -72,7 +72,6 @@ $(function() {
       }
   });
 
-
   /* Home slider */
   if ( $( "#slider" ).length )
   {
@@ -119,6 +118,9 @@ $(function() {
     }
     var hiddenContent = $(this).parent().siblings('.content-hidden').toggle('fast');
   });
-
-
 });
+
+function closeDiv(div){
+  var elem = $('#' + div);
+  elem.css("display","none");
+}

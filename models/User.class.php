@@ -62,7 +62,7 @@ class User extends UserSql {
 								"firstName"=>
 											[
 												"type"=>"text",
-												"placeholder"=>"Prénom",
+												"placeholder"=>"First name",
 												"required"=>true,
 												"maxString"=>100,
 												"minString"=>2
@@ -70,20 +70,20 @@ class User extends UserSql {
 								"lastName"=>
 											[
 												"type"=>"text",
-												"placeholder"=>"Nom",
+												"placeholder"=>"Last name",
 												"required"=>true,
 												"maxString"=>100,
 												"minString"=>2
 											],
-								"userName"=> 
+								"userName"=>
 											[
 												"type"=>"text",
-												"placeholder"=>"Pseudo",
+												"placeholder"=>"Username",
 												"required"=>true,
 												"maxString"=>100,
 												"minString"=>2
 											],
-								"email"=>	
+								"email"=>
 											[
 												"type"=>"email",
 												"placeholder"=>"Email",
@@ -92,33 +92,23 @@ class User extends UserSql {
 								"emailConfirmation"=>
 											[
 												"type"=>"email",
-												"placeholder"=>"Confirmation de email",
+												"placeholder"=>"Email confirmation",
 												"required"=>true,
 												"confirm"=>"email"
 											],
-								"pwd"=>		
+								"pwd"=>
 											[
 												"type"=>"password",
-												"placeholder"=>"Mot de passe",
+												"placeholder"=>"Password",
 												"required"=>true
 											],
 								"pwdConfirmation"=>
 											[
 												"type"=>"password",
-												"placeholder"=>"Confirmation de mot de passe",
+												"placeholder"=>"Password confirmation",
 												"required"=>true,
 												"confirm"=>"pwd"
 											],
-								"avatar"=>
-											[
-												"type"=>"file",
-												"maxSize" => 1000000,
-												"extension" => [
-																	"jpg",
-																	"png",
-																	"jpeg"
-																]
-											]
 							]
 				];
 	}
@@ -131,7 +121,7 @@ class User extends UserSql {
 					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LOGIN_FRONT_LINK, "submit"=>"Se connecter"],
 					"input"=>
 							[
-								"userName"=> 
+								"userName"=>
 											[
 												"type"=>"text",
 												"placeholder"=>"Pseudo",
@@ -139,7 +129,7 @@ class User extends UserSql {
 												"minString"=>2,
 												"required"=>true
 											],
-								"pwd"=>		
+								"pwd"=>
 											[
 												"type"=>"password",
 												"placeholder"=>"Mot de passe",
@@ -160,14 +150,14 @@ class User extends UserSql {
 					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "submit"=>"Edit"],
 					"input"=>
 							[
-								"id"=> 
+								"id"=>
 											[
 												"type"=>"hidden",
 												"placeholder"=>$user->getId(),
 												"value"=>$user->getId(),
 												"required"=>true
 											],
-								"userName"=> 
+								"userName"=>
 											[
 												"type"=>"text",
 												"placeholder"=>$user->getUserName(),
@@ -175,7 +165,7 @@ class User extends UserSql {
 												"minString"=>2,
 												"required"=>true
 											],
-								"firstName"=>		
+								"firstName"=>
 											[
 												"type"=>"password",
 												"placeholder"=>$user->getFirstName(),
@@ -183,7 +173,7 @@ class User extends UserSql {
 												"minString"=>2,
 												"required"=>true
 											],
-								"lastName"=>		
+								"lastName"=>
 											[
 												"type"=>"password",
 												"placeholder"=>$user->getLastName(),
@@ -191,7 +181,7 @@ class User extends UserSql {
 												"minString"=>2,
 												"required"=>true
 											],
-								"email"=>	
+								"email"=>
 											[
 												"type"=>"email",
 												"placeholder"=>$user->getEmail(),

@@ -1,22 +1,15 @@
-<?php 
-	if (!empty($errors)): 
-		print_r($errors);
-	endif; 
-?>
-
-
 <form method="<?= $config["config"]["method"] ?>" action="<?= $config["config"]["action"] ?>" enctype="<?= $config["config"]["enctype"] ?>">
 
 	<?php foreach ($config["input"] as $name => $attributs):?>
-
-			<input type="<?= $attributs["type"];?>" 
-				   name="<?= $name;?>" 
+			<label class="form-label-top form-group" for="<?= $name; ?>"><?= $attributs["label"]; ?></label>
+			<input class="input" type="<?= $attributs["type"];?>"
+				   name="<?= $name;?>"
 				   <?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
 				   <?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
 				   <?= (isset($attributs["required"])) ? "required='required'" : ""; ?>>
 
 	<?php endforeach;?>
 
-	<input type="submit" name="submit" value="<?= $config["config"]["submit"];?>" >
+	<input class="btn btn-filled-orange btn-full-width form-group form-group-bottom" type="submit" name="submit" value="<?= $config["config"]["submit"];?>" >
 
 </form>

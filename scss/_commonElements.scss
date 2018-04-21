@@ -209,12 +209,61 @@ html,body
 }
 
 #dashboard-stat .wrapper-icon i {
+  line-height: 30px;
   right: 10px;
 }
 
 /* -----------------------------------------------------------------------------
 * Front
 */
+
+.front-title {
+  height: 80px;
+  background-color: $color-quaternary;
+  width: 100%;
+  padding-left: 80px;
+}
+
+.login-container {
+  background-color: $color-secondary;
+}
+
+.main-section {
+  padding: 35px 0 35px 0;
+}
+
+.description {
+  font-size: $font-size-M;
+}
+
+.errors {
+  background-color: #d95858;
+  border: 2px solid #c40018;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 5px 0 5px 0;
+}
+
+.errors i {
+  right: 10px;
+}
+
+// Login front -----------------------------------------------------------------
+
+#front-add-user h2 {
+  color: $color-secondary;
+  font-size: $font-size-L;
+  font-weight: 600;
+  line-height: 80px;
+}
+
+#front-add-user h3 {
+  color: $color-secondary;
+  font-size: $font-size-M;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 
 // Top Nav ---------------------------------------------------------------------
 #front-topnav {
@@ -231,6 +280,7 @@ html,body
 }
 
 #front-topnav .wrapper-icon i {
+  line-height: 30px;
   left: 10px;
 }
 
@@ -503,6 +553,15 @@ html,body
   margin-top: 20px;
 }
 
+.form-group-bottom {
+  margin-bottom: 20px;
+}
+
+.form-label-top{
+  margin-bottom: 5px;
+  display: block;
+}
+
 .input {
   height: 30px;
   width: 100%;
@@ -550,7 +609,6 @@ html,body
 }
 
 .wrapper-icon i {
-  line-height: 30px;
   position: absolute;
 }
 
@@ -580,6 +638,10 @@ html,body
 
 .btn-extra-large {
   width: $element-width-XL;
+}
+
+.btn-full-width {
+  width: 100%;
 }
 
 .btn-filled-orange {
