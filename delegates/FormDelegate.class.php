@@ -8,7 +8,7 @@ class FormDelegate {
 		$data['errors'] = null;
 		if(isset($params['POST']['submit'])) {
 			$data['errors'] = $this->checkForm($data['config'], $params["POST"], $params['FILES']);
-			if ($objectName === USER_CLASS_NAME) {
+			if ($objectName === USER_CLASS_NAME && ClassUtils::getCallingFunction() == "addAction") {
 				$this->checkUserNameAndEmailDisponibility($data['errors'], $params["POST"]);
 			}
 		}

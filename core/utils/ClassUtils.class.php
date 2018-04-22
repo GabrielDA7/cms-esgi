@@ -26,12 +26,12 @@ class classUtils {
 	public static function setObjectColumnsWithFilesUrlAndMoveFile(&$object, $files) {
 		$filesUrl = [];
 		foreach ($files as $key => $value) {
-		    if ($value['error'] == UPLOAD_ERR_OK) {
-		        $tmp_name = $value["tmp_name"];
-		        $name = basename($value["name"]);
-		        $filesUrl += [$key => IMAGE_FOLDER_NAME."/".$name];
-		        move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$name);
-		    }
+			if ($value['error'] == UPLOAD_ERR_OK) {
+				$tmp_name = $value["tmp_name"];
+				$name = basename($value["name"]);
+				$filesUrl += [$key => IMAGE_FOLDER_NAME."/".$name];
+				move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$name);
+			}
 		}
 		self::setObjectColumns($object, $filesUrl);
 	}
@@ -52,14 +52,27 @@ class classUtils {
 
 	public static function removeNullColumns(&$columns) {
 		foreach ($columns as $key=>$value) {
-		    if (is_null($value) || $value == "") {
-		        unset($columns[$key]);
-		    }
+			if (is_null($value) || $value == "") {
+				unset($columns[$key]);
+			}
 		}
 	}
 
 	public static function removeUnderScoreFromForeignKeyColumn(&$column) {
 		$column = str_replace(UNDERSCORE, "", $column);
+	}
+
+	public static function getCallingFunction() {
+		$caller = debug_backtrace();
+		$caller = $caller[2];
+		$r = $caller['function'] . '()';
+		if (isset($caller['class'])) {
+			$r .= ' in ' . $caller['class'];
+		}
+		if (isset($caller['object'])) {
+			$r .= ' (' . get_class($caller['object']) . ')';
+		}
+		return $r;
 	}
 }
 ?>
