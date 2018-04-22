@@ -1,7 +1,9 @@
 <form method="<?= $config["config"]["method"] ?>" action="<?= $config["config"]["action"] ?>" enctype="<?= $config["config"]["enctype"] ?>">
 
 	<?php foreach ($config["input"] as $name => $attributs):?>
-			<label class="form-label-top form-group" for="<?= $name; ?>"><?= $attributs["label"]; ?></label>
+			<?php if(isset($attributs["label"]) && !empty($attributs["label"])){?>
+				<label class="form-label-top form-group" for="<?= $name; ?>"><?= $attributs["label"]; ?></label>
+			<?php } ?>
 			<input class="input" type="<?= $attributs["type"];?>"
 				   name="<?= $name;?>"
 				   <?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
