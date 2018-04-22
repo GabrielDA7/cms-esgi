@@ -9,23 +9,9 @@ class ViewUtils {
 	}
 
 	public static function getErrors($errors) {
-		if($errors != null): ?>
-			<div id="errors" class="row">
-				<div class="M12">
-					<div class="errors">
-						<div class="wrapper-icon">
-							<i onclick="closeDiv('errors')" class="fas fa-times"></i>
-						</div>
-						<?php foreach ($errors as $value): ?>
-								<div class="M12">
-									<?= $value; ?>
-								</div>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			</div>
-		<?php endif;
-
+		if(isset($errors) && !empty($errors)){
+			include_once VIEW_FOLDER_NAME . "/errors.view.php";
+		}
 	}
 }
 ?>
