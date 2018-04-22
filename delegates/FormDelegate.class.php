@@ -4,11 +4,13 @@ class FormDelegate {
 	public function __construct() {}
 
 	public function process(&$data, $params, $objectName) {
-		$configName = "config" . ucfirst($params['URL'][1]) . "Form";
-		$data['config'] = $objectName::$configName($data);
+		$data['config'] = $this->getFormConfig($params['URL'], $data, $objectName);
 		$data['errors'] = null;
 		if(isset($params['POST']['submit'])) {
 			$data['errors'] = $this->checkForm($data['config'], $params["POST"], $params['FILES']);
+			if ($objectName === USER_CLASS_NAME) {
+				$this->checkUserNameAndEmailDisponibility($data['errors'], $params["POST"]);
+			}
 		}
 	}
 
@@ -54,6 +56,29 @@ class FormDelegate {
 			return FALSE;
 		}
 		return $errorsMsg;
+	}
+
+	private function checkUserNameAndEmailDisponibility(&$errors, $post) {
+		if (isset($post['userName'])) {
+			$this->checkColumnDisponibility("userName", $errors, $post);
+		}
+		if (isset($post['email'])) {
+			$this->checkColumnDisponibility("email", $errors, $post);
+		}
+	}
+
+	private function checkColumnDisponibility($columnName, &$errors, $post) {
+		$user = new User();
+		$user->setUserName($post[$columnName]);
+		$user->getWithParameters();
+		if (!empty($user)) {
+			$errors[] = $columnName . " est déjà utilisé";
+		}
+	}
+
+	private function getFormConfig($url, $data, $objectName) {
+		$configName = "config" . ucfirst($url[1]) . "Form";
+		return $objectName::$configName($data);
 	}
 
 	private function isEmptyPost($post) {

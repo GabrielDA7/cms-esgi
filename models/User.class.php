@@ -186,7 +186,25 @@ class User extends UserSql {
 												"type"=>"email",
 												"placeholder"=>$user->getEmail(),
 												"required"=>true
-											]
+											],
+								"avatar"=>
+ 
+					                      	[
+					                        	"type"=>"file",
+					 
+					                        	"maxSize" => 1000000,
+					 
+					                        	"extension" => 
+					                        					[
+					 
+						                                  			"jpg",
+						 
+						                                  			"png",
+						 
+						                                  			"jpeg"
+					 
+					                                		   	]
+					                     	]
 							]
 				];
 	}
