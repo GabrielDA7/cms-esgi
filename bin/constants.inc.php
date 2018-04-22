@@ -1,4 +1,4 @@
-<?php 
+<?php
 /******************************
 ********** CLASS NAMES ********
 *******************************/
@@ -31,6 +31,7 @@ define("DELEGATES_FOLDER_NAME", "delegates");
 define("MODELS_FOLDER_NAME", "models");
 define("CORE_FOLDER_NAME", "core");
 define("VIEWS_FOLDER_NAME", "views");
+define("MODALS_FOLDER_NAME", "views/modals");
 define("VIEWS_TEMLATES_FOLDER_NAME", "views/templates");
 define("CSS_FOLDER_NAME", "public/css");
 define("IMAGE_FOLDER_NAME", "public/img");

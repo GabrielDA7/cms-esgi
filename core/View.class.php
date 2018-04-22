@@ -28,6 +28,6 @@ class View {
 	}
 
 	public function addModal($modal,$config, $errors=[] ){
-		include "views/modals/".$modal.".mdl.php";
+		include MODALS_FOLDER_NAME . "/" . $modal.".mdl.php";
 	}
 }

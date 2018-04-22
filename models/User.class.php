@@ -56,7 +56,7 @@ class User extends UserSql {
 	*/
 	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_ADD_FRONT_LINK,  "enctype" => "multipart/form-data", "submit"=>"S'inscrire"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_ADD_FRONT_LINK,  "enctype" => "multipart/form-data", "submit"=>"Sign up"],
 					"input"=>
 							[
 								"firstName"=>
@@ -118,7 +118,7 @@ class User extends UserSql {
 	*/
 	public static function configLoginForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LOGIN_FRONT_LINK, "submit"=>"Se connecter"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_LOGIN_FRONT_LINK, "submit"=>"Sign in"],
 					"input"=>
 							[
 								"userName"=>

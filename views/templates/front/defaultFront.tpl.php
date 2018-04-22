@@ -17,20 +17,20 @@
             <nav class="container-fluid" id="front-topnav">
                 <div class="left-nav">
                   <img class="logo-nav" src="<?= DIRNAME.LOGO_PATH;?>" alt="logo" title="logo">
-                  <a href="<?= DIRNAME;?>" class="active">Accueil</a>
-                  <a href="#cours">Cours</a>
-                  <a href="#formations">Formations</a>
-                  <a href="#videos">Vidéos</a>
+                  <a href="<?= DIRNAME;?>" class="active">Home</a>
+                  <a href="#cours">Courses</a>
+                  <a href="#formations">Trainings</a>
+                  <a href="#videos">Videos</a>
                   <a href="#premium">Premium</a>
                 </div>
 
                 <div class="right-nav">
                   <?php if(isset($_SESSION['userName'])) { ?>
                     <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_EDIT_FRONT_LINK;?>"><?= $_SESSION['userName']; ?></a>
-                    <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.USER_DISCONNECT_LINK;?>">Se deconnecter</a>
+                    <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.USER_DISCONNECT_LINK;?>">Logout</a>
                   <?php } else { ?>
-                  <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_LOGIN_FRONT_LINK;?>">Se connecter</a>
-                  <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.USER_ADD_FRONT_LINK;?>">S'inscrire</a>
+                  <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_LOGIN_FRONT_LINK;?>">Sign in</a>
+                  <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.USER_ADD_FRONT_LINK;?>">Sign up</a>
                   <?php } ?>
                   <?php if(isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE) { ?>
                     <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.STATISTIC_INDEX_BACK_LINK;?>">Back Office</a>

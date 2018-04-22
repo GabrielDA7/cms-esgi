@@ -235,6 +235,11 @@ html,body
   background-color: $color-secondary;
 }
 
+.login-container .input {
+  background-color: $color-secondary;
+  color: $color-primary;
+}
+
 .main-section {
   padding: 35px 0 35px 0;
 }
@@ -263,6 +268,8 @@ html,body
   font-weight: 600;
   margin-bottom: 10px;
 }
+
+
 
 
 // Top Nav ---------------------------------------------------------------------
@@ -308,6 +315,7 @@ html,body
   font-size: $font-size-S;
   width: 120px;
   height: 60px;
+  font-weight: 600;
 }
 
 #front-topnav .left-nav a:nth-of-type(1) {
@@ -329,6 +337,10 @@ html,body
   margin-left: 25px;
 }
 
+#front-topnav .input-medium:focus {
+  border: 2px solid $color-tertiary;
+  border-radius: 5px;
+}
 // SLIDER ----------------------------------------------------------------------
 
 #slider {
@@ -558,19 +570,26 @@ html,body
 }
 
 .form-label-top{
-  margin-bottom: 5px;
   display: block;
 }
 
 .input {
   height: 30px;
   width: 100%;
-  border: 2px solid $color-primary;
+  border: 2px solid $color-quaternary;
   border-radius: 5px;
-  padding-left: 5px;
+  padding-left: 15px;
+  font-size: $font-size-XS;
+  font-weight: 600;
+}
+
+.input::placeholder {
+  color: $color-primary;
 }
 
 .input-medium {
+  border: 2px solid $color-quaternary;
+  border-radius: 5px;
   width: $element-width-M;
   height: 30px;
 }
