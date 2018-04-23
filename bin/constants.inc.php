@@ -84,6 +84,8 @@ define("USER_LOGIN_FRONT_LINK", "user/login");
 define("USER_LOGIN_BACK_LINK", "user/login/back");
 define("USER_DISCONNECT_LINK", "user/disconnect");
 
+define("TRAINNING_LIST_BACK_LINK", "trainning/list/back");
+
 
 define("INDEX_ERROR_LINK", "index/error");
 
@@ -120,6 +122,8 @@ define("VIDEO_FRONT_VIEW", "video");
 define("VIDEO_LIST_FRONT_VIEW", "listVideo");
 
 define("STATISTIC_BACK_VIEW", "statistic");
+
+define("TRAINNING_LIST_BACK_VIEW", "listTrainningBack");
 
 /******************************
 ********** ROLE ***************

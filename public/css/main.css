@@ -782,11 +782,54 @@ html, body {
   padding: 10px; }
 
 #dashboard-stat .wrapper-icon i {
+  line-height: 30px;
   right: 10px; }
 
 /* -----------------------------------------------------------------------------
 * Front
 */
+.front-title {
+  height: 80px;
+  background-color: #E8E8E8;
+  width: 100%;
+  padding-left: 80px; }
+
+.front-title h2 {
+  color: #222831;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 80px; }
+
+.login-container {
+  background-color: #222831;
+  border-radius: 5px; }
+
+.login-container .input {
+  background-color: #222831;
+  color: white; }
+
+.main-section {
+  padding: 35px 0 35px 0; }
+
+.description {
+  font-size: 21px; }
+
+.errors {
+  background-color: #d95858;
+  border: 2px solid #c40018;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 5px 0 5px 0; }
+
+.errors i {
+  right: 10px; }
+
+#front-add-user h3 {
+  color: #222831;
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 10px; }
+
 #front-topnav {
   height: 60px;
   background-color: #222831;
@@ -799,6 +842,7 @@ html, body {
   margin-right: 25px; }
 
 #front-topnav .wrapper-icon i {
+  line-height: 30px;
   left: 10px; }
 
 #front-topnav .right-nav a {
@@ -821,7 +865,8 @@ html, body {
   text-decoration: none;
   font-size: 18px;
   width: 120px;
-  height: 60px; }
+  height: 60px;
+  font-weight: 600; }
 
 #front-topnav .left-nav a:nth-of-type(1) {
   margin-left: 25px; }
@@ -836,6 +881,10 @@ html, body {
 #front-topnav .right-nav a:nth-of-type(1) {
   margin-right: 35px;
   margin-left: 25px; }
+
+#front-topnav .input-medium:focus {
+  border: 2px solid #F96D00;
+  border-radius: 5px; }
 
 #slider {
   height: 200px;
@@ -1020,14 +1069,27 @@ html, body {
 .form-group {
   margin-top: 20px; }
 
+.form-group-bottom {
+  margin-bottom: 20px; }
+
+.form-label-top {
+  display: block; }
+
 .input {
   height: 30px;
   width: 100%;
-  border: 2px solid white;
+  border: 2px solid #E8E8E8;
   border-radius: 5px;
-  padding-left: 5px; }
+  padding-left: 15px;
+  font-size: 14px;
+  font-weight: 600; }
+
+.input::placeholder {
+  color: white; }
 
 .input-medium {
+  border: 2px solid #E8E8E8;
+  border-radius: 5px;
   width: 300px;
   height: 30px; }
 
@@ -1058,7 +1120,6 @@ html, body {
   position: relative; }
 
 .wrapper-icon i {
-  line-height: 30px;
   position: absolute; }
 
 .btn {
@@ -1082,6 +1143,9 @@ html, body {
 
 .btn-extra-large {
   width: 500px; }
+
+.btn-full-width {
+  width: 100%; }
 
 .btn-filled-orange {
   border: 2px solid #F96D00;

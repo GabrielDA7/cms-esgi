@@ -43,7 +43,7 @@
                              <i class="fas fa-graduation-cap"></i>Formations<i class="fas fa-chevron-down"></i>
                            </a>
                            <ul class="submenu-item">
-                             <li><a href="#">Liste des formations</a></li>
+                             <li><a href="<?= DIRNAME . TRAINNING_LIST_BACK_LINK; ?>">Liste des formations</a></li>
                              <li><a href="#">Ajouter une formation</a></li>
                            </ul>
                          </li>

@@ -17,7 +17,7 @@ class TrainningController implements ControllerInterface {
 
 	public function indexAction($params) {
 	}
-	
+
 	public function addAction($params) {
 		ViewUtils::setPossiblesViewsTemplates($data, TRAINNING_ADD_FRONT_VIEW, FRONT_TEMPLATE, TRAINNING_ADD_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
@@ -55,9 +55,9 @@ class TrainningController implements ControllerInterface {
 		$this->objectDelegate->listAll($data, $params, TRAINNING_CLASS_NAME);
 		$view = new View($data);
 	}
-	
+
 	public function trainningAction($params) {
-		if (!isset($params['POST']['id']) && !isset($_SESSION['userId'])) {
+		if (!isset($params['POST']['id'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
@@ -68,7 +68,7 @@ class TrainningController implements ControllerInterface {
 	}
 
 	/**
-	 * Get the asssocieted lessons at the current trainning 
+	 * Get the asssocieted lessons at the current trainning
 	 */
 	public function lessonsAction($params) {
 	}

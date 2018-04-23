@@ -4,7 +4,7 @@
 			<?php if(isset($attributs["label"]) && !empty($attributs["label"])): ?>
 				<label class="form-label-top form-group" for="<?= $name; ?>"><?= $attributs["label"]; ?></label>
 			<?php endif; ?>
-			<input class="input" type="<?= $attributs["type"];?>"
+			<input class="input form-group" type="<?= $attributs["type"];?>"
 				   name="<?= $name;?>"
 				   <?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
 				   <?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>

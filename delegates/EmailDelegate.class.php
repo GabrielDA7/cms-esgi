@@ -26,7 +26,7 @@ class EmailDelegate {
 			    $this->setSMTP($mail);
 			    //Recipients
 			    $mail->setFrom('decultot.louis@gmail.com', 'Mailer');
-			    $mail->addAddress($user->getEmail()); 
+			    $mail->addAddress($user->getEmail());
 
 			    //Attachments
 			    /*$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
@@ -50,8 +50,8 @@ class EmailDelegate {
 		$mail->isSMTP();                                      // Set mailer to use SMTP
 	    $mail->Host = gethostbyname('smtp.gmail.com'); 		  // Specify main and backup SMTP servers
 	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-	    $mail->Username = '';         // SMTP username
-	    $mail->Password = '';                         // SMTP password
+	    $mail->Username = 'gabrieldaoud3112@gmail.com';         // SMTP username
+	    $mail->Password = '1234ggaabb78$#';                         // SMTP password
 	    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 	    $mail->Port = 465;                                    // TCP port to connect to
 	    $mail->SMTPOptions = array(
