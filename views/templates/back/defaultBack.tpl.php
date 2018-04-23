@@ -38,7 +38,15 @@
                          <li><a href="<?= DIRNAME.STATISTIC_INDEX_BACK_LINK;?>"><i class="fas fa-chart-area"></i>Statistics</a></li>
                          <li><a href=""><i class="fas fa-columns"></i>Pages</a></li>
                          <li><a href=""><i class="fas fa-graduation-cap"></i>Courses</a></li>
-                         <li><a href=""><i class="fas fa-graduation-cap"></i>Formations</a></li>
+                         <li class="sub-menu">
+                           <a href="">
+                             <i class="fas fa-graduation-cap"></i>Formations<i class="fas fa-chevron-down"></i>
+                           </a>
+                           <ul class="submenu-item">
+                             <li><a href="#">Liste des formations</a></li>
+                             <li><a href="#">Ajouter une formation</a></li>
+                           </ul>
+                         </li>
                          <li><a href=""><i class="fas fa-film"></i>Videos</a></li>
                          <li><a href=""><i class="fas fa-comments"></i>Comments</a></li>
                          <li><a href=""><i class="fas fa-gem"></i>Premium</a></li>
