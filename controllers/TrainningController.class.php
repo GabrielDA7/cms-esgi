@@ -19,7 +19,7 @@ class TrainningController implements ControllerInterface {
 	}
 
 	public function addAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, TRAINNING_ADD_FRONT_VIEW, FRONT_TEMPLATE, TRAINNING_ADD_BACK_VIEW, BACK_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($data, "", "", TRAINNING_ADD_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
 		$this->formDelegate->process($data, $params, TRAINNING_CLASS_NAME);
 		$this->objectDelegate->add($data, $params, TRAINNING_CLASS_NAME);
@@ -31,7 +31,7 @@ class TrainningController implements ControllerInterface {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, TRAINNING_EDIT_FRONT_VIEW, FRONT_TEMPLATE, TRAINNING_EDIT_BACK_VIEW , BACK_TEMPLATE);
+		ViewUtils::setPossiblesViewsTemplates($data, "", "", TRAINNING_EDIT_BACK_VIEW , BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params, TRUE);
 		$this->objectDelegate->pushObjectById($data, $params, TRAINNING_CLASS_NAME);
 		$this->formDelegate->process($data, $params, TRAINNING_CLASS_NAME);

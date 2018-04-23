@@ -167,7 +167,7 @@ class User extends UserSql {
 											],
 								"firstName"=>
 											[
-												"type"=>"password",
+												"type"=>"text",
 												"placeholder"=>$user->getFirstName(),
 												"maxString"=>255,
 												"minString"=>2,
@@ -175,7 +175,7 @@ class User extends UserSql {
 											],
 								"lastName"=>
 											[
-												"type"=>"password",
+												"type"=>"text",
 												"placeholder"=>$user->getLastName(),
 												"maxString"=>255,
 												"minString"=>2,
@@ -205,6 +205,46 @@ class User extends UserSql {
 					 
 					                                		   	]
 					                     	]
+							]
+				];
+	}
+
+	public static function configListForm($data){
+		$user = $data['user'];
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LIST_BACK_LINK, "submit"=>"Edit"],
+					"input"=>
+							[
+								"userName"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"UserName",
+												"maxString"=>100,
+												"minString"=>2,
+												"required"=>true
+											],
+								"firstName"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"First Name",
+												"maxString"=>255,
+												"minString"=>2,
+												"required"=>true
+											],
+								"lastName"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"Last Name",
+												"maxString"=>255,
+												"minString"=>2,
+												"required"=>true
+											],
+								"email"=>
+											[
+												"type"=>"email",
+												"placeholder"=>"Email",
+												"required"=>true
+											]
 							]
 				];
 	}
