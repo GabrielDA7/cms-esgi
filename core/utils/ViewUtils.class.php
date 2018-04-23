@@ -1,11 +1,11 @@
 <?php
 class ViewUtils {
 
-	public static function setPossiblesViewsTemplates(&$datas, $frontOfficeView, $frontOfficeTemplate, $backOfficeView = null, $backOfficeTemplate = null) {
-		$datas['backView'] = $backOfficeView;
-		$datas['frontView'] = $frontOfficeView;
-		$datas['frontTemplate'] = $frontOfficeTemplate;
-		$datas['backTemplate'] = $backOfficeTemplate;
+	public static function setPossiblesViewsTemplates(&$data, $frontOfficeView, $frontOfficeTemplate, $backOfficeView = null, $backOfficeTemplate = null) {
+		$data['backView'] = $backOfficeView;
+		$data['frontView'] = $frontOfficeView;
+		$data['frontTemplate'] = $frontOfficeTemplate;
+		$data['backTemplate'] = $backOfficeTemplate;
 	}
 
 	public static function getErrors($errors) {

@@ -31,7 +31,7 @@ class AuthenticationDelegate {
 	}
 
 	private function getViewTemplateNames(&$data, $url) {
-		if ($this->checkBackOfficeViewPermission($url)) {
+		if ($this->checkBackOfficeViewPermission($data, $url)) {
 			$data['view'] = $data['backView'];
 			$data['template'] = $data['backTemplate'];
 		} else {
@@ -40,7 +40,7 @@ class AuthenticationDelegate {
 		}
 	}
 
-	private function checkBackOfficeViewPermission($url) {
+	private function checkBackOfficeViewPermission($data, $url) {
 		if (isset($data['backView'])) {
 			if (isset($url[2]) && $url[2] === "back" || isset($url[1]) && $url[1] === "login") {
 				if (isset($_SESSION['admin']) && $_SESSION['admin']) {

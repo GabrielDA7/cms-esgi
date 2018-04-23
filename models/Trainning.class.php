@@ -13,7 +13,6 @@ class Trainning extends BaseSql {
 	}
 
 	public static function configListForm($data){
-		$user = $data['user'];
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LIST_BACK_LINK, "submit"=>"Edit"],
 					"input"=>
