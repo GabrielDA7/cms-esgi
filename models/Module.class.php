@@ -1,22 +1,19 @@
 <?php
-class Lesson extends BaseSql {
-
+class Module {
+	
 	protected $id = null;
 	protected $title;
 	protected $content;
 	protected $autor;
-	protected $modules = [];
-	
-	protected $trainning_id = null;
+	protected $dateInserted;
 
-
+	protected $lesson_id = null;
 
 	public function getId() 		 { return $this->id; 		   }
 	public function getTitle() 		 { return $this->title; 	   }
 	public function getContent() 	 { return $this->content; 	   }
 	public function getAutor() 		 { return $this->autor; 	   }
-	public function getModules() 	 { return $this->modules; 	   }
-	public function getTrainningId() { return $this->trainning_id; }
+	public function getLessonId() { return $this->lesson_id; }
 
 
 	public function setId($id) 					  { $this->id = $id; 					 }
@@ -24,6 +21,6 @@ class Lesson extends BaseSql {
 	public function setContent($content) 		  { $this->content = $content; 			 }
 	public function setAutor($autor) 			  { $this->autor = $autor; 				 }
 	public function setModules($modules) 		  { $this->modules = $modules; 			 }
-	public function setTrainningId($trainning_id) { $this->trainning_id = $trainning_id; }
+	public function setLessonId($lesson_id) { $this->lesson_id = $lesson_id; }
 }
 ?>
