@@ -9,6 +9,10 @@ class Module {
 
 	protected $lesson_id = null;
 
+	public function getColumns() {
+		return get_object_vars($this);
+	}
+	
 	public function getId() 	  { return $this->id; 		 }
 	public function getTitle() 	  { return $this->title; 	 }
 	public function getContent()  { return $this->content; 	 }

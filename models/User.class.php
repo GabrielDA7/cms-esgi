@@ -42,6 +42,10 @@ class User extends UserSql {
 		return base_convert(hash('sha256', time() . mt_rand()), 16, 36);
 	}
 
+	public function unsetColumn($key) {
+		unset($this->$key);
+	}
+
 	/**
 	* Security for XSS
 	*/

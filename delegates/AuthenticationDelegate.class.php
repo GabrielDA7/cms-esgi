@@ -4,7 +4,7 @@ class AuthenticationDelegate {
 	public function __construct() {}
 
 	public function process(&$data, $params, $checkToken = FALSE) {
-		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) { 
+		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) {
       		$this->checkTokenValidity(); 
     	} 
     	if (!empty($data)) { 

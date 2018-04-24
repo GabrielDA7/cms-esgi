@@ -84,6 +84,8 @@ define("USER_LOGIN_FRONT_LINK", "user/login");
 define("USER_LOGIN_BACK_LINK", "user/login/back");
 define("USER_DISCONNECT_LINK", "user/disconnect");
 
+define("TRAINNING_TRAINNING_BACK_LINK", "trainning/trainning/back");
+define("TRAINNING_TRAINNING_FRONT_LINK", "trainning/trainning");
 define("TRAINNING_LIST_BACK_LINK", "trainning/list/back");
 define("TRAINNING_LIST_FRONT_LINK", "trainning/list");
 
@@ -124,6 +126,8 @@ define("VIDEO_LIST_FRONT_VIEW", "listVideo");
 
 define("STATISTIC_BACK_VIEW", "statistic");
 
+define("TRAINNING_TRAINNING_BACK_VIEW", "trainningTrainningBack");
+define("TRAINNING_TRAINNING_FRONT_VIEW", "trainningTrainning");
 define("TRAINNING_LIST_BACK_VIEW", "listTrainningBack");
 define("TRAINNING_LIST_FRONT_VIEW", "listTrainning");
 

@@ -4,15 +4,15 @@ class ObjectDelegate {
 
 	public function __construct() {}
 	
-	public function pushObjectById(&$data, $params, $objectName, $othersTablesColumns = []) {
+	public function pushObjectById(&$data, $id, $objectName, $othersTablesColumns = []) {
 		if ($objectName == USER_CLASS_NAME && isset($_SESSION['userId'])) {
-			$params['POST']['id'] = $_SESSION['userId'];
+			$id = $_SESSION['userId'];
 		}
-		$object = ClassUtils::constructObjectWithId($params['POST']['id'], $objectName);
-		if (!empty($othersTablesColumns)) {
-			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $object);
-		}
+		$object = ClassUtils::constructObjectWithId($id, $objectName);
 		$object = $object->getById();
+		if (!empty($othersTablesColumns)) {
+			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
+		}
 		$data[lcfirst($objectName)] = $object;
 	}
 
@@ -153,9 +153,9 @@ class ObjectDelegate {
 		return $filesUrl;
 	}
 
-	private function setReferencedObjectsColumns($othersTablesColumns, $objectName, &$object) {
+	private function setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, &$object) {
 		foreach ($othersTablesColumns as $table) {
-			$objectWithForeignKeyValue = ClassUtils::constructObjectWithParameters([lcfirst($objectName) => $params['POST']['id']], $table);
+			$objectWithForeignKeyValue = ClassUtils::constructObjectWithParameters([lcfirst($objectName)."_id" => $id], $table);
 			$referencedObjects = $objectWithForeignKeyValue->getWithParameters();
 			$setColumn = "set" . ucfirst($table) . "s";
 			$object->$setColumn($referencedObjects);

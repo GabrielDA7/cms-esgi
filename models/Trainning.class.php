@@ -8,6 +8,14 @@ class Trainning extends BaseSql {
 	protected $dateInserted;
 	protected $lessons = array();
 
+	public function __construct() {
+		BaseSql::__construct();
+	}
+
+	public function __destruct() {
+
+	}
+
 	public function getColumns() {
 		return get_object_vars($this);
 	}

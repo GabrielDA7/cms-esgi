@@ -57,13 +57,13 @@ class TrainningController implements ControllerInterface {
 	}
 
 	public function trainningAction($params) {
-		if (!isset($params['POST']['id'])) {
+		if (!isset($params['GET']['id'])) {
 			LogsUtils::process(LogsUtils::LOGS_FILE, "Attempt access", "Access denied");
 			return404View();
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, TRAINNING_TRAINNING_FRONT_VIEW, FRONT_TEMPLATE, TRAINNING_TRAINNING_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
-		$this->objectDelegate->pushObjectById($data, $params, TRAINNING_CLASS_NAME, [LESSON_CLASS_NAME]);
+		$this->objectDelegate->pushObjectById($data, $params['GET']['id'], TRAINNING_CLASS_NAME, [LESSON_CLASS_NAME]);
 		$view = new View($data);
 	}
 

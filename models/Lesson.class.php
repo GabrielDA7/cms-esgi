@@ -7,10 +7,24 @@ class Lesson extends BaseSql {
 	protected $content;
 	protected $author;
 	protected $modules = [];
-	
+
 	protected $trainning_id = null;
+	
+	public function __construct() {
+		BaseSql::__construct();
+	}
 
+	public function __destruct() {
 
+	}
+
+	public function getColumns() {
+		return get_object_vars($this);
+	}
+
+	public function unsetColumn($key) {
+		unset($this->$key);
+	}
 
 	public function getId() 		 { return $this->id; 		   }
 	public function getChapter() 	 { return $this->id; 		   }
