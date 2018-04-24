@@ -21,6 +21,14 @@ class LessonController implements ControllerInterface{
 	 * Get the lesson by id or by parameters
 	 */
 	public function lessonAction($params) {
+		if (!isset($params['GET']['id'])) {
+			LogsUtils::process(LogsUtils::LOGS_FILE, "Attempt access", "Access denied");
+			return404View();
+		}
+		ViewUtils::setPossiblesViewsTemplates($data, LESSON_LESSON_FRONT_VIEW, FRONT_TEMPLATE, LESSON_LESSON_BACK_VIEW, BACK_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params);
+		$this->objectDelegate->pushObjectByParameters($data, ["chapter"=>$params['GET']['id']], LESSON_CLASS_NAME, [VIDEO_CLASS_NAME]);
+		$view = new View($data);
 	}
 }
 ?>

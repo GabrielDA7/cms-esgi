@@ -24,7 +24,7 @@ class UserController implements ControllerInterface {
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, USER_USER_FRONT_VIEW, FRONT_TEMPLATE, USER_USER_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
-		$this->objectDelegate->pushObjectById($data, $params, USER_CLASS_NAME);
+		$this->objectDelegate->pushObjectById($data, $params['POST']['id'], USER_CLASS_NAME);
 		$view = new View($data);
 	}
 
@@ -44,7 +44,7 @@ class UserController implements ControllerInterface {
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, USER_EDIT_FRONT_VIEW, FRONT_TEMPLATE, USER_EDIT_BACK_VIEW , BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params, TRUE);
-		$this->objectDelegate->pushObjectById($data, $params, USER_CLASS_NAME);
+		$this->objectDelegate->pushObjectById($data, $params['POST']['id'], USER_CLASS_NAME);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->objectDelegate->update($data, $params, USER_CLASS_NAME, "", USER_LIST_BACK_LINK);
 		$view = new View($data);

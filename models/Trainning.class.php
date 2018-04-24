@@ -57,7 +57,7 @@ class Trainning extends BaseSql {
 
 	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LIST_BACK_LINK, "submit"=>"Edit"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LIST_BACK_LINK, "submit"=>"Ajouter"],
 					"input"=>
 							[
 								"title"=>

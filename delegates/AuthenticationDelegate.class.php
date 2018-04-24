@@ -6,7 +6,7 @@ class AuthenticationDelegate {
 	public function process(&$data, $params, $checkToken = FALSE) {
 		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) {
       		$this->checkTokenValidity(); 
-    	} 
+    	}
     	if (!empty($data)) { 
       		$this->getViewTemplateNames($data, $params['URL']); 
    	 	} else {

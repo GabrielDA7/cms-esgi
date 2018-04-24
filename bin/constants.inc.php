@@ -129,6 +129,7 @@ define("STATISTIC_BACK_VIEW", "statistic");
 
 define("TRAINNING_TRAINNING_BACK_VIEW", "trainningTrainningBack");
 define("TRAINNING_TRAINNING_FRONT_VIEW", "trainningTrainning");
+define("TRAINNING_ADD_BACK_VIEW", "addTrainningBack");
 define("TRAINNING_LIST_BACK_VIEW", "listTrainningBack");
 define("TRAINNING_LIST_FRONT_VIEW", "listTrainning");
 

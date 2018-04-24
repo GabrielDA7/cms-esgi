@@ -16,15 +16,21 @@ class ObjectDelegate {
 		$data[lcfirst($objectName)] = $object;
 	}
 
-	public function pushObjectsByParameters(&$data, $params, $objectName) {
-		$object = ClassUtils::constructObjectWithParameters($params['POST'], $objectName);
+	public function pushObjectsByParameters(&$data, $params, $objectName, $othersTablesColumns = []) {
+		$object = ClassUtils::constructObjectWithParameters($params, $objectName);
 		$objects = $object->getWithParameters();
+		if (!empty($othersTablesColumns)) {
+			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
+		}
 		$data[lcfirst($objectName)."s"] = $objects;
 	}
 
-	public function pushAllObjects(&$data, $params, $objectName) {
+	public function pushAllObjects(&$data, $objectName) {
 		$object  = new $objectName();
 		$objects = $object->getAll();
+		if (!empty($othersTablesColumns)) {
+			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
+		}
 		$data[lcfirst($objectName)."s"] = $objects;
 	}
 
@@ -52,7 +58,7 @@ class ObjectDelegate {
 			header(LOCATION . DIRNAME . (isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 			exit;
 		} else {
-			$this->pushObjectById($data, $params, $objectName);
+			$this->pushObjectById($data, $params['POST']['id'], $objectName);
 		}
 	}
 
@@ -65,9 +71,9 @@ class ObjectDelegate {
 
 	public function listAll(&$data, $params, $objectName) {
 		if ($data['errors'] === FALSE) {
-			$this->pushObjectsByParameters($data, $params, $objectName);
+			$this->pushObjectsByParameters($data, $params['POST'], $objectName);
 		} else {
-			$this->pushAllObjects($data, $params, $objectName);
+			$this->pushAllObjects($data, $objectName);
 		}
 	}
 
