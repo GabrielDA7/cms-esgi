@@ -118,7 +118,37 @@ $(function() {
     }
     var hiddenContent = $(this).parent().siblings('.content-hidden').toggle('fast');
   });
+
+  if( $("list-training").length ) {
+    initListTrainning(10);
+  }
+
 });
+
+function initListTrainning(num){
+    $.ajax({
+      url:"liens"},
+      success:function(data){
+        tb = $("#list-training tbody");
+        obj = JSON.parse(data);
+        for(i=0;i<num;i++){
+          html+="<tr>";
+          html+="<td>"+obj[i].title+"</td>";
+          html+="<td>"+obj[i].title+"</td>";
+          html+="<td>"+obj[i].title+"</td>";
+          html+="<td>"+obj[i].title+"</td>";
+          html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
+          html+="</tr>";
+        }
+        tb.html(html);
+      }
+    });
+  };
+
+function listTrainningSelectChange(){
+  console.log('changed');
+  initListTrainning($('listTrainningSelect').val())
+};
 
 function closeDiv(div){
   var elem = $('#' + div);

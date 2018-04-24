@@ -1,9 +1,3 @@
-<?php foreach ($trainnings as $trainning): ?>
-      <div><?= $trainning->getAuthor() ?></div>
-      <div><?= $trainning->getTitle() ?></div>
-      <div><?= $trainning->getDescription() ?></div>
-      <a href="<?= DIRNAME . TRAINNING_TRAINNING_BACK_LINK . '?id=' . $trainning->getId();?>">aa</a>
-<?php endforeach;?>
 <section id="dashboard-list-tranning">
 
   <div class="row">
@@ -15,8 +9,14 @@
     </div>
   </div>
 
-  <div class="row M--end">
-    <div class="M2">
+  <div class="row">
+    <div class="M4">
+      <div class="wrapper-icon">
+          <i class="fas fa-search"></i>
+          <input class="input-medium input-icon search-list" type="text">
+      </div>
+    </div>
+    <div class="M2 M--offset6">
       <a class="btn-extra-small btn-filled-orange btn btn-list" href="">Add<i class="fas fa-plus"></i></a>
     </div>
   </div>
@@ -107,6 +107,17 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="M2">
+      <select class="" name="paginantion" id="listTrainningSelect" onchange="listTrainningSelectChange()">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+      </select>
     </div>
 
   </div>

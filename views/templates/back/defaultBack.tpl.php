@@ -78,8 +78,9 @@
             </section>
         </section>
 
-        <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="node_modules/chart.js/dist/Chart.min.js"></script>
-        <script type="text/javascript" src="public/js/framework.js"></script>
+        <!-- Javascript -->
+        <script src="<?= DIRNAME;?>node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="<?= DIRNAME;?>node_modules/chart.js/dist/Chart.min.js"></script>
+        <script src="<?= DIRNAME;?>public/js/framework.js"></script>
     </body>
 </html>
