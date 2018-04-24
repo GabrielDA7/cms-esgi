@@ -2,6 +2,7 @@
 class Lesson extends BaseSql {
 
 	protected $id = null;
+	protected $chapter;
 	protected $title;
 	protected $content;
 	protected $author;
@@ -12,7 +13,8 @@ class Lesson extends BaseSql {
 
 
 	public function getId() 		 { return $this->id; 		   }
-	public function getTitle() 		 { return $this->title; 	   }
+	public function getChapter() 	 { return $this->id; 		   }
+	public function getTitle() 		 { return $this->chapter; 	   }
 	public function getContent() 	 { return $this->content; 	   }
 	public function getAuthor() 	 { return $this->author; 	   }
 	public function getModules() 	 { return $this->modules; 	   }
@@ -20,6 +22,7 @@ class Lesson extends BaseSql {
 
 
 	public function setId($id) 					  { $this->id = $id; 					 }
+	public function setChapter($chapter) 		  { $this->chapter = $chapter; 			 }
 	public function setTitle($title) 			  { $this->title = $title; 				 }
 	public function setContent($content) 		  { $this->content = $content; 			 }
 	public function setAuthor($author) 			  { $this->author = $author; 			 }

@@ -12,35 +12,38 @@ class Trainning extends BaseSql {
 		return get_object_vars($this);
 	}
 
+	public function unsetColumn($key) {
+		unset($this->$key);
+	}
+
 	public static function configListForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LIST_BACK_LINK, "submit"=>"Edit"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.TRAINNING_LIST_BACK_LINK, "submit"=>"Edit"],
 					"input"=>
 							[
 								"title"=>
 											[
 												"type"=>"text",
-												"placeholder"=>"title",
-												"maxString"=>100,
+												"placeholder"=>"Title",
+												"maxString"=>255,
 												"minString"=>2,
 												"required"=>true
 											],
 								"author"=>
 											[
-												"type"=>"password",
-												"placeholder"=>"author",
+												"type"=>"text",
+												"placeholder"=>"Author",
 												"maxString"=>255,
 												"minString"=>2,
 												"required"=>true
 											],
-								"lastName"=>
+								"description"=>
 											[
-												"type"=>"password",
-												"placeholder"=>"author",
-												"maxString"=>255,
-												"minString"=>2,
+												"type"=>"text",
+												"placeholder"=>"Description",
 												"required"=>true
-											],							]
+											],							
+							]
 				];
 	}
 
@@ -77,7 +80,7 @@ class Trainning extends BaseSql {
 	public function setId($id) 					   { $this->id = $id; 					  }
 	public function setTitle($title) 			   { $this->title = $title; 			  }
 	public function setDescription($description)   { $this->description = $description;   }
-	public function setAuthor($autor) 			   { $this->author = $author; 			  }
+	public function setAuthor($author) 			   { $this->author = $author; 			  }
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; }
 	public function setLessons($lessons) 		   { $this->lessons = $lessons; 	 	  }
 }
