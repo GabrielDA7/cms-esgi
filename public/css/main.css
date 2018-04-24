@@ -788,6 +788,14 @@ html, body {
 /* -----------------------------------------------------------------------------
 * Front
 */
+.back-title {
+  margin-top: 35px; }
+
+.back-title h1 {
+  color: #222831;
+  font-size: 36px;
+  font-weight: bold; }
+
 .front-title {
   height: 80px;
   background-color: #E8E8E8;
@@ -834,6 +842,10 @@ html, body {
   height: 60px;
   background-color: #222831;
   overflow: hidden; }
+
+#front-topnav .btn-filled-orange:hover {
+  background-color: #222831;
+  color: #F96D00; }
 
 #front-topnav .wrapper-icon {
   float: right;
@@ -1133,6 +1145,14 @@ html, body {
   font-size: 14px;
   line-height: 26px; }
 
+.btn-list {
+  margin-top: 35px;
+  display: block;
+  float: right; }
+
+.btn-list i {
+  margin-left: 10px; }
+
 .btn-extra-small {
   width: 100px; }
 
@@ -1153,10 +1173,6 @@ html, body {
   background-color: #F96D00;
   color: white; }
 
-.btn-filled-orange:hover {
-  background-color: #222831;
-  color: #F96D00; }
-
 .btn-light-orange {
   border: 2px solid #F96D00;
   color: orange; }
@@ -1164,3 +1180,34 @@ html, body {
 .btn-light-grey {
   border: 2px solid grey;
   color: grey; }
+
+.list-data {
+  margin-top: 10px;
+  width: 100%; }
+
+.list-data thead {
+  color: white; }
+
+.list-data thead tr th:first-child {
+  background-color: #F96D00; }
+
+.list-data thead tr th {
+  background-color: #222831;
+  font-weight: 600;
+  font-size: 18px; }
+
+.list-data tbody tr td {
+  text-align: center;
+  font-size: 18px; }
+
+.list-data tbody tr td:first-child {
+  color: #F96D00; }
+
+.list-data tr {
+  border: 2px solid #E8E8E8; }
+
+.list-data {
+  border-collapse: collapse; }
+
+.list-data tbody th, tbody td {
+  border: 2px solid #E8E8E8; }

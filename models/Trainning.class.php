@@ -44,6 +44,28 @@ class Trainning extends BaseSql {
 				];
 	}
 
+	public static function configAddForm($data){
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LIST_BACK_LINK, "submit"=>"Edit"],
+					"input"=>
+							[
+								"title"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"title",
+												"maxString"=>100,
+												"minString"=>2,
+												"required"=>true
+											],
+								"description"=>
+											[
+												"type"=>"textarea",
+												"placeholder"=>"Description",
+											],
+							]
+				];
+	}
+
 	public function getId() 		  { return $this->id; 			    }
 	public function getTitle() 		  { return $this->title; 		    }
 	public function getDescription()  { return $this->description; 		}

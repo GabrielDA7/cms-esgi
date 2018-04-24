@@ -216,6 +216,15 @@ html,body
 /* -----------------------------------------------------------------------------
 * Front
 */
+.back-title {
+  margin-top: 35px;
+}
+
+.back-title h1 {
+  color: $color-secondary;
+  font-size: $font-size-L;
+  font-weight: bold;
+}
 
 .front-title {
   height: 80px;
@@ -278,6 +287,11 @@ html,body
   height: 60px;
   background-color: $color-secondary;
   overflow: hidden;
+}
+
+#front-topnav .btn-filled-orange:hover {
+  background-color: $color-secondary;
+  color: $color-tertiary;
 }
 
 #front-topnav .wrapper-icon {
@@ -645,6 +659,16 @@ html,body
   line-height:26px;
 }
 
+.btn-list {
+  margin-top: 35px;
+  display: block;
+  float: right;
+}
+
+.btn-list i{
+  margin-left: 10px;
+}
+
 .btn-extra-small {
   width: $element-width-X;
 }
@@ -671,10 +695,6 @@ html,body
   color: white;
 }
 
-.btn-filled-orange:hover {
-  background-color: $color-secondary;
-  color: $color-tertiary;
-}
 
 .btn-light-orange {
   border: 2px solid $color-tertiary;
@@ -684,4 +704,45 @@ html,body
 .btn-light-grey {
   border: 2px solid grey;
   color: grey;
+}
+
+// Table
+.list-data {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.list-data thead {
+  color: $color-primary;
+}
+
+.list-data thead tr th:first-child {
+  background-color: $color-tertiary;
+}
+
+.list-data thead tr th {
+  background-color: $color-secondary;
+  font-weight: 600;
+  font-size: $font-size-S;
+}
+
+.list-data tbody tr td {
+  text-align: center;
+  font-size: $font-size-S;
+}
+
+.list-data tbody tr td:first-child {
+  color: $color-tertiary;
+}
+
+.list-data tr {
+  border: 2px solid $color-quaternary;
+}
+
+.list-data{
+  border-collapse: collapse;
+}
+
+.list-data tbody th,tbody td {
+    border: 2px solid $color-quaternary;
 }
