@@ -42,12 +42,15 @@ class classUtils {
 		return $object;
 	}
 
-	public static function removeUnsusedColumns($object, $columnsExclude = null) {
+	public static function removeUnsusedColumns(&$object, $columnsExclude = null, $fromObject = FALSE) {
 		if (isset($columnsExclude)) {
 			$columns  = array_diff_key($object->getColumns(), $columnsExclude);
 		}
 		self::removeNullColumns($columns);	
-		return $columns;	
+		if (!$fromObject) {
+			return $columns;
+		}	
+		self::unsetColumns($object, $columnsExclude);
 	}
 
 	public static function removeNullColumns(&$columns) {
@@ -73,6 +76,12 @@ class classUtils {
 			$r .= ' (' . get_class($caller['object']) . ')';
 		}
 		return $r;
+	}
+
+	public static function unsetColumns(&$object, $columns) {
+		foreach ($columns as $key => $value) {
+			$object->unsetColumn($key);
+		}
 	}
 }
 ?>
