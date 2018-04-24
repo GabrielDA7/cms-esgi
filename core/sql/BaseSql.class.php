@@ -80,7 +80,6 @@ class BaseSql extends QueryConstructorSql {
 		$objectList = array();
 		foreach ($response as $key => $values) {
 			$object = ClassUtils::constructObjectWithParameters($values, $this->table);
-			ClassUtils::removeUnsusedColumns($object, get_class_vars(get_class()), TRUE);
 			array_push($objectList, $object);
 		}
 		return $objectList;
