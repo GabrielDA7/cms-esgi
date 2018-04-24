@@ -127,7 +127,7 @@ $(function() {
 
 function initListTrainning(num){
     $.ajax({
-      url:"liens"},
+      url:"liens",
       success:function(data){
         tb = $("#list-training tbody");
         obj = JSON.parse(data);
@@ -149,6 +149,10 @@ function listTrainningSelectChange(){
   console.log('changed');
   initListTrainning($('listTrainningSelect').val())
 };
+
+function searchTrainning(){
+  console.log('changed');
+}
 
 function closeDiv(div){
   var elem = $('#' + div);

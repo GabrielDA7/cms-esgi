@@ -86,6 +86,7 @@ define("USER_DISCONNECT_LINK", "user/disconnect");
 
 define("TRAINNING_TRAINNING_BACK_LINK", "trainning/trainning/back");
 define("TRAINNING_TRAINNING_FRONT_LINK", "trainning/trainning");
+define("TRAINNING_ADD_BACK_LINK", "trainning/add/back");
 define("TRAINNING_LIST_BACK_LINK", "trainning/list/back");
 define("TRAINNING_LIST_FRONT_LINK", "trainning/list");
 

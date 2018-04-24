@@ -1203,6 +1203,9 @@ html, body {
 .list-data tbody tr td:first-child {
   color: #F96D00; }
 
+.list-data tbody tr td:last-child a {
+  padding-right: 10px; }
+
 .list-data tr {
   border: 2px solid #E8E8E8; }
 
@@ -1211,3 +1214,10 @@ html, body {
 
 .list-data tbody th, tbody td {
   border: 2px solid #E8E8E8; }
+
+.search-list {
+  margin-top: 35px; }
+
+.pagination-selector {
+  display: block;
+  float: right; }

@@ -735,6 +735,10 @@ html,body
   color: $color-tertiary;
 }
 
+.list-data tbody tr td:last-child a {
+  padding-right: 10px;
+}
+
 .list-data tr {
   border: 2px solid $color-quaternary;
 }
@@ -749,4 +753,9 @@ html,body
 
 .search-list {
   margin-top: 35px;
+}
+
+.pagination-selector{
+  display: block;
+  float: right;
 }

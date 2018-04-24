@@ -44,7 +44,7 @@
                            </a>
                            <ul class="submenu-item">
                              <li><a href="<?= DIRNAME . TRAINNING_LIST_BACK_LINK; ?>">Liste des formations</a></li>
-                             <li><a href="#">Ajouter une formation</a></li>
+                             <li><a href="<?= DIRNAME . TRAINNING_ADD_BACK_LINK; ?>">Ajouter une formation</a></li>
                            </ul>
                          </li>
                          <li><a href=""><i class="fas fa-film"></i>Videos</a></li>

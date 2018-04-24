@@ -13,7 +13,7 @@
     <div class="M4">
       <div class="wrapper-icon">
           <i class="fas fa-search"></i>
-          <input class="input-medium input-icon search-list" type="text">
+          <input class="input-medium input-icon search-list" type="text" oninput="searchTrainning();">
       </div>
     </div>
     <div class="M2 M--offset6">
@@ -113,10 +113,14 @@
 
   <div class="row">
     <div class="M2">
-      <select class="" name="paginantion" id="listTrainningSelect" onchange="listTrainningSelectChange()">
+      <p>X elements</p>
+    </div>
+    <div class="M2 M--offset8">
+      <select class="pagination-selector" name="pagination" id="listTrainningSelect" onchange="listTrainningSelectChange()">
         <option value="10">10</option>
         <option value="20">20</option>
-        <option value="30">30</option>
+        <option value="30">50</option>
+        <option value="30">100</option>
       </select>
     </div>
 
