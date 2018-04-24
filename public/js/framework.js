@@ -127,8 +127,8 @@ $(function() {
 
 function initListTrainning(num){
     $.ajax({
-      url:"liens"},
-      success:function(data){
+      url:"liens",
+      success : function(data){
         tb = $("#list-training tbody");
         obj = JSON.parse(data);
         for(i=0;i<num;i++){
@@ -141,7 +141,7 @@ function initListTrainning(num){
           html+="</tr>";
         }
         tb.html(html);
-      }
+      },
     });
   };
 
