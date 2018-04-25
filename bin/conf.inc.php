@@ -8,7 +8,7 @@ define("BACK_TEMPLATE", "defaultBack");
 define("LOGIN_BACK_TEMPLATE", "loginDashboard");
 
 define("DBUSER","root");
-define("DBPWD","gd78$#Ogc"); 
+define("DBPWD","gd78$#Ogc");
 define("DBHOST","localhost");
 define("DBNAME","uteach");
 define("DBPORT","3306");
