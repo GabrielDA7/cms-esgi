@@ -9,15 +9,15 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row row-tools">
     <div class="M4">
       <div class="wrapper-icon">
-          <i class="fas fa-search"></i>
-          <input class="input-medium input-icon search-list" type="text" oninput="searchTrainning();">
+          <i class="fas fa-search icon-left"></i>
+          <input class="input-medium input-icon" type="text" oninput="searchTrainning();">
       </div>
     </div>
     <div class="M2 M--offset6">
-      <a class="btn-extra-small btn-filled-orange btn btn-list" href="">Add<i class="fas fa-plus"></i></a>
+      <a class="btn-extra-small btn-filled-orange btn btn-icon" href="">Add<i class="fas fa-plus"></i></a>
     </div>
   </div>
 
@@ -111,7 +111,7 @@
 
   </div>
 
-  <div class="row">
+  <div class="row row-pagination">
     <div class="M2">
       <p>X elements</p>
     </div>

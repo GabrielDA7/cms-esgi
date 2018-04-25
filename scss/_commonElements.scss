@@ -39,6 +39,10 @@ html,body
   width: 100%;
 }
 
+#dashboard-login .input::placeholder {
+  color: $color-primary;
+}
+
 #dashboard-login .input {
   margin-top: 5px;
 }
@@ -208,11 +212,6 @@ html,body
   padding:10px;
 }
 
-#dashboard-stat .wrapper-icon i {
-  line-height: 30px;
-  right: 10px;
-}
-
 /* -----------------------------------------------------------------------------
 * Front
 */
@@ -301,10 +300,6 @@ html,body
   margin-right: 25px;
 }
 
-#front-topnav .wrapper-icon i {
-  line-height: 30px;
-  left: 10px;
-}
 
 #front-topnav .right-nav a {
   float: right;
@@ -575,6 +570,14 @@ html,body
   width: 50px;
 }
 
+.row-tools {
+  padding-top:35px;
+}
+
+.row-pagination {
+  padding-top: 10px;
+}
+
 // Input -----------------------------------------------------------------------
 
 .form-group {
@@ -589,6 +592,7 @@ html,body
   display: block;
 }
 
+
 .input {
   height: 30px;
   width: 100%;
@@ -599,9 +603,6 @@ html,body
   font-weight: 600;
 }
 
-.input::placeholder {
-  color: $color-primary;
-}
 
 .input-medium {
   border: 2px solid $color-quaternary;
@@ -645,6 +646,15 @@ html,body
 
 .wrapper-icon i {
   position: absolute;
+  line-height: 30px;
+}
+
+.icon-left {
+  left: 10px;
+}
+
+.icon-right {
+  right: 10px;
 }
 
 // Button ----------------------------------------------------------------------
@@ -659,14 +669,12 @@ html,body
   line-height:26px;
 }
 
-.btn-list {
-  margin-top: 35px;
-  display: block;
+.btn-icon {
   float: right;
 }
 
-.btn-list i{
-  margin-left: 10px;
+.btn-icon i{
+  margin-left: 5px;
 }
 
 .btn-extra-small {
@@ -749,10 +757,6 @@ html,body
 
 .list-data tbody th,tbody td {
     border: 2px solid $color-quaternary;
-}
-
-.search-list {
-  margin-top: 35px;
 }
 
 .pagination-selector{

@@ -645,6 +645,9 @@ html, body {
 #dashboard-login input:nth-child(1) {
   width: 100%; }
 
+#dashboard-login .input::placeholder {
+  color: white; }
+
 #dashboard-login .input {
   margin-top: 5px; }
 
@@ -781,10 +784,6 @@ html, body {
   border-radius: 5px;
   padding: 10px; }
 
-#dashboard-stat .wrapper-icon i {
-  line-height: 30px;
-  right: 10px; }
-
 /* -----------------------------------------------------------------------------
 * Front
 */
@@ -852,10 +851,6 @@ html, body {
   position: relative;
   margin-top: 15px;
   margin-right: 25px; }
-
-#front-topnav .wrapper-icon i {
-  line-height: 30px;
-  left: 10px; }
 
 #front-topnav .right-nav a {
   float: right; }
@@ -1079,6 +1074,12 @@ html, body {
   height: 3px;
   width: 50px; }
 
+.row-tools {
+  padding-top: 35px; }
+
+.row-pagination {
+  padding-top: 10px; }
+
 .form-group {
   margin-top: 20px; }
 
@@ -1096,9 +1097,6 @@ html, body {
   padding-left: 15px;
   font-size: 14px;
   font-weight: 600; }
-
-.input::placeholder {
-  color: white; }
 
 .input-medium {
   border: 2px solid #E8E8E8;
@@ -1133,7 +1131,14 @@ html, body {
   position: relative; }
 
 .wrapper-icon i {
-  position: absolute; }
+  position: absolute;
+  line-height: 30px; }
+
+.icon-left {
+  left: 10px; }
+
+.icon-right {
+  right: 10px; }
 
 .btn {
   height: 30px;
@@ -1145,13 +1150,11 @@ html, body {
   font-size: 14px;
   line-height: 26px; }
 
-.btn-list {
-  margin-top: 35px;
-  display: block;
+.btn-icon {
   float: right; }
 
-.btn-list i {
-  margin-left: 10px; }
+.btn-icon i {
+  margin-left: 5px; }
 
 .btn-extra-small {
   width: 100px; }
@@ -1214,9 +1217,6 @@ html, body {
 
 .list-data tbody th, tbody td {
   border: 2px solid #E8E8E8; }
-
-.search-list {
-  margin-top: 35px; }
 
 .pagination-selector {
   display: block;

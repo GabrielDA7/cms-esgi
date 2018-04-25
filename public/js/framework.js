@@ -134,9 +134,9 @@ function initListTrainning(num){
         for(i=0;i<num;i++){
           html+="<tr>";
           html+="<td>"+obj[i].title+"</td>";
-          html+="<td>"+obj[i].title+"</td>";
-          html+="<td>"+obj[i].title+"</td>";
-          html+="<td>"+obj[i].title+"</td>";
+          html+="<td>"+obj[i].category+"</td>";
+          html+="<td>"+obj[i].author+"</td>";
+          html+="<td>"+obj[i].status+"</td>";
           html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
           html+="</tr>";
         }

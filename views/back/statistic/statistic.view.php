@@ -30,7 +30,7 @@
               <option value="popular_contents">Popular Contents</option>
               <option value="visits_evolution">Visits evolution</option>
             </select>
-            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-chevron-down icon-right"></i>
           </div>
         </div>
       </div>

@@ -36,7 +36,7 @@
                     <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.STATISTIC_INDEX_BACK_LINK;?>">Back Office</a>
                   <?php } ?>
                   <div class="wrapper-icon">
-                      <i class="fas fa-search"></i>
+                      <i class="fas fa-search icon-left"></i>
                       <input class="input-medium input-icon" type="text">
                   </div>
                 </div>
