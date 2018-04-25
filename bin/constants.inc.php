@@ -4,7 +4,8 @@
 *******************************/
 define("USER_CLASS_NAME", "User");
 define("VIDEO_CLASS_NAME", "Video");
-define("LESSON_CLASS_NAME", "Lesson");
+define("CHAPTER_CLASS_NAME", "Chapter");
+define("PART_CLASS_NAME", "Part");
 define("TRAINNING_CLASS_NAME", "Trainning");
 define("COMMENT_CLASS_NAME", "Comment");
 define("INSTALLATION_CLASS_NAME", "Installation");
@@ -90,6 +91,8 @@ define("TRAINNING_ADD_BACK_LINK", "trainning/add/back");
 define("TRAINNING_LIST_BACK_LINK", "trainning/list/back");
 define("TRAINNING_LIST_FRONT_LINK", "trainning/list");
 
+define("CHAPTER_CHAPTER_FRONT_LINK", "chapter/chapter");
+
 
 define("INDEX_ERROR_LINK", "index/error");
 
@@ -132,6 +135,9 @@ define("TRAINNING_TRAINNING_FRONT_VIEW", "trainningTrainning");
 define("TRAINNING_ADD_BACK_VIEW", "addTrainningBack");
 define("TRAINNING_LIST_BACK_VIEW", "listTrainningBack");
 define("TRAINNING_LIST_FRONT_VIEW", "listTrainning");
+
+define("CHAPTER_CHAPTER_FRONT_VIEW", "chapterChapter");
+define("CHAPTER_CHAPTER_BACK_VIEW", "chapterChapterBACK");
 
 /******************************
 ********** ROLE ***************

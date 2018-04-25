@@ -63,7 +63,7 @@ class TrainningController implements ControllerInterface {
 		}
 		ViewUtils::setPossiblesViewsTemplates($data, TRAINNING_TRAINNING_FRONT_VIEW, FRONT_TEMPLATE, TRAINNING_TRAINNING_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
-		$this->objectDelegate->pushObjectById($data, $params['GET']['id'], TRAINNING_CLASS_NAME, [LESSON_CLASS_NAME]);
+		$this->objectDelegate->pushObjectById($data, $params['GET']['id'], TRAINNING_CLASS_NAME, [CHAPTER_CLASS_NAME]);
 		$view = new View($data);
 	}
 

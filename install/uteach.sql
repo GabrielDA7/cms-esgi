@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 24 avr. 2018 à 07:58
+-- Généré le :  mer. 25 avr. 2018 à 14:29
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -25,36 +25,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `lesson`
+-- Structure de la table `chapter`
 --
 
-DROP TABLE IF EXISTS `lesson`;
-CREATE TABLE IF NOT EXISTS `lesson` (
+DROP TABLE IF EXISTS `chapter`;
+CREATE TABLE IF NOT EXISTS `chapter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `chapter` float NOT NULL,
+  `number` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
   `trainning_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `trainning_id` (`trainning_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `trainning_id` (`trainning_id`),
+  KEY `trainning_id_2` (`trainning_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `chapter`
+--
+
+INSERT INTO `chapter` (`id`, `number`, `title`, `trainning_id`) VALUES
+(1, 1, 'Les bases', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `module`
+-- Structure de la table `part`
 --
 
-DROP TABLE IF EXISTS `module`;
-CREATE TABLE IF NOT EXISTS `module` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `part`;
+CREATE TABLE IF NOT EXISTS `part` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `number` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
-  `dateInserted` timestamp NOT NULL,
-  `lesson_id` int(11) DEFAULT NULL,
+  `content` text NOT NULL,
+  `chapter_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `lesson_id` (`lesson_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `chapter_id` (`chapter_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `part`
+--
+
+INSERT INTO `part` (`id`, `number`, `title`, `author`, `content`, `chapter_id`) VALUES
+(1, 1, 'introduction', 'Louis decultot', 'voici l\'introduction', 1),
+(2, 2, 'Les bases', 'Louis Decultot', 'les bases de la bddd', 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +142,7 @@ INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `userName`, `pwd`, `
 (20, 'Zqet', 'Qzetqzet', 'louis@gmail.com', 'aaaaa', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '2v3wh6jleww0g8k4ow804gogg4w4owcw8owc0cgsggg44s0g40', 1, 0, '2018-03-14 12:20:10', '2018-03-30 21:41:16', 2),
 (23, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '4k5qdza6baio0sg0sc4oc44ggowcc880o8ccsg044cc8skscsg', 20, 1, '2018-03-20 19:41:10', '2018-03-30 21:48:46', 0),
 (24, 'Louis', 'Louis', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '66myo5znw64gwowkcwgkg44oo4wg0ogoksswgosw00kgs44ok4', 20, 0, '2018-03-20 19:44:31', NULL, 0),
-(25, 'Louis', 'Louis', 'louis@gmail.com', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', '15ytidpe5w1wckkw488gk0kwkgckgogkgwsgko88w0cccco0g0', 20, 1, '2018-03-20 19:48:58', '2018-04-23 09:42:58', 2),
+(25, 'Louis', 'Louis', 'louis@gmail.com', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', '4871xispt1esc0cccos4k40g0sowwkg0ow0ss84gwgsg8soo80', 20, 1, '2018-03-20 19:48:58', '2018-04-23 09:42:58', 2),
 (26, 'LOUIS', 'LOUIS', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '2whcvk8hjtq8w0kwcs8ow80sws40cccgg8gkows0oc4kkwcssg', 20, 0, '2018-03-20 19:58:29', NULL, 0),
 (27, 'LOUIS', 'LOUIS', 'louis@gmail.com', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', 'gpxzj6bqeygwsk0s0w8o8sggos04wkokw0ck88o080gswg008', 20, 0, '2018-03-21 18:58:02', NULL, 0),
 (28, 'ARETARET', 'ERATREAT', 'louis@gmail.com', 'teate', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', '6auoeiaxbickogc044kowwsw0c08ock4s484k8ocsoowso0k4w', 2, 0, '2018-03-24 21:24:35', NULL, 0),
@@ -150,16 +166,16 @@ INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `userName`, `pwd`, `
 --
 
 --
--- Contraintes pour la table `lesson`
+-- Contraintes pour la table `chapter`
 --
-ALTER TABLE `lesson`
-  ADD CONSTRAINT `lesson_ibfk_1` FOREIGN KEY (`trainning_id`) REFERENCES `trainning` (`id`) ON DELETE SET NULL;
+ALTER TABLE `chapter`
+  ADD CONSTRAINT `chapter_ibfk_1` FOREIGN KEY (`trainning_id`) REFERENCES `trainning` (`id`) ON DELETE SET NULL;
 
 --
--- Contraintes pour la table `module`
+-- Contraintes pour la table `part`
 --
-ALTER TABLE `module`
-  ADD CONSTRAINT `module_ibfk_1` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`id`);
+ALTER TABLE `part`
+  ADD CONSTRAINT `part_ibfk_1` FOREIGN KEY (`chapter_id`) REFERENCES `chapter` (`id`) ON DELETE SET NULL;
 
 --
 -- Contraintes pour la table `premium`

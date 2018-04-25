@@ -19,18 +19,18 @@ class ObjectDelegate {
 	public function pushObjectsByParameters(&$data, $params, $objectName, $othersTablesColumns = []) {
 		$object = ClassUtils::constructObjectWithParameters($params, $objectName);
 		$objects = $object->getWithParameters();
-		if (!empty($othersTablesColumns)) {
+		/*if (!empty($othersTablesColumns)) {
 			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
-		}
+		}*/
 		$data[lcfirst($objectName)."s"] = $objects;
 	}
 
 	public function pushAllObjects(&$data, $objectName) {
 		$object  = new $objectName();
 		$objects = $object->getAll();
-		if (!empty($othersTablesColumns)) {
+		/*if (!empty($othersTablesColumns)) {
 			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
-		}
+		}*/
 		$data[lcfirst($objectName)."s"] = $objects;
 	}
 

@@ -6,7 +6,7 @@ class Trainning extends BaseSql {
 	protected $description;
 	protected $author;
 	protected $dateInserted;
-	protected $lessons = array();
+	protected $chapters = array();
 
 	public function __construct() {
 		BaseSql::__construct();
@@ -82,7 +82,7 @@ class Trainning extends BaseSql {
 	public function getDescription()  { return $this->description; 		}
 	public function getAuthor()       { return $this->author; 	   		}
 	public function getDateInserted() { return $this->dateInserted; 	}
-	public function getLessons() 	  { return $this->lessons; 		  	}
+	public function getChapters() 	  { return $this->chapters; 		}
 
 
 	public function setId($id) 					   { $this->id = $id; 					  }
@@ -90,6 +90,6 @@ class Trainning extends BaseSql {
 	public function setDescription($description)   { $this->description = $description;   }
 	public function setAuthor($author) 			   { $this->author = $author; 			  }
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; }
-	public function setLessons($lessons) 		   { $this->lessons = $lessons; 	 	  }
+	public function setChapters($chapters) 		   { $this->chapters = $chapters; 	 	  }
 }
 ?>
