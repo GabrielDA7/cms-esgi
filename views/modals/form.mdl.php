@@ -20,7 +20,7 @@
 							   <?=(isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
 							   <?=(isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
 							   <?=(isset($attributs["required"])) ? "required='required'" : ""; ?>>
-			<? endif; ?>
+			<?php endif; ?>
 	<?php endforeach;?>
 	<input class="btn form-group <?= $config["config"]["submitClass"]; ?>" type="submit" name="submit" value="<?= $config["config"]["submit"];?>">
 

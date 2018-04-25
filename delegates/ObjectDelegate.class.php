@@ -70,7 +70,7 @@ class ObjectDelegate {
 	}
 
 	public function listAll(&$data, $params, $objectName) {
-		if ($data['errors'] === FALSE) {
+		if (isset($data['errors']) && $data['errors'] === FALSE) {
 			$this->pushObjectsByParameters($data, $params['POST'], $objectName);
 		} else {
 			$this->pushAllObjects($data, $objectName);
