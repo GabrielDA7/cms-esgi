@@ -532,10 +532,21 @@ html,body
 
 // Content trainning lesson
 
+.chapter{
+  background-color: $color-secondary;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.part_hidden {
+  background-color: $color-quaternary;
+}
+
 .content-title {
   color: $color-tertiary;
   font-weight: 600;
   font-size: $font-size-M;
+  line-height: 30px;
 }
 
 .content-text-under-title {
@@ -565,7 +576,6 @@ html,body
   text-decoration: none;
   color: $color-tertiary;
   display: block;
-  text-align: right;
 }
 
 #content-main i {
@@ -573,6 +583,7 @@ html,body
   left: 0;
   font-size: $font-size-M;
   font-weight: 600;
+  line-height: 30px;
 }
 
 .content-text{
@@ -583,7 +594,8 @@ html,body
 
 .content-hidden {
   display: none;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  width: 100%;
 }
 
 .left-content {
@@ -624,6 +636,10 @@ html,body
 /* -----------------------------------------------------------------------------
 * Common elements
 */
+
+.wrap-flex {
+  display: flex;
+}
 .main-img {
   object-fit: fill;
   width: 100%;

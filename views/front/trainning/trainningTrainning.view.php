@@ -33,63 +33,24 @@
 			</div>
 
 			<div class="row M--center">
-				<div class="M2 M--center X12 X--center">
-					<a href="#" class="btn btn-filled-orange btn-small ">Begin</a>
+				<div class="M2 M--center X12 X--center wrap-flex">
+					<a href="#" class="btn btn-filled-orange btn-small">Begin</a>
 				</div>
 			</div>
 		</section>
 
 		<section id="content-main">
-			<?php foreach ($trainning->getChapters() as $chapter): ?>
-			<div class="row chapter">
-		    <div class="M3">
-		    	<p class="content-title"><?= $chapter->getTitle(); ?></p>
-		    </div>
-		    <div class="M2 M--offset7 M--end">
-		    	<a href="javascript:void(0);" class="expand-div"><i class="fas fa-chevron-down"></i></a>
-		    </div>
-		    <div class="M12">
-		    	<div class="full-hr-separation"></div>
-		    </div>
-		    <div class="content-hidden">
-		    	<div class="row">
-		      	<div class="M12">
-		        	<p class="content-text">
-		                              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-		                              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		                              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		                              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		                              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-		                              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		                              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		                              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
-		          </p>
-		         </div>
-		     	</div>
-
-		      <div class="row">
-		      	<div class="M3">
-		        	<p class="content-subtitle">Sous titre</p>
-		        </div>
-		      </div>
-
-		      <div class="row">
-		      	<div class="M12">
-		        	<p class="content-text">
-		                              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-		                              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		                              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		                              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		                              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-		                              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		                              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		                              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
-		         	</p>
-		        </div>
-		       </div>
-		      </div>
-		    </div>
-				<?php endforeach ?>
+			<div class="row M--center">
+				<div class="M6">
+					<?php foreach ($trainning->getChapters() as $chapter): ?>
+						<div class="row chapter">
+					    <div class="M12">
+					    	<a class="content-title" href="<?= DIRNAME . CHAPTER_CHAPTER_FRONT_LINK . '?id=' . $chapter->getId();?>"><?=  $chapter->getNumber(). ". " . $chapter->getTitle(); ?></a>
+					    </div>
+					   </div>
+						<?php endforeach ?>
+				</div>
+			</div>
 			</section>
 
 			<section id="comments">
