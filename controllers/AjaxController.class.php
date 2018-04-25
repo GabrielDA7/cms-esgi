@@ -1,6 +1,6 @@
 <?php
 class AjaxController {
-	
+
 	private $objectDelegate;
 	private $data = [];
 

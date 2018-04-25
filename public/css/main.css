@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -1039,9 +1040,88 @@ html, body {
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); }
 
+.content-title {
+  color: #F96D00;
+  font-weight: 600;
+  font-size: 21px; }
+
+.content-text-under-title {
+  color: black;
+  font-size: 14px;
+  margin-top: 10px; }
+
+.content-subtitle {
+  font-weight: 600;
+  font-size: 18px;
+  color: #222831;
+  margin-top: 15px; }
+
+#content-head a {
+  margin-top: 25px;
+  margin-bottom: 35px; }
+
+#content a:hover {
+  background-color: white;
+  color: #F96D00; }
+
+#content-main a {
+  text-decoration: none;
+  color: #F96D00;
+  display: block;
+  text-align: right; }
+
+#content-main i {
+  position: relative;
+  left: 0;
+  font-size: 21px;
+  font-weight: 600; }
+
+.content-text {
+  margin-top: 10px;
+  color: black;
+  font-size: 14px; }
+
+.content-hidden {
+  display: none;
+  margin-bottom: 20px; }
+
+.left-content {
+  margin-top: 35px;
+  overflow: hidden;
+  float: left;
+  width: 300px; }
+
+#content {
+  overflow: hidden;
+  height: 100%; }
+
+.title-separator {
+  font-weight: 600;
+  color: #222831;
+  font-size: 21px; }
+
+#comments {
+  padding-bottom: 50px;
+  padding-top: 35px; }
+
+#comments textarea {
+  margin-top: 5px; }
+
+#comments .input:focus  {
+  border: 2px solid #E8E8E8; }
+
+#comments .input-btn {
+  margin-top: 5px; }
+
 /* -----------------------------------------------------------------------------
 * Common elements
 */
+.main-img {
+  object-fit: fill;
+  width: 100%;
+  margin-top: 35px;
+  margin-bottom: 35px; }
+
 .logo-nav {
   width: 50px;
   float: left;
@@ -1050,7 +1130,8 @@ html, body {
 
 textarea {
   max-width: 100%;
-  min-width: 100%; }
+  min-width: 100%;
+  min-height: 30px; }
 
 .top-menu {
   height: 60px;
@@ -1074,11 +1155,21 @@ textarea {
   height: 3px;
   width: 50px; }
 
+.full-hr-separation {
+  margin-top: 10px;
+  background-color: #F96D00;
+  margin-bottom: 10px;
+  height: 3px;
+  width: 100%; }
+
 .row-tools {
   padding-top: 35px; }
 
 .row-pagination {
   padding-top: 10px; }
+
+.row-padding {
+  padding-bottom: 50px; }
 
 .form-group {
   margin-top: 20px; }
@@ -1110,9 +1201,6 @@ textarea {
 
 .input-icon {
   padding-left: 30px; }
-
-.input:focus {
-  border: 2px solid #F96D00; }
 
 .input-btn {
   height: 30px;
@@ -1178,6 +1266,11 @@ textarea {
 .btn-filled-orange {
   border: 2px solid #F96D00;
   background-color: #F96D00;
+  color: white; }
+
+.btn-filled-blue {
+  border: 2px solid #222831;
+  background-color: #222831;
   color: white; }
 
 .btn-light-orange {

@@ -119,7 +119,8 @@ $(function() {
     var hiddenContent = $(this).parent().siblings('.content-hidden').toggle('fast');
   });
 
-  if( $("list-training").length ) {
+  // Ajax call for listing trainings
+  if( $("#list-trainning").length ) {
     initListTrainning(10);
   }
 
@@ -127,11 +128,11 @@ $(function() {
 
 function initListTrainning(num){
     $.ajax({
-      url:"liens",
+      url:"ajax/search?object=trainning",
       success : function(data){
-        tb = $("#list-training tbody");
-        obj = JSON.parse(data);
-        for(i=0;i<num;i++){
+        tb = $("#list-trainning tbody");
+        obj = data;
+        for(i=0;i<1;i++){
           html+="<tr>";
           html+="<td>"+obj[i].title+"</td>";
           html+="<td>"+obj[i].category+"</td>";

@@ -34,77 +34,7 @@
           </tr>
         </thead>
         <tbody>
-          <!-- GetListTrainning -->
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
-          <tr>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td>Test1</td>
-            <td><a href="#edit/id"><i class="fas fa-edit"></i></a><a href="#delete/id"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
+
         </tbody>
       </table>
     </div>
@@ -112,18 +42,25 @@
   </div>
 
   <div class="row row-pagination">
-    <div class="M2">
-      <p>X elements</p>
-    </div>
-    <div class="M2 M--offset8">
+    <div class="M4">
+      <p>Showing 1 to
       <select class="pagination-selector" name="pagination" id="listTrainningSelect" onchange="listTrainningSelectChange()">
         <option value="10">10</option>
         <option value="20">20</option>
         <option value="30">50</option>
         <option value="30">100</option>
       </select>
+      of X entries</p>
     </div>
+    <div class="M4">
+      <div id="div_pagination">
+        <input type="hidden" id="txt_rowid" value="0">
+        <input type="hidden" id="txt_allcount" value="0">
+        <input type="button" class="button" value="Previous" id="but_prev" />
 
+        <input type="button" class="button" value="Next" id="but_next" />
+      </div>
+    </div>
   </div>
 
 </section>

@@ -530,10 +530,107 @@ html,body
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+// Content trainning lesson
+
+.content-title {
+  color: $color-tertiary;
+  font-weight: 600;
+  font-size: $font-size-M;
+}
+
+.content-text-under-title {
+  color: black;
+  font-size: $font-size-XS;
+  margin-top: 10px;
+}
+
+.content-subtitle {
+  font-weight: 600;
+  font-size: $font-size-S;
+  color: $color-secondary;
+  margin-top: 15px;
+}
+
+#content-head a {
+  margin-top: 25px;
+  margin-bottom: 35px;
+}
+
+#content a:hover {
+  background-color: $color-primary;
+  color: $color-tertiary;
+}
+
+#content-main a {
+  text-decoration: none;
+  color: $color-tertiary;
+  display: block;
+  text-align: right;
+}
+
+#content-main i {
+  position: relative;
+  left: 0;
+  font-size: $font-size-M;
+  font-weight: 600;
+}
+
+.content-text{
+  margin-top: 10px;
+  color: black;
+  font-size: $font-size-XS;
+}
+
+.content-hidden {
+  display: none;
+  margin-bottom: 20px;
+}
+
+.left-content {
+  margin-top: 35px;overflow: hidden;float: left; width: 300px
+}
+
+#content {
+  overflow: hidden;
+  height: 100%;
+}
+
+.title-separator {
+  font-weight: 600;
+  color: $color-secondary;
+  font-size: $font-size-M;
+}
+
+// comments
+
+#comments {
+  padding-bottom: 50px;
+  padding-top: 35px;
+}
+
+#comments textarea {
+  margin-top: 5px;
+}
+
+#comments .input:focus {
+  border: 2px solid $color-quaternary;
+}
+
+#comments .input-btn {
+  margin-top:5px;
+}
+
 
 /* -----------------------------------------------------------------------------
 * Common elements
 */
+.main-img {
+  object-fit: fill;
+  width: 100%;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
 .logo-nav {
   width: 50px;
   float: left;
@@ -544,6 +641,7 @@ html,body
 textarea {
   max-width: 100%;
   min-width: 100%;
+  min-height: 30px;
 }
 
 .top-menu {
@@ -572,12 +670,23 @@ textarea {
   width: 50px;
 }
 
+.full-hr-separation {
+  margin-top: 10px;
+  background-color: $color-tertiary;
+  margin-bottom: 10px;
+  height: 3px;
+  width: 100%;
+}
 .row-tools {
   padding-top:35px;
 }
 
 .row-pagination {
   padding-top: 10px;
+}
+
+.row-padding {
+  padding-bottom: 50px;
 }
 
 // Input -----------------------------------------------------------------------
@@ -623,7 +732,7 @@ textarea {
 }
 
 .input:focus {
-  border: 2px solid $color-tertiary;
+//  border: 2px solid $color-tertiary;
 }
 
 .input-btn {
@@ -707,6 +816,12 @@ textarea {
 .btn-filled-orange {
   border: 2px solid $color-tertiary;
   background-color: $color-tertiary;
+  color: white;
+}
+
+.btn-filled-blue {
+  border: 2px solid $color-secondary;
+  background-color: $color-secondary;
   color: white;
 }
 
