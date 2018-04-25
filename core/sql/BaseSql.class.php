@@ -76,6 +76,19 @@ class BaseSql extends QueryConstructorSql {
 		return $object;
 	}
 
+	public function getWhereLikeWord($toObject = TRUE) {
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
+		$queryString = $this->constructSelectQuery($this->table, $this->columns, TRUE);
+		$query = $this->db->prepare($queryString);
+		$this->setKeyword($query, $this->columns);
+		$query->execute();
+		if ($toObject) {
+			$objects = $this->createObjectsListFromDBResponse($response);
+			return $objects;
+		}
+		return $query->fetchAll();
+	}
+
 	private function createObjectsListFromDBResponse($response) {
 		$objectList = array();
 		foreach ($response as $key => $values) {
@@ -87,6 +100,11 @@ class BaseSql extends QueryConstructorSql {
 
 	protected function hasResult($query) {
 		return $response = $query->fetch();
+	}
+
+	protected function setKeyword(&$query, $columns) {
+		$keyword = "%".array_values($columns)[0]."%";
+		$query->bindParam(':keyword', $keyword, PDO::PARAM_STR);
 	}
 }
 ?>

@@ -4,6 +4,7 @@ class classUtils {
 	public function __construct() {}
 
 	public static function constructObjectWithParameters($columns, $objectName) {
+		$objectName = ucfirst($objectName);
 		$object = new $objectName();
 		self::setObjectColumns($object, $columns);
 		return $object;
