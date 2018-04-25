@@ -2,15 +2,26 @@
 
 	<?php foreach ($config["input"] as $name => $attributs):?>
 			<?php if(isset($attributs["label"]) && !empty($attributs["label"])): ?>
-				<label class="form-label-top form-group" for="<?= $name; ?>"><?= $attributs["label"]; ?></label>
+				<label class="form-label-top form-group <?= $attributs["labelClass"] ?>"
+						<?=(isset($attributs["name"])) ? "for='".$attributs["name"]."'" : "";?>><?= $attributs["label"]; ?></label>
 			<?php endif; ?>
-			<input class="input form-group" type="<?= $attributs["type"];?>"
-				   name="<?= $name;?>"
-				   <?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
-				   <?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
-				   <?= (isset($attributs["required"])) ? "required='required'" : ""; ?>>
+			<?php if($attributs["type"] == "textarea"): ?>
+					<textarea
+						 <?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
+					   <?=(isset($attributs["name"])) ? "name='".$attributs["name"]."'" : "";?>
+					   <?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
+					   <?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
+					   <?= (isset($attributs["required"])) ? "required='required'" : ""; ?>></textarea>
+			<?php else: ?>
+						<input
+								 <?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
+								 <?=(isset($attributs["type"])) ? "type='".$attributs["type"]."'" : "";?>
+							   <?=(isset($attributs["name"])) ? "for='".$attributs["name"]."'" : "";?>
+							   <?=(isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
+							   <?=(isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
+							   <?=(isset($attributs["required"])) ? "required='required'" : ""; ?>>
+			<? endif; ?>
 	<?php endforeach;?>
-
-	<input class="btn btn-filled-orange btn-full-width form-group form-group-bottom" type="submit" name="submit" value="<?= $config["config"]["submit"];?>" >
+	<input class="btn form-group <?= $config["config"]["submitClass"]; ?>" type="submit" name="submit" value="<?= $config["config"]["submit"];?>">
 
 </form>

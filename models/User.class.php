@@ -60,7 +60,7 @@ class User extends UserSql {
 	*/
 	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_ADD_FRONT_LINK,  "enctype" => "multipart/form-data", "submit"=>"Sign up"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_ADD_FRONT_LINK,  "enctype" => "multipart/form-data", "submit"=>"Sign up", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
 								"firstName"=>
@@ -69,7 +69,8 @@ class User extends UserSql {
 												"placeholder"=>"First name",
 												"required"=>true,
 												"maxString"=>100,
-												"minString"=>2
+												"minString"=>2,
+												"class"=>"form-group input"
 											],
 								"lastName"=>
 											[
@@ -77,7 +78,8 @@ class User extends UserSql {
 												"placeholder"=>"Last name",
 												"required"=>true,
 												"maxString"=>100,
-												"minString"=>2
+												"minString"=>2,
+												"class"=>"form-group input"
 											],
 								"userName"=>
 											[
@@ -85,33 +87,38 @@ class User extends UserSql {
 												"placeholder"=>"Username",
 												"required"=>true,
 												"maxString"=>100,
-												"minString"=>2
+												"minString"=>2,
+												"class"=>"form-group input"
 											],
 								"email"=>
 											[
 												"type"=>"email",
 												"placeholder"=>"Email",
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"emailConfirmation"=>
 											[
 												"type"=>"email",
 												"placeholder"=>"Email confirmation",
 												"required"=>true,
-												"confirm"=>"email"
+												"confirm"=>"email",
+												"class"=>"form-group input"
 											],
 								"pwd"=>
 											[
 												"type"=>"password",
 												"placeholder"=>"Password",
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"pwdConfirmation"=>
 											[
 												"type"=>"password",
 												"placeholder"=>"Password confirmation",
 												"required"=>true,
-												"confirm"=>"pwd"
+												"confirm"=>"pwd",
+												"class"=>"form-group input"
 											],
 							]
 				];
@@ -122,7 +129,7 @@ class User extends UserSql {
 	*/
 	public static function configLoginForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_LOGIN_FRONT_LINK, "submit"=>"Sign in"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_LOGIN_FRONT_LINK, "submit"=>"Sign in", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
 								"userName"=>
@@ -131,7 +138,8 @@ class User extends UserSql {
 												"placeholder"=>"Pseudo",
 												"maxString"=>100,
 												"minString"=>2,
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"pwd"=>
 											[
@@ -139,7 +147,8 @@ class User extends UserSql {
 												"placeholder"=>"Mot de passe",
 												"maxString"=>255,
 												"minString"=>6,
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											]
 							]
 				];
@@ -159,7 +168,7 @@ class User extends UserSql {
 												"type"=>"hidden",
 												"placeholder"=>$user->getId(),
 												"value"=>$user->getId(),
-												"required"=>true
+												"required"=>true,
 											],
 								"userName"=>
 											[
@@ -167,7 +176,8 @@ class User extends UserSql {
 												"placeholder"=>$user->getUserName(),
 												"maxString"=>100,
 												"minString"=>2,
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"firstName"=>
 											[
@@ -175,7 +185,8 @@ class User extends UserSql {
 												"placeholder"=>$user->getFirstName(),
 												"maxString"=>255,
 												"minString"=>2,
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"lastName"=>
 											[
@@ -183,30 +194,26 @@ class User extends UserSql {
 												"placeholder"=>$user->getLastName(),
 												"maxString"=>255,
 												"minString"=>2,
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"email"=>
 											[
 												"type"=>"email",
 												"placeholder"=>$user->getEmail(),
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
-								"avatar"=>
- 
+								"image"=>
+
 					                      	[
 					                        	"type"=>"file",
-					 
 					                        	"maxSize" => 1000000,
-					 
-					                        	"extension" => 
+					                        	"extension" =>
 					                        					[
-					 
 						                                  			"jpg",
-						 
 						                                  			"png",
-						 
 						                                  			"jpeg"
-					 
 					                                		   	]
 					                     	]
 							]

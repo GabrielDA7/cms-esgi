@@ -348,10 +348,7 @@ html,body
   margin-left: 25px;
 }
 
-#front-topnav .input-medium:focus {
-  border: 2px solid $color-tertiary;
-  border-radius: 5px;
-}
+
 // SLIDER ----------------------------------------------------------------------
 
 #slider {
@@ -544,6 +541,11 @@ html,body
   margin-top:5px;
 }
 
+textarea {
+  max-width: 100%;
+  min-width: 100%;
+}
+
 .top-menu {
   height: 60px;
   background-color: $color-secondary;
@@ -609,6 +611,11 @@ html,body
   border-radius: 5px;
   width: $element-width-M;
   height: 30px;
+}
+
+.input-medium:focus {
+  border: 2px solid $color-tertiary;
+  border-radius: 5px;
 }
 
 .input-icon {

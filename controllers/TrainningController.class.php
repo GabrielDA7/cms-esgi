@@ -49,9 +49,8 @@ class TrainningController implements ControllerInterface {
 	}
 
 	public function listAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, TRAINNING_LIST_FRONT_VIEW, FRONT_TEMPLATE, TRAINNING_LIST_BACK_VIEW, BACK_TEMPLATE); 
+		ViewUtils::setPossiblesViewsTemplates($data, TRAINNING_LIST_FRONT_VIEW, FRONT_TEMPLATE, TRAINNING_LIST_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
-		$this->formDelegate->process($data, $params, TRAINNING_CLASS_NAME);
 		$this->objectDelegate->listAll($data, $params, TRAINNING_CLASS_NAME);
 		$view = new View($data);
 	}

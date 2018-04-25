@@ -24,56 +24,40 @@ class Trainning extends BaseSql {
 		unset($this->$key);
 	}
 
-	public static function configListForm($data){
+	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.TRAINNING_LIST_BACK_LINK, "submit"=>"Edit"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LIST_BACK_LINK, "submit"=>"Add", "submitClass"=>"input-btn btn-filled-orange btn-icon"],
 					"input"=>
 							[
 								"title"=>
 											[
 												"type"=>"text",
 												"placeholder"=>"Title",
-												"maxString"=>255,
-												"minString"=>2,
-												"required"=>true
-											],
-								"author"=>
-											[
-												"type"=>"text",
-												"placeholder"=>"Author",
-												"maxString"=>255,
-												"minString"=>2,
-												"required"=>true
-											],
-								"description"=>
-											[
-												"type"=>"text",
-												"placeholder"=>"Description",
-												"required"=>true
-											],							
-							]
-				];
-	}
-
-	public static function configAddForm($data){
-		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LIST_BACK_LINK, "submit"=>"Ajouter"],
-					"input"=>
-							[
-								"title"=>
-											[
-												"type"=>"text",
-												"placeholder"=>"title",
 												"maxString"=>100,
 												"minString"=>2,
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"description"=>
 											[
 												"type"=>"textarea",
 												"placeholder"=>"Description",
+												"class"=>"form-group input"
 											],
-							]
+								"image"=>
+											[
+								         "type"=>"file",
+												 "class"=>"form-group",
+								         "maxSize" => 1000000,
+								         "extension" =>
+								                   [
+									                    "jpg",
+									                    "png",
+									                    "jpeg"
+								                    ]
+								       ]
+						]
+
 				];
 	}
 
