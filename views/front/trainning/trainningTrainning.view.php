@@ -10,7 +10,7 @@
 
 		<div class="row M--center">
 			<div class="M3">
-				<img class="img main-img" src="<?= DIRNAME; ?>public/img/home/logo-react.png" alt="image du cours#1" title="image du cours#1" >
+				<img class="img main-img" src="<?= DIRNAME . $trainning->getImage(); ?>" alt="image du cours#1" title="image du cours#1" >
 			</div>
 		</div>
 
