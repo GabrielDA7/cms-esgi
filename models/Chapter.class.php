@@ -28,7 +28,7 @@ class Chapter extends BaseSql {
 
 	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.CHAPTER_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Add", "submitClass"=>"input-btn btn-filled-orange btn-icon"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.CHAPTER_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Save", "submitClass"=>"input-btn btn-filled-orange btn-icon"],
 					"input"=>
 							[
 								"title"=>
@@ -38,12 +38,6 @@ class Chapter extends BaseSql {
 												"maxString"=>100,
 												"minString"=>2,
 												"required"=>true,
-												"class"=>"form-group input"
-											],
-								"description"=>
-											[
-												"type"=>"textarea",
-												"placeholder"=>"Description",
 												"class"=>"form-group input"
 											],
 								"image"=>
@@ -63,7 +57,13 @@ class Chapter extends BaseSql {
 										         "type"=>"hidden",
 												 	 	 "class"=>"form-group",
 										         "value" => $_SESSION['userName']
-								       		]
+								      ],
+								"parts"=>
+											[
+												"type"=>"btn",
+												"class"=>"input-btn btn-filled-blue form-group",
+												"value"=>"Add part"
+											]
 						]
 
 				];

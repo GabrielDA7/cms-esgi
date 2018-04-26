@@ -27,7 +27,7 @@ class Trainning extends BaseSql {
 
 	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.TRAINNING_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Add", "submitClass"=>"input-btn btn-filled-orange btn-icon"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.TRAINNING_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Save", "submitClass"=>"input-btn btn-filled-orange btn-icon"],
 					"input"=>
 							[
 								"title"=>
