@@ -8,17 +8,17 @@
     </div>
   </div>
 
-  <div class="row M--between row-padding">
+  <div class="row row-padding">
     <?php foreach ($chapters as $chapter): ?>
       <div class="M2 X12">
         <a href="<?= DIRNAME . CHAPTER_CHAPTER_FRONT_LINK . '?id=' . $chapter->getId();?>" class="card">
             <div class="card-image">
-              <img src="<?= DIRNAME;?>public/img/home/logo-react.png" alt="Avatar">
+              <img src="<?= DIRNAME . $chapter->getImage(); ?>" alt="image">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
-              <p class="card-content-title"><?= $trainning->getTitle() ?></p>
-              <p class="card-content-author"><?= $trainning->getAuthor() ?></p>
+              <p class="card-content-title"><?= $chapter->getTitle() ?></p>
+              <p class="card-content-author"><?= $chapter->getAuthor() ?></p>
             </div>
         </a>
       </div>

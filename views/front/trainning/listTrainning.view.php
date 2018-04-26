@@ -9,12 +9,12 @@
 		</div>
 	</div>
 
-  <div class="row M--between row-padding">
+  <div class="row row-padding">
     <?php foreach ($trainnings as $trainning): ?>
       <div class="M2 X12">
         <a href="<?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK . '?id=' . $trainning->getId();?>" class="card">
             <div class="card-image">
-              <img src="<?= DIRNAME;?>public/img/home/logo-react.png" alt="Avatar">
+              <img src="<?=(empty($trainning->getImage())) ? DIRNAME . 'public/img/default.jpg' : DIRNAME . $trainning->getImage(); ?>" alt="image">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
