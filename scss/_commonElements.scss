@@ -487,6 +487,7 @@ html,body
 .card-image {
   height: 150px;
 }
+
 .card img {
   width: 100%;
   height: 100%;
@@ -531,6 +532,14 @@ html,body
 }
 
 // Content trainning lesson
+
+#front-chapter i {
+  color: $color-secondary;
+}
+
+.trainning-title {
+  color: $color-quaternary-dark;
+}
 
 .chapter{
   background-color: $color-secondary;

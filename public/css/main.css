@@ -1040,6 +1040,12 @@ html, body {
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); }
 
+#front-chapter i {
+  color: #222831; }
+
+.trainning-title {
+  color: #A2A2A2; }
+
 .chapter {
   background-color: #222831;
   height: 30px;

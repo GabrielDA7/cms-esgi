@@ -1,80 +1,42 @@
-<section id = "content-head">
+<section id="front-chapter" class="container main-section">
+
+<section id ="content-head">
 	<div class="row">
-		<div class="M3">
-			<p class="title-separator">Description</p>
-		</div>
 		<div class="M12">
-			<div class="full-hr-separation"></div>
+			<a class="trainning-title" href="<?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK . '?id=' . $chapter->getTrainningId(); ?>"> Trainning name : <?= $chapter->getTitle(); ?></a>
 		</div>
 	</div>
 
 	<div class="row">
 			<div class="M12">
 				<p class="content-text-under-title">
-					<?=  ?>
 				</p>
 			</div>
 	</div>
-
-	<div class="row M--center">
-		<div class="M2 M--center X12 X--center wrap-flex">
-			<a href="#" class="btn btn-filled-orange btn-small">Begin</a>
-		</div>
-	</div>
 </section>
-<a href="">lien</a>
+
 <section id="content-main">
-	<?php  ?>
-		<div class="row chapter">
+
+	<?php foreach($chapter->getParts() as $part): ?>
+		<div class="row">
 			<div class="M3">
-				<p class="content-title"><?= ?></p>
+				<p class="content-subtitle"> <?= $part->getNumber() . ". " . $part->getTitle(); ?></p>
 			</div>
-			<div class="M2 M--offset7 M--end">
-				<a href="javascript:void(0);" class="expand-div"><i class="fas fa-chevron-down"></i></a>
-			</div>
-			<div class="M12">
-				<div class="full-hr-separation"></div>
+			<div class="M2 M--offset7">
+				<a href="javascript:void(0);" class="expand-div btn-icon subtitle-icon"><i class="fas fa-chevron-down"></i></a>
 			</div>
 			<div class="content-hidden">
 				<div class="row">
 					<div class="M12">
 						<p class="content-text">
-																Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-																magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-																consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-																Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-																Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-																magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-																consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-																Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
+							<?= $part->getContent(); ?>
 						</p>
 					 </div>
 				</div>
-
-				<div class="row">
-					<div class="M3">
-						<p class="content-subtitle">Sous titre</p>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="M12">
-						<p class="content-text">
-																Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-																magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-																consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-																Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-																Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-																magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-																consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-																Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
-						</p>
-					</div>
-				 </div>
-				</div>
 			</div>
-		<?php endforeach ?>
-	</section>
+		</div>
+	<?php endforeach ?>
+</section>
 
 	<section id="comments">
 		<div class="row">
@@ -107,11 +69,4 @@
 
 		</div>
 	</section>
-<div><?= $chapter->getNumber() ?></div>
-<div><?= $chapter->getTitle() ?></div>
-<?php foreach ($chapter->getParts() as $part): ?>
-	<div>Partie : <?= $part->getNumber(); ?></div>
-	<div>Title : <?= $part->getTitle(); ?></div>
-	<div>Content : <?= $part->getContent(); ?></div>
-	<br>
-<?php endforeach ?>
+</section>
