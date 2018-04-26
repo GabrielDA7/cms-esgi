@@ -21,5 +21,12 @@ class AjaxController {
 		}
 		return FormatUtils::formatToJson($this->objectDelegate->search($params, $params['GET']['object']));
 	}
+
+	public function listAction($params) {
+		if (empty($params['GET']) || !isset($params['GET']['object'])) {
+			return FormatUtils::formatToJson([]);
+		}
+		return FormatUtils::formatToJson($this->objectDelegate->getAll($params, $params['GET']['object']));
+	}
 }
 ?>

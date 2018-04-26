@@ -79,8 +79,14 @@ class ObjectDelegate {
 
 	public function search($params, $objectName) {
 		$object = ClassUtils::constructObjectWithParameters($params['GET'], $objectName);
-		$objects = $object->getWhereLikeWord(FALSE);
-		return $objects;
+		$response = $object->getWhereLikeWord(FALSE);
+		return $response;
+	}
+
+	public function getAll($params, $objectName) {
+		$object  = new $objectName();
+		$response = $object->getAll(FALSE);
+		return $response;
 	}
 
 	public function login(&$data, $params) {

@@ -47,23 +47,29 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute($this->columns);
 	}
 
-	public function getAll() {
+	public function getAll($toObject = TRUE) {
 		$queryString = $this->constructSelectQuery($this->table);
 		$query = $this->db->prepare($queryString);
 		$query->execute();
 		$response = $query->fetchAll();
-		$objectList = $this->createObjectsListFromDBResponse($response);
-		return $objectList;
+		if ($toObject) {
+			$objectList = $this->createObjectsListFromDBResponse($response);
+			return $objectList;
+		}
+		return $response;
 	}
 
-	public function getWithParameters() {
+	public function getWithParameters($toObject = TRUE) {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 		$response = $query->fetchAll();
-		$objectList = $this->createObjectsListFromDBResponse($response);
-		return $objectList;
+		if ($toObject) {
+			$objectList = $this->createObjectsListFromDBResponse($response);
+			return $objectList;
+		}
+		return $response;
 	}
 
 	public function getById() {
