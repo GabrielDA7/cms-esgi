@@ -84,6 +84,7 @@ class ObjectDelegate {
 	}
 
 	public function getAll($params, $objectName) {
+		$objectName = ucfirst($objectName);
 		$object  = new $objectName();
 		$response = $object->getAll(FALSE);
 		return $response;
