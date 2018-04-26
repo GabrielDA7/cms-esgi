@@ -124,6 +124,11 @@ $(function() {
     initListTrainning(10);
   }
 
+  // Ajax call for listing chapter
+  if( $("#list-lesson").length ) {
+    initListChapter(10);
+  }
+
 });
 
 function initListTrainning(num){
@@ -149,6 +154,29 @@ function initListTrainning(num){
     });
   };
 
+function initListChapter(num) {
+  $.ajax({
+    type: 'GET',
+    url:"/lab/uteach/ajax/list?object=chapter",
+    dataType: 'json',
+    success : function(data){
+      tb = $("#list-lesson tbody");
+      obj = data;
+      var html;
+      $.each(obj, function (index, element) {
+        html+="<tr>";
+        html+="<td>"+element.title+"</td>";
+        html+="<td>"+element.category+"</td>";
+        html+="<td>"+element.author+"</td>";
+        html+="<td>"+element.status+"</td>";
+        html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
+        html+="</tr>";
+      });
+      tb.html(html);
+    },
+  });
+}
+
 function searchTrainning(str){
   var str = $("#dashboard-list-tranning .row-tools input").val();
   $.ajax({
@@ -157,6 +185,30 @@ function searchTrainning(str){
     dataType: 'json',
     success : function(data){
       tb = $("#list-trainning tbody");
+      obj = data;
+      var html;
+      $.each(obj, function (index, element) {
+        html+="<tr>";
+        html+="<td>"+element.title+"</td>";
+        html+="<td>"+element.category+"</td>";
+        html+="<td>"+element.author+"</td>";
+        html+="<td>"+element.status+"</td>";
+        html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
+        html+="</tr>";
+      });
+      tb.html(html);
+    },
+  });
+}
+
+function searchChapter(str){
+  var str = $("#dashboard-list-lesson .row-tools input").val();
+  $.ajax({
+    type: 'GET',
+    url:"/lab/uteach/ajax/search?object=chapter",
+    dataType: 'json',
+    success : function(data){
+      tb = $("#list-lesson tbody");
       obj = data;
       var html;
       $.each(obj, function (index, element) {

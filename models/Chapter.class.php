@@ -9,7 +9,7 @@ class Chapter extends BaseSql {
 	protected $parts = [];
 
 	protected $trainning_id = null;
-	
+
 	public function __construct() {
 		BaseSql::__construct();
 	}
@@ -24,6 +24,49 @@ class Chapter extends BaseSql {
 
 	public function unsetColumn($key) {
 		unset($this->$key);
+	}
+
+	public static function configAddForm($data){
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.CHAPTER_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Add", "submitClass"=>"input-btn btn-filled-orange btn-icon"],
+					"input"=>
+							[
+								"title"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"Title",
+												"maxString"=>100,
+												"minString"=>2,
+												"required"=>true,
+												"class"=>"form-group input"
+											],
+								"description"=>
+											[
+												"type"=>"textarea",
+												"placeholder"=>"Description",
+												"class"=>"form-group input"
+											],
+								"image"=>
+											[
+										         "type"=>"file",
+												 	 	 "class"=>"form-group",
+										         "maxSize" => 1000000,
+										         "extension" =>
+										                   [
+											                    "jpg",
+											                    "png",
+											                    "jpeg"
+										                    ]
+								       		],
+								"author"=>
+											[
+										         "type"=>"hidden",
+												 	 	 "class"=>"form-group",
+										         "value" => $_SESSION['userName']
+								       		]
+						]
+
+				];
 	}
 
 	public function getId() 		 { return $this->id; 		   }

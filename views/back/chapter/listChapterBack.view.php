@@ -1,9 +1,9 @@
-<section id="dashboard-list-tranning">
+<section id="dashboard-list-lesson">
 
   <div class="row">
     <div class="M4">
       <div class="back-title">
-        <h1>List of trainings</h1>
+        <h1>List of lessons</h1>
         <div class="hr-separation"></div>
       </div>
     </div>
@@ -13,17 +13,17 @@
     <div class="M4">
       <div class="wrapper-icon">
           <i class="fas fa-search icon-left"></i>
-          <input class="input-medium input-icon" type="text" oninput="searchTrainning();">
+          <input class="input-medium input-icon" type="text" oninput="searchLesson();">
       </div>
     </div>
     <div class="M2 M--offset6">
-      <a class="btn-extra-small btn-filled-orange btn btn-icon" href="<?= DIRNAME . TRAINNING_ADD_BACK_LINK; ?>">Add<i class="fas fa-plus"></i></a>
+      <a class="btn-extra-small btn-filled-orange btn btn-icon" href="<?= DIRNAME . LESSON_ADD_BACK_LINK; ?>">Add<i class="fas fa-plus"></i></a>
     </div>
   </div>
 
   <div class="row M--center X--center">
     <div class="M12">
-      <table id="list-trainning" class="list-data">
+      <table id="list-lesson" class="list-data">
         <thead>
           <tr>
             <th>Title</th>
@@ -44,7 +44,7 @@
   <div class="row row-pagination">
     <div class="M4">
       <p>Showing 1 to
-      <select class="pagination-selector" name="pagination" id="listTrainningSelect" onchange="listTrainningSelectChange()">
+      <select class="pagination-selector" name="pagination" id="listTrainningSelect" onchange="listLessonSelectChange()">
         <option value="10">10</option>
         <option value="20">20</option>
         <option value="30">50</option>

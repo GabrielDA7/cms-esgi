@@ -19,12 +19,33 @@ class ChapterController implements ControllerInterface{
 	}
 
 	public function addAction($params) {
+		ViewUtils::setPossiblesViewsTemplates($data, "", "", CHAPTER_ADD_BACK_VIEW, BACK_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params, TRUE);
+		$this->formDelegate->process($data, $params, CHAPTER_CLASS_NAME);
+		$this->objectDelegate->add($data, $params, CHAPTER_CLASS_NAME);
+		$view = new View($data);
 	}
 
 	public function editAction($params) {
+		if(!isset($params['GET']['id']) || $_SESSION['admin'] !== TRUE) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
+			return404View();
+		}
+		ViewUtils::setPossiblesViewsTemplates($data, "", "", CHAPTER_EDIT_BACK_VIEW , BACK_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params, TRUE);
+		$this->objectDelegate->pushObjectById($data, $params['GET']['id'], CHAPTER_CLASS_NAME);
+		$this->formDelegate->process($data, $params, CHAPTER_CLASS_NAME);
+		$this->objectDelegate->update($data, $params, CHAPTER_CLASS_NAME, "", CHAPTER_LIST_BACK_LINK);
+		$view = new View($data);
 	}
 
 	public function deleteAction($params) {
+		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
+			return404View();
+		}
+		$this->authenticationDelegate->process($data, $params, TRUE);
+		$this->objectDelegate->delete($params, CHAPTER_CLASS_NAME, "", CHAPTER_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {

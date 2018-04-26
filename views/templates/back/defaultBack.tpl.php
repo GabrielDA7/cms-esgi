@@ -42,8 +42,8 @@
                              <i class="fas fa-graduation-cap"></i>Lessons<i class="fas fa-chevron-down"></i>
                            </a>
                            <ul class="submenu-item">
-                             <li><a href="<?= DIRNAME . LESSON_LIST_BACK_LINK; ?>">Liste des cours</a></li>
-                             <li><a href="<?= DIRNAME . LESSON_ADD_BACK_LINK; ?>">Ajouter un cours</a></li>
+                             <li><a href="<?= DIRNAME . CHAPTER_LIST_BACK_LINK; ?>">Liste des cours</a></li>
+                             <li><a href="<?= DIRNAME . CHAPTER_ADD_BACK_LINK; ?>">Ajouter un cours</a></li>
                            </ul>
                          </li>
                          <li class="sub-menu">
