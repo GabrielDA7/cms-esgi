@@ -86,7 +86,6 @@ if (!INSTALLATION_DONE && $uriExploded[0] != INSTALLATION_INDEX_LINK) {
 }
 
 $uriExploded = array_values($uriExploded);
-
 $params = ["POST" => $_POST, "GET" => $_GET, "FILES" => $_FILES, "URL" => $uriExploded];
 
 getControllerAndAction($controllerName, $actionName, $params);

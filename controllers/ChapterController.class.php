@@ -42,7 +42,6 @@ class ChapterController implements ControllerInterface{
 		ViewUtils::setPossiblesViewsTemplates($data, CHAPTER_CHAPTER_FRONT_VIEW, FRONT_TEMPLATE, CHAPTER_CHAPTER_BACK_VIEW, BACK_TEMPLATE);
 		$this->authenticationDelegate->process($data, $params);
 		$this->objectDelegate->pushObjectById($data, $params['GET']['id'], CHAPTER_CLASS_NAME, [PART_CLASS_NAME]);
-
 		$view = new View($data);
 	}
 }

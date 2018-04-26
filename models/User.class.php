@@ -204,7 +204,7 @@ class User extends UserSql {
 												"required"=>true,
 												"class"=>"form-group input"
 											],
-								"image"=>
+								"avatar"=>
 
 					                      	[
 					                        	"type"=>"file",
