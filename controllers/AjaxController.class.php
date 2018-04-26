@@ -26,8 +26,7 @@ class AjaxController {
 		if (empty($params['GET']) || !isset($params['GET']['object'])) {
 			return FormatUtils::formatToJson([]);
 		}
-		$json = FormatUtils::formatToJson($this->objectDelegate->getAll($params, $params['GET']['object']));
-		die(var_dump($json));
+		return FormatUtils::formatToJson($this->objectDelegate->getAll($params, $params['GET']['object']));
 	}
 }
 ?>
