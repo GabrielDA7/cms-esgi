@@ -18,7 +18,7 @@
                 <div class="left-nav">
                   <img class="logo-nav" src="<?= DIRNAME.LOGO_PATH;?>" alt="logo" title="logo">
                   <a href="<?= DIRNAME;?>" class="active">Home</a>
-                  <a href="#cours">Courses</a>
+                  <a href="<?= DIRNAME.CHAPTER_LIST_FRONT_LINK;?>">Courses</a>
                   <a href="<?= DIRNAME.TRAINNING_LIST_FRONT_LINK;?>">Trainings</a>
                   <a href="#videos">Videos</a>
                   <a href="#premium">Premium</a>

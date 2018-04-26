@@ -20,7 +20,7 @@
 	<?php foreach($chapter->getParts() as $part): ?>
 		<div class="row">
 			<div class="M3">
-				<p class="content-subtitle"> <?= $part->getNumber() . ". " . $part->getTitle(); ?></p>
+				<p class="content-subtitle"> <?= $part->getNumber() . ". " . $part ->getTitle(); ?></p>
 			</div>
 			<div class="M2 M--offset7">
 				<a href="javascript:void(0);" class="expand-div btn-icon subtitle-icon"><i class="fas fa-chevron-down"></i></a>
@@ -66,7 +66,6 @@
 			<div class="M12">
 				<p>No comments</p>
 			</div>
-
 		</div>
 	</section>
 </section>

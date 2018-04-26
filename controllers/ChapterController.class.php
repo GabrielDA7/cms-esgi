@@ -17,7 +17,7 @@ class ChapterController implements ControllerInterface{
 
 	public function indexAction($params) {
 	}
-	
+
 	public function addAction($params) {
 	}
 
@@ -28,6 +28,10 @@ class ChapterController implements ControllerInterface{
 	}
 
 	public function listAction($params) {
+		ViewUtils::setPossiblesViewsTemplates($data, CHAPTER_LIST_FRONT_VIEW, FRONT_TEMPLATE, CHAPTER_LIST_BACK_VIEW, BACK_TEMPLATE);
+		$this->authenticationDelegate->process($data, $params);
+		$this->objectDelegate->listAll($data, $params, CHAPTER_CLASS_NAME);
+		$view = new View($data);
 	}
 
 	public function chapterAction($params) {

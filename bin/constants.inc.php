@@ -92,6 +92,7 @@ define("TRAINNING_LIST_BACK_LINK", "trainning/list/back");
 define("TRAINNING_LIST_FRONT_LINK", "trainning/list");
 
 define("CHAPTER_CHAPTER_FRONT_LINK", "chapter/chapter");
+define("CHAPTER_LIST_FRONT_LINK", "chapter/list");
 
 
 define("INDEX_ERROR_LINK", "index/error");
@@ -136,6 +137,7 @@ define("TRAINNING_ADD_BACK_VIEW", "addTrainningBack");
 define("TRAINNING_LIST_BACK_VIEW", "listTrainningBack");
 define("TRAINNING_LIST_FRONT_VIEW", "listTrainning");
 
+define("CHAPTER_LIST_FRONT_VIEW", "listChapter");
 define("CHAPTER_CHAPTER_FRONT_VIEW", "chapterChapter");
 define("CHAPTER_CHAPTER_BACK_VIEW", "chapterChapterBACK");
 
