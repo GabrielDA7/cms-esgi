@@ -124,35 +124,105 @@ $(function() {
     initListTrainning(10);
   }
 
+  // Ajax call for listing chapter
+  if( $("#list-lesson").length ) {
+    initListChapter(10);
+  }
+
 });
 
 function initListTrainning(num){
     $.ajax({
-      url:"ajax/search?object=trainning",
+      type: 'GET',
+      url:"/lab/uteach/ajax/list?object=trainning",
+      dataType: 'json',
       success : function(data){
         tb = $("#list-trainning tbody");
         obj = data;
-        for(i=0;i<1;i++){
+        var html;
+        $.each(obj, function (index, element) {
           html+="<tr>";
-          html+="<td>"+obj[i].title+"</td>";
-          html+="<td>"+obj[i].category+"</td>";
-          html+="<td>"+obj[i].author+"</td>";
-          html+="<td>"+obj[i].status+"</td>";
+          html+="<td>"+element.title+"</td>";
+          html+="<td>"+element.category+"</td>";
+          html+="<td>"+element.author+"</td>";
+          html+="<td>"+element.status+"</td>";
           html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
           html+="</tr>";
-        }
+        });
         tb.html(html);
       },
     });
   };
 
-function listTrainningSelectChange(){
-  console.log('changed');
-  initListTrainning($('listTrainningSelect').val())
-};
+function initListChapter(num) {
+  $.ajax({
+    type: 'GET',
+    url:"/lab/uteach/ajax/list?object=chapter",
+    dataType: 'json',
+    success : function(data){
+      tb = $("#list-lesson tbody");
+      obj = data;
+      var html;
+      $.each(obj, function (index, element) {
+        html+="<tr>";
+        html+="<td>"+element.title+"</td>";
+        html+="<td>"+element.category+"</td>";
+        html+="<td>"+element.author+"</td>";
+        html+="<td>"+element.status+"</td>";
+        html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
+        html+="</tr>";
+      });
+      tb.html(html);
+    },
+  });
+}
 
-function searchTrainning(){
-  console.log('changed');
+function searchTrainning(str){
+  var str = $("#dashboard-list-tranning .row-tools input").val();
+  $.ajax({
+    type: 'GET',
+    url:"/lab/uteach/ajax/search?object=trainning",
+    dataType: 'json',
+    success : function(data){
+      tb = $("#list-trainning tbody");
+      obj = data;
+      var html;
+      $.each(obj, function (index, element) {
+        html+="<tr>";
+        html+="<td>"+element.title+"</td>";
+        html+="<td>"+element.category+"</td>";
+        html+="<td>"+element.author+"</td>";
+        html+="<td>"+element.status+"</td>";
+        html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
+        html+="</tr>";
+      });
+      tb.html(html);
+    },
+  });
+}
+
+function searchChapter(str){
+  var str = $("#dashboard-list-lesson .row-tools input").val();
+  $.ajax({
+    type: 'GET',
+    url:"/lab/uteach/ajax/search?object=chapter",
+    dataType: 'json',
+    success : function(data){
+      tb = $("#list-lesson tbody");
+      obj = data;
+      var html;
+      $.each(obj, function (index, element) {
+        html+="<tr>";
+        html+="<td>"+element.title+"</td>";
+        html+="<td>"+element.category+"</td>";
+        html+="<td>"+element.author+"</td>";
+        html+="<td>"+element.status+"</td>";
+        html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
+        html+="</tr>";
+      });
+      tb.html(html);
+    },
+  });
 }
 
 function closeDiv(div){

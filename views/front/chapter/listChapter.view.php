@@ -13,7 +13,7 @@
       <div class="M2 X12">
         <a href="<?= DIRNAME . CHAPTER_CHAPTER_FRONT_LINK . '?id=' . $chapter->getId();?>" class="card">
             <div class="card-image">
-              <img src="<?= DIRNAME . $chapter->getImage(); ?>" alt="image">
+              <img src="<?=(empty($chapter->getImage())) ? DIRNAME . 'public/img/default.jpg' : DIRNAME . $chapter->getImage(); ?>" alt="image">
             </div>
             <div class="card-separation"></div>
             <div class="card-content">
