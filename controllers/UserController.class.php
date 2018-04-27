@@ -6,6 +6,7 @@ class UserController implements ControllerInterface {
 	private $objectDelegate;
 	private $formDelegate;
 	private $emailDelegate;
+	private $fileDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -13,6 +14,7 @@ class UserController implements ControllerInterface {
 		$this->objectDelegate = new ObjectDelegate();
 		$this->formDelegate = new FormDelegate();
 		$this->emailDelegate = new EmailDelegate();
+		$this->fileDelegate = new FileDelegate();
 	}
 
 	public function indexAction($params) {}
@@ -46,6 +48,7 @@ class UserController implements ControllerInterface {
 		$this->authenticationDelegate->process($data, $params, TRUE);
 		$this->objectDelegate->pushObjectById($data, $params['POST']['id'], USER_CLASS_NAME);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
+		$this->fileDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->objectDelegate->update($data, $params, USER_CLASS_NAME, "", USER_LIST_BACK_LINK);
 		$view = new View($data);
 	}

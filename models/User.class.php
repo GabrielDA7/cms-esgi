@@ -28,6 +28,10 @@ class User extends UserSql {
 		return get_object_vars($this);
 	}
 
+	public function getColumnsToSearch() {
+		return ["userName", "lastName", "firstName", "email", "dateInserted", "dateUpdated", "status"];
+	}
+
 	public function generateToken() {
 		$this->token = $this->randomCode();
 		return $this->token;

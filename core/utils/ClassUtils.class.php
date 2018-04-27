@@ -43,11 +43,13 @@ class classUtils {
 		return $object;
 	}
 
-	public static function removeUnsusedColumns(&$object, $columnsExclude = null, $fromObject = FALSE) {
+	public static function removeUnsusedColumns(&$object, $columnsExclude = null, $fromObject = FALSE, $removeNull = TRUE) {
 		if (isset($columnsExclude)) {
 			$columns  = array_diff_key($object->getColumns(), $columnsExclude);
 		}
-		self::removeNullColumns($columns);	
+		if ($removeNull) {
+			self::removeNullColumns($columns);	
+		}
 		if (!$fromObject) {
 			return $columns;
 		}	

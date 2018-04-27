@@ -10,23 +10,8 @@ class QueryConstructorSql {
 			if (!$like) {
 				$query .= " WHERE " . $this->formatConditionQuery($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {
-				$query .= " WHERE " . array_keys($columns)[0] . " LIKE :keyword";
+				$query .= " WHERE " . $this->formatConditionQuery($columns, "", " LIKE ".TWO_POINTS."keyword", " OR ", FALSE). " LIKE :keyword";
 			}
-		}
-		if (isset($orderBy)) {
-			$query .= " ORDER BY " . $this->formatConditionQuery($orderBy, "", SPACE, COMMA);
-		}
-		if (isset($limt)) {
-			$query .= " LIMIT " . $limit;
-		}
-		return $query;
-	}
-
-	protected function constructSelectWhereLikeQuery($table, $columns = null, $orderBy = null, $limit = null) {
-		$query = "SELECT " . $select;
-		$query .= " FROM " . $table;
-		if (isset($columns)) {
-			$query .= " WHERE " . $this->formatConditionQuery($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 		}
 		if (isset($orderBy)) {
 			$query .= " ORDER BY " . $this->formatConditionQuery($orderBy, "", SPACE, COMMA);
