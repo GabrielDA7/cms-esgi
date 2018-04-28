@@ -5,28 +5,24 @@ class AjaxController {
 	private $data = [];
 
 	public function __construct() {
-		$this->objectDelegate = new ObjectDelegate();
+		if (empty($_GET) || !isset($_GET['object'])) {
+			echo FormatUtils::formatToJson([]);
+			exit;
+		}
+		$_GET['object'] = ucfirst($_GET['object']);
+		$this->objectDelegate = new ObjectDelegate($this->data, $_GET['object']);
 	}
 
 	public function searchAction($params) {
-		if (empty($params['GET']) || !isset($params['GET']['object'])) {
-			return FormatUtils::formatToJson([]);
-		}
-		echo FormatUtils::formatToJson($this->objectDelegate->search($params, $params['GET']['object']));
+		echo FormatUtils::formatToJson($this->objectDelegate->search($params));
 	}
 
 	public function filterAction($params) {
-		if (empty($params['GET']) || !isset($params['GET']['object'])) {
-			return FormatUtils::formatToJson([]);
-		}
-		echo FormatUtils::formatToJson($this->objectDelegate->search($params, $params['GET']['object']));
+		echo FormatUtils::formatToJson($this->objectDelegate->filter($params));
 	}
 
 	public function listAction($params) {
-		if (empty($params['GET']) || !isset($params['GET']['object'])) {
-			return FormatUtils::formatToJson([]);
-		}
-		echo FormatUtils::formatToJson($this->objectDelegate->getAll($params, $params['GET']['object']));
+		echo FormatUtils::formatToJson($this->objectDelegate->getAll($params));
 	}
 }
 ?>

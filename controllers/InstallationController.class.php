@@ -9,9 +9,9 @@ class InstallationController {
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
-		$this->objectDelegate = new ObjectDelegate();
-		$this->formDelegate = new FormDelegate();
-		$this->fileDelegate = new FileDelegate();
+		$this->objectDelegate = new ObjectDelegate($this->data, INSTALLATION_CLASS_NAME);
+		$this->formDelegate = new FormDelegate(INSTALLATION_CLASS_NAME);
+		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAMEs);
 	}
 
 	public function indexAction($params) {
@@ -19,8 +19,8 @@ class InstallationController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, FALSE, INSTALLATION_INDEX_VIEWS, INSTALLATION_TEMPLATES);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, INSTALLATION_INDEX_VIEWS, INSTALLATION_TEMPLATES);
+		$view = new View($this->data);
 	}
 
 	public function settingAction($params) {
@@ -28,21 +28,21 @@ class InstallationController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, FALSE, INSTALLATION_SETTING_VIEWS, INSTALLATION_TEMPLATES);
-		$this->formDelegate->process($data, $params, INSTALLATION_CLASS_NAME);
-		$this->fileDelegate->setting($data, $params['POST'], INSTALLATION_CLASS_NAME, INSTALLATION_DATABASE_LINK);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, INSTALLATION_SETTING_VIEWS, INSTALLATION_TEMPLATES);
+		$this->formDelegate->process($this->data, $params);
+		$this->fileDelegate->setting($this->data, $params['POST'], INSTALLATION_DATABASE_LINK);
+		$view = new View($this->data);
 	}
 
-	public function databaseAction($params) {
+	public function this->databaseAction($params) {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, FALSE, INSTALLATION_DATABASE_VIEWS, INSTALLATION_TEMPLATES);
-		$this->formDelegate->process($data, $params, INSTALLATION_CLASS_NAME);
-		$this->fileDelegate->setting($data, $params, INSTALLATION_CLASS_NAME, INSTALLATION_CREATE_DATABASE_LINK);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, INSTALLATION_DATABASE_VIEWS, INSTALLATION_TEMPLATES);
+		$this->formDelegate->process($this->data, $params);
+		$this->fileDelegate->setting($this->data, $params, INSTALLATION_CREATE_DATABASE_LINK);
+		$view = new View($this->data);
 	}
 
 	public function adminAction($params) {
@@ -50,19 +50,25 @@ class InstallationController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, FALSE, INSTALLATION_ADMIN_VIEWS, INSTALLATION_TEMPLATES);
-		$this->formDelegate->process($data, $params, INSTALLATION_CLASS_NAME);
-		$this->objectDelegate->add($data, $params, USER_CLASS_NAME);
-		$this->fileDelegate->setting($data, $params, INSTALLATION_CLASS_NAME, USER_LOGIN_BACK_LINK);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, INSTALLATION_ADMIN_VIEWS, INSTALLATION_TEMPLATES);
+		$this->setClassNameToUserToAddAdmin();
+		$this->formDelegate->process($this->data, $params);
+		$this->objectDelegate->add($this->data, $params);
+		$this->fileDelegate->setting($this->data, $params, USER_LOGIN_BACK_LINK);
+		$view = new View($this->data);
 	}
 
-	public function createdatabaseAction() {
+	public function createthis->databaseAction() {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->fileDelegate->createdatabase();
+		$this->fileDelegate->createthis->database();
+	}
+
+	private function setClassNameToUserToAddAdmin() {
+		$this->formDelegate->setObjectName(USER_CLASS_NAME);
+		$this->objectDelegate->setObjectName(USER_CLASS_NAME);
 	}
 }
 ?>

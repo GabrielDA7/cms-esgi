@@ -82,25 +82,10 @@ class BaseSql extends QueryConstructorSql {
 		return $object;
 	}
 
-	public function getWhereLikeWord($toObject = TRUE, $keyword) {
-		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()), FALSE, FALSE);
-		$queryString = $this->constructSelectQuery($this->table, $this->columns, TRUE);
-		$query = $this->db->prepare($queryString);
-		$this->setKeyword($query, $keyword);
-		var_dump($queryString);
-		$query->execute();
-		if ($toObject) {
-			$objects = $this->createObjectsListFromDBResponse($response);
-			return $objects;
-		}
-		return $query->fetchAll();
-	}
-
 	public function getByWord($keyword, $columnsToSearch) {
 		$queryString = $this->constructSelectQuery($this->table, $columnsToSearch, TRUE);
 		$query = $this->db->prepare($queryString);
 		$this->setKeyword($query, $keyword);
-		die(var_dump($queryString));
 		$query->execute();
 		/*if ($toObject) {
 			$objects = $this->createObjectsListFromDBResponse($response);

@@ -3,6 +3,11 @@ class classUtils {
 	
 	public function __construct() {}
 
+	public static function constructObject($objectName) {
+		$object = new $objectName();
+		return $object;
+	}
+
 	public static function constructObjectWithParameters($columns, $objectName) {
 		$objectName = ucfirst($objectName);
 		$object = new $objectName();

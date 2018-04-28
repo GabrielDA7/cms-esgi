@@ -7,9 +7,6 @@ TODO
 
 Filter ajax
 Refactoring objectDelegate
-	- create fileDelegate
-		change opbject paramters
-	We have to create an object that is supplied with the delegate and then push in data
 Remove database columns from objects
 remove form check from list because ajax
 secure the search ajax (if object is user he can get all the user data)

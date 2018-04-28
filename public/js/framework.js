@@ -134,7 +134,7 @@ $(function() {
 function initListTrainning(num){
     $.ajax({
       type: 'GET',
-      url:"/lab/uteach/ajax/list?object=trainning",
+      url:dirname + "ajax/list?object=trainning",
       dataType: 'json',
       success : function(data){
         tb = $("#list-trainning tbody");
@@ -157,7 +157,7 @@ function initListTrainning(num){
 function initListChapter(num) {
   $.ajax({
     type: 'GET',
-    url:"/lab/uteach/ajax/list?object=chapter",
+    url:dirname + "ajax/list?object=chapter",
     dataType: 'json',
     success : function(data){
       tb = $("#list-lesson tbody");
@@ -181,7 +181,7 @@ function searchTrainning(str){
   var str = $("#dashboard-list-tranning .row-tools input").val();
   $.ajax({
     type: 'GET',
-    url:"/lab/uteach/ajax/search?object=trainning",
+    url:dirname + "ajax/search?object=trainning",
     dataType: 'json',
     success : function(data){
       tb = $("#list-trainning tbody");
@@ -205,7 +205,7 @@ function searchChapter(str){
   var str = $("#dashboard-list-lesson .row-tools input").val();
   $.ajax({
     type: 'GET',
-    url:"/lab/uteach/ajax/search?object=chapter",
+    url:dirname + "ajax/search?object=chapter",
     dataType: 'json',
     success : function(data){
       tb = $("#list-lesson tbody");

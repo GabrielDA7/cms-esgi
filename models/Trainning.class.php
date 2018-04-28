@@ -21,6 +21,10 @@ class Trainning extends BaseSql {
 		return get_object_vars($this);
 	}
 
+	public function getColumnsToSearch() {
+		return ["title", "author", "dateInserted"];
+	}
+
 	public function unsetColumn($key) {
 		unset($this->$key);
 	}

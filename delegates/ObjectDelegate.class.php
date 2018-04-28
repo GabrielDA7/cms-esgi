@@ -1,88 +1,100 @@
 <?php
 class ObjectDelegate {
 
-	public function __construct() {}
-	
-	public function pushObjectById(&$data, $id, $objectName, $othersTablesColumns = []) {
-		if ($objectName == USER_CLASS_NAME && isset($_SESSION['userId'])) {
-			$id = $_SESSION['userId'];
-		}
-		$object = ClassUtils::constructObjectWithId($id, $objectName);
-		$object = $object->getById();
-		if (!empty($othersTablesColumns)) {
-			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
-		}
-		$data[lcfirst($objectName)] = $object;
+	private $objectName;
+
+	public function __construct(&$data, $objectName) {
+		$this->objectName = ucfirst($objectName);
+		$this->createObjectAndPutInData($data);
 	}
 
-	public function pushObjectsByParameters(&$data, $params, $objectName, $othersTablesColumns = []) {
-		$object = ClassUtils::constructObjectWithParameters($params, $objectName);
+	private function createObjectAndPutInData(&$data) {
+		$data[lcfirst($this->objectName)] = ClassUtils::constructObject($this->objectName);
+	}
+
+	public function pushObjectById(&$data, $params, $othersTablesColumns = []) {
+		$object = $data[lcfirst($this->objectName)];
+		if ($this->objectName == USER_CLASS_NAME && isset($_SESSION['userId'])) {
+			$id = $_SESSION['userId'];
+		}
+		if (isset($params['POST']['id'])) {
+			$id = $params['POST']['id'];
+		}
+		$object->setId($id);
+		$object = $object->getById();
+		if (!empty($othersTablesColumns)) {
+			$this->setReferencedObjectsColumns($othersTablesColumns, $id, $object);
+		}
+		$data[lcfirst($this->objectName)] = $object;
+	}
+
+	public function pushObjectsByParameters(&$data, $params, $othersTablesColumns = []) {
+		$object = ClassUtils::constructObjectWithParameters($params, $this->objectName);
 		$objects = $object->getWithParameters();
 		/*if (!empty($othersTablesColumns)) {
 			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
 		}*/
-		$data[lcfirst($objectName)."s"] = $objects;
+		$data[lcfirst($this->objectName)."s"] = $objects;
 	}
 
-	public function pushAllObjects(&$data, $objectName) {
-		$object  = new $objectName();
+	public function pushAllObjects(&$data) {
+		$object  = ClassUtils::constructObject($this->objectName);
 		$objects = $object->getAll();
 		/*if (!empty($othersTablesColumns)) {
 			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
 		}*/
-		$data[lcfirst($objectName)."s"] = $objects;
+		$data[lcfirst($this->objectName)."s"] = $objects;
 	}
 
-	public function add(&$data, $params, $objectName) {
+	public function add(&$data, $params) {
 		if ($data['errors'] === FALSE) {
-			$object = ClassUtils::constructObjectWithParameters($params['POST'], $objectName);
-			if ($objectName == USER_CLASS_NAME) {
+			$object = $data[lcfirst($this->objectName)];
+			ClassUtils::setObjectColumns($object, $params['POST']);
+			if ($this->objectName == USER_CLASS_NAME) {
 				$object->generateToken();
 				$object->generateEmailConfirm();
 			}
-			$data[lcfirst($objectName)] = $object->insert();
+			$data[lcfirst($this->objectName)] = $object->insert();
 		}
 	}
 
-	public function update(&$data, $params, $objectName, $redirectFront, $redirectBack) {
+	public function update(&$data, $params, $redirectFront, $redirectBack) {
 		if ($data['errors'] === FALSE) {
-			$object = ClassUtils::constructObjectWithParameters($params['POST'], $objectName);
-			if ($objectName == USER_CLASS_NAME) {
+			$object = $data[lcfirst($this->objectName)];
+			ClassUtils::setObjectColumns($object, $params['POST']);
+			if ($this->objectName == USER_CLASS_NAME) {
 				$object->unsetRoleIfNotAdmin();
+				$object->setPwd(null);
 			}
 			$object->update();
 			header(LOCATION . DIRNAME . (isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 			exit;
-		} else {
-			$this->pushObjectById($data, $params['POST']['id'], $objectName);
 		}
 	}
 
-	public function delete($params, $objectName, $redirectFront, $redirectBack) {
-		$objects = ClassUtils::constructObjectWithId($params['POST']['id'], $objectName);
+	public function delete($params, $redirectFront, $redirectBack) {
+		$objects = ClassUtils::constructObjectWithId($params['POST']['id'], $this->objectName);
 		$objects->delete();
 		header(LOCATION . DIRNAME . (isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 		exit;
 	}
 
-	public function listAll(&$data, $params, $objectName) {
+	public function listAll(&$data, $params) {
 		if (isset($data['errors']) && $data['errors'] === FALSE) {
-			$this->pushObjectsByParameters($data, $params['POST'], $objectName);
+			$this->pushObjectsByParameters($data, $params['POST']);
 		} else {
-			$this->pushAllObjects($data, $objectName);
+			$this->pushAllObjects($data);
 		}
 	}
 
-	public function search($params, $objectName) {
-		$objectName = ucfirst($objectName);
-		$object = new $objectName();
+	public function search($params) {
+		$object = ClassUtils::constructObject($this->objectName);
 		$columnsToSearch = $object->getColumnsToSearch();
-		$object->getByWord($params['GET']['search'], $columnsToSearch);
+		return $object->getByWord($params['GET']['search'], $columnsToSearch);
 	}
 
-	public function getAll($params, $objectName) {
-		$objectName = ucfirst($objectName);
-		$object  = new $objectName();
+	public function getAll($params) {
+		$object  = ClassUtils::constructObject($this->objectName);
 		$response = $object->getAll(FALSE);
 		return $response;
 	}
@@ -101,13 +113,17 @@ class ObjectDelegate {
 		exit;
 	}
 
-	private function setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, &$object) {
+	private function setReferencedObjectsColumns($othersTablesColumns, $id, &$object) {
 		foreach ($othersTablesColumns as $table) {
-			$objectWithForeignKeyValue = ClassUtils::constructObjectWithParameters([lcfirst($objectName)."_id" => $id], $table);
+			$objectWithForeignKeyValue = ClassUtils::constructObjectWithParameters([lcfirst($this->objectName)."_id" => $id], $table);
 			$referencedObjects = $objectWithForeignKeyValue->getWithParameters();
 			$setColumn = "set" . ucfirst($table) . "s";
 			$object->$setColumn($referencedObjects);
 		}
 	}
+
+	
+	public function getObjectName() { return $this->objectName; }
+	public function setObjectName($objectName) { $this->objectName = $objectName; }
 }
 ?>

@@ -4,21 +4,23 @@ class VideoController implements ControllerInterface {
 
 	private $authenticationDelegate;
 	private $objectDelegate;
+	private $formDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
-		$this->objectDelegate = new ObjectDelegate();
+		$this->objectDelegate = new ObjectDelegate($this->data, VIDEO_CLASS_NAME);
+		$this->formDelegate = new FormDelegate(VIDEO_CLASS_NAME);
 	}
 
 	public function indexAction($params) {
 	}
 	
 	public function addAction($params) {
-		$this->authenticationDelegate->process($data, $params, FALSE, VIDEO_ADD_VIEWS);
-		$this->formDelegate->process($data, $params, VIDEO_CLASS_NAME);
-		$this->objectDelegate->add($data, $params, VIDEO_CLASS_NAME);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_ADD_VIEWS);
+		$this->formDelegate->process($this->data, $params);
+		$this->objectDelegate->add($this->data, $params);
+		$view = new View($this->data);
 	}
 
 	public function editAction($params) {
@@ -28,15 +30,15 @@ class VideoController implements ControllerInterface {
 		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, TRUE);
-		$this->objectDelegate->delete($params, VIDEO_CLASS_NAME);
+		$this->authenticationDelegate->process($this->data, $params, TRUE);
+		$this->objectDelegate->delete($params);
 	}
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($data, $params, FALSE, VIDEO_LIST_VIEWS);
-		$this->formDelegate->process($data, $params, VIDEO_CLASS_NAME);
-		$this->objectDelegate->listAll($data, $params, VIDEO_CLASS_NAME);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_LIST_VIEWS);
+		$this->formDelegate->process($this->data, $params);
+		$this->objectDelegate->listAll($this->data, $params);
+		$view = new View($this->data);
 	}
 
 	/**
@@ -46,10 +48,10 @@ class VideoController implements ControllerInterface {
 		if (isset($params['POST']['id'])) {
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, FALSE, VIDEO_VIEWS);
-		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
-		$this->objectDelegate->pushObjectById($data, $params, VIDEO_CLASS_NAME);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_VIEWS);
+		$this->formDelegate->process($this->data, $params);
+		$this->objectDelegate->pushObjectById($this->data, $params);
+		$view = new View($this->data);
 	}
 }
 ?>

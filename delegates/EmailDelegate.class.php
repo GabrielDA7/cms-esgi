@@ -5,6 +5,8 @@ require 'vendor/autoload.php';
 
 class EmailDelegate {
 
+	public function __construct() {}
+
 	public function checkEmailConfirmation($params) {
 		$user = ClassUtils::constructObjectWithParameters($params['GET'], USER_CLASS_NAME);
 		$user = $user->getWithParameters();

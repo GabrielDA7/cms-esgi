@@ -3,7 +3,7 @@ class AuthenticationDelegate {
 
 	public function __construct() {}
 
-	public function process(&$data, $params, $checkToken, $views, $templates = DEFAULT_TEMPLATES) {
+	public function process(&$data, $params, $checkToken, $views = [], $templates = DEFAULT_TEMPLATES) {
 		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) {
       		$this->checkTokenValidity(); 
     	}
@@ -23,7 +23,8 @@ class AuthenticationDelegate {
 				$user->setPwd(null);
 				$user->update();
 			} else {
-				return404View();
+				header(LOCATION . DIRNAME . USER_DISCONNECT_LINK);
+				exit();
 			}
 		} else {
 			return404View();

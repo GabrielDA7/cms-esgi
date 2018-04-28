@@ -69,6 +69,8 @@ function getUriExploded() {
 }
 
 function return404View() {
+	
+	die();
 	header(LOCATION . DIRNAME . INDEX_ERROR_LINK);
 	exit();
 }

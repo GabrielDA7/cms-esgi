@@ -10,7 +10,7 @@ class QueryConstructorSql {
 			if (!$like) {
 				$query .= " WHERE " . $this->formatConditionQuery($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {
-				$query .= " WHERE " . $this->formatConditionQuery($columns, "", " LIKE ".TWO_POINTS."keyword", " OR ", FALSE). " LIKE :keyword";
+				$query .= " WHERE " . implode(" LIKE :keyword OR ", array_values($columns)) . " LIKE :keyword";
 			}
 		}
 		if (isset($orderBy)) {
@@ -31,8 +31,8 @@ class QueryConstructorSql {
 	}
 
 	protected function constructInsertQuery($table, $columns) {
-		$query = "INSERT INTO " . $table . "(" . $this->formatConditionQuery($columns, "", COMMA, "", FALSE) . ")";
-		$query .= " VALUES(" . $this->formatConditionQuery($columns, TWO_POINTS, COMMA, "", FALSE) . ")";
+		$query = "INSERT INTO " . $table . "(" . implode(',', array_keys($this->columns)) . ")";
+		$query .= " VALUES(" . implode(',:', array_keys($this->columns)) . ")";
 		return $query;
 	}
 

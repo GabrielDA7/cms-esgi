@@ -64,7 +64,7 @@ class User extends UserSql {
 	*/
 	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_ADD_FRONT_LINK,  "enctype" => "multipart/form-data", "submit"=>"Sign up", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_ADD_FRONT_LINK, "submit"=>"Sign up", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
 								"firstName"=>
@@ -164,7 +164,7 @@ class User extends UserSql {
 	public static function configEditForm($data){
 		$user = $data['user'];
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "submit"=>"Edit"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit"],
 					"input"=>
 							[
 								"id"=>
@@ -180,7 +180,6 @@ class User extends UserSql {
 												"placeholder"=>$user->getUserName(),
 												"maxString"=>100,
 												"minString"=>2,
-												"required"=>true,
 												"class"=>"form-group input"
 											],
 								"firstName"=>
@@ -189,7 +188,6 @@ class User extends UserSql {
 												"placeholder"=>$user->getFirstName(),
 												"maxString"=>255,
 												"minString"=>2,
-												"required"=>true,
 												"class"=>"form-group input"
 											],
 								"lastName"=>
@@ -198,14 +196,12 @@ class User extends UserSql {
 												"placeholder"=>$user->getLastName(),
 												"maxString"=>255,
 												"minString"=>2,
-												"required"=>true,
 												"class"=>"form-group input"
 											],
 								"email"=>
 											[
 												"type"=>"email",
 												"placeholder"=>$user->getEmail(),
-												"required"=>true,
 												"class"=>"form-group input"
 											],
 								"avatar"=>

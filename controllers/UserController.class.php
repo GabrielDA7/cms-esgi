@@ -11,10 +11,10 @@ class UserController implements ControllerInterface {
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
-		$this->objectDelegate = new ObjectDelegate();
-		$this->formDelegate = new FormDelegate();
+		$this->objectDelegate = new ObjectDelegate($this->data, USER_CLASS_NAME);
+		$this->formDelegate = new FormDelegate(USER_CLASS_NAME);
 		$this->emailDelegate = new EmailDelegate();
-		$this->fileDelegate = new FileDelegate();
+		$this->fileDelegate = new FileDelegate(USER_CLASS_NAME);
 	}
 
 	public function indexAction($params) {}
@@ -24,30 +24,30 @@ class UserController implements ControllerInterface {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, FALSE, USER_USER_VIEWS);
-		$this->objectDelegate->pushObjectById($data, $params['POST']['id'], USER_CLASS_NAME);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_USER_VIEWS);
+		$this->objectDelegate->pushObjectById($this->data, $params['POST']['id']);
+		$view = new View($this->data);
 	}
 
 	public function addAction($params) {
-		$this->authenticationDelegate->process($data, $params, FALSE, USER_ADD_VIEWS);
-		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
-		$this->objectDelegate->add($data, $params, USER_CLASS_NAME);
-		$this->emailDelegate->sendMail($data);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_ADD_VIEWS);
+		$this->formDelegate->process($this->data, $params);
+		$this->objectDelegate->add($this->data, $params);
+		$this->emailDelegate->sendMail($this->data);
+		$view = new View($this->data);
 	}
 
 	public function editAction($params) {
-		if((!isset($params['POST']['id']) || $_SESSION['admin'] !== TRUE)  && !isset($_SESSION['userId'])) {
+		if((!isset($params['POST']['id']) || !$_SESSION['admin'])  && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, TRUE, USER_EDIT_VIEWS);
-		$this->objectDelegate->pushObjectById($data, $params['POST']['id'], USER_CLASS_NAME);
-		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
-		$this->fileDelegate->process($data, $params, USER_CLASS_NAME);
-		$this->objectDelegate->update($data, $params, USER_CLASS_NAME, "", USER_LIST_BACK_LINK);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_EDIT_VIEWS);
+		$this->objectDelegate->pushObjectById($this->data, $params);
+		$this->formDelegate->process($this->data, $params);
+		$this->fileDelegate->process($this->data, $params);
+		$this->objectDelegate->update($this->data, $params, "", USER_LIST_BACK_LINK);
+		$view = new View($this->data);
 	}
 
 	public function deleteAction($params) {
@@ -55,30 +55,30 @@ class UserController implements ControllerInterface {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, TRUE);
-		$this->objectDelegate->delete($params, USER_CLASS_NAME, "", USER_LIST_BACK_LINK);
+		$this->authenticationDelegate->process($this->data, $params, TRUE);
+		$this->objectDelegate->delete($params, "", USER_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($data, $params, TRUE, USER_LIST_VIEWS);
-		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
-		$this->objectDelegate->listAll($data, $params, USER_CLASS_NAME);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_LIST_VIEWS);
+		$this->formDelegate->process($this->data, $params);
+		$this->objectDelegate->listAll($this->data, $params);
+		$view = new View($this->data);
 	}
 
 	public function loginAction($params) {
-		$this->authenticationDelegate->process($data, $params, FALSE, USER_LOGIN_VIEWS, LOGIN_TEMPLATES);
-		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
-		$this->objectDelegate->login($data, $params);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_LOGIN_VIEWS, LOGIN_TEMPLATES);
+		$this->formDelegate->process($this->data, $params);
+		$this->objectDelegate->login($this->data, $params);
+		$view = new View($this->data);
 	}
 
 	public function disconnectAction($params) {
 		if (!isset($_SESSION['userId'])) {
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, TRUE);
-		$this->objectDelegate->disconnect($data, $params);
+		$this->authenticationDelegate->process($this->data, $params, TRUE);
+		$this->objectDelegate->disconnect($this->data, $params);
 	}
 
 	public function emailAction($params) {

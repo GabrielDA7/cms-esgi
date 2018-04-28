@@ -1,15 +1,21 @@
 <?php
 class FileDelegate {
 
-	public function process(&$params) {
+	private $objectName;
+
+	public function __construct($objectName) {
+		$this->objectName = $objectName;
+	}
+
+	public function process(&$data, &$params) {
 		if (!empty($params['FILES'])) {
-			$this->manageFiles($object, $params['FILES']);
+			$this->manageFiles($data[lcfirst($this->objectName)], $params['FILES']);
 		}
 	}
 
-	public function setting(&$data, $columns, $objectName, $redirect) {
+	public function setting(&$data, $columns, $redirect) {
 		if ($data['errors'] === FALSE) {
-			$installation = ClassUtils::constructObjectWithParameters($columns, INSTALLATION_CLASS_NAME);
+			$installation = ClassUtils::constructObjectWithParameters($columns, $this->objectName);
 			$this->setConfData($installation);
 			header(LOCATION . DIRNAME . $redirect);
 			exit;
@@ -20,7 +26,7 @@ class FileDelegate {
 		$filesUrl = $this->uploadFiles($files);
 		ClassUtils::setObjectColumns($object, $filesUrl);
 	}
-		
+	
 	public function createdatabase() {
 		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
 		$BaseSql = new BaseSql(); 
@@ -63,14 +69,18 @@ class FileDelegate {
 	private function uploadFiles($files) {
 		$filesUrl = [];
 		foreach ($files as $key => $value) {
-		    if ($value['error'] == UPLOAD_ERR_OK) {
-		        $tmp_name = $value["tmp_name"];
-		        $name = basename($value["name"]);
-		        $filesUrl += [$key => IMAGE_FOLDER_NAME."/".$name];
-		        move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$name);
-		    }
+			if ($value['error'] == UPLOAD_ERR_OK) {
+				$tmp_name = $value["tmp_name"];
+				$name = basename($value["name"]);
+				$filesUrl += [$key => IMAGE_FOLDER_NAME."/".$name];
+				move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$name);
+			}
 		}
 		return $filesUrl;
 	}
+
+	
+	public function getObjectName() { return $this->objectName; }
+	public function setObjectName($objectName) { $this->objectName = $objectName; }
 }
 ?>

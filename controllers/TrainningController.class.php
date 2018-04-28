@@ -6,23 +6,26 @@ class TrainningController implements ControllerInterface {
 	private $objectDelegate;
 	private $formDelegate;
 	private $emailDelegate;
+	private $fileDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
-		$this->objectDelegate = new ObjectDelegate();
-		$this->formDelegate = new FormDelegate();
+		$this->objectDelegate = new ObjectDelegate($this->data, TRAINNING_CLASS_NAME);
+		$this->formDelegate = new FormDelegate(TRAINNING_CLASS_NAME);
 		$this->emailDelegate = new EmailDelegate();
+		$this->fileDelegate = new FileDelegate(TRAINNING_CLASS_NAME);
 	}
 
 	public function indexAction($params) {
 	}
 
 	public function addAction($params) {
-		$this->authenticationDelegate->process($data, $params, TRUE, TRAINNING_ADD_VIEWS);
-		$this->formDelegate->process($data, $params, TRAINNING_CLASS_NAME);
-		$this->objectDelegate->add($data, $params, TRAINNING_CLASS_NAME);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRAINNING_ADD_VIEWS);
+		$this->formDelegate->process($this->data, $params);
+		$this->fileDelegate->process($this->data, $params);
+		$this->objectDelegate->add($this->data, $params);
+		$view = new View($this->data);
 	}
 
 	public function editAction($params) {
@@ -30,11 +33,11 @@ class TrainningController implements ControllerInterface {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, TRUE, TRAINNING_EDIT_VIEWS);
-		$this->objectDelegate->pushObjectById($data, $params['GET']['id'], TRAINNING_CLASS_NAME);
-		$this->formDelegate->process($data, $params, TRAINNING_CLASS_NAME);
-		$this->objectDelegate->update($data, $params, TRAINNING_CLASS_NAME, "", TRAINNING_LIST_BACK_LINK);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRAINNING_EDIT_VIEWS);
+		$this->objectDelegate->pushObjectById($this->data, $params['GET']['id']);
+		$this->formDelegate->process($this->data, $params);
+		$this->objectDelegate->update($this->data, $params, "", TRAINNING_LIST_BACK_LINK);
+		$view = new View($this->data);
 	}
 
 	public function deleteAction($params) {
@@ -42,14 +45,14 @@ class TrainningController implements ControllerInterface {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, TRUE);
-		$this->objectDelegate->delete($params, TRAINNING_CLASS_NAME, "", TRAINNING_LIST_BACK_LINK);
+		$this->authenticationDelegate->process($this->data, $params, TRUE);
+		$this->objectDelegate->delete($params, "", TRAINNING_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($data, $params, FALSE, TRAINNING_LIST_VIEWS);
-		$this->objectDelegate->listAll($data, $params, TRAINNING_CLASS_NAME);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_LIST_VIEWS);
+		$this->objectDelegate->listAll($this->data, $params);
+		$view = new View($this->data);
 	}
 
 	public function trainningAction($params) {
@@ -57,9 +60,9 @@ class TrainningController implements ControllerInterface {
 			LogsUtils::process(LogsUtils::LOGS_FILE, "Attempt access", "Access denied");
 			return404View();
 		}
-		$this->authenticationDelegate->process($data, $params, FALSE, TRAINNING_TRAINNING_VIEWS);
-		$this->objectDelegate->pushObjectById($data, $params['GET']['id'], TRAINNING_CLASS_NAME, [CHAPTER_CLASS_NAME]);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_TRAINNING_VIEWS);
+		$this->objectDelegate->pushObjectById($this->data, $params['GET']['id'], [CHAPTER_CLASS_NAME]);
+		$view = new View($this->data);
 	}
 
 	/**

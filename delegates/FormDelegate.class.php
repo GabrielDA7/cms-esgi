@@ -1,14 +1,18 @@
 <?php
 class FormDelegate {
 
-	public function __construct() {}
+	private $objectName;
 
-	public function process(&$data, $params, $objectName) {
-		$data['config'] = $this->getFormConfig($params['URL'], $data, $objectName);
+	public function __construct($objectName) {
+		$this->objectName = $objectName;
+	}
+
+	public function process(&$data, $params) {
+		$data['config'] = $this->getFormConfig($params['URL'], $data);
 		$data['errors'] = null;
 		if(isset($params['POST']['submit'])) {
 			$data['errors'] = $this->checkForm($data['config'], $params["POST"], $params['FILES']);
-			if ($objectName === USER_CLASS_NAME && ClassUtils::getCallingFunction() == "addAction") {
+			if ($this->objectName === USER_CLASS_NAME && ClassUtils::getCallingFunction() == "addAction") {
 				$this->checkUserNameAndEmailDisponibility($data['errors'], $params["POST"]);
 			}
 		}
@@ -76,9 +80,9 @@ class FormDelegate {
 		}
 	}
 
-	private function getFormConfig($url, $data, $objectName) {
+	private function getFormConfig($url, $data) {
 		$configName = "config" . ucfirst($url[1]) . "Form";
-		return $objectName::$configName($data);
+		return $this->objectName::$configName($data);
 	}
 
 	private function isEmptyPost($post) {
@@ -112,9 +116,9 @@ class FormDelegate {
 
 	public static function checkPwd($pwd){
 		return strlen($pwd)>=6 && strlen($pwd)<=32 
-			&& preg_match("/[a-z]/", $pwd) 
-			&& preg_match("/[A-Z]/", $pwd) 
-			&& preg_match("/[0-9]/", $pwd);
+		&& preg_match("/[a-z]/", $pwd) 
+		&& preg_match("/[A-Z]/", $pwd) 
+		&& preg_match("/[0-9]/", $pwd);
 	}
 
 	public static function checkNumber($number){
@@ -132,5 +136,9 @@ class FormDelegate {
 		}
 		return true;
 	}
+
+
+	public function getObjectName() { return $this->objectName; }
+	public function setObjectName($objectName) { $this->objectName = $objectName; }
 }
 ?>
