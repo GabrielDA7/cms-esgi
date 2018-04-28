@@ -13,6 +13,7 @@ define("DBHOST","localhost");
 define("DBNAME","uteach");
 define("DBPORT","3306");
 
+define("DS", "/");
 $scriptName=(dirname($_SERVER["SCRIPT_NAME"]) == DS)?"":dirname($_SERVER["SCRIPT_NAME"]);
 define("DIRNAME", $scriptName.DS);
 ?>

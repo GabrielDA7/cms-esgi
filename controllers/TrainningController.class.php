@@ -19,8 +19,7 @@ class TrainningController implements ControllerInterface {
 	}
 
 	public function addAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, "", "", TRAINNING_ADD_BACK_VIEW, BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params, TRUE);
+		$this->authenticationDelegate->process($data, $params, TRUE, TRAINNING_ADD_VIEWS);
 		$this->formDelegate->process($data, $params, TRAINNING_CLASS_NAME);
 		$this->objectDelegate->add($data, $params, TRAINNING_CLASS_NAME);
 		$view = new View($data);
@@ -31,8 +30,7 @@ class TrainningController implements ControllerInterface {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, "", "", TRAINNING_EDIT_BACK_VIEW , BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params, TRUE);
+		$this->authenticationDelegate->process($data, $params, TRUE, TRAINNING_EDIT_VIEWS);
 		$this->objectDelegate->pushObjectById($data, $params['GET']['id'], TRAINNING_CLASS_NAME);
 		$this->formDelegate->process($data, $params, TRAINNING_CLASS_NAME);
 		$this->objectDelegate->update($data, $params, TRAINNING_CLASS_NAME, "", TRAINNING_LIST_BACK_LINK);
@@ -49,8 +47,7 @@ class TrainningController implements ControllerInterface {
 	}
 
 	public function listAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, TRAINNING_LIST_FRONT_VIEW, FRONT_TEMPLATE, TRAINNING_LIST_BACK_VIEW, BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, TRAINNING_LIST_VIEWS);
 		$this->objectDelegate->listAll($data, $params, TRAINNING_CLASS_NAME);
 		$view = new View($data);
 	}
@@ -60,8 +57,7 @@ class TrainningController implements ControllerInterface {
 			LogsUtils::process(LogsUtils::LOGS_FILE, "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, TRAINNING_TRAINNING_FRONT_VIEW, FRONT_TEMPLATE, TRAINNING_TRAINNING_BACK_VIEW, BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, TRAINNING_TRAINNING_VIEWS);
 		$this->objectDelegate->pushObjectById($data, $params['GET']['id'], TRAINNING_CLASS_NAME, [CHAPTER_CLASS_NAME]);
 		$view = new View($data);
 	}

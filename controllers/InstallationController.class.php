@@ -19,8 +19,7 @@ class InstallationController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, INSTALLATION_INDEX_VIEW, INSTALLATION_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, INSTALLATION_INDEX_VIEWS, INSTALLATION_TEMPLATES);
 		$view = new View($data);
 	}
 
@@ -29,8 +28,7 @@ class InstallationController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, INSTALLATION_SETTING_VIEW, INSTALLATION_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, INSTALLATION_SETTING_VIEWS, INSTALLATION_TEMPLATES);
 		$this->formDelegate->process($data, $params, INSTALLATION_CLASS_NAME);
 		$this->fileDelegate->setting($data, $params['POST'], INSTALLATION_CLASS_NAME, INSTALLATION_DATABASE_LINK);
 		$view = new View($data);
@@ -41,8 +39,7 @@ class InstallationController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, INSTALLATION_DATABASE_VIEW, INSTALLATION_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, INSTALLATION_DATABASE_VIEWS, INSTALLATION_TEMPLATES);
 		$this->formDelegate->process($data, $params, INSTALLATION_CLASS_NAME);
 		$this->fileDelegate->setting($data, $params, INSTALLATION_CLASS_NAME, INSTALLATION_CREATE_DATABASE_LINK);
 		$view = new View($data);
@@ -53,8 +50,7 @@ class InstallationController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, INSTALLATION_ADMIN_VIEW, INSTALLATION_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, INSTALLATION_ADMIN_VIEWS, INSTALLATION_TEMPLATES);
 		$this->formDelegate->process($data, $params, INSTALLATION_CLASS_NAME);
 		$this->objectDelegate->add($data, $params, USER_CLASS_NAME);
 		$this->fileDelegate->setting($data, $params, INSTALLATION_CLASS_NAME, USER_LOGIN_BACK_LINK);

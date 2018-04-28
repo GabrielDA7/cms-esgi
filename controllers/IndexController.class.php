@@ -11,20 +11,17 @@ class IndexController {
 	}
 
 	public function indexAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, HOME_VIEW, FRONT_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, HOME_VIEWS);
 		$view = new View($data);
 	}
 
 	public function contactAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, CONTACT_VIEW, FRONT_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, CONTACT_VIEWS);
 		$view = new View($data);
 	}
 
 	public function errorAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, NOT_FOUND_VIEW, FRONT_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, NOT_FOUND_VIEWS);
 		$view = new View($data);
 	}
 }

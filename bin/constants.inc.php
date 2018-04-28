@@ -40,7 +40,6 @@ define("IMAGE_FOLDER_NAME", "public/img");
 /*******************************
 ********** CHARACTERS **********
 ********************************/
-define("DS", "/");
 define("UNDERSCORE", "_");
 define("DOT", ".");
 define("DOUBLE_DOT", "..");
@@ -108,43 +107,40 @@ define("LINKEDIN_LINK", "");
 /******************************
 ********** VIEWS **************
 *******************************/
-define("INSTALLATION_INDEX_VIEW", "installation");
-define("INSTALLATION_SETTING_VIEW", "installationSetting");
-define("INSTALLATION_DATABASE_VIEW", "installationDatabase");
-define("INSTALLATION_ADMIN_VIEW", "installationAdmin");
+define("DEFAULT_TEMPLATES", 	 ["front"=> FRONT_TEMPLATE, 	   "back" => BACK_TEMPLATE]);
+define("LOGIN_TEMPLATES", 		 ["front"=> FRONT_TEMPLATE, 	   "back" => LOGIN_BACK_TEMPLATE]);
+define("INSTALLATION_TEMPLATES", ["front"=> INSTALLATION_TEMPLATE, "back" => INSTALLATION_TEMPLATE]);
 
-define("NOT_FOUND_VIEW", "404");
-define("HOME_VIEW", "home");
+/******************************
+********** VIEWS **************
+*******************************/
+define("INSTALLATION_INDEX_VIEWS", 	  ["front"=> "installation", 		 "back" => "installation"]);
+define("INSTALLATION_SETTING_VIEWS",  ["front"=> "installationSetting",  "back" => "installationSetting"]);
+define("INSTALLATION_DATABASE_VIEWS", ["front"=> "installationDatabase", "back" => "installationDatabase"]);
+define("INSTALLATION_ADMIN_VIEWS", 	  ["front"=> "installationAdmin",    "back" => "installationAdmin"]);
 
-define("CONTACT_VIEW", "contact");
+define("NOT_FOUND_VIEWS", ["front"=> "404",  "back" => "404"]);
+define("HOME_VIEWS", 	  ["front"=> "home", "back" => ""]);
+	
+define("CONTACT_VIEWS", ["front"=> "contact", "back" => "listVideoBack"]);
 
-define("USER_USER_FRONT_VIEW", "userUser");
-define("USER_USER_BACK_VIEW", "userUserBack");
-define("USER_EDIT_FRONT_VIEW", "editUser");
-define("USER_EDIT_BACK_VIEW", "editUserBack");
-define("USER_LIST_FRONT_VIEW", "listUser");
-define("USER_LIST_BACK_VIEW", "listUserBack");
-define("USER_LOGIN_FRONT_VIEW", "loginUser");
-define("USER_LOGIN_BACK_VIEW", "loginUserBack");
-define("USER_ADD_FRONT_VIEW", "addUser");
-define("USER_ADD_BACK_VIEW", "addUserBack");
+define("USER_USER_VIEWS",  ["front"=> "userUser",  "back" => "userUserBack"]);
+define("USER_EDIT_VIEWS",  ["front"=> "editUser",  "back" => "editUserBack"]);
+define("USER_LIST_VIEWS",  ["front"=> "listUser",  "back" => "listUserBack"]);
+define("USER_LOGIN_VIEWS", ["front"=> "loginUser", "back" => "loginUserBack"]);
+define("USER_ADD_VIEWS",   ["front"=> "addUser",   "back" => "addUserBack"]);
 
-define("VIDEO_FRONT_VIEW", "video");
-define("VIDEO_LIST_FRONT_VIEW", "listVideo");
+define("VIDEO_LIST_VIEWS", ["front"=> "listVideo", "back" => "listVideoBack"]);
 
-define("STATISTIC_BACK_VIEW", "statistic");
+define("STATISTIC_VIEWS", ["front"=> "", "back" => "statisticBack"]);
 
-define("TRAINNING_TRAINNING_BACK_VIEW", "trainningTrainningBack");
-define("TRAINNING_TRAINNING_FRONT_VIEW", "trainningTrainning");
-define("TRAINNING_ADD_BACK_VIEW", "addTrainningBack");
-define("TRAINNING_LIST_BACK_VIEW", "listTrainningBack");
-define("TRAINNING_LIST_FRONT_VIEW", "listTrainning");
+define("TRAINNING_TRAINNING_VIEWS",   ["front"=> "trainningTrainning", "back" => "trainningTrainningBack"]);
+define("TRAINNING_LIST_VIEWS",   	  ["front"=> "listTrainning",      "back" => "listTrainningBack"]);
+define("TRAINNING_ADD_VIEWS",   	  ["front"=> "",   			       "back" => "addTrainningBack"]);
 
-define("CHAPTER_CHAPTER_BACK_VIEW", "chapterChapterBack");
-define("CHAPTER_CHAPTER_FRONT_VIEW", "chapterChapter");
-define("CHAPTER_ADD_BACK_VIEW", "addChapterBack");
-define("CHAPTER_LIST_BACK_VIEW", "listChapterBack");
-define("CHAPTER_LIST_FRONT_VIEW", "listChapter");
+define("CHAPTER_CHAPTER_VIEWS", ["front"=> "chapterChapter", "back" => "chapterChapterBack"]);
+define("CHAPTER_ADD_VIEWS",     ["front"=> "", 			     "back" => "addChapterBack"]);
+define("CHAPTER_LIST_VIEWS",    ["front"=> "listChapter",    "back" => "listChapterBack"]);
 
 /******************************
 ********** ROLE ***************

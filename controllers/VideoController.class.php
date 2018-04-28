@@ -15,8 +15,7 @@ class VideoController implements ControllerInterface {
 	}
 	
 	public function addAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_ADD_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_ADD_BACK_VIEW, BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, VIDEO_ADD_VIEWS);
 		$this->formDelegate->process($data, $params, VIDEO_CLASS_NAME);
 		$this->objectDelegate->add($data, $params, VIDEO_CLASS_NAME);
 		$view = new View($data);
@@ -34,8 +33,7 @@ class VideoController implements ControllerInterface {
 	}
 
 	public function listAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_LIST_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_LIST_BACK_VIEW, BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, VIDEO_LIST_VIEWS);
 		$this->formDelegate->process($data, $params, VIDEO_CLASS_NAME);
 		$this->objectDelegate->listAll($data, $params, VIDEO_CLASS_NAME);
 		$view = new View($data);
@@ -48,8 +46,7 @@ class VideoController implements ControllerInterface {
 		if (isset($params['POST']['id'])) {
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, VIDEO_FRONT_VIEW, FRONT_TEMPLATE, VIDEO_BACK_VIEW, BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, VIDEO_VIEWS);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->objectDelegate->pushObjectById($data, $params, VIDEO_CLASS_NAME);
 		$view = new View($data);

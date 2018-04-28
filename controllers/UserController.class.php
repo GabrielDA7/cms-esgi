@@ -24,15 +24,13 @@ class UserController implements ControllerInterface {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, USER_USER_FRONT_VIEW, FRONT_TEMPLATE, USER_USER_BACK_VIEW, BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, USER_USER_VIEWS);
 		$this->objectDelegate->pushObjectById($data, $params['POST']['id'], USER_CLASS_NAME);
 		$view = new View($data);
 	}
 
 	public function addAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, USER_ADD_FRONT_VIEW, FRONT_TEMPLATE, USER_ADD_BACK_VIEW, BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, USER_ADD_VIEWS);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->objectDelegate->add($data, $params, USER_CLASS_NAME);
 		$this->emailDelegate->sendMail($data);
@@ -44,8 +42,7 @@ class UserController implements ControllerInterface {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			return404View();
 		}
-		ViewUtils::setPossiblesViewsTemplates($data, USER_EDIT_FRONT_VIEW, FRONT_TEMPLATE, USER_EDIT_BACK_VIEW , BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params, TRUE);
+		$this->authenticationDelegate->process($data, $params, TRUE, USER_EDIT_VIEWS);
 		$this->objectDelegate->pushObjectById($data, $params['POST']['id'], USER_CLASS_NAME);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->fileDelegate->process($data, $params, USER_CLASS_NAME);
@@ -63,16 +60,14 @@ class UserController implements ControllerInterface {
 	}
 
 	public function listAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, USER_LIST_FRONT_VIEW, FRONT_TEMPLATE, USER_LIST_BACK_VIEW, BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params, TRUE);
+		$this->authenticationDelegate->process($data, $params, TRUE, USER_LIST_VIEWS);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->objectDelegate->listAll($data, $params, USER_CLASS_NAME);
 		$view = new View($data);
 	}
 
 	public function loginAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, USER_LOGIN_FRONT_VIEW, FRONT_TEMPLATE, USER_LOGIN_BACK_VIEW, LOGIN_BACK_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
+		$this->authenticationDelegate->process($data, $params, FALSE, USER_LOGIN_VIEWS, LOGIN_TEMPLATES);
 		$this->formDelegate->process($data, $params, USER_CLASS_NAME);
 		$this->objectDelegate->login($data, $params);
 		$view = new View($data);
