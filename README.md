@@ -8,6 +8,7 @@ TODO
 Filter ajax
 Refactoring objectDelegate
 	- create fileDelegate
+		change opbject paramters
 	We have to create an object that is supplied with the delegate and then push in data
 Remove database columns from objects
 remove form check from list because ajax
@@ -25,3 +26,5 @@ for the parts find a way to save the location of the videos and the pictures
 
 find a way the change the working of setReferencedObjectsColumns() in objectDelegate 
 	We have to get the refernced object with a join query
+
+reset password email
