@@ -1305,6 +1305,9 @@ textarea {
   margin-top: 10px;
   width: 100%; }
 
+.list-data thead th {
+  min-width: 20%; }
+
 .list-data thead {
   color: white; }
 

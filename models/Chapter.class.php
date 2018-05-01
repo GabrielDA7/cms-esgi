@@ -69,6 +69,36 @@ class Chapter extends BaseSql {
 				];
 	}
 
+	public static function configTable($data){
+		return 	[
+					"config"=>["class"=>"list-data", "id"=>"list-lesson"],
+					"cell"=>
+							[
+								"title"=>
+											[
+												"name"=>"Title",
+											],
+								"category"=>
+											[
+												"name"=>"Category",
+											],
+								"author"=>
+											[
+												 "name"=>"Author",
+								      ],
+								"status"=>
+											[
+												"name"=>"Status",
+											],
+								"actions"=>
+											[
+												"name"=>"Actions",
+											]
+						]
+
+				];
+	}
+
 	public function getId() 		 { return $this->id; 		   }
 	public function getNumber() 	 { return $this->number; 	   }
 	public function getTitle() 		 { return $this->title; 	   }

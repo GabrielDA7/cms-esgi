@@ -867,6 +867,10 @@ textarea {
   width: 100%;
 }
 
+.list-data thead th {
+  min-width: 20%;
+}
+
 .list-data thead {
   color: $color-primary;
 }

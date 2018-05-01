@@ -6,12 +6,14 @@ class ChapterController implements ControllerInterface{
 	private $objectDelegate;
 	private $formDelegate;
 	private $emailDelegate;
+	private $tableDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->objectDelegate = new ObjectDelegate($this->data, CHAPTER_CLASS_NAME);
 		$this->formDelegate = new FormDelegate(CHAPTER_CLASS_NAME);
+		$this->tableDelegate = new TableDelegate(CHAPTER_CLASS_NAME);
 		$this->emailDelegate = new EmailDelegate();
 	}
 
@@ -49,6 +51,7 @@ class ChapterController implements ControllerInterface{
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, CHAPTER_LIST_VIEWS);
 		$this->objectDelegate->listAll($this->data, $params);
+		$this->tableDelegate->process($this->data, $params);
 		$view = new View($this->data);
 	}
 

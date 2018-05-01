@@ -72,6 +72,41 @@ class Trainning extends BaseSql {
 				];
 	}
 
+	public static function configTable($data){
+		return 	[
+					"config"=>["class"=>"list-data", "id"=>"list-trainning"],
+					"cell"=>
+							[
+								"title"=>
+											[
+												"name"=>"Title",
+												"class"=>"t"
+											],
+								"category"=>
+											[
+												"name"=>"Category",
+												"class"=>"t"
+											],
+								"author"=>
+											[
+												 "name"=>"Author",
+												 "class"=>"t"
+								      ],
+								"status"=>
+											[
+												"name"=>"Status",
+												"class"=>"t"
+											],
+								"actions"=>
+											[
+												"name"=>"Actions",
+												"class"=>"t"
+											]
+						]
+
+				];
+	}
+
 	public function getId() 		  { return $this->id; 			    }
 	public function getTitle() 		  { return $this->title; 		    }
 	public function getDescription()  { return $this->description; 		}

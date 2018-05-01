@@ -1,4 +1,5 @@
 $(function() {
+
   /* ChartJs */
   if ( $( "#dashboard-stat .myChart" ).length )
   {
@@ -53,6 +54,7 @@ $(function() {
       });
   }
 
+  /* left menu expandable li */
   if ( $( "#dashboard-left-menu" ).length )
   {
     $('#main-left-menu li')
@@ -77,21 +79,6 @@ $(function() {
   {
     var slideIndex = 1;
     showDivs(slideIndex);
-
-    function plusDivs(n) {
-      showDivs(slideIndex += n);
-    }
-
-    function showDivs(n) {
-      var i;
-      var x = $(".mySlides");
-      if (n > x.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = x.length}
-      for (i = 0; i < x.length; i++) {
-         x[i].style.display = "none";
-      }
-      x[slideIndex-1].style.display = "block";
-    }
 
     $("#slider-left").click(function() {
       plusDivs(-1);
@@ -121,25 +108,26 @@ $(function() {
 
   // Ajax call for listing trainings
   if( $("#list-trainning").length ) {
-    initListTrainning(10);
+    initList(10, "trainning", "list-trainning");
   }
 
   // Ajax call for listing chapter
   if( $("#list-lesson").length ) {
-    initListChapter(10);
+    initList(10, "chapter", "list-lesson");
   }
 
 });
 
-function initListTrainning(num){
-    $.ajax({
-      type: 'GET',
-      url:dirname + "ajax/list?object=trainning",
-      dataType: 'json',
-      success : function(data){
-        tb = $("#list-trainning tbody");
-        obj = data;
-        var html;
+function initList(num, object, id) {
+  $.ajax({
+    type: 'GET',
+    url:dirname + "ajax/list?object=" + object,
+    dataType: 'json',
+    success : function(data) {
+      tb = $("#"+ id + " tbody");
+      obj = data;
+      var html;
+      if( data.length > 0) {
         $.each(obj, function (index, element) {
           html+="<tr>";
           html+="<td>"+element.title+"</td>";
@@ -149,77 +137,41 @@ function initListTrainning(num){
           html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
           html+="</tr>";
         });
-        tb.html(html);
-      },
-    });
-  };
-
-function initListChapter(num) {
-  $.ajax({
-    type: 'GET',
-    url:dirname + "ajax/list?object=chapter",
-    dataType: 'json',
-    success : function(data){
-      tb = $("#list-lesson tbody");
-      obj = data;
-      var html;
-      $.each(obj, function (index, element) {
-        html+="<tr>";
-        html+="<td>"+element.title+"</td>";
-        html+="<td>"+element.category+"</td>";
-        html+="<td>"+element.author+"</td>";
-        html+="<td>"+element.status+"</td>";
-        html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
-        html+="</tr>";
-      });
+      } else {
+          html+="<tr>";
+          html+="<td colspan='5'>No results</td>";
+          html+="</tr>";
+      }
       tb.html(html);
     },
   });
 }
 
-function searchTrainning(str){
-  var str = $("#dashboard-list-tranning .row-tools input").val();
+function searchTable(object ,idpage, id){
+  var str = $("#" + idpage + " .row-tools input").val();
   $.ajax({
     type: 'GET',
-    url:dirname + "ajax/search?object=trainning",
+    url:dirname + "ajax/search?object=" + object + "&search=" + str,
     dataType: 'json',
     success : function(data){
-      tb = $("#list-trainning tbody");
+      tb = $("#" + id + " tbody");
       obj = data;
       var html;
-      $.each(obj, function (index, element) {
+      if(data.length > 0) {
+        $.each(obj, function (index, element) {
+          html+="<tr>";
+          html+="<td>"+element.title+"</td>";
+          html+="<td>"+element.category+"</td>";
+          html+="<td>"+element.author+"</td>";
+          html+="<td>"+element.status+"</td>";
+          html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
+          html+="</tr>";
+        });
+      } else {
         html+="<tr>";
-        html+="<td>"+element.title+"</td>";
-        html+="<td>"+element.category+"</td>";
-        html+="<td>"+element.author+"</td>";
-        html+="<td>"+element.status+"</td>";
-        html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
+        html+="<td colspan='5'>No results</td>";
         html+="</tr>";
-      });
-      tb.html(html);
-    },
-  });
-}
-
-function searchChapter(str){
-  var str = $("#dashboard-list-lesson .row-tools input").val();
-  $.ajax({
-    type: 'GET',
-    url:dirname + "ajax/search?object=chapter",
-    dataType: 'json',
-    success : function(data){
-      tb = $("#list-lesson tbody");
-      obj = data;
-      var html;
-      $.each(obj, function (index, element) {
-        html+="<tr>";
-        html+="<td>"+element.title+"</td>";
-        html+="<td>"+element.category+"</td>";
-        html+="<td>"+element.author+"</td>";
-        html+="<td>"+element.status+"</td>";
-        html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
-        html+="</tr>";
-      });
+      }
       tb.html(html);
     },
   });
@@ -228,4 +180,19 @@ function searchChapter(str){
 function closeDiv(div){
   var elem = $('#' + div);
   elem.css("display","none");
+}
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = $(".mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
 }

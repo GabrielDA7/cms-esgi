@@ -13,7 +13,7 @@
     <div class="M4">
       <div class="wrapper-icon">
           <i class="fas fa-search icon-left"></i>
-          <input class="input-medium input-icon" type="text" oninput="searchTrainning();">
+          <input class="input-medium input-icon" type="text" oninput="searchTable('trainning', 'dashboard-list-tranning', 'list-trainning');">
       </div>
     </div>
     <div class="M2 M--offset6">
@@ -23,20 +23,7 @@
 
   <div class="row M--center X--center">
     <div class="M12">
-      <table id="list-trainning" class="list-data">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Author</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-      </table>
+      <?php $this->addModal("table", $config, $errors); ?>
     </div>
 
   </div>

@@ -115,9 +115,9 @@ class FormDelegate {
 	}
 
 	public static function checkPwd($pwd){
-		return strlen($pwd)>=6 && strlen($pwd)<=32 
-		&& preg_match("/[a-z]/", $pwd) 
-		&& preg_match("/[A-Z]/", $pwd) 
+		return strlen($pwd)>=6 && strlen($pwd)<=32
+		&& preg_match("/[a-z]/", $pwd)
+		&& preg_match("/[A-Z]/", $pwd)
 		&& preg_match("/[0-9]/", $pwd);
 	}
 

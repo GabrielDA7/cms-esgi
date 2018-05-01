@@ -13,7 +13,7 @@
     <div class="M4">
       <div class="wrapper-icon">
           <i class="fas fa-search icon-left"></i>
-          <input class="input-medium input-icon" type="text" oninput="searchLesson();">
+          <input class="input-medium input-icon" type="text" oninput="searchTable('chapter', 'dashboard-list-lesson', 'list-lesson');">
       </div>
     </div>
     <div class="M2 M--offset6">
@@ -23,20 +23,7 @@
 
   <div class="row M--center X--center">
     <div class="M12">
-      <table id="list-lesson" class="list-data">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Author</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-      </table>
+      <?php $this->addModal("table", $config, $errors); ?>
     </div>
 
   </div>
@@ -44,7 +31,7 @@
   <div class="row row-pagination">
     <div class="M4">
       <p>Showing 1 to
-      <select class="pagination-selector" name="pagination" id="listTrainningSelect" onchange="listLessonSelectChange()">
+      <select class="pagination-selector" name="pagination">
         <option value="10">10</option>
         <option value="20">20</option>
         <option value="30">50</option>
