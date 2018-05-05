@@ -61,7 +61,6 @@ class UserController implements ControllerInterface {
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_LIST_VIEWS);
-		$this->formDelegate->process($this->data, $params);
 		$view = new View($this->data);
 	}
 
@@ -76,7 +75,6 @@ class UserController implements ControllerInterface {
 		if (!isset($_SESSION['userId'])) {
 			return404View();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE);
 		$this->objectDelegate->disconnect($this->data, $params);
 	}
 

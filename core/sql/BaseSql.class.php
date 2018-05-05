@@ -91,9 +91,22 @@ class BaseSql extends QueryConstructorSql {
 		$objectList = array();
 		foreach ($response as $key => $values) {
 			$object = ClassUtils::constructObjectWithParameters($values, $this->table);
+			if ($foreignKeyColumns = ClassUtils::getForeignKeyColumns($object)) {
+				$this->setForeingObjectsColumns($object, $foreignKeyColumns);
+			}
 			array_push($objectList, $object);
 		}
 		return $objectList;
+	}
+
+	private function setForeingObjectsColumns(&$object, $foreignKeyColumns) {
+		foreach ($foreignKeyColumns as $key => $value) {
+			$objectName = ucfirst(str_replace("_id", "", $key));
+			$foreignObject = ClassUtils::constructObjectWithId($value, $objectName);
+			$foreignObject = $foreignObject->getById();
+			$setter = "set" . $objectName;
+			$object->$setter($foreignObject);
+		}
 	}
 
 	protected function hasResult($query) {

@@ -84,5 +84,16 @@ class classUtils {
 			$object->unsetColumn($key);
 		}
 	}
+
+	public static function getForeignKeyColumns($object) {
+		$columns = $object->getColumns();
+		$foreignKeyColumns = [];
+		foreach ($columns as $key => $value) {
+			if (strpos($key, 'id') && strlen($key) > 2) {
+				$foreignKeyColumns[$key] = $value;
+			}
+		}
+		return $foreignKeyColumns;
+	}
 }
 ?>

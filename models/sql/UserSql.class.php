@@ -15,8 +15,8 @@ class UserSql extends BaseSql {
 	}
 
 	public function disconnect() {
-		session_destroy();
 		$this->setConnectedStatus($this, DISCONNECTED_STATUS);
+		session_destroy();
 	}
 
 	private function setSession($user) {

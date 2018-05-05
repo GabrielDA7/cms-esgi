@@ -15,20 +15,18 @@ class AuthenticationDelegate {
 	}
 
 	private function checkTokenValidity() {
-		if (isset($_SESSION['userId']) && isset($_SESSION['token'])) {
-			$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
-			$user = $user->getById();
-			if ($user->getToken() == $_SESSION['token']) {
-				$_SESSION['token'] = $user->generateToken();
-				$user->setPwd(null);
-				$user->update();
-			} else {
-				header(LOCATION . DIRNAME . USER_DISCONNECT_LINK);
-				exit();
-			}
-		} else {
+		if (!isset($_SESSION['userId']) || !isset($_SESSION['token'])) {
 			return404View();
 		}
+		$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
+		$user = $user->getById();
+		if ($user->getToken() != $_SESSION['token']) {
+			header(LOCATION . DIRNAME . USER_DISCONNECT_LINK . "?disconnect=1");
+			exit();
+		}
+		$_SESSION['token'] = $user->generateToken();
+		$user->setPwd(null);
+		$user->update();
 	}
 
 	private function getViewTemplateNames(&$data, $url, $views, $templates) {

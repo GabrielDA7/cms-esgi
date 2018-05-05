@@ -8,7 +8,13 @@ class FormatUtils {
 	public static function formatObjectsArrayToArray($objects) {
 		$result = [];
 		foreach ($objects as $object) {
-		    $result[] = $object->getColumns();
+		    $columns = $object->getColumns();
+		    foreach ($columns as $key => $value) {
+		    	if (is_object($value) && get_class($value) != 'PDO') {
+		    		$columns[$key] = self::formatObjectsArrayToArray([$value]);
+		    	}
+		    }
+		    $result[] = $columns;
 		}
 		return $result;
 	}

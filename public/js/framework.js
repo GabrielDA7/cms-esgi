@@ -133,7 +133,7 @@ function initList(num, object, id) {
           html+="<td>"+element.title+"</td>";
           html+="<td>"+element.category+"</td>";
           html+="<td>"+element.author+"</td>";
-          html+="<td>"+element.status+"</td>";
+          html+="<td>"+element.trainning+"</td>";
           html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
           html+="</tr>";
         });

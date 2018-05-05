@@ -100,16 +100,6 @@ class ObjectDelegate {
 		header(LOCATION . DIRNAME);
 		exit;
 	}
-
-	private function setReferencedObjectsColumns($othersTablesColumns, $id, &$object) {
-		foreach ($othersTablesColumns as $table) {
-			$objectWithForeignKeyValue = ClassUtils::constructObjectWithParameters([lcfirst($this->objectName)."_id" => $id], $table);
-			$referencedObjects = $objectWithForeignKeyValue->getWithParameters();
-			$setColumn = "set" . ucfirst($table) . "s";
-			$object->$setColumn($referencedObjects);
-		}
-	}
-
 	
 	public function getObjectName() { return $this->objectName; }
 	public function setObjectName($objectName) { $this->objectName = $objectName; }

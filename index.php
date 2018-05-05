@@ -3,6 +3,20 @@ session_start();
 require "bin/conf.inc.php";
 require "bin/constants.inc.php";
 
+/* DELETE */
+function aaa($var) {
+	echo '<pre>';
+	var_dump($var);
+	echo "</pre>";
+	die();
+}
+function aaaa($var) {
+	echo '<pre>';
+	var_dump($var);
+	echo "</pre>";
+}
+
+
 function autoLoadExistingClass($class) {
 	$classPath = searchFile(array(MODELS_FOLDER_NAME, CORE_FOLDER_NAME, DELEGATES_FOLDER_NAME), $class.CLASS_EXTENSION);
 	if(isset($classPath)) {
@@ -69,8 +83,6 @@ function getUriExploded() {
 }
 
 function return404View() {
-	
-	die();
 	header(LOCATION . DIRNAME . INDEX_ERROR_LINK);
 	exit();
 }

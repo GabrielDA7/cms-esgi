@@ -9,6 +9,7 @@ class Chapter extends BaseSql {
 	protected $parts = [];
 
 	protected $trainning_id = null;
+	protected $trainning;
 
 	public function __construct() {
 		BaseSql::__construct();
@@ -109,6 +110,7 @@ class Chapter extends BaseSql {
 	public function getImage() 		 { return $this->image; 	   }
 	public function getParts() 	 	 { return $this->parts; 	   }
 	public function getTrainningId() { return $this->trainning_id; }
+	public function getTrainning()   { return $this->trainning;    }
 
 
 	public function setId($id) 					  { $this->id = $id; 					 }
@@ -117,5 +119,6 @@ class Chapter extends BaseSql {
 	public function setImage($image) 			  { $this->image = $image; 				 }
 	public function setParts($parts) 			  { $this->parts = $parts; 			 	 }
 	public function setTrainningId($trainning_id) { $this->trainning_id = $trainning_id; }
+	public function setTrainning($trainning) 	  { $this->trainning = $trainning;       }
 }
 ?>

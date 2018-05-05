@@ -36,7 +36,6 @@ class VideoController implements ControllerInterface {
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_LIST_VIEWS);
-		$this->formDelegate->process($this->data, $params);
 		$view = new View($this->data);
 	}
 
