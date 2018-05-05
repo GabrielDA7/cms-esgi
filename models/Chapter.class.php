@@ -22,6 +22,10 @@ class Chapter extends BaseSql {
 		return get_object_vars($this);
 	}
 
+	public function getColumnsToSearch() {
+		return ["title", "trainning_id"];
+	}
+
 	public function unsetColumn($key) {
 		unset($this->$key);
 	}
@@ -69,33 +73,33 @@ class Chapter extends BaseSql {
 				];
 	}
 
-	public static function configTable($data){
+	public static function configTable(){
 		return 	[
 					"config"=>["class"=>"list-data", "id"=>"list-lesson"],
-					"cell"=>
-							[
-								"title"=>
-											[
-												"name"=>"Title",
-											],
-								"category"=>
-											[
-												"name"=>"Category",
-											],
-								"author"=>
-											[
-												 "name"=>"Author",
-								      ],
-								"status"=>
-											[
-												"name"=>"Status",
-											],
-								"actions"=>
-											[
-												"name"=>"Actions",
-											]
-						]
-
+					"cells"=>
+				            [
+				                "title"=>
+				                      [
+				                        "name"=>"Title"
+				                      ],
+				 
+				                "category"=>
+				                      [
+				                        "name"=>"Category"
+				                      ],
+				                "author"=>
+				                      [
+				                         "name"=>"Author"
+				                      ],
+				                "status"=>
+				                      [
+				                        "name"=>"Status"				 
+				                      ],
+				                "actions"=>
+				                      [
+				                        "name"=>"Actions"
+				                      ]
+				            ]
 				];
 	}
 

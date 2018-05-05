@@ -5,7 +5,7 @@
 
 TODO
 
-Filter ajax
+Filter ajax ()
 Refactoring objectDelegate
 Remove database columns from objects
 remove form check from list because ajax

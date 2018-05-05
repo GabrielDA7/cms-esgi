@@ -40,9 +40,6 @@ class ObjectDelegate {
 	public function pushAllObjects(&$data) {
 		$object  = ClassUtils::constructObject($this->objectName);
 		$objects = $object->getAll();
-		/*if (!empty($othersTablesColumns)) {
-			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
-		}*/
 		$data[lcfirst($this->objectName)."s"] = $objects;
 	}
 
@@ -79,14 +76,6 @@ class ObjectDelegate {
 		exit;
 	}
 
-	public function listAll(&$data, $params) {
-		if (isset($data['errors']) && $data['errors'] === FALSE) {
-			$this->pushObjectsByParameters($data, $params['POST']);
-		} else {
-			$this->pushAllObjects($data);
-		}
-	}
-
 	public function search($params) {
 		$object = ClassUtils::constructObject($this->objectName);
 		$columnsToSearch = $object->getColumnsToSearch();
@@ -94,9 +83,8 @@ class ObjectDelegate {
 	}
 
 	public function getAll($params) {
-		$object  = ClassUtils::constructObject($this->objectName);
-		$response = $object->getAll(FALSE);
-		return $response;
+		$object = ClassUtils::constructObject($this->objectName);
+		return $object->getAll();
 	}
 
 	public function login(&$data, $params) {

@@ -72,10 +72,10 @@ class Trainning extends BaseSql {
 				];
 	}
 
-	public static function configTable($data){
+	public static function configTable(){
 		return 	[
 					"config"=>["class"=>"list-data", "id"=>"list-trainning"],
-					"cell"=>
+					"cells"=>
 							[
 								"title"=>
 											[

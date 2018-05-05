@@ -1,11 +1,11 @@
 <table id="<?=$config["config"]["id"]?>" class="<?=$config["config"]["class"]?>">
   <thead>
     <tr>
-      <?php foreach ($config["cell"] as $name => $attributs):?>
-        <th <?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>>
+      <?php foreach ($config["cells"] as $name => $attributs): ?>
+        <th <?= (isset($attributs["class"])) ? "class='".$attributs["class"]."'" : ""; ?>>
           <?= $attributs["name"]; ?>
         </th>
-      <? endforeach; ?>
+      <?php endforeach; ?>
     </tr>
   </thead>
   <tbody>
