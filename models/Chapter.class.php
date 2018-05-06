@@ -60,9 +60,10 @@ class Chapter extends BaseSql {
 								      ],
 								"parts"=>
 											[
-												"type"=>"btn",
-												"class"=>"input-btn btn-filled-blue form-group",
-												"value"=>"Add part"
+												"id"=>"addChapterPart",
+												"class"=>"input-btn btn-filled-blue form-group row",
+												"value"=>"Add part",
+												"onclick"=>"addChapterSubpart();"
 											]
 						]
 

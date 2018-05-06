@@ -54,16 +54,6 @@ $(function() {
       });
   }
 
-  /* left menu expandable li */
-  if ( $( "#dashboard-left-menu" ).length )
-  {
-    $('#main-left-menu li')
-    .css({cursor: "pointer"})
-    .on('click', function(){
-      $(this).find('ul').toggle();
-    })
-  }
-
   /* Hambuger nav */
   $("#icon-expand-nav").click(function() {
       var x = $( "#myTopnav" );
@@ -79,6 +69,21 @@ $(function() {
   {
     var slideIndex = 1;
     showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = $(".mySlides");
+      if (n > x.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";
+      }
+      x[slideIndex-1].style.display = "block";
+    }
 
     $("#slider-left").click(function() {
       plusDivs(-1);
@@ -182,17 +187,27 @@ function closeDiv(div){
   elem.css("display","none");
 }
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = $(".mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
+var idPart = 1;
+function addChapterSubpart(){
+  var html = "<div id='chapterSubpart"+ idPart +"' class='form-group chapterParts'>" +
+              "<div class='row subpartHead'>" +
+                "<p>Subpart " + idPart + "</p>" +
+                //"<div class='wrapper-icon'>" +
+                //  "<i onclick='closeDiv('chapterSubpart"+ idPart +"');' class='fas fa-times'></i>" +
+                //"</div>" +
+              "</div>" +
+              "<div class='row'>" +
+                "<input type='text' name='parts[part"+ idPart +"][title]' class='input form-group' placeholder='Title'>" +
+              "</div>" +
+              "<div class='row'>" +
+                "<textarea name='parts[part"+ idPart +"][content]' class='form-group input' placeholder='Content'></textarea>" +
+              "</div>" +
+             "</div>";
+  var idbis = idPart - 1;
+  if( $("#chapterSubpart" + idbis).length ) {
+    $("#chapterSubpart" + idbis).after(html);
+  } else {
+    $("#addChapterPart").after(html);
   }
-  x[slideIndex-1].style.display = "block";
+  idPart += 1;
 }
