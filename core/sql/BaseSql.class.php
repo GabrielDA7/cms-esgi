@@ -47,29 +47,23 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute($this->columns);
 	}
 
-	public function getAll($toObject = TRUE) {
+	public function getAll() {
 		$queryString = $this->constructSelectQuery($this->table);
 		$query = $this->db->prepare($queryString);
 		$query->execute();
 		$response = $query->fetchAll();
-		if ($toObject) {
-			$objectList = $this->createObjectsListFromDBResponse($response);
-			return $objectList;
-		}
-		return $response;
+		$objectList = $this->createObjectsListFromDBResponse($response);
+		return $objectList;
 	}
 
-	public function getWithParameters($toObject = TRUE) {
+	public function getWithParameters() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 		$response = $query->fetchAll();
-		if ($toObject) {
-			$objectList = $this->createObjectsListFromDBResponse($response);
-			return $objectList;
-		}
-		return $response;
+		$objectList = $this->createObjectsListFromDBResponse($response);
+		return $objectList;
 	}
 
 	public function getById() {
@@ -87,11 +81,9 @@ class BaseSql extends QueryConstructorSql {
 		$query = $this->db->prepare($queryString);
 		$this->setKeyword($query, $keyword);
 		$query->execute();
-		/*if ($toObject) {
-			$objects = $this->createObjectsListFromDBResponse($response);
-			return $objects;
-		}*/
-		return $query->fetchAll();
+		$response = $query->fetchAll();
+		$objects = $this->createObjectsListFromDBResponse($response);
+		return $objects;
 	}
 
 
@@ -99,9 +91,22 @@ class BaseSql extends QueryConstructorSql {
 		$objectList = array();
 		foreach ($response as $key => $values) {
 			$object = ClassUtils::constructObjectWithParameters($values, $this->table);
+			if ($foreignKeyColumns = ClassUtils::getForeignKeyColumns($object)) {
+				$this->setForeingObjectsColumns($object, $foreignKeyColumns);
+			}
 			array_push($objectList, $object);
 		}
 		return $objectList;
+	}
+
+	private function setForeingObjectsColumns(&$object, $foreignKeyColumns) {
+		foreach ($foreignKeyColumns as $key => $value) {
+			$objectName = ucfirst(str_replace("_id", "", $key));
+			$foreignObject = ClassUtils::constructObjectWithId($value, $objectName);
+			$foreignObject = $foreignObject->getById();
+			$setter = "set" . $objectName;
+			$object->$setter($foreignObject);
+		}
 	}
 
 	protected function hasResult($query) {

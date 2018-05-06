@@ -50,8 +50,7 @@ class ChapterController implements ControllerInterface{
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, CHAPTER_LIST_VIEWS);
-		$this->objectDelegate->listAll($this->data, $params);
-		$this->tableDelegate->process($this->data, $params);
+		$this->tableDelegate->process($this->data);
 		$view = new View($this->data);
 	}
 

@@ -5,7 +5,7 @@ class AjaxController {
 	private $data = [];
 
 	public function __construct() {
-		if (empty($_GET) || !isset($_GET['object'])) {
+		if (!isset($_GET['object'])) {
 			echo FormatUtils::formatToJson([]);
 			exit;
 		}
@@ -14,7 +14,9 @@ class AjaxController {
 	}
 
 	public function searchAction($params) {
-		echo FormatUtils::formatToJson($this->objectDelegate->search($params));
+		$objects = $this->objectDelegate->search($params);
+		$array = FormatUtils::formatObjectsArrayToArray($objects);
+		echo FormatUtils::formatToJson($array);
 	}
 
 	public function filterAction($params) {
@@ -22,7 +24,9 @@ class AjaxController {
 	}
 
 	public function listAction($params) {
-		echo FormatUtils::formatToJson($this->objectDelegate->getAll($params));
+		$objects = $this->objectDelegate->getAll($params);
+		$array = FormatUtils::formatObjectsArrayToArray($objects);
+		echo FormatUtils::formatToJson($array);
 	}
 }
 ?>

@@ -76,20 +76,24 @@ class classUtils {
 	public static function getCallingFunction() {
 		$caller = debug_backtrace();
 		$caller = $caller[2];
-		$r = $caller['function'] . '()';
-		if (isset($caller['class'])) {
-			$r .= ' in ' . $caller['class'];
-		}
-		if (isset($caller['object'])) {
-			$r .= ' (' . get_class($caller['object']) . ')';
-		}
-		return $r;
+		return $caller['function'];
 	}
 
 	public static function unsetColumns(&$object, $columns) {
 		foreach ($columns as $key => $value) {
 			$object->unsetColumn($key);
 		}
+	}
+
+	public static function getForeignKeyColumns($object) {
+		$columns = $object->getColumns();
+		$foreignKeyColumns = [];
+		foreach ($columns as $key => $value) {
+			if (strpos($key, 'id') && strlen($key) > 2) {
+				$foreignKeyColumns[$key] = $value;
+			}
+		}
+		return $foreignKeyColumns;
 	}
 }
 ?>
