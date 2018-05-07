@@ -33,7 +33,7 @@ class Chapter extends BaseSql {
 
 	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.CHAPTER_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Save", "submitClass"=>"input-btn btn-filled-orange btn-icon"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.CHAPTER_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Save", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
 					"input"=>
 							[
 								"title"=>
@@ -66,6 +66,7 @@ class Chapter extends BaseSql {
 								"parts"=>
 											[
 												"id"=>"addChapterPart",
+												"type"=>"button",
 												"class"=>"input-btn btn-filled-blue form-group row",
 												"value"=>"Add part",
 												"onclick"=>"addChapterSubpart();"
@@ -84,7 +85,7 @@ class Chapter extends BaseSql {
 				                      [
 				                        "name"=>"Title"
 				                      ],
-				 
+
 				                "category"=>
 				                      [
 				                        "name"=>"Category"
@@ -95,7 +96,7 @@ class Chapter extends BaseSql {
 				                      ],
 				                "status"=>
 				                      [
-				                        "name"=>"Status"				 
+				                        "name"=>"Status"
 				                      ],
 				                "actions"=>
 				                      [

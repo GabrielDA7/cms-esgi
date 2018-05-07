@@ -95,21 +95,17 @@ $(function() {
   }
 
   /* Expandable div */
-  var statut = -1;
-  $("#content-main .expand-div").click( function() {
+  $(document).on('click', '.expand-div', function(){
     var childIcon = $(this).find('i');
-    if(statut === 0 || statut < 0 )
+    if(childIcon.hasClass('fa-chevron-down') )
     {
-      childIcon.removeClass('fa-chevron-down');
-      childIcon.addClass('fa-chevron-up');
-      statut = 1;
+      childIcon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
     } else {
-      childIcon.removeClass('fa-chevron-up');
-      childIcon.addClass('fa-chevron-down');
-      statut = 0;
+      childIcon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
     }
-    var hiddenContent = $(this).parent().siblings('.content-hidden').toggle('fast');
+    var hiddenContent = $(this).next('.content-hidden').toggle('fast');
   });
+
 
   // Ajax call for listing trainings
   if( $("#list-trainning").length ) {
@@ -122,6 +118,7 @@ $(function() {
   }
 
 });
+
 
 function initList(num, object, id) {
   $.ajax({
@@ -190,17 +187,21 @@ function closeDiv(div){
 var idPart = 1;
 function addChapterSubpart(){
   var html = "<div id='chapterSubpart"+ idPart +"' class='form-group chapterParts'>" +
-              "<div class='row subpartHead'>" +
-                "<p>Subpart " + idPart + "</p>" +
-                //"<div class='wrapper-icon'>" +
-                //  "<i onclick='closeDiv('chapterSubpart"+ idPart +"');' class='fas fa-times'></i>" +
-                //"</div>" +
+              "<div class='row subpartHead expand-div'>" +
+                "<div class='M10'>" +
+                  "<p>Subpart " + idPart + "</p>" +
+                "</div>" +
+                "<div class='M2'>" +
+                  "<i class='fas fa-chevron-down btn-icon'></i>" +
+                "</div>" +
               "</div>" +
-              "<div class='row'>" +
-                "<input type='text' name='parts[part"+ idPart +"][title]' class='input form-group' placeholder='Title'>" +
-              "</div>" +
-              "<div class='row'>" +
-                "<textarea name='parts[part"+ idPart +"][content]' class='form-group input' placeholder='Content'></textarea>" +
+              "<div class='content-hidden'>" +
+                "<div class='row'>" +
+                  "<input type='text' name='parts[part"+ idPart +"][title]' class='input form-group' placeholder='Title'>" +
+                "</div>" +
+                "<div class='row'>" +
+                  "<textarea name='parts[part"+ idPart +"][content]' class='form-group input' placeholder='Content'></textarea>" +
+                "</div>" +
               "</div>" +
              "</div>";
   var idbis = idPart - 1;

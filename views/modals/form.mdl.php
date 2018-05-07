@@ -12,6 +12,15 @@
 				<?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
 				<?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
 				<?= (isset($attributs["required"])) ? "required='required'" : ""; ?>></textarea>
+		<?php elseif ($attributs["type"] == "button"): ?>
+			<button
+			<?=(isset($attributs["id"])) ? "id='".$attributs["id"]."'" : "";?>
+			<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
+			name="<?= $name; ?>"
+			<?=(isset($attributs["type"])) ? "type='".$attributs["type"]."'" : "";?>
+			<?=(isset($attributs["onclick"])) ? "onclick='".$attributs["onclick"]."'" : ""; ?>>
+			<?=(isset($attributs["value"])) ? $attributs["value"] : ""; ?></button>
+
 		<?php else: ?>
 			<input
 				<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
@@ -19,7 +28,8 @@
 				name="<?= $name; ?>"
 				<?=(isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
 				<?=(isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
-				<?=(isset($attributs["required"])) ? "required='required'" : ""; ?>>
+				<?=(isset($attributs["required"])) ? "required='required'" : ""; ?>
+				<?=(isset($attributs["onclick"])) ? "onclick='".$attributs["onclick"]."'" : ""; ?>>
 		<?php endif; ?>
 	<?php endforeach;?>
 		<input class="btn form-group <?= $config["config"]["submitClass"]; ?>" type="submit" name="submit" value="<?= $config["config"]["submit"];?>">

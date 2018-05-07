@@ -23,7 +23,7 @@
 				<p class="content-subtitle"> <?= $part->getNumber() . ". " . $part ->getTitle(); ?></p>
 			</div>
 			<div class="M2 M--offset7">
-				<a href="javascript:void(0);" class="expand-div btn-icon subtitle-icon"><i class="fas fa-chevron-down"></i></a>
+				<a href="javascript:void(0);" class="expand-div btn-icon"><i class="fas fa-chevron-down"></i></a>
 			</div>
 			<div class="content-hidden">
 				<div class="row">

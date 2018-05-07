@@ -66,7 +66,7 @@ html,body
   font-size: $font-size-S;
   font-weight: bold;
   color: $color-primary;
-  margin-left: 100px;
+  margin-left: 20px;
   line-height: 60px;
 }
 
@@ -92,75 +92,96 @@ html,body
 
 // Dashboard left menu ---------------------------------------------------------
 #dashboard-left-menu {
-  width: 180px;
-  height: calc(100% - 60px);
   background-color: $color-secondary;
+  position: fixed;
+  width: 250px;
+  height:100vh;
+  left: 0;
+  right: 0;
+  top: 60px;
+  font-size: $font-size-S;
+  display: flex;
+  flex-direction: column;
+}
+
+
+#dashboard-left-menu nav div {
+  display: flex;
+  flex-direction: column;
+}
+
+#dashboard-left-menu a {
+  padding-left: 15px;
+  display: inline-table;
+}
+
+#dashboard-left-menu a i:first-child {
+  width: 20px;
+  padding-right: 15px;
+  display: table-cell;
+}
+
+#dashboard-left-menu a i:nth-child(2) {
+  display: table-cell;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.menu-item {
   float: left;
-}
-
-#dashboard-left-menu ul li{
-  display: block;
   width: 100%;
-}
-
-#dashboard-left-menu ul li a {
   text-decoration: none;
   color: $color-primary;
-  font-weight: 600;
-  font-size: $font-size-XS;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
 }
 
-#dashboard-left-menu ul li a i:nth-of-type(1) {
-  margin-left: 20px;
-  margin-right: 10px;
-}
-
-#dashboard-left-menu ul li a i:nth-of-type(2) {
-  margin-right: 10px;
-  float: right;
-  line-height: 30px;
-}
-
-#dashboard-left-menu ul li:hover {
-  background-color: $color-tertiary;
-}
-
-#dashboard-left-menu .sub-menu ul {
-  display: none;
-}
-
-#dashboard-left-menu .submenu-item a {
-  font-size: $font-size-XS;
-  font-weight: normal;
-}
-
-#dashboard-left-menu .submenu-item li {
+.menu-sub-item {
   padding-left: 20px;
+  float: left;
   width: 100%;
-  background-color: $color-secondary;
+  text-decoration: none;
+  color: $color-primary;
 }
 
-#dashboard-left-menu .submenu-item li:hover {
+.sub-items{
   background-color: $color-quaternary-dark;
+  float: left;
+  width: 100%;
 }
 
-#main-left-menu li:hover .submenu-item {
-  display: block;
-  max-height: 60px;
-}
-
-#main-left-menu .submenu-item {
-  overflow: hidden;
-  max-height: 0;
-  transition: all 0.5s ease-out;
+.active-menu-item {
+  color: $color-tertiary;
 }
 
 // Dashboard content -----------------------------------------------------------
 #dashboard-content {
-  float: left;
-  width: calc(100% - 180px);
+  padding-left: 20px;
+  overflow: hidden;
+  position: fixed;
+  left: 250px;
+  top: 60px;
+  height:calc(100vh - 60px);
+  width: calc(100% - 250px);
 }
+
+.viewport {
+    overflow: auto;
+
+    /* Make sure the inner div is not larger than the container
+     * so that we have room to scroll.
+     */
+    max-height: 100%;
+
+    /* Pick an arbitrary margin/padding that should be bigger
+     * than the max width of all the scroll bars across
+     * the devices you are targeting.
+     * padding = -margin
+     */
+    margin-right: -100px;
+    padding-right: 100px;
+}
+
 
 
 // Dashboard statistics page ---------------------------------------------------
@@ -215,6 +236,16 @@ html,body
 /* -----------------------------------------------------------------------------
 * Front
 */
+.front-main-content {
+  flex-grow: 1;
+}
+
+.front-template-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .back-title {
   margin-top: 35px;
 }
@@ -417,6 +448,7 @@ html,body
 #footer {
   background-color: $color-secondary;
   color: $color-primary;
+  padding-top: 15px;
 }
 
 #footer .footer-title {
@@ -435,7 +467,6 @@ html,body
 }
 
 #footer-network {
-  width: 60%;
   display:flex;
   list-style:none;
   justify-content: space-between;
@@ -539,6 +570,22 @@ html,body
 .trainning-title {
   color: $color-quaternary-dark;
 }
+.subpartHead {
+  background-color: $color-secondary;
+  color: $color-primary;
+  height: 35px;
+  font-size: $font-size-M;
+  line-height: 35px;;
+  border-radius: 5px 5px 0 0;
+}
+
+.subpartHead i {
+  line-height: 35px;
+}
+
+.chapterParts textarea {
+  height: 10em;
+}
 
 .chapter{
   background-color: $color-secondary;
@@ -602,7 +649,6 @@ html,body
 
 .content-hidden {
   display: none;
-  padding-bottom: 20px;
   width: 100%;
 }
 
@@ -662,6 +708,10 @@ html,body
   margin-top:5px;
 }
 
+.last {
+  margin-bottom: 35px;
+}
+
 textarea {
   max-width: 100%;
   min-width: 100%;
@@ -672,6 +722,10 @@ textarea {
   height: 60px;
   background-color: $color-secondary;
   overflow: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 
 .left-nav {
@@ -765,6 +819,7 @@ textarea {
   font-weight: 600;
   border-radius: 5px;
   text-align: center;
+  display: block;
 }
 
 .select-input {
