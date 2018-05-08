@@ -25,29 +25,6 @@
     <div class="M12">
       <?php $this->addModal("table", $config, $errors); ?>
     </div>
-
-  </div>
-
-  <div class="row row-pagination">
-    <div class="M4">
-      <p>Showing 1 to
-      <select class="pagination-selector" name="pagination">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="30">50</option>
-        <option value="30">100</option>
-      </select>
-      of X entries</p>
-    </div>
-    <div class="M4">
-      <div id="div_pagination">
-        <input type="hidden" id="txt_rowid" value="0">
-        <input type="hidden" id="txt_allcount" value="0">
-        <input type="button" class="button" value="Previous" id="but_prev" />
-
-        <input type="button" class="button" value="Next" id="but_next" />
-      </div>
-    </div>
   </div>
 
 </section>

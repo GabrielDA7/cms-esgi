@@ -127,15 +127,23 @@ function initList(num, object, id) {
     dataType: 'json',
     success : function(data) {
       tb = $("#"+ id + " tbody");
-      obj = data;
       var html;
+      var cpt;
+
       if( data.length > 0) {
-        $.each(obj, function (index, element) {
+        $.each(data, function (index, element) {
+          if(index === num) {
+            return false;
+          }
+          cpt = index+1;
           html+="<tr>";
-          html+="<td>"+element.title+"</td>";
-          html+="<td>"+element.category+"</td>";
-          html+="<td>"+element.author+"</td>";
-          html+="<td>"+element.trainning+"</td>";
+          $.each(element, function(i, elem) {
+            if(elem != null && elem.constructor.name === 'Array' && elem.length > 0){
+              html+="<td>"+elem[0].title+"</td>";
+            } else {
+              html+="<td>"+elem+"</td>";
+            }
+          });
           html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
           html+="</tr>";
         });
@@ -145,6 +153,8 @@ function initList(num, object, id) {
           html+="</tr>";
       }
       tb.html(html);
+      $('.count-all-element').html(data.length);
+      $('.count-page-element').html(cpt);
     },
   });
 }
@@ -157,10 +167,9 @@ function searchTable(object ,idpage, id){
     dataType: 'json',
     success : function(data){
       tb = $("#" + id + " tbody");
-      obj = data;
       var html;
       if(data.length > 0) {
-        $.each(obj, function (index, element) {
+        $.each(data, function (index, element) {
           html+="<tr>";
           html+="<td>"+element.title+"</td>";
           html+="<td>"+element.category+"</td>";
