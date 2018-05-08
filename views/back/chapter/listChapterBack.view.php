@@ -1,4 +1,4 @@
-<section id="dashboard-list-lesson">
+<section id="dashboard-list-lesson" class="list-data">
 
   <div class="row">
     <div class="M4">
@@ -9,11 +9,15 @@
     </div>
   </div>
 
+  <div class="list-init-object">
+    chapter
+  </div>
+
   <div class="row row-tools">
     <div class="M4">
       <div class="wrapper-icon">
           <i class="fas fa-search icon-left"></i>
-          <input class="input-medium input-icon" type="text" oninput="searchTable('chapter', 'dashboard-list-lesson', 'list-lesson');">
+          <input class="input-medium input-icon" type="text" oninput="initList('chapter', 'list-data', 'search');">
       </div>
     </div>
     <div class="M2 M--offset6">

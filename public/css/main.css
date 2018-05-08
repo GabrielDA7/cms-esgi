@@ -1229,7 +1229,7 @@ textarea {
   width: 100%; }
 
 .row-tools {
-  padding-top: 35px; }
+  padding-top: 20px; }
 
 .row-pagination {
   padding-top: 10px; }
@@ -1349,15 +1349,31 @@ textarea {
   border: 2px solid grey;
   color: grey; }
 
-.list-data {
-  margin-top: 10px;
-  width: 100%; }
+.list-init-object {
+  display: none; }
 
-.list-data thead th {
-  min-width: 20%; }
+.list-data table {
+  margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse; }
 
 .list-data thead {
-  color: white; }
+  color: white;
+  display: block;
+  width: 100%; }
+
+.list-data table tbody {
+  display: block;
+  max-height: 410px;
+  overflow-y: scroll; }
+
+.list-data table thead, table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; }
+
+.list-data tr {
+  border: 2px solid #E8E8E8; }
 
 .list-data thead tr th:first-child {
   background-color: #F96D00; }
@@ -1373,15 +1389,6 @@ textarea {
 
 .list-data tbody tr td:first-child {
   color: #F96D00; }
-
-.list-data tbody tr td:last-child a {
-  padding-right: 10px; }
-
-.list-data tr {
-  border: 2px solid #E8E8E8; }
-
-.list-data {
-  border-collapse: collapse; }
 
 .list-data tbody th, tbody td {
   border: 2px solid #E8E8E8; }

@@ -1,4 +1,4 @@
-<section id="dashboard-list-tranning">
+<section id="dashboard-list-tranning" class="list-data">
 
   <div class="row">
     <div class="M4">
@@ -9,11 +9,15 @@
     </div>
   </div>
 
+  <div class="list-init-object">
+    trainning
+  </div>
+
   <div class="row row-tools">
     <div class="M4">
       <div class="wrapper-icon">
           <i class="fas fa-search icon-left"></i>
-          <input class="input-medium input-icon" type="text" oninput="searchTable('trainning', 'dashboard-list-tranning', 'list-trainning');">
+          <input class="input-medium input-icon" type="text" oninput="initList('trainning', 'list-data', 'search');">
       </div>
     </div>
     <div class="M2 M--offset6">

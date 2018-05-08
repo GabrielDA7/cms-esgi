@@ -109,30 +109,38 @@ $(function() {
 
   // Ajax call for listing trainings
   if( $("#list-trainning").length ) {
-    initList(10, "trainning", "list-trainning");
+    initList("list-data", "init");
   }
 
   // Ajax call for listing chapter
   if( $("#list-lesson").length ) {
-    initList(10, "chapter", "list-lesson");
+    initList("list-data", "init");
   }
 
 });
 
 
-function initList(num, object, id) {
+function initList(id, action) {
+  var object = $.trim($(".list-init-object").text());
+  var num = $( ".pagination-selector option:selected" ).val();
+  if(action == 'init'){
+    url = dirname + "ajax/list?object=" + object
+  } else {
+    str = $("." + id + " .row-tools input").val();
+    url = dirname + "ajax/search?object=" + object + "&search=" + str
+  }
   $.ajax({
     type: 'GET',
-    url:dirname + "ajax/list?object=" + object,
+    url: url,
     dataType: 'json',
     success : function(data) {
-      tb = $("#"+ id + " tbody");
+      tb = $("."+ id + " tbody");
       var html;
       var cpt;
 
       if( data.length > 0) {
         $.each(data, function (index, element) {
-          if(index === num) {
+          if(index == num) {
             return false;
           }
           cpt = index+1;

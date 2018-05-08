@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="M4">
-    <select class="pagination-selector" name="pagination">
+    <select class="pagination-selector" name="pagination" onchange="initList('list-data', 'init')">
       <option value="10">10</option>
       <option value="20">20</option>
       <option value="30">50</option>

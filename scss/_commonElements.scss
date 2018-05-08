@@ -756,7 +756,7 @@ textarea {
   width: 100%;
 }
 .row-tools {
-  padding-top:35px;
+  padding-top:20px;
 }
 
 .row-pagination {
@@ -917,17 +917,36 @@ textarea {
 }
 
 // Table
-.list-data {
-  margin-top: 10px;
-  width: 100%;
+.list-init-object {
+  display: none;
 }
 
-.list-data thead th {
-  min-width: 20%;
+.list-data table {
+  margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .list-data thead {
   color: $color-primary;
+  display: block;
+  width: 100%;
+}
+
+.list-data table tbody {
+  display:block;
+  max-height:410px;
+  overflow-y:scroll;
+}
+
+.list-data table thead, table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.list-data tr {
+  border: 2px solid $color-quaternary;
 }
 
 .list-data thead tr th:first-child {
@@ -947,18 +966,6 @@ textarea {
 
 .list-data tbody tr td:first-child {
   color: $color-tertiary;
-}
-
-.list-data tbody tr td:last-child a {
-  padding-right: 10px;
-}
-
-.list-data tr {
-  border: 2px solid $color-quaternary;
-}
-
-.list-data{
-  border-collapse: collapse;
 }
 
 .list-data tbody th,tbody td {
