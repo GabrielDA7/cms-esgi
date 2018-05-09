@@ -972,11 +972,15 @@ textarea {
     border: 2px solid $color-quaternary;
 }
 
-.pagination-selector{
+.pagination_selector{
   display: block;
   float: right;
 }
 
 #div_pagination {
+  text-align: center;
+}
+
+#pagination_links {
   text-align: center;
 }

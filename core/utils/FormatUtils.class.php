@@ -2,7 +2,7 @@
 class FormatUtils {
 
 	public static function formatToJson($array) {
-		return json_encode($array);
+		return json_encode($array, JSON_UNESCAPED_SLASHES);
 	}
 
 	public static function formatObjectsArrayToArray($objects) {

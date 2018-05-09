@@ -78,7 +78,7 @@ class Chapter extends BaseSql {
 
 	public static function configTable(){
 		return 	[
-					"config"=>["id"=>"list-lesson"],
+					"config"=>["id"=>"pagination_data", "class"=>"table_responsive"],
 					"cells"=>
 				            [
 				                "title"=>
@@ -94,6 +94,10 @@ class Chapter extends BaseSql {
 				                      [
 				                         "name"=>"Author"
 				                      ],
+												"formation"=>
+															[
+																	"name"=>"Formation"
+															],
 				                "status"=>
 				                      [
 				                        "name"=>"Status"

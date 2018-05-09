@@ -107,42 +107,64 @@ $(function() {
   });
 
 
-  // Ajax call for listing trainings
-  if( $("#list-trainning").length ) {
-    initList("list-data", "init");
+
+  // Ajax call for load table
+  if( $("#pagination_data").length ) {
+    var limit = $( ".pagination-selector option:selected" ).val();
+    var page = 1;
+    load_data(page, limit, 'init');
   }
 
-  // Ajax call for listing chapter
-  if( $("#list-lesson").length ) {
-    initList("list-data", "init");
-  }
+  $(document).on('click', '#pagination_links span', function() {
+    var limit = $( ".pagination-selector option:selected" ).val();
+    var page = $(this).attr("id");
+    load_data(page, limit, 'init');
+  });
+
+  $(document).on('click', '.column_sort', function() {
+    var column_name = $(this).attr("id");
+    var order = $(this).attr("data-order");
+    load_data(page, limit, 'order', order);
+  });
+
+  $(document).on('change', '.pagination_selector', function() {
+    var limit = $( ".pagination-selector option:selected" ).val();
+    var page = 1;
+    load_data(page, limit,'init');
+  });
+
+  $(document).on('input', '.list-data .row-tools input', function() {
+    var limit = $( ".pagination-selector option:selected" ).val();
+    var page = 1;
+    load_data(page, limit,'search');
+  });
 
 });
 
+function load_data(page, limit, action, order) {
 
-function initList(id, action) {
   var object = $.trim($(".list-init-object").text());
-  var num = $( ".pagination-selector option:selected" ).val();
-  if(action == 'init'){
-    url = dirname + "ajax/list?object=" + object
+  var tb = $("#pagination_data tbody");
+  var paginationLinks = $("#pagination_links");
+
+  if(action == 'search') {
+    str = $.trim($(".list-data .row-tools input").val());
+    url = dirname + "ajax/search?object=" + object + "&search=" + str;
   } else {
-    str = $("." + id + " .row-tools input").val();
-    url = dirname + "ajax/search?object=" + object + "&search=" + str
+    url = dirname + "ajax/list?object=" + object;
   }
+
   $.ajax({
-    type: 'GET',
     url: url,
-    dataType: 'json',
-    success : function(data) {
-      tb = $("."+ id + " tbody");
+    method: "POST",
+    data:{page:page,limit:limit},
+    success:function(data) {
+      data = JSON.parse(data);
       var html;
       var cpt;
 
-      if( data.length > 0) {
-        $.each(data, function (index, element) {
-          if(index == num) {
-            return false;
-          }
+      if( data["data"].length > 0) {
+        $.each(data["data"], function (index, element) {
           cpt = index+1;
           html+="<tr>";
           $.each(element, function(i, elem) {
@@ -156,17 +178,25 @@ function initList(id, action) {
           html+="</tr>";
         });
       } else {
-          html+="<tr>";
-          html+="<td colspan='5'>No results</td>";
-          html+="</tr>";
+        cpt = 0;
+        html+="<tr>";
+        html+="<td colspan='5'>No results</td>";
+        html+="</tr>";
       }
+
       tb.html(html);
-      $('.count-all-element').html(data.length);
+      $('.count-all-element').html(data["data"].length);
       $('.count-page-element').html(cpt);
-    },
+
+      html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
+      for(var i = 1; i<= data["total_page"]; i++){
+        html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+      }
+      html += "<input type='button' class='button' value='Next' id='but_next' />"
+      paginationLinks.html(html);
+    }
   });
 }
-
 
 function closeDiv(div){
   var elem = $('#' + div);
