@@ -167,34 +167,6 @@ function initList(id, action) {
   });
 }
 
-function searchTable(object ,idpage, id){
-  var str = $("#" + idpage + " .row-tools input").val();
-  $.ajax({
-    type: 'GET',
-    url:dirname + "ajax/search?object=" + object + "&search=" + str,
-    dataType: 'json',
-    success : function(data){
-      tb = $("#" + id + " tbody");
-      var html;
-      if(data.length > 0) {
-        $.each(data, function (index, element) {
-          html+="<tr>";
-          html+="<td>"+element.title+"</td>";
-          html+="<td>"+element.category+"</td>";
-          html+="<td>"+element.author+"</td>";
-          html+="<td>"+element.status+"</td>";
-          html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
-          html+="</tr>";
-        });
-      } else {
-        html+="<tr>";
-        html+="<td colspan='5'>No results</td>";
-        html+="</tr>";
-      }
-      tb.html(html);
-    },
-  });
-}
 
 function closeDiv(div){
   var elem = $('#' + div);

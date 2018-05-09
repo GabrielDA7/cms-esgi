@@ -17,7 +17,7 @@
     <div class="M4">
       <div class="wrapper-icon">
           <i class="fas fa-search icon-left"></i>
-          <input class="input-medium input-icon" type="text" oninput="initList('chapter', 'list-data', 'search');">
+          <input class="input-medium input-icon" type="text" oninput="initList(list-data', 'search');">
       </div>
     </div>
     <div class="M2 M--offset6">
