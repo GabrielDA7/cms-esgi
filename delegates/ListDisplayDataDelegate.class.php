@@ -7,7 +7,7 @@ class ListDisplayDataDelegate {
     $this->objectName = $objectName;
   }  
 
-  public function process(&$data, $params) {
+  public function preProcess(&$data, $params) {
     $this->setItemsPerPage($data, $params);
     $this->setTableConfig($data);
   }
