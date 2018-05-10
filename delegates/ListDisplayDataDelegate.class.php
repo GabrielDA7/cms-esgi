@@ -26,8 +26,10 @@ class ListDisplayDataDelegate {
   }
 
   private function setTableConfiguration(&$data) {
-    $data['tableConfig'] = $this->objectName::configTable();
+    $configTable = $this->objectName::configTable();
+    $data['tableCells'] = $configTable['cells'];  
   }
+    
 
   private function setPagination(&$data) {
     $itemsNumber = (isset($data['itemsNumber'])) ? $data['itemsNumber'] : 0;
