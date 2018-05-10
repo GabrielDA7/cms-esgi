@@ -16,7 +16,7 @@ class AjaxController {
 	}
 
 	public function searchAction($params) {
-		$this->listDisplayDataDelegate->preProcess($this->data, $params);
+		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$this->objectDelegate->search($this->data, $params);
 		$this->listDisplayDataDelegate->process($this->data);
 		$array = FormatUtils::formatDataToArray($this->data);
@@ -24,7 +24,7 @@ class AjaxController {
 	}
 
 	public function filterAction($params) {
-		$this->listDisplayDataDelegate->preProcess($this->data, $params);
+		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$this->objectDelegate->filter($this->data, $params);
 		$this->listDisplayDataDelegate->process($this->data);
 		$array = FormatUtils::formatDataToArray($this->data);
@@ -32,7 +32,7 @@ class AjaxController {
 	}
 
 	public function listAction($params) {
-		$this->listDisplayDataDelegate->preProcess($this->data, $params);
+		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$this->objectDelegate->getAll($this->data, $params);
 		$this->listDisplayDataDelegate->process($this->data);
 		$array = FormatUtils::formatDataToArray($this->data);

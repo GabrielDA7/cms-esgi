@@ -63,7 +63,7 @@ class UserController implements ControllerInterface {
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_LIST_VIEWS);
-		$this->listDisplayDataDelegate->preProcess($this->data, $params);
+		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}
 

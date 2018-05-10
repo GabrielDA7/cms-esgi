@@ -7,8 +7,8 @@ class ListDisplayDataDelegate {
     $this->objectName = $objectName;
   }  
 
-  public function preProcess(&$data, $params) {
-    $this->setItemsToGet($data, $params);
+  public function processCommonInformations(&$data, $params) {
+    $this->setItemsNumberToGet($data, $params);
     $this->setTableConfiguration($data);
   }
 
@@ -16,7 +16,7 @@ class ListDisplayDataDelegate {
     $this->setPagination($data);
   }
 
-  private function setItemsToGet(&$data) {
+  private function setItemsNumberToGet(&$data, $params) {
     $page = (isset($params['GET']["page"])) ? $params['GET']["page"] : 1;
     $itemsPerPage = (isset($params['GET']["itemsPerPage"])) ? $params['GET']["itemsPerPage"] : 30;
     $startLimit = ($page - 1) * $itemsPerPage;

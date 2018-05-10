@@ -16,8 +16,8 @@ class QueryConstructorSql {
 		if (isset($orderBy)) {
 			$query .= " ORDER BY " . $this->formatConditionQuery($orderBy, "", SPACE, COMMA);
 		}
-		if (isset($limt)) {
-			$query .= " LIMIT " .$this->formatConditionQuery($limit, "", COMMA, "");
+		if (isset($limit)) {
+			$query .= " LIMIT " .implode(COMMA, $limit);
 		}
 		return $query;
 	}
