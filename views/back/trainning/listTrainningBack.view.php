@@ -10,7 +10,8 @@
   </div>
 
   <div class="list-init-object">
-    trainning
+    <span>trainning</span>
+    <span>trainnings</span>
   </div>
 
   <div class="row row-tools">

@@ -10,7 +10,8 @@
   </div>
 
   <div class="list-init-object">
-    chapter
+    <span>chapter</span>
+    <span>chapters</span>
   </div>
 
   <div class="row row-tools">
@@ -27,7 +28,7 @@
 
   <div class="row M--center X--center">
     <div class="M12">
-      <?php $this->addModal("table", $config, $errors); ?>
+      <?php $this->addModal("table", $tableConfig); ?>
     </div>
   </div>
 

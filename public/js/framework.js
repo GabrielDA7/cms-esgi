@@ -110,7 +110,7 @@ $(function() {
 
   // Ajax call for load table
   if( $("#pagination_data").length ) {
-    var limit = $( ".pagination-selector option:selected" ).val();
+    var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
     load_data(page, limit, 'init');
   }
@@ -128,13 +128,13 @@ $(function() {
   });
 
   $(document).on('change', '.pagination_selector', function() {
-    var limit = $( ".pagination-selector option:selected" ).val();
+    var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
     load_data(page, limit,'init');
   });
 
   $(document).on('input', '.list-data .row-tools input', function() {
-    var limit = $( ".pagination-selector option:selected" ).val();
+    var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
     load_data(page, limit,'search');
   });
@@ -143,7 +143,9 @@ $(function() {
 
 function load_data(page, limit, action, order='asc', column_name) {
 
-  var object = $.trim($(".list-init-object").text());
+  var object = $.trim($(".list-init-object span:first-child").text());
+  var objects = $.trim($(".list-init-object span:last-child").text());
+
   var tb = $("#pagination_data tbody");
   var paginationLinks = $("#pagination_links");
 
@@ -155,29 +157,26 @@ function load_data(page, limit, action, order='asc', column_name) {
 
   if(action == 'search') {
     str = $.trim($(".list-data .row-tools input").val());
-    url = dirname + "ajax/search?object=" + object + "&search=" + str;
+    url = dirname + "ajax/search?object=" + object + "&search=" + str + "&page=" + page + "&itemsPerPage=" + limit;
   } else if(action == 'sort') {
-    url = dirname + "ajax/sort?object=" + object + "&sort=" + order + "&column_name=" + column_name;
+    url = dirname + "ajax/sort?object=" + object + "&sort=" + order + "&column_name=" + column_name + "&page=" + page + "&itemsPerPage=" + limit;
     $("#" + column_name + " i").removeClass().addClass(arrow);
   } else {
-    url = dirname + "ajax/list?object=" + object;
+    url = dirname + "ajax/list?object=" + object + "&page=" + page + "&itemsPerPage=" + limit;
   }
 
 
   $.ajax({
     url: url,
-    method: "POST",
-    data:{page:page,limit:limit},
     success:function(data) {
       data = JSON.parse(data);
       var html;
       var cpt;
-
-      if( data["data"].length > 0) {
-        $.each(data["data"], function (index, element) {
+      if( data[objects].length > 0) {
+        $.each(data[objects], function (index, element) {
           cpt = index+1;
           html+="<tr>";
-          $.each(data["config"], function(k,val) {
+          $.each(data["tableConfig"]["cells"], function(k,val) {
             if(k == "id") {
               html+="<td><a href='#edit/'" + element[k] + "><i class='fas fa-edit'></i></a><a href='#delete/'" + element[k] + "><i class='far fa-trash-alt'></i></a></td>";
             } else {
@@ -198,12 +197,11 @@ function load_data(page, limit, action, order='asc', column_name) {
       }
 
       tb.html(html);
-      $('.count-all-element').html(data["data"].length);
+      $('.count-all-element').html(data["itemsNumber"]);
       $('.count-page-element').html(cpt);
 
       html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
-            //alert(JSON.stringify(data["config"]));
-      for(var i = 1; i<= data["total_page"]; i++){
+      for(var i = 1; i<= data["pagination"].pagesNumber; i++){
         html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
       }
       html += "<input type='button' class='button' value='Next' id='but_next' />"
@@ -230,6 +228,7 @@ function closeDiv(div){
   var elem = $('#' + div);
   elem.css("display","none");
 }
+
 
 var idPart = 1;
 function addChapterSubpart(){
