@@ -1402,3 +1402,9 @@ textarea {
 
 #pagination_links {
   text-align: center; }
+
+.column_sort {
+  text-decoration: none;
+  color: white;
+  display: block;
+  width: 100%; }

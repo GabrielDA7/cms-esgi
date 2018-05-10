@@ -4,7 +4,7 @@
       <?php foreach ($config["cells"] as $name => $attributs): ?>
         <th <?= (isset($attributs["class"])) ? "class='".$attributs["class"]."'" : ""; ?>>
           <a id="<?= $name ?>" href="#" class="column_sort" data-order="asc">
-            <?= $attributs["name"]; ?>
+            <?= $attributs["name"]; ?><i></i>
           </a>
         </th>
       <?php endforeach; ?>
