@@ -7,6 +7,7 @@ class UserController implements ControllerInterface {
 	private $formDelegate;
 	private $emailDelegate;
 	private $fileDelegate;
+	private $listDisplayDataDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -15,6 +16,7 @@ class UserController implements ControllerInterface {
 		$this->formDelegate = new FormDelegate(USER_CLASS_NAME);
 		$this->emailDelegate = new EmailDelegate();
 		$this->fileDelegate = new FileDelegate(USER_CLASS_NAME);
+		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(USER_CLASS_NAME);
 	}
 
 	public function indexAction($params) {}
@@ -61,6 +63,7 @@ class UserController implements ControllerInterface {
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_LIST_VIEWS);
+		$this->listDisplayDataDelegate->preProcess($this->data, $params);
 		$view = new View($this->data);
 	}
 
