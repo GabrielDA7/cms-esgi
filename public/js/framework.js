@@ -163,6 +163,7 @@ function load_data(page, limit, action, order='asc', column_name) {
     url = dirname + "ajax/list?object=" + object;
   }
 
+
   $.ajax({
     url: url,
     method: "POST",
@@ -176,14 +177,17 @@ function load_data(page, limit, action, order='asc', column_name) {
         $.each(data["data"], function (index, element) {
           cpt = index+1;
           html+="<tr>";
-          $.each(element, function(i, elem) {
-            if(elem != null && elem.constructor.name === 'Array' && elem.length > 0){
-              html+="<td>"+elem[0].title+"</td>";
+          $.each(data["config"], function(k,val) {
+            if(k == "id") {
+              html+="<td><a href='#edit/'" + element[k] + "><i class='fas fa-edit'></i></a><a href='#delete/'" + element[k] + "><i class='far fa-trash-alt'></i></a></td>";
             } else {
-              html+="<td>"+elem+"</td>";
+              if ( $.isArray(element[k])) {
+                html+="<td>"+element[k][0].title+"</td>";
+              } else {
+                html+="<td>"+element[k]+"</td>";
+              }
             }
           });
-          html+="<td><a href='#edit/id'><i class='fas fa-edit'></i></a><a href='#delete/id'><i class='far fa-trash-alt'></i></a></td>";
           html+="</tr>";
         });
       } else {
@@ -198,6 +202,7 @@ function load_data(page, limit, action, order='asc', column_name) {
       $('.count-page-element').html(cpt);
 
       html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
+            //alert(JSON.stringify(data["config"]));
       for(var i = 1; i<= data["total_page"]; i++){
         html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
       }

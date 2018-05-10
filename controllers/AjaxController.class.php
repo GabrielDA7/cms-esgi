@@ -63,6 +63,8 @@ class AjaxController {
 		$total_pages = ceil($total_records/$record_per_page);
 		$array["total_page"] = $total_pages;
 		$array["total_records"] = $total_records;
+		$object = ClassUtils::constructObject($params["GET"]["object"]);
+		$array["config"]= $object::configTable()["cells"];
 
 		echo FormatUtils::formatToJson($array);
 	}

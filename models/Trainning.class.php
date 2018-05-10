@@ -80,27 +80,22 @@ class Trainning extends BaseSql {
 								"title"=>
 											[
 												"name"=>"Title",
-												"class"=>"t"
 											],
 								"category"=>
 											[
 												"name"=>"Category",
-												"class"=>"t"
 											],
 								"author"=>
 											[
 												 "name"=>"Author",
-												 "class"=>"t"
 								      ],
 								"status"=>
 											[
 												"name"=>"Status",
-												"class"=>"t"
 											],
-								"actions"=>
+								"id"=>
 											[
 												"name"=>"Actions",
-												"class"=>"t"
 											]
 						]
 

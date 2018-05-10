@@ -94,15 +94,15 @@ class Chapter extends BaseSql {
 				                      [
 				                         "name"=>"Author"
 				                      ],
-												"formation"=>
+												"trainning"=>
 															[
-																	"name"=>"Formation"
+																	"name"=>"Trainning"
 															],
 				                "status"=>
 				                      [
 				                        "name"=>"Status"
 				                      ],
-				                "actions"=>
+				                "id"=>
 				                      [
 				                        "name"=>"Actions"
 				                      ]
