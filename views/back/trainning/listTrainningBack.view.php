@@ -27,7 +27,7 @@
 
   <div class="row M--center X--center">
     <div class="M12">
-      <?php $this->addModal("table", $tableCells); ?>
+      <?php $this->addModal("table", $tableConfig); ?>
     </div>
   </div>
 
