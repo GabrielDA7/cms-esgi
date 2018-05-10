@@ -47,8 +47,8 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute($this->columns);
 	}
 
-	public function getAll() {
-		$queryString = $this->constructSelectQuery($this->table);
+	public function getAll($data) {
+		$queryString = $this->constructSelectQuery($this->table, null, FALSE, null, $data['limit']);
 		$query = $this->db->prepare($queryString);
 		$query->execute();
 		$response = $query->fetchAll();
@@ -105,7 +105,9 @@ class BaseSql extends QueryConstructorSql {
 			$foreignObject = ClassUtils::constructObjectWithId($value, $objectName);
 			$foreignObject = $foreignObject->getById();
 			$setter = "set" . $objectName;
-			$object->$setter($foreignObject);
+			if (method_exists($object, $setter)) {
+				$object->$setter($foreignObject);
+			}
 		}
 	}
 

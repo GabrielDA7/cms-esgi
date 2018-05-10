@@ -7,16 +7,16 @@ class TrainningController implements ControllerInterface {
 	private $formDelegate;
 	private $emailDelegate;
 	private $fileDelegate;
-	private $tableDelegate;
+	private $listDisplayDataDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->objectDelegate = new ObjectDelegate($this->data, TRAINNING_CLASS_NAME);
 		$this->formDelegate = new FormDelegate(TRAINNING_CLASS_NAME);
-		$this->tableDelegate = new TableDelegate(TRAINNING_CLASS_NAME);
 		$this->emailDelegate = new EmailDelegate();
 		$this->fileDelegate = new FileDelegate(TRAINNING_CLASS_NAME);
+		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(TRAINNING_CLASS_NAME);
 	}
 
 	public function indexAction($params) {
@@ -53,7 +53,7 @@ class TrainningController implements ControllerInterface {
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_LIST_VIEWS);
-		$this->tableDelegate->process($this->data);
+		$this->listDisplayDataDelegate->process($this->data, $params);
 		$view = new View($this->data);
 	}
 

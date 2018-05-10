@@ -5,18 +5,31 @@ class FormatUtils {
 		return json_encode($array, JSON_UNESCAPED_SLASHES);
 	}
 
-	public static function formatObjectsArrayToArray($objects) {
-		$result = [];
-		foreach ($objects as $object) {
-		    $columns = $object->getColumns();
-		    foreach ($columns as $key => $value) {
-		    	if (is_object($value) && get_class($value) != 'PDO') {
-		    		$columns[$key] = self::formatObjectsArrayToArray([$value]);
-		    	}
-		    }
-		    $result[] = $columns;
+	public static function formatDataToArray($data) {
+		$array = [];
+		foreach ($data as $key => $values) {
+			$tempArray = [];
+			foreach ($values as $index => $value) {
+				if (is_object($value)) {
+				    $tempArray[] = self::formatObjectColumnsToArray($value);
+				} else {
+					$tempArray[$index] = $value;
+				}
+			}
+			$array[$key] = $tempArray;
 		}
-		return $result;
+		return $array;
+	}
+
+	public static function formatObjectColumnsToArray($object) {
+		$array = [];
+		$columns = $object->getColumns();
+	    foreach ($columns as $name => $val) {
+	    	if (is_object($val) && get_class($val) != 'PDO') {
+	    		$columns[$name] = self::formatDataToArray([$val]);
+	    	}
+	    }
+	    return $columns;
 	}
 }
 ?>

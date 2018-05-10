@@ -2,18 +2,20 @@
 class ObjectDelegate {
 
 	private $objectName;
+	private $lowerCaseFirstObjectName;
 
 	public function __construct(&$data, $objectName) {
+		$this->lowerCaseFirstObjectName = lcfirst($objectName);
 		$this->objectName = ucfirst($objectName);
 		$this->createObjectAndPutInData($data);
 	}
 
 	private function createObjectAndPutInData(&$data) {
-		$data[lcfirst($this->objectName)] = ClassUtils::constructObject($this->objectName);
+		$data[$this->lowerCaseFirstObjectName] = ClassUtils::constructObject($this->objectName);
 	}
 
-	public function pushObjectById(&$data, $params, $othersTablesColumns = []) {
-		$object = $data[lcfirst($this->objectName)];
+	public function getById(&$data, $params, $othersTablesColumns = []) {
+		$object = $data[$this->lowerCaseFirstObjectName];
 		if ($this->objectName == USER_CLASS_NAME && isset($_SESSION['userId'])) {
 			$id = $_SESSION['userId'];
 		}
@@ -25,39 +27,37 @@ class ObjectDelegate {
 		if (!empty($othersTablesColumns)) {
 			$this->setReferencedObjectsColumns($othersTablesColumns, $id, $object);
 		}
-		$data[lcfirst($this->objectName)] = $object;
+		$data[$this->lowerCaseFirstObjectName] = $object;
 	}
 
-	public function pushObjectsByParameters(&$data, $params, $othersTablesColumns = []) {
-		$object = ClassUtils::constructObjectWithParameters($params, $this->objectName);
+	public function getByParameters(&$data, $params, $othersTablesColumns = []) {
+		$object = $data[$this->lowerCaseFirstObjectName];
+		$object = ClassUtils::setObjectColumns($object, $params);
 		$objects = $object->getWithParameters();
-		/*if (!empty($othersTablesColumns)) {
-			$this->setReferencedObjectsColumns($othersTablesColumns, $objectName, $id, $object);
-		}*/
-		$data[lcfirst($this->objectName)."s"] = $objects;
+		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
 
-	public function pushAllObjects(&$data) {
-		$object  = ClassUtils::constructObject($this->objectName);
-		$objects = $object->getAll();
-		$data[lcfirst($this->objectName)."s"] = $objects;
+	public function getAll(&$data) {
+		$object  = $data[$this->lowerCaseFirstObjectName];
+		$objects = $object->getAll($data);
+		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
 
 	public function add(&$data, $params) {
 		if ($data['errors'] === FALSE) {
-			$object = $data[lcfirst($this->objectName)];
+			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
 			if ($this->objectName == USER_CLASS_NAME) {
 				$object->generateToken();
 				$object->generateEmailConfirm();
 			}
-			$data[lcfirst($this->objectName)] = $object->insert();
+			$data[$this->lowerCaseFirstObjectName] = $object->insert();
 		}
 	}
 
 	public function update(&$data, $params, $redirectFront, $redirectBack) {
 		if ($data['errors'] === FALSE) {
-			$object = $data[lcfirst($this->objectName)];
+			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
 			if ($this->objectName == USER_CLASS_NAME) {
 				$object->unsetRoleIfNotAdmin();
@@ -76,15 +76,11 @@ class ObjectDelegate {
 		exit;
 	}
 
-	public function search($params) {
-		$object = ClassUtils::constructObject($this->objectName);
+	public function search(&$data, $params) {
+		$object = $data[$this->lowerCaseFirstObjectName];
 		$columnsToSearch = $object->getColumnsToSearch();
-		return $object->getByWord($params['GET']['search'], $columnsToSearch);
-	}
-
-	public function getAll($params) {
-		$object = ClassUtils::constructObject($this->objectName);
-		return $object->getAll();
+		$object = $object->getByWord($params['GET']['search'], $columnsToSearch);
+		$data[$this->lowerCaseFirstObjectName] = $object;
 	}
 
 	public function login(&$data, $params) {
@@ -101,7 +97,10 @@ class ObjectDelegate {
 		exit;
 	}
 	
-	public function getObjectName() { return $this->objectName; }
-	public function setObjectName($objectName) { $this->objectName = $objectName; }
+	public function getObjectName() 	   		  { return $this->objectName; 		  	    }
+	public function getLowerCaseFirstObjectName() { return $this->lowerCaseFirstObjectName; }
+
+	public function setObjectName($objectName) 				 			   { $this->objectName = $objectName; 			  				  }
+	public function setLowerCaseFirstObjectName($lowerCaseFirstObjectName) { $this->lowerCaseFirstObjectName = $lowerCaseFirstObjectName; }
 }
 ?>

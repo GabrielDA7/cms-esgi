@@ -25,7 +25,7 @@ class UserController implements ControllerInterface {
 			return404View();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_USER_VIEWS);
-		$this->objectDelegate->pushObjectById($this->data, $params['POST']['id']);
+		$this->objectDelegate->getById($this->data, $params['POST']['id']);
 		$view = new View($this->data);
 	}
 
@@ -43,7 +43,7 @@ class UserController implements ControllerInterface {
 			return404View();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_EDIT_VIEWS);
-		$this->objectDelegate->pushObjectById($this->data, $params);
+		$this->objectDelegate->getById($this->data, $params);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params);
 		$this->objectDelegate->update($this->data, $params, "", USER_LIST_BACK_LINK);

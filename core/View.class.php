@@ -27,7 +27,7 @@ class View {
 		$this->data[$key] = $value;
 	}
 
-	public function addModal($modal,$config, $errors=[] ){
+	public function addModal($modal, $config, $errors = []) {
 		include MODALS_FOLDER_NAME . "/" . $modal.".mdl.php";
 	}
 }
