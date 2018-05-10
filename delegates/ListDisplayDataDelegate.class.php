@@ -8,8 +8,8 @@ class ListDisplayDataDelegate {
   }  
 
   public function preProcess(&$data, $params) {
-    $this->setItemsPerPage($data, $params);
-    $this->setTableConfig($data);
+    $this->setItemsToGet($data, $params);
+    $this->setTableConfiguration($data);
   }
 
   public function process(&$data) {
@@ -21,6 +21,7 @@ class ListDisplayDataDelegate {
     $itemsPerPage = (isset($params['GET']["itemsPerPage"])) ? $params['GET']["itemsPerPage"] : 30;
     $startLimit = ($page - 1) * $itemsPerPage;
     $endLimit = $startLimit + $itemsPerPage;
+    $data['itemsPerPage'] = $itemsPerPage;
     $data['limit'] = [$startLimit, $endLimit];
   }
 
@@ -29,8 +30,8 @@ class ListDisplayDataDelegate {
   }
 
   private function setPagination(&$data) {
-    $itemsNumber = $data['itemsNumber'];
-    $pagesNumber = ceil($itemsNumber / $itemsPerPage);
+    $itemsNumber = (isset($data['itemsNumber'])) ? $data['itemsNumber'] : 0;
+    $pagesNumber = ceil($itemsNumber / $data['itemsPerPage']);
     $pagination["itemsNumber"] = $itemsNumber;
     $pagination["pagesNumber"] = $pagesNumber;
     $data['pagination'] = $pagination;
