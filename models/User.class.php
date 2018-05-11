@@ -220,7 +220,7 @@ class User extends UserSql {
 				];
 	}
 
-	public static function configAddForm($data){
+	public static function configResetPasswordForm($data){
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_ADD_FRONT_LINK, "submit"=>"Sign up", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
