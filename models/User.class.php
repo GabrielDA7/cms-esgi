@@ -54,7 +54,7 @@ class User extends UserSql {
 	* Security for XSS
 	*/
 	public function unsetRoleIfNotAdmin() {
-		if ($_SESSION['admin'] === FALSE) {
+		if (!isAdmin()) {
 			$this->setRole(null);
 		}
 	}

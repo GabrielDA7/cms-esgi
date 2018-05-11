@@ -16,12 +16,7 @@ class ObjectDelegate {
 
 	public function getById(&$data, $params, $othersTablesColumns = []) {
 		$object = $data[$this->lowerCaseFirstObjectName];
-		if ($this->objectName == USER_CLASS_NAME && isset($_SESSION['userId'])) {
-			$id = $_SESSION['userId'];
-		}
-		if (isset($params['POST']['id'])) {
-			$id = $params['POST']['id'];
-		}
+		$id = $params['POST']['id'];
 		$object->setId($id);
 		$object = $object->getById();
 		if (!empty($othersTablesColumns)) {
@@ -48,12 +43,6 @@ class ObjectDelegate {
 		if ($data['errors'] === FALSE) {
 			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
-			if ($this->objectName === USER_CLASS_NAME) {
-				$object->generateToken();
-				$object->generateEmailConfirm();
-				$object->insert();
-				RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$object->getEmail()]);
-			}
 			$data[$this->lowerCaseFirstObjectName] = $object->insert();
 		}
 	}
@@ -62,12 +51,6 @@ class ObjectDelegate {
 		if ($data['errors'] === FALSE) {
 			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
-			if ($this->objectName == USER_CLASS_NAME) {
-				if (ClassUtils::getCallingFunction() != "passwordResetAction") {
-					$object->setPwd(null);
-				}
-				$object->unsetRoleIfNotAdmin();
-			}
 			$object->update();
 			RedirectUtils::redirect((isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 		}
@@ -85,19 +68,6 @@ class ObjectDelegate {
 		$objects = $object->getByWord($params['GET']['search'], $columnsToSearch, $data);
 		$data['itemsNumber'] = $object->countItems();
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
-	}
-
-	public function login(&$data, $params) {
-		if ($data['errors'] === FALSE) {
-			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
-			$data['wrongPassword'] = $user->login();
-		}
-	}
-
-	public function disconnect() {
-		$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
-		$user->disconnect();
-		RedirectUtils::redirect();
 	}
 	
 	public function getObjectName() 	   		  { return $this->objectName; 		  	    }

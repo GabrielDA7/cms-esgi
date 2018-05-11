@@ -3,7 +3,7 @@ include "core/interfaces/ControllerInterface.php";
 class UserController implements ControllerInterface {
 
 	private $authenticationDelegate;
-	private $objectDelegate;
+	private $userDelegate;
 	private $formDelegate;
 	private $emailDelegate;
 	private $fileDelegate;
@@ -12,7 +12,7 @@ class UserController implements ControllerInterface {
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
-		$this->objectDelegate = new ObjectDelegate($this->data, USER_CLASS_NAME);
+		$this->userDelegate = new UserDelegate($this->data);
 		$this->formDelegate = new FormDelegate(USER_CLASS_NAME);
 		$this->emailDelegate = new EmailDelegate();
 		$this->fileDelegate = new FileDelegate(USER_CLASS_NAME);
@@ -27,14 +27,14 @@ class UserController implements ControllerInterface {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_USER_VIEWS);
-		$this->objectDelegate->getById($this->data, $params['POST']['id']);
+		$this->userDelegate->getById($this->data, $params['POST']['id']);
 		$view = new View($this->data);
 	}
 
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
-		$this->objectDelegate->add($this->data, $params);
+		$this->userDelegate->add($this->data, $params);
 		$view = new View($this->data);
 	}
 
@@ -44,10 +44,10 @@ class UserController implements ControllerInterface {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_EDIT_VIEWS);
-		$this->objectDelegate->getById($this->data, $params);
+		$this->userDelegate->getById($this->data, $params);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params);
-		$this->objectDelegate->update($this->data, $params, "", USER_LIST_BACK_LINK);
+		$this->userDelegate->update($this->data, $params, "", USER_LIST_BACK_LINK);
 		$view = new View($this->data);
 	}
 
@@ -57,7 +57,7 @@ class UserController implements ControllerInterface {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE);
-		$this->objectDelegate->delete($params, "", USER_LIST_BACK_LINK);
+		$this->userDelegate->delete($params, "", USER_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
@@ -69,7 +69,7 @@ class UserController implements ControllerInterface {
 	public function loginAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_LOGIN_VIEWS, LOGIN_TEMPLATES);
 		$this->formDelegate->process($this->data, $params);
-		$this->objectDelegate->login($this->data, $params);
+		$this->userDelegate->login($this->data, $params);
 		$view = new View($this->data);
 	}
 
@@ -77,7 +77,7 @@ class UserController implements ControllerInterface {
 		if (!isset($_SESSION['userId'])) {
 			RedirectUtils::redirect404();
 		}
-		$this->objectDelegate->disconnect($this->data, $params);
+		$this->userDelegate->disconnect($this->data, $params);
 	}
 
 	public function emailConfirmAction($params) {
@@ -89,7 +89,7 @@ class UserController implements ControllerInterface {
 			$this->emailDelegate->checkEmailConfirmation($params);
 		} else {
 			$this->emailDelegate->sendEmailConfirmation();
-			
+
 		}
 	}
 
@@ -100,7 +100,7 @@ class UserController implements ControllerInterface {
 		}
 		if (isset($params['POST']['email'])) {
 			$this->emailDelegate->sendPasswordReset($data);
-			$this->objectDelegate->update($this->data, $params, "", USER_LOGIN_FRONT_LINK);
+			$this->userDelegate->update($this->data, $params, "", USER_LOGIN_FRONT_LINK);
 		} else if (isset($params['POST']['idUser'])) {
 			$this->formDelegate->process($this->data, $params);
 			$this->emailDelegate->checkPasswordReset($data);
