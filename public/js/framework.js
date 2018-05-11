@@ -159,7 +159,7 @@ function load_data(page, limit, action, order='asc', column_name) {
     str = $.trim($(".list-data .row-tools input").val());
     url = dirname + "ajax/search?object=" + object + "&search=" + str + "&page=" + page + "&itemsPerPage=" + limit;
   } else if(action == 'sort') {
-    url = dirname + "ajax/sort?object=" + object + "&sort=" + order + "&columnName=" + column_name + "&page=" + page + "&itemsPerPage=" + limit;
+    url = dirname + "ajax/list?object=" + object + "&sort=" + order + "&columnName=" + column_name + "&page=" + page + "&itemsPerPage=" + limit;
     $("#" + column_name + " i").removeClass().addClass(arrow);
   } else {
     url = dirname + "ajax/list?object=" + object + "&page=" + page + "&itemsPerPage=" + limit;
