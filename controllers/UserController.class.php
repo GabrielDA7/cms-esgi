@@ -89,6 +89,7 @@ class UserController implements ControllerInterface {
 			$this->emailDelegate->checkEmailConfirmation($params);
 		} else {
 			$this->emailDelegate->sendEmailConfirmation();
+			
 		}
 	}
 

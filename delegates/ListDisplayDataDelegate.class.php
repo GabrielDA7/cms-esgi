@@ -19,11 +19,12 @@ class ListDisplayDataDelegate {
 
   private function setOrderByColumn(&$data, $params) {
     if (!isset($params['GET']['columnName']) || !isset($params['GET']['sort'])) {
-      return null;
+      $data['orderBy'] = null;
+    } else {
+      $column = $params['GET']['columnName'];
+      $order = $params['GET']['sort'];
+      $data['orderBy'] = [$column => $order];
     }
-    $column = $params['GET']['columnName'];
-    $order = $params['GET']['sort'];
-    $data['orderBy'] = [$column => $order];
   }
 
   private function setItemsNumberToGet(&$data, $params) {

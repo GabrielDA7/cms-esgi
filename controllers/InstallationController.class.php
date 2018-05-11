@@ -34,7 +34,7 @@ class InstallationController {
 		$view = new View($this->data);
 	}
 
-	public function this->databaseAction($params) {
+	public function databaseAction($params) {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
@@ -58,12 +58,12 @@ class InstallationController {
 		$view = new View($this->data);
 	}
 
-	public function createthis->databaseAction() {
+	public function databaseAction() {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->fileDelegate->createthis->database();
+		$this->fileDelegate->createdatabase();
 	}
 
 	private function setClassNameToUserToAddAdmin() {
