@@ -82,7 +82,7 @@ class ObjectDelegate {
 	public function search(&$data, $params) {
 		$object = $data[$this->lowerCaseFirstObjectName];
 		$columnsToSearch = $object->getColumnsToSearch();
-		$objects = $object->getByWord($params['GET']['search'], $columnsToSearch);
+		$objects = $object->getByWord($params['GET']['search'], $columnsToSearch, $data);
 		$data['itemsNumber'] = $object->countItems();
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
