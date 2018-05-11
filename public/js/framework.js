@@ -130,7 +130,7 @@ $(function() {
   $(document).on('change', '.pagination_selector', function() {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
-    load_data(page, limit,'init');
+    load_data(page, limit,'search');
   });
 
   $(document).on('input', '.list-data .row-tools input', function() {

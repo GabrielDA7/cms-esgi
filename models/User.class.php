@@ -260,8 +260,42 @@ class User extends UserSql {
 				];
 	}
 
+	public static function configTable(){
+		return 	[
+					"config"=>["id"=>"pagination_data", "class"=>"table_responsive"],
+					"cells"=>
+										[
+												"userName"=>
+															[
+																"name"=>"Username"
+															],
+
+												"lastName"=>
+															[
+																"name"=>"Lastname"
+															],
+												"firstName"=>
+															[
+																 "name"=>"Firstname"
+															],
+												"email"=>
+															[
+																	"name"=>"Email"
+															],
+												"dateInserted"=>
+															[
+																"name"=>"Status"
+															],
+												"id"=>
+															[
+																"name"=>"Actions"
+															]
+										]
+				];
+	}
+
 	public function getUserName() 	  { return $this->userName; 	 }
-	public function getId() 		  { return $this->id; 			 }
+		public function getId() 		  { return $this->id; 			 }
     public function getLastName() 	  { return $this->lastName;		 }
     public function getFirstName() 	  { return $this->firstName; 	 }
     public function getPwd() 		  { return $this->pwd; 			 }
