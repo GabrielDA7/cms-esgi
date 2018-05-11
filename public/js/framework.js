@@ -159,7 +159,7 @@ function load_data(page, limit, action, order='asc', column_name) {
     str = $.trim($(".list-data .row-tools input").val());
     url = dirname + "ajax/search?object=" + object + "&search=" + str + "&page=" + page + "&itemsPerPage=" + limit;
   } else if(action == 'sort') {
-    url = dirname + "ajax/sort?object=" + object + "&sort=" + order + "&column_name=" + column_name + "&page=" + page + "&itemsPerPage=" + limit;
+    url = dirname + "ajax/sort?object=" + object + "&sort=" + order + "&columnName=" + column_name + "&page=" + page + "&itemsPerPage=" + limit;
     $("#" + column_name + " i").removeClass().addClass(arrow);
   } else {
     url = dirname + "ajax/list?object=" + object + "&page=" + page + "&itemsPerPage=" + limit;
@@ -178,7 +178,7 @@ function load_data(page, limit, action, order='asc', column_name) {
           html+="<tr>";
           $.each(data["tableConfig"]["cells"], function(k,val) {
             if(k == "id") {
-              html+="<td><a href='#edit/'" + element[k] + "><i class='fas fa-edit'></i></a><a href='#delete/'" + element[k] + "><i class='far fa-trash-alt'></i></a></td>";
+              html+="<td><div class='actions-table'><a href='#edit/'" + element[k] + "><i class='fas fa-edit'></i></a><a href='#delete/'" + element[k] + "><i class='far fa-trash-alt'></i></a></div></td>";
             } else {
               if ( $.isArray(element[k])) {
                 html+="<td>"+element[k][0].title+"</td>";
