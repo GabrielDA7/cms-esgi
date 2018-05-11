@@ -25,5 +25,27 @@ class FormatUtils {
 	    }
 	    return $columns;
 	}
+
+	public static function formatMapToQuerryString($map) {
+		$queryString = "?" . self::formatMapToStringWithSeparators($map, "", "=", "&");
+	}
+
+	private static function formatMapToStringWithSeparators($array, $separatorBefore, $separatorBetween, $separatorAfter, $flagValue = TRUE, $doubleKey = FALSE) {
+		$numberOfItems = count($array);
+		$i = 0;
+		$separedValues = "";
+		foreach ($array as $key => $value) {
+			$value = ($flagValue)? $value : "";
+			$value = ($doubleKey)? $key : $value;
+			if (!(++$i === $numberOfItems)) {
+				$separedValues .= $separatorBefore . $key . $separatorBetween . $value . $separatorAfter;
+	  		} else if ($value != "") {
+	  			$separedValues .= $separatorBefore . $key . $separatorBetween . $value;
+	  		} else {
+	  			$separedValues .= $separatorBefore . $key;
+	  		}
+		}
+		return $separedValues;
+	}
 }
 ?>

@@ -16,6 +16,9 @@ function aaaa($var) {
 	echo "</pre>";
 }
 
+function isAdmin() {
+	return isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE;
+}
 
 function autoLoadExistingClass($class) {
 	$classPath = searchFile(array(MODELS_FOLDER_NAME, CORE_FOLDER_NAME, DELEGATES_FOLDER_NAME), $class.CLASS_EXTENSION);

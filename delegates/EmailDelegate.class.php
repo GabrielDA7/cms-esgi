@@ -14,38 +14,73 @@ class EmailDelegate {
 			return404View();
 		}
 		$user[0]->setEmailConfirm("1");
-		$user[0]->setPwd(null);
 		$user[0]->update();
 		header(LOCATION . DIRNAME . USER_LOGIN_FRONT_LINK);
 	}
 
-	public function sendMail($data) {
-		if (isset($data['user'])) {
-			$user = $data['user'];
-			$mail = new PHPMailer(true);
-			try {
-			    //Server settings
-			    $this->setSMTP($mail);
-			    //Recipients
-			    $mail->setFrom('decultot.louis@gmail.com', 'Mailer');
-			    $mail->addAddress($user->getEmail());
-
-			    //Attachments
-			    /*$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-			    $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name*/
-
-			    //Content
-			    $mail->isHTML(true);                                  // Set email format to HTML
-			    $mail->Subject = 'Confirmation de l\'email';
-			    $mail->Body    = 'Cliquer sur le lien pour confirmer votre inscription : http://localhost/Uteach/user/email?id='.$user->getId().'&emailConfirm='.$user->getEmailConfirm();
-			    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-			    $mail->send();
-			    LogsUtils::process("logs", "Send email", "true");
-			} catch (Exception $e) {
-				LogsUtils::process("logs", "Send email", $mail->ErrorInfo);
-			}
+	public function checkPasswordReset($params) {
+		$user = ClassUtils::constructObjectWithId($params['POST']['userId'], USER_CLASS_NAME);
+		$user = $user->getById();
+		if (empty($user)) {
+			return404View();
 		}
+		$user->setPwdReset(null);
+		$user->setPwd($params['POST']['newPwd']);
+		$user->update();
+		header(LOCATION . DIRNAME . USER_LOGIN_FRONT_LINK);
+	}
+
+	public function sendEmailConfirmation($data) {
+		if (!isset($data['user'])) {
+			$data['errors'] = TRUE;
+			return null;
+		}
+		$user = $data['user'];
+		$subject = 'Confirmation de l\'email';
+		$body = 'Cliquer sur le lien pour confirmer votre inscription : http://localhost/Uteach/user/email?id='.$user->getId().'&emailConfirm='.$user->getEmailConfirm();
+		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
+	}
+
+	public function sendPasswordReset($email) {
+		if (!isset($data['user'])) {
+			$data['errors'] = TRUE;
+			return null;
+		}
+		$user = $data['user'];
+		$subject = 'modifier mot de passe';
+		$body = 'Cliquer sur le lien pour modifier votre mot de passe : http://localhost/Uteach/user/email?email='.$user->getEmail();
+		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
+	}
+
+	private function sendMail($email, $subject, $body, $attachments = []) {
+		$mail = new PHPMailer(true);
+		try {
+		    //Server settings
+		    $this->setSMTP($mail);
+		    //Recipients
+		    $mail->setFrom('decultot.louis@gmail.com', 'Mailer');
+		    $mail->addAddress($email);
+
+		    if (!empty($attachments)) {
+		    	foreach ($attachments as $file => $name) {
+		    		$mail->addAttachment($file['URL'], $name);
+		    	}
+		    }
+
+		    //Content
+		    $mail->isHTML(true);                                  // Set email format to HTML
+		    $mail->Subject = $subject;
+		    $mail->Body    = $body;
+		    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+		    $mail->send();
+		    LogsUtils::process("logs", "Send email", "true");
+		    return FALSE;
+		} catch (Exception $e) {
+			LogsUtils::process("logs", "Send email", $mail->ErrorInfo);
+			return TRUE;
+		}
+	
 	}
 
 	private function setSMTP(&$mail) {

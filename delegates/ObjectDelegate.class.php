@@ -48,9 +48,11 @@ class ObjectDelegate {
 		if ($data['errors'] === FALSE) {
 			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
-			if ($this->objectName == USER_CLASS_NAME) {
+			if ($this->objectName === USER_CLASS_NAME) {
 				$object->generateToken();
 				$object->generateEmailConfirm();
+				$object->insert();
+				RedirectUtils::redirect(EMAIL_CONFIRM_LINK, ["email"=>$object->getEmail()]);
 			}
 			$data[$this->lowerCaseFirstObjectName] = $object->insert();
 		}
@@ -61,12 +63,13 @@ class ObjectDelegate {
 			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
 			if ($this->objectName == USER_CLASS_NAME) {
+				if (ClassUtils::getCallingFunction() != "passwordResetAction") {
+					$object->setPwd(null);
+				}
 				$object->unsetRoleIfNotAdmin();
-				$object->setPwd(null);
 			}
 			$object->update();
-			header(LOCATION . DIRNAME . (isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
-			exit;
+			RedirectUtils::redirect((isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 		}
 	}
 

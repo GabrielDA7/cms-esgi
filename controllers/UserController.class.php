@@ -24,7 +24,7 @@ class UserController implements ControllerInterface {
 	public function userAction($params) {
 		if (!isset($params['POST']['id']) && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_USER_VIEWS);
 		$this->objectDelegate->getById($this->data, $params['POST']['id']);
@@ -35,14 +35,13 @@ class UserController implements ControllerInterface {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
 		$this->objectDelegate->add($this->data, $params);
-		$this->emailDelegate->sendMail($this->data);
 		$view = new View($this->data);
 	}
 
 	public function editAction($params) {
 		if((!isset($params['POST']['id']) || !$_SESSION['admin'])  && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_EDIT_VIEWS);
 		$this->objectDelegate->getById($this->data, $params);
@@ -55,7 +54,7 @@ class UserController implements ControllerInterface {
 	public function deleteAction($params) {
 		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE);
 		$this->objectDelegate->delete($params, "", USER_LIST_BACK_LINK);
@@ -76,17 +75,38 @@ class UserController implements ControllerInterface {
 
 	public function disconnectAction($params) {
 		if (!isset($_SESSION['userId'])) {
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->objectDelegate->disconnect($this->data, $params);
 	}
 
-	public function emailAction($params) {
-		if (!isset($params['GET']['id']) || !isset($params['GET']['emailConfirm'])) {
+	public function emailConfirmAction($params) {
+		if (!isset($params['GET']['id']) || !isset($params['GET']['emailConfirm']) || !isset($params['GET']['email'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
-		$this->emailDelegate->checkEmailConfirmation($params);
+		if (isset($params['GET']['id']) && isset($params['GET']['emailConfirm'])) {
+			$this->emailDelegate->checkEmailConfirmation($params);
+		} else {
+			$this->emailDelegate->sendEmailConfirmation();
+		}
+	}
+
+	public function passwordResetAction($params) {
+		if (!isset($params['GET']['passwordReset']) || !isset($params['POST']['email']) || !isset($params['POST']['pwd'])) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
+			RedirectUtils::redirect404();
+		}
+		if (isset($params['POST']['email'])) {
+			$this->emailDelegate->sendPasswordReset($data);
+			$this->objectDelegate->update($this->data, $params, "", USER_LOGIN_FRONT_LINK);
+		} else if (isset($params['POST']['idUser'])) {
+			$this->formDelegate->process($this->data, $params);
+			$this->emailDelegate->checkPasswordReset($data);
+		} else {
+			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PASSWORD_RESET_VIEWS);
+			$view = new View($this->data);
+		}
 	}
 }
 ?>

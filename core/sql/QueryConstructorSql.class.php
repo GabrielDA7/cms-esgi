@@ -47,6 +47,7 @@ class QueryConstructorSql {
 
 	}
 
+	/* Deprecated Voir formatUtils */
 	private function formatConditionQuery($array, $separatorBefore, $separatorBetween, $separatorAfter, $flagValue = TRUE, $doubleKey = FALSE) {
 		$numberOfItems = count($array);
 		$i = 0;
