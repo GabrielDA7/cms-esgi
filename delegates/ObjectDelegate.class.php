@@ -83,7 +83,7 @@ class ObjectDelegate {
 		$object = $data[$this->lowerCaseFirstObjectName];
 		$columnsToSearch = $object->getColumnsToSearch();
 		$object = $object->getByWord($params['GET']['search'], $columnsToSearch);
-		$data[$this->lowerCaseFirstObjectName] = $object;
+		$data[$this->lowerCaseFirstObjectName."s"] = $object;
 	}
 
 	public function login(&$data, $params) {
