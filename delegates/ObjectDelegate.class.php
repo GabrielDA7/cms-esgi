@@ -40,7 +40,7 @@ class ObjectDelegate {
 	public function getAll(&$data) {
 		$object  = $data[$this->lowerCaseFirstObjectName];
 		$objects = $object->getAll($data);
-		$data['itemsNumber'] = count($objects);
+		$data['itemsNumber'] = $object->countItems();
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
 

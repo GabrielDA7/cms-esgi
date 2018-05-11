@@ -22,6 +22,12 @@ class QueryConstructorSql {
 		return $query;
 	}
 
+	protected function constructCountQuery($table) {
+		$query = "SELECT count(id) as itemsNumber";
+		$query .= " FROM " . $table;
+		return $query;
+	}
+
 	protected function constructUpdateQuery($table, $columns) {
 		unset($columns['id']);
 		$query = "UPDATE " . $table;
@@ -32,7 +38,7 @@ class QueryConstructorSql {
 
 	protected function constructInsertQuery($table, $columns) {
 		$query = "INSERT INTO " . $table . "(" . implode(',', array_keys($this->columns)) . ")";
-		$query .= " VALUES(" . implode(',:', array_keys($this->columns)) . ")";
+		$query .= " VALUES(:" . implode(',:', array_keys($this->columns)) . ")";
 		return $query;
 	}
 

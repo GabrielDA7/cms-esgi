@@ -67,7 +67,7 @@ function getControllerAndAction($controllerName, $actionName, $params) {
 			if (method_exists($controller, $actionName)) {
 				$controller->$actionName($params);
 			} else {
-				LogsUtils::process("logs", "Action not found", $actionName);
+				LogsUtils::process("logs", "Action not found", $actionName . " in " . $controllerName);
 				RedirectUtils::redirect404();
 			}
 		} else {

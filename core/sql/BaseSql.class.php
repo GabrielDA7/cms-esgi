@@ -47,6 +47,14 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute($this->columns);
 	}
 
+	public function countItems() {
+		$queryString = $this->constructCountQuery($this->table);
+		$query = $this->db->prepare($queryString);
+		$query->execute();
+		$response = $query->fetch();
+		return $response['itemsNumber'];
+	}
+
 	public function getAll($data) {
 		$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
 		$limit = (isset($data['limit'])) ? $data['limit'] : null;
