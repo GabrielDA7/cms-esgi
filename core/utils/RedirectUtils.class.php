@@ -1,7 +1,7 @@
 <?php
 class RedirectUtils {
 	
-	public static  function redirect($url, $getParameters = "") {
+	public static  function redirect($url = "", $getParameters = "") {
 		if ($getParameters != "") {
 			FormatUtils::formatMapToQuerryString($getParameters);
 		}

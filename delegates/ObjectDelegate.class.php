@@ -76,8 +76,7 @@ class ObjectDelegate {
 	public function delete($params, $redirectFront, $redirectBack) {
 		$objects = ClassUtils::constructObjectWithId($params['POST']['id'], $this->objectName);
 		$objects->delete();
-		header(LOCATION . DIRNAME . (isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
-		exit;
+		RedirectUtils::redirect((isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 	}
 
 	public function search(&$data, $params) {
@@ -97,8 +96,7 @@ class ObjectDelegate {
 	public function disconnect() {
 		$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
 		$user->disconnect();
-		header(LOCATION . DIRNAME);
-		exit;
+		RedirectUtils::redirect();
 	}
 	
 	public function getObjectName() 	   		  { return $this->objectName; 		  	    }

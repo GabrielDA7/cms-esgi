@@ -11,7 +11,7 @@ class BaseSql extends QueryConstructorSql {
 		try {
 			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
 		} catch(Exception $e) {
-			return404View();
+			RedirectUtils::redirect404();
 		}
 	}
 

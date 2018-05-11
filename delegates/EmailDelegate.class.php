@@ -11,23 +11,23 @@ class EmailDelegate {
 		$user = ClassUtils::constructObjectWithParameters($params['GET'], USER_CLASS_NAME);
 		$user = $user->getWithParameters();
 		if (empty($user)) {
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$user[0]->setEmailConfirm("1");
 		$user[0]->update();
-		header(LOCATION . DIRNAME . USER_LOGIN_FRONT_LINK);
+		RedirectUtils::redirect(USER_LOGIN_FRONT_LINK);
 	}
 
 	public function checkPasswordReset($params) {
 		$user = ClassUtils::constructObjectWithId($params['POST']['userId'], USER_CLASS_NAME);
 		$user = $user->getById();
 		if (empty($user)) {
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$user->setPwdReset(null);
 		$user->setPwd($params['POST']['newPwd']);
 		$user->update();
-		header(LOCATION . DIRNAME . USER_LOGIN_FRONT_LINK);
+		RedirectUtils::redirect(USER_LOGIN_FRONT_LINK);
 	}
 
 	public function sendEmailConfirmation($data) {

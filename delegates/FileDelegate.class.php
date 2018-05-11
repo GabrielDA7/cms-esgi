@@ -17,8 +17,7 @@ class FileDelegate {
 		if ($data['errors'] === FALSE) {
 			$installation = ClassUtils::constructObjectWithParameters($columns, $this->objectName);
 			$this->setConfData($installation);
-			header(LOCATION . DIRNAME . $redirect);
-			exit;
+			RedirectUtils::redirect($redirect);
 		}
 	}
 
@@ -31,8 +30,7 @@ class FileDelegate {
 		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
 		$BaseSql = new BaseSql(); 
 		$BaseSql->createDatabase($fileContent);
-		header(LOCATION . DIRNAME . INSTALLATION_ADMIN_LINK);
-		exit;
+		RedirectUtils::redirect(INSTALLATION_ADMIN_LINK);
 	}
 
 	private function setConfData($installation) {

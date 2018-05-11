@@ -17,7 +17,7 @@ class InstallationController {
 	public function indexAction($params) {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, INSTALLATION_INDEX_VIEWS, INSTALLATION_TEMPLATES);
 		$view = new View($this->data);
@@ -26,7 +26,7 @@ class InstallationController {
 	public function settingAction($params) {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, INSTALLATION_SETTING_VIEWS, INSTALLATION_TEMPLATES);
 		$this->formDelegate->process($this->data, $params);
@@ -37,7 +37,7 @@ class InstallationController {
 	public function this->databaseAction($params) {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, INSTALLATION_DATABASE_VIEWS, INSTALLATION_TEMPLATES);
 		$this->formDelegate->process($this->data, $params);
@@ -48,7 +48,7 @@ class InstallationController {
 	public function adminAction($params) {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, INSTALLATION_ADMIN_VIEWS, INSTALLATION_TEMPLATES);
 		$this->setClassNameToUserToAddAdmin();
@@ -61,7 +61,7 @@ class InstallationController {
 	public function createthis->databaseAction() {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->fileDelegate->createthis->database();
 	}

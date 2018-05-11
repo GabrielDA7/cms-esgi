@@ -33,7 +33,7 @@ class TrainningController implements ControllerInterface {
 	public function editAction($params) {
 		if(!isset($params['GET']['id']) || $_SESSION['admin'] !== TRUE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRAINNING_EDIT_VIEWS);
 		$this->objectDelegate->pushObjectById($this->data, $params['GET']['id']);
@@ -45,7 +45,7 @@ class TrainningController implements ControllerInterface {
 	public function deleteAction($params) {
 		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE);
 		$this->objectDelegate->delete($params, "", TRAINNING_LIST_BACK_LINK);
@@ -60,7 +60,7 @@ class TrainningController implements ControllerInterface {
 	public function trainningAction($params) {
 		if (!isset($params['GET']['id'])) {
 			LogsUtils::process(LogsUtils::LOGS_FILE, "Attempt access", "Access denied");
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_TRAINNING_VIEWS);
 		$this->objectDelegate->pushObjectById($this->data, $params['GET']['id'], [CHAPTER_CLASS_NAME]);

@@ -8,13 +8,13 @@ class QueryConstructorSql {
 		$query .= " FROM " . $table;
 		if (isset($columns)) {
 			if (!$like) {
-				$query .= " WHERE " . $this->formatConditionQuery($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
+				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {
 				$query .= " WHERE " . implode(" LIKE :keyword OR ", array_values($columns)) . " LIKE :keyword";
 			}
 		}
 		if (isset($orderBy)) {
-			$query .= " ORDER BY " . $this->formatConditionQuery($orderBy, "", SPACE, COMMA);
+			$query .= " ORDER BY " . FormatUtils::formatMapToStringWithSeparators($orderBy, "", SPACE, COMMA);
 		}
 		if (isset($limit)) {
 			$query .= " LIMIT " .implode(COMMA, $limit);
@@ -25,7 +25,7 @@ class QueryConstructorSql {
 	protected function constructUpdateQuery($table, $columns) {
 		unset($columns['id']);
 		$query = "UPDATE " . $table;
-		$query .= " SET " . $this->formatConditionQuery($columns, "", EQUAL.TWO_POINTS, COMMA, FALSE, TRUE);
+		$query .= " SET " . FormatUtils::formatMapToStringWithSeparators($columns, "", EQUAL.TWO_POINTS, COMMA, FALSE, TRUE);
 		$query .= " WHERE id=:id";
 		return $query;
 	}
@@ -46,25 +46,5 @@ class QueryConstructorSql {
 	private function setWhereValuesWithTableName($objectList) {
 
 	}
-
-	/* Deprecated Voir formatUtils */
-	private function formatConditionQuery($array, $separatorBefore, $separatorBetween, $separatorAfter, $flagValue = TRUE, $doubleKey = FALSE) {
-		$numberOfItems = count($array);
-		$i = 0;
-		$separedValues = "";
-		foreach ($array as $key => $value) {
-			$value = ($flagValue)? $value : "";
-			$value = ($doubleKey)? $key : $value;
-			if (!(++$i === $numberOfItems)) {
-				$separedValues .= $separatorBefore . $key . $separatorBetween . $value . $separatorAfter;
-	  		} else if ($value != "") {
-	  			$separedValues .= $separatorBefore . $key . $separatorBetween . $value;
-	  		} else {
-	  			$separedValues .= $separatorBefore . $key;
-	  		}
-		}
-		return $separedValues;
-	}
-
 }
 ?>

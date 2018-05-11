@@ -27,9 +27,9 @@ class UserSql extends BaseSql {
 		$this->setConnectedStatus($user, CONNECTED_STATUS);
 		if ($this->checkAdminStatus($user->getid()) === TRUE) {
 			$_SESSION['admin'] = TRUE;
-			header(LOCATION . DIRNAME . STATISTIC_INDEX_BACK_LINK);
+			RedirectUtils::redirect(STATISTIC_INDEX_BACK_LINK);
 		} else {
-			header(LOCATION . DIRNAME);
+			RedirectUtils::redirect();
 		}
 	}
 

@@ -12,7 +12,7 @@ class View {
 		$viewPath = searchFile(array(VIEWS_FOLDER_NAME), $this->view);
 		$templatePath = searchFile(array(VIEWS_TEMLATES_FOLDER_NAME), $this->template);
 		if (!isset($viewPath) || !isset($templatePath)) {
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->assign("viewPath", $viewPath);
 		$this->assign("templatePath", $templatePath);

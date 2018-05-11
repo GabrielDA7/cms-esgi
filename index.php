@@ -67,13 +67,13 @@ function getControllerAndAction($controllerName, $actionName, $params) {
 			if (method_exists($controller, $actionName)) {
 				$controller->$actionName($params);
 			} else {
-				return404View();
+				RedirectUtils::redirect404();
 			}
 		} else {
-			return404View();
+			RedirectUtils::redirect404();
 		}
 	} else {
-		return404View();
+		RedirectUtils::redirect404();
 	}
 }
 
@@ -83,11 +83,6 @@ function getUriExploded() {
 	$uri = str_ireplace(DIRNAME, '', urldecode($uri[0]));
 	$uriExploded = explode(DS, $uri);
 	return $uriExploded;
-}
-
-function return404View() {
-	header(LOCATION . DIRNAME . INDEX_ERROR_LINK);
-	exit();
 }
 
 spl_autoload_register('autoLoadExistingClass');
