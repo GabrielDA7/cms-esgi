@@ -26,7 +26,7 @@ class FileDelegate {
 		ClassUtils::setObjectColumns($object, $filesUrl);
 	}
 	
-	public function createdatabase() {
+	public function createDatabase() {
 		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
 		$BaseSql = new BaseSql(); 
 		$BaseSql->createDatabase($fileContent);

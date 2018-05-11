@@ -63,7 +63,7 @@ class InstallationController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->fileDelegate->createdatabase();
+		$this->fileDelegate->createDatabase();
 	}
 
 	private function setClassNameToUserToAddAdmin() {

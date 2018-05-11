@@ -52,7 +52,7 @@ class ObjectDelegate {
 				$object->generateToken();
 				$object->generateEmailConfirm();
 				$object->insert();
-				RedirectUtils::redirect(EMAIL_CONFIRM_LINK, ["email"=>$object->getEmail()]);
+				RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$object->getEmail()]);
 			}
 			$data[$this->lowerCaseFirstObjectName] = $object->insert();
 		}
