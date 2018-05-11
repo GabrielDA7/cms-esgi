@@ -11,7 +11,6 @@
 
   <div class="list-init-object">
     <span>trainning</span>
-    <span>trainnings</span>
   </div>
 
   <div class="row row-tools">

@@ -11,7 +11,6 @@
 
   <div class="list-init-object">
     <span>chapter</span>
-    <span>chapters</span>
   </div>
 
   <div class="row row-tools">

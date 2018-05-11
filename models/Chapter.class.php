@@ -57,6 +57,15 @@ class Chapter extends BaseSql {
 											                    "jpeg"
 										                    ]
 								       		],
+								"trainning"=>
+													[
+														"type"=>"select",
+														"class"=>"form-group row select-formation input-medium",
+														"option"=>
+																	[
+																		"" => "Pas de formation"
+																	]
+													],
 								"author"=>
 											[
 										         "type"=>"hidden",

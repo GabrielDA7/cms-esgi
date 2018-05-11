@@ -139,12 +139,18 @@ $(function() {
     load_data(page, limit,'search');
   });
 
+  /* get trainning id and name for select */
+  if( $(".select-formation").length > 0 ) {
+    select = $(".select-formation");
+    getIdAndNameObject("trainning", select);
+  }
+
 });
 
 function load_data(page, limit, action, order='asc', column_name) {
 
   var object = $.trim($(".list-init-object span:first-child").text());
-  var objects = $.trim($(".list-init-object span:last-child").text());
+  var objects = object + 's';
 
   var tb = $("#pagination_data tbody");
   var paginationLinks = $("#pagination_links");
@@ -222,6 +228,26 @@ function load_data(page, limit, action, order='asc', column_name) {
       $("#" + column_name + " i").removeClass().addClass("fas fa-arrow-down");
     }
   }
+}
+
+function getIdAndNameObject(object, select){
+  url = dirname + "ajax/list?object=" + object ;
+  objects = object + 's';
+  $.ajax({
+    url: url,
+    success:function(data) {
+      data = JSON.parse(data);
+      var html;
+      if( data[objects].length > 0) {
+        $.each(data[objects], function (index, element) {
+          html += "<option value='" + element.id + "'>";
+          html += element.title;
+          html += "</option>";
+        });
+        select.append(html);
+      }
+    }
+  });
 }
 
 function closeDiv(div){
