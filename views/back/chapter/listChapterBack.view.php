@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="M2 M--offset6">
-      <a class="btn-extra-small btn-filled-orange btn btn-icon" href="<?= DIRNAME . LESSON_ADD_BACK_LINK; ?>">Add<i class="fas fa-plus"></i></a>
+      <a class="btn-extra-small btn-filled-orange btn btn-icon" href="<?= DIRNAME . CHAPTER_ADD_BACK_LINK; ?>">Add<i class="fas fa-plus"></i></a>
     </div>
   </div>
 
