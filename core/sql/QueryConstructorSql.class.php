@@ -17,7 +17,7 @@ class QueryConstructorSql {
 			$query .= " ORDER BY " . FormatUtils::formatMapToStringWithSeparators($orderBy, "", SPACE, COMMA);
 		}
 		if (isset($limit)) {
-			$query .= " LIMIT " .implode(COMMA, $limit);
+			$query .= " LIMIT " . implode(COMMA, $limit);
 		}
 		return $query;
 	}

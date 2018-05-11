@@ -59,7 +59,7 @@ class TrainningController implements ControllerInterface {
 
 	public function trainningAction($params) {
 		if (!isset($params['GET']['id'])) {
-			LogsUtils::process(LogsUtils::LOGS_FILE, "Attempt access", "Access denied");
+			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_TRAINNING_VIEWS);

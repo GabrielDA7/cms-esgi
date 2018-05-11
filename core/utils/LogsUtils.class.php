@@ -1,8 +1,6 @@
 <?php
 class LogsUtils {
 
-	const LOGS_FILE = "logs";
-
 	public static function process($fileName, $title, $content) {
 		$log  = "IP + Date : ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a").PHP_EOL.
 				"-----------------".PHP_EOL.

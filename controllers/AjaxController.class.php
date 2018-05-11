@@ -6,7 +6,7 @@ class AjaxController {
 	private $data = [];
 
 	public function __construct() {
-		if (!isset($_GET['object']) || strcasecmp(USER_CLASS_NAME, $_GET['object']) === 0 && !isAdmin()) {
+		if (!isset($_GET['object']) || !defined(strtoupper($_GET['object']."_CLASS_NAME")) || (strcasecmp(USER_CLASS_NAME, $_GET['object']) === 0 && !isAdmin())) {
 			echo FormatUtils::formatToJson([]);
 			exit;
 		}

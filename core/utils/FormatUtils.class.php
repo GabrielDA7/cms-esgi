@@ -30,7 +30,7 @@ class FormatUtils {
 		$queryString = "?" . self::formatMapToStringWithSeparators($map, "", "=", "&");
 	}
 
-	private static function formatMapToStringWithSeparators($array, $separatorBefore, $separatorBetween, $separatorAfter, $flagValue = TRUE, $doubleKey = FALSE) {
+	public static function formatMapToStringWithSeparators($array, $separatorBefore, $separatorBetween, $separatorAfter, $flagValue = TRUE, $doubleKey = FALSE) {
 		$numberOfItems = count($array);
 		$i = 0;
 		$separedValues = "";

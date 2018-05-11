@@ -67,12 +67,15 @@ function getControllerAndAction($controllerName, $actionName, $params) {
 			if (method_exists($controller, $actionName)) {
 				$controller->$actionName($params);
 			} else {
+				LogsUtils::process("logs", "Action not found", $actionName . " in " . $controller);
 				RedirectUtils::redirect404();
 			}
 		} else {
+			LogsUtils::process("logs", "Class not found", $controllerName);
 			RedirectUtils::redirect404();
 		}
 	} else {
+		LogsUtils::process("logs", "Controller not found", $controllerPath);
 		RedirectUtils::redirect404();
 	}
 }
@@ -89,12 +92,12 @@ spl_autoload_register('autoLoadExistingClass');
 
 $uriExploded = getUriExploded();
 
+$controllerName = getControllerName($uriExploded);
+$actionName = getActionName($uriExploded);
+
 if (!INSTALLATION_DONE && $uriExploded[0] != INSTALLATION_INDEX_LINK) {
 	$controllerName = "InstallationController";
 	$actionName = "indexAction";
-} else {
-	$controllerName = getControllerName($uriExploded);
-	$actionName = getActionName($uriExploded);
 }
 
 $uriExploded = array_values($uriExploded);

@@ -48,7 +48,9 @@ class BaseSql extends QueryConstructorSql {
 	}
 
 	public function getAll($data) {
-		$queryString = $this->constructSelectQuery($this->table, null, FALSE, null, $data['limit']);
+		$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
+		$limit = (isset($data['limit'])) ? $data['limit'] : null;
+		$queryString = $this->constructSelectQuery($this->table, null, FALSE, $orderBy, $limit);
 		$query = $this->db->prepare($queryString);
 		$query->execute();
 		$response = $query->fetchAll();
@@ -77,7 +79,9 @@ class BaseSql extends QueryConstructorSql {
 	}
 
 	public function getByWord($keyword, $columnsToSearch) {
-		$queryString = $this->constructSelectQuery($this->table, $columnsToSearch, TRUE);
+		$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
+		$limit = (isset($data['limit'])) ? $data['limit'] : null;
+		$queryString = $this->constructSelectQuery($this->table, $columnsToSearch, TRUE, $orderBy, $limit);
 		$query = $this->db->prepare($queryString);
 		$this->setKeyword($query, $keyword);
 		$query->execute();
