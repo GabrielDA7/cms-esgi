@@ -81,15 +81,15 @@ class UserController implements ControllerInterface {
 	}
 
 	public function emailConfirmAction($params) {
-		if (!isset($params['GET']['id']) || !isset($params['GET']['emailConfirm']) || !isset($params['GET']['email'])) {
-			LogsUtils::process("logs", "Attempt access", "Access denied");
-			RedirectUtils::redirect404();
-		}
 		if (isset($params['GET']['id']) && isset($params['GET']['emailConfirm'])) {
 			$this->emailDelegate->checkEmailConfirmation($params);
-		} else {
+		} elseif(isset($params['POST']['email'])) {
 			$this->emailDelegate->sendEmailConfirmation();
-
+			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_CONFIRMATION_EMAIL_VIEWS);
+			$view = new View($this->data);
+		} else {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
+			RedirectUtils::redirect404();
 		}
 	}
 

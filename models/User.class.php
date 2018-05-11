@@ -220,6 +220,22 @@ class User extends UserSql {
 				];
 	}
 
+	public static function configAddForm($data){
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_ADD_FRONT_LINK, "submit"=>"Sign up", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"input"=>
+							[
+								"email"=>
+											[
+												"type"=>"email",
+												"placeholder"=>"Email",
+												"required"=>true,
+												"class"=>"form-group input"
+											]
+							]
+				];
+	}
+
 	public static function configListForm($data){
 		$user = $data['user'];
 		return 	[

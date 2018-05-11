@@ -5,7 +5,7 @@ class IndexController {
 	private $data = [];
 
 	public function __construct() {
-		$this->authenticationDelegate = new AuthenticationDelegate();	
+		$this->authenticationDelegate = new AuthenticationDelegate();
 	}
 
 	public function indexAction($params) {

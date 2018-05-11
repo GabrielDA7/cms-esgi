@@ -1,0 +1,21 @@
+IP + Date : ::1 - May 12, 2018, 12:34 am
+-----------------
+Url : http://localhost/lab/uteach/emailConfirm
+Action : Controller not found
+Value : 
+Date : 05/12/2018 12:34:17 am
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 12:34 am
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm
+Action : Attempt access
+Value : Access denied
+Date : 05/12/2018 12:34:22 am
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 1:23 am
+-----------------
+Url : http://localhost/lab/uteach/user/passwordReset
+Action : Attempt access
+Value : Access denied
+Date : 05/12/2018 01:23:54 am
+-------------------------------------------------------

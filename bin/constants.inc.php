@@ -84,6 +84,7 @@ define("USER_LOGIN_FRONT_LINK", "user/login");
 define("USER_LOGIN_BACK_LINK", "user/login/back");
 define("USER_DISCONNECT_LINK", "user/disconnect");
 define("USER_EMAIL_CONFIRM_LINK", "user/emailConfirm");
+define("USER_PASSWORD_RESET_LINK", "user/passwordReset");
 
 define("TRAINNING_TRAINNING_BACK_LINK", "trainning/trainning/back");
 define("TRAINNING_TRAINNING_FRONT_LINK", "trainning/trainning");
@@ -122,7 +123,7 @@ define("INSTALLATION_ADMIN_VIEWS", 	  ["front"=> "installationAdmin",    "back" 
 
 define("NOT_FOUND_VIEWS", ["front"=> "404",  "back" => "404"]);
 define("HOME_VIEWS", 	  ["front"=> "home", "back" => ""]);
-	
+
 define("CONTACT_VIEWS", ["front"=> "contact", "back" => "listVideoBack"]);
 
 define("USER_USER_VIEWS",  ["front"=> "userUser",  "back" => "userUserBack"]);
@@ -130,6 +131,8 @@ define("USER_EDIT_VIEWS",  ["front"=> "editUser",  "back" => "editUserBack"]);
 define("USER_LIST_VIEWS",  ["front"=> "listUser",  "back" => "listUserBack"]);
 define("USER_LOGIN_VIEWS", ["front"=> "loginUser", "back" => "loginUserBack"]);
 define("USER_ADD_VIEWS",   ["front"=> "addUser",   "back" => "addUserBack"]);
+define("USER_CONFIRMATION_EMAIL_VIEWS",   ["front"=> "confirmationEmail",   "back" => ""]);
+define("USER_PASSWORD_RESET_VIEWS",   ["front"=> "passwordReset",   "back" => ""]);
 
 define("VIDEO_LIST_VIEWS", ["front"=> "listVideo", "back" => "listVideoBack"]);
 
