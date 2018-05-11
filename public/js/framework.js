@@ -116,7 +116,7 @@ $(function() {
   }
 
   $(document).on('click', '#pagination_links span', function() {
-    var limit = $( ".pagination-selector option:selected" ).val();
+    var limit = $( ".pagination_selector option:selected" ).val();
     var page = $(this).attr("id");
     load_data(page, limit, 'init');
   });
@@ -130,7 +130,7 @@ $(function() {
   $(document).on('change', '.pagination_selector', function() {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
-    load_data(page, limit,'search');
+    load_data(page, limit,'init');
   });
 
   $(document).on('input', '.list-data .row-tools input', function() {
