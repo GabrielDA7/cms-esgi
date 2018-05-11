@@ -30,7 +30,7 @@ class ListDisplayDataDelegate {
     $page = (isset($params['GET']['page'])) ? $params['GET']['page'] : 1;
     $itemsPerPage = (isset($params['GET']['itemsPerPage'])) ? $params['GET']['itemsPerPage'] : 30;
     $startLimit = ($page - 1) * $itemsPerPage;
-    $endLimit = $startLimit + $itemsPerPage;
+    $endLimit = $itemsPerPage;
     $data['itemsPerPage'] = $itemsPerPage;
     $data['limit'] = [$startLimit, $endLimit];
   }
