@@ -18,13 +18,12 @@ class UserDelegate extends ObjectDelegate {
 			$user = $data['user'];
 			ClassUtils::setObjectColumns($user, $params['POST']);
 			$user->generateToken();
-			$user->generateEmailConfirm();
 			$user->insert();
 			RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$user->getEmail()]);
 		}
 	}
 
-	public function update(&$data, $params, $redirectFront, $redirectBack) {
+	public function update(&$data, $params, $redirectFront = null, $redirectBack = null) {
 		if ($data['errors'] === FALSE) {
 			$user = $data['user'];
 			if (isset($params['POST'])) {
@@ -35,7 +34,9 @@ class UserDelegate extends ObjectDelegate {
 			}
 			$user->unsetRoleIfNotAdmin();
 			$user->update();
-			RedirectUtils::redirect((isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
+			if (isset($redirectFront) || isset($redirectBack)) {
+				RedirectUtils::redirect((isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
+			}
 		}
 	}
 
@@ -54,10 +55,8 @@ class UserDelegate extends ObjectDelegate {
 	}
 
 	public function checkEmailConfirmation(&$data, $params) {
-		$user = $data['user'];
-		ClassUtils::setObjectColumns($user, $params['GET']);
-		$user = $user->getWithParameters();
-		if (empty($user)) {
+		$this->getByParameters($data, $params['POST']);
+		if (empty($data['users'])) {
 			RedirectUtils::redirect404();
 		}
 		$user[0]->setEmailConfirm("1");
@@ -66,16 +65,17 @@ class UserDelegate extends ObjectDelegate {
 	}
 
 	public function checkPasswordReset(&$data, $params) {
-		$user = $data['user'];
-		ClassUtils::setObjectColumns($user, $params['POST']);
-		$user = $user->getWithParameters();
-		if (empty($user)) {
-			RedirectUtils::redirect404();
+		if ($data['errors'] === FALSE) {
+			$user->setPwdReset("1");
+			$user->setPwd($params['POST']['pwd']);
+			$data['user'] = $user;
+			$this->update($data, null, USER_LOGIN_FRONT_LINK);
+		} else {
+			$this->getByParameters($data, $params['POST']);
+			if (empty($data['users'])) {
+				RedirectUtils::redirect404();
+			}
 		}
-		$user->setPwdReset("1");
-		$user->setPwd($params['POST']['newPwd']);
-		$data['user'] = $user;
-		$this->update($data, null, USER_LOGIN_FRONT_LINK);
 	}
 }
 ?>
