@@ -16,8 +16,7 @@ class ObjectDelegate {
 
 	public function getById(&$data, $params, $othersTablesColumns = []) {
 		$object = $data[$this->lowerCaseFirstObjectName];
-		$id = $params['POST']['id'];
-		$object->setId($id);
+		$object->setId($params['GET']['id']);
 		$object = $object->getById();
 		if (!empty($othersTablesColumns)) {
 			ClassUtils::setReferencedObjectsColumns($othersTablesColumns, $object);

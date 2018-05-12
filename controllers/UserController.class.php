@@ -27,7 +27,7 @@ class UserController implements ControllerInterface {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_USER_VIEWS);
-		$this->userDelegate->getById($this->data, $params['POST']['id']);
+		$this->userDelegate->getById($this->data, $params);
 		$view = new View($this->data);
 	}
 
