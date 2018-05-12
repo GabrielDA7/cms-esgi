@@ -9,20 +9,13 @@
 		</div>
 	</div>
 
+	<div class="list-init-object">
+    <span><?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK; ?></span>
+  </div>
+
   <div class="row row-padding">
-    <?php foreach ($trainnings as $trainning): ?>
-      <div class="M2 X12">
-        <a href="<?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK . '?id=' . $trainning->getId();?>" class="card">
-            <div class="card-image">
-              <img src="<?=(empty($trainning->getImage())) ? DIRNAME . 'public/img/default.jpg' : DIRNAME . $trainning->getImage(); ?>" alt="image">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title"><?= $trainning->getTitle() ?></p>
-              <p class="card-content-author"><?= $trainning->getAuthor() ?></p>
-            </div>
-        </a>
+      <div class="M2 X12 list-data">
+
       </div>
-    <?php endforeach;?>
   </div>
 </section>

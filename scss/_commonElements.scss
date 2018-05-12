@@ -992,9 +992,13 @@ textarea {
   width: 100%;
 }
 
-.emailConfirm {
+.center-container {
   display: flex;
   height: 100%;
+}
+
+.container {
+  height: calc(100% - 80px);
 }
 
 .emailConfirm p {

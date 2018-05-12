@@ -112,31 +112,31 @@ $(function() {
   if( $("#pagination_data").length ) {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
-    load_data(page, limit, 'init');
+    load_data_table(page, limit, 'init');
   }
 
   $(document).on('click', '#pagination_links span', function() {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = $(this).attr("id");
-    load_data(page, limit, 'init');
+    load_data_table(page, limit, 'init');
   });
 
   $(document).on('click', '.column_sort', function() {
     var column_name = $(this).attr("id");
     var order = $(this).attr("data-order");
-    load_data(page, limit, 'sort', order, column_name);
+    load_data_table(page, limit, 'sort', order, column_name);
   });
 
   $(document).on('change', '.pagination_selector', function() {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
-    load_data(page, limit,'init');
+    load_data_table(page, limit,'init');
   });
 
   $(document).on('input', '.list-data .row-tools input', function() {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
-    load_data(page, limit,'search');
+    load_data_table(page, limit,'search');
   });
 
   /* get trainning id and name for select */
@@ -145,9 +145,52 @@ $(function() {
     getIdAndNameObject("trainning", select);
   }
 
+  // FRONT
+  if( $("#front-list-trainning").length > 0 ) {
+    var page = 1;
+    var limit = 20;
+    load_data_list_card(page, limit, 'init','desc', 'dateInserted', 'trainning');
+  }
+
 });
 
-function load_data(page, limit, action, order='asc', column_name) {
+function load_data_list_card(page, limit, action, order='asc', column_name, object){
+  objects = object + 's';
+  url = dirname + "ajax/list?object=" + object + "&page=" + page + "&itemsPerPage=" + limit;
+  div = $(".list-data");
+  linkObjectView = $.trim($(".list-init-object span:first-child").text());
+  alert(linkObjectView);
+  $.ajax({
+    url: url,
+    success:function(data) {
+      data = JSON.parse(data);
+      var html;
+      if( data[objects].length > 0) {
+        $.each(data[objects], function(index, element) {
+          html += "<a href='" + linkObjectView + "?id='" + element.id + " class='card'>";
+          html += " <div class='card-image'>";
+          if( element.image.length > 0 ) {
+            html += " <image src='" + dirname + element.image "' alt='" + element.title + "'>";
+          } else {
+            html += " <image src='" + dirname + "public/img/default.jpg' alt='" + element.title + "'>";
+          }
+          html += " </div>";
+          html += " <div class='card-separation'></div>";
+          html += " <div class='card-content'>";
+          html += "   <p class='card-content-title'>" + element.title + "</p>";
+          html += "   <p class='card-content-author'>" + element.author + "</p>";
+          html += " </div>";
+          html += "</a>";
+        });
+      } else {
+        html = "No content";
+      }
+      div.append(html);
+    }
+  });
+}
+
+function load_data_table(page, limit, action, order='asc', column_name) {
 
   var object = $.trim($(".list-init-object span:first-child").text());
   var objects = object + 's';

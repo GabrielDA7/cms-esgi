@@ -9,7 +9,7 @@
   margin: auto; }
 
 .container-fluid {
-  max-width: 100%; }
+  width: 100%; }
 
 .row {
   display: flex;
@@ -1409,9 +1409,12 @@ textarea {
   display: block;
   width: 100%; }
 
-.emailConfirm {
+.center-container {
   display: flex;
   height: 100%; }
+
+.container {
+  height: calc(100% - 80px); }
 
 .emailConfirm p {
   color: white;
