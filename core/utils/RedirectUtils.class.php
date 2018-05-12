@@ -3,7 +3,7 @@ class RedirectUtils {
 	
 	public static  function redirect($url = "", $getParameters = "") {
 		if ($getParameters != "") {
-			FormatUtils::formatMapToQuerryString($getParameters);
+			$getParameters = FormatUtils::formatMapToQuerryString($getParameters);
 		}
 		header(LOCATION . DIRNAME . $url . $getParameters);
 		exit();

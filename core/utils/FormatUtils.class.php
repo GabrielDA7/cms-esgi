@@ -28,6 +28,7 @@ class FormatUtils {
 
 	public static function formatMapToQuerryString($map) {
 		$queryString = "?" . self::formatMapToStringWithSeparators($map, "", "=", "&");
+		return $queryString;
 	}
 
 	public static function formatMapToStringWithSeparators($array, $separatorBefore, $separatorBetween, $separatorAfter, $flagValue = TRUE, $doubleKey = FALSE) {

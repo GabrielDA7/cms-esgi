@@ -90,12 +90,12 @@ class UserController implements ControllerInterface {
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_CONFIRMATION_EMAIL_VIEWS);
 		$this->userDelegate->getByParameters($this->data, $params);
-		$this->emailDelegate->sendEmailConfirmation();
+		$this->emailDelegate->sendEmailConfirmation($this->data);
 		$view = new View($this->data);
 	}
 
 	public function passwordResetAction($params) {
-		if (!isset($params['GET']['passwordReset']) || !isset($params['POST']['email']) || !isset($params['POST']['pwd'])) {
+		if (!isset($params['GET']['passwordReset']) || !isset($params['POST']['email']) || !isset($params['POST']['pwd']) || !isset($params['POST']['id'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
