@@ -101,19 +101,27 @@ class UserController implements ControllerInterface {
 	}
 
 	public function passwordResetAction($params) {
-		if (!isset($params['GET']['passwordReset']) || !isset($params['POST']['email']) || !isset($params['POST']['pwd']) || !isset($params['POST']['id'])) {
+		if ((!isset($params['GET']['id']) || !isset($params['POST']['passwordReset'])) && !isset($params['POST']['email']) ) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
 		if (isset($params['POST']['email'])) {
-			$this->emailDelegate->sendPasswordReset($data);
-			$this->userDelegate->update($this->data, $params, "", USER_LOGIN_FRONT_LINK);
-		} else if (isset($params['POST']['id'])) {
+			// Formulaire email : envoyé. Il faut envoyer l'email et redirigé vers la confirmation password
+			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS);
+			$this->userDelegate->getByParameters($this->data, $params);
+			$this->emailDelegate->sendPasswordReset($this->data);
+			$view = new View($this->data);
+		} else if (isset($params['GET']['id'])) {
+			// Click sur le lien
+			// return la vue du formulaire reset password
+			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PASSWORD_RESET_VIEWS);
 			$this->formDelegate->process($this->data, $params);
 			$this->userDelegate->checkPasswordReset($this->data);
-		} else {
-			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PASSWORD_RESET_VIEWS);
 			$view = new View($this->data);
+		} else {
+			// PasswordReset envoyé
+			// Redirection vers la page de login
+			$this->userDelegate->update($this->data, $params, "", USER_LOGIN_FRONT_LINK);
 		}
 	}
 }

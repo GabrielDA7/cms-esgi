@@ -135,6 +135,7 @@ define("USER_ADD_VIEWS",   ["front"=> "addUser",   "back" => "addUserBack"]);
 define("USER_CONFIRMATION_EMAIL_VIEWS",   ["front"=> "confirmationEmail",   "back" => ""]);
 define("USER_PASSWORD_RESET_VIEWS",   ["front"=> "passwordReset",   "back" => ""]);
 define("USER_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "passwordResetEmail",   "back" => ""]);
+define("USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "confirmationResetPasswordEmail",   "back" => ""]);
 
 define("VIDEO_LIST_VIEWS", ["front"=> "listVideo", "back" => "listVideoBack"]);
 

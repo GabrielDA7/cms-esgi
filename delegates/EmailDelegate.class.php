@@ -17,7 +17,7 @@ class EmailDelegate {
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
 	}
 
-	public function sendPasswordReset($email) {
+	public function sendPasswordReset($data) {
 		if (!isset($data['users']) || empty($data['users'])) {
 			return $data['errors'] = TRUE;
 		}

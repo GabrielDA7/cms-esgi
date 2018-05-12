@@ -1,4 +1,4 @@
-<section id="resetPassword" class="container-fluid">
+<section id="passwordReset" class="container-fluid">
   <div class="row">
       <div class="front-title">
         <h2>Reset password</h2>
