@@ -47,7 +47,6 @@ class EmailDelegate {
 		    $mail->Subject = $subject;
 		    $mail->Body    = $body;
 		    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
 		    $mail->send();
 		    LogsUtils::process("logs", "Send email", "true");
 		    return FALSE;
@@ -63,7 +62,7 @@ class EmailDelegate {
 	    $mail->Host = gethostbyname('smtp.gmail.com'); 		  // Specify main and backup SMTP servers
 	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
 	    $mail->Username = 'gabrieldaoud3112@gmail.com';         // SMTP username
-	    $mail->Password = '1234ggaabb78$#';                         // SMTP password
+      	$mail->Password = '1234ggaabb78$#';                         // SMTP password
 	    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 	    $mail->Port = 465;                                    // TCP port to connect to
 	    $mail->SMTPOptions = array(

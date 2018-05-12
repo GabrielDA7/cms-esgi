@@ -10,6 +10,7 @@ TODO
                               |BACK| 
  
 Filter ajax () 
+passowrd -> sha1 + grain de sel
 -- DONE -- Refactoring objectDelegate 
 Remove database columns from objects (problem when object db is used more than once) 
 -- DONE -- remove form check from list because ajax 

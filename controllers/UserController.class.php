@@ -104,7 +104,7 @@ class UserController implements ControllerInterface {
 			$this->userDelegate->update($this->data, $params, "", USER_LOGIN_FRONT_LINK);
 		} else if (isset($params['POST']['id'])) {
 			$this->formDelegate->process($this->data, $params);
-			$this->userDelegate->checkPasswordReset($data);
+			$this->userDelegate->checkPasswordReset($this->data);
 		} else {
 			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PASSWORD_RESET_VIEWS);
 			$view = new View($this->data);

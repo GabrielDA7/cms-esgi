@@ -59,6 +59,7 @@ class UserDelegate extends ObjectDelegate {
 			RedirectUtils::redirect404();
 		}
 		$user[0]->setEmailConfirm("1");
+		$user[0]->setPwd(null);
 		$user[0]->update();
 		RedirectUtils::redirect(USER_LOGIN_FRONT_LINK);
 	}
