@@ -115,7 +115,7 @@ $(function() {
     load_data_table(page, limit, 'init');
   }
 
-  $(document).on('click', '#pagination_links span', function() {
+  $(document).on('click', '.table-data #pagination_links span', function() {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = $(this).attr("id");
     load_data_table(page, limit, 'init');
@@ -133,7 +133,7 @@ $(function() {
     load_data_table(page, limit,'init');
   });
 
-  $(document).on('input', '.list-data .row-tools input', function() {
+  $(document).on('input', '.table-data .row-tools input', function() {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
     load_data_table(page, limit,'search');
@@ -146,19 +146,29 @@ $(function() {
   }
 
   // FRONT
-  if( $("#front-list-trainning").length > 0 ) {
+  if( $(".list-data").length > 0 ) {
     var page = 1;
-    var limit = 20;
-    load_data_list_card(page, limit, 'init','desc', 'dateInserted', 'trainning');
+    var object = $.trim($(".list-init-object span:first-child").text());
+    load_data_list_card(page, 'init','desc', 'dateInserted', object);
   }
+
+  $(document).on('click', '.list-data #pagination_links span', function() {
+    var page = $(this).attr("id");
+    var object = $.trim($(".list-init-object span:first-child").text());
+    load_data_list_card(page, 'init','desc', 'dateInserted', object);
+  });
 
 });
 
-function load_data_list_card(page, limit, action, order='asc', column_name, object){
+function load_data_list_card(page, action, order='desc', column_name, object){
   objects = object + 's';
-  url = dirname + "ajax/list?object=" + object + "&page=" + page + "&itemsPerPage=" + limit;
-  div = $(".list-data");
-  linkObjectView = $.trim($(".list-init-object span:first-child").text());
+  url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name;
+
+  div = $("#data-list");
+  paginationLinks = $("#pagination_links");
+
+  linkObjectView = $.trim($(".list-init-object span:last-child").text());
+
   $.ajax({
     url: url,
     success:function(data) {
@@ -186,7 +196,14 @@ function load_data_list_card(page, limit, action, order='asc', column_name, obje
       } else {
         html = "No content";
       }
-      div.append(html);
+      div.html(html);
+
+      html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
+      for(var i = 1; i<= data["pagination"].pagesNumber; i++){
+        html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+      }
+      html += "<input type='button' class='button' value='Next' id='but_next' />"
+      paginationLinks.html(html);
     }
   });
 }
@@ -206,7 +223,7 @@ function load_data_table(page, limit, action, order='asc', column_name) {
   }
 
   if(action == 'search') {
-    str = $.trim($(".list-data .row-tools input").val());
+    str = $.trim($(".table-data .row-tools input").val());
     url = dirname + "ajax/search?object=" + object + "&search=" + str + "&page=" + page + "&itemsPerPage=" + limit;
   } else if(action == 'sort') {
     url = dirname + "ajax/list?object=" + object + "&sort=" + order + "&columnName=" + column_name + "&page=" + page + "&itemsPerPage=" + limit;

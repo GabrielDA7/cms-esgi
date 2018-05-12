@@ -921,54 +921,54 @@ textarea {
   display: none;
 }
 
-.list-data table {
+.table-data table {
   margin-top: 10px;
   width: 100%;
   border-collapse: collapse;
 }
 
-.list-data thead {
+.table-data thead {
   color: $color-primary;
   display: block;
   width: 100%;
 }
 
-.list-data table tbody {
+.table-data table tbody {
   display:block;
   max-height:410px;
   overflow-y:scroll;
 }
 
-.list-data table thead, table tbody tr {
+.table-data table thead, table tbody tr {
   display: table;
   width: 100%;
   table-layout: fixed;
 }
 
-.list-data tr {
+.table-data tr {
   border: 2px solid $color-quaternary;
 }
 
-.list-data thead tr th:first-child {
+.table-data thead tr th:first-child {
   background-color: $color-tertiary;
 }
 
-.list-data thead tr th {
+.table-data thead tr th {
   background-color: $color-secondary;
   font-weight: 600;
   font-size: $font-size-S;
 }
 
-.list-data tbody tr td {
+.table-data tbody tr td {
   text-align: center;
   font-size: $font-size-S;
 }
 
-.list-data tbody tr td:first-child {
+.table-data tbody tr td:first-child {
   color: $color-tertiary;
 }
 
-.list-data tbody th,tbody td {
+.table-data tbody th,tbody td {
     border: 2px solid $color-quaternary;
 }
 

@@ -1,4 +1,4 @@
-<section id="dashboard-list-lesson" class="list-data">
+<section id="dashboard-list-lesson" class="table-data">
 
   <div class="row">
     <div class="M4">

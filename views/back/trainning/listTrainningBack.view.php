@@ -1,4 +1,4 @@
-<section id="dashboard-list-tranning" class="list-data">
+<section id="dashboard-list-tranning" class="table-data">
 
   <div class="row">
     <div class="M4">
