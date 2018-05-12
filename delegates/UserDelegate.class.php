@@ -27,8 +27,10 @@ class UserDelegate extends ObjectDelegate {
 	public function update(&$data, $params, $redirectFront, $redirectBack) {
 		if ($data['errors'] === FALSE) {
 			$user = $data['user'];
-			ClassUtils::setObjectColumns($user, $params['POST']);
-			if (ClassUtils::getCallingFunction() != "passwordResetAction") {
+			if (isset($params['POST'])) {
+				ClassUtils::setObjectColumns($user, $params['POST']);
+			}
+			if (ClassUtils::getCallingFunction() != "checkPasswordReset") {
 				$user->setPwd(null);
 			}
 			$user->unsetRoleIfNotAdmin();
@@ -59,12 +61,11 @@ class UserDelegate extends ObjectDelegate {
 			RedirectUtils::redirect404();
 		}
 		$user[0]->setEmailConfirm("1");
-		$user[0]->setPwd(null);
-		$user[0]->update();
-		RedirectUtils::redirect(USER_LOGIN_FRONT_LINK);
+		$data['user'] = $user[0];
+		$this->update($data, null, USER_LOGIN_FRONT_LINK);
 	}
 
-	public function checkPasswordReset($params) {
+	public function checkPasswordReset(&$data, $params) {
 		$user = $data['user'];
 		ClassUtils::setObjectColumns($user, $params['POST']);
 		$user = $user->getWithParameters();
@@ -73,8 +74,8 @@ class UserDelegate extends ObjectDelegate {
 		}
 		$user->setPwdReset("1");
 		$user->setPwd($params['POST']['newPwd']);
-		$user->update();
-		RedirectUtils::redirect(USER_LOGIN_FRONT_LINK);
+		$data['user'] = $user;
+		$this->update($data, null, USER_LOGIN_FRONT_LINK);
 	}
 }
 ?>
