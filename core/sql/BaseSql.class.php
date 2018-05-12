@@ -83,6 +83,9 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute($this->columns);
 		$response = $query->fetch();
 		$object = ClassUtils::constructObjectWithParameters($response, $this->table);
+		if ($foreignKeyColumns = ClassUtils::getForeignKeyColumns($object)) {
+			$this->setForeingObjectsColumns($object, $foreignKeyColumns);
+		}
 		return $object;
 	}
 

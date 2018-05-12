@@ -95,5 +95,17 @@ class classUtils {
 		}
 		return $foreignKeyColumns;
 	}
+
+	private function setReferencedObjectsColumns($othersObjectsColumns, &$object) {
+		$foreignKeyOfParentObject = [lcfirst(get_class($object)) . "_id"  => $object->getId()];
+	    foreach ($othersObjectsColumns as $objectName) {
+	      	$objectWithForeignKeyValue = ClassUtils::constructObjectWithParameters($foreignKeyOfParentObject, $objectName);
+	      	$referencedObjects = $objectWithForeignKeyValue->getWithParameters();
+	      	$setColumn = "set" . ucfirst($objectName) . "s";
+	      	if (method_exists($object, $setter)) {
+	      		$object->$setColumn($referencedObjects);
+	    	}
+	    }
+  	}
 }
 ?>

@@ -20,7 +20,7 @@ class ObjectDelegate {
 		$object->setId($id);
 		$object = $object->getById();
 		if (!empty($othersTablesColumns)) {
-			$this->setReferencedObjectsColumns($othersTablesColumns, $id, $object);
+			ClassUtils::setReferencedObjectsColumns($othersTablesColumns, $object);
 		}
 		$data[$this->lowerCaseFirstObjectName] = $object;
 	}
