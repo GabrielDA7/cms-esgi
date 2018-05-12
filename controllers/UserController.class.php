@@ -94,6 +94,12 @@ class UserController implements ControllerInterface {
 		$view = new View($this->data);
 	}
 
+	public function passwordResetEmailAction($params) {
+		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PASSWORD_RESET_EMAIL_VIEWS);
+		$this->formDelegate->process($this->data, $params);
+		$view = new View($this->data);
+	}
+
 	public function passwordResetAction($params) {
 		if (!isset($params['GET']['passwordReset']) || !isset($params['POST']['email']) || !isset($params['POST']['pwd']) || !isset($params['POST']['id'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
