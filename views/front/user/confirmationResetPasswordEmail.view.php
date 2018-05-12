@@ -6,7 +6,7 @@
   </div>
   <div class="row emailConfirm M--center M--middle">
     <div class="M8 login-container">
-        <p>An email has been sent to '<?= $email; ?>'. Please check your inbox and click on the link to reset the password.</p>
+        <p>An email has been sent to '<?= $user->getEmail(); ?>'. Please check your inbox and click on the link to reset the password.</p>
         <a href="<?= DIRNAME . USER_PASSWORD_RESET_LINK . "?email=" . $email;?>">Resend email</a>
     </div>
   </div>

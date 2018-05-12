@@ -12,19 +12,22 @@ class EmailDelegate {
 			return $data['errors'] = TRUE;
 		}
 		$user = $data['users'][0];
+		$user->generateEmailConfirm();
 		$subject = 'Confirmation de l\'email';
-		$body = 'Cliquer sur le lien pour confirmer votre inscription : http://localhost/lab/uteach/user/emailConfirm?id='.$user->getId().'&emailConfirm='.$user->getEmailConfirm();
+		$body = 'Cliquer sur le lien pour confirmer votre inscription : ' . DIRNAME . 'user/emailConfirm?id=' . $user->getId() . '&emailConfirm=' . $user->getEmailConfirm();
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
 	}
 
-	public function sendPasswordReset($data) {
+	public function sendPasswordReset(&$data) {
 		if (!isset($data['users']) || empty($data['users'])) {
 			return $data['errors'] = TRUE;
 		}
 		$user = $data['users'][0];
+		$user->generatePwdReset();
 		$subject = 'modifier mot de passe';
-		$body = 'Cliquer sur le lien pour modifier votre mot de passe : http://localhost/lab/uteach/user/passwordReset?email='.$user->getEmail();
+		$body = 'Cliquer sur le lien pour modifier votre mot de passe : ' . DIRNAME . 'user/passwordReset?id=' . $user->getId() . "&pwdReset=" .  $user->getPwdReset();
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
+		$data['user'] = $user;
 	}
 
 	private function sendMail($email, $subject, $body, $attachments = []) {

@@ -6,6 +6,7 @@ class User extends UserSql {
 	protected $lastName;
 	protected $firstName;
 	protected $pwd;
+	protected $pwdReset;
 	protected $email;
 	protected $emailConfirm;
 	protected $avatar;
@@ -40,6 +41,11 @@ class User extends UserSql {
 	public function generateEmailConfirm() {
 		$this->emailConfirm = $this->randomCode();
 		return $this->emailConfirm;
+	}
+
+	public function generatePwdReset() {
+		$this->pwdReset = $this->randomCode();
+		return $this->pwdReset;
 	}
 
 	public function randomCode() {
@@ -334,11 +340,12 @@ class User extends UserSql {
 				];
 	}
 
-	public function getUserName() 	  { return $this->userName; 	 }
-		public function getId() 		  { return $this->id; 			 }
+	public function getId() 		  { return $this->id; 			 }
     public function getLastName() 	  { return $this->lastName;		 }
     public function getFirstName() 	  { return $this->firstName; 	 }
+    public function getUserName() 	  { return $this->userName; 	 }
     public function getPwd() 		  { return $this->pwd; 			 }
+    public function getPwdReset() 	  { return $this->pwdReset; 	 }
     public function getEmail() 		  { return $this->email;   		 }
     public function getEmailConfirm() { return $this->emailConfirm;  }
     public function getAvatar()		  { return $this->avatar; 		 }
@@ -349,11 +356,13 @@ class User extends UserSql {
     public function getRole()		  { return $this->role; 		 }
 
 
-    public function setUserName($userName) 		   { $this->userName = $userName; 						 }
+    
     public function setId($id) 					   { $this->id = $id; 								  	 }
 	public function setLastName($lastName) 		   { $this->lastName = ucfirst(strtolower($lastName)); 	 }
 	public function setFirstName($firstName) 	   { $this->firstName = ucfirst(strtolower($firstName)); }
+	public function setUserName($userName) 		   { $this->userName = $userName; 						 }
 	public function setPwd($pwd) 			 	   { $this->pwd = (isset($pwd))? sha1($pwd) : null; 	 }
+	public function setPwdReset($pwdReset) 		   { $this->pwdReset = $pwdReset; 						 }
 	public function setEmail($email) 			   { $this->email = strtolower(trim($email)); 			 }
 	public function setEmailConfirm($emailConfirm) { $this->emailConfirm = $emailConfirm;				 }
 	public function setAvatar($avatar) 			   { $this->avatar = $avatar; 							 }
@@ -361,6 +370,6 @@ class User extends UserSql {
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; 				 }
 	public function setDateUpdated($dateUpdated)   { $this->dateUpdated = $dateUpdated; 				 }
 	public function setStatus($status) 			   { $this->status = $status; 							 }
-	public function setRole($role) 			   	   { $this->role = $role; 							 	 }
+	public function setRole($role) 			   	   { $this->role = $role; 							 	 }  
 }
 ?>

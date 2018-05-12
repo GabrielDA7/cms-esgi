@@ -26,7 +26,7 @@ class ObjectDelegate {
 
 	public function getByParameters(&$data, $params, $othersTablesColumns = []) {
 		$object = $data[$this->lowerCaseFirstObjectName];
-		ClassUtils::setObjectColumns($object, $params['GET']);
+		ClassUtils::setObjectColumns($object, $params);
 		$objects = $object->getWithParameters();
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
