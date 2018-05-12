@@ -159,28 +159,29 @@ function load_data_list_card(page, limit, action, order='asc', column_name, obje
   url = dirname + "ajax/list?object=" + object + "&page=" + page + "&itemsPerPage=" + limit;
   div = $(".list-data");
   linkObjectView = $.trim($(".list-init-object span:first-child").text());
-  alert(linkObjectView);
   $.ajax({
     url: url,
     success:function(data) {
       data = JSON.parse(data);
-      var html;
+      var html = '';
       if( data[objects].length > 0) {
         $.each(data[objects], function(index, element) {
-          html += "<a href='" + linkObjectView + "?id='" + element.id + " class='card'>";
-          html += " <div class='card-image'>";
-          if( element.image.length > 0 ) {
-            html += " <image src='" + dirname + element.image "' alt='" + element.title + "'>";
-          } else {
-            html += " <image src='" + dirname + "public/img/default.jpg' alt='" + element.title + "'>";
-          }
-          html += " </div>";
-          html += " <div class='card-separation'></div>";
-          html += " <div class='card-content'>";
-          html += "   <p class='card-content-title'>" + element.title + "</p>";
-          html += "   <p class='card-content-author'>" + element.author + "</p>";
-          html += " </div>";
-          html += "</a>";
+            html += "<div class='M2 X12'>"
+            html += " <a href='" + linkObjectView + "?id=" + element.id + "' class='card'>";
+            html += "  <div class='card-image'>";
+            if( element.image != null ) {
+              html += "  <image src='" + dirname + element.image + "' alt='" + element.title + "'>";
+            } else {
+              html += "  <image src='" + dirname + "public/img/default.jpg' alt='" + element.title + "'>";
+            }
+            html += "  </div>";
+            html += "  <div class='card-separation'></div>";
+            html += "  <div class='card-content'>";
+            html += "    <p class='card-content-title'>" + element.title + "</p>";
+            html += "    <p class='card-content-author'>" + element.author + "</p>";
+            html += "  </div>";
+            html += " </a>";
+            html += " </div>";
         });
       } else {
         html = "No content";

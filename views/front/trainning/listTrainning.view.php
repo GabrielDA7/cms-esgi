@@ -13,9 +13,6 @@
     <span><?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK; ?></span>
   </div>
 
-  <div class="row row-padding">
-      <div class="M2 X12 list-data">
-
-      </div>
+  <div class="row row-padding list-data">
   </div>
 </section>
