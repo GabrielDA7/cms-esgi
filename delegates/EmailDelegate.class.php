@@ -7,46 +7,21 @@ class EmailDelegate {
 
 	public function __construct() {}
 
-	public function checkEmailConfirmation($params) {
-		$user = ClassUtils::constructObjectWithParameters($params['GET'], USER_CLASS_NAME);
-		$user = $user->getWithParameters();
-		if (empty($user)) {
-			RedirectUtils::redirect404();
+	public function sendEmailConfirmation(&$data) {
+		if (!isset($data['users']) || empty($data['users'])) {
+			return $data['errors'] = TRUE;
 		}
-		$user[0]->setEmailConfirm("1");
-		$user[0]->update();
-		RedirectUtils::redirect(USER_LOGIN_FRONT_LINK);
-	}
-
-	public function checkPasswordReset($params) {
-		$user = ClassUtils::constructObjectWithId($params['POST']['userId'], USER_CLASS_NAME);
-		$user = $user->getById();
-		if (empty($user)) {
-			RedirectUtils::redirect404();
-		}
-		$user->setPwdReset(null);
-		$user->setPwd($params['POST']['newPwd']);
-		$user->update();
-		RedirectUtils::redirect(USER_LOGIN_FRONT_LINK);
-	}
-
-	public function sendEmailConfirmation($data) {
-		if (!isset($data['user'])) {
-			$data['errors'] = TRUE;
-			return null;
-		}
-		$user = $data['user'];
+		$user = $data['users'][0];
 		$subject = 'Confirmation de l\'email';
 		$body = 'Cliquer sur le lien pour confirmer votre inscription : http://localhost/Uteach/user/email?id='.$user->getId().'&emailConfirm='.$user->getEmailConfirm();
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
 	}
 
 	public function sendPasswordReset($email) {
-		if (!isset($data['user'])) {
-			$data['errors'] = TRUE;
-			return null;
+		if (!isset($data['users']) || empty($data['users'])) {
+			return $data['errors'] = TRUE;
 		}
-		$user = $data['user'];
+		$user = $data['users'][0];
 		$subject = 'modifier mot de passe';
 		$body = 'Cliquer sur le lien pour modifier votre mot de passe : http://localhost/Uteach/user/email?email='.$user->getEmail();
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);

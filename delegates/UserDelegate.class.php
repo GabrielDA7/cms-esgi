@@ -50,5 +50,30 @@ class UserDelegate extends ObjectDelegate {
 		$user->disconnect();
 		RedirectUtils::redirect();
 	}
+
+	public function checkEmailConfirmation(&$data, $params) {
+		$user = $data['user'];
+		ClassUtils::setObjectColumns($user, $params['GET']);
+		$user = $user->getWithParameters();
+		if (empty($user)) {
+			RedirectUtils::redirect404();
+		}
+		$user[0]->setEmailConfirm("1");
+		$user[0]->update();
+		RedirectUtils::redirect(USER_LOGIN_FRONT_LINK);
+	}
+
+	public function checkPasswordReset($params) {
+		$user = $data['user'];
+		ClassUtils::setObjectColumns($user, $params['POST']);
+		$user = $user->getWithParameters();
+		if (empty($user)) {
+			RedirectUtils::redirect404();
+		}
+		$user->setPwdReset("1");
+		$user->setPwd($params['POST']['newPwd']);
+		$user->update();
+		RedirectUtils::redirect(USER_LOGIN_FRONT_LINK);
+	}
 }
 ?>
