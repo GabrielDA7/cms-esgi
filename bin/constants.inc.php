@@ -85,6 +85,7 @@ define("USER_LOGIN_BACK_LINK", "user/login/back");
 define("USER_DISCONNECT_LINK", "user/disconnect");
 define("USER_EMAIL_CONFIRM_LINK", "user/emailConfirm");
 define("USER_PASSWORD_RESET_LINK", "user/passwordReset");
+define("USER_PASSWORD_RESET_EMAIL_LINK", "user/passwordResetEmailAction");
 
 define("TRAINNING_TRAINNING_BACK_LINK", "trainning/trainning/back");
 define("TRAINNING_TRAINNING_FRONT_LINK", "trainning/trainning");
@@ -133,6 +134,7 @@ define("USER_LOGIN_VIEWS", ["front"=> "loginUser", "back" => "loginUserBack"]);
 define("USER_ADD_VIEWS",   ["front"=> "addUser",   "back" => "addUserBack"]);
 define("USER_CONFIRMATION_EMAIL_VIEWS",   ["front"=> "confirmationEmail",   "back" => ""]);
 define("USER_PASSWORD_RESET_VIEWS",   ["front"=> "passwordReset",   "back" => ""]);
+define("USER_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "passwordResetEmail",   "back" => ""]);
 
 define("VIDEO_LIST_VIEWS", ["front"=> "listVideo", "back" => "listVideoBack"]);
 
