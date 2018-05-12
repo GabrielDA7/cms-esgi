@@ -86,7 +86,7 @@ class UserController implements ControllerInterface {
 			RedirectUtils::redirect404();
 		}
 		if (isset($params['GET']['id']) && isset($params['GET']['emailConfirm'])) {
-			$this->userDelegate->checkEmailConfirmation($params);
+			$this->userDelegate->checkEmailConfirmation($this->data, $params);
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_CONFIRMATION_EMAIL_VIEWS);
 		$this->userDelegate->getByParameters($this->data, $params);

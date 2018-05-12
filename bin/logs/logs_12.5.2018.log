@@ -19,3 +19,269 @@ Action : Attempt access
 Value : Access denied
 Date : 05/12/2018 01:23:54 am
 -------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 1:18 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirmArray
+Action : Action not found
+Value : emailconfirmarrayAction in UserController
+Date : 05/12/2018 01:18:42 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 1:41 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 01:41:23 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 1:50 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 01:50:43 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:10 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:10:41 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:11 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:11:59 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:12 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:12:38 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:13 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:13:13 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:13 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:13:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:14 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:14:28 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:15 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:15:19 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:15 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:15:45 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:17 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:17:13 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:17 pm
+-----------------
+Url : http://localhost/lab/uteach/Array
+Action : Controller not found
+Value : 
+Date : 05/12/2018 02:17:14 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:17 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:17:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:18 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:18:01 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:18 pm
+-----------------
+Url : http://localhost/lab/uteach/confirmationEmail
+Action : Controller not found
+Value : 
+Date : 05/12/2018 02:18:02 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:18 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:18:05 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:19 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:19:26 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:19 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm
+Action : Attempt access
+Value : Access denied
+Date : 05/12/2018 02:19:28 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:19 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:19:32 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:21 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:21:25 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:21 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:21:29 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:23 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 05/12/2018 02:23:59 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:27 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:27:57 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:31 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:31:25 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:31 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:31:29 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:31 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:31:40 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:33 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:33:53 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:36 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:36:14 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:36 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:36:41 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:36 pm
+-----------------
+Url : http://localhost/lab/uteach/user/email?id=46&emailConfirm=10epnrfktqhwwc8ogwkw00gs8w4kwssgw48kwc44g8k8cog8gs
+Action : Action not found
+Value : emailAction in UserController
+Date : 05/12/2018 02:36:50 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:38 pm
+-----------------
+Url : http://localhost/lab/uteach/user/email?id=46&emailConfirm=10epnrfktqhwwc8ogwkw00gs8w4kwssgw48kwc44g8k8cog8gs
+Action : Action not found
+Value : emailAction in UserController
+Date : 05/12/2018 02:38:20 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:38 pm
+-----------------
+Url : http://localhost/lab/uteach/user/email?id=46&emailConfirm=10epnrfktqhwwc8ogwkw00gs8w4kwssgw48kwc44g8k8cog8gs
+Action : Action not found
+Value : emailAction in UserController
+Date : 05/12/2018 02:38:58 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:39 pm
+-----------------
+Url : http://localhost/lab/uteach/user/email?id=46&emailConfirm=10epnrfktqhwwc8ogwkw00gs8w4kwssgw48kwc44g8k8cog8gs
+Action : Action not found
+Value : emailAction in UserController
+Date : 05/12/2018 02:39:46 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:39 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:39:51 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:44 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:44:15 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:49 pm
+-----------------
+Url : http://localhost/lab/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 05/12/2018 02:49:28 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 12, 2018, 2:53 pm
+-----------------
+Url : http://localhost/lab/uteach/user/passwordReset
+Action : Attempt access
+Value : Access denied
+Date : 05/12/2018 02:53:11 pm
+-------------------------------------------------------

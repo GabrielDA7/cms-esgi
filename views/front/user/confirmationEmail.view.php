@@ -6,7 +6,8 @@
   </div>
   <div class="row emailConfirm M--center M--middle">
     <div class="M8 login-container">
-        <p>An email has been sent to '<?= $email ?>'. Please check your inbox and confirm the registration.</p>
+        <p>An email has been sent to '<?= $user->getEmail(); ?>'. Please check your inbox and confirm the registration.</p>
+        <a href="<?= DIRNAME . USER_EMAIL_CONFIRM_LINK . "?email=" . $user->getEmail();?>">Resend email</a>
     </div>
   </div>
 </section>

@@ -1002,7 +1002,14 @@ textarea {
   text-align: center;
   font-weight: 600;
   font-size: $font-size-S;
-  padding: 15px;
+  margin: 15px;
+}
+
+.emailConfirm a {
+  display: block;
+  text-align: center;
+  font-size: $font-size-XS;
+  margin-bottom: 15px;
 }
 
 #emailConfirm{

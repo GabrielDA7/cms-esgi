@@ -13,7 +13,7 @@ class EmailDelegate {
 		}
 		$user = $data['users'][0];
 		$subject = 'Confirmation de l\'email';
-		$body = 'Cliquer sur le lien pour confirmer votre inscription : http://localhost/Uteach/user/email?id='.$user->getId().'&emailConfirm='.$user->getEmailConfirm();
+		$body = 'Cliquer sur le lien pour confirmer votre inscription : http://localhost/lab/uteach/user/emailConfirm?id='.$user->getId().'&emailConfirm='.$user->getEmailConfirm();
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
 	}
 
@@ -23,7 +23,7 @@ class EmailDelegate {
 		}
 		$user = $data['users'][0];
 		$subject = 'modifier mot de passe';
-		$body = 'Cliquer sur le lien pour modifier votre mot de passe : http://localhost/Uteach/user/email?email='.$user->getEmail();
+		$body = 'Cliquer sur le lien pour modifier votre mot de passe : http://localhost/lab/uteach/user/passwordReset?email='.$user->getEmail();
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
 	}
 
@@ -55,7 +55,7 @@ class EmailDelegate {
 			LogsUtils::process("logs", "Send email", $mail->ErrorInfo);
 			return TRUE;
 		}
-	
+
 	}
 
 	private function setSMTP(&$mail) {
