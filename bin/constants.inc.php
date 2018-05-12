@@ -85,7 +85,7 @@ define("USER_LOGIN_BACK_LINK", "user/login/back");
 define("USER_DISCONNECT_LINK", "user/disconnect");
 define("USER_EMAIL_CONFIRM_LINK", "user/emailConfirm");
 define("USER_PASSWORD_RESET_LINK", "user/passwordReset");
-define("USER_PASSWORD_RESET_EMAIL_LINK", "user/passwordResetEmailAction");
+define("USER_PASSWORD_RESET_EMAIL_LINK", "user/passwordResetEmail");
 
 define("TRAINNING_TRAINNING_BACK_LINK", "trainning/trainning/back");
 define("TRAINNING_TRAINNING_FRONT_LINK", "trainning/trainning");

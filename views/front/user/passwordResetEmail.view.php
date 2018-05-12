@@ -1,12 +1,17 @@
-<section id="resetPassword" class="container-fluid">
+<section id="resetPasswordEmail" class="container-fluid">
   <div class="row">
       <div class="front-title">
-        <h2>Reset password</h2>
+        <h2>Password reset</h2>
       </div>
   </div>
-  <div class="row emailConfirm M--center M--middle">
-    <div class="M8 login-container">
-        <?php $this->addModal("form", $config, $errors); ?>
+  <div class="container main-section">
+    <?php ViewUtils::getErrors($errors) ?>
+    <div class="row M--center X--center">
+      <div class="M6 X12 login-container">
+        <div class="M12 X12">
+          <?php $this->addModal("form", $config, $errors); ?>
+        </div>
+      </div>
     </div>
   </div>
 </section>
