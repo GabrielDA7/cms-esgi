@@ -5,41 +5,42 @@ class UserDelegate extends ObjectDelegate {
 		ObjectDelegate::__construct($data, USER_CLASS_NAME);
 	}
 
-	public function getById(&$data, $params) {
-		$object = $data[$this->lowerCaseFirstObjectName];
+	public function getById(&$data, $params, $othersTablesColumns = []) {
+		$user = $data['user'];
 		$id = (isset($params['POST']['id'])) ? $params['POST']['id'] : $_SESSION['userId'];
-		$object->setId($id);
-		$object = $object->getById();
-		$data[$this->lowerCaseFirstObjectName] = $object;
+		$user->setId($id);
+		$user = $user->getById();
+		$data['user'] = $user;
 	}
 
-	public function add($data, $params) {
+	public function add(&$data, $params) {
 		if ($data['errors'] === FALSE) {
-			$object = $data[$this->lowerCaseFirstObjectName];
-			ClassUtils::setObjectColumns($object, $params['POST']);
-			$object->generateToken();
-			$object->generateEmailConfirm();
-			$object->insert();
-			RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$object->getEmail()]);
+			$user = $data['user'];
+			ClassUtils::setObjectColumns($user, $params['POST']);
+			$user->generateToken();
+			$user->generateEmailConfirm();
+			$user->insert();
+			RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$user->getEmail()]);
 		}
 	}
 
 	public function update(&$data, $params, $redirectFront, $redirectBack) {
 		if ($data['errors'] === FALSE) {
-			$object = $data[$this->lowerCaseFirstObjectName];
-			ClassUtils::setObjectColumns($object, $params['POST']);
+			$user = $data['user'];
+			ClassUtils::setObjectColumns($user, $params['POST']);
 			if (ClassUtils::getCallingFunction() != "passwordResetAction") {
-				$object->setPwd(null);
+				$user->setPwd(null);
 			}
-			$object->unsetRoleIfNotAdmin();
-			$object->update();
+			$user->unsetRoleIfNotAdmin();
+			$user->update();
 			RedirectUtils::redirect((isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 		}
 	}
 
 	public function login(&$data, $params) {
 		if ($data['errors'] === FALSE) {
-			$user = ClassUtils::constructObjectWithParameters($params['POST'], USER_CLASS_NAME);
+			$user = $data['user'];
+			ClassUtils::setObjectColumns($user, $params['POST']);
 			$data['wrongPassword'] = $user->login();
 		}
 	}
