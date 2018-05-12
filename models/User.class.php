@@ -221,7 +221,6 @@ class User extends UserSql {
 	}
 
 	public static function configPasswordResetEmailForm($data){
-		//update
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_PASSWORD_RESET_LINK, "submit"=>"Send", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
@@ -233,6 +232,30 @@ class User extends UserSql {
 												"required"=>true,
 												"class"=>"form-group input"
 											]
+							]
+				];
+	}
+
+	public static function configPasswordResetForm($data){
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_PASSWORD_RESET_LINK, "submit"=>"Send", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"input"=>
+							[
+								"pwd"=>
+											[
+												"type"=>"password",
+												"placeholder"=>"Password",
+												"required"=>true,
+												"class"=>"form-group input"
+											],
+								"pwdConfirmation"=>
+											[
+												"type"=>"password",
+												"placeholder"=>"Password confirmation",
+												"required"=>true,
+												"confirm"=>"pwd",
+												"class"=>"form-group input"
+											],
 							]
 				];
 	}
