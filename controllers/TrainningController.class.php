@@ -63,7 +63,7 @@ class TrainningController implements ControllerInterface {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_TRAINNING_VIEWS);
-		$this->objectDelegate->getById($this->data, $params);
+		$this->objectDelegate->getById($this->data, $params, [CHAPTER_CLASS_NAME]);
 		$view = new View($this->data);
 	}
 
