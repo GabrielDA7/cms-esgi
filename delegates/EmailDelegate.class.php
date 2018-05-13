@@ -14,7 +14,11 @@ class EmailDelegate {
 		$user = $data['users'][0];
 		$user->generateEmailConfirm();
 		$subject = 'Confirmation de l\'email';
-		$body = 'Cliquer sur le lien pour confirmer votre inscription : ' . DIRNAME . 'user/emailConfirm?id=' . $user->getId() . '&emailConfirm=' . $user->getEmailConfirm();
+		$body = '<form action="localhost' .  DIRNAME . USER_EMAIL_CONFIRM_LINK .'" method="POST">
+		          <input type="hidden" name="id" value="'. $user->getId() .'">
+		          <input type="hidden" name="pwdReset" value="'. $user->getEmailConfirm() .'">
+		          <input type="submit" name="Confirm email" value="Confirm email">
+		        </form>';
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
 	}
 
@@ -25,7 +29,11 @@ class EmailDelegate {
 		$user = $data['users'][0];
 		$user->generatePwdReset();
 		$subject = 'modifier mot de passe';
-		$body = 'Cliquer sur le lien pour modifier votre mot de passe : ' . DIRNAME . 'user/passwordReset?id=' . $user->getId() . "&pwdReset=" .  $user->getPwdReset();
+		$body = '<form action="localhost' .  DIRNAME . USER_PASSWORD_RESET_LINK .'" method="POST">
+		          <input type="hidden" name="id" value="'. $user->getId() .'">
+		          <input type="hidden" name="pwdReset" value="'. $user->getPwdReset() .'">
+		          <input type="submit" name="Reset Password" value="Reset Password">
+		        </form>';
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
 		$data['user'] = $user;
 	}
@@ -36,7 +44,7 @@ class EmailDelegate {
 		    //Server settings
 		    $this->setSMTP($mail);
 		    //Recipients
-		    $mail->setFrom('decultot.louis@gmail.com', 'Mailer');
+		    $mail->setFrom('decultot.louis@gmail.com', 'Uteach');
 		    $mail->addAddress($email);
 
 		    if (!empty($attachments)) {

@@ -55,26 +55,24 @@ class UserDelegate extends ObjectDelegate {
 	}
 
 	public function checkEmailConfirmation(&$data, $params) {
-		$this->getByParameters($data, $params['POST']);
+		$this->getByParameters($data, $params['GET']);
 		if (empty($data['users'])) {
 			RedirectUtils::redirect404();
 		}
-		$user[0]->setEmailConfirm("1");
-		$data['user'] = $user[0];
+		$user = $data['users'][0];
+		$user->setEmailConfirm("1");
+		$data['user'] = $user;
 		$this->update($data, null, USER_LOGIN_FRONT_LINK);
 	}
 
 	public function checkPasswordReset(&$data, $params) {
+		if ($data['user']->getpwdReset() !==  $params['POST']['pwdReset']) {
+			RedirectUtils::redirect404();
+		}
 		if ($data['errors'] === FALSE) {
-			$user->setPwdReset("1");
-			$user->setPwd($params['POST']['pwd']);
-			$data['user'] = $user;
+			$data['user']->setPwdReset("1");
+			$data['user']->setPwd($params['POST']['pwd']);
 			$this->update($data, null, USER_LOGIN_FRONT_LINK);
-		} else {
-			$this->getByParameters($data, $params['POST']);
-			if (empty($data['users'])) {
-				RedirectUtils::redirect404();
-			}
 		}
 	}
 }

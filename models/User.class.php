@@ -167,7 +167,7 @@ class User extends UserSql {
 	/**
 	* Configuration of the login form user
 	*/
-	public static function configEditForm($data){
+	public static function configEditForm($data) {
 		$user = $data['user'];
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit"],
@@ -226,7 +226,7 @@ class User extends UserSql {
 				];
 	}
 
-	public static function configPasswordResetEmailForm($data){
+	public static function configPasswordResetEmailForm($data) {
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_PASSWORD_RESET_LINK, "submit"=>"Send", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
@@ -242,11 +242,22 @@ class User extends UserSql {
 				];
 	}
 
-	public static function configPasswordResetForm($data){
+	public static function configPasswordResetForm($data) {
+		$user = $data['user'];
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_PASSWORD_RESET_LINK, "submit"=>"Send", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
+								"id"=>
+											[
+												"type"=>"hidden",
+												"value"=>$user->getId()
+											],
+								"pwdReset"=>
+											[
+												"type"=>"hidden",
+												"value"=>$user->getPwdReset()
+											],
 								"pwd"=>
 											[
 												"type"=>"password",

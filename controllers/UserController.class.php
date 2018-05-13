@@ -113,6 +113,7 @@ class UserController implements ControllerInterface {
 			$view = new View($this->data);
 		} else {
 			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PASSWORD_RESET_VIEWS);
+			$this->userDelegate->getById($this->data, $params);
 			$this->formDelegate->process($this->data, $params);
 			$this->userDelegate->checkPasswordReset($this->data, $params);
 			$view = new View($this->data);
