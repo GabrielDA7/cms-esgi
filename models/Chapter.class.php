@@ -43,7 +43,8 @@ class Chapter extends BaseSql {
 												"maxString"=>100,
 												"minString"=>2,
 												"required"=>true,
-												"class"=>"form-group input"
+												"class"=>"form-group input",
+												"value"=>(isset($_POST["title"])? $_POST["title"] : "")
 											],
 								"image"=>
 											[
@@ -64,8 +65,17 @@ class Chapter extends BaseSql {
 														"option"=>
 																	[
 																		"" => "Pas de formation"
-																	]
+																	],
+														"value"=>(isset($_POST["trainning"])? $_POST["trainning"] : "Pas de formation")
 													],
+								"number"=>
+												[
+													"type"=>"number",
+													"class"=>"form-group row input-small input",
+													"required"=>true,
+													"value"=>(isset($_POST["number"])? $_POST["number"] : ""),
+
+												],
 								"author"=>
 											[
 										         "type"=>"hidden",

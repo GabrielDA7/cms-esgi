@@ -10,7 +10,7 @@
 
   <div class="list-init-object">
     <span>chapter</span>
-    <span><?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK; ?></span>
+    <span><?= DIRNAME . CHAPTER_CHAPTER_FRONT_LINK; ?></span>
   </div>
 
   <div id="data-list" class="row row-padding">

@@ -245,7 +245,9 @@ function load_data_table(page, limit, action, order='asc', column_name) {
           html+="<tr>";
           $.each(data["tableConfig"]["cells"], function(k,val) {
             if(k == "id") {
-              html+="<td><div class='actions-table'><a href='#edit/'" + element[k] + "><i class='fas fa-edit'></i></a><a href='#delete/'" + element[k] + "><i class='far fa-trash-alt'></i></a></div></td>";
+              html += "<td><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table'type='submit' name='delete'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
+              html+="<form class='form_actions' method='POST' action='" + dirname + object + "/edit'><button class='button_table' type='submit' name='edit'><i class='fas fa-edit'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>";
+              html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='delete'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
             } else {
               if ( $.isArray(element[k])) {
                 html+="<td>"+element[k][0].title+"</td>";
@@ -330,10 +332,10 @@ function addChapterSubpart(){
               "</div>" +
               "<div class='content-hidden'>" +
                 "<div class='row'>" +
-                  "<input type='text' name='parts[part"+ idPart +"][title]' class='input form-group' placeholder='Title'>" +
+                  "<input type='text' name='parts["+ idPart +"][title]' class='input form-group' placeholder='Title'>" +
                 "</div>" +
                 "<div class='row'>" +
-                  "<textarea name='parts[part"+ idPart +"][content]' class='form-group input' placeholder='Content'></textarea>" +
+                  "<textarea name='parts["+ idPart +"][content]' class='form-group input' placeholder='Content'></textarea>" +
                 "</div>" +
               "</div>" +
              "</div>";

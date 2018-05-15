@@ -1287,6 +1287,23 @@ textarea {
   background-color: white;
   padding-left: 10px; }
 
+.form_actions {
+  display: inline-block; }
+
+.fa-trash-alt {
+  color: red; }
+
+.fa-edit {
+  color: blue; }
+
+.fa-share-square {
+  color: green; }
+
+.button_table {
+  font-size: 18px;
+  border: none;
+  background-color: white; }
+
 .wrapper-icon {
   position: relative; }
 
