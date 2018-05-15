@@ -31,6 +31,15 @@ class UserController implements ControllerInterface {
 		$view = new View($this->data);
 	}
 
+	public function profileAction($params) {
+		if (!isset($_SESSION['userId'])) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
+			RedirectUtils::redirect404();
+		}
+		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PROFILE_VIEWS);
+		$view = new View($this->data);
+	}
+
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
@@ -106,6 +115,7 @@ class UserController implements ControllerInterface {
 			RedirectUtils::redirect404();
 		}
 		if (isset($params['POST']['email'])) {
+			
 			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS);
 			$this->userDelegate->getByParameters($this->data, $params['POST']);
 			$this->emailDelegate->sendPasswordReset($this->data);

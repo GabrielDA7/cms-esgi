@@ -44,7 +44,7 @@ class UserDelegate extends ObjectDelegate {
 		if ($data['errors'] === FALSE) {
 			$user = $data['user'];
 			ClassUtils::setObjectColumns($user, $params['POST']);
-			$data['wrongPassword'] = $user->login();
+			$data['errors'] = $user->login();
 		}
 	}
 

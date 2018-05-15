@@ -1,7 +1,0 @@
-IP + Date : ::1 - April 17, 2018, 8:32 am
------------------
-Url : http://localhost:8080/Uteach/user/add
-Action : Send email
-Value : SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting
-Date : 04/17/2018 08:32:41 am
--------------------------------------------------------

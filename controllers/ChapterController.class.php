@@ -34,7 +34,7 @@ class ChapterController implements ControllerInterface{
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, CHAPTER_EDIT_BACK_VIEWS);
-		$this->objectDelegate->pushObjectById($this->data, $params['GET']['id']);
+		$this->objectDelegate->getById($this->data, $params, [PART_CLASS_NAME]);
 		$this->formDelegate->process($this->data, $params);
 		$this->objectDelegate->update($this->data, $params, "", CHAPTER_LIST_BACK_LINK);
 		$view = new View($this->data);
@@ -61,7 +61,7 @@ class ChapterController implements ControllerInterface{
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, CHAPTER_CHAPTER_VIEWS);
-		$this->objectDelegate->pushObjectById($this->data, $params['GET']['id'], [PART_CLASS_NAME]);
+		$this->objectDelegate->getById($this->data, $params, [PART_CLASS_NAME]);
 		$view = new View($this->data);
 	}
 }

@@ -36,7 +36,7 @@ class TrainningController implements ControllerInterface {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRAINNING_EDIT_VIEWS);
-		$this->objectDelegate->pushObjectById($this->data, $params['GET']['id']);
+		$this->objectDelegate->getById($this->data, $params, [CHAPTER_CLASS_NAME]);
 		$this->formDelegate->process($this->data, $params);
 		$this->objectDelegate->update($this->data, $params, "", TRAINNING_LIST_BACK_LINK);
 		$view = new View($this->data);
@@ -65,12 +65,6 @@ class TrainningController implements ControllerInterface {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_TRAINNING_VIEWS);
 		$this->objectDelegate->getById($this->data, $params, [CHAPTER_CLASS_NAME]);
 		$view = new View($this->data);
-	}
-
-	/**
-	 * Get the asssocieted lessons at the current trainning
-	 */
-	public function lessonsAction($params) {
 	}
 }
 ?>

@@ -10,7 +10,7 @@ class UserSql extends BaseSql {
 		if (!empty($user)) {
 			$this->setSession($user[0]);
 		} else {
-			return TRUE;
+			return ["Les identifiants ne sont pas valident"];
 		}
 	}
 
