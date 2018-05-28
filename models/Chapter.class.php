@@ -58,7 +58,7 @@ class Chapter extends BaseSql {
 											                    "jpeg"
 										                    ]
 								       		],
-								"trainning"=>
+								"trainning_id"=>
 													[
 														"type"=>"select",
 														"class"=>"form-group row select-formation input-medium",
@@ -146,4 +146,3 @@ class Chapter extends BaseSql {
 	public function setTrainningId($trainning_id) { $this->trainning_id = $trainning_id; }
 	public function setTrainning($trainning) 	  { $this->trainning = $trainning;       }
 }
-?>

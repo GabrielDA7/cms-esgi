@@ -383,4 +383,3 @@ class User extends UserSql {
 	public function setStatus($status) 			   { $this->status = $status; 							 }
 	public function setRole($role) 			   	   { $this->role = $role; 							 	 }  
 }
-?>

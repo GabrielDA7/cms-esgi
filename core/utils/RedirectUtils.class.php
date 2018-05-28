@@ -1,11 +1,11 @@
 <?php
 class RedirectUtils {
 	
-	public static  function redirect($url = "", $getParameters = "") {
-		if ($getParameters != "") {
-			$getParameters = FormatUtils::formatMapToQuerryString($getParameters);
+	public static  function redirect($url = "", $urlGetParameters = "") {
+		if ($urlGetParameters != "") {
+			$urlGetParameters = FormatUtils::formatMapToQuerryString($urlGetParameters);
 		}
-		header(LOCATION . DIRNAME . $url . $getParameters);
+		header(LOCATION . DIRNAME . $url . $urlGetParameters);
 		exit();
 	}
 
@@ -14,4 +14,3 @@ class RedirectUtils {
 		exit();
 	}
 }
-?>

@@ -119,4 +119,3 @@ class Trainning extends BaseSql {
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; }
 	public function setChapters($chapters) 		   { $this->chapters = $chapters; 	 	  }
 }
-?>

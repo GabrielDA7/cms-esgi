@@ -191,4 +191,3 @@ class Installation {
   	public function setDbport($dbport) 						{ $this->dbport = $dbport; 						 					 }
   	public function setInstallationDone($installation_Done) { ($installation_Done == "true")?$this->installation_Done=TRUE:null; }
  }
-?>

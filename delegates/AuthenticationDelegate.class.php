@@ -52,4 +52,3 @@ class AuthenticationDelegate {
 		$data['template'] = FRONT_TEMPLATE;
 	}
 }
-?>

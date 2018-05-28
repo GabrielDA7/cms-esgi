@@ -52,4 +52,3 @@ class ListDisplayDataDelegate {
 
   public function setObjectName($objectName) { $this->objectName = $objectName; }
 }
-?>

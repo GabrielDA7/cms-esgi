@@ -22,4 +22,3 @@ class PaimentController implements ControllerInterface {
 	}
 
 }
-?>

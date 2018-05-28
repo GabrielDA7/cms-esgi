@@ -23,4 +23,3 @@ class IndexController {
 		$view = new View($this->data);
 	}
 }
-?>

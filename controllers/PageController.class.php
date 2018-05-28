@@ -18,4 +18,3 @@ class PageController implements ControllerInterface {
 	}
 
 }
-?>

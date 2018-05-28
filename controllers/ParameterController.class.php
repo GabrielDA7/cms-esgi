@@ -18,4 +18,3 @@ class ParameterController implements ControllerInterface {
 	}
 
 }
-?>

@@ -49,4 +49,3 @@ class FormatUtils {
 		return $separedValues;
 	}
 }
-?>

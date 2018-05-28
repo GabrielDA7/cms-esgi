@@ -39,4 +39,3 @@ class AjaxController {
 		echo FormatUtils::formatToJson($array);
 	}
 }
-?>

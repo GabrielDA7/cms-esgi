@@ -81,4 +81,3 @@ class FileDelegate {
 	public function getObjectName() { return $this->objectName; }
 	public function setObjectName($objectName) { $this->objectName = $objectName; }
 }
-?>

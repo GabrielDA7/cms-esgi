@@ -67,4 +67,3 @@ class TrainningController implements ControllerInterface {
 		$view = new View($this->data);
 	}
 }
-?>

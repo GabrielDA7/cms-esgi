@@ -75,4 +75,3 @@ class ObjectDelegate {
 	public function setObjectName($objectName) 				 			   { $this->objectName = $objectName; 			  				  }
 	public function setLowerCaseFirstObjectName($lowerCaseFirstObjectName) { $this->lowerCaseFirstObjectName = $lowerCaseFirstObjectName; }
 }
-?>

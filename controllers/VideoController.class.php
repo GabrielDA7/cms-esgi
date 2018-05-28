@@ -34,4 +34,3 @@ class VideoController implements ControllerInterface {
 	public function videoAction($params) {
 	}
 }
-?>

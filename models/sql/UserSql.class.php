@@ -52,4 +52,3 @@ class UserSql extends BaseSql {
 		return (!empty($adminUser)? TRUE : FALSE);
 	}
 }
-?>

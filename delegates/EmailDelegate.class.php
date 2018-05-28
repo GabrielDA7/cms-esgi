@@ -72,8 +72,8 @@ class EmailDelegate {
 		$mail->isSMTP();                                      // Set mailer to use SMTP
 	    $mail->Host = gethostbyname('smtp.gmail.com'); 		  // Specify main and backup SMTP servers
 	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-	    $mail->Username = 'gabrieldaoud3112@gmail.com';         // SMTP username
-      	$mail->Password = '1234ggaabb78$#';                         // SMTP password
+	    $mail->Username = 'decultot.louis@gmail.com';         // SMTP username
+      	$mail->Password = 'nh9quc83';                         // SMTP password
 	    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 	    $mail->Port = 465;                                    // TCP port to connect to
 	    $mail->SMTPOptions = array(
@@ -85,4 +85,3 @@ class EmailDelegate {
 		);
 	}
 }
-?>

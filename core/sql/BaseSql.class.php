@@ -135,4 +135,3 @@ class BaseSql extends QueryConstructorSql {
 		$query->bindParam(':keyword', $keyword, PDO::PARAM_STR);
 	}
 }
-?>

@@ -142,4 +142,3 @@ class FormDelegate {
 	public function getObjectName() { return $this->objectName; }
 	public function setObjectName($objectName) { $this->objectName = $objectName; }
 }
-?>

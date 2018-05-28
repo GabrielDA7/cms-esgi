@@ -17,4 +17,3 @@ class CommentController implements ControllerInterface {
 	public function listAction($params) {
 	}
 }
-?>

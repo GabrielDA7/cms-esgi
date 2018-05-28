@@ -18,12 +18,13 @@ class classUtils {
 	public static function setObjectColumns(&$object, $columns) {
 		if (is_array($columns) || is_object($columns)) {
 			foreach ($columns as $column => $value) {
-				if (!is_numeric($column)) {
-					self::removeUnderScoreFromForeignKeyColumn($column);
-					$setter = 'set'.ucfirst($column);
-					if (method_exists($object, $setter)) {
-						$object->$setter($value);
-					}
+				if (is_numeric($column)) {
+					continue;
+				}
+				self::removeUnderScoreFromForeignKeyColumn($column);
+				$setter = 'set'.ucfirst($column);
+				if (method_exists($object, $setter)) {
+					$object->$setter($value);
 				}
 			}
 		}
@@ -108,4 +109,3 @@ class classUtils {
 	    }
   	}
 }
-?>

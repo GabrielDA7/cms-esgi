@@ -65,4 +65,3 @@ class ChapterController implements ControllerInterface{
 		$view = new View($this->data);
 	}
 }
-?>

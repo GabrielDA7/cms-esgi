@@ -17,4 +17,3 @@ class PremiumController implements ControllerInterface {
 	public function listAction($params) {
 	}
 }
-?>

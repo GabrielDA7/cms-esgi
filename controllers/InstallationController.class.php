@@ -71,4 +71,3 @@ class InstallationController {
 		$this->objectDelegate->setObjectName(USER_CLASS_NAME);
 	}
 }
-?>

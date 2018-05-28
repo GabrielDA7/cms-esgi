@@ -11,6 +11,7 @@ class Part extends BaseSql {
 	protected $videos = [];
 
 	protected $chapter_id = null;
+	protected $chapter = null;
 	
 	public function __construct() {
 		BaseSql::__construct();
@@ -36,6 +37,7 @@ class Part extends BaseSql {
 	public function getAuthor() 	 { return $this->author; 	 }
 	public function getVideos() 	 { return $this->videos; 	 }
 	public function getChapterId() 	 { return $this->chapter_id; }
+	public function getChapter() 	 { return $this->chapter; 	 }
 
 
 	public function setId($id) 					  { $this->id = $id; 				 }
@@ -46,5 +48,5 @@ class Part extends BaseSql {
 	public function setAuthor($author) 			  { $this->author = $author; 		 }
 	public function setVideos($videos) 			  { $this->videos = $videos; 		 }
 	public function setChapterId($chapter_id) 	  { $this->chapter_id = $chapter_id; }
+	public function setChapter($chapter) 	  	  { $this->chapter = $chapter;	 	 }
 }
-?>
