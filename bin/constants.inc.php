@@ -148,6 +148,7 @@ define("TRAINNING_ADD_VIEWS",   	  ["front"=> "",   			       "back" => "addTrai
 define("CHAPTER_CHAPTER_VIEWS", ["front"=> "chapterChapter", "back" => "chapterChapterBack"]);
 define("CHAPTER_ADD_VIEWS",     ["front"=> "", 			     "back" => "addChapterBack"]);
 define("CHAPTER_LIST_VIEWS",    ["front"=> "listChapter",    "back" => "listChapterBack"]);
+define("CHAPTER_EDIT_VIEWS",    ["front"=> "",    			 "back" => "editChapterBack"]);
 
 /******************************
 ********** ROLE ***************

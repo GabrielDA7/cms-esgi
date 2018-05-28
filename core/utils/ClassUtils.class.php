@@ -90,7 +90,7 @@ class classUtils {
 		$columns = $object->getColumns();
 		$foreignKeyColumns = [];
 		foreach ($columns as $key => $value) {
-			if (strpos($key, 'id') && strlen($key) > 2) {
+			if (strpos($key, '_id')) {
 				$foreignKeyColumns[$key] = $value;
 			}
 		}

@@ -29,11 +29,11 @@ class ChapterController implements ControllerInterface{
 	}
 
 	public function editAction($params) {
-		if(!isset($params['GET']['id']) || $_SESSION['admin'] !== TRUE) {
+		if(!isset($params['GET']['id']) || !isAdmin()) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE, CHAPTER_EDIT_BACK_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, CHAPTER_EDIT_VIEWS);
 		$this->objectDelegate->getById($this->data, $params, [PART_CLASS_NAME]);
 		$this->formDelegate->process($this->data, $params);
 		$this->objectDelegate->update($this->data, $params, "", CHAPTER_LIST_BACK_LINK);
@@ -41,7 +41,7 @@ class ChapterController implements ControllerInterface{
 	}
 
 	public function deleteAction($params) {
-		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
+		if(!isset($params['POST']['submit']) || !isAdmin()) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}

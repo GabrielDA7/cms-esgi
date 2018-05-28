@@ -95,6 +95,31 @@ class Chapter extends BaseSql {
 				];
 	}
 
+	public static function configEditForm($data) {
+		$chapter = $data['chapter'];
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit"],
+					"input"=>
+							[
+								"id"=>
+											[
+												"type"=>"hidden",
+												"placeholder"=>$chapter->getId(),
+												"value"=>$chapter->getId(),
+												"required"=>true,
+											],
+								"title"=>
+											[
+												"type"=>"text",
+												"placeholder"=>$chapter->getTitle(),
+												"maxString"=>100,
+												"minString"=>2,
+												"class"=>"form-group input"
+											]
+							]
+				];
+	}
+
 	public static function configTable(){
 		return 	[
 					"config"=>["id"=>"pagination_data", "class"=>"table_responsive"],
