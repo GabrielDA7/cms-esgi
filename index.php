@@ -15,9 +15,14 @@ function aaaa($var) {
 	var_dump($var);
 	echo "</pre>";
 }
+/* DLEETE */
 
 function isAdmin() {
 	return isset($_SESSION['admin']) && $_SESSION['admin'] === TRUE;
+}
+
+function isLogged() {
+	return isset($_SESSION['userId']);
 }
 
 function autoLoadExistingClass($class) {
@@ -47,19 +52,19 @@ function searchFile($dirs, $file_to_search) {
 }
 
 function getControllerName($uriExploded) {
-	$controllerName = (empty($uriExploded[0]))?INDEX_LABEL:$uriExploded[0];
-	$controllerName = ucfirst(strtolower($controllerName)).CONTROLLER_LABEL;
+	$controllerName = (empty($uriExploded[0])) ? INDEX_LABEL : $uriExploded[0];
+	$controllerName = ucfirst(strtolower($controllerName)) . CONTROLLER_LABEL;
 	return $controllerName;
 }
 
 function getActionName($uriExploded) {
-	$actionName = (empty($uriExploded[1]))?INDEX_LABEL:$uriExploded[1];
-	$actionName = strtolower($actionName).ACTION_LABEL;
+	$actionName = (empty($uriExploded[1])) ? INDEX_LABEL : $uriExploded[1];
+	$actionName = strtolower($actionName) . ACTION_LABEL;
 	return $actionName;
 }
 
 function getControllerAndAction($controllerName, $actionName, $params) {
-	$controllerPath = searchFile(array(CONTROLLERS_FOLDER_NAME), $controllerName.CLASS_EXTENSION);
+	$controllerPath = searchFile(array(CONTROLLERS_FOLDER_NAME), $controllerName . CLASS_EXTENSION);
 	if (isset($controllerPath)) {
 		include $controllerPath;
 		if (class_exists($controllerName)) {
@@ -104,4 +109,3 @@ $uriExploded = array_values($uriExploded);
 $params = ["POST" => $_POST, "GET" => $_GET, "FILES" => $_FILES, "URL" => $uriExploded];
 
 getControllerAndAction($controllerName, $actionName, $params);
-?>

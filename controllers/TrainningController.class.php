@@ -31,7 +31,7 @@ class TrainningController implements ControllerInterface {
 	}
 
 	public function editAction($params) {
-		if(!isset($params['GET']['id']) || $_SESSION['admin'] !== TRUE) {
+		if(!isset($params['GET']['id']) || !isAdmin()) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
@@ -43,7 +43,7 @@ class TrainningController implements ControllerInterface {
 	}
 
 	public function deleteAction($params) {
-		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
+		if(!isset($params['POST']['submit']) || !isAdmin()) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}

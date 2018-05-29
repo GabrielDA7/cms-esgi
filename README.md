@@ -19,7 +19,7 @@ Remove database columns from objects (problem when object db is used more than o
 -- DONE -- search : 
   create a search config on all classes to set the possible columns to search (It's to not search with id column with a string for example) 
  
-rename the files where there are moved in the server (ex create a folder wich is named formation and put the formations into it and give a name like formation + id) 
+rename the files where there are moved in the server (ex create a folder wich is named formation and put the formations into it and give a name like formation + id) -> do for the object class a function who return the file path (ex : video is : DIR . public.video . etc)
  
 for the parts find a way to save the location of the videos and the pictures  
   ex : %image1% will be replace by  

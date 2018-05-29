@@ -9,6 +9,7 @@ class FormDelegate {
 
 	public function process(&$data, $params) {
 		$data['config'] = $this->getFormConfig($params['URL'], $data);
+		$data['commentConfig'] = $this->getCommentFormConfig();
 		$data['errors'] = null;
 		if(isset($params['POST']['submit'])) {
 			$data['errors'] = $this->checkForm($data['config'], $params["POST"], $params['FILES']);
@@ -84,6 +85,10 @@ class FormDelegate {
 	private function getFormConfig($url, $data) {
 		$configName = "config" . ucfirst($url[1]) . "Form";
 		return $this->objectName::$configName($data);
+	}
+
+	private function getCommentFormConfig() {
+		
 	}
 
 	private function isEmptyPost($post) {

@@ -48,7 +48,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function editAction($params) {
-		if((!isset($params['POST']['id']) || !$_SESSION['admin'])  && !isset($_SESSION['userId'])) {
+		if((!isset($params['POST']['id']) || !isAdmin()  && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
@@ -61,7 +61,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function deleteAction($params) {
-		if(!isset($params['POST']['submit']) || $_SESSION['admin'] !== TRUE) {
+		if(!isset($params['POST']['submit']) || !isAdmin()) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}

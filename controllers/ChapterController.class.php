@@ -1,6 +1,5 @@
 <?php
-include "core/interfaces/ControllerInterface.php";
-class ChapterController implements ControllerInterface{
+class ChapterController {
 
 	private $authenticationDelegate;
 	private $objectDelegate;
