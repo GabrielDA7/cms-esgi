@@ -1,43 +1,35 @@
-<form action="<?= DIRNAME.USER_LIST_BACK_LINK;?>" method="POST">
-        <label for="userName">  Pseudo           </label> <input type="text"     name="userName">  </br>
-        <label for="name">      Prenom           </label> <input type="text"     name="name">      </br>
-        <label for="firstName"> Nom              </label> <input type="text"     name="firstName"> </br>
-        <label for="email">     Email            </label> <input type="email"    name="email">     </br>
-        <label for="age">       Age              </label> <input type="number"   name="age">       </br>
-        <input type="submit" name="submit" value="Rechercher">
-</form>
-<form action="<?= DIRNAME.USER_LIST_BACK_LINK;?>" method="POST">
-        <input type="submit" name="reset" value="Reset">
-</form>
-<table>
-        <tr>
-                <th>Id</th>
-                <th>Pseudo</th>
-                <th>Prenom</th>
-                <th>Nom</th>
-                <th>Age</th>
-                <th>Supprimer</th>
-                <th>Editer</th>
-        </tr>
-        <?php foreach ($users as $user) { ?>
-                <tr>
-                        <th><?= $user->getId(); ?></th>
-                        <th><?= $user->getUserName(); ?></th>
-                        <th><?= $user->getName(); ?></th>
-                        <th><?= $user->getFirstName(); ?></th>
-                        <th><?= $user->getAge(); ?></th>
-                        <th>
-                                <form action="<?= DIRNAME.USER_DELETE_BACK_LINK;?>" method="POST">
-                                        <input type="hidden" value="<?= $user->getId(); ?>" name="id">
-                                        <input type="submit" name="submit" value="X">
-                                </form>
-                        </th>
-                        <th>
-                                <form action="<?= DIRNAME.USER_EDIT_BACK_LINK;?>" method="POST">
-                                        <input type="hidden" value="<?= $user->getId(); ?>" name="id">
-                                        <input type="submit" name="submit" value="edit">
-                                </form>
-                        </th>
-                </tr>
-        <?php } ?>
-</table>
+          <section id="dashboard-list-user" class="table-data">
+
+                  <div class="row">
+                    <div class="M4">
+                      <div class="back-title">
+                        <h1>List of Users</h1>
+                        <div class="hr-separation"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="list-init-object">
+                    <span>user</span>
+                    <span>users</span>
+                  </div>
+
+                  <div class="row row-tools">
+                    <div class="M4">
+                      <div class="wrapper-icon">
+                          <i class="fas fa-search icon-left"></i>
+                          <input class="input-medium input-icon" type="text">
+                      </div>
+                    </div>
+                    <div class="M2 M--offset6">
+                      <a class="btn-extra-small btn-filled-orange btn btn-icon" href="<?= DIRNAME . USER_ADD_BACK_LINK; ?>">Add<i class="fas fa-plus"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="row M--center X--center">
+                    <div class="M12">
+                      <?php $this->addModal("table", $tableConfig); ?>
+                    </div>
+                  </div>
+
+                </section>

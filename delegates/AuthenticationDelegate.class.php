@@ -3,53 +3,48 @@ class AuthenticationDelegate {
 
 	public function __construct() {}
 
-	public function process(&$data, $params, $checkToken = FALSE) {
-		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) { 
+	public function process(&$data, $params, $checkToken, $views = [], $templates = DEFAULT_TEMPLATES) {
+		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) {
       		$this->checkTokenValidity(); 
-    	} 
-    	if (!empty($data)) { 
-      		$this->getViewTemplateNames($data, $params['URL']); 
+    	}
+    	if (!empty($views)) { 
+      		$this->getViewTemplateNames($data, $params['URL'], $views, $templates); 
    	 	} else {
    	 		$this->setDefaultViewTemplateNames($data); 
    	 	}
 	}
 
 	private function checkTokenValidity() {
-		if (isset($_SESSION['userId']) && isset($_SESSION['token'])) {
-			$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
-			$user = $user->getById();
-			if ($user->getToken() == $_SESSION['token']) {
-				$_SESSION['token'] = $user->generateToken();
-				$user->setPwd(null);
-				$user->update();
-			} else {
-				return404View();
-			}
-		} else {
-			return404View();
+		if (!isset($_SESSION['userId']) || !isset($_SESSION['token'])) {
+			RedirectUtils::redirect404();
 		}
+		$user = ClassUtils::constructObjectWithId($_SESSION['userId'], USER_CLASS_NAME);
+		$user = $user->getById();
+		if ($user->getToken() != $_SESSION['token']) {
+			RedirectUtils::redirect(USER_DISCONNECT_LINK, ["disconnect"=>1]);
+		}
+		$_SESSION['token'] = $user->generateToken();
+		$user->setPwd(null);
+		$user->update();
 	}
 
-	private function getViewTemplateNames(&$data, $url) {
+	private function getViewTemplateNames(&$data, $url, $views, $templates) {
 		if ($this->checkBackOfficeViewPermission($url)) {
-			$data['view'] = $data['backView'];
-			$data['template'] = $data['backTemplate'];
+			$data['view'] = $views['back'];
+			$data['template'] = $templates['back'];
 		} else {
-			$data['view'] = $data['frontView'];
-			$data['template'] = $data['frontTemplate'];
+			$data['view'] = $views['front'];
+			$data['template'] = $templates['front'];
 		}
 	}
 
 	private function checkBackOfficeViewPermission($url) {
-		if (isset($data['backView'])) {
-			if (isset($url[2]) && $url[2] === "back" || isset($url[1]) && $url[1] === "login") {
-				if (isset($_SESSION['admin']) && $_SESSION['admin']) {
-					return TRUE;
-				}
-			} 
-		} else {
-			return FALSE;
-		}
+		if (isset($url[2]) && $url[2] === "back" || isset($url[1]) && $url[1] === "login") {
+			if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+				return TRUE;
+			}
+		} 
+		return FALSE;
 	}
 
 	private function setDefaultViewTemplateNames(&$data) {
@@ -57,4 +52,3 @@ class AuthenticationDelegate {
 		$data['template'] = FRONT_TEMPLATE;
 	}
 }
-?>

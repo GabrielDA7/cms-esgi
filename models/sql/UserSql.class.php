@@ -10,13 +10,13 @@ class UserSql extends BaseSql {
 		if (!empty($user)) {
 			$this->setSession($user[0]);
 		} else {
-			return TRUE;
+			return ["Les identifiants ne sont pas valident"];
 		}
 	}
 
 	public function disconnect() {
-		session_destroy();
 		$this->setConnectedStatus($this, DISCONNECTED_STATUS);
+		session_destroy();
 	}
 
 	private function setSession($user) {
@@ -27,9 +27,9 @@ class UserSql extends BaseSql {
 		$this->setConnectedStatus($user, CONNECTED_STATUS);
 		if ($this->checkAdminStatus($user->getid()) === TRUE) {
 			$_SESSION['admin'] = TRUE;
-			header(LOCATION . DIRNAME . STATISTIC_INDEX_BACK_LINK);
+			RedirectUtils::redirect(STATISTIC_INDEX_BACK_LINK);
 		} else {
-			header(LOCATION . DIRNAME);
+			RedirectUtils::redirect();
 		}
 	}
 
@@ -52,4 +52,3 @@ class UserSql extends BaseSql {
 		return (!empty($adminUser)? TRUE : FALSE);
 	}
 }
-?>

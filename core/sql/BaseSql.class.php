@@ -11,7 +11,7 @@ class BaseSql extends QueryConstructorSql {
 		try {
 			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
 		} catch(Exception $e) {
-			return404View();
+			RedirectUtils::redirect404();
 		}
 	}
 
@@ -47,8 +47,18 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute($this->columns);
 	}
 
-	public function getAll() {
-		$queryString = $this->constructSelectQuery($this->table);
+	public function countItems() {
+		$queryString = $this->constructCountQuery($this->table);
+		$query = $this->db->prepare($queryString);
+		$query->execute();
+		$response = $query->fetch();
+		return $response['itemsNumber'];
+	}
+
+	public function getAll($data) {
+		$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
+		$limit = (isset($data['limit'])) ? $data['limit'] : null;
+		$queryString = $this->constructSelectQuery($this->table, null, FALSE, $orderBy, $limit);
 		$query = $this->db->prepare($queryString);
 		$query->execute();
 		$response = $query->fetchAll();
@@ -73,20 +83,55 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute($this->columns);
 		$response = $query->fetch();
 		$object = ClassUtils::constructObjectWithParameters($response, $this->table);
+		if ($foreignKeyColumns = ClassUtils::getForeignKeyColumns($object)) {
+			$this->setForeingObjectsColumns($object, $foreignKeyColumns);
+		}
 		return $object;
 	}
+
+	public function getByWord($keyword, $columnsToSearch, $data) {
+		$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
+		$limit = (isset($data['limit'])) ? $data['limit'] : null;
+		$queryString = $this->constructSelectQuery($this->table, $columnsToSearch, TRUE, $orderBy, $limit);
+		$query = $this->db->prepare($queryString);
+		$this->setKeyword($query, $keyword);
+		$query->execute();
+		$response = $query->fetchAll();
+		$objects = $this->createObjectsListFromDBResponse($response);
+		return $objects;
+	}
+
 
 	private function createObjectsListFromDBResponse($response) {
 		$objectList = array();
 		foreach ($response as $key => $values) {
 			$object = ClassUtils::constructObjectWithParameters($values, $this->table);
+			if ($foreignKeyColumns = ClassUtils::getForeignKeyColumns($object)) {
+				$this->setForeingObjectsColumns($object, $foreignKeyColumns);
+			}
 			array_push($objectList, $object);
 		}
 		return $objectList;
 	}
 
+	private function setForeingObjectsColumns(&$object, $foreignKeyColumns) {
+		foreach ($foreignKeyColumns as $key => $value) {
+			$objectName = ucfirst(str_replace("_id", "", $key));
+			$foreignObject = ClassUtils::constructObjectWithId($value, $objectName);
+			$foreignObject = $foreignObject->getById();
+			$setter = "set" . $objectName;
+			if (method_exists($object, $setter)) {
+				$object->$setter($foreignObject);
+			}
+		}
+	}
+
 	protected function hasResult($query) {
 		return $response = $query->fetch();
 	}
+
+	protected function setKeyword(&$query, $keyword) {
+		$keyword = "%".$keyword."%";
+		$query->bindParam(':keyword', $keyword, PDO::PARAM_STR);
+	}
 }
-?>

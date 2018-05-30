@@ -2,30 +2,24 @@
 class IndexController {
 
 	private $authenticationDelegate;
-	private $objectDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
-		$this->objectDelegate = new ObjectDelegate();
 	}
 
 	public function indexAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, HOME_VIEW, FRONT_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, HOME_VIEWS);
+		$view = new View($this->data);
 	}
 
 	public function contactAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, CONTACT_VIEW, FRONT_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, CONTACT_VIEWS);
+		$view = new View($this->data);
 	}
 
 	public function errorAction($params) {
-		ViewUtils::setPossiblesViewsTemplates($data, NOT_FOUND_VIEW, FRONT_TEMPLATE);
-		$this->authenticationDelegate->process($data, $params);
-		$view = new View($data);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, NOT_FOUND_VIEWS);
+		$view = new View($this->data);
 	}
 }
-?>

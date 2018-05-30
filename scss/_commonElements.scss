@@ -39,6 +39,10 @@ html,body
   width: 100%;
 }
 
+#dashboard-login .input::placeholder {
+  color: $color-primary;
+}
+
 #dashboard-login .input {
   margin-top: 5px;
 }
@@ -62,7 +66,7 @@ html,body
   font-size: $font-size-S;
   font-weight: bold;
   color: $color-primary;
-  margin-left: 100px;
+  margin-left: 20px;
   line-height: 60px;
 }
 
@@ -88,75 +92,96 @@ html,body
 
 // Dashboard left menu ---------------------------------------------------------
 #dashboard-left-menu {
-  width: 180px;
-  height: calc(100% - 60px);
   background-color: $color-secondary;
+  position: fixed;
+  width: 250px;
+  height:100vh;
+  left: 0;
+  right: 0;
+  top: 60px;
+  font-size: $font-size-S;
+  display: flex;
+  flex-direction: column;
+}
+
+
+#dashboard-left-menu nav div {
+  display: flex;
+  flex-direction: column;
+}
+
+#dashboard-left-menu a {
+  padding-left: 15px;
+  display: inline-table;
+}
+
+#dashboard-left-menu a i:first-child {
+  width: 20px;
+  padding-right: 15px;
+  display: table-cell;
+}
+
+#dashboard-left-menu a i:nth-child(2) {
+  display: table-cell;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.menu-item {
   float: left;
-}
-
-#dashboard-left-menu ul li{
-  display: block;
   width: 100%;
-}
-
-#dashboard-left-menu ul li a {
   text-decoration: none;
   color: $color-primary;
-  font-weight: 600;
-  font-size: $font-size-XS;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
 }
 
-#dashboard-left-menu ul li a i:nth-of-type(1) {
-  margin-left: 20px;
-  margin-right: 10px;
-}
-
-#dashboard-left-menu ul li a i:nth-of-type(2) {
-  margin-right: 10px;
-  float: right;
-  line-height: 30px;
-}
-
-#dashboard-left-menu ul li:hover {
-  background-color: $color-tertiary;
-}
-
-#dashboard-left-menu .sub-menu ul {
-  display: none;
-}
-
-#dashboard-left-menu .submenu-item a {
-  font-size: $font-size-XS;
-  font-weight: normal;
-}
-
-#dashboard-left-menu .submenu-item li {
+.menu-sub-item {
   padding-left: 20px;
+  float: left;
   width: 100%;
-  background-color: $color-secondary;
+  text-decoration: none;
+  color: $color-primary;
 }
 
-#dashboard-left-menu .submenu-item li:hover {
+.sub-items{
   background-color: $color-quaternary-dark;
+  float: left;
+  width: 100%;
 }
 
-#main-left-menu li:hover .submenu-item {
-  display: block;
-  max-height: 60px;
-}
-
-#main-left-menu .submenu-item {
-  overflow: hidden;
-  max-height: 0;
-  transition: all 0.5s ease-out;
+.active-menu-item {
+  color: $color-tertiary;
 }
 
 // Dashboard content -----------------------------------------------------------
 #dashboard-content {
-  float: left;
-  width: calc(100% - 180px);
+  padding-left: 20px;
+  overflow: hidden;
+  position: fixed;
+  left: 250px;
+  top: 60px;
+  height:calc(100vh - 60px);
+  width: calc(100% - 250px);
 }
+
+.viewport {
+    overflow: auto;
+
+    /* Make sure the inner div is not larger than the container
+     * so that we have room to scroll.
+     */
+    max-height: 100%;
+
+    /* Pick an arbitrary margin/padding that should be bigger
+     * than the max width of all the scroll bars across
+     * the devices you are targeting.
+     * padding = -margin
+     */
+    margin-right: -100px;
+    padding-right: 100px;
+}
+
 
 
 // Dashboard statistics page ---------------------------------------------------
@@ -208,14 +233,28 @@ html,body
   padding:10px;
 }
 
-#dashboard-stat .wrapper-icon i {
-  line-height: 30px;
-  right: 10px;
-}
-
 /* -----------------------------------------------------------------------------
 * Front
 */
+.front-main-content {
+  flex-grow: 1;
+}
+
+.front-template-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.back-title {
+  margin-top: 35px;
+}
+
+.back-title h1 {
+  color: $color-secondary;
+  font-size: $font-size-L;
+  font-weight: bold;
+}
 
 .front-title {
   height: 80px;
@@ -233,6 +272,7 @@ html,body
 
 .login-container {
   background-color: $color-secondary;
+  border-radius: 5px;
 }
 
 .login-container .input {
@@ -279,6 +319,11 @@ html,body
   overflow: hidden;
 }
 
+#front-topnav .btn-filled-orange:hover {
+  background-color: $color-secondary;
+  color: $color-tertiary;
+}
+
 #front-topnav .wrapper-icon {
   float: right;
   position: relative;
@@ -286,10 +331,6 @@ html,body
   margin-right: 25px;
 }
 
-#front-topnav .wrapper-icon i {
-  line-height: 30px;
-  left: 10px;
-}
 
 #front-topnav .right-nav a {
   float: right;
@@ -313,7 +354,8 @@ html,body
   padding-top: 18px;
   text-decoration: none;
   font-size: $font-size-S;
-  width: 120px;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 60px;
   font-weight: 600;
 }
@@ -337,10 +379,7 @@ html,body
   margin-left: 25px;
 }
 
-#front-topnav .input-medium:focus {
-  border: 2px solid $color-tertiary;
-  border-radius: 5px;
-}
+
 // SLIDER ----------------------------------------------------------------------
 
 #slider {
@@ -409,6 +448,7 @@ html,body
 #footer {
   background-color: $color-secondary;
   color: $color-primary;
+  padding-top: 15px;
 }
 
 #footer .footer-title {
@@ -427,7 +467,6 @@ html,body
 }
 
 #footer-network {
-  width: 60%;
   display:flex;
   list-style:none;
   justify-content: space-between;
@@ -479,6 +518,7 @@ html,body
 .card-image {
   height: 150px;
 }
+
 .card img {
   width: 100%;
   height: 100%;
@@ -522,10 +562,145 @@ html,body
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+// Content trainning lesson
+#front-chapter i {
+  color: $color-secondary;
+}
+
+.trainning-title {
+  color: $color-quaternary-dark;
+}
+.subpartHead {
+  background-color: $color-secondary;
+  color: $color-primary;
+  height: 35px;
+  font-size: $font-size-M;
+  line-height: 35px;;
+  border-radius: 5px 5px 0 0;
+}
+
+.subpartHead i {
+  line-height: 35px;
+}
+
+.chapterParts textarea {
+  height: 10em;
+}
+
+.chapter{
+  background-color: $color-secondary;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.part_hidden {
+  background-color: $color-quaternary;
+}
+
+.content-title {
+  color: $color-tertiary;
+  font-weight: 600;
+  font-size: $font-size-M;
+  line-height: 30px;
+}
+
+.content-text-under-title {
+  color: black;
+  font-size: $font-size-XS;
+  margin-top: 10px;
+}
+
+.content-subtitle {
+  font-weight: 600;
+  font-size: $font-size-S;
+  color: $color-secondary;
+  margin-top: 15px;
+}
+
+#content-head a {
+  margin-top: 25px;
+  margin-bottom: 35px;
+}
+
+#content a:hover {
+  background-color: $color-primary;
+  color: $color-tertiary;
+}
+
+#content-main a {
+  text-decoration: none;
+  color: $color-tertiary;
+  display: block;
+}
+
+#content-main i {
+  position: relative;
+  left: 0;
+  font-size: $font-size-M;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.content-text{
+  margin-top: 10px;
+  color: black;
+  font-size: $font-size-XS;
+}
+
+.content-hidden {
+  display: none;
+  width: 100%;
+}
+
+.left-content {
+  margin-top: 35px;overflow: hidden;float: left; width: 300px
+}
+
+#content {
+  overflow: hidden;
+  height: 100%;
+}
+
+.title-separator {
+  font-weight: 600;
+  color: $color-secondary;
+  font-size: $font-size-M;
+}
+
+// comments
+
+#comments {
+  padding-bottom: 50px;
+  padding-top: 35px;
+}
+
+#comments textarea {
+  margin-top: 5px;
+}
+
+#comments .input:focus {
+  border: 2px solid $color-quaternary;
+}
+
+#comments .input-btn {
+  margin-top:5px;
+}
+
 
 /* -----------------------------------------------------------------------------
 * Common elements
 */
+
+.wrap-flex {
+  display: flex;
+}
+.main-img {
+  object-fit: fill;
+  width: 100%;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
 .logo-nav {
   width: 50px;
   float: left;
@@ -533,10 +708,24 @@ html,body
   margin-top:5px;
 }
 
+.last {
+  margin-bottom: 35px;
+}
+
+textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 30px;
+}
+
 .top-menu {
   height: 60px;
   background-color: $color-secondary;
   overflow: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
 }
 
 .left-nav {
@@ -559,6 +748,25 @@ html,body
   width: 50px;
 }
 
+.full-hr-separation {
+  margin-top: 10px;
+  background-color: $color-tertiary;
+  margin-bottom: 10px;
+  height: 3px;
+  width: 100%;
+}
+.row-tools {
+  padding-top:20px;
+}
+
+.row-pagination {
+  padding-top: 10px;
+}
+
+.row-padding {
+  padding-bottom: 50px;
+}
+
 // Input -----------------------------------------------------------------------
 
 .form-group {
@@ -573,6 +781,7 @@ html,body
   display: block;
 }
 
+
 .input {
   height: 30px;
   width: 100%;
@@ -583,9 +792,6 @@ html,body
   font-weight: 600;
 }
 
-.input::placeholder {
-  color: $color-primary;
-}
 
 .input-medium {
   border: 2px solid $color-quaternary;
@@ -594,12 +800,17 @@ html,body
   height: 30px;
 }
 
+.input-medium:focus {
+  border: 2px solid $color-tertiary;
+  border-radius: 5px;
+}
+
 .input-icon {
   padding-left: 30px;
 }
 
 .input:focus {
-  border: 2px solid $color-tertiary;
+//  border: 2px solid $color-tertiary;
 }
 
 .input-btn {
@@ -607,6 +818,8 @@ html,body
   width: 100px;
   font-weight: 600;
   border-radius: 5px;
+  text-align: center;
+  display: block;
 }
 
 .select-input {
@@ -622,6 +835,27 @@ html,body
 }
 
 // Icon ------------------------------------------------------------------------
+.form_actions {
+  display: inline-block;
+}
+
+.fa-trash-alt {
+  color: red;
+}
+
+.fa-edit {
+  color: blue;
+}
+
+.fa-share-square {
+  color: green;
+}
+
+.button_table {
+  font-size: $font-size-S;
+  border: none;
+  background-color: $color-primary;
+}
 
 .wrapper-icon {
   position: relative;
@@ -629,6 +863,15 @@ html,body
 
 .wrapper-icon i {
   position: absolute;
+  line-height: 30px;
+}
+
+.icon-left {
+  left: 10px;
+}
+
+.icon-right {
+  right: 10px;
 }
 
 // Button ----------------------------------------------------------------------
@@ -641,6 +884,14 @@ html,body
   font-weight: 600;
   font-size: $font-size-XS;
   line-height:26px;
+}
+
+.btn-icon {
+  float: right;
+}
+
+.btn-icon i{
+  margin-left: 5px;
 }
 
 .btn-extra-small {
@@ -669,10 +920,12 @@ html,body
   color: white;
 }
 
-.btn-filled-orange:hover {
+.btn-filled-blue {
+  border: 2px solid $color-secondary;
   background-color: $color-secondary;
-  color: $color-tertiary;
+  color: white;
 }
+
 
 .btn-light-orange {
   border: 2px solid $color-tertiary;
@@ -682,4 +935,116 @@ html,body
 .btn-light-grey {
   border: 2px solid grey;
   color: grey;
+}
+
+// Table
+.list-init-object {
+  display: none;
+}
+
+.table-data table {
+  margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-data thead {
+  color: $color-primary;
+  display: block;
+  width: 100%;
+}
+
+.table-data table tbody {
+  display:block;
+  max-height:410px;
+  overflow-y:scroll;
+}
+
+.table-data table thead, table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-data tr {
+  border: 2px solid $color-quaternary;
+}
+
+.table-data thead tr th:first-child {
+  background-color: $color-tertiary;
+}
+
+.table-data thead tr th {
+  background-color: $color-secondary;
+  font-weight: 600;
+  font-size: $font-size-S;
+}
+
+.table-data tbody tr td {
+  text-align: center;
+  font-size: $font-size-S;
+}
+
+.table-data tbody tr td:first-child {
+  color: $color-tertiary;
+}
+
+.table-data tbody th,tbody td {
+    border: 2px solid $color-quaternary;
+}
+
+.pagination_selector{
+  display: block;
+  float: right;
+}
+
+#div_pagination {
+  text-align: center;
+}
+
+#pagination_links {
+  text-align: center;
+}
+
+.column_sort{
+  text-decoration: none;
+  color: $color-primary;
+  display: block;
+  width: 100%;
+}
+
+.center-container {
+  display: flex;
+  height: 100%;
+}
+
+.section-container {
+  height: calc(100% - 80px);
+}
+
+#emailConfirm p {
+  color: $color-primary;
+  text-align: center;
+  font-weight: 600;
+  font-size: $font-size-S;
+  margin: 15px;
+}
+
+#emailConfirm a {
+  display: block;
+  text-align: center;
+  font-size: $font-size-XS;
+  margin-bottom: 15px;
+}
+
+#emailConfirm{
+  height: calc(100% - 80px);
+}
+
+.forgot-password {
+  margin-bottom: 20px;
+}
+
+.full-height{
+  height: 100%;
 }

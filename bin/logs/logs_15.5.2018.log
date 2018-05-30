@@ -1,0 +1,52 @@
+<<<<<<< Updated upstream
+IP + Date : ::1 - May 15, 2018, 4:22 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/publish
+Action : Action not found
+Value : publishAction in ChapterController
+Date : 05/15/2018 04:22:38 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 15, 2018, 4:23 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/edit
+Action : Attempt access
+Value : Access denied
+Date : 05/15/2018 04:23:00 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 15, 2018, 4:23 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/delete
+Action : Attempt access
+Value : Access denied
+Date : 05/15/2018 04:23:08 pm
+-------------------------------------------------------
+=======
+IP + Date : ::1 - May 15, 2018, 2:07 pm
+-----------------
+Url : http://localhost/Uteach/Array
+Action : Controller not found
+Value : 
+Date : 05/15/2018 02:07:15 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 15, 2018, 2:07 pm
+-----------------
+Url : http://localhost/Uteach/Array
+Action : Controller not found
+Value : 
+Date : 05/15/2018 02:07:25 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 15, 2018, 2:08 pm
+-----------------
+Url : http://localhost/Uteach/Array
+Action : Controller not found
+Value : 
+Date : 05/15/2018 02:08:20 pm
+-------------------------------------------------------
+IP + Date : ::1 - May 15, 2018, 2:09 pm
+-----------------
+Url : http://localhost/Uteach/Array
+Action : Controller not found
+Value : 
+Date : 05/15/2018 02:09:01 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes

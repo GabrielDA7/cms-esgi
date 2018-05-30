@@ -32,4 +32,3 @@ class Video extends BaseSql {
     public function setUrl($url)            { $this->url = $url;             }
     public function setLessonId($lesson_Id) { $this->lesson_Id = $lesson_Id; }
 }
-?>

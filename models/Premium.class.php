@@ -19,4 +19,3 @@ class Premium {
 	public function setEndDate($endDate) 	 { $this->endDate = $endDate; 	  }
 	public function setUserId($user_Id) 	 { $this->user_Id = $user_Id; 	  }
 }
-?>

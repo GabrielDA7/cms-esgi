@@ -4,7 +4,8 @@
 *******************************/
 define("USER_CLASS_NAME", "User");
 define("VIDEO_CLASS_NAME", "Video");
-define("LESSON_CLASS_NAME", "Lesson");
+define("CHAPTER_CLASS_NAME", "Chapter");
+define("PART_CLASS_NAME", "Part");
 define("TRAINNING_CLASS_NAME", "Trainning");
 define("COMMENT_CLASS_NAME", "Comment");
 define("INSTALLATION_CLASS_NAME", "Installation");
@@ -39,7 +40,6 @@ define("IMAGE_FOLDER_NAME", "public/img");
 /*******************************
 ********** CHARACTERS **********
 ********************************/
-define("DS", "/");
 define("UNDERSCORE", "_");
 define("DOT", ".");
 define("DOUBLE_DOT", "..");
@@ -83,6 +83,21 @@ define("USER_ADD_BACK_LINK", "user/add/back");
 define("USER_LOGIN_FRONT_LINK", "user/login");
 define("USER_LOGIN_BACK_LINK", "user/login/back");
 define("USER_DISCONNECT_LINK", "user/disconnect");
+define("USER_EMAIL_CONFIRM_LINK", "user/emailConfirm");
+define("USER_PASSWORD_RESET_LINK", "user/passwordReset");
+define("USER_PASSWORD_RESET_EMAIL_LINK", "user/passwordResetEmail");
+
+define("TRAINNING_TRAINNING_BACK_LINK", "trainning/trainning/back");
+define("TRAINNING_TRAINNING_FRONT_LINK", "trainning/trainning");
+define("TRAINNING_ADD_BACK_LINK", "trainning/add/back");
+define("TRAINNING_LIST_BACK_LINK", "trainning/list/back");
+define("TRAINNING_LIST_FRONT_LINK", "trainning/list");
+
+define("CHAPTER_CHAPTER_FRONT_LINK", "chapter/chapter");
+define("CHAPTER_CHAPTER_BACK_LINK", "chapter/chapter/back");
+define("CHAPTER_LIST_FRONT_LINK", "chapter/list");
+define("CHAPTER_LIST_BACK_LINK", "chapter/list/back");
+define("CHAPTER_ADD_BACK_LINK", "chapter/add/back");
 
 
 define("INDEX_ERROR_LINK", "index/error");
@@ -95,31 +110,45 @@ define("LINKEDIN_LINK", "");
 /******************************
 ********** VIEWS **************
 *******************************/
-define("INSTALLATION_INDEX_VIEW", "installation");
-define("INSTALLATION_SETTING_VIEW", "installationSetting");
-define("INSTALLATION_DATABASE_VIEW", "installationDatabase");
-define("INSTALLATION_ADMIN_VIEW", "installationAdmin");
+define("DEFAULT_TEMPLATES", 	 ["front"=> FRONT_TEMPLATE, 	   "back" => BACK_TEMPLATE]);
+define("LOGIN_TEMPLATES", 		 ["front"=> FRONT_TEMPLATE, 	   "back" => LOGIN_BACK_TEMPLATE]);
+define("INSTALLATION_TEMPLATES", ["front"=> INSTALLATION_TEMPLATE, "back" => INSTALLATION_TEMPLATE]);
 
-define("NOT_FOUND_VIEW", "404");
-define("HOME_VIEW", "home");
+/******************************
+********** VIEWS **************
+*******************************/
+define("INSTALLATION_INDEX_VIEWS", 	  ["front"=> "installation", 		 "back" => "installation"]);
+define("INSTALLATION_SETTING_VIEWS",  ["front"=> "installationSetting",  "back" => "installationSetting"]);
+define("INSTALLATION_DATABASE_VIEWS", ["front"=> "installationDatabase", "back" => "installationDatabase"]);
+define("INSTALLATION_ADMIN_VIEWS", 	  ["front"=> "installationAdmin",    "back" => "installationAdmin"]);
 
-define("CONTACT_VIEW", "contact");
+define("NOT_FOUND_VIEWS", ["front"=> "404",  "back" => "404"]);
+define("HOME_VIEWS", 	  ["front"=> "home", "back" => ""]);
 
-define("USER_USER_FRONT_VIEW", "userUser");
-define("USER_USER_BACK_VIEW", "userUserBack");
-define("USER_EDIT_FRONT_VIEW", "editUser");
-define("USER_EDIT_BACK_VIEW", "editUserBack");
-define("USER_LIST_FRONT_VIEW", "listUser");
-define("USER_LIST_BACK_VIEW", "listUserBack");
-define("USER_LOGIN_FRONT_VIEW", "loginUser");
-define("USER_LOGIN_BACK_VIEW", "loginUserBack");
-define("USER_ADD_FRONT_VIEW", "addUser");
-define("USER_ADD_BACK_VIEW", "addUserBack");
+define("CONTACT_VIEWS", ["front"=> "contact", "back" => "listVideoBack"]);
 
-define("VIDEO_FRONT_VIEW", "video");
-define("VIDEO_LIST_FRONT_VIEW", "listVideo");
+define("USER_USER_VIEWS",  ["front"=> "userUser",  "back" => "userUserBack"]);
+define("USER_EDIT_VIEWS",  ["front"=> "editUser",  "back" => "editUserBack"]);
+define("USER_LIST_VIEWS",  ["front"=> "listUser",  "back" => "listUserBack"]);
+define("USER_LOGIN_VIEWS", ["front"=> "loginUser", "back" => "loginUserBack"]);
+define("USER_ADD_VIEWS",   ["front"=> "addUser",   "back" => "addUserBack"]);
+define("USER_CONFIRMATION_EMAIL_VIEWS",   ["front"=> "confirmationEmail",   "back" => ""]);
+define("USER_PASSWORD_RESET_VIEWS",   ["front"=> "passwordReset",   "back" => ""]);
+define("USER_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "passwordResetEmail",   "back" => ""]);
+define("USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "confirmationResetPasswordEmail",   "back" => ""]);
 
-define("STATISTIC_BACK_VIEW", "statistic");
+define("VIDEO_LIST_VIEWS", ["front"=> "listVideo", "back" => "listVideoBack"]);
+
+define("STATISTIC_VIEWS", ["front"=> "", "back" => "statisticBack"]);
+
+define("TRAINNING_TRAINNING_VIEWS",   ["front"=> "trainningTrainning", "back" => "trainningTrainningBack"]);
+define("TRAINNING_LIST_VIEWS",   	  ["front"=> "listTrainning",      "back" => "listTrainningBack"]);
+define("TRAINNING_ADD_VIEWS",   	  ["front"=> "",   			       "back" => "addTrainningBack"]);
+
+define("CHAPTER_CHAPTER_VIEWS", ["front"=> "chapterChapter", "back" => "chapterChapterBack"]);
+define("CHAPTER_ADD_VIEWS",     ["front"=> "", 			     "back" => "addChapterBack"]);
+define("CHAPTER_LIST_VIEWS",    ["front"=> "listChapter",    "back" => "listChapterBack"]);
+define("CHAPTER_EDIT_VIEWS",    ["front"=> "",    			 "back" => "editChapterBack"]);
 
 /******************************
 ********** ROLE ***************

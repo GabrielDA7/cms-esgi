@@ -12,7 +12,7 @@ class View {
 		$viewPath = searchFile(array(VIEWS_FOLDER_NAME), $this->view);
 		$templatePath = searchFile(array(VIEWS_TEMLATES_FOLDER_NAME), $this->template);
 		if (!isset($viewPath) || !isset($templatePath)) {
-			return404View();
+			RedirectUtils::redirect404();
 		}
 		$this->assign("viewPath", $viewPath);
 		$this->assign("templatePath", $templatePath);
@@ -27,7 +27,7 @@ class View {
 		$this->data[$key] = $value;
 	}
 
-	public function addModal($modal,$config, $errors=[] ){
+	public function addModal($modal, $config, $errors = []) {
 		include MODALS_FOLDER_NAME . "/" . $modal.".mdl.php";
 	}
 }

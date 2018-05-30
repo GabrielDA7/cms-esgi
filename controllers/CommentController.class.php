@@ -1,6 +1,16 @@
 <?php
-include "core/interfaces/ControllerInterface.php";
-class CommentController implements ControllerInterface {
+class CommentController {
+
+	private $authenticationDelegate;
+	private $objectDelegate;
+	private $formDelegate;
+	private $data = [];
+
+	public function __construct() {
+		$this->authenticationDelegate = new AuthenticationDelegate();
+		$this->objectDelegate = new ObjectDelegate($this->data, COMMENT_CLASS_NAME);
+		$this->formDelegate = new FormDelegate(COMMENT_CLASS_NAME);
+	}
 
 	public function indexAction($params) {
 	}
@@ -13,8 +23,4 @@ class CommentController implements ControllerInterface {
 
 	public function deleteAction($params) {
 	}
-
-	public function listAction($params) {
-	}
 }
-?>

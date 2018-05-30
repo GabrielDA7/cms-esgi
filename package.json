@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "chart.js": "^2.7.2",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "repair": "^0.1.1"
   }
 }

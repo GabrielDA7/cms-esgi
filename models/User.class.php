@@ -6,6 +6,7 @@ class User extends UserSql {
 	protected $lastName;
 	protected $firstName;
 	protected $pwd;
+	protected $pwdReset;
 	protected $email;
 	protected $emailConfirm;
 	protected $avatar;
@@ -28,6 +29,10 @@ class User extends UserSql {
 		return get_object_vars($this);
 	}
 
+	public function getColumnsToSearch() {
+		return ["userName", "lastName", "firstName", "email", "dateInserted", "dateUpdated", "status"];
+	}
+
 	public function generateToken() {
 		$this->token = $this->randomCode();
 		return $this->token;
@@ -38,15 +43,24 @@ class User extends UserSql {
 		return $this->emailConfirm;
 	}
 
+	public function generatePwdReset() {
+		$this->pwdReset = $this->randomCode();
+		return $this->pwdReset;
+	}
+
 	public function randomCode() {
 		return base_convert(hash('sha256', time() . mt_rand()), 16, 36);
+	}
+
+	public function unsetColumn($key) {
+		unset($this->$key);
 	}
 
 	/**
 	* Security for XSS
 	*/
 	public function unsetRoleIfNotAdmin() {
-		if ($_SESSION['admin'] === FALSE) {
+		if (!isAdmin()) {
 			$this->setRole(null);
 		}
 	}
@@ -56,7 +70,7 @@ class User extends UserSql {
 	*/
 	public static function configAddForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_ADD_FRONT_LINK,  "enctype" => "multipart/form-data", "submit"=>"Sign up"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_ADD_FRONT_LINK, "submit"=>"Sign up", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
 								"firstName"=>
@@ -65,7 +79,8 @@ class User extends UserSql {
 												"placeholder"=>"First name",
 												"required"=>true,
 												"maxString"=>100,
-												"minString"=>2
+												"minString"=>2,
+												"class"=>"form-group input"
 											],
 								"lastName"=>
 											[
@@ -73,7 +88,8 @@ class User extends UserSql {
 												"placeholder"=>"Last name",
 												"required"=>true,
 												"maxString"=>100,
-												"minString"=>2
+												"minString"=>2,
+												"class"=>"form-group input"
 											],
 								"userName"=>
 											[
@@ -81,33 +97,38 @@ class User extends UserSql {
 												"placeholder"=>"Username",
 												"required"=>true,
 												"maxString"=>100,
-												"minString"=>2
+												"minString"=>2,
+												"class"=>"form-group input"
 											],
 								"email"=>
 											[
 												"type"=>"email",
 												"placeholder"=>"Email",
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"emailConfirmation"=>
 											[
 												"type"=>"email",
 												"placeholder"=>"Email confirmation",
 												"required"=>true,
-												"confirm"=>"email"
+												"confirm"=>"email",
+												"class"=>"form-group input"
 											],
 								"pwd"=>
 											[
 												"type"=>"password",
 												"placeholder"=>"Password",
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"pwdConfirmation"=>
 											[
 												"type"=>"password",
 												"placeholder"=>"Password confirmation",
 												"required"=>true,
-												"confirm"=>"pwd"
+												"confirm"=>"pwd",
+												"class"=>"form-group input"
 											],
 							]
 				];
@@ -118,7 +139,7 @@ class User extends UserSql {
 	*/
 	public static function configLoginForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_LOGIN_FRONT_LINK, "submit"=>"Sign in"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_LOGIN_FRONT_LINK, "submit"=>"Sign in", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
 								"userName"=>
@@ -127,7 +148,8 @@ class User extends UserSql {
 												"placeholder"=>"Pseudo",
 												"maxString"=>100,
 												"minString"=>2,
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											],
 								"pwd"=>
 											[
@@ -135,7 +157,8 @@ class User extends UserSql {
 												"placeholder"=>"Mot de passe",
 												"maxString"=>255,
 												"minString"=>6,
-												"required"=>true
+												"required"=>true,
+												"class"=>"form-group input"
 											]
 							]
 				];
@@ -144,10 +167,10 @@ class User extends UserSql {
 	/**
 	* Configuration of the login form user
 	*/
-	public static function configEditForm($data){
+	public static function configEditForm($data) {
 		$user = $data['user'];
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "submit"=>"Edit"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit"],
 					"input"=>
 							[
 								"id"=>
@@ -155,7 +178,7 @@ class User extends UserSql {
 												"type"=>"hidden",
 												"placeholder"=>$user->getId(),
 												"value"=>$user->getId(),
-												"required"=>true
+												"required"=>true,
 											],
 								"userName"=>
 											[
@@ -163,20 +186,123 @@ class User extends UserSql {
 												"placeholder"=>$user->getUserName(),
 												"maxString"=>100,
 												"minString"=>2,
+												"class"=>"form-group input"
+											],
+								"firstName"=>
+											[
+												"type"=>"text",
+												"placeholder"=>$user->getFirstName(),
+												"maxString"=>255,
+												"minString"=>2,
+												"class"=>"form-group input"
+											],
+								"lastName"=>
+											[
+												"type"=>"text",
+												"placeholder"=>$user->getLastName(),
+												"maxString"=>255,
+												"minString"=>2,
+												"class"=>"form-group input"
+											],
+								"email"=>
+											[
+												"type"=>"email",
+												"placeholder"=>$user->getEmail(),
+												"class"=>"form-group input"
+											],
+								"avatar"=>
+
+					                      	[
+					                        	"type"=>"file",
+					                        	"maxSize" => 1000000,
+					                        	"extension" =>
+					                        					[
+						                                  			"jpg",
+						                                  			"png",
+						                                  			"jpeg"
+					                                		   	]
+					                     	]
+							]
+				];
+	}
+
+	public static function configPasswordResetEmailForm($data) {
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_PASSWORD_RESET_LINK, "submit"=>"Send", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"input"=>
+							[
+								"email"=>
+											[
+												"type"=>"email",
+												"placeholder"=>"Email",
+												"required"=>true,
+												"class"=>"form-group input"
+											]
+							]
+				];
+	}
+
+	public static function configPasswordResetForm($data) {
+		$user = $data['user'];
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME . USER_PASSWORD_RESET_LINK, "submit"=>"Send", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"input"=>
+							[
+								"id"=>
+											[
+												"type"=>"hidden",
+												"value"=>$user->getId()
+											],
+								"pwdReset"=>
+											[
+												"type"=>"hidden",
+												"value"=>$user->getPwdReset()
+											],
+								"pwd"=>
+											[
+												"type"=>"password",
+												"placeholder"=>"Password",
+												"required"=>true,
+												"class"=>"form-group input"
+											],
+								"pwdConfirmation"=>
+											[
+												"type"=>"password",
+												"placeholder"=>"Password confirmation",
+												"required"=>true,
+												"confirm"=>"pwd",
+												"class"=>"form-group input"
+											],
+							]
+				];
+	}
+
+	public static function configListForm($data){
+		$user = $data['user'];
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_LIST_BACK_LINK, "submit"=>"Edit"],
+					"input"=>
+							[
+								"userName"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"UserName",
+												"maxString"=>100,
+												"minString"=>2,
 												"required"=>true
 											],
 								"firstName"=>
 											[
-												"type"=>"password",
-												"placeholder"=>$user->getFirstName(),
+												"type"=>"text",
+												"placeholder"=>"First Name",
 												"maxString"=>255,
 												"minString"=>2,
 												"required"=>true
 											],
 								"lastName"=>
 											[
-												"type"=>"password",
-												"placeholder"=>$user->getLastName(),
+												"type"=>"text",
+												"placeholder"=>"Last Name",
 												"maxString"=>255,
 												"minString"=>2,
 												"required"=>true
@@ -184,36 +310,53 @@ class User extends UserSql {
 								"email"=>
 											[
 												"type"=>"email",
-												"placeholder"=>$user->getEmail(),
+												"placeholder"=>"Email",
 												"required"=>true
-											],
-								"avatar"=>
- 
-					                      	[
-					                        	"type"=>"file",
-					 
-					                        	"maxSize" => 1000000,
-					 
-					                        	"extension" => 
-					                        					[
-					 
-						                                  			"jpg",
-						 
-						                                  			"png",
-						 
-						                                  			"jpeg"
-					 
-					                                		   	]
-					                     	]
+											]
 							]
 				];
 	}
 
-	public function getUserName() 	  { return $this->userName; 	 }
+	public static function configTable(){
+		return 	[
+					"config"=>["id"=>"pagination_data", "class"=>"table_responsive"],
+					"cells"=>
+										[
+												"userName"=>
+															[
+																"name"=>"Username"
+															],
+
+												"lastName"=>
+															[
+																"name"=>"Lastname"
+															],
+												"firstName"=>
+															[
+																 "name"=>"Firstname"
+															],
+												"email"=>
+															[
+																	"name"=>"Email"
+															],
+												"dateInserted"=>
+															[
+																"name"=>"Status"
+															],
+												"id"=>
+															[
+																"name"=>"Actions"
+															]
+										]
+				];
+	}
+
 	public function getId() 		  { return $this->id; 			 }
     public function getLastName() 	  { return $this->lastName;		 }
     public function getFirstName() 	  { return $this->firstName; 	 }
+    public function getUserName() 	  { return $this->userName; 	 }
     public function getPwd() 		  { return $this->pwd; 			 }
+    public function getPwdReset() 	  { return $this->pwdReset; 	 }
     public function getEmail() 		  { return $this->email;   		 }
     public function getEmailConfirm() { return $this->emailConfirm;  }
     public function getAvatar()		  { return $this->avatar; 		 }
@@ -224,11 +367,13 @@ class User extends UserSql {
     public function getRole()		  { return $this->role; 		 }
 
 
-    public function setUserName($userName) 		   { $this->userName = $userName; 						 }
+    
     public function setId($id) 					   { $this->id = $id; 								  	 }
 	public function setLastName($lastName) 		   { $this->lastName = ucfirst(strtolower($lastName)); 	 }
 	public function setFirstName($firstName) 	   { $this->firstName = ucfirst(strtolower($firstName)); }
+	public function setUserName($userName) 		   { $this->userName = $userName; 						 }
 	public function setPwd($pwd) 			 	   { $this->pwd = (isset($pwd))? sha1($pwd) : null; 	 }
+	public function setPwdReset($pwdReset) 		   { $this->pwdReset = $pwdReset; 						 }
 	public function setEmail($email) 			   { $this->email = strtolower(trim($email)); 			 }
 	public function setEmailConfirm($emailConfirm) { $this->emailConfirm = $emailConfirm;				 }
 	public function setAvatar($avatar) 			   { $this->avatar = $avatar; 							 }
@@ -236,6 +381,5 @@ class User extends UserSql {
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; 				 }
 	public function setDateUpdated($dateUpdated)   { $this->dateUpdated = $dateUpdated; 				 }
 	public function setStatus($status) 			   { $this->status = $status; 							 }
-	public function setRole($role) 			   	   { $this->role = $role; 							 	 }
+	public function setRole($role) 			   	   { $this->role = $role; 							 	 }  
 }
-?>
