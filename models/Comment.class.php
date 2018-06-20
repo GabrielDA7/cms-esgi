@@ -6,11 +6,30 @@ class Comment extends BaseSql {
 	protected $date;
 	protected $content;
 	protected $responses = [];
-	
+
 	protected $lesson_id 	= null;
 	protected $trainning_id = null;
 	protected $video_id 	= null;
 	protected $comment_id 	= null;
+
+	public static function configCommentForm($data){
+		return 	[
+					"config"=>["method"=>"POST","submit"=>"Comment", "submitClass"=>"input-btn btn-filled-blue btn-icon"],
+					"input"=>
+							[
+								"comment"=>
+											[
+												"type"=>"textarea",
+												"placeholder"=>"Enter a comment here",
+												"maxString"=>255,
+												"minString"=>2,
+												"required"=>true,
+												"class"=>"form-group input"
+											]
+						]
+
+				];
+	}
 
 
 	public function getId() 		 { return $this->id; 		   }

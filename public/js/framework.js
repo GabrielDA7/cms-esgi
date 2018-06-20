@@ -106,8 +106,6 @@ $(function() {
     var hiddenContent = $(this).next('.content-hidden').toggle('fast');
   });
 
-
-
   // Ajax call for load table
   if( $("#pagination_data").length ) {
     var limit = $( ".pagination_selector option:selected" ).val();
@@ -156,6 +154,23 @@ $(function() {
     var page = $(this).attr("id");
     var object = $.trim($(".list-init-object span:first-child").text());
     load_data_list_card(page, 'init','desc', 'dateInserted', object);
+  });
+
+  // COMMENTS
+  if( $("#comments").length > 0 ) {
+    var page = 1;
+    var object = "comment";
+    var id = $.trim($("#comments-title span:first-child").text());
+    var type = $.trim($("#comments-title span:nth-child(2)").text());
+    //load_data_list_comment(page,'init',order='desc','dateInserted', object, type, id);
+  }
+
+  $(document).on('click', '#comment-button', function() {
+    var page = 1;
+    var object = "comment";
+    var id = $.trim($("#comments-title span:first-child").text());
+    var type = $.trim($("#comments-title span:nth-child(2)").text());
+    add_comment(page, order='desc','dateInserted', object, type, id);
   });
 
 });
@@ -346,4 +361,51 @@ function addChapterSubpart(){
     $("#addChapterPart").after(html);
   }
   idPart += 1;
+}
+
+function load_data_list_comment(page, action, order='desc', column_name, object, type){
+  objects = object + 's';
+  url = dirname + "ajax/comment?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name;
+  div = $("#data-list");
+  paginationLinks = $("#pagination_links");
+  linkObjectView = $.trim($(".list-init-object span:last-child").text());
+  $.ajax({
+    url: url,
+    method: 'POST',
+    success:function(data) {
+      data = JSON.parse(data);
+      var html = '';
+      if( data[objects].length > 0) {
+        $.each(data[objects], function(index, element) {
+
+        });
+      } else {
+        html = "No content";
+      }
+      div.html(html);
+    }
+  });
+}
+
+function add_comment(page, object, type, id){
+  objects = object + 's';
+  url = dirname + "ajax/comment";
+  div = $("#comments-result");
+
+  $.ajax({
+    url: url,
+    method: 'POST',
+    data: {object:object, page:page, sort:order, columnName:column_name, [type + "_" + "id"]:id},
+    success:function(data) {
+      data = JSON.parse(data);
+      var html = '';
+      if( data.length > 0) {
+        html = "Errreurs";
+        div.html(html);
+      } else {
+        load_data_list_comment(page, 'init', order='desc', column_name, object, type);
+      }
+    }
+  });
+  url = dirname + "ajax/comment?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name;
 }

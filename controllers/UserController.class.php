@@ -48,7 +48,7 @@ class UserController implements ControllerInterface {
 	}
 
 	public function editAction($params) {
-		if((!isset($params['POST']['id']) || !isAdmin()  && !isset($_SESSION['userId'])) {
+		if((!isset($params['POST']['id']) || !isAdmin()) && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
@@ -115,7 +115,6 @@ class UserController implements ControllerInterface {
 			RedirectUtils::redirect404();
 		}
 		if (isset($params['POST']['email'])) {
-			
 			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS);
 			$this->userDelegate->getByParameters($this->data, $params['POST']);
 			$this->emailDelegate->sendPasswordReset($this->data);

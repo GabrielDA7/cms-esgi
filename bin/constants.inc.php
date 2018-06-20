@@ -99,7 +99,6 @@ define("CHAPTER_LIST_FRONT_LINK", "chapter/list");
 define("CHAPTER_LIST_BACK_LINK", "chapter/list/back");
 define("CHAPTER_ADD_BACK_LINK", "chapter/add/back");
 
-
 define("INDEX_ERROR_LINK", "index/error");
 
 define("FACEBOOK_LINK", "");

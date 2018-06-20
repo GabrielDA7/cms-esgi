@@ -88,7 +88,6 @@ class FormDelegate {
 	}
 
 	private function getCommentFormConfig() {
-		
 	}
 
 	private function isEmptyPost($post) {

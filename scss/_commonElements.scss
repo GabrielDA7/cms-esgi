@@ -669,20 +669,20 @@ html,body
 
 // comments
 
-#comments {
+#comments-title {
   padding-bottom: 50px;
   padding-top: 35px;
 }
 
-#comments textarea {
+#comments-title textarea {
   margin-top: 5px;
 }
 
-#comments .input:focus {
+#comments-title .input:focus {
   border: 2px solid $color-quaternary;
 }
 
-#comments .input-btn {
+#comments-title .input-btn {
   margin-top:5px;
 }
 
