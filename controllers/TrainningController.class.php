@@ -25,7 +25,7 @@ class TrainningController implements ControllerInterface {
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRAINNING_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
-		$this->fileDelegate->process($this->data, $params);
+		$this->fileDelegate->process($this->data, $params, FORMATION_IMAGES_FOLDER_NAME);
 		$this->objectDelegate->add($this->data, $params);
 		$view = new View($this->data);
 	}

@@ -88,7 +88,8 @@ class FormDelegate {
 	}
 
 	private function getCommentFormConfig() {
-		
+		$configName = "configCommentForm";
+		return Comment::$configName($data);
 	}
 
 	private function isEmptyPost($post) {

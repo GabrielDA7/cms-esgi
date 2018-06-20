@@ -48,14 +48,14 @@ class UserController implements ControllerInterface {
 	}
 
 	public function editAction($params) {
-		if((!isset($params['POST']['id']) || !isAdmin()  && !isset($_SESSION['userId'])) {
+		if((!isset($params['POST']['id']) || !isAdmin())  && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_EDIT_VIEWS);
 		$this->userDelegate->getById($this->data, $params);
 		$this->formDelegate->process($this->data, $params);
-		$this->fileDelegate->process($this->data, $params);
+		$this->fileDelegate->process($this->data, $params, AVATAR_FOLDER_NAME);
 		$this->userDelegate->update($this->data, $params, "", USER_LIST_BACK_LINK);
 		$view = new View($this->data);
 	}
