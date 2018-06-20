@@ -7,9 +7,9 @@ class FileDelegate {
 		$this->objectName = $objectName;
 	}
 
-	public function process(&$data, &$params) {
+	public function process(&$data, &$params, $folderName) {
 		if (!empty($params['FILES'])) {
-			$this->manageFiles($data[lcfirst($this->objectName)], $params['FILES']);
+			$this->manageFiles($data[lcfirst($this->objectName)], $params['FILES'], $folderName);
 		}
 	}
 
@@ -21,8 +21,8 @@ class FileDelegate {
 		}
 	}
 
-	private function manageFiles(&$object, $files) {
-		$filesUrl = $this->uploadFiles($files);
+	private function manageFiles(&$object, $files, $folderName) {
+		$filesUrl = $this->uploadFiles($files, $folderName);
 		ClassUtils::setObjectColumns($object, $filesUrl);
 	}
 	
@@ -64,14 +64,14 @@ class FileDelegate {
 		}
 	}
 
-	private function uploadFiles($files) {
+	private function uploadFiles($files, $folderName) {
 		$filesUrl = [];
 		foreach ($files as $key => $value) {
 			if ($value['error'] == UPLOAD_ERR_OK) {
 				$tmp_name = $value["tmp_name"];
 				$name = basename($value["name"]);
-				$filesUrl += [$key => IMAGE_FOLDER_NAME."/".$name];
-				move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$name);
+				$filesUrl += [$key => IMAGE_FOLDER_NAME."/".$folderName."/".$name];
+				move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$folderName."/".$name);
 			}
 		}
 		return $filesUrl;

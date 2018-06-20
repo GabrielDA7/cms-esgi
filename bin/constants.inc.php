@@ -36,6 +36,9 @@ define("MODALS_FOLDER_NAME", "views/modals");
 define("VIEWS_TEMLATES_FOLDER_NAME", "views/templates");
 define("CSS_FOLDER_NAME", "public/css");
 define("IMAGE_FOLDER_NAME", "public/img");
+define("AVATAR_FOLDER_NAME", "avatars");
+define("VIDEO_FOLDER_NAME", "videos");
+define("FORMATION_IMAGES_FOLDER_NAME", "trainningImages");
 
 /*******************************
 ********** CHARACTERS **********
