@@ -9,13 +9,15 @@ class CommentController {
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->objectDelegate = new ObjectDelegate($this->data, COMMENT_CLASS_NAME);
-		$this->formDelegate = new FormDelegate(COMMENT_CLASS_NAME);
 	}
 
 	public function indexAction($params) {
 	}
-	
+
 	public function addAction($params) {
+		$this->data['errors'] = FALSE;
+		$this->objectDelegate->add($this->data, $params);
+		RedirectUtils::directRedirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function editAction($params) {

@@ -1,0 +1,84 @@
+IP + Date : ::1 - July 9, 2018, 5:36 pm
+-----------------
+Url : http://localhost/lab/uteach/cours.html
+Action : Controller not found
+Value : 
+Date : 07/09/2018 05:36:36 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 5:50 pm
+-----------------
+Url : http://localhost/lab/uteach/cours.html
+Action : Controller not found
+Value : 
+Date : 07/09/2018 05:50:56 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 7:37 pm
+-----------------
+Url : http://localhost/lab/uteach/user/publish
+Action : Action not found
+Value : publishAction in UserController
+Date : 07/09/2018 07:37:22 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 7:41 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/POST?content=dsfs
+Action : Action not found
+Value : postAction in ChapterController
+Date : 07/09/2018 07:41:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 7:42 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/POST?content=sdfsd
+Action : Action not found
+Value : postAction in ChapterController
+Date : 07/09/2018 07:42:07 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 7:43 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/POST?content=zeqf
+Action : Action not found
+Value : postAction in ChapterController
+Date : 07/09/2018 07:43:33 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 7:44 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/POST?content=zefezf
+Action : Action not found
+Value : postAction in ChapterController
+Date : 07/09/2018 07:44:39 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 7:45 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/comment/add
+Action : Action not found
+Value : commentAction in ChapterController
+Date : 07/09/2018 07:45:28 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 7:46 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/comment/add
+Action : Action not found
+Value : commentAction in ChapterController
+Date : 07/09/2018 07:46:35 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 8:19 pm
+-----------------
+Url : http://localhost/lab/uteach/http://localhost/lab/uteach/chapter/chapter?id=1
+Action : Controller not found
+Value : 
+Date : 07/09/2018 08:19:34 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 8:22 pm
+-----------------
+Url : http://localhost/lab/uteach/http://localhost/lab/uteach/chapter/chapter?id=1
+Action : Controller not found
+Value : 
+Date : 07/09/2018 08:22:20 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 9, 2018, 8:23 pm
+-----------------
+Url : http://localhost/lab/uteach/http://localhost/lab/uteach/chapter/chapter?id=1
+Action : Controller not found
+Value : 
+Date : 07/09/2018 08:23:44 pm
+-------------------------------------------------------

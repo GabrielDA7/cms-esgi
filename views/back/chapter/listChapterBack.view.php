@@ -1,9 +1,9 @@
-<section id="dashboard-list-lesson" class="table-data">
+<section id="dashboard-list-chapter" class="table-data">
 
   <div class="row">
     <div class="M4">
       <div class="back-title">
-        <h1>List of lessons</h1>
+        <h1>List of chapters</h1>
         <div class="hr-separation"></div>
       </div>
     </div>

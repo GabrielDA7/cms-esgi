@@ -7,7 +7,7 @@ class Video extends BaseSql {
 	protected $live;
 	protected $url;
 
-	protected $lesson_Id = null;
+	protected $chapter_Id = null;
 
 	public function __construct() {
 		BaseSql::__construct();
@@ -22,7 +22,7 @@ class Video extends BaseSql {
     public function getDuration() { return $this->duration;  }
     public function getLive()     { return $this->live;      }
     public function getUrl()      { return $this->url;       }
-    public function getLessonId() { return $this->lesson_Id; }
+    public function getChapterId() { return $this->chapter_Id; }
 
 
     public function setId($id)              { $this->id = $id;               }
@@ -30,5 +30,5 @@ class Video extends BaseSql {
     public function setDuration($duration)  { $this->duration = $duration;   }
     public function setLive($live)          { $this->live = $live;           }
     public function setUrl($url)            { $this->url = $url;             }
-    public function setLessonId($lesson_Id) { $this->lesson_Id = $lesson_Id; }
+    public function setChapterId($chapter_Id) { $this->chapter_Id = $chapter_Id; }
 }

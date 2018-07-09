@@ -68,7 +68,7 @@ class ObjectDelegate {
 		$data['itemsNumber'] = $object->countItems();
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
-	
+
 	public function getObjectName() 	   		  { return $this->objectName; 		  	    }
 	public function getLowerCaseFirstObjectName() { return $this->lowerCaseFirstObjectName; }
 

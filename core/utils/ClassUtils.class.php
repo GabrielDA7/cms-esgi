@@ -1,6 +1,6 @@
 <?php
 class classUtils {
-	
+
 	public function __construct() {}
 
 	public static function constructObject($objectName) {
@@ -54,11 +54,11 @@ class classUtils {
 			$columns  = array_diff_key($object->getColumns(), $columnsExclude);
 		}
 		if ($removeNull) {
-			self::removeNullColumns($columns);	
+			self::removeNullColumns($columns);
 		}
 		if (!$fromObject) {
 			return $columns;
-		}	
+		}
 		self::unsetColumns($object, $columnsExclude);
 	}
 

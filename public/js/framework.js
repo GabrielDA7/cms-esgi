@@ -158,20 +158,11 @@ $(function() {
 
   // COMMENTS
   if( $("#comments").length > 0 ) {
-    var page = 1;
     var object = "comment";
     var id = $.trim($("#comments-title span:first-child").text());
     var type = $.trim($("#comments-title span:nth-child(2)").text());
-    //load_data_list_comment(page,'init',order='desc','dateInserted', object, type, id);
+    load_data_list_comment(object, type, id);
   }
-
-  $(document).on('click', '#comment-button', function() {
-    var page = 1;
-    var object = "comment";
-    var id = $.trim($("#comments-title span:first-child").text());
-    var type = $.trim($("#comments-title span:nth-child(2)").text());
-    add_comment(page, order='desc','dateInserted', object, type, id);
-  });
 
 });
 
@@ -363,9 +354,9 @@ function addChapterSubpart(){
   idPart += 1;
 }
 
-function load_data_list_comment(page, action, order='desc', column_name, object, type){
+function load_data_list_comment(object, type, id){
   objects = object + 's';
-  url = dirname + "ajax/comment?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name;
+  url = dirname + "ajax/list?object=" + object + "&sort=" + order + "&columnName=" + column_name + "&page=" + page + "&itemsPerPage=10";
   div = $("#data-list");
   paginationLinks = $("#pagination_links");
   linkObjectView = $.trim($(".list-init-object span:last-child").text());
@@ -385,27 +376,4 @@ function load_data_list_comment(page, action, order='desc', column_name, object,
       div.html(html);
     }
   });
-}
-
-function add_comment(page, object, type, id){
-  objects = object + 's';
-  url = dirname + "ajax/comment";
-  div = $("#comments-result");
-
-  $.ajax({
-    url: url,
-    method: 'POST',
-    data: {object:object, page:page, sort:order, columnName:column_name, [type + "_" + "id"]:id},
-    success:function(data) {
-      data = JSON.parse(data);
-      var html = '';
-      if( data.length > 0) {
-        html = "Errreurs";
-        div.html(html);
-      } else {
-        load_data_list_comment(page, 'init', order='desc', column_name, object, type);
-      }
-    }
-  });
-  url = dirname + "ajax/comment?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name;
 }

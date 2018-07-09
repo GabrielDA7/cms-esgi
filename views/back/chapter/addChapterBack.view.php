@@ -1,8 +1,8 @@
-<section id="dashboard-add-lesson">
+<section id="dashboard-add-chapter">
   <div class="row">
     <div class="M4">
       <div class="back-title">
-        <h1>Add lesson</h1>
+        <h1>Add chapter</h1>
         <div class="hr-separation"></div>
       </div>
     </div>

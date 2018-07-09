@@ -38,9 +38,9 @@
 	<?php endforeach ?>
 </section>
 
-	<section id="comments-title">
+	<section id="comments">
 		<span class="content-hidden"><?= $chapter->getId(); ?></span>
-		<span class="content-hidden">lesson</span>
+		<span class="content-hidden">chapter</span>
 		<div class="row">
 				<div class="M3">
 					<p class="title-separator">Commentaires</p>
@@ -50,21 +50,22 @@
 				</div>
 		</div>
 
-		<div id="comments">
+		<form method="POST" action="<?= DIRNAME ?>comment/add">
+			<input type="hidden" name="user_id" value="<?= $_SESSION['userId'] ?>">
+			<input type="hidden" name="chapter_id" value="<?= $chapter->getId() ?>">
 			<div class="row">
 				<div class="M12 X12">
-							<textarea id="comment-text" class="input" name="textarea" placeholder="Enter a comment here"></textarea>
+							<textarea id="comment-text" class="input" name="content" placeholder="Enter a comment here"></textarea>
 				</div>
 			</div>
 			<div class="row">
 				<div class="M3 X12 M--offset9 wrapper-flex M--end">
-							<button id="comment-button" class="input-btn btn-filled-blue btn-icon">Commenter</button>
+							<input type="submit" id="comment-button" class="input-btn btn-filled-blue btn-icon" value="Commenter">
 				</div>
 			</div>
-		</div>
+		</form>
 
 		<div id="comments-result" class="row M--center">
-			<?php // foreach comments ?>
 			<div class="M12">
 				<p>No comments</p>
 			</div>

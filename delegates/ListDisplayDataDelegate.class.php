@@ -5,7 +5,7 @@ class ListDisplayDataDelegate {
 
   public function __construct($objectName) {
     $this->objectName = $objectName;
-  }  
+  }
 
   public function processCommonInformations(&$data, $params) {
     $this->setItemsNumberToGet($data, $params);

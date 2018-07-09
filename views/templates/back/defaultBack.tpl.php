@@ -33,7 +33,7 @@
         <nav id="dashboard-left-menu">
               <a href="<?= DIRNAME.STATISTIC_INDEX_BACK_LINK;?>" class="menu-item"><i class="fas fa-chart-area"></i>Statistics</a>
               <a href="" class="menu-item"><i class="fas fa-columns"></i>Pages</a>
-              <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-graduation-cap"></i>Lessons<i class="fas fa-chevron-down"></i></a>
+              <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-graduation-cap"></i>Chapters<i class="fas fa-chevron-down"></i></a>
               <div class="content-hidden sub-items">
                 <a href="<?= DIRNAME . CHAPTER_LIST_BACK_LINK; ?>" class="menu-sub-item">Liste des cours</a>
                 <a href="<?= DIRNAME . CHAPTER_ADD_BACK_LINK; ?>" class="menu-sub-item">Ajouter un cours</a>

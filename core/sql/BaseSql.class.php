@@ -26,7 +26,7 @@ class BaseSql extends QueryConstructorSql {
 			$queryString = $this->constructInsertQuery($this->table, $this->columns);
 			$query = $this->db->prepare($queryString);
 			$query->execute($this->columns);
-			return $this->getById($this->db->lastInsertId());
+			return null;
 		} catch (Exception $e) {
 			LogsUtils::process("logs", "Insert", "Error :" . $e->getMessage());
 			return null;
@@ -76,7 +76,7 @@ class BaseSql extends QueryConstructorSql {
 		return $objectList;
 	}
 
-	public function getById() {
+	public function getById($id = null) {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
