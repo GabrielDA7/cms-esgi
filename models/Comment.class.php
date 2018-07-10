@@ -7,6 +7,7 @@ class Comment extends BaseSql {
 	protected $responses = [];
 
   	protected $user_id;
+  	protected $user;
 	protected $chapter_id 	= null;
 	protected $trainning_id = null;
 	protected $video_id 	= null;
@@ -49,6 +50,7 @@ class Comment extends BaseSql {
 	public function getTrainningId() { return $this->trainning_id; }
 	public function getVideoId() 	 { return $this->video_id; 	   }
 	public function getCommentId() 	 { return $this->comment_id;   }
+	public function getUser() 	 	 { return $this->user;   	   }
 
 
 	public function setId($id) 					  { $this->id = $id; 					 }
@@ -60,4 +62,5 @@ class Comment extends BaseSql {
 	public function setTrainningId($trainning_id) { $this->trainning_id = $trainning_id; }
 	public function setVideoId($video_id) 		  { $this->video_id = $video_id; 		 }
 	public function setCommentId($comment_id) 	  { $this->comment_id = $comment_id; 	 }
+	public function setUser($user) 	  			  { $this->user = $user; 	 			 }
 }

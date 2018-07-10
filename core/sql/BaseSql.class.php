@@ -118,9 +118,14 @@ class BaseSql extends QueryConstructorSql {
 		foreach ($foreignKeyColumns as $key => $value) {
 			$objectName = ucfirst(str_replace("_id", "", $key));
 			$setter = "set" . $objectName;
-			if (method_exists($object, $setter)) {
+			if (method_exists($object, $setter)) {	
 				$foreignObject = ClassUtils::constructObjectWithId($value, $objectName);
 				$foreignObject = $foreignObject->getById();
+				if ($objectName == USER_CLASS_NAME) {
+					$tempObject = new User();
+					$tempObject->setUserName($foreignObject->getUsername());
+					$foreignObject = $tempObject;
+				}
 				$object->$setter($foreignObject);
 			}
 		}
