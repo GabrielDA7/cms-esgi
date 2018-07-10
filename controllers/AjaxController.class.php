@@ -43,7 +43,7 @@ class AjaxController {
 
 	public function listCommentAction($params) {
 	    $this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
-	    $this->objectDelegate->getByParameters($this->data, $params);
+	    $this->objectDelegate->getByParameters($this->data, $params['GET']);
 	    $array = FormatUtils::formatDataToArray($this->data);
 	    echo FormatUtils::formatToJson($array);
   	}

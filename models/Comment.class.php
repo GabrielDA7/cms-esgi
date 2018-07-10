@@ -6,7 +6,7 @@ class Comment extends BaseSql {
 	protected $content;
 	protected $responses = [];
 
-  protected $user_id;
+  	protected $user_id;
 	protected $chapter_id 	= null;
 	protected $trainning_id = null;
 	protected $video_id 	= null;
@@ -44,8 +44,8 @@ class Comment extends BaseSql {
 	public function getDate() 		 { return $this->date; 		   }
 	public function getContent() 	 { return $this->content; 	   }
 	public function getResponses() 	 { return $this->responses;    }
-	public function getUserId() 		 { return $this->user_id; 		   }
-	public function getChapterId() 	 { return $this->chapter_id;    }
+	public function getUserId() 	 { return $this->user_id; 	   }
+	public function getChapterId() 	 { return $this->chapter_id;   }
 	public function getTrainningId() { return $this->trainning_id; }
 	public function getVideoId() 	 { return $this->video_id; 	   }
 	public function getCommentId() 	 { return $this->comment_id;   }
@@ -55,8 +55,8 @@ class Comment extends BaseSql {
 	public function setDate($date) 				  { $this->date = $date; 				 }
 	public function setContent($content) 		  { $this->content = $content; 			 }
 	public function setResponses($responses) 	  { $this->responses = $responses; 		 }
-	public function setUserId($user_id) 				  { $this->user_id = $user_id; 				 }
-	public function setChapterId($chapter_id) 	  { $this->chapter_id = $chapter_id; 		 }
+	public function setUserId($user_id) 		  { $this->user_id = $user_id;			 }
+	public function setChapterId($chapter_id) 	  { $this->chapter_id = $chapter_id; 	 }
 	public function setTrainningId($trainning_id) { $this->trainning_id = $trainning_id; }
 	public function setVideoId($video_id) 		  { $this->video_id = $video_id; 		 }
 	public function setCommentId($comment_id) 	  { $this->comment_id = $comment_id; 	 }
