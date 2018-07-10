@@ -37,7 +37,8 @@ class ListDisplayDataDelegate {
   }
 
   private function setTableConfiguration(&$data) {
-    $data['tableConfig'] = $this->objectName::configTable();
+    if (method_exists(new $this->objectName, "configtable"))
+      $data['tableConfig'] = $this->objectName::configTable();
   }
 
   private function setPagination(&$data) {

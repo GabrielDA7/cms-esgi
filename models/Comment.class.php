@@ -12,6 +12,10 @@ class Comment extends BaseSql {
 	protected $video_id 	= null;
 	protected $comment_id 	= null;
 
+	public function getColumns() {
+		return get_object_vars($this);
+	}
+	
 	public static function configCommentForm($data){
 		return 	[
 					"config"=>["method"=>"POST","submit"=>"Comment", "submitClass"=>"input-btn btn-filled-blue btn-icon"],
