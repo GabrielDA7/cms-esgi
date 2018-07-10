@@ -41,6 +41,13 @@ class AjaxController {
 		echo FormatUtils::formatToJson($array);
 	}
 
+	public function listCommentAction($params) {
+		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
+		$this->objectDelegate->getByParameters($this->data, $params);
+		$array = FormatUtils::formatDataToArray($this->data);
+		echo FormatUtils::formatToJson($array);
+	}
+
 	public function commentAction($params) {
 		if (!$this->isForeignKeySend($params) || !isLogged()) {
 			echo FormatUtils::formatToJson([]);
