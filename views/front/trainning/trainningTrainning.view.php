@@ -54,6 +54,8 @@
 			</section>
 
 			<section id="comments">
+				<span class="content-hidden"><?= $trainning->getId(); ?></span>
+				<span class="content-hidden">trainning</span>
 				<div class="row">
 						<div class="M3">
 							<p class="title-separator">Commentaires</p>
