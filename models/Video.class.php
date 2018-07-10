@@ -19,7 +19,7 @@ class Video extends BaseSql {
 
 		public static function configAddForm($data){
 			return 	[
-						"config"=>["method"=>"POST", "action"=> DIRNAME.VIDEO_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Save", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
+						"config"=>["method"=>"POST", "action"=> DIRNAME.VIDEO_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Upload", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
 						"input"=>
 								[
 									"title"=>
@@ -32,7 +32,7 @@ class Video extends BaseSql {
 													"class"=>"form-group input",
 													"value"=>(isset($_POST["title"])? $_POST["title"] : "")
 												],
-									"video"=>
+									"file"=>
 												[
 											         "type"=>"file",
 													 	 	 "class"=>"form-group",
@@ -40,43 +40,18 @@ class Video extends BaseSql {
 											         "extension" =>
 											                   [
 												                    "mp4",
-												                    "png",
-												                    "jpeg"
+												                    "mp3",
+												                    "webm",
+																						"3gp",
 											                    ],
 															"requied"=>true
 									       		],
-									"trainning_id"=>
-														[
-															"type"=>"select",
-															"class"=>"form-group row select-formation input-medium",
-															"option"=>
-																		[
-																			"" => "Pas de formation"
-																		],
-															"value"=>(isset($_POST["trainning"])? $_POST["trainning"] : "Pas de formation")
-														],
-									"number"=>
-													[
-														"type"=>"number",
-														"class"=>"form-group row input-small input",
-														"required"=>true,
-														"value"=>(isset($_POST["number"])? $_POST["number"] : ""),
-
-													],
 									"author"=>
 												[
 											         "type"=>"hidden",
 													 	 	 "class"=>"form-group",
 											         "value" => $_SESSION['userName']
-									      ],
-									"parts"=>
-												[
-													"id"=>"addChapterPart",
-													"type"=>"button",
-													"class"=>"input-btn btn-filled-blue form-group row",
-													"value"=>"Add part",
-													"onclick"=>"addChapterSubpart();"
-												]
+									      ]
 							]
 
 					];

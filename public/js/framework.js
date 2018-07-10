@@ -158,10 +158,9 @@ $(function() {
 
   // COMMENTS
   if( $("#comments").length > 0 ) {
-    var object = "comment";
-    var id = $.trim($("#comments-title span:first-child").text());
-    var type = $.trim($("#comments-title span:nth-child(2)").text());
-    load_data_list_comment(object, type, id);
+    var object = $.trim($("#comments span:nth-child(2)").text());
+    var id = $.trim($("#comments span:first-child").text());
+    load_data_list_comment(object, id);
   }
 
 });
@@ -359,9 +358,9 @@ function addChapterSubpart(){
   idPart += 1;
 }
 
-function load_data_list_comment(object, type, id){
+function load_data_list_comment(object, id){
   objects = object + 's';
-  url = dirname + "ajax/list?object=" + object + "&sort=" + order + "&columnName=" + column_name + "&page=" + page + "&itemsPerPage=10";
+  url = dirname + "ajax/listComment?object=comment&sort=desc" + "&columnName=date" + "&page=1&itemsPerPage=10&" + object + "_id=" + id;
   div = $("#data-list");
   paginationLinks = $("#pagination_links");
   linkObjectView = $.trim($(".list-init-object span:last-child").text());
@@ -369,11 +368,12 @@ function load_data_list_comment(object, type, id){
     url: url,
     method: 'POST',
     success:function(data) {
+      alert(JSON.stringify(data));
       data = JSON.parse(data);
       var html = '';
       if( data[objects].length > 0) {
         $.each(data[objects], function(index, element) {
-
+          console.log(JSON.stringify(element));
         });
       } else {
         html = "No content";

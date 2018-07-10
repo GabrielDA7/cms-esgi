@@ -12,3 +12,38 @@ Action : Controller not found
 Value : 
 Date : 07/10/2018 10:48:56 am
 -------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:12 pm
+-----------------
+Url : http://localhost/lab/uteach/comment/list?object=comment&sort=desc&columnName=date&page=1&itemsPerPage=10&comment_id=
+Action : Action not found
+Value : listAction in CommentController
+Date : 07/10/2018 04:12:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:13 pm
+-----------------
+Url : http://localhost/lab/uteach/comment/list?object=comment&sort=desc&columnName=date&page=1&itemsPerPage=10&comment_id=
+Action : Action not found
+Value : listAction in CommentController
+Date : 07/10/2018 04:13:15 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:13 pm
+-----------------
+Url : http://localhost/lab/uteach/comment/list?object=comment&sort=desc&columnName=date&page=1&itemsPerPage=10&comment_id=
+Action : Action not found
+Value : listAction in CommentController
+Date : 07/10/2018 04:13:34 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:16 pm
+-----------------
+Url : http://localhost/lab/uteach/comment/list?object=comment&sort=desc&columnName=date&page=1&itemsPerPage=10&_id=
+Action : Action not found
+Value : listAction in CommentController
+Date : 07/10/2018 04:16:01 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:16 pm
+-----------------
+Url : http://localhost/lab/uteach/comment/list?object=comment&sort=desc&columnName=date&page=1&itemsPerPage=10&chapter_id=1
+Action : Action not found
+Value : listAction in CommentController
+Date : 07/10/2018 04:16:36 pm
+-------------------------------------------------------
