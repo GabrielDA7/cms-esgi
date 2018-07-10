@@ -7,14 +7,14 @@ class AjaxController {
 	private $data = [];
 
 	public function __construct() {
-		if (!isset($_GET['object']) || !$this->isObjectExist($_GET['object']) || ($this->isUserObject($_GET['object']) && !isAdmin())) {
+		$objectName = (isset($_GET['object'])) ? $_GET['object'] : $_POST['object'];
+		if (!isset($objectName) || !$this->isObjectExist($objectName) || ($this->isUserObject($objectName) && !isAdmin())) {
 			echo FormatUtils::formatToJson([]);
 			exit;
 		}
-		$_GET['object'] = ucfirst($_GET['object']);
-		$this->objectDelegate = new ObjectDelegate($this->data, $_GET['object']);
-		$this->listDisplayDataDelegate = new ListDisplayDataDelegate($_GET['object']);
-		$this->formDelegate = new FormDelegate($_GET['object']);
+		$this->objectDelegate = new ObjectDelegate($this->data, $objectName);
+		$this->listDisplayDataDelegate = new ListDisplayDataDelegate($objectName);
+		$this->formDelegate = new FormDelegate($objectName);
 	}
 
 	public function searchAction($params) {
