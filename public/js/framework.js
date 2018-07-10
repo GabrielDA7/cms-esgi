@@ -251,9 +251,14 @@ function load_data_table(page, limit, action, order='asc', column_name) {
           html+="<tr>";
           $.each(data["tableConfig"]["cells"], function(k,val) {
             if(k == "id") {
-              html += "<td><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table'type='submit' name='delete'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
-              html+="<a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
-              html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='delete'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
+              if(object == "user") {
+                 html += "<td><a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
+                 html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='delete'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
+              } else {
+                html += "<td><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table'type='submit' name='share'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
+                html +="<a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
+                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='delete'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
+              }
             } else {
               if ( $.isArray(element[k])) {
                 html+="<td>"+element[k][0].title+"</td>";

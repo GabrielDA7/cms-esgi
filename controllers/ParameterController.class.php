@@ -1,10 +1,11 @@
 <?php
 include "core/interfaces/ControllerInterface.php";
 class ParameterController implements ControllerInterface {
-	
+
 	public function indexAction($params) {
+
 	}
-	
+
 	public function addAction($params) {
 	}
 

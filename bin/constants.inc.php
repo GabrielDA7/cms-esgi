@@ -102,6 +102,14 @@ define("CHAPTER_LIST_FRONT_LINK", "chapter/list");
 define("CHAPTER_LIST_BACK_LINK", "chapter/list/back");
 define("CHAPTER_ADD_BACK_LINK", "chapter/add/back");
 
+define("VIDEO_VIDEO_FRONT_LINK", "video/video");
+define("VIDEO_VIDEO_BACK_LINK", "video/video/back");
+define("VIDEO_LIST_FRONT_LINK", "video/list");
+define("VIDEO_LIST_BACK_LINK", "video/list/back");
+define("VIDEO_ADD_BACK_LINK", "video/add/back");
+
+
+
 define("INDEX_ERROR_LINK", "index/error");
 
 define("FACEBOOK_LINK", "");
@@ -140,6 +148,7 @@ define("USER_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "passwordResetEmail",   "
 define("USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "confirmationResetPasswordEmail",   "back" => ""]);
 
 define("VIDEO_LIST_VIEWS", ["front"=> "listVideo", "back" => "listVideoBack"]);
+define("VIDEO_ADD_VIEWS", ["front"=> "", "back" => "addVideoBack"]);
 
 define("STATISTIC_VIEWS", ["front"=> "", "back" => "statisticBack"]);
 

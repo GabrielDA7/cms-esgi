@@ -16,7 +16,7 @@ class VideoController {
 
 	public function indexAction($params) {
 	}
-	
+
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
@@ -47,7 +47,7 @@ class VideoController {
 	}
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, VIDEO_LIST_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_LIST_VIEWS);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}
