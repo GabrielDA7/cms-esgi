@@ -49,21 +49,22 @@
 					<div class="full-hr-separation"></div>
 				</div>
 		</div>
-
-		<form method="POST" action="<?= DIRNAME ?>comment/add">
-			<input type="hidden" name="user_id" value="<?= $_SESSION['userId'] ?>">
-			<input type="hidden" name="chapter_id" value="<?= $chapter->getId() ?>">
-			<div class="row">
-				<div class="M12 X12">
-							<textarea id="comment-text" class="input" name="content" placeholder="Enter a comment here"></textarea>
+		<?php if (isLogged()) : ?>
+			<form method="POST" action="<?= DIRNAME ?>comment/add">
+				<input type="hidden" name="user_id" value="<?= $_SESSION['userId'] ?>">
+				<input type="hidden" name="chapter_id" value="<?= $chapter->getId() ?>">
+				<div class="row">
+					<div class="M12 X12">
+								<textarea id="comment-text" class="input" name="content" placeholder="Enter a comment here"></textarea>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="M3 X12 M--offset9 wrapper-flex M--end">
-							<input type="submit" id="comment-button" class="input-btn btn-filled-blue btn-icon" value="Commenter">
+				<div class="row">
+					<div class="M3 X12 M--offset9 wrapper-flex M--end">
+								<input type="submit" id="comment-button" class="input-btn btn-filled-blue btn-icon" value="Commenter">
+					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		<?php endif ?>
 
 		<div id="comments-result" class="row M--center">
 			<div class="M12">

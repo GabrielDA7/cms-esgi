@@ -47,3 +47,66 @@ Action : Action not found
 Value : listAction in CommentController
 Date : 07/10/2018 04:16:36 pm
 -------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:57 pm
+-----------------
+Url : http://localhost/lab/uteach/trainning/%3Cbr%20/%3E%3Cb%3EWarning%3C/b%3E:%20%20Missing%20argument%201%20for%20ViewUtils::findImage(),%20called%20in%20/var/www/html/lab/uteach/views/front/trainning/trainningTrainning.view.php%20on%20line%2016%20and%20defined%20in%20%3Cb%3E/var/www/html/lab/uteach/core/utils/ViewUtils.class.php%3C/b%3E%20on%20line%20%3Cb%3E10%3C/b%3E%3Cbr%20/%3E/lab/uteach/img/default.jpg
+Action : Action not found
+Value : <br Action in TrainningController
+Date : 07/10/2018 04:57:59 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:58 pm
+-----------------
+Url : http://localhost/lab/uteach/img/default.jpg
+Action : Controller not found
+Value : 
+Date : 07/10/2018 04:58:57 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:59 pm
+-----------------
+Url : http://localhost/lab/uteach/img/default.jpg
+Action : Controller not found
+Value : 
+Date : 07/10/2018 04:59:17 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:59 pm
+-----------------
+Url : http://localhost/lab/uteach/img/default.jpg
+Action : Controller not found
+Value : 
+Date : 07/10/2018 04:59:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 4:59 pm
+-----------------
+Url : http://localhost/lab/uteach/img/default.jpg
+Action : Controller not found
+Value : 
+Date : 07/10/2018 04:59:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 5:00 pm
+-----------------
+Url : http://localhost/lab/uteach/img/default.jpg
+Action : Controller not found
+Value : 
+Date : 07/10/2018 05:00:28 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 5:15 pm
+-----------------
+Url : http://localhost/lab/uteach/img/default.jpg
+Action : Controller not found
+Value : 
+Date : 07/10/2018 05:15:06 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 5:15 pm
+-----------------
+Url : http://localhost/lab/uteach/img/default.jpg
+Action : Controller not found
+Value : 
+Date : 07/10/2018 05:15:07 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 5:15 pm
+-----------------
+Url : http://localhost/lab/uteach/trainning/localhost/lab/uteach/img/default.jpg
+Action : Action not found
+Value : localhostimgAction in TrainningController
+Date : 07/10/2018 05:15:21 pm
+-------------------------------------------------------

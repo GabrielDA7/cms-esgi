@@ -10,7 +10,7 @@
 
 		<div class="row M--center">
 			<div class="M3">
-				<img class="img main-img" src="<?= DIRNAME . $trainning->getImage(); ?>" alt="image du cours#1" title="image du cours#1" >
+				<img class="img main-img" src="<?= ViewUtils::findImage($trainning->getImage()) ?>" alt="image du cours#1" title="image du cours#1" >
 			</div>
 		</div>
 
@@ -64,21 +64,22 @@
 							<div class="full-hr-separation"></div>
 						</div>
 				</div>
-
-				<form method="POST" action="<?= DIRNAME ?>comment/add">
-					<input type="hidden" name="user_id" value="<?= $_SESSION['userId'] ?>">
-					<input type="hidden" name="trainning_id" value="<?= $trainning->getId() ?>">
-					<div class="row">
-						<div class="M12 X12">
-									<textarea id="comment-text" class="input" name="content" placeholder="Enter a comment here"></textarea>
+				<?php if (isLogged()) : ?>
+					<form method="POST" action="<?= DIRNAME ?>comment/add">
+						<input type="hidden" name="user_id" value="<?= $_SESSION['userId'] ?>">
+						<input type="hidden" name="trainning_id" value="<?= $trainning->getId() ?>">
+						<div class="row">
+							<div class="M12 X12">
+										<textarea id="comment-text" class="input" name="content" placeholder="Enter a comment here"></textarea>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="M3 X12 M--offset9 wrapper-flex M--end">
-									<input type="submit" id="comment-button" class="input-btn btn-filled-blue btn-icon" value="Commenter">
+						<div class="row">
+							<div class="M3 X12 M--offset9 wrapper-flex M--end">
+										<input type="submit" id="comment-button" class="input-btn btn-filled-blue btn-icon" value="Commenter">
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				<?php endif; ?>
 
 				<div class="row M--center">
 					<div class="M12">
