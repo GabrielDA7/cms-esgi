@@ -35,7 +35,7 @@ class AjaxController {
 
 	public function listAction($params) {
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
-		$this->objectDelegate->getAll($this->data, $params);
+		$this->objectDelegate->getAll($this->data);
 		$this->listDisplayDataDelegate->process($this->data);
 		$array = FormatUtils::formatDataToArray($this->data);
 		echo FormatUtils::formatToJson($array);

@@ -9,7 +9,7 @@ class FormDelegate {
 
 	public function process(&$data, $params) {
 		$data['config'] = $this->getFormConfig($params['URL'], $data);
-		$data['commentConfig'] = $this->getCommentFormConfig();
+		$data['commentConfig'] = $this->getCommentFormConfig($data);
 		$data['errors'] = null;
 		if(isset($params['POST']['submit'])) {
 			$data['errors'] = $this->checkForm($data['config'], $params["POST"], $params['FILES']);
@@ -89,7 +89,7 @@ class FormDelegate {
 		return null;
 	}
 
-	private function getCommentFormConfig() {
+	private function getCommentFormConfig($data) {
 		$configName = "configCommentForm";
 		return Comment::$configName($data);
 	}

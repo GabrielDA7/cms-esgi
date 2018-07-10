@@ -117,10 +117,10 @@ class BaseSql extends QueryConstructorSql {
 	private function setForeingObjectsColumns(&$object, $foreignKeyColumns) {
 		foreach ($foreignKeyColumns as $key => $value) {
 			$objectName = ucfirst(str_replace("_id", "", $key));
-			$foreignObject = ClassUtils::constructObjectWithId($value, $objectName);
-			$foreignObject = $foreignObject->getById();
 			$setter = "set" . $objectName;
 			if (method_exists($object, $setter)) {
+				$foreignObject = ClassUtils::constructObjectWithId($value, $objectName);
+				$foreignObject = $foreignObject->getById();
 				$object->$setter($foreignObject);
 			}
 		}
