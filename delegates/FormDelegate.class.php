@@ -84,7 +84,9 @@ class FormDelegate {
 
 	private function getFormConfig($url, $data) {
 		$configName = "config" . ucfirst($url[1]) . "Form";
-		return $this->objectName::$configName($data);
+		if (method_exists(new $this->objectName, $configName))
+			return $this->objectName::$configName($data);
+		return null;
 	}
 
 	private function getCommentFormConfig() {

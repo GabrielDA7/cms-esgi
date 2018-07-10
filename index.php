@@ -89,6 +89,8 @@ function getUriExploded() {
 	$uri = $_SERVER["REQUEST_URI"];
 	$uri = explode(QUESTION_MARK, $uri);
 	$uri = str_ireplace(DIRNAME, '', urldecode($uri[0]));
+	//$uri = preg_replace("/\//", '', urldecode($uri[0]), 1);
+
 	$uriExploded = explode(DS, $uri);
 	return $uriExploded;
 }
