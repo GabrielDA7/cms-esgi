@@ -36,7 +36,6 @@ class Video extends BaseSql {
 												[
 											         "type"=>"file",
 													 	 	 "class"=>"form-group",
-											         "maxSize" => 1000000,
 											         "extension" =>
 											                   [
 												                    "mp4",

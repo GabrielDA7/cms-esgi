@@ -25,10 +25,10 @@ class FileDelegate {
 		$filesUrl = $this->uploadFiles($files, $folderName);
 		ClassUtils::setObjectColumns($object, $filesUrl);
 	}
-	
+
 	public function createDatabase() {
 		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
-		$BaseSql = new BaseSql(); 
+		$BaseSql = new BaseSql();
 		$BaseSql->createDatabase($fileContent);
 		RedirectUtils::redirect(INSTALLATION_ADMIN_LINK);
 	}
@@ -77,7 +77,7 @@ class FileDelegate {
 		return $filesUrl;
 	}
 
-	
+
 	public function getObjectName() { return $this->objectName; }
 	public function setObjectName($objectName) { $this->objectName = $objectName; }
 }

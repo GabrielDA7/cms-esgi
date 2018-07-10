@@ -108,8 +108,6 @@ define("VIDEO_LIST_FRONT_LINK", "video/list");
 define("VIDEO_LIST_BACK_LINK", "video/list/back");
 define("VIDEO_ADD_BACK_LINK", "video/add/back");
 
-
-
 define("INDEX_ERROR_LINK", "index/error");
 
 define("FACEBOOK_LINK", "");

@@ -368,7 +368,6 @@ function load_data_list_comment(object, id){
     url: url,
     method: 'POST',
     success:function(data) {
-      alert(JSON.stringify(data));
       data = JSON.parse(data);
       var html = '';
       if( data[objects].length > 0) {
