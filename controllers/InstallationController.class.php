@@ -11,7 +11,7 @@ class InstallationController {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->objectDelegate = new ObjectDelegate($this->data, INSTALLATION_CLASS_NAME);
 		$this->formDelegate = new FormDelegate(INSTALLATION_CLASS_NAME);
-		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAMEs);
+		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAME);
 	}
 
 	public function indexAction($params) {
@@ -58,7 +58,7 @@ class InstallationController {
 		$view = new View($this->data);
 	}
 
-	public function databaseAction() {
+	public function createdatabaseAction($params) {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
