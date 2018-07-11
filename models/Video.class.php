@@ -3,11 +3,11 @@ class Video extends BaseSql {
 
 	protected $id = null;
 	protected $title;
-	protected $duration;
-	protected $live;
 	protected $url;
+	protected $user_id;
+	protected $description;
 
-	protected $chapter_Id = null;
+	protected $part_id = null;
 
 	public function __construct() {
 		BaseSql::__construct();
@@ -66,11 +66,6 @@ class Video extends BaseSql {
 						                      [
 						                        "name"=>"Title"
 						                      ],
-
-						                "category"=>
-						                      [
-						                        "name"=>"Category"
-						                      ],
 						                "author"=>
 						                      [
 						                         "name"=>"Author"
@@ -88,17 +83,17 @@ class Video extends BaseSql {
 			}
 
     public function getId()       { return $this->id;        }
-    public function getTitle()    { return $this->title;     }
-    public function getDuration() { return $this->duration;  }
-    public function getLive()     { return $this->live;      }
+		public function getTitle()    { return $this->title;     }
+		public function getDescription()    { return $this->description;     }
+		public function getUserId()   { return $this->user_id;    }
     public function getUrl()      { return $this->url;       }
-    public function getChapterId() { return $this->chapter_Id; }
+    public function getPartId() { return $this->part_id; }
 
 
     public function setId($id)              { $this->id = $id;               }
     public function setTitle($title)        { $this->title = $title;         }
-    public function setDuration($duration)  { $this->duration = $duration;   }
-    public function setLive($live)          { $this->live = $live;           }
+		public function setUserId($user_id)      { $this->user_id = $user_id;       }
+		public function setDescription($description)      { $this->description = $description;       }
     public function setUrl($url)            { $this->url = $url;             }
-    public function setChapterId($chapter_Id) { $this->chapter_Id = $chapter_Id; }
+    public function setPartId($part_id) { $this->part_id = $part_id; }
 }

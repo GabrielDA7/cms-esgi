@@ -359,7 +359,6 @@ function addChapterSubpart(){
 }
 
 function load_data_list_comment(object, id){
-  objects = object + 's';
   url = dirname + "ajax/listComment?object=comment&sort=desc" + "&columnName=date" + "&page=1&itemsPerPage=10&" + object + "_id=" + id;
   div = $("#data-list");
   paginationLinks = $("#pagination_links");
@@ -370,9 +369,11 @@ function load_data_list_comment(object, id){
     success:function(data) {
       data = JSON.parse(data);
       var html = '';
-      if( data[objects].length > 0) {
-        $.each(data[objects], function(index, element) {
+      alert(data.comments.user.userName);
+      if( data['comments'].length > 0) {
+        $.each(data['comment'], function(index, element) {
           console.log(JSON.stringify(element));
+          //console.log(element.content);
         });
       } else {
         html = "No content";

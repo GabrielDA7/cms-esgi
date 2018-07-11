@@ -8,7 +8,10 @@ TODO
 
 
                               |BACK|
-
+Corriger back add video
+Ajouter author a chapter
+Modifier author avec id (trainning)
+Ajout et edition auteurs => session
 Creer nouvelle fct dans le ajaxController pour listeCommentaire qui prend en compte l'id
 Filter ajax ()
 passowrd -> sha1 + grain de sel
