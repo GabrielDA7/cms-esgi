@@ -7,10 +7,17 @@ PHP > 7
 TODO
 
 
+                              |SERVER|
+
+php.ini 
+  post_max_size = 500M
+  upload_max_filesize = 500M
+
+
                               |BACK|
 
 RSS
-search bar (new view / search )
+
 Corriger back add video
 Ajouter author a chapter
 Modifier author avec id (trainning)
@@ -36,6 +43,7 @@ for the parts find a way to save the location of the videos and the pictures
 -- DONE -- Refactoring objectDelegate
 -- DONE -- search :
   create a search config on all classes to set the possible columns to search (It's to not search with id column with a string for example)
+-- DONE -- search bar action
 
                               |FRONT|
 
@@ -44,3 +52,9 @@ VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une r
   arreter les requetes quand il n'y a pas de resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
 
 View edit
+
+Search nav bar
+	3 search ajax request :
+		training / chapter / video
+	get the 3 lists and print them
+	view search.view.php (not created)

@@ -72,6 +72,6 @@ class ObjectDelegate {
 	public function getObjectName() 	   		  { return $this->objectName; 		  	    }
 	public function getLowerCaseFirstObjectName() { return $this->lowerCaseFirstObjectName; }
 
-	public function setObjectName($objectName) 				 			   { $this->objectName = $objectName; 			  				  }
-	public function setLowerCaseFirstObjectName($lowerCaseFirstObjectName) { $this->lowerCaseFirstObjectName = $lowerCaseFirstObjectName; }
+	public function setObjectName($objectName) 				 			   { $this->objectName = $objectName; 							}
+	public function setLowerCaseFirstObjectName($lowerCaseFirstObjectName) { $this->lowerCaseFirstObjectName =$lowerCaseFirstObjectName;}
 }

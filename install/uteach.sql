@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 11 juil. 2018 à 09:03
+-- Généré le :  mer. 11 juil. 2018 à 21:52
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -205,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `dateUpdated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `role` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `user`
@@ -215,7 +215,7 @@ INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `use
 (20, 'Zqet', 'Qzetqzet', 'louis@gmail.com', '', 'aaaaa', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', NULL, NULL, '2v3wh6jleww0g8k4ow804gogg4w4owcw8owc0cgsggg44s0g40', 0, '2018-03-14 12:20:10', '2018-03-30 21:41:16', 2),
 (23, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '4k5qdza6baio0sg0sc4oc44ggowcc880o8ccsg044cc8skscsg', 1, '2018-03-20 19:41:10', '2018-03-30 21:48:46', 0),
 (24, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '66myo5znw64gwowkcwgkg44oo4wg0ogoksswgosw00kgs44ok4', 0, '2018-03-20 19:44:31', NULL, 0),
-(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '1qcv9d10aexw0k0ow448cswwscoswg4swoso8gg0wwkow48w8g', 1, '2018-03-20 19:48:58', '2018-04-23 09:42:58', 2),
+(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '22lvlhzsaqlcgc8wock08wkck000ccwook4w4wkgko4kskg8cc', 1, '2018-03-20 19:48:58', '2018-04-23 09:42:58', 2),
 (26, 'LOUIS', 'LOUIS', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '2whcvk8hjtq8w0kwcs8ow80sws40cccgg8gkows0oc4kkwcssg', 0, '2018-03-20 19:58:29', NULL, 0),
 (27, 'LOUIS', 'LOUIS', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'gpxzj6bqeygwsk0s0w8o8sggos04wkokw0ck88o080gswg008', 0, '2018-03-21 18:58:02', NULL, 0),
 (28, 'ARETARET', 'ERATREAT', 'louis@gmail.com', '', 'teate', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '6auoeiaxbickogc044kowwsw0c08ock4s484k8ocsoowso0k4w', 0, '2018-03-24 21:24:35', NULL, 0),
@@ -235,10 +235,35 @@ INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `use
 (42, 'Louis', 'Louis', 'louis@gmail.com', '', 'jkjhkjh', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '4ln1t1em6fc4k80kk84wks40k4g84kwwgco84oswosc0s488cg', 0, '2018-04-04 14:26:54', NULL, 1),
 (43, 'Zefgizergzhg', 'Oiehfjboehoer', 'ezhfzghljzhglherg@gmail.com', '69d6ut4vyzs4sokcsckc8wc8ws8kwcck80so0kss8w4oggoo0g', 'mefhjgemohjoe', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '1rislwf8mrz4gw8scggkgc88g0kwkcswkwskog4k844wk40gw4', 0, '2018-05-11 18:36:30', NULL, 1),
 (44, 'Zefgizergzhg', 'Oiehfjboehoer', 'ezhfzghljzhglherg@gmail.com', '69d6ut4vyzs4sokcsckc8wc8ws8kwcck80so0kss8w4oggoo0g', 'mefhjgemohjoe', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '1rislwf8mrz4gw8scggkgc88g0kwkcswkwskog4k844wk40gw4', 0, '2018-05-11 18:36:30', NULL, 1),
-(50, 'Gabriel', 'Daoud', 'gabrieldaoud3112@gmail.com', '1', 'D3oneLeBoss', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '438gynozi0kkw8g8s0skw0oo8sg8co0owsks8k0s8g84occowo', 1, '2018-05-12 13:33:51', '2018-05-12 13:34:06', 1),
-(51, 'Azeaze', 'Azeaze', 'decultot.louis@gmail.com', '1', 'azeaze', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, 'njcpoc3vbusgc8koc8ccw8c8csowk8cwwwc48ckwwg8o88s0k', 0, '2018-07-11 09:00:03', NULL, 2),
-(52, 'Azeaze', 'Azeaze', 'decultot.louis@gmail.com', '1', 'azeaze', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '5c0zju4zk8sgs0s44swsc8osksows8gcg0gog8k4gk04wwcw00', 0, '2018-07-11 09:01:09', NULL, 2),
-(53, 'Azeaze', 'Azeaze', 'decultot.louis@gmail.com', '1', 'azeaze', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '2esr9gpj8dno0k8gogc00cwk0ww8kc0coc40gks84ook8k88c4', 0, '2018-07-11 09:01:30', NULL, 2);
+(58, 'Zernjzenrjzen', 'Erkjngerngjnrekj', 'decultot.louis@gmail.com', '3cd2h35goiqsokkgcs0ks00csc84oo4gk008coo8og8csw0o8g', 'ekjgnjkrengjknernge', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '58knyvm395c844w0c8co0sog8848wogowg0w04wsw444sc0ogk', 0, '2018-07-11 17:47:28', NULL, 1),
+(60, 'Kezjzetzejuzei', 'Kejrgerngrej', 'gabrieldaoud3112@gmail.com', '1', 'ekrgnjregnjerngzngjn', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '65jqtmixoggsosg0cs4csg8gksw40gg4088s0k4o0skgswkkgk', 0, '2018-07-11 17:58:26', '2018-07-11 18:03:32', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `video`
+--
+
+DROP TABLE IF EXISTS `video`;
+CREATE TABLE IF NOT EXISTS `video` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` text,
+  `url` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `part_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `part_id` (`part_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `video`
+--
+
+INSERT INTO `video` (`id`, `title`, `description`, `url`, `date`, `user_id`, `part_id`) VALUES
+(1, 'elkrgrere', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-11 21:51:35', 25, NULL);
 
 --
 -- Contraintes pour les tables déchargées

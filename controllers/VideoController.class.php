@@ -18,7 +18,7 @@ class VideoController {
 	}
 
 	public function addAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_ADD_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, VIDEO_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, VIDEO_FOLDER_NAME);
 		$this->objectDelegate->add($this->data, $params);

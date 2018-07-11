@@ -22,7 +22,6 @@ class FileDelegate {
 	}
 
 	private function manageFiles(&$object, $files, $folderName) {
-		aaa("ee");
 		$filesUrl = $this->uploadFiles($files, $folderName);
 		ClassUtils::setObjectColumns($object, $filesUrl);
 	}
