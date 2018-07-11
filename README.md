@@ -17,10 +17,16 @@ php.ini
                               |BACK|
 
 RSS
+paypal
+publish content (chapter / trainning)
+
+Comment class -> form user_id ?
 
 Ajouter author a chapter
 Modifier author avec id (trainning)
 Ajout et edition auteurs => session
+
+change date to dateInserted
 
 Filter ajax ()
 passowrd -> sha1 + grain de sel
@@ -59,3 +65,6 @@ Search nav bar
 		training / chapter / video
 	get the 3 lists and print them
 	view search.view.php (not created)
+
+home page 
+  ajax list with item = 5 and order = desc / columns=date

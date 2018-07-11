@@ -8,10 +8,10 @@ class Comment extends BaseSql {
 
   	protected $user_id;
   	protected $user;
-	protected $chapter_id 	= null;
-	protected $trainning_id = null;
-	protected $video_id 	= null;
-	protected $comment_id 	= null;
+	protected $chapter_id;
+	protected $trainning_id;
+	protected $video_id;
+	protected $comment_id;
 
 	public function getColumns() {
 		return get_object_vars($this);
