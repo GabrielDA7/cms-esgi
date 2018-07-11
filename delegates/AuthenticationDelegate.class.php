@@ -39,7 +39,7 @@ class AuthenticationDelegate {
 	}
 
 	private function checkBackOfficeViewPermission($url) {
-		if ((isset($url[2]) && $url[2] === "back" && isAdmin()) || isset($url[1]) && $url[1] === "login") {
+		if (isset($url[2]) && $url[2] === "back" && (isAdmin() || isset($url[1]) && $url[1] === "login")) {
 				return TRUE;
 		} 
 		return FALSE;

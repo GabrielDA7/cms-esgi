@@ -22,8 +22,7 @@ publish content (chapter / trainning)
 
 Comment class -> form user_id ?
 
-Ajouter author a chapter
-Modifier author avec id (trainning)
+
 Ajout et edition auteurs => session
 
 change date to dateInserted
@@ -51,6 +50,8 @@ for the parts find a way to save the location of the videos and the pictures
 -- DONE -- Corriger back add video
 -- DONE -- rename the files where there are moved in the server (ex create a folder wich is named formation and put the formations into it and 
            give a name like formation + id) -> do for the object class a function who return the file path (ex : video is : DIR . public.video . etc)
+-- DONE -- Ajouter author a chapter
+-- DONE -- Modifier author avec id (trainning)
 
                               |FRONT|
 
