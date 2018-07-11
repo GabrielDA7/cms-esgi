@@ -18,23 +18,20 @@ php.ini
 
 RSS
 
-Corriger back add video
 Ajouter author a chapter
 Modifier author avec id (trainning)
 Ajout et edition auteurs => session
 
 Filter ajax ()
 passowrd -> sha1 + grain de sel
-remove live form video.class
-Remove database columns from objects (problem when object db is used more than once)
 
-rename the files where there are moved in the server (ex create a folder wich is named formation and put the formations into it and give a name like formation + id) -> do for the object class a function who return the file path (ex : video is : DIR . public.video . etc)
+Remove database columns from objects (problem when object db is used more than once)
 
 for the parts find a way to save the location of the videos and the pictures  
   ex : %image1% will be replace by  
 
 -- SEE LATER -- find a way the change the working of setReferencedObjectsColumns() in objectDelegate  
-  We have to get the refernced object with a join query
+                We have to get the refernced object with a join query
 
 -- DONE -- reset password email
 -- DONE -- Creer nouvelle fct dans le ajaxController pour listeCommentaire qui prend en compte l'id
@@ -42,8 +39,12 @@ for the parts find a way to save the location of the videos and the pictures
 -- DONE -- secure the search ajax (if object is user he can get all the user data)
 -- DONE -- Refactoring objectDelegate
 -- DONE -- search :
-  create a search config on all classes to set the possible columns to search (It's to not search with id column with a string for example)
+           create a search config on all classes to set the possible columns to search (It's to not search with id column with a string for example)
 -- DONE -- search bar action
+-- DONE -- remove live form video.class
+-- DONE -- Corriger back add video
+-- DONE -- rename the files where there are moved in the server (ex create a folder wich is named formation and put the formations into it and 
+           give a name like formation + id) -> do for the object class a function who return the file path (ex : video is : DIR . public.video . etc)
 
                               |FRONT|
 
