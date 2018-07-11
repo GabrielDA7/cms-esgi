@@ -13,13 +13,14 @@ class UserDelegate extends ObjectDelegate {
 		$data['user'] = $user;
 	}
 
-	public function add(&$data, $params) {
+	public function add(&$data, $params, $redirect = TRUE) {
 		if ($data['errors'] === FALSE) {
 			$user = $data['user'];
 			ClassUtils::setObjectColumns($user, $params['POST']);
 			$user->generateToken();
 			$user->insert();
-			RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$user->getEmail()]);
+			if ($redirect)
+				RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$user->getEmail()]);
 		}
 	}
 

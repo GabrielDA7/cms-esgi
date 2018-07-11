@@ -34,7 +34,7 @@ class FileDelegate {
 	}
 
 	private function setConfData($installation) {
-		$fname = "conf.inc.php";
+		$fname = "bin/conf.inc.php";
 		$content = $this->getContentFromConfFile($fname);
 		$this->replaceData($content, $installation);
 		$this->overwriteContentFromConfFile($fname, $content);

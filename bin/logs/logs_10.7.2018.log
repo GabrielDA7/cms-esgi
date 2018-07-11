@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 10, 2018, 10:23 am
 -----------------
 Url : http://localhost/lab/uteach/user/dsfsdf
@@ -12,6 +13,7 @@ Action : Controller not found
 Value : 
 Date : 07/10/2018 10:48:56 am
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 10, 2018, 4:12 pm
 -----------------
 Url : http://localhost/lab/uteach/comment/list?object=comment&sort=desc&columnName=date&page=1&itemsPerPage=10&comment_id=
@@ -47,6 +49,7 @@ Action : Action not found
 Value : listAction in CommentController
 Date : 07/10/2018 04:16:36 pm
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 10, 2018, 4:57 pm
 -----------------
 Url : http://localhost/lab/uteach/trainning/%3Cbr%20/%3E%3Cb%3EWarning%3C/b%3E:%20%20Missing%20argument%201%20for%20ViewUtils::findImage(),%20called%20in%20/var/www/html/lab/uteach/views/front/trainning/trainningTrainning.view.php%20on%20line%2016%20and%20defined%20in%20%3Cb%3E/var/www/html/lab/uteach/core/utils/ViewUtils.class.php%3C/b%3E%20on%20line%20%3Cb%3E10%3C/b%3E%3Cbr%20/%3E/lab/uteach/img/default.jpg
@@ -110,6 +113,7 @@ Action : Action not found
 Value : localhostimgAction in TrainningController
 Date : 07/10/2018 05:15:21 pm
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 10, 2018, 5:29 pm
 -----------------
 Url : http://localhost/lab/uteach/video/video/back
@@ -124,3 +128,725 @@ Action : Attempt access
 Value : Access denied
 Date : 07/10/2018 07:21:56 pm
 -------------------------------------------------------
+=======
+=======
+=======
+=======
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:49 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:55 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:55 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:55 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:55 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:52 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:52:55 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:05 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:05 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:05 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:05 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:05 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 12:53 pm
+-----------------
+Url : http://localhost/Uteach/index/error
+Action : Controller not found
+Value : 
+Date : 07/10/2018 12:53:10 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes
+IP + Date : ::1 - July 10, 2018, 2:17 pm
+-----------------
+Url : http://localhost/uteach/comment/list?object=comment&sort=desc&columnName=date&page=1&itemsPerPage=10&chapter_id=1
+Action : Action not found
+Value : listAction in CommentController
+Date : 07/10/2018 02:17:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 10, 2018, 2:18 pm
+-----------------
+Url : http://localhost/uteach/comment/list?object=comment&sort=desc&columnName=date&page=1&itemsPerPage=10&chapter_id=1
+Action : Action not found
+Value : listAction in CommentController
+Date : 07/10/2018 02:18:07 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes

@@ -5,6 +5,7 @@ class InstallationController {
 	private $objectDelegate;
 	private $formDelegate;
 	private $fileDelegate;
+	private $userDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -12,6 +13,7 @@ class InstallationController {
 		$this->objectDelegate = new ObjectDelegate($this->data, INSTALLATION_CLASS_NAME);
 		$this->formDelegate = new FormDelegate(INSTALLATION_CLASS_NAME);
 		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAME);
+		$this->userDelegate = new UserDelegate($this->data);
 	}
 
 	public function indexAction($params) {
@@ -51,10 +53,9 @@ class InstallationController {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, INSTALLATION_ADMIN_VIEWS, INSTALLATION_TEMPLATES);
-		$this->setClassNameToUserToAddAdmin();
 		$this->formDelegate->process($this->data, $params);
-		$this->objectDelegate->add($this->data, $params);
-		$this->fileDelegate->setting($this->data, $params, USER_LOGIN_BACK_LINK);
+		$this->userDelegate->add($this->data, $params, FALSE);
+		$this->fileDelegate->setting($this->data, $params['POST'], USER_LOGIN_BACK_LINK);
 		$view = new View($this->data);
 	}
 
@@ -64,10 +65,5 @@ class InstallationController {
 			RedirectUtils::redirect404();
 		}
 		$this->fileDelegate->createDatabase();
-	}
-
-	private function setClassNameToUserToAddAdmin() {
-		$this->formDelegate->setObjectName(USER_CLASS_NAME);
-		$this->objectDelegate->setObjectName(USER_CLASS_NAME);
 	}
 }
