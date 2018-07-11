@@ -5,7 +5,7 @@ class Video extends BaseSql {
 	protected $title;
 	protected $url;
 	protected $description;
-	protected $date;
+	protected $dateInserted;
 
 	protected $part_id;
 	protected $user_id;
@@ -90,15 +90,15 @@ class Video extends BaseSql {
 	public function getUserId()   	 { return $this->user_id;     }
     public function getUrl()      	 { return $this->url;         }
     public function getPartId() 	 { return $this->part_id;     }
-    public function getDate() 		 { return $this->date;        }
     public function getUser()		 { return $this->user;	      }
+    public function getDateInserted(){ return $this->dateInserted;}
 
-    public function setId($id)              	 { $this->id = $id;                   }
-    public function setTitle($title)        	 { $this->title = $title;         	  }
-	public function setUserId($user_id)      	 { $this->user_id = $user_id;         }
-	public function setDescription($description) { $this->description = $description; }
-    public function setUrl($url)            	 { $this->url = $url;             	  }
-    public function setPartId($part_id) 		 { $this->part_id = $part_id; 		  }
-    public function setDate($date) 				 { $this->date = $date; 	 		  }
-    public function setUser($user) 				 { $this->user = $user;			      }
+    public function setId($id)              	   { $this->id = $id;                    }
+    public function setTitle($title)        	   { $this->title = $title;         	 }
+	public function setUserId($user_id)      	   { $this->user_id = $user_id;          }
+	public function setDescription($description)   { $this->description = $description;  }
+    public function setUrl($url)            	   { $this->url = $url;             	 }
+    public function setPartId($part_id) 		   { $this->part_id = $part_id; 		 }
+    public function setUser($user) 				   { $this->user = $user;			     }
+    public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted;}
 }

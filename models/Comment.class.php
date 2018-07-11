@@ -2,7 +2,7 @@
 class Comment extends BaseSql {
 
 	protected $id = null;
-	protected $date;
+	protected $dateInserted;
 	protected $content;
 	protected $responses = [];
 
@@ -42,7 +42,6 @@ class Comment extends BaseSql {
 
 
 	public function getId() 		 { return $this->id; 		   }
-	public function getDate() 		 { return $this->date; 		   }
 	public function getContent() 	 { return $this->content; 	   }
 	public function getResponses() 	 { return $this->responses;    }
 	public function getUserId() 	 { return $this->user_id; 	   }
@@ -51,10 +50,9 @@ class Comment extends BaseSql {
 	public function getVideoId() 	 { return $this->video_id; 	   }
 	public function getCommentId() 	 { return $this->comment_id;   }
 	public function getUser() 	 	 { return $this->user;   	   }
-
+	public function getDateInserted(){ return $this->dateInserted; }
 
 	public function setId($id) 					  { $this->id = $id; 					 }
-	public function setDate($date) 				  { $this->date = $date; 				 }
 	public function setContent($content) 		  { $this->content = $content; 			 }
 	public function setResponses($responses) 	  { $this->responses = $responses; 		 }
 	public function setUserId($user_id) 		  { $this->user_id = $user_id;			 }
@@ -63,4 +61,5 @@ class Comment extends BaseSql {
 	public function setVideoId($video_id) 		  { $this->video_id = $video_id; 		 }
 	public function setCommentId($comment_id) 	  { $this->comment_id = $comment_id; 	 }
 	public function setUser($user) 	  			  { $this->user = $user; 	 			 }
+    public function setDateInserted($dateInserted){ $this->dateInserted = $dateInserted; }
 }

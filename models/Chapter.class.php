@@ -5,6 +5,7 @@ class Chapter extends BaseSql {
 	protected $number;
 	protected $title;
 	protected $image;
+	protected $dateInsrted;
 
 	protected $parts = [];
 
@@ -165,7 +166,7 @@ class Chapter extends BaseSql {
 	public function getTrainning()   { return $this->trainning;    }
     public function getUserId()      { return $this->user_id;      }
     public function getUser()	     { return $this->user;	       }
-
+    public function getDateInsrted() { return $this->dateInsrted;  }
 
 	public function setId($id) 					  { $this->id = $id; 					 }
 	public function setNumber($number) 		  	  { $this->number = $number; 			 }
@@ -176,7 +177,6 @@ class Chapter extends BaseSql {
 	public function setTrainning($trainning) 	  { $this->trainning = $trainning;       }
     public function setUserId($user_id) 		  { $this->user_id = $user_id;     		 }
     public function setUser($user) 				  { $this->user = $user;   				 }
-
-
+    public function setDateInsrted($dateInsrted)  { $this->dateInsrted = $dateInsrted;   }
 
 }

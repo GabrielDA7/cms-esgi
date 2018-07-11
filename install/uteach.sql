@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 11 juil. 2018 à 23:28
+-- Généré le :  mer. 11 juil. 2018 à 23:44
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `chapter` (
   `title` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `trainning_id` int(11) DEFAULT NULL,
-  `dateInserted` date DEFAULT NULL,
+  `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `trainning_id` (`trainning_id`),
@@ -48,8 +48,8 @@ CREATE TABLE IF NOT EXISTS `chapter` (
 --
 
 INSERT INTO `chapter` (`id`, `number`, `title`, `image`, `trainning_id`, `dateInserted`, `user_id`) VALUES
-(1, 1, 'Les bases', NULL, 1, NULL, 0),
-(2, 1, 'jhkj', NULL, 6, NULL, 0);
+(1, 1, 'Les bases', NULL, 1, '2018-07-11 23:37:47', 0),
+(2, 1, 'jhkj', NULL, 6, '2018-07-11 23:37:47', 0);
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,7 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `content` text NOT NULL,
   `chapter_id` int(11) DEFAULT NULL,
   `trainning_id` int(11) DEFAULT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 -- Déchargement des données de la table `comment`
 --
 
-INSERT INTO `comment` (`id`, `user_id`, `date`, `content`, `chapter_id`, `trainning_id`, `video_id`, `comment_id`) VALUES
+INSERT INTO `comment` (`id`, `user_id`, `dateInserted`, `content`, `chapter_id`, `trainning_id`, `video_id`, `comment_id`) VALUES
 (23, 25, '2018-07-09 18:47:44', 'dsfsdf', 1, 0, 0, 0),
 (24, 25, '2018-07-10 14:11:22', 'dsfsdfs', 1, 0, 0, 0),
 (25, 25, '2018-07-10 14:52:43', 'zaeaze', NULL, 23, NULL, NULL);
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `video` (
   `title` varchar(255) NOT NULL,
   `description` text,
   `url` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
   `part_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -266,7 +266,7 @@ CREATE TABLE IF NOT EXISTS `video` (
 -- Déchargement des données de la table `video`
 --
 
-INSERT INTO `video` (`id`, `title`, `description`, `url`, `date`, `user_id`, `part_id`) VALUES
+INSERT INTO `video` (`id`, `title`, `description`, `url`, `dateInserted`, `user_id`, `part_id`) VALUES
 (1, 'elkrgrere', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-11 21:51:35', 25, NULL);
 
 --
