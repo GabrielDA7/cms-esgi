@@ -1,6 +1,5 @@
 <?php
-include "core/interfaces/ControllerInterface.php";
-class TrainningController implements ControllerInterface {
+class TrainningController {
 
 	private $authenticationDelegate;
 	private $objectDelegate;

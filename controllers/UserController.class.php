@@ -1,6 +1,5 @@
 <?php
-include "core/interfaces/ControllerInterface.php";
-class UserController implements ControllerInterface {
+class UserController {
 
 	private $authenticationDelegate;
 	private $userDelegate;

@@ -2,7 +2,6 @@
 class InstallationController {
 
 	private $authenticationDelegate;
-	private $objectDelegate;
 	private $formDelegate;
 	private $fileDelegate;
 	private $userDelegate;
@@ -10,7 +9,6 @@ class InstallationController {
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
-		$this->objectDelegate = new ObjectDelegate($this->data, INSTALLATION_CLASS_NAME);
 		$this->formDelegate = new FormDelegate(INSTALLATION_CLASS_NAME);
 		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAME);
 		$this->userDelegate = new UserDelegate($this->data);

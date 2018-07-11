@@ -5,3 +5,73 @@ Action : Attempt access
 Value : Access denied
 Date : 07/11/2018 08:48:40 am
 -------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:35 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : SMTP Error: Could not authenticate.
+Date : 07/11/2018 05:35:16 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:39 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 07/11/2018 05:39:11 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:40 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 07/11/2018 05:40:59 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:41 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 07/11/2018 05:41:47 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:45 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 07/11/2018 05:45:58 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:47 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=decultot.louis@gmail.com
+Action : Send email
+Value : true
+Date : 07/11/2018 05:47:29 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:48 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=decultot.louis@gmail.com
+Action : Send email
+Value : true
+Date : 07/11/2018 05:48:10 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:51 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 07/11/2018 05:51:32 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:53 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm
+Action : Attempt access
+Value : Access denied
+Date : 07/11/2018 05:53:57 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 11, 2018, 5:58 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=gabrieldaoud3112@gmail.com
+Action : Send email
+Value : true
+Date : 07/11/2018 05:58:27 pm
+-------------------------------------------------------

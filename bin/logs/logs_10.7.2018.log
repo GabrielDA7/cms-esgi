@@ -114,6 +114,7 @@ Value : localhostimgAction in TrainningController
 Date : 07/10/2018 05:15:21 pm
 -------------------------------------------------------
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 10, 2018, 5:29 pm
 -----------------
 Url : http://localhost/lab/uteach/video/video/back
@@ -129,6 +130,8 @@ Value : Access denied
 Date : 07/10/2018 07:21:56 pm
 -------------------------------------------------------
 =======
+=======
+>>>>>>> Stashed changes
 =======
 =======
 =======
@@ -849,4 +852,7 @@ Date : 07/10/2018 02:18:07 pm
 -------------------------------------------------------
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
