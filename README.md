@@ -69,3 +69,5 @@ Search nav bar
 
 home page 
   ajax list with item = 5 and order = desc / columns=date
+
+modify every references to author in js file and replace by element.user.userName
