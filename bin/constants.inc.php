@@ -38,7 +38,8 @@ define("CSS_FOLDER_NAME", "public/css");
 define("IMAGE_FOLDER_NAME", "public/img");
 define("AVATAR_FOLDER_NAME", "avatars");
 define("VIDEO_FOLDER_NAME", "videos");
-define("FORMATION_IMAGES_FOLDER_NAME", "trainningImages");
+define("FORMATION_IMAGES_FOLDER_NAME", "trainnings");
+define("CHAPTER_IMAGES_FOLDER_NAME", "chapters");
 
 /*******************************
 ********** CHARACTERS **********
@@ -116,7 +117,7 @@ define("INSTAGRAM_LINK", "");
 define("LINKEDIN_LINK", "");
 
 /******************************
-********** VIEWS **************
+********** TEMPLATE ***********
 *******************************/
 define("DEFAULT_TEMPLATES", 	 ["front"=> FRONT_TEMPLATE, 	   "back" => BACK_TEMPLATE]);
 define("LOGIN_TEMPLATES", 		 ["front"=> FRONT_TEMPLATE, 	   "back" => LOGIN_BACK_TEMPLATE]);
@@ -132,6 +133,7 @@ define("INSTALLATION_ADMIN_VIEWS", 	  ["front"=> "installationAdmin",    "back" 
 
 define("NOT_FOUND_VIEWS", ["front"=> "404",  "back" => "404"]);
 define("HOME_VIEWS", 	  ["front"=> "home", "back" => ""]);
+define("SEARCH_VIEWS", 	  ["front"=> "search", "back" => ""]);
 
 define("CONTACT_VIEWS", ["front"=> "contact", "back" => "listVideoBack"]);
 
