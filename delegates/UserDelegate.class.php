@@ -13,13 +13,15 @@ class UserDelegate extends ObjectDelegate {
 		$data['user'] = $user;
 	}
 
-	public function add(&$data, $params) {
+	public function add(&$data, $params, $redirect = TRUE) {
 		if ($data['errors'] === FALSE) {
 			$user = $data['user'];
 			ClassUtils::setObjectColumns($user, $params['POST']);
 			$user->generateToken();
+			$user->generateEmailConfirm();
 			$user->insert();
-			RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$user->getEmail()]);
+			if ($redirect)
+				RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$user->getEmail()]);
 		}
 	}
 
@@ -55,13 +57,14 @@ class UserDelegate extends ObjectDelegate {
 	}
 
 	public function checkEmailConfirmation(&$data, $params) {
-		$this->getByParameters($data, $params['GET']);
+		$this->getByParameters($data, $params['POST']);
 		if (empty($data['users'])) {
 			RedirectUtils::redirect404();
 		}
 		$user = $data['users'][0];
 		$user->setEmailConfirm("1");
 		$data['user'] = $user;
+		$data['errors'] = FALSE;
 		$this->update($data, null, USER_LOGIN_FRONT_LINK);
 	}
 

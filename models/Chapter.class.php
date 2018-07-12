@@ -5,11 +5,14 @@ class Chapter extends BaseSql {
 	protected $number;
 	protected $title;
 	protected $image;
+	protected $dateInsrted;
 
 	protected $parts = [];
 
-	protected $trainning_id = null;
+	protected $trainning_id;
 	protected $trainning;
+	protected $user_id;
+	protected $user;
 
 	public function __construct() {
 		BaseSql::__construct();
@@ -24,7 +27,7 @@ class Chapter extends BaseSql {
 	}
 
 	public function getColumnsToSearch() {
-		return ["title", "trainning_id"];
+		return ["title", "user_id", "trainning_id"];
 	}
 
 	public function unsetColumn($key) {
@@ -59,29 +62,29 @@ class Chapter extends BaseSql {
 										                    ]
 								       		],
 								"trainning_id"=>
-													[
-														"type"=>"select",
-														"class"=>"form-group row select-formation input-medium",
-														"option"=>
-																	[
-																		"" => "Pas de formation"
-																	],
-														"value"=>(isset($_POST["trainning"])? $_POST["trainning"] : "Pas de formation")
-													],
+											[
+												"type"=>"select",
+												"class"=>"form-group row select-formation input-medium",
+												"option"=>
+															[
+																"" => "Pas de formation"
+															],
+												"value"=>(isset($_POST["trainning"])? $_POST["trainning"] : "Pas de formation")
+											],
 								"number"=>
-												[
-													"type"=>"number",
-													"class"=>"form-group row input-small input",
-													"required"=>true,
-													"value"=>(isset($_POST["number"])? $_POST["number"] : ""),
+											[
+												"type"=>"number",
+												"class"=>"form-group row input-small input",
+												"required"=>true,
+												"value"=>(isset($_POST["number"])? $_POST["number"] : ""),
 
-												],
-								"author"=>
+											],
+								"user_id"=>
 											[
 										         "type"=>"hidden",
 												 	 	 "class"=>"form-group",
-										         "value" => $_SESSION['userName']
-								      ],
+										         "value" => $_SESSION['userId']
+								      		],
 								"parts"=>
 											[
 												"id"=>"addChapterPart",
@@ -161,7 +164,9 @@ class Chapter extends BaseSql {
 	public function getParts() 	 	 { return $this->parts; 	   }
 	public function getTrainningId() { return $this->trainning_id; }
 	public function getTrainning()   { return $this->trainning;    }
-
+    public function getUserId()      { return $this->user_id;      }
+    public function getUser()	     { return $this->user;	       }
+    public function getDateInsrted() { return $this->dateInsrted;  }
 
 	public function setId($id) 					  { $this->id = $id; 					 }
 	public function setNumber($number) 		  	  { $this->number = $number; 			 }
@@ -170,4 +175,8 @@ class Chapter extends BaseSql {
 	public function setParts($parts) 			  { $this->parts = $parts; 			 	 }
 	public function setTrainningId($trainning_id) { $this->trainning_id = $trainning_id; }
 	public function setTrainning($trainning) 	  { $this->trainning = $trainning;       }
+    public function setUserId($user_id) 		  { $this->user_id = $user_id;     		 }
+    public function setUser($user) 				  { $this->user = $user;   				 }
+    public function setDateInsrted($dateInsrted)  { $this->dateInsrted = $dateInsrted;   }
+
 }

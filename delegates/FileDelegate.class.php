@@ -34,7 +34,7 @@ class FileDelegate {
 	}
 
 	private function setConfData($installation) {
-		$fname = "conf.inc.php";
+		$fname = "bin/conf.inc.php";
 		$content = $this->getContentFromConfFile($fname);
 		$this->replaceData($content, $installation);
 		$this->overwriteContentFromConfFile($fname, $content);
@@ -69,12 +69,19 @@ class FileDelegate {
 		foreach ($files as $key => $value) {
 			if ($value['error'] == UPLOAD_ERR_OK) {
 				$tmp_name = $value["tmp_name"];
-				$name = basename($value["name"]);
-				$filesUrl += [$key => IMAGE_FOLDER_NAME."/".$folderName."/".$name];
-				move_uploaded_file($tmp_name, IMAGE_FOLDER_NAME."/".$folderName."/".$name);
+				$fileName = basename($value["name"]);
+				$path = IMAGE_FOLDER_NAME."/".$folderName;
+				$this->createFolderIfNotExists($path);
+				$filesUrl += [$key => $path."/".$fileName];
+				move_uploaded_file($tmp_name, $path."/".$fileName);
 			}
 		}
 		return $filesUrl;
+	}
+
+	private function createFolderIfNotExists($path) {
+		if (!is_dir($path))
+		    mkdir($path);
 	}
 
 

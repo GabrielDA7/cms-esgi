@@ -1,5 +1,5 @@
 <?php
-class StatisticController{
+class StatisticController {
 
 	private $authenticationDelegate;
 	private $datas = array();

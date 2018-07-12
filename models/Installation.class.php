@@ -58,7 +58,7 @@ class Installation {
 				];
 	}
 
-	public static function configAddForm($data){
+	public static function configDatabaseForm($data){
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_DATABASE_LINK, "submit"=>"Valider", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
@@ -66,7 +66,7 @@ class Installation {
 								"dbuser"=>
 											[
 												"type"=>"text",
-												"placeholder"=>"Nom d'utilisateur",
+												"placeholder"=>"Nom utilisateur",
 												"required"=>true,
 												"maxString"=>100,
 												"minString"=>2,
@@ -76,9 +76,6 @@ class Installation {
 											[
 												"type"=>"text",
 												"placeholder"=>"Mot de passe",
-												"required"=>true,
-												"maxString"=>255,
-												"minString"=>2,
 												"class"=>"form-group input"
 											],
 								"dbhost"=>
@@ -104,8 +101,6 @@ class Installation {
 												"type"=>"number",
 												"placeholder"=>"Port",
 												"required"=>true,
-												"maxNum"=>10,
-												"minNum"=>2,
 												"class"=>"form-group input"
 											]
 							]
@@ -161,12 +156,12 @@ class Installation {
 								"role"=>
 											[
 												"type"=>"hidden",
-												"value"=>ADMIN_ROLE,
+												"value"=>ADMIN_ROLE
 											],
 								"installation_Done"=>
 											[
 												"type"=>"hidden",
-												"value"=>"true",
+												"value"=>"true"
 											]
 							]
 				];

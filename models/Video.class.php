@@ -4,10 +4,12 @@ class Video extends BaseSql {
 	protected $id = null;
 	protected $title;
 	protected $url;
-	protected $user_id;
 	protected $description;
+	protected $dateInserted;
 
-	protected $part_id = null;
+	protected $part_id;
+	protected $user_id;
+	protected $user;
 
 	public function __construct() {
 		BaseSql::__construct();
@@ -32,7 +34,7 @@ class Video extends BaseSql {
 													"class"=>"form-group input",
 													"value"=>(isset($_POST["title"])? $_POST["title"] : "")
 												],
-									"file"=>
+									"url"=>
 												[
 											         "type"=>"file",
 													 	 	 "class"=>"form-group",
@@ -41,15 +43,15 @@ class Video extends BaseSql {
 												                    "mp4",
 												                    "mp3",
 												                    "webm",
-																						"3gp",
+																	"3gp",
 											                    ],
 															"requied"=>true
 									       		],
-									"author"=>
+									"user_id"=>
 												[
 											         "type"=>"hidden",
 													 	 	 "class"=>"form-group",
-											         "value" => $_SESSION['userName']
+											         "value" => $_SESSION['userId']
 									      ]
 							]
 
@@ -82,18 +84,21 @@ class Video extends BaseSql {
 						];
 			}
 
-    public function getId()       { return $this->id;        }
-		public function getTitle()    { return $this->title;     }
-		public function getDescription()    { return $this->description;     }
-		public function getUserId()   { return $this->user_id;    }
-    public function getUrl()      { return $this->url;       }
-    public function getPartId() { return $this->part_id; }
+    public function getId()       	 { return $this->id;          }
+	public function getTitle()    	 { return $this->title;       }
+	public function getDescription() { return $this->description; }
+	public function getUserId()   	 { return $this->user_id;     }
+    public function getUrl()      	 { return $this->url;         }
+    public function getPartId() 	 { return $this->part_id;     }
+    public function getUser()		 { return $this->user;	      }
+    public function getDateInserted(){ return $this->dateInserted;}
 
-
-    public function setId($id)              { $this->id = $id;               }
-    public function setTitle($title)        { $this->title = $title;         }
-		public function setUserId($user_id)      { $this->user_id = $user_id;       }
-		public function setDescription($description)      { $this->description = $description;       }
-    public function setUrl($url)            { $this->url = $url;             }
-    public function setPartId($part_id) { $this->part_id = $part_id; }
+    public function setId($id)              	   { $this->id = $id;                    }
+    public function setTitle($title)        	   { $this->title = $title;         	 }
+	public function setUserId($user_id)      	   { $this->user_id = $user_id;          }
+	public function setDescription($description)   { $this->description = $description;  }
+    public function setUrl($url)            	   { $this->url = $url;             	 }
+    public function setPartId($part_id) 		   { $this->part_id = $part_id; 		 }
+    public function setUser($user) 				   { $this->user = $user;			     }
+    public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted;}
 }

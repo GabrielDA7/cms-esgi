@@ -4,8 +4,7 @@ class ChapterController {
 	private $authenticationDelegate;
 	private $objectDelegate;
 	private $formDelegate;
-	private $emailDelegate;
-	private $tableDelegate;
+	private $fileDelegate;
 	private $listDisplayDataDelegate;
 	private $data = [];
 
@@ -13,7 +12,7 @@ class ChapterController {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->objectDelegate = new ObjectDelegate($this->data, CHAPTER_CLASS_NAME);
 		$this->formDelegate = new FormDelegate(CHAPTER_CLASS_NAME);
-		$this->emailDelegate = new EmailDelegate();
+		$this->fileDelegate = new FileDelegate(CHAPTER_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(CHAPTER_CLASS_NAME);
 	}
 
@@ -23,6 +22,7 @@ class ChapterController {
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, CHAPTER_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
+		$this->fileDelegate->process($this->data, $params, CHAPTER_IMAGES_FOLDER_NAME);
 		$this->objectDelegate->add($this->data, $params);
 		$view = new View($this->data);
 	}

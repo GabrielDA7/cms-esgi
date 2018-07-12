@@ -4,10 +4,13 @@ class Trainning extends BaseSql {
 	protected $id = null;
 	protected $title;
 	protected $description;
-	protected $author;
 	protected $image;
 	protected $dateInserted;
+
 	protected $chapters = array();
+
+	protected $user_id;
+	protected $user;
 
 	public function __construct() {
 		BaseSql::__construct();
@@ -22,7 +25,7 @@ class Trainning extends BaseSql {
 	}
 
 	public function getColumnsToSearch() {
-		return ["title", "author", "dateInserted"];
+		return ["title", "user_id", "dateInserted"];
 	}
 
 	public function unsetColumn($key) {
@@ -61,11 +64,11 @@ class Trainning extends BaseSql {
 											                    "jpeg"
 										                    ]
 								       		],
-								"author"=>
+								"user_id"=>
 											[
 										         "type"=>"hidden",
 												 "class"=>"form-group",
-										         "value" => $_SESSION['userName']
+										         "value" => $_SESSION['userId']
 								       		]
 						]
 
@@ -85,9 +88,9 @@ class Trainning extends BaseSql {
 											[
 												"name"=>"Category",
 											],
-								"author"=>
+								"userId"=>
 											[
-												 "name"=>"Author",
+												 "name"=>"User Id",
 								      ],
 								"status"=>
 											[
@@ -109,7 +112,8 @@ class Trainning extends BaseSql {
 	public function getAuthor()       { return $this->author; 	   		}
 	public function getDateInserted() { return $this->dateInserted; 	}
 	public function getChapters() 	  { return $this->chapters; 		}
-
+    public function getUserId()		  { return $this->user_id;		    }
+    public function getUser()	      { return $this->user;			    }
 
 	public function setId($id) 					   { $this->id = $id; 					  }
 	public function setTitle($title) 			   { $this->title = $title; 			  }
@@ -118,4 +122,6 @@ class Trainning extends BaseSql {
 	public function setAuthor($author) 			   { $this->author = $author; 			  }
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; }
 	public function setChapters($chapters) 		   { $this->chapters = $chapters; 	 	  }
+    public function setUserId($user_id)			   { $this->user_id = $user_id;			  }
+    public function setUser($user)				   { $this->user = $user;			      }
 }

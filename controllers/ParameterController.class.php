@@ -1,6 +1,5 @@
 <?php
-include "core/interfaces/ControllerInterface.php";
-class ParameterController implements ControllerInterface {
+class ParameterController {
 
 	public function indexAction($params) {
 

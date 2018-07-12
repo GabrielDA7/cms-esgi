@@ -1,6 +1,5 @@
 <?php
-include "core/interfaces/ControllerInterface.php";
-class PaimentController implements ControllerInterface {
+class PaimentController {
 
 	public function indexAction($params) {
 	}

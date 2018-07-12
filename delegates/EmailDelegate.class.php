@@ -12,12 +12,11 @@ class EmailDelegate {
 			return $data['errors'] = TRUE;
 		}
 		$user = $data['users'][0];
-		$user->generateEmailConfirm();
 		$subject = 'Confirmation de l\'email';
 		$body = '<form action="localhost' .  DIRNAME . USER_EMAIL_CONFIRM_LINK .'" method="POST">
 		          <input type="hidden" name="id" value="'. $user->getId() .'">
-		          <input type="hidden" name="pwdReset" value="'. $user->getEmailConfirm() .'">
-		          <input type="submit" name="Confirm email" value="Confirm email">
+		          <input type="hidden" name="emailConfirm" value="'. $user->getEmailConfirm() .'">
+		          <input type="submit" name="submit" value="Confirm email">
 		        </form>';
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
 	}
@@ -32,7 +31,7 @@ class EmailDelegate {
 		$body = '<form action="localhost' .  DIRNAME . USER_PASSWORD_RESET_LINK .'" method="POST">
 		          <input type="hidden" name="id" value="'. $user->getId() .'">
 		          <input type="hidden" name="pwdReset" value="'. $user->getPwdReset() .'">
-		          <input type="submit" name="Reset Password" value="Reset Password">
+		          <input type="submit" name="submit" value="Reset Password">
 		        </form>';
 		$data['errors'] = $this->sendMail($user->getEmail(), $subject, $body);
 		$data['user'] = $user;
@@ -70,10 +69,10 @@ class EmailDelegate {
 
 	private function setSMTP(&$mail) {
 		$mail->isSMTP();                                      // Set mailer to use SMTP
-	    $mail->Host = gethostbyname('smtp.gmail.com'); 		  // Specify main and backup SMTP servers
+	    $mail->Host = gethostbyname('SSL0.OVH.NET'); 		  // Specify main and backup SMTP servers
 	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-	    $mail->Username = 'decultot.louis@gmail.com';         // SMTP username
-      	$mail->Password = 'nh9quc83';                         // SMTP password
+	    $mail->Username = 'account.services@uteach.fr';         // SMTP username
+      	$mail->Password = 'Aze123Esgi';                         // SMTP password
 	    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 	    $mail->Port = 465;                                    // TCP port to connect to
 	    $mail->SMTPOptions = array(
