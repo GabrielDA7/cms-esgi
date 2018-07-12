@@ -5,12 +5,12 @@ class AuthenticationDelegate {
 
 	public function process(&$data, $params, $checkToken, $views = [], $templates = DEFAULT_TEMPLATES) {
 		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) {
-      		$this->checkTokenValidity(); 
+      		$this->checkTokenValidity();
     	}
-    	if (!empty($views)) { 
-      		$this->getViewTemplateNames($data, $params['URL'], $views, $templates); 
+    	if (!empty($views)) {
+      		$this->getViewTemplateNames($data, $params['URL'], $views, $templates);
    	 	} else {
-   	 		$this->setDefaultViewTemplateNames($data); 
+   	 		$this->setDefaultViewTemplateNames($data);
    	 	}
 	}
 
@@ -41,7 +41,7 @@ class AuthenticationDelegate {
 	private function checkBackOfficeViewPermission($url) {
 		if (isset($url[2]) && $url[2] === "back" && (isAdmin() || isset($url[1]) && $url[1] === "login")) {
 				return TRUE;
-		} 
+		}
 		return FALSE;
 	}
 

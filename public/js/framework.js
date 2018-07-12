@@ -184,16 +184,26 @@ function load_data_list_card(page, action, order='desc', column_name, object){
             html += "<div class='M2 X12'>"
             html += " <a href='" + linkObjectView + "?id=" + element.id + "' class='card'>";
             html += "  <div class='card-image'>";
-            if( element.image != null ) {
-              html += "  <image src='" + dirname + element.image + "' alt='" + element.title + "'>";
+            if(object != "video") {
+              if( element.image != null ) {
+                html += "  <image src='" + dirname + element.image + "' alt='" + element.title + "'>";
+              } else {
+                html += "  <image src='" + dirname + "public/img/default.jpg' alt='" + element.title + "'>";
+              }
             } else {
-              html += "  <image src='" + dirname + "public/img/default.jpg' alt='" + element.title + "'>";
+              html += "<video class='video-card' width='100%' height='100%' controls='controls'>";
+              html += "<source src='" + dirname + element.url + "' type='video/mp4' />";
+              html += "<source src='" + dirname + element.url + "' type='video/mp3' />";
+              html += "<source src='" + dirname + element.url + "' type='video/webm' />";
+              html += "<source src='" + dirname + element.url + "' type='video/3gp' />";
+              html += "No video";
+              html += "</video>";
             }
             html += "  </div>";
             html += "  <div class='card-separation'></div>";
             html += "  <div class='card-content'>";
             html += "    <p class='card-content-title'>" + element.title + "</p>";
-            html += "    <p class='card-content-author'>" + element.author + "</p>";
+            html += "    <p class='card-content-author'>" + element.userName + "</p>";
             html += "  </div>";
             html += " </a>";
             html += " </div>";

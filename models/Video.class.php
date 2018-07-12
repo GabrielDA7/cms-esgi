@@ -19,6 +19,10 @@ class Video extends BaseSql {
         return get_object_vars($this);
     }
 
+		public function getColumnsToSearch() {
+			return ["title", "user_id", "part_id"];
+		}
+
 		public static function configAddForm($data){
 			return 	[
 						"config"=>["method"=>"POST", "action"=> DIRNAME.VIDEO_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Upload", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],

@@ -15,7 +15,7 @@
         </div>
         <div class="M3 M--offset5 X12">
           <div class="see-all">
-            <a href="cours-list.html">Voir tous les cours</a>
+            <a href="<?= DIRNAME.CHAPTER_LIST_FRONT_LINK;?>">Voir tous les cours</a>
           </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
         </div>
         <div class="M3 M--offset4 X12">
           <div class="see-all">
-            <a href="">Voir toutes les formations</a>
+            <a href="<?= DIRNAME.TRAINNING_LIST_FRONT_LINK;?>">Voir toutes les formations</a>
           </div>
         </div>
     </div>
@@ -175,7 +175,7 @@
         </div>
         <div class="M3 M--offset5 X12">
             <div class="see-all">
-              <a href="">Voir toutes les vidéos</a>
+              <a href="<?= DIRNAME.VIDEO_LIST_FRONT_LINK;?>">Voir toutes les vidéos</a>
             </div>
         </div>
     </div>
@@ -251,7 +251,7 @@
 <section class="container-fluid">
   <div id="premium-container" class="row M--center M--middle X--center X--middle">
     <div class="M3 X12">
-      <a href="#">Devenir premium<br/><i class="far fa-gem"></i></a>
+      <a href="<?= DIRNAME.PREMIUM_LIST_FRONT_LINK;?>">Devenir premium<br/><i class="far fa-gem"></i></a>
     </div>
   </div>
 </section>
