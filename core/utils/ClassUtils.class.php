@@ -106,7 +106,7 @@ class classUtils {
   	public static function getIfExistArrayFromObject($object) {
   		$columns = $object->getColumns();
   		foreach ($columns as $key => $value) {
-  			if (is_array($value) && !empty($value))
+  			if (is_array($value) && !empty($value) && $key != "columns")
   				return [$key => $value];
   		}
   	}
