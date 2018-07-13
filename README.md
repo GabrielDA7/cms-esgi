@@ -19,8 +19,8 @@ php.ini
 RSS
 paypal
 publish content (chapter / trainning)
-
-parametersController
+Statistics
+parametersController (varibles.scss)
 Ajout et edition auteurs => session
 replace space by underscore (file)
 
@@ -53,11 +53,9 @@ for the parts find a way to save the location of the videos and the pictures
 
                               |FRONT|
 
-VOIR element.trainning.title pour mettre le titre de la formation du chapitre voir le resulat du json (trainning a ete ajouté)
 VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper
   arreter les requetes quand il n'y a pas de resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
 
-View edit
 
 Search nav bar
 	3 search ajax request :
@@ -75,10 +73,16 @@ add a label which is the key of the input where it is a SELECT
   (for the installation : back template / front template we don't know)
 
 Edit profile CSS
+View edit
 
+List comments
 Comment use modal
 
 Add edition tools
 
+
+404 page
+
 -- DONE -- modify every references to author in js file and replace by element.user.userName
+-- DONE -- VOIR element.trainning.title pour mettre le titre de la formation du chapitre voir le resulat du json (trainning a ete ajouté)
 
