@@ -66,9 +66,37 @@
 			</form>
 		<?php endif ?>
 
-		<div id="comments-result" class="row M--center">
-			<div class="M12">
-				<p>No comments</p>
+		<div id='comments-result' class='row'>
+			<div class='row comment-card M--start'>
+				<div class="M1 no-padding-right align-center">
+					<img class='avatar-img-medium' src="<?= DIRNAME; ?>public/img/default.jpg" alt='avatar'>
+				</div>
+				<div class="M11">
+					<div class="row padding-bottom-comment">
+						<strong>Admin</strong><span class='grey-content'> Il y a 3 minutes</span>
+					</div>
+					<div class='row padding-bottom-comment'>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+					</div>
+					<div class="row M--start">
+						<div class="M2 no-padding">
+							<a href="javascript:void(0);" class="expand-comment no-decoration"><strong>Reply(12)<i class="fas fa-chevron-down"></i></strong></a>
+						</div>
+						<?php if (isLogged()) : ?>
+							<div class="M2 M--offset8 no-padding">
+								<a href="javascript:void(0);" class="align-right grey-content answer-comment-link">Answer</a>
+							</div>
+							<div class="M12 no-padding answer-comment-form">
+							</div>
+						<?php endif ?>
+						<div class="M12 no-padding comment-hidden">
+								qsdsqd
+						</div>
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</section>

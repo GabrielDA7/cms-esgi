@@ -9,7 +9,7 @@ TODO
 
                               |SERVER|
 
-php.ini 
+php.ini
   post_max_size = 500M
   upload_max_filesize = 500M
 
@@ -45,7 +45,7 @@ for the parts find a way to save the location of the videos and the pictures
 -- DONE -- search bar action
 -- DONE -- remove live form video.class
 -- DONE -- Corriger back add video
--- DONE -- rename the files where there are moved in the server (ex create a folder wich is named formation and put the formations into it and 
+-- DONE -- rename the files where there are moved in the server (ex create a folder wich is named formation and put the formations into it and
            give a name like formation + id) -> do for the object class a function who return the file path (ex : video is : DIR . public.video . etc)
 -- DONE -- Ajouter author a chapter
 -- DONE -- Modifier author avec id (trainning)
@@ -63,13 +63,13 @@ Search nav bar
 	get the 3 lists and print them
 	view search.view.php (not created)
 
-home page 
+home page
   ajax list with item = 5 and order = desc / columns=dateInserted
 
 
 errors == false print "the content has been added"
 
-add a label which is the key of the input where it is a SELECT 
+add a label which is the key of the input where it is a SELECT
   (for the installation : back template / front template we don't know)
 
 Edit profile CSS
@@ -80,9 +80,7 @@ Comment use modal
 
 Add edition tools
 
-
 404 page
 
 -- DONE -- modify every references to author in js file and replace by element.user.userName
 -- DONE -- VOIR element.trainning.title pour mettre le titre de la formation du chapitre voir le resulat du json (trainning a ete ajouté)
-

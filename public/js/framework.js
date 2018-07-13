@@ -106,6 +106,44 @@ $(function() {
     var hiddenContent = $(this).next('.content-hidden').toggle('fast');
   });
 
+  $(document).on('click', '.expand-comment', function(){
+    var childIcon = $(this).find('i');
+    if(childIcon.hasClass('fa-chevron-down') )
+    {
+      childIcon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+    } else {
+      childIcon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+    }
+    var hiddenContent = $(this).parents().parents().find('.comment-hidden').toggle('fast');
+  });
+
+  $(document).on('click', '.answer-comment-link', function(){
+    if($(this).parents().find('.answer-comment-form').children().length == 0) {
+      $(this).parents().find('.answer-comment-form')
+      .append(
+        "<div class='answer-comment'>" +
+          "<form method='POST' action=" + dirname + "comment/add>" +
+            "<input type='hidden' name='user_id' value=1>" + //+ userId +
+            "<input type='hidden' name='_id' value=2>" + //" + object +  " + objectId + "
+            "<input type='hidden' name='comment_id' value='2'>" + // " + commentId + "
+            "<div class='row'>" +
+              "<div class='M12 no-padding'>" +
+                "<textarea class='answer-comment-input' name='content' placeholder='Enter a comment here'></textarea>" +
+              "</div>" +
+            "</div>" +
+            "<div class='row'>" +
+              "<div class='M12 no-padding'>" +
+                "<input type='submit' id='comment-button' class='input-btn btn-filled-blue btn-icon' value='Comment'>" +
+              "</div>" +
+            "</div>" +
+          "</form>"+
+        "</div>"
+      );
+    } else {
+        $(this).parents().find('.answer-comment-form').children().remove();
+    }
+  });
+
   // Ajax call for load table
   if( $("#pagination_data").length ) {
     var limit = $( ".pagination_selector option:selected" ).val();
@@ -160,7 +198,7 @@ $(function() {
   if( $("#comments").length > 0 ) {
     var object = $.trim($("#comments span:nth-child(2)").text());
     var id = $.trim($("#comments span:first-child").text());
-    load_data_list_comment(object, id);
+    //load_data_list_comment(object, id);
   }
 
 });
@@ -273,7 +311,7 @@ function load_data_table(page, limit, action, order='asc', column_name) {
                 if(k == "trainning") {
                   html+="<td>"+element[k][0].title+"</td>";
                 } else {
-                  html+="<td>"+element[k][0].userName+"</td>";                  
+                  html+="<td>"+element[k][0].userName+"</td>";
                 }
               } else {
                 html+="<td>"+element[k]+"</td>";
@@ -374,7 +412,7 @@ function addChapterSubpart(){
 
 function load_data_list_comment(object, id){
   url = dirname + "ajax/listComment?object=comment&sort=desc" + "&columnName=date" + "&page=1&itemsPerPage=10&" + object + "_id=" + id;
-  div = $("#data-list");
+  div = $("#comments-result");
   paginationLinks = $("#pagination_links");
   linkObjectView = $.trim($(".list-init-object span:last-child").text());
   $.ajax({
@@ -383,14 +421,15 @@ function load_data_list_comment(object, id){
     success:function(data) {
       data = JSON.parse(data);
       var html = '';
-      alert(data.comments.user.userName);
       if( data['comments'].length > 0) {
-        $.each(data['comment'], function(index, element) {
-          console.log(JSON.stringify(element));
-          //console.log(element.content);
+        $.each(data['comments'], function(index, element) {
+          html += "<div class='comment-card row'>";
+          html += "<image src='" + element.user[0].avatar + "' class='img-comment'>"
+          html += "<div class"
+          html += "</div>";
         });
       } else {
-        html = "No content";
+        html = "No comments";
       }
       div.html(html);
     }

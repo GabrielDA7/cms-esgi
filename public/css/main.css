@@ -1156,6 +1156,9 @@ html, body {
   color: #222831;
   font-size: 21px; }
 
+#comments {
+  padding-top: 30px; }
+
 #comments-title {
   padding-bottom: 50px;
   padding-top: 35px; }
@@ -1456,4 +1459,43 @@ textarea {
   height: 100%; }
 
 .video-card {
-  background-color: black; }
+  background-color: black;
+  text-align: center;
+  color: white; }
+
+.error-msg {
+  position: absolute;
+  right: 0; }
+
+.no-padding {
+  padding: 0; }
+
+.align-right {
+  float: right; }
+
+.grey-content {
+  color: #A2A2A2;
+  padding-left: 10px;
+  text-decoration: none; }
+
+.padding-bottom-comment {
+  padding-bottom: 5px; }
+
+.no-padding-right {
+  padding-right: 0; }
+
+.avatar-img-medium {
+  width: 60%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%; }
+
+.align-center {
+  text-align: center; }
+
+.no-decoration {
+  text-decoration: none;
+  color: #222831; }
+
+.comment-hidden {
+  display: none; }
