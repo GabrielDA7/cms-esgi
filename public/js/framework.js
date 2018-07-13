@@ -399,6 +399,7 @@ function addChapterSubpart(){
                 "<div class='row'>" +
                   "<textarea name='parts["+ idPart +"][content]' class='form-group input' placeholder='Content'></textarea>" +
                 "</div>" +
+                "<input type='hidden' name='parts["+ idPart +"][number]' value='" + idPart + "'></input>"
               "</div>" +
              "</div>";
   var idbis = idPart - 1;
