@@ -24,7 +24,7 @@ class ObjectDelegate {
 		$data[$this->lowerCaseFirstObjectName] = $object;
 	}
 
-	public function getByParameters(&$data, $params, $othersTablesColumns = []) {
+	public function getByParameters(&$data, $params) {
 		$object = $data[$this->lowerCaseFirstObjectName];
 		ClassUtils::setObjectColumns($object, $params);
 		$objects = $object->getWithParameters();
@@ -42,8 +42,31 @@ class ObjectDelegate {
 		if ($data['errors'] === FALSE) {
 			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
-			$data[$this->lowerCaseFirstObjectName] = $object->insert();
+			$this->setUserIdWithSession($object);
+			$data[$this->lowerCaseFirstObjectName]->setId($object->insert());			if ($arrayOfChidren = ClassUtils::getIfExistArrayFromObject($data[$this->lowerCaseFirstObjectName])) {
+				$this->addChildren($data, $arrayOfChidren);
+			}
 		}
+	}
+
+	private function addChildren($data, $arrayOfChidren) {
+		$parentId = $data[$this->lowerCaseFirstObjectName]->getId();
+		$childrenObjectName = substr_replace(key($arrayOfChidren), "", strlen(key($arrayOfChidren))-1);
+		$childrenObjectName = ucfirst($childrenObjectName);
+		foreach ($arrayOfChidren[key($arrayOfChidren)] as $key => $value) {
+			$childObject = new $childrenObjectName();
+			ClassUtils::setObjectColumns($childObject, $value);
+			$setter = "set" . $this->objectName . "Id";
+			$childObject->$setter($data[$this->lowerCaseFirstObjectName]->getId());
+			$this->setUserIdWithSession($childObject);
+			$childObject->insert();
+		}
+	}
+
+	private function setUserIdWithSession($object) {
+		$columns = $object->getColumns();
+		if (array_key_exists("user_id", $columns) && isset($_SESSION["userId"]))
+			$object->setUserId($_SESSION["userId"]);
 	}
 
 	public function update(&$data, $params, $redirectFront, $redirectBack) {

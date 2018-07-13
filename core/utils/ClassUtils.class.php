@@ -43,17 +43,24 @@ class classUtils {
 		if ($removeNull) {
 			self::removeNullColumns($columns);
 		}
-		if (!$fromObject) {
+		if (!$fromObject) {	
+			self::removeArrayColumns($columns);
 			return $columns;
 		}
 		self::unsetColumns($object, $columnsExclude);
 	}
 
+	public static function removeArrayColumns(&$columns) {
+		foreach ($columns as $key=>$value) {
+			if (is_array($value))
+				unset($columns[$key]);
+		}
+	}
+
 	public static function removeNullColumns(&$columns) {
 		foreach ($columns as $key=>$value) {
-			if (is_null($value) || $value == "" || empty($value)) {
+			if (is_null($value) || $value == "" || empty($value))
 				unset($columns[$key]);
-			}
 		}
 	}
 
@@ -94,5 +101,13 @@ class classUtils {
 	      		$object->$setColumn($referencedObjects);
 	    	}
 	    }
+  	}
+
+  	public static function getIfExistArrayFromObject($object) {
+  		$columns = $object->getColumns();
+  		foreach ($columns as $key => $value) {
+  			if (is_array($value) && !empty($value))
+  				return [$key => $value];
+  		}
   	}
 }

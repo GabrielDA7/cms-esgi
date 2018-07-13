@@ -13,11 +13,12 @@ class FileDelegate {
 		}
 	}
 
-	public function setting(&$data, $columns, $redirect) {
+	public function setting(&$data, $columns, $redirect = null) {
 		if ($data['errors'] === FALSE) {
 			$installation = ClassUtils::constructObjectWithParameters($columns, $this->objectName);
 			$this->setConfData($installation);
-			RedirectUtils::redirect($redirect);
+			if (isset($redirect))
+				RedirectUtils::redirect($redirect);
 		}
 	}
 

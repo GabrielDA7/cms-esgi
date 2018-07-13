@@ -3,14 +3,19 @@ class QueryConstructorSql {
 
 	public function __construct() {}
 
-	protected function constructSelectQuery($table, $columns = null, $like = FALSE, $orderBy = null, $limit = null) {
-		$query = "SELECT *";
-		$query .= " FROM " . $table;
+	protected function constructSelectQuery($table, $columns = null, $like = FALSE, $orderBy = null, $limit = null, $username = FALSE) {
+		$query = "SELECT DISTINCT " . $table . ".* FROM " . $table;
+		if ($username)
+			$query .= ", user";
 		if (isset($columns)) {
 			if (!$like) {
-				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, "", EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
+				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {
-				$query .= " WHERE " . implode(" LIKE :keyword OR ", array_values($columns)) . " LIKE :keyword";
+				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, "", " LIKE :keyword OR ", TRUE, FALSE, FALSE);
+				$query .= " LIKE :keyword";
+			}
+			if ($username) {
+				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
 			}
 		}
 		if (isset($orderBy)) {
@@ -45,11 +50,5 @@ class QueryConstructorSql {
 	protected function constructDeleteQuery($table) {
 		$query = "DELETE FROM " . $table . " WHERE id=:id";
 		return $query;
-	}
-
-	/* Pour plusieurs tables voir comment faire pour ajour la premiere lettre
-	*  de la table et . devant la cle du where (savoir a quelle table appartient cette cle) */
-	private function setWhereValuesWithTableName($objectList) {
-
 	}
 }

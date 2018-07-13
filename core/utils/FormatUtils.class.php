@@ -31,13 +31,15 @@ class FormatUtils {
 		return $queryString;
 	}
 
-	public static function formatMapToStringWithSeparators($array, $separatorBefore, $separatorBetween, $separatorAfter, $flagValue = TRUE, $doubleKey = FALSE) {
+	public static function formatMapToStringWithSeparators($array, $separatorBefore, $separatorBetween, $separatorAfter, $flagValue = TRUE, 
+		$doubleKey = FALSE, $flagKey = TRUE) {
 		$numberOfItems = count($array);
 		$i = 0;
 		$separedValues = "";
 		foreach ($array as $key => $value) {
 			$value = ($flagValue)? $value : "";
 			$value = ($doubleKey)? $key : $value;
+			$key = ($flagKey)? $key : "";
 			if (!(++$i === $numberOfItems)) {
 				$separedValues .= $separatorBefore . $key . $separatorBetween . $value . $separatorAfter;
 	  		} else if ($value != "") {

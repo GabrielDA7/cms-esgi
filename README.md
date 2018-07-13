@@ -16,10 +16,6 @@ php.ini
 
                               |BACK|
 
-Recherche author 
-  if getColumns contains user_id search in user where author = query and id = user_id 
-
-
 RSS
 paypal
 publish content (chapter / trainning)
@@ -54,6 +50,8 @@ for the parts find a way to save the location of the videos and the pictures
 -- DONE -- Modifier author avec id (trainning)
 -- DONE -- change date to dateInserted
 -- DONE -- User add ->setAvatar with default image
+-- DONE -- Recherche author 
+           if getColumns contains user_id search in user where author = query and id = user_id 
 
                               |FRONT|
 

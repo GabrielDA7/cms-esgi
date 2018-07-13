@@ -50,13 +50,7 @@ class Video extends BaseSql {
 																						"3gp",
 											                    ],
 															"requied"=>true
-									       		],
-									"user_id"=>
-												[
-											         "type"=>"hidden",
-													 	 	 "class"=>"form-group",
-											         "value" => $_SESSION['userId']
-									      ]
+									       		]
 							]
 
 					];

@@ -63,12 +63,6 @@ class Trainning extends BaseSql {
 											                    "png",
 											                    "jpeg"
 										                    ]
-								       		],
-								"user_id"=>
-											[
-										         "type"=>"hidden",
-												 "class"=>"form-group",
-										         "value" => $_SESSION['userId']
 								       		]
 						]
 

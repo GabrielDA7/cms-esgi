@@ -26,7 +26,7 @@ class BaseSql extends QueryConstructorSql {
 			$queryString = $this->constructInsertQuery($this->table, $this->columns);
 			$query = $this->db->prepare($queryString);
 			$query->execute($this->columns);
-			return null;
+			return $this->db->lastInsertId();
 		} catch (Exception $e) {
 			LogsUtils::process("logs", "Insert", "Error :" . $e->getMessage());
 			return null;
@@ -76,7 +76,7 @@ class BaseSql extends QueryConstructorSql {
 		return $objectList;
 	}
 
-	public function getById($id = null) {
+	public function getById() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructSelectQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
@@ -92,7 +92,8 @@ class BaseSql extends QueryConstructorSql {
 	public function getByWord($keyword, $columnsToSearch, $data) {
 		$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
 		$limit = (isset($data['limit'])) ? $data['limit'] : null;
-		$queryString = $this->constructSelectQuery($this->table, $columnsToSearch, TRUE, $orderBy, $limit);
+		$searchUsername = in_array("user_id", $columnsToSearch);
+		$queryString = $this->constructSelectQuery($this->table, $columnsToSearch, TRUE, $orderBy, $limit, $searchUsername);
 		$query = $this->db->prepare($queryString);
 		$this->setKeyword($query, $keyword);
 		$query->execute();
@@ -124,6 +125,7 @@ class BaseSql extends QueryConstructorSql {
 				if ($objectName == USER_CLASS_NAME) {
 					$tempObject = new User();
 					$tempObject->setUserName($foreignObject->getUsername());
+					$tempObject->setAvatar($foreignObject->getAvatar());
 					$foreignObject = $tempObject;
 				}
 				$object->$setter($foreignObject);

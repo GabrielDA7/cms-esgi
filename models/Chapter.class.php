@@ -79,12 +79,6 @@ class Chapter extends BaseSql {
 												"value"=>(isset($_POST["number"])? $_POST["number"] : ""),
 
 											],
-								"user_id"=>
-											[
-										         "type"=>"hidden",
-												 	 	 "class"=>"form-group",
-										         "value" => $_SESSION['userId']
-								      		],
 								"parts"=>
 											[
 												"id"=>"addChapterPart",
