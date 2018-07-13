@@ -16,6 +16,10 @@ php.ini
 
                               |BACK|
 
+Recherche author 
+  if getColumns contains user_id search in user where author = query and id = user_id 
+
+
 RSS
 paypal
 publish content (chapter / trainning)
@@ -24,7 +28,6 @@ parametersController (varibles.scss)
 Ajout et edition auteurs => session
 replace space by underscore (file)
 
-Filter ajax ()
 passowrd -> sha1 + grain de sel
 
 Remove database columns from objects (problem when object db is used more than once)
@@ -50,6 +53,7 @@ for the parts find a way to save the location of the videos and the pictures
 -- DONE -- Ajouter author a chapter
 -- DONE -- Modifier author avec id (trainning)
 -- DONE -- change date to dateInserted
+-- DONE -- User add ->setAvatar with default image
 
                               |FRONT|
 

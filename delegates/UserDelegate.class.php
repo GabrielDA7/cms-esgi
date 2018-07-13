@@ -17,6 +17,8 @@ class UserDelegate extends ObjectDelegate {
 		if ($data['errors'] === FALSE) {
 			$user = $data['user'];
 			ClassUtils::setObjectColumns($user, $params['POST']);
+			if ($user->getAvatar() == null)
+				$user->setAvatar(DEFAULT_AVATAR);
 			$user->generateToken();
 			$user->generateEmailConfirm();
 			$user->insert();

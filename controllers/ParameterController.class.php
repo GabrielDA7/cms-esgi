@@ -1,13 +1,6 @@
 <?php
 class ParameterController {
 
-	public function indexAction($params) {
-
-	}
-
-	public function addAction($params) {
-	}
-
 	public function editAction($params) {
 	}
 
