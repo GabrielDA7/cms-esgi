@@ -72,7 +72,7 @@ class Video extends BaseSql {
 						                      [
 						                        "name"=>"Title"
 						                      ],
-						                "author"=>
+						                "user"=>
 						                      [
 						                         "name"=>"Author"
 						                      ],

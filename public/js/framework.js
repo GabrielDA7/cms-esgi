@@ -203,7 +203,7 @@ function load_data_list_card(page, action, order='desc', column_name, object){
             html += "  <div class='card-separation'></div>";
             html += "  <div class='card-content'>";
             html += "    <p class='card-content-title'>" + element.title + "</p>";
-            html += "    <p class='card-content-author'>" + element.userName + "</p>";
+            html += "    <p class='card-content-author'>" + element.user[0].userName + "</p>";
             html += "  </div>";
             html += " </a>";
             html += " </div>";
@@ -270,7 +270,11 @@ function load_data_table(page, limit, action, order='asc', column_name) {
               }
             } else {
               if ( $.isArray(element[k])) {
-                html+="<td>"+element[k][0].title+"</td>";
+                if(k == "trainning") {
+                  html+="<td>"+element[k][0].title+"</td>";
+                } else {
+                  html+="<td>"+element[k][0].userName+"</td>";                  
+                }
               } else {
                 html+="<td>"+element[k]+"</td>";
               }

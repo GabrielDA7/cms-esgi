@@ -21,21 +21,12 @@ class UserController {
 	public function indexAction($params) {}
 
 	public function userAction($params) {
-		if (!isset($params['POST']['id']) && !isset($_SESSION['userId'])) {
+		if (!isset($params['GET']['id']) && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_USER_VIEWS);
-		$this->userDelegate->getById($this->data, $params);
-		$view = new View($this->data);
-	}
-
-	public function profileAction($params) {
-		if (!isset($_SESSION['userId'])) {
-			LogsUtils::process("logs", "Attempt access", "Access denied");
-			RedirectUtils::redirect404();
-		}
-		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PROFILE_VIEWS);
+		$this->userDelegate->getById($this->data, $params['GET']);
 		$view = new View($this->data);
 	}
 
@@ -52,7 +43,7 @@ class UserController {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_EDIT_VIEWS);
-		$this->userDelegate->getById($this->data, $params);
+		$this->userDelegate->getById($this->data, $params['POST']);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, AVATAR_FOLDER_NAME);
 		$this->userDelegate->update($this->data, $params, "", USER_LIST_BACK_LINK);
@@ -121,7 +112,7 @@ class UserController {
 			$view = new View($this->data);
 		} else {
 			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PASSWORD_RESET_VIEWS);
-			$this->userDelegate->getById($this->data, $params);
+			$this->userDelegate->getById($this->data, $params['POST']);
 			$this->formDelegate->process($this->data, $params);
 			$this->userDelegate->checkPasswordReset($this->data, $params);
 			$view = new View($this->data);

@@ -7,7 +7,7 @@ class UserDelegate extends ObjectDelegate {
 
 	public function getById(&$data, $params, $othersTablesColumns = []) {
 		$user = $data['user'];
-		$id = (isset($params['POST']['id'])) ? $params['POST']['id'] : $_SESSION['userId'];
+		$id = (isset($params['id'])) ? $params['id'] : $_SESSION['userId'];
 		$user->setId($id);
 		$user = $user->getById();
 		$data['user'] = $user;

@@ -20,12 +20,9 @@ RSS
 paypal
 publish content (chapter / trainning)
 
-Comment class -> form user_id ?
-
-
+parametersController
 Ajout et edition auteurs => session
-
-change date to dateInserted
+replace space by underscore (file)
 
 Filter ajax ()
 passowrd -> sha1 + grain de sel
@@ -52,6 +49,7 @@ for the parts find a way to save the location of the videos and the pictures
            give a name like formation + id) -> do for the object class a function who return the file path (ex : video is : DIR . public.video . etc)
 -- DONE -- Ajouter author a chapter
 -- DONE -- Modifier author avec id (trainning)
+-- DONE -- change date to dateInserted
 
                               |FRONT|
 
@@ -68,6 +66,19 @@ Search nav bar
 	view search.view.php (not created)
 
 home page 
-  ajax list with item = 5 and order = desc / columns=date
+  ajax list with item = 5 and order = desc / columns=dateInserted
 
-modify every references to author in js file and replace by element.user.userName
+
+errors == false print "the content has been added"
+
+add a label which is the key of the input where it is a SELECT 
+  (for the installation : back template / front template we don't know)
+
+Edit profile CSS
+
+Comment use modal
+
+Add edition tools
+
+-- DONE -- modify every references to author in js file and replace by element.user.userName
+
