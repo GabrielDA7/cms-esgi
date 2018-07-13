@@ -61,6 +61,7 @@ define("SPACE", " ");
 *******************************/
 define("CSS_PATH", "public/css/main.css");
 define("LOGO_PATH", "public/img/logo.svg");
+define("DEFAULT_AVATAR", "public/img/avatars/default.jpg");
 
 /******************************
 ********** ROUTES *************
