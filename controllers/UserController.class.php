@@ -33,6 +33,7 @@ class UserController {
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
+		$this->fileDelegate->process($this->data, $params, AVATAR_FOLDER_NAME);
 		$this->userDelegate->add($this->data, $params);
 		$view = new View($this->data);
 	}
