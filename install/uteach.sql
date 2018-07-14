@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 13 juil. 2018 à 20:33
+-- Généré le :  sam. 14 juil. 2018 à 15:09
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -41,7 +41,34 @@ CREATE TABLE IF NOT EXISTS `chapter` (
   KEY `trainning_id` (`trainning_id`),
   KEY `trainning_id_2` (`trainning_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `chapter`
+--
+
+INSERT INTO `chapter` (`id`, `number`, `title`, `image`, `trainning_id`, `dateInserted`, `user_id`) VALUES
+(3, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 20:52:49', 25),
+(4, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 20:53:03', 25),
+(5, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:26:34', 25),
+(6, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:27:09', 25),
+(7, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:32:09', 25),
+(8, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:33:25', 25),
+(9, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:33:54', 25),
+(10, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:34:28', 25),
+(11, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:34:39', 25),
+(12, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:35:03', 25),
+(13, 1, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:35:39', 25),
+(14, 2, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:36:45', 25),
+(15, 2, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:58:48', 25),
+(16, 2, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:59:00', 25),
+(17, 2, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 21:59:45', 25),
+(18, 2, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:00:04', 25),
+(19, 2, 'zzzrttrzztr', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:00:28', 25),
+(20, 2, 'zttzetzert', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:01:05', 25),
+(21, 2, 'zttzetzert', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:01:11', 25),
+(22, 2, 'zttzetzert', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:01:20', 25),
+(23, 2, 'zttzetzert', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:01:26', 25);
 
 -- --------------------------------------------------------
 
@@ -65,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   KEY `video_id` (`video_id`),
   KEY `comment_id` (`comment_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -84,7 +111,17 @@ CREATE TABLE IF NOT EXISTS `part` (
   PRIMARY KEY (`id`),
   KEY `chapter_id` (`chapter_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `part`
+--
+
+INSERT INTO `part` (`id`, `number`, `title`, `content`, `chapter_id`, `user_id`) VALUES
+(3, 1, 'zertztrze', 'zertzert', 20, 25),
+(4, 2, 'ertezrtzert', 'zertze', 20, 25),
+(5, 1, 'zertztrze', 'zertzert', 23, 25),
+(6, 2, 'ertezrtzert', 'zertze', 23, 25);
 
 -- --------------------------------------------------------
 
@@ -161,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `userName`, `pwd`, `pwdReset`, `avatar`, `token`, `status`, `dateInserted`, `dateUpdated`, `role`) VALUES
-(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '5j378yegii4o0co8g8w0skwk40kw48gwwkssgkscoc4c4ocsgg', 1, '2018-03-20 19:48:58', '2018-07-13 19:05:27', 2),
+(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '2wpyq0trp02s880w0oww8sgosggso8oc0oo4kcs4gg8ws4o84w', 1, '2018-03-20 19:48:58', '2018-07-13 19:05:27', 2),
 (33, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'v2l5jb39neoww4ow84w4ow40ooo44wswgogw4c4gg48088wgk', 0, '2018-03-24 22:03:33', NULL, 0),
 (34, 'Louis', 'Louis', 'louis@gmail.com', '', 'zerazer', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '3iuuy6vxv2w4cs4g8kccsww08wkgg4g048s848k8w8sg8wok04', 0, '2018-03-25 20:08:25', NULL, 0),
 (35, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'y4tci0mxs9cck844so48csggsosso8w4w004880csc8gk0k0s', 0, '2018-03-25 20:30:28', NULL, 0),
@@ -196,7 +233,94 @@ CREATE TABLE IF NOT EXISTS `video` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `part_id` (`part_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `video`
+--
+
+INSERT INTO `video` (`id`, `title`, `description`, `url`, `dateInserted`, `user_id`, `part_id`) VALUES
+(3, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:19:21', 25, NULL),
+(4, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:19:52', 25, NULL),
+(5, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:20:13', 25, NULL),
+(6, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:21:33', 25, NULL),
+(7, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:21:48', 25, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `viewed_chapter`
+--
+
+DROP TABLE IF EXISTS `viewed_chapter`;
+CREATE TABLE IF NOT EXISTS `viewed_chapter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ip` varchar(50) NOT NULL,
+  `chapter_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `chapter_id` (`chapter_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `viewed_chapter`
+--
+
+INSERT INTO `viewed_chapter` (`id`, `dateInserted`, `ip`, `chapter_id`, `user_id`) VALUES
+(1, '2018-07-14 13:18:56', '::1', 23, NULL),
+(2, '2018-07-14 13:26:19', '::1', 21, NULL),
+(3, '2018-07-14 13:26:32', '192.0.0.0', 11, NULL),
+(4, '2018-07-14 13:26:44', '192.25.24.24', 21, NULL),
+(5, '2018-07-14 13:26:59', '41.25.24.25', 20, NULL),
+(6, '2018-07-14 13:27:08', '10.2.2', 20, NULL),
+(7, '2018-07-14 13:27:25', '20.2424.2', 22, NULL),
+(8, '2018-07-14 13:27:40', '444444', 21, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `viewed_trainning`
+--
+
+DROP TABLE IF EXISTS `viewed_trainning`;
+CREATE TABLE IF NOT EXISTS `viewed_trainning` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ip` varchar(50) NOT NULL,
+  `trainning_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `trainning_id` (`trainning_id`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `viewed_trainning`
+--
+
+INSERT INTO `viewed_trainning` (`id`, `dateInserted`, `ip`, `trainning_id`, `user_id`) VALUES
+(1, '2018-07-14 13:09:20', '::1', 39, NULL),
+(2, '2018-07-14 13:17:37', '::1', 38, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `viewed_video`
+--
+
+DROP TABLE IF EXISTS `viewed_video`;
+CREATE TABLE IF NOT EXISTS `viewed_video` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ip` varchar(50) NOT NULL,
+  `video_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `video_id` (`video_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contraintes pour les tables déchargées
@@ -243,6 +367,27 @@ ALTER TABLE `trainning`
 --
 ALTER TABLE `video`
   ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `viewed_chapter`
+--
+ALTER TABLE `viewed_chapter`
+  ADD CONSTRAINT `viewed_chapter_ibfk_1` FOREIGN KEY (`chapter_id`) REFERENCES `chapter` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `viewed_chapter_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `viewed_trainning`
+--
+ALTER TABLE `viewed_trainning`
+  ADD CONSTRAINT `viewed_trainning_ibfk_1` FOREIGN KEY (`trainning_id`) REFERENCES `trainning` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `viewed_trainning_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `viewed_video`
+--
+ALTER TABLE `viewed_video`
+  ADD CONSTRAINT `viewed_video_ibfk_1` FOREIGN KEY (`video_id`) REFERENCES `video` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `viewed_video_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

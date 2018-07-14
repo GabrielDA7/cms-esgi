@@ -2,12 +2,14 @@
 class BaseSql extends QueryConstructorSql {
 
 	protected $table;
+	protected $objectName;
 	protected $db;
 	protected $columns;
 
-	public function __construct() {
+	public function __construct($table = null) {
 		QueryConstructorSql::__construct();
-		$this->table = strtolower(get_called_class());
+		$this->table = (isset($table)) ? $table : strtolower(get_called_class());
+		$this->objectName = get_called_class();
 		try {
 			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
 		} catch(Exception $e) {
@@ -20,7 +22,7 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute();
 	}
 
-	public function insert() {
+	public function insert($table = null) {
 		try {
 			$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 			$queryString = $this->constructInsertQuery($this->table, $this->columns);
@@ -47,12 +49,12 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute($this->columns);
 	}
 
-	public function countItems() {
-		$queryString = $this->constructCountQuery($this->table);
+	public function countItems($counter = "id") {
+		$queryString = $this->constructCountQuery($this->table, $counter);
 		$query = $this->db->prepare($queryString);
 		$query->execute();
-		$response = $query->fetch();
-		return $response['itemsNumber'];
+		$response = $query->fetchAll();
+		return ($counter == "id") ? $response[0]['itemsNumber'] : $response;
 	}
 
 	public function getAll($data) {
@@ -106,7 +108,7 @@ class BaseSql extends QueryConstructorSql {
 	private function createObjectsListFromDBResponse($response) {
 		$objectList = array();
 		foreach ($response as $key => $values) {
-			$object = ClassUtils::constructObjectWithParameters($values, $this->table);
+			$object = ClassUtils::constructObjectWithParameters($values, $this->objectName);
 			if ($foreignKeyColumns = ClassUtils::getForeignKeyColumns($object)) {
 				$this->setForeingObjectsColumns($object, $foreignKeyColumns);
 			}
