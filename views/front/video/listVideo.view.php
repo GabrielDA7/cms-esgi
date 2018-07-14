@@ -10,7 +10,6 @@
 
   <div class="list-init-object">
     <span>video</span>
-    <span><?= DIRNAME . VIDEO_VIDEO_FRONT_LINK; ?></span>
   </div>
 
   <div id="data-list" class="row row-padding">

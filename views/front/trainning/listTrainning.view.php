@@ -12,7 +12,6 @@
 
 	<div class="list-init-object">
 		<span>trainning</span>
-    <span><?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK; ?></span>
   </div>
 
   <div id="data-list" class="row row-padding">

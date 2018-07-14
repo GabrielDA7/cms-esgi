@@ -230,7 +230,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
   objects = object + 's';
   url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage;
   div = $('#' + div);
-  linkObjectView = $.trim($(".list-init-object span:last-child").text());
+  linkObjectView = object + "/" + object;
 
   $.ajax({
     url: url,
@@ -247,15 +247,15 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
             html += "  <div class='card-image'>";
             if(object != "video") {
               if( element.image != null ) {
-                html += "  <image src='" + dirname + element.image + "' alt='" + element.title + "'>";
+                html += "  <image src='" + element.image + "' alt='" + element.title + "'>";
               } else {
-                html += "  <image src='" + dirname + "public/img/default.jpg' alt='" + element.title + "'>";
+                html += "  <image src='public/img/default.jpg' alt='" + element.title + "'>";
               }
             } else {
               html += "<video class='video-card' width='100%' height='100%' controls='controls'>";
-              html += "<source src='" + dirname + element.url + "' type='video/mp4' />";
-              html += "<source src='" + dirname + element.url + "' type='video/mp3' />";
-              html += "<source src='" + dirname + element.url + "' type='video/webm' />";
+              html += "<source src='" + element.url + "' type='video/mp4' />";
+              html += "<source src='" + element.url + "' type='video/mp3' />";
+              html += "<source src='" + element.url + "' type='video/webm' />";
               html += "</video>";
             }
             html += "  </div>";
@@ -439,7 +439,6 @@ function load_data_list_comment(object, id){
   url = dirname + "ajax/listComment?object=comment&sort=desc" + "&columnName=date" + "&page=1&itemsPerPage=10&" + object + "_id=" + id;
   div = $("#comments-result");
   paginationLinks = $("#pagination_links");
-  linkObjectView = $.trim($(".list-init-object span:last-child").text());
   $.ajax({
     url: url,
     method: 'POST',
@@ -490,7 +489,7 @@ function dhm(ms){
 function renderCommentResponse(element, intern) {
   html = "<div class='row comment-card M--start'>";
   html +=   "<div class='M1 no-padding align-center'>";
-  html +=     "<img class='avatar-img-medium' src='" + dirname +element.user[0].avatar + "' alt='avatar'>";
+  html +=     "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar'>";
   html +=   "</div>";
   if(intern == false) {
     html +=   "<div class='M11'>";
