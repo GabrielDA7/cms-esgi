@@ -62,11 +62,8 @@
 						</div>
 					</div>
 				</form>
-
+			<?php endif; ?>
 			<div id='comments-result' class='row'></div>
-		<?php else: ?>
-			<p>Log you for display comments</p>
-		<?php endif ?>
 	</section>
 </section>
 
@@ -81,7 +78,8 @@
 		</div>
 		<div class="modal-body">
 			<form action="<?= DIRNAME ?>comment/report" method="post">
-				<input type="hidden" name="comment_id" value="qsdqs">
+				<input type="hidden" name="comment_id">
+				<input type="hidden" name="report" value="1">
 				<label for="reason">The reason :</label>
 				<textarea class="form-group row input" name="reason"></textarea>
 				<input type="submit" class="input-btn btn-filled-orange btn-icon last footer-wrapper" name="submit" value="Confirm">

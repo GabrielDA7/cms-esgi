@@ -100,7 +100,7 @@
     <!-- Javascript -->
     <script src="<?= DIRNAME;?>node_modules/jquery/dist/jquery.min.js"></script>
     <script src="<?= DIRNAME;?>node_modules/chart.js/dist/Chart.min.js"></script>
-    <script type="text/javascript">var dirname = '<?= DIRNAME; ?>';var isConnecter = <?= isLogged() ?>;</script>
+    <script type="text/javascript">var dirname = '<?= DIRNAME; ?>'; var isLogged = '<?= isLogged(); ?>';</script>
     <script type="text/javascript" src="<?= DIRNAME; ?>public/js/framework.js"></script>
   </body>
 </html>

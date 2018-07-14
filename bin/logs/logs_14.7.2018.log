@@ -1356,3 +1356,31 @@ Action : Action not found
 Value : nullAction in TrainningController
 Date : 07/14/2018 08:32:20 pm
 -------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:42 pm
+-----------------
+Url : http://localhost/lab/uteach/trainning/null
+Action : Action not found
+Value : nullAction in TrainningController
+Date : 07/14/2018 08:42:00 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:48 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/null
+Action : Action not found
+Value : nullAction in ChapterController
+Date : 07/14/2018 08:48:38 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:49 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/null
+Action : Action not found
+Value : nullAction in ChapterController
+Date : 07/14/2018 08:49:07 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:49 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/null
+Action : Action not found
+Value : nullAction in ChapterController
+Date : 07/14/2018 08:49:40 pm
+-------------------------------------------------------

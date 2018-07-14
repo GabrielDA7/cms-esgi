@@ -487,27 +487,31 @@ function renderCommentResponse(element) {
   html +=       "<div class='M3 no-padding'>";
   html +=         "<strong>" + element.user[0].userName + "</strong><span class='grey-content'>" + getTimeDifference(element.dateInserted) + "</span>";
   html +=       "</div>";
-  html +=       "<div class='M2 M--offset7'>";
-  html +=         "<a class='align-right report-comment'><span class='content-hidden'>" + element.id + "</span><i class='fas fa-flag'></i></a>";
-  html +=       "</div>";
+  if(isLogged != '1') {
+    html +=       "<div class='M2 M--offset7'>";
+    html +=         "<a class='align-right report-comment'><span class='content-hidden'>" + element.id + "</span><i class='fas fa-flag'></i></a>";
+    html +=       "</div>";
+  }
   html +=     "</div>";
   html +=     "<div class='row padding-bottom-comment'>";
   html +=       "<p>" + element.content + "</p>";
   html +=     "</div>";
   html +=     "<div class='row M--start'>";
   html +=       "<div class='M2 no-padding'>";
-  if(element.responses[0].length > 0) {
-      html +=  "<a href='javascript:void(0);' class='expand-comment no-decoration'><strong>Reply(" + element.responses[0].length + ")<i class='fas fa-chevron-down'></i></strong></a>";
+  /*if(element.comments[0].length > 0) {
+      html +=  "<a href='javascript:void(0);' class='expand-comment no-decoration'><strong>Reply(" + element.comments[0].length + ")<i class='fas fa-chevron-down'></i></strong></a>";
+  }*/
+  html +=       "</div>";
+  if( isLogged != '1') {
+    html +=       "<div class='M2 M--offset8 no-padding'>";
+    html +=         "<a href='javascript:void(0);' class='align-right grey-content answer-comment-link'>Answer</a>";
+    html +=       "</div>";
   }
-  html +=       "</div>";
-  html +=       "<div class='M2 M--offset8 no-padding'>";
-  html +=         "<a href='javascript:void(0);' class='align-right grey-content answer-comment-link'>Answer</a>";
-  html +=       "</div>";
   html +=       "<div class='M12 no-padding answer-comment-form'></div>";
   html +=       "<div class='M12 no-padding comment-hidden'>"
-  if(element.responses[0].length > 0) {
-    renderCommentResponse(element.responses[0]);
-  }
+/*  if(element.comments[0].length > 0) {
+    renderCommentResponse(element.comments[0]);
+  }*/
   html +=       "</div>";
   html +=     "</div>";
   html +=   "</div>";
