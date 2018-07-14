@@ -1937,3 +1937,17 @@ Action : Action not found
 Value : nullAction in ChapterController
 Date : 07/14/2018 10:27:28 pm
 -------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 10:33 pm
+-----------------
+Url : http://localhost/lab/uteach/null
+Action : Controller not found
+Value : 
+Date : 07/14/2018 10:33:15 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 10:34 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/null
+Action : Action not found
+Value : nullAction in ChapterController
+Date : 07/14/2018 10:34:39 pm
+-------------------------------------------------------

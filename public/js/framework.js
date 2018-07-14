@@ -435,7 +435,7 @@ function load_data_list_comment(object, id){
       var html = '';
       if( data['comments'].length > 0) {
         $.each(data['comments'], function(index, element) {
-          html += renderCommentResponse(element);
+          html += renderCommentResponse(element, false);
         });
       } else {
         html = "No comments";
@@ -474,12 +474,16 @@ function dhm(ms){
     }
 }
 
-function renderCommentResponse(element) {
+function renderCommentResponse(element, intern) {
   html = "<div class='row comment-card M--start'>";
   html +=   "<div class='M1 no-padding align-center'>";
   html +=     "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar'>";
   html +=   "</div>";
-  html +=   "<div class='M11'>";
+  if(intern == false) {
+    html +=   "<div class='M11'>";
+  } else {
+    html +=   "<div class='M11 no-padding'>";
+  }
   html +=     "<div class='row padding-bottom-comment'>";
   html +=       "<div class='M3 no-padding'>";
   html +=         "<strong>" + element.user[0].userName + "</strong><span class='grey-content'>" + getTimeDifference(element.dateInserted) + "</span>";
@@ -508,7 +512,7 @@ function renderCommentResponse(element) {
   html +=       "<div class='M12 no-padding comment-hidden'>"
   if(element.comments[0].length > 0) {
     $.each(element.comments[0], function(index, elem) {
-      html += renderCommentResponse(elem);
+      html += renderCommentResponse(elem, true);
     });
   }
   html +=       "</div>";
