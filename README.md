@@ -2,9 +2,6 @@
 
 ## c'est le projet annuel pour 3IW de ESGI
 
-PHP > 7  
-
-TODO
 
 
                               |SERVER|
@@ -12,6 +9,8 @@ TODO
 php.ini
   post_max_size = 500M
   upload_max_filesize = 500M
+
+PHP > 7  
 
 
                               |BACK|
@@ -25,10 +24,6 @@ publish content (chapter / trainning)
   ajax list front -> don't show disabled
 
 
-parametersController (varibles.scss)
-  BDD
-  colors ? sass how to modify file
-
 
 replace space by underscore (file)
 
@@ -36,10 +31,13 @@ passowrd -> sha1 + grain de sel
 
 Remove database columns from objects (problem when object db is used more than once)
 
+view logs (see all logs files and can download them)
 
 -- SEE LATER -- find a way the change the working of setReferencedObjectsColumns() in objectDelegate  
                 We have to get the refernced object with a join query
 
+
+-- DONE -- parametersController (BDD)
 -- DONE -- reset password email
 -- DONE -- Creer nouvelle fct dans le ajaxController pour listeCommentaire qui prend en compte l'id
 -- DONE -- remove form check from list because ajax
@@ -95,7 +93,14 @@ Comment use modal
 
 Add edition tools
 
--- DONE -- 404 page
+go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
 
+
+statistic
+  put aaa($this->data); in indexController statisticAction above view 
+parameters
+  edit dbname / dbhost / dbuser / dbport / language
+
+-- DONE -- 404 page
 -- DONE -- modify every references to author in js file and replace by element.user.userName
 -- DONE -- VOIR element.trainning.title pour mettre le titre de la formation du chapitre voir le resulat du json (trainning a ete ajouté)
