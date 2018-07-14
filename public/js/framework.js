@@ -118,17 +118,13 @@ $(function() {
   });
 
   $(document).on('click', '.answer-comment-link', function(){
-    var object = $.trim($("#comments span:eq(1)").text());
-    var objectId = $.trim($("#comments span:first-child").text());
-    var commentParentId;
-
+    var commentParentId = $('.report-comment span').html();
     if($(this).parents().next('.answer-comment-form').children().length == 0) {
       $(this).parents().next('.answer-comment-form')
       .append(
         "<div class='answer-comment'>" +
           "<form method='POST' action=" + dirname + "comment/response>" +
-            "<input type='hidden' name='" + object + "_id' value=" + objectId + ">" +
-            "<input type='hidden' name='comment_id' value='2'>" + // " + commentId + "
+            "<input type='hidden' name='comment_id' value='"+ commentParentId +"'>" +
             "<div class='row'>" +
               "<div class='M12 no-padding'>" +
                 "<textarea class='answer-comment-input' name='content' placeholder='Enter a comment here'></textarea>" +
