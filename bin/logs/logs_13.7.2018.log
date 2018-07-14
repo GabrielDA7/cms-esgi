@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 13, 2018, 12:04 am
 -----------------
 Url : http://localhost/lab/uteach/public/img/videos/comment-sont-fait-les-tutoriels.mp4
@@ -418,6 +419,7 @@ Action : Controller not found
 Value : 
 Date : 07/13/2018 08:59:57 pm
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 13, 2018, 10:52 pm
 -----------------
 Url : http://localhost/lab/uteach/PREMIUM_LIST_FRONT_LINK
@@ -425,3 +427,28 @@ Action : Controller not found
 Value : 
 Date : 07/13/2018 10:52:15 pm
 -------------------------------------------------------
+=======
+=======
+IP + Date : ::1 - July 13, 2018, 10:19 am
+-----------------
+Url : http://localhost/uteach/installation/database
+Action : Attempt access
+Value : Access denied
+Date : 07/13/2018 10:19:53 am
+-------------------------------------------------------
+IP + Date : ::1 - July 13, 2018, 10:43 am
+-----------------
+Url : http://localhost/uteach/e;fzenf;
+Action : Controller not found
+Value : 
+Date : 07/13/2018 10:43:01 am
+-------------------------------------------------------
+IP + Date : ::1 - July 13, 2018, 7:04 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=zefnzenfzeknf@gmail.com
+Action : Send email
+Value : true
+Date : 07/13/2018 07:04:57 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
