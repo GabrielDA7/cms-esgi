@@ -37,7 +37,7 @@ class StatisticViewDelegate {
 	private function computeStatisticObject($params) {
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$contentId = $params['id'];
-		$contentSetter = "set" . $this->viewedContent . "Id";
+		$contentSetter = "set" . $this->objectName . "Id";
 		$user_id = (isset($_SESSION['userID'])) ? $_SESSION['userID'] : null;
 		$this->statisticObject->setIp($ip);
 		$this->statisticObject->$contentSetter($contentId);
