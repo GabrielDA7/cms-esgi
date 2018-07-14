@@ -74,7 +74,7 @@ define("INSTALLATION_DATABASE_LINK", "installation/database");
 define("INSTALLATION_CREATE_DATABASE_LINK", "installation/createdatabase");
 define("INSTALLATION_ADMIN_LINK", "installation/admin");
 
-define("STATISTIC_INDEX_BACK_LINK", "statistic/index/back");
+define("STATISTIC_INDEX_BACK_LINK", "index/statistic/back");
 
 define("USER_USER_FRONT_LINK", "user/user");
 define("USER_USER_BACK_LINK", "user/user/back");

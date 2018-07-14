@@ -16,12 +16,22 @@ php.ini
 
                               |BACK|
 
-RSS
+RSS only when page contains items
+
 paypal
+
 publish content (chapter / trainning)
-Statistics
+  status in db 0 disabled 1 enabled
+  ajax list front -> don't show disabled
+
+
+
+
 parametersController (varibles.scss)
-Ajout et edition auteurs => session
+  BDD
+  colors ? sass how to modify file 
+
+
 replace space by underscore (file)
 
 passowrd -> sha1 + grain de sel
@@ -52,7 +62,14 @@ for the parts find a way to save the location of the videos and the pictures
 -- DONE -- User add ->setAvatar with default image
 -- DONE -- Recherche author 
            if getColumns contains user_id search in user where author = query and id = user_id 
-
+-- DONE -- Ajout et edition auteurs => session
+-- DONE -- Statistics
+            create table statistic / viewed_trainning / viewed_chapter / viewed_video
+            create statisticViewDelegate OR in getById() insert in table
+            every going to statistic page -> insert stat OR every day ?
+            statistic page get the latest stat
+            set machine ip
+            
                               |FRONT|
 
 VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper

@@ -114,17 +114,20 @@ $(function() {
     } else {
       childIcon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
     }
-    var hiddenContent = $(this).parents().parents().find('.comment-hidden').toggle('fast');
+    var hiddenContent = $(this).parents().next().next().next('.comment-hidden').toggle('fast');
   });
 
   $(document).on('click', '.answer-comment-link', function(){
-    if($(this).parents().find('.answer-comment-form').children().length == 0) {
-      $(this).parents().find('.answer-comment-form')
+    var object = $.trim($("#comments span:eq(1)").text());
+    var objectId = $.trim($("#comments span:first-child").text());
+    var commentParentId;
+
+    if($(this).parents().next('.answer-comment-form').children().length == 0) {
+      $(this).parents().next('.answer-comment-form')
       .append(
         "<div class='answer-comment'>" +
-          "<form method='POST' action=" + dirname + "comment/add>" +
-            "<input type='hidden' name='user_id' value=1>" + //+ userId +
-            "<input type='hidden' name='_id' value=2>" + //" + object +  " + objectId + "
+          "<form method='POST' action=" + dirname + "comment/response>" +
+            "<input type='hidden' name='" + object + "_id' value=" + objectId + ">" +
             "<input type='hidden' name='comment_id' value='2'>" + // " + commentId + "
             "<div class='row'>" +
               "<div class='M12 no-padding'>" +
@@ -132,7 +135,7 @@ $(function() {
               "</div>" +
             "</div>" +
             "<div class='row'>" +
-              "<div class='M12 no-padding'>" +
+              "<div class='M12 no-padding form-group'>" +
                 "<input type='submit' id='comment-button' class='input-btn btn-filled-blue btn-icon' value='Comment'>" +
               "</div>" +
             "</div>" +
@@ -140,7 +143,7 @@ $(function() {
         "</div>"
       );
     } else {
-        $(this).parents().find('.answer-comment-form').children().remove();
+        $(this).parents().next('.answer-comment-form').children().remove();
     }
   });
 
@@ -196,11 +199,26 @@ $(function() {
 
   // COMMENTS
   if( $("#comments").length > 0 ) {
-    var object = $.trim($("#comments span:nth-child(2)").text());
-    var id = $.trim($("#comments span:first-child").text());
-    //load_data_list_comment(object, id);
+    var object = $.trim($("#comments span:eq(1)").text());
+    var id = $.trim($("#comments span:first-child").html());
+    load_data_list_comment(object, id);
   }
 
+  $(document).on('click', '.report-comment', function() {
+    var modal = $("#report-comment-mdl");
+    var btn = $(this);
+    var closeModal = $(".close-mdl");
+    var commentId = $(this).find('.content-hidden').html();
+    var id = $.trim($("#comments span:first-child").html());
+    var object = $.trim($("#comments span:eq(1)").text());
+    $("#report-comment-mdl form").append("<input type='hidden' name='" + object + "_id' value='"+ id +"'>");
+    modal.find('input[name=comment_id]').attr('value', commentId);
+    modal.css({display: "block"});
+  });
+
+  $(document).on('click', '.close-mdl', function() {
+      $("#report-comment-mdl").css({display: "none"});
+  });
 });
 
 function load_data_list_card(page, action, order='desc', column_name, object){
@@ -424,10 +442,7 @@ function load_data_list_comment(object, id){
       var html = '';
       if( data['comments'].length > 0) {
         $.each(data['comments'], function(index, element) {
-          html += "<div class='comment-card row'>";
-          html += "<image src='" + element.user[0].avatar + "' class='img-comment'>"
-          html += "<div class"
-          html += "</div>";
+          html += renderCommentResponse(element);
         });
       } else {
         html = "No comments";
@@ -435,4 +450,71 @@ function load_data_list_comment(object, id){
       div.html(html);
     }
   });
+}
+
+function getTimeDifference(date) {
+  var dateComment = new Date(date)
+  var now = new Date();
+  var difference_ms = now.getTime() - dateComment.getTime();
+  return dhm(difference_ms);
+}
+
+function dhm(ms){
+    days = Math.floor(ms / (24*60*60*1000));
+    daysms=ms % (24*60*60*1000);
+    hours = Math.floor((daysms)/(60*60*1000));
+    hoursms=ms % (60*60*1000);
+    minutes = Math.floor((hoursms)/(60*1000));
+    minutesms=ms % (60*1000);
+    sec = Math.floor((minutesms)/(1000));
+    if(days > 0 && hours > 0 && minutes > 0 && sec > 0) {
+      return days + " d " + hours+" h "+minutes+" m "+sec + " s";
+    }
+    if(days == 0 && hours > 0 && minutes > 0 && sec > 0) {
+      return hours+" h "+minutes+" m "+sec + " s";
+    }
+    if(days == 0 && hours == 0 && minutes > 0 && sec > 0) {
+      return minutes+" m "+sec + "s";
+    }
+    if(days == 0 && hours == 0 && minutes == 0 && sec > 0) {
+      return sec + "s";
+    }
+}
+
+function renderCommentResponse(element) {
+  html = "<div class='row comment-card M--start'>";
+  html +=   "<div class='M1 no-padding align-center'>";
+  html +=     "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar'>";
+  html +=   "</div>";
+  html +=   "<div class='M11'>";
+  html +=     "<div class='row padding-bottom-comment'>";
+  html +=       "<div class='M3 no-padding'>";
+  html +=         "<strong>" + element.user[0].userName + "</strong><span class='grey-content'>" + getTimeDifference(element.dateInserted) + "</span>";
+  html +=       "</div>";
+  html +=       "<div class='M2 M--offset7'>";
+  html +=         "<a class='align-right report-comment'><span class='content-hidden'>" + element.id + "</span><i class='fas fa-flag'></i></a>";
+  html +=       "</div>";
+  html +=     "</div>";
+  html +=     "<div class='row padding-bottom-comment'>";
+  html +=       "<p>" + element.content + "</p>";
+  html +=     "</div>";
+  html +=     "<div class='row M--start'>";
+  html +=       "<div class='M2 no-padding'>";
+  if(element.responses[0].length > 0) {
+      html +=  "<a href='javascript:void(0);' class='expand-comment no-decoration'><strong>Reply(" + element.responses[0].length + ")<i class='fas fa-chevron-down'></i></strong></a>";
+  }
+  html +=       "</div>";
+  html +=       "<div class='M2 M--offset8 no-padding'>";
+  html +=         "<a href='javascript:void(0);' class='align-right grey-content answer-comment-link'>Answer</a>";
+  html +=       "</div>";
+  html +=       "<div class='M12 no-padding answer-comment-form'></div>";
+  html +=       "<div class='M12 no-padding comment-hidden'>"
+  if(element.responses[0].length > 0) {
+    renderCommentResponse(element.responses[0]);
+  }
+  html +=       "</div>";
+  html +=     "</div>";
+  html +=   "</div>";
+  html += "</div>";
+  return html;
 }
