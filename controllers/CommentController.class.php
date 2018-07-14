@@ -30,6 +30,16 @@ class CommentController {
 	public function editAction($params) {
 	}
 
+	public function reportAction($params) {
+		if (!isset($params['POST']['id'])) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
+			RedirectUtils::redirect404();
+		}
+		$this->data['errors'] = FALSE;
+		$this->objectDelegate->update($this->data, $params);
+		RedirectUtils::directRedirect($_SERVER['HTTP_REFERER']);		
+	}
+
 	public function deleteAction($params) {
 	}
 }
