@@ -184,13 +184,13 @@ $(function() {
   if( $(".list-data").length > 0 ) {
     var page = 1;
     var object = $.trim($(".list-init-object span:first-child").text());
-    load_data_list_card(page, 'init','desc', 'dateInserted', object);
+    load_data_list_card(page,'desc', 'dateInserted', object,30, true, 'data-list');
   }
 
   $(document).on('click', '.list-data #pagination_links span', function() {
     var page = $(this).attr("id");
     var object = $.trim($(".list-init-object span:first-child").text());
-    load_data_list_card(page, 'init','desc', 'dateInserted', object);
+    load_data_list_card(page,'desc', 'dateInserted', object ,30,true, 'data-list');
   });
 
   // COMMENTS
@@ -212,15 +212,24 @@ $(function() {
   $(document).on('click', '.close-mdl', function() {
       $("#report-comment-mdl").css({display: "none"});
   });
+
+  if( $("#recent-chapter").length > 0) {
+    load_data_list_card(1,'desc','dateInserted','chapter',5, false, 'recent-chapter');
+  }
+
+  if( $("#recent-trainning").length > 0) {
+    load_data_list_card(1,'desc','dateInserted','trainning',5, false, 'recent-trainning');
+  }
+
+  if( $("#recent-video").length > 0) {
+    load_data_list_card(1,'desc','dateInserted','video',5, false, 'recent-video');
+  }
 });
 
-function load_data_list_card(page, action, order='desc', column_name, object){
+function load_data_list_card(page,order='desc', column_name, object, itemsPerPage=30, pagination=true, div){
   objects = object + 's';
-  url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name;
-
-  div = $("#data-list");
-  paginationLinks = $("#pagination_links");
-
+  url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage;
+  div = $('#' + div);
   linkObjectView = $.trim($(".list-init-object span:last-child").text());
 
   $.ajax({
@@ -244,7 +253,6 @@ function load_data_list_card(page, action, order='desc', column_name, object){
               html += "<source src='" + dirname + element.url + "' type='video/mp4' />";
               html += "<source src='" + dirname + element.url + "' type='video/mp3' />";
               html += "<source src='" + dirname + element.url + "' type='video/webm' />";
-              html += "<source src='" + dirname + element.url + "' type='video/3gp' />";
               html += "No video";
               html += "</video>";
             }
@@ -262,12 +270,15 @@ function load_data_list_card(page, action, order='desc', column_name, object){
       }
       div.html(html);
 
-      html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
-      for(var i = 1; i<= data["pagination"].pagesNumber; i++){
-        html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+      if(pagination == true) {
+        paginationLinks = $("#pagination_links");
+        html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
+        for(var i = 1; i<= data["pagination"].pagesNumber; i++){
+          html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+        }
+        html += "<input type='button' class='button' value='Next' id='but_next' />"
+        paginationLinks.html(html);
       }
-      html += "<input type='button' class='button' value='Next' id='but_next' />"
-      paginationLinks.html(html);
     }
   });
 }

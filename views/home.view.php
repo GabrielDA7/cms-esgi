@@ -20,71 +20,7 @@
         </div>
     </div>
 
-    <div class="row M--between">
-      <div class="M2 X12">
-        <a href="cours.html" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Cours #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="cours.html" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Cours #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="cours.html" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Cours #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="cours.html" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Cours #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="cours.html" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Cours #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
+    <div id="recent-chapter" class="row M--between">
     </div>
 
 
@@ -100,71 +36,7 @@
         </div>
     </div>
 
-    <div class="row M--between">
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Formation #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Formation #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Formation #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Formation #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Formation #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
+    <div id="recent-trainning" class="row M--between">
     </div>
 
 
@@ -180,71 +52,7 @@
         </div>
     </div>
 
-    <div class="row M--between">
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Vidéo #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Vidéo #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Vidéo #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Vidéo #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
-
-      <div class="M2 X12">
-        <a href="" class="card">
-            <div class="card-image">
-              <img src="public/img/home/logo-react.png" alt="Avatar">
-            </div>
-            <div class="card-separation"></div>
-            <div class="card-content">
-              <p class="card-content-title">Vidéo #1</p>
-              <p class="card-content-author">par Admin</p>
-            </div>
-        </a>
-      </div>
+    <div id="recent-video" class="row M--between">
     </div>
 </section>
 

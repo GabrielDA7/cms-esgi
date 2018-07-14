@@ -27,7 +27,7 @@ publish content (chapter / trainning)
 
 parametersController (varibles.scss)
   BDD
-  colors ? sass how to modify file 
+  colors ? sass how to modify file
 
 
 replace space by underscore (file)
@@ -56,8 +56,8 @@ Remove database columns from objects (problem when object db is used more than o
 -- DONE -- Modifier author avec id (trainning)
 -- DONE -- change date to dateInserted
 -- DONE -- User add ->setAvatar with default image
--- DONE -- Recherche author 
-           if getColumns contains user_id search in user where author = query and id = user_id 
+-- DONE -- Recherche author
+           if getColumns contains user_id search in user where author = query and id = user_id
 -- DONE -- Ajout et edition auteurs => session
 -- DONE -- Statistics
             create table statistic / viewed_trainning / viewed_chapter / viewed_video
@@ -95,7 +95,7 @@ Comment use modal
 
 Add edition tools
 
-404 page
+-- DONE -- 404 page
 
 -- DONE -- modify every references to author in js file and replace by element.user.userName
 -- DONE -- VOIR element.trainning.title pour mettre le titre de la formation du chapitre voir le resulat du json (trainning a ete ajouté)

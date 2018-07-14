@@ -6,7 +6,7 @@ class VideoController {
 	private $formDelegate;
 	private $fileDelegate;
 	private $listDisplayDataDelegate;
-	private $statisticViewDelegate
+	private $statisticViewDelegate;
 	private $data = [];
 
 	public function __construct() {
