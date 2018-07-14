@@ -114,7 +114,7 @@ $(function() {
     } else {
       childIcon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
     }
-    var hiddenContent = $(this).parents().next().next().next('.comment-hidden').toggle('fast');
+    var hiddenContent = $(this).parents().siblings(".comment-hidden").toggle('fast');
   });
 
   $(document).on('click', '.answer-comment-link', function(){
@@ -477,7 +477,7 @@ function dhm(ms){
 function renderCommentResponse(element, intern) {
   html = "<div class='row comment-card M--start'>";
   html +=   "<div class='M1 no-padding align-center'>";
-  html +=     "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar'>";
+  html +=     "<img class='avatar-img-medium' src='" + dirname +element.user[0].avatar + "' alt='avatar'>";
   html +=   "</div>";
   if(intern == false) {
     html +=   "<div class='M11'>";
@@ -500,7 +500,7 @@ function renderCommentResponse(element, intern) {
   html +=     "<div class='row M--start'>";
   html +=       "<div class='M2 no-padding'>";
   if(element.comments[0].length > 0) {
-      html +=  "<a href='javascript:void(0);' class='expand-comment no-decoration'><strong>Reply(" + element.comments[0].length + ")<i class='fas fa-chevron-down'></i></strong></a>";
+      html +=  "<a href='javascript:void(0);' class='expand-comment no-decoration'><strong>Reply(" + element.comments[0].length + ") <i class='fas fa-chevron-down'></i></strong></a>";
   }
   html +=       "</div>";
   if( isLogged == 'true') {

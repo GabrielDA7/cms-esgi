@@ -1022,7 +1022,7 @@ textarea {
 }
 
 .section-container {
-  height: calc(100% - 80px);
+  height: 100%;
 }
 
 #emailConfirm p {
@@ -1205,4 +1205,8 @@ textarea {
 @keyframes fadeIn {
     from {opacity: 0}
     to {opacity: 1}
+}
+
+.heightVh {
+  height: 60vh;
 }

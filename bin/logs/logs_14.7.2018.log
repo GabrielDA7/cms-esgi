@@ -1951,3 +1951,38 @@ Action : Action not found
 Value : nullAction in ChapterController
 Date : 07/14/2018 10:34:39 pm
 -------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 10:35 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/null
+Action : Action not found
+Value : nullAction in ChapterController
+Date : 07/14/2018 10:35:17 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 10:37 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 10:37:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 10:48 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/chapterqsdqsdgfsdf
+Action : Action not found
+Value : chapterqsdqsdgfsdfAction in ChapterController
+Date : 07/14/2018 10:48:42 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 11:15 pm
+-----------------
+Url : http://localhost/lab/uteach/user/loginsqd
+Action : Action not found
+Value : loginsqdAction in UserController
+Date : 07/14/2018 11:15:11 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 11:15 pm
+-----------------
+Url : http://localhost/lab/uteach/useqsdr/add
+Action : Controller not found
+Value : 
+Date : 07/14/2018 11:15:42 pm
+-------------------------------------------------------
