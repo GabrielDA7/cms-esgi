@@ -485,7 +485,7 @@ function renderCommentResponse(element) {
   html +=         "<strong>" + element.user[0].userName + "</strong><span class='grey-content'>" + getTimeDifference(element.dateInserted) + "</span>";
   html +=       "</div>";
   if(isLogged == 'true') {
-    html +=       "<div class='M2 M--offset7'>";
+    html +=       "<div class='M2 M--offset7 no-padding'>";
     html +=         "<a class='align-right report-comment'><span class='content-hidden'>" + element.id + "</span><i class='fas fa-flag'></i></a>";
     html +=       "</div>";
   }
@@ -495,9 +495,10 @@ function renderCommentResponse(element) {
   html +=     "</div>";
   html +=     "<div class='row M--start'>";
   html +=       "<div class='M2 no-padding'>";
-  /*if(element.comments[0].length > 0) {
+  if(element.comments[0].length > 0) {
+    alert('ah oui');
       html +=  "<a href='javascript:void(0);' class='expand-comment no-decoration'><strong>Reply(" + element.comments[0].length + ")<i class='fas fa-chevron-down'></i></strong></a>";
-  }*/
+  }
   html +=       "</div>";
   if( isLogged == 'true') {
     html +=       "<div class='M2 M--offset8 no-padding'>";
@@ -506,9 +507,11 @@ function renderCommentResponse(element) {
   }
   html +=       "<div class='M12 no-padding answer-comment-form'></div>";
   html +=       "<div class='M12 no-padding comment-hidden'>"
-/*  if(element.comments[0].length > 0) {
-    renderCommentResponse(element.comments[0]);
-  }*/
+  if(element.comments[0].length > 0) {
+    $.each(element.comments[0], function(index, elem) {
+      html += renderCommentResponse(elem);
+    });
+  }
   html +=       "</div>";
   html +=     "</div>";
   html +=   "</div>";
