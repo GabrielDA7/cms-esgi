@@ -226,7 +226,7 @@ $(function() {
   }
 });
 
-function load_data_list_card(page,order='desc', column_name, object, itemsPerPage=30, pagination=true, div){
+function load_data_list_card(page,order='desc', column_name, object, itemsPerPage=30, pagination=true,div){
   objects = object + 's';
   url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage;
   div = $('#' + div);
@@ -234,13 +234,16 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
 
   $.ajax({
     url: url,
+    objects: objects,
+    div: div,
+    linkObjectView: linkObjectView,
     success:function(data) {
       data = JSON.parse(data);
       var html = '';
-      if( data[objects].length > 0) {
-        $.each(data[objects], function(index, element) {
+      if( data[this.objects].length > 0) {
+        $.each(data[this.objects], function(index, element) {
             html += "<div class='M2 X12'>"
-            html += " <a href='" + linkObjectView + "?id=" + element.id + "' class='card'>";
+            html += " <a href='" + this.linkObjectView + "?id=" + element.id + "' class='card'>";
             html += "  <div class='card-image'>";
             if(object != "video") {
               if( element.image != null ) {
@@ -253,7 +256,6 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
               html += "<source src='" + dirname + element.url + "' type='video/mp4' />";
               html += "<source src='" + dirname + element.url + "' type='video/mp3' />";
               html += "<source src='" + dirname + element.url + "' type='video/webm' />";
-              html += "No video";
               html += "</video>";
             }
             html += "  </div>";
@@ -268,7 +270,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
       } else {
         html = "No content";
       }
-      div.html(html);
+      this.div.html(html);
 
       if(pagination == true) {
         paginationLinks = $("#pagination_links");
