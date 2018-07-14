@@ -27,12 +27,16 @@ class QueryConstructorSql {
 		return $query;
 	}
 
-	protected function constructCountQuery($table) {
-		$query = "SELECT count(id) as itemsNumber";
+	protected function constructCountQuery($table, $counter) {
+		$query = "SELECT count(" . $counter . ") as itemsNumber";
+		if ($counter != "id")
+			$query .= COMMA . $counter . " as id";
 		$query .= " FROM " . $table;
+		if ($counter != "id")
+			$query .= " GROUP BY " . $counter . " ORDER BY itemsNumber DESC LIMIT 3";
 		return $query;
 	}
-
+	
 	protected function constructUpdateQuery($table, $columns) {
 		unset($columns['id']);
 		$query = "UPDATE " . $table;
@@ -50,5 +54,9 @@ class QueryConstructorSql {
 	protected function constructDeleteQuery($table) {
 		$query = "DELETE FROM " . $table . " WHERE id=:id";
 		return $query;
+	}
+
+	protected function constructSelectStatisticsQuery($date) {
+		return "SELECT * FROM statistic WHERE date(dateInserted) = " . $date;
 	}
 }

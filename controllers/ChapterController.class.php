@@ -6,6 +6,7 @@ class ChapterController {
 	private $formDelegate;
 	private $fileDelegate;
 	private $listDisplayDataDelegate;
+	private $statisticViewDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -14,6 +15,7 @@ class ChapterController {
 		$this->formDelegate = new FormDelegate(CHAPTER_CLASS_NAME);
 		$this->fileDelegate = new FileDelegate(CHAPTER_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(CHAPTER_CLASS_NAME);
+		$this->statisticViewDelegate = new StatisticViewDelegate(CHAPTER_CLASS_NAME);
 	}
 
 	public function indexAction($params) {
@@ -61,6 +63,7 @@ class ChapterController {
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, CHAPTER_CHAPTER_VIEWS);
 		$this->objectDelegate->getById($this->data, $params, [PART_CLASS_NAME]);
+		$this->statisticViewDelegate->processAdd($params['GET']);
 		$view = new View($this->data);
 	}
 }
