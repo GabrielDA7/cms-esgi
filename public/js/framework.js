@@ -118,7 +118,7 @@ $(function() {
   });
 
   $(document).on('click', '.answer-comment-link', function(){
-    var commentParentId = $('.report-comment span').html();
+    var commentParentId = $(this).parents().parents().parents().children().children().next().children().children().html();
     if($(this).parents().next('.answer-comment-form').children().length == 0) {
       $(this).parents().next('.answer-comment-form')
       .append(
@@ -496,7 +496,6 @@ function renderCommentResponse(element) {
   html +=     "<div class='row M--start'>";
   html +=       "<div class='M2 no-padding'>";
   if(element.comments[0].length > 0) {
-    alert('ah oui');
       html +=  "<a href='javascript:void(0);' class='expand-comment no-decoration'><strong>Reply(" + element.comments[0].length + ")<i class='fas fa-chevron-down'></i></strong></a>";
   }
   html +=       "</div>";
