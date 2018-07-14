@@ -2,7 +2,7 @@ IP + Date : ::1 - July 14, 2018, 12:14 am
 -----------------
 Url : http://localhost/lab/uteach/PREMIUM_LIST_FRONT_LINK
 Action : Controller not found
-Value : 
+Value :
 Date : 07/14/2018 12:14:49 am
 -------------------------------------------------------
 IP + Date : ::1 - July 14, 2018, 2:36 pm
@@ -1195,11 +1195,12 @@ Action : Action not found
 Value : nullAction in ChapterController
 Date : 07/14/2018 07:40:35 pm
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 14, 2018, 7:42 pm
 -----------------
 Url : http://localhost/lab/uteach/statistic/index/back
 Action : Controller not found
-Value : 
+Value :
 Date : 07/14/2018 07:42:11 pm
 -------------------------------------------------------
 IP + Date : ::1 - July 14, 2018, 7:48 pm
@@ -1356,6 +1357,7 @@ Action : Action not found
 Value : nullAction in TrainningController
 Date : 07/14/2018 08:32:20 pm
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 14, 2018, 8:42 pm
 -----------------
 Url : http://localhost/lab/uteach/trainning/null
@@ -1384,6 +1386,7 @@ Action : Action not found
 Value : nullAction in ChapterController
 Date : 07/14/2018 08:49:40 pm
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 14, 2018, 8:51 pm
 -----------------
 Url : http://localhost/lab/uteach/chapter/null
@@ -1433,6 +1436,7 @@ Action : Action not found
 Value : nullAction in ChapterController
 Date : 07/14/2018 08:56:49 pm
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 14, 2018, 9:00 pm
 -----------------
 Url : http://localhost/lab/uteach/chapter/null
@@ -1573,6 +1577,7 @@ Action : Action not found
 Value : nullAction in ChapterController
 Date : 07/14/2018 09:24:50 pm
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 14, 2018, 9:26 pm
 -----------------
 Url : http://localhost/lab/uteach/chapter/null
@@ -1937,11 +1942,12 @@ Action : Action not found
 Value : nullAction in ChapterController
 Date : 07/14/2018 10:27:28 pm
 -------------------------------------------------------
+<<<<<<< Updated upstream
 IP + Date : ::1 - July 14, 2018, 10:33 pm
 -----------------
 Url : http://localhost/lab/uteach/null
 Action : Controller not found
-Value : 
+Value :
 Date : 07/14/2018 10:33:15 pm
 -------------------------------------------------------
 IP + Date : ::1 - July 14, 2018, 10:34 pm
@@ -1951,6 +1957,7 @@ Action : Action not found
 Value : nullAction in ChapterController
 Date : 07/14/2018 10:34:39 pm
 -------------------------------------------------------
+<<<<<<< HEAD
 IP + Date : ::1 - July 14, 2018, 10:35 pm
 -----------------
 Url : http://localhost/lab/uteach/chapter/null
@@ -1983,6 +1990,391 @@ IP + Date : ::1 - July 14, 2018, 11:15 pm
 -----------------
 Url : http://localhost/lab/uteach/useqsdr/add
 Action : Controller not found
-Value : 
+Value :
 Date : 07/14/2018 11:15:42 pm
 -------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 5:58 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 05:58:40 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 5:59 pm
+-----------------
+Url : http://localhost/uteach/comment/response
+Action : Action not found
+Value : responseAction in CommentController
+Date : 07/14/2018 05:59:13 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:00 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:00:02 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:03 pm
+-----------------
+Url : http://localhost/uteach/comment/response
+Action : Action not found
+Value : responseAction in CommentController
+Date : 07/14/2018 06:03:59 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:04 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:04:05 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:04 pm
+-----------------
+Url : http://localhost/uteach/comment/response
+Action : Attempt access
+Value : Access denied
+Date : 07/14/2018 06:04:31 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:04 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:04:35 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:04 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:04:37 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:04 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:04:48 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:04 pm
+-----------------
+Url : http://localhost/uteach/comment/response
+Action : Attempt access
+Value : Access denied
+Date : 07/14/2018 06:04:59 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:05 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:05:14 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:05 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:05:16 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:05 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:05:24 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:07 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:07:46 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:11 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:11:43 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:11 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:11:59 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:12 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:12:07 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:12 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:12:29 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:23 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:23:43 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:24 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:24:08 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes
+IP + Date : ::1 - July 14, 2018, 6:38 pm
+-----------------
+Url : http://localhost/uteach/cours.html
+Action : Controller not found
+Value :
+Date : 07/14/2018 06:38:40 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes
+IP + Date : ::1 - July 14, 2018, 6:50 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:50:53 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:51 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:51:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:51 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:51:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:51 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:51:30 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:51 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:51:46 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:52 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:52:54 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:53 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:53:28 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 6:56 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 06:56:21 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes
+IP + Date : ::1 - July 14, 2018, 7:01 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:01:25 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 7:02 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:02:02 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 7:02 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:02:29 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 7:06 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:06:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 7:13 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:13:28 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 7:14 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:14:05 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes
+IP + Date : ::1 - July 14, 2018, 7:26 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:26:45 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 7:27 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:27:15 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 7:27 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:27:28 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 7:28 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 07:28:40 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes
+IP + Date : ::1 - July 14, 2018, 8:28 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:28:44 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:28 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:28:53 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:29 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:29:04 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:32 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:32:40 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:36 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=aaaaaa@gmail.com
+Action : Send email
+Value : true
+Date : 07/14/2018 08:36:03 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:36 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=aaaaaa@gmail.com
+Action : Send email
+Value : true
+Date : 07/14/2018 08:36:43 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:37 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=decultot.erferflouis@gmail.com
+Action : Send email
+Value : true
+Date : 07/14/2018 08:37:12 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:38 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:38:13 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:38 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:38:58 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:39 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:39:02 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:39 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:39:09 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:39 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:39:21 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:39 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:39:22 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:40 pm
+-----------------
+Url : http://localhost/uteach/chapter/public/img/avatars/default.jpg
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/14/2018 08:40:44 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 14, 2018, 8:41 pm
+-----------------
+Url : http://localhost/uteach/user/emailConfirm?email=qzeffzerger@gmail.com
+Action : Send email
+Value : true
+Date : 07/14/2018 08:41:07 pm
+-------------------------------------------------------
+>>>>>>> Stashed changes
+>>>>>>> fa2fd53dabf5776181623c0404116982b642fe06

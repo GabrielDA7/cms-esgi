@@ -25,8 +25,6 @@ publish content (chapter / trainning)
   ajax list front -> don't show disabled
 
 
-
-
 parametersController (varibles.scss)
   BDD
   colors ? sass how to modify file 
@@ -38,8 +36,6 @@ passowrd -> sha1 + grain de sel
 
 Remove database columns from objects (problem when object db is used more than once)
 
-for the parts find a way to save the location of the videos and the pictures  
-  ex : %image1% will be replace by  
 
 -- SEE LATER -- find a way the change the working of setReferencedObjectsColumns() in objectDelegate  
                 We have to get the refernced object with a join query
@@ -69,7 +65,7 @@ for the parts find a way to save the location of the videos and the pictures
             every going to statistic page -> insert stat OR every day ?
             statistic page get the latest stat
             set machine ip
-            
+
                               |FRONT|
 
 VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper
