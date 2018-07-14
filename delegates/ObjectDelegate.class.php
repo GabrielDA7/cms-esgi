@@ -70,12 +70,13 @@ class ObjectDelegate {
 			$object->setUserId($_SESSION["userId"]);
 	}
 
-	public function update(&$data, $params, $redirectFront, $redirectBack) {
+	public function update(&$data, $params, $redirectFront = null, $redirectBack = null) {
 		if ($data['errors'] === FALSE) {
 			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
 			$object->update();
-			RedirectUtils::redirect((isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
+			if (isset($redirectFront) || isset($redirectBack))
+				RedirectUtils::redirect((isset($params['URL'][2]) && $params['URL'][2] === "back") ? $redirectBack : $redirectFront);
 		}
 	}
 

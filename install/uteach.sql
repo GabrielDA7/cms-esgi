@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 14 juil. 2018 à 15:09
+-- Généré le :  sam. 14 juil. 2018 à 19:03
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `chapter` (
   KEY `trainning_id` (`trainning_id`),
   KEY `trainning_id_2` (`trainning_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `chapter`
@@ -68,7 +68,8 @@ INSERT INTO `chapter` (`id`, `number`, `title`, `image`, `trainning_id`, `dateIn
 (20, 2, 'zttzetzert', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:01:05', 25),
 (21, 2, 'zttzetzert', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:01:11', 25),
 (22, 2, 'zttzetzert', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:01:20', 25),
-(23, 2, 'zttzetzert', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:01:26', 25);
+(23, 2, 'zttzetzert', 'public/img/chapters/711px-PHP-logo.svg.png', 36, '2018-07-13 22:01:26', 25),
+(24, 5, 'ekjrrenjfnjref', 'public/img/chapters/711px-PHP-logo.svg.png', 37, '2018-07-14 18:35:06', 25);
 
 -- --------------------------------------------------------
 
@@ -82,6 +83,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `user_id` int(11) NOT NULL,
   `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `content` text NOT NULL,
+  `report` tinyint(1) NOT NULL DEFAULT '0',
   `chapter_id` int(11) DEFAULT NULL,
   `trainning_id` int(11) DEFAULT NULL,
   `video_id` int(11) DEFAULT NULL,
@@ -92,7 +94,23 @@ CREATE TABLE IF NOT EXISTS `comment` (
   KEY `video_id` (`video_id`),
   KEY `comment_id` (`comment_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `comment`
+--
+
+INSERT INTO `comment` (`id`, `user_id`, `dateInserted`, `content`, `report`, `chapter_id`, `trainning_id`, `video_id`, `comment_id`) VALUES
+(1, 25, '2018-07-14 15:25:17', 'kktrhkkh', 0, NULL, 39, NULL, 1),
+(2, 25, '2018-07-14 15:25:51', 'lkr,gz,rg', 0, NULL, 39, NULL, 1),
+(3, 25, '2018-07-14 15:25:56', 'r,h etkl,hkre', 0, NULL, 39, NULL, NULL),
+(4, 25, '2018-07-14 15:26:03', 'lk,hlk,keth\r\n', 0, NULL, 39, NULL, 3),
+(5, 25, '2018-07-14 15:30:27', 'tyytjty', 0, NULL, 39, NULL, NULL),
+(6, 25, '2018-07-14 17:58:39', 'jhbhjhbhj', 0, 23, NULL, NULL, NULL),
+(7, 25, '2018-07-14 18:12:06', 'ergtrgerg', 0, NULL, NULL, NULL, 6),
+(8, 25, '2018-07-14 18:38:58', 'ezfzefez', 1, 24, NULL, NULL, NULL),
+(9, 25, '2018-07-14 18:39:02', 'efreferf', 0, 24, NULL, NULL, NULL),
+(10, 25, '2018-07-14 18:53:27', 'fgbfgbgfb', 0, NULL, NULL, NULL, 8);
 
 -- --------------------------------------------------------
 
@@ -111,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `part` (
   PRIMARY KEY (`id`),
   KEY `chapter_id` (`chapter_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `part`
@@ -121,7 +139,9 @@ INSERT INTO `part` (`id`, `number`, `title`, `content`, `chapter_id`, `user_id`)
 (3, 1, 'zertztrze', 'zertzert', 20, 25),
 (4, 2, 'ertezrtzert', 'zertze', 20, 25),
 (5, 1, 'zertztrze', 'zertzert', 23, 25),
-(6, 2, 'ertezrtzert', 'zertze', 23, 25);
+(6, 2, 'ertezrtzert', 'zertze', 23, 25),
+(7, 1, 'erkjfnerfj', 'jkenvjkevnjen', 24, 25),
+(8, 2, 'e,nfernfnekfn', 'ekjrkfnjer', 24, 25);
 
 -- --------------------------------------------------------
 
@@ -198,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `userName`, `pwd`, `pwdReset`, `avatar`, `token`, `status`, `dateInserted`, `dateUpdated`, `role`) VALUES
-(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '2wpyq0trp02s880w0oww8sgosggso8oc0oo4kcs4gg8ws4o84w', 1, '2018-03-20 19:48:58', '2018-07-13 19:05:27', 2),
+(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '3le8vof2rpq8k0oo8s4wo0o80wk8g40gkogck00wk84ow0c4so', 1, '2018-03-20 19:48:58', '2018-07-13 19:05:27', 2),
 (33, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'v2l5jb39neoww4ow84w4ow40ooo44wswgogw4c4gg48088wgk', 0, '2018-03-24 22:03:33', NULL, 0),
 (34, 'Louis', 'Louis', 'louis@gmail.com', '', 'zerazer', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '3iuuy6vxv2w4cs4g8kccsww08wkgg4g048s848k8w8sg8wok04', 0, '2018-03-25 20:08:25', NULL, 0),
 (35, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'y4tci0mxs9cck844so48csggsosso8w4w004880csc8gk0k0s', 0, '2018-03-25 20:30:28', NULL, 0),
@@ -262,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `viewed_chapter` (
   PRIMARY KEY (`id`),
   KEY `chapter_id` (`chapter_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `viewed_chapter`
@@ -276,7 +296,8 @@ INSERT INTO `viewed_chapter` (`id`, `dateInserted`, `ip`, `chapter_id`, `user_id
 (5, '2018-07-14 13:26:59', '41.25.24.25', 20, NULL),
 (6, '2018-07-14 13:27:08', '10.2.2', 20, NULL),
 (7, '2018-07-14 13:27:25', '20.2424.2', 22, NULL),
-(8, '2018-07-14 13:27:40', '444444', 21, NULL);
+(8, '2018-07-14 13:27:40', '444444', 21, NULL),
+(9, '2018-07-14 18:38:47', '::1', 24, NULL);
 
 -- --------------------------------------------------------
 
@@ -294,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `viewed_trainning` (
   PRIMARY KEY (`id`),
   KEY `trainning_id` (`trainning_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `viewed_trainning`
@@ -302,7 +323,8 @@ CREATE TABLE IF NOT EXISTS `viewed_trainning` (
 
 INSERT INTO `viewed_trainning` (`id`, `dateInserted`, `ip`, `trainning_id`, `user_id`) VALUES
 (1, '2018-07-14 13:09:20', '::1', 39, NULL),
-(2, '2018-07-14 13:17:37', '::1', 38, NULL);
+(2, '2018-07-14 13:17:37', '::1', 38, NULL),
+(3, '2018-07-14 18:40:02', '::1', 37, NULL);
 
 -- --------------------------------------------------------
 

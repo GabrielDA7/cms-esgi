@@ -4,6 +4,7 @@ class Comment extends BaseSql {
 	protected $id = null;
 	protected $dateInserted;
 	protected $content;
+	protected $report;
 	protected $comments = [];
 
   	protected $user_id;
@@ -51,6 +52,7 @@ class Comment extends BaseSql {
 	public function getCommentId() 	 { return $this->comment_id;   }
 	public function getUser() 	 	 { return $this->user;   	   }
 	public function getDateInserted(){ return $this->dateInserted; }
+	public function getReport()      { return $this->report;       }
 
 	public function setId($id) 					  { $this->id = $id; 					 }
 	public function setContent($content) 		  { $this->content = $content; 			 }
@@ -62,4 +64,5 @@ class Comment extends BaseSql {
 	public function setCommentId($comment_id) 	  { $this->comment_id = $comment_id; 	 }
 	public function setUser($user) 	  			  { $this->user = $user; 	 			 }
     public function setDateInserted($dateInserted){ $this->dateInserted = $dateInserted; }
+    public function setReport($report) 		      { $this->report = $report;  		     }
 }
