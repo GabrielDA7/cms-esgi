@@ -39,18 +39,6 @@ class AjaxController {
 	    $array = FormatUtils::formatDataToArray($this->data);
 	    echo FormatUtils::formatToJson($array);
   	}
- 
-
-	public function commentAction($params) {
-		if (!$this->isForeignKeySend($params) || !isLogged()) {
-			echo FormatUtils::formatToJson([]);
-			exit;
-		}
-		$this->formDelegate->process($this->data, $params);
-		$this->objectDelegate->add($this->data, $params);
-		$array = FormatUtils::formatDataToArray($this->data);
-		echo FormatUtils::formatToJson($array['errors']);
-	}
 
 	private function isObjectExist($objectName) {
 		return defined(strtoupper($objectName."_CLASS_NAME"));

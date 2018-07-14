@@ -11,7 +11,14 @@ class CommentController {
 		$this->objectDelegate = new ObjectDelegate($this->data, COMMENT_CLASS_NAME);
 	}
 
-	public function indexAction($params) {
+	public function responseAction($params) {
+		if (!isset($params['POST']['comment_id'])) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
+			RedirectUtils::redirect404();
+		}
+		$this->data['errors'] = FALSE;
+		$this->objectDelegate->add($this->data, $params);
+		RedirectUtils::directRedirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function addAction($params) {

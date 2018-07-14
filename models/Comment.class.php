@@ -4,7 +4,7 @@ class Comment extends BaseSql {
 	protected $id = null;
 	protected $dateInserted;
 	protected $content;
-	protected $responses = [];
+	protected $comments = [];
 
   	protected $user_id;
   	protected $user;
@@ -43,7 +43,7 @@ class Comment extends BaseSql {
 
 	public function getId() 		 { return $this->id; 		   }
 	public function getContent() 	 { return $this->content; 	   }
-	public function getResponses() 	 { return $this->responses;    }
+	public function getComments() 	 { return $this->comments;     }
 	public function getUserId() 	 { return $this->user_id; 	   }
 	public function getChapterId() 	 { return $this->chapter_id;   }
 	public function getTrainningId() { return $this->trainning_id; }
@@ -54,7 +54,7 @@ class Comment extends BaseSql {
 
 	public function setId($id) 					  { $this->id = $id; 					 }
 	public function setContent($content) 		  { $this->content = $content; 			 }
-	public function setResponses($responses) 	  { $this->responses = $responses; 		 }
+	public function setComments($comments) 	  	  { $this->comments = $comments; 		 }
 	public function setUserId($user_id) 		  { $this->user_id = $user_id;			 }
 	public function setChapterId($chapter_id) 	  { $this->chapter_id = $chapter_id; 	 }
 	public function setTrainningId($trainning_id) { $this->trainning_id = $trainning_id; }
