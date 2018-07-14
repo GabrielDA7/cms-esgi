@@ -205,10 +205,7 @@ $(function() {
     var btn = $(this);
     var closeModal = $(".close-mdl");
     var commentId = $(this).find('.content-hidden').html();
-    var id = $.trim($("#comments span:first-child").html());
-    var object = $.trim($("#comments span:eq(1)").text());
-    $("#report-comment-mdl form").append("<input type='hidden' name='" + object + "_id' value='"+ id +"'>");
-    modal.find('input[name=comment_id]').attr('value', commentId);
+    modal.find('input[name=id]').attr('value', commentId);
     modal.css({display: "block"});
   });
 
@@ -487,7 +484,7 @@ function renderCommentResponse(element) {
   html +=       "<div class='M3 no-padding'>";
   html +=         "<strong>" + element.user[0].userName + "</strong><span class='grey-content'>" + getTimeDifference(element.dateInserted) + "</span>";
   html +=       "</div>";
-  if(isLogged != '1') {
+  if(isLogged == 'true') {
     html +=       "<div class='M2 M--offset7'>";
     html +=         "<a class='align-right report-comment'><span class='content-hidden'>" + element.id + "</span><i class='fas fa-flag'></i></a>";
     html +=       "</div>";
@@ -502,7 +499,7 @@ function renderCommentResponse(element) {
       html +=  "<a href='javascript:void(0);' class='expand-comment no-decoration'><strong>Reply(" + element.comments[0].length + ")<i class='fas fa-chevron-down'></i></strong></a>";
   }*/
   html +=       "</div>";
-  if( isLogged != '1') {
+  if( isLogged == 'true') {
     html +=       "<div class='M2 M--offset8 no-padding'>";
     html +=         "<a href='javascript:void(0);' class='align-right grey-content answer-comment-link'>Answer</a>";
     html +=       "</div>";

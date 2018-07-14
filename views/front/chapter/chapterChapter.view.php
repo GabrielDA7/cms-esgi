@@ -78,7 +78,7 @@
 		</div>
 		<div class="modal-body">
 			<form action="<?= DIRNAME ?>comment/report" method="post">
-				<input type="hidden" name="comment_id">
+				<input type="hidden" name="id">
 				<input type="hidden" name="report" value="1">
 				<label for="reason">The reason :</label>
 				<textarea class="form-group row input" name="reason"></textarea>
