@@ -241,9 +241,10 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
       data = JSON.parse(data);
       var html = '';
       if( data[this.objects].length > 0) {
+        link = this.linkObjectView;
         $.each(data[this.objects], function(index, element) {
             html += "<div class='M2 X12'>"
-            html += " <a href='" + this.linkObjectView + "?id=" + element.id + "' class='card'>";
+            html += " <a href='" + link + "?id=" + element.id + "' class='card'>";
             html += "  <div class='card-image'>";
             if(object != "video") {
               if( element.image != null ) {
@@ -266,7 +267,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
             html += "  </div>";
             html += " </a>";
             html += " </div>";
-        });
+        }, link);
       } else {
         html = "No content";
       }
