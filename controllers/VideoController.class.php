@@ -56,7 +56,9 @@ class VideoController {
 
 	public function publishAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE);
-		$this->objectDelegate->publishContent($this->data, $params);
+		$this->data['errors'] = FALSE;
+		$this->objectDelegate->update($this->data, $params, null);
+		RedirectUtils::directRedirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function videoAction($params) {
