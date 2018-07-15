@@ -103,7 +103,6 @@
     <script type="text/javascript">
       var dirname = '<?= DIRNAME; ?>';
       var isLogged = '<?= json_encode( isLogged()) ?>'
-
     </script>
     <script type="text/javascript" src="<?= DIRNAME; ?>public/js/framework.js"></script>
   </body>

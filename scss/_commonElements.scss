@@ -300,6 +300,7 @@ html,body
   right: 10px;
 }
 
+
 // Login front -----------------------------------------------------------------
 
 #front-add-user h3 {
@@ -781,7 +782,9 @@ textarea {
 }
 
 .form-label-top{
+  margin-bottom: 10px;
   display: block;
+  color: $color-quaternary-dark;
 }
 
 
@@ -801,6 +804,7 @@ textarea {
   border-radius: 5px;
   width: $element-width-M;
   height: 30px;
+  padding-left: 15px;
 }
 
 .input-medium:focus {
@@ -1209,4 +1213,8 @@ textarea {
 
 .heightVh {
   height: 60vh;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
 }

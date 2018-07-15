@@ -224,6 +224,19 @@ $(function() {
   if( $("#recent-video").length > 0) {
     load_data_list_card(1,'desc','dateInserted','video',5, false, 'recent-video');
   }
+
+  $(document).on('change', '#dashboard-add-chapter select[name="trainning_id"]', function() {
+    var valueOption = $(this).find(':selected').attr('value');
+    if(valueOption != ""){
+      $("input[name='number']").prop("disabled", false);
+      $("input[name='number']").prop("readonly", false);
+    } else {
+      $("input[name='number']").val("");
+      $("input[name='number']").prop("readonly", "readonly");
+      $("input[name='number']").prop("disabled", true);
+    }
+  });
+
 });
 
 function load_data_list_card(page,order='desc', column_name, object, itemsPerPage=30, pagination=true,div){
@@ -248,15 +261,15 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
             html += "  <div class='card-image'>";
             if(object != "video") {
               if( element.image != null ) {
-                html += "  <image src='" + element.image + "' alt='" + element.title + "'>";
+                html += "  <image src='" + dirname + element.image + "' alt='" + element.title + "'>";
               } else {
                 html += "  <image src='public/img/default.jpg' alt='" + element.title + "'>";
               }
             } else {
               html += "<video class='video-card' width='100%' height='100%' controls='controls'>";
-              html += "<source src='" + element.url + "' type='video/mp4' />";
-              html += "<source src='" + element.url + "' type='video/mp3' />";
-              html += "<source src='" + element.url + "' type='video/webm' />";
+              html += "<source src='" + dirname + element.url + "' type='video/mp4' />";
+              html += "<source src='" + dirname + element.url + "' type='video/mp3' />";
+              html += "<source src='" + dirname + element.url + "' type='video/webm' />";
               html += "</video>";
             }
             html += "  </div>";
@@ -422,7 +435,7 @@ function addChapterSubpart(){
                   "<input type='text' name='parts["+ idPart +"][title]' class='input form-group' placeholder='Title'>" +
                 "</div>" +
                 "<div class='row'>" +
-                  "<textarea name='parts["+ idPart +"][content]' class='form-group input' placeholder='Content'></textarea>" +
+                  "<textarea name='parts["+ idPart +"][content]' class='form-group input tinymce' placeholder='Content'></textarea>" +
                 "</div>" +
                 "<input type='hidden' name='parts["+ idPart +"][number]' value='" + idPart + "'></input>"
               "</div>" +
@@ -434,6 +447,7 @@ function addChapterSubpart(){
     $("#addChapterPart").after(html);
   }
   idPart += 1;
+  initialisationParamTiny();
 }
 
 function load_data_list_comment(object, id){
@@ -490,7 +504,7 @@ function dhm(ms){
 function renderCommentResponse(element, intern) {
   html = "<div class='row comment-card M--start'>";
   html +=   "<div class='M1 no-padding align-center'>";
-  html +=     "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar'>";
+  html +=     "<img class='avatar-img-medium' src='" + dirname + element.user[0].avatar + "' alt='avatar'>";
   html +=   "</div>";
   if(intern == false) {
     html +=   "<div class='M11'>";
@@ -533,4 +547,68 @@ function renderCommentResponse(element, intern) {
   html +=   "</div>";
   html += "</div>";
   return html;
+}
+
+function initialisationParamTiny(){
+  tinymce.init(
+      {
+      /* replace textarea having class .tinymce with tinymce editor */
+      selector: "textarea.tinymce",
+
+      /* theme of the editor */
+      theme: "modern",
+      skin: "lightgray",
+
+      /* width and height of the editor */
+      width: "100%",
+      height: 300,
+
+      /* display statusbar */
+      statubar: true,
+
+      /* plugin */
+      plugins: [
+        "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+        "save table contextmenu directionality emoticons template paste textcolor"
+      ],
+
+      /* toolbar */
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
+
+      /* style */
+      style_formats: [
+        {title: "Headers", items: [
+          {title: "Header 1", format: "h1"},
+          {title: "Header 2", format: "h2"},
+          {title: "Header 3", format: "h3"},
+          {title: "Header 4", format: "h4"},
+          {title: "Header 5", format: "h5"},
+          {title: "Header 6", format: "h6"}
+        ]},
+        {title: "Inline", items: [
+          {title: "Bold", icon: "bold", format: "bold"},
+          {title: "Italic", icon: "italic", format: "italic"},
+          {title: "Underline", icon: "underline", format: "underline"},
+          {title: "Strikethrough", icon: "strikethrough", format: "strikethrough"},
+          {title: "Superscript", icon: "superscript", format: "superscript"},
+          {title: "Subscript", icon: "subscript", format: "subscript"},
+          {title: "Code", icon: "code", format: "code"}
+        ]},
+        {title: "Blocks", items: [
+          {title: "Paragraph", format: "p"},
+          {title: "Blockquote", format: "blockquote"},
+          {title: "Div", format: "div"},
+          {title: "Pre", format: "pre"}
+        ]},
+        {title: "Alignment", items: [
+          {title: "Left", icon: "alignleft", format: "alignleft"},
+          {title: "Center", icon: "aligncenter", format: "aligncenter"},
+          {title: "Right", icon: "alignright", format: "alignright"},
+          {title: "Justify", icon: "alignjustify", format: "alignjustify"}
+        ]}
+      ]
+    }
+  );
+
 }

@@ -43,7 +43,7 @@ class ObjectDelegate {
 			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
 			$this->setUserIdWithSession($object);
-			$data[$this->lowerCaseFirstObjectName]->setId($object->insert());	
+			$data[$this->lowerCaseFirstObjectName]->setId($object->insert());
 			if ($arrayOfChidren = ClassUtils::getIfExistArrayFromObject($data[$this->lowerCaseFirstObjectName])) {
 				$this->addChildren($data, $arrayOfChidren);
 			}

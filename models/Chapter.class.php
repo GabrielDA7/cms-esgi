@@ -46,13 +46,13 @@ class Chapter extends BaseSql {
 												"maxString"=>100,
 												"minString"=>2,
 												"required"=>true,
-												"class"=>"form-group input",
+												"class"=>"form-group input margin-bottom",
 												"value"=>(isset($_POST["title"])? $_POST["title"] : "")
 											],
 								"image"=>
 											[
+														 "label" => "Upload image :",
 										         "type"=>"file",
-												 	 	 "class"=>"form-group",
 										         "maxSize" => 1000000,
 										         "extension" =>
 										                   [
@@ -63,8 +63,9 @@ class Chapter extends BaseSql {
 								       		],
 								"trainning_id"=>
 											[
+												"label"=>"Choose a trainning :",
 												"type"=>"select",
-												"class"=>"form-group row select-formation input-medium",
+												"class"=>"row select-formation input-medium",
 												"option"=>
 															[
 																"" => "Pas de formation"
@@ -73,9 +74,10 @@ class Chapter extends BaseSql {
 											],
 								"number"=>
 											[
+												"label" => "Order of the chapter :",
 												"type"=>"number",
-												"class"=>"form-group row input-small input",
-												"required"=>true,
+												"class"=>"row input-medium",
+												"readonly"=>"readonly",
 												"value"=>(isset($_POST["number"])? $_POST["number"] : ""),
 
 											],

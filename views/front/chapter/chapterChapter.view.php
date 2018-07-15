@@ -1,9 +1,16 @@
 <section id="front-chapter" class="container main-section">
 
 	<section id ="content-head">
+
 		<div class="row">
 			<div class="M12">
 				<a class="trainning-title" href="<?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK . '?id=' . $chapter->getTrainningId(); ?>"> Trainning name : <?= $chapter->getTitle(); ?></a>
+			</div>
+		</div>
+
+		<div class="row M--center">
+			<div class="M3">
+				<img class="img main-img" src="<?= ViewUtils::findImage($chapter->getImage()) ?>" alt="image du cours#1" title="image du cours#1" >
 			</div>
 		</div>
 

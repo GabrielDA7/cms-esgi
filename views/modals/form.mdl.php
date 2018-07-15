@@ -36,6 +36,7 @@
 			</select>
 		<?php else: ?>
 			<input
+				<?= (isset($attributs["readonly"])) ? "readonly='". $attributs["readonly"] ."'" : "";?>
 				<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
 				<?=(isset($attributs["type"])) ? "type='".$attributs["type"]."'" : "";?>
 				name="<?= $name; ?>"
