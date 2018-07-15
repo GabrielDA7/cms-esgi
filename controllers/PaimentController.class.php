@@ -1,9 +1,6 @@
 <?php
 class PaimentController {
 
-	public function indexAction($params) {
-	}
-
 	public function addAction($params) {
 	}
 

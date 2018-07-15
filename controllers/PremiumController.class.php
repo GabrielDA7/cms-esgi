@@ -1,8 +1,6 @@
 <?php
 class PremiumController {
 
-	public function indexAction($params) {
-	}
 	
 	public function addAction($params) {
 	}

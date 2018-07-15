@@ -177,3 +177,4 @@ define("ADMIN_ROLE", 2);
 define("DISCONNECTED_STATUS", 0);
 define("CONNECTED_STATUS", 1);
 define("PUBLISHED_CONTENT", 1);
+define("UNPUBLISHED_CONTENT", 0);

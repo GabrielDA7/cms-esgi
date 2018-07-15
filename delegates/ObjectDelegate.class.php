@@ -68,6 +68,13 @@ class ObjectDelegate {
 		}
 	}
 
+	public function publishContent($data, $params) {
+		$object = $data[$this->lowerCaseFirstObjectName];
+		$object->setStatus($params['POST']['status']);
+		$object->update();
+		RedirectUtils::directRedirect($_SERVER['HTTP_REFERER']);
+	}
+
 	private function setUserIdWithSession($object) {
 		$columns = $object->getColumns();
 		if (array_key_exists("user_id", $columns) && isset($_SESSION["userId"]))

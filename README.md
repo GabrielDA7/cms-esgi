@@ -17,6 +17,9 @@ PHP > 7
 
 paypal
 
+premium
+  new function in userDelegate
+
 replace space by underscore (file)
 
 passowrd -> sha1 + grain de sel
@@ -85,6 +88,8 @@ View edit
 
 List comments
 Comment use modal
+
+publish content add hidden input with name=status and value = 1 or 0 depend on actual status
 
 Add edition tools
 

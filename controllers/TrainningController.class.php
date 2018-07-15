@@ -19,12 +19,9 @@ class TrainningController {
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(TRAINNING_CLASS_NAME);
 		$this->statisticDelegate = new StatisticDelegate(TRAINNING_CLASS_NAME);
 	}
-
-	public function indexAction($params) {
-	}
-
+	
 	public function addAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, TRUE, TRAINNING_ADD_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, TRAINNING_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, FORMATION_IMAGES_FOLDER_NAME);
 		$this->objectDelegate->add($this->data, $params);
@@ -36,7 +33,7 @@ class TrainningController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE, TRAINNING_EDIT_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, TRAINNING_EDIT_VIEWS);
 		$this->objectDelegate->getById($this->data, $params, [CHAPTER_CLASS_NAME]);
 		$this->formDelegate->process($this->data, $params);
 		$this->objectDelegate->update($this->data, $params, "", TRAINNING_LIST_BACK_LINK);
@@ -48,14 +45,19 @@ class TrainningController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE);
 		$this->objectDelegate->delete($params, "", TRAINNING_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_LIST_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, TRAINNING_LIST_VIEWS);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
+	}
+
+	public function publishAction($params) {
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE);
+		$this->objectDelegate->publishContent($this->data, $params);
 	}
 
 	public function trainningAction($params) {
@@ -63,7 +65,7 @@ class TrainningController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_TRAINNING_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, TRAINNING_TRAINNING_VIEWS);
 		$this->objectDelegate->getById($this->data, $params, [CHAPTER_CLASS_NAME]);
 		$this->statisticDelegate->processAdd($params['GET']);
 		$view = new View($this->data);

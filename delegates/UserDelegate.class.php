@@ -21,6 +21,7 @@ class UserDelegate extends ObjectDelegate {
 				$user->setAvatar(DEFAULT_AVATAR);
 			$user->generateToken();
 			$user->generateEmailConfirm();
+			$user->setRole(DEFAULT_ROLE);
 			$user->insert();
 			if ($redirect)
 				RedirectUtils::redirect(USER_EMAIL_CONFIRM_LINK, ["email"=>$user->getEmail()]);

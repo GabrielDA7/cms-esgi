@@ -3,10 +3,13 @@ class AuthenticationDelegate {
 
 	public function __construct() {}
 
-	public function process(&$data, $params, $checkToken, $views = [], $templates = DEFAULT_TEMPLATES) {
-		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) {
+	public function process(&$data, $params, $checkAdmin, $checkToken, $views = [], $templates = DEFAULT_TEMPLATES) {
+		if ($checkAdmin && !isAdmin())
+			RedirectUtils::redirect404();
+		
+		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin']))
       		$this->checkTokenValidity();
-    	}
+
     	if (!empty($views)) {
       		$this->getViewTemplateNames($data, $params['URL'], $views, $templates);
    	 	} else {
