@@ -20,68 +20,68 @@ class Video extends BaseSql {
         return get_object_vars($this);
     }
 
-		public function getColumnsToSearch() {
-			return ["title", "user_id", "part_id"];
-		}
+	public function getColumnsToSearch() {
+		return ["title", "user_id", "part_id", "status"];
+	}
 
-		public static function configAddForm($data){
-			return 	[
-						"config"=>["method"=>"POST", "action"=> DIRNAME.VIDEO_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Upload", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
-						"input"=>
-								[
-									"title"=>
-												[
-													"type"=>"text",
-													"placeholder"=>"Title",
-													"maxString"=>100,
-													"minString"=>2,
-													"required"=>true,
-													"class"=>"form-group input",
-													"value"=>(isset($_POST["title"])? $_POST["title"] : "")
-												],
-									"url"=>
-												[
-											         "type"=>"file",
-													 	 	 "class"=>"form-group",
-											         "extension" =>
-											                   [
-												                    "mp4",
-												                    "mp3",
-												                    "webm",
-																						"3gp",
-											                    ],
-															"requied"=>true
-									       		]
-							]
+	public static function configAddForm($data){
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.VIDEO_ADD_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Upload", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
+					"input"=>
+							[
+								"title"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"Title",
+												"maxString"=>100,
+												"minString"=>2,
+												"required"=>true,
+												"class"=>"form-group input",
+												"value"=>(isset($_POST["title"])? $_POST["title"] : "")
+											],
+								"url"=>
+											[
+										         "type"=>"file",
+												 	 	 "class"=>"form-group",
+										         "extension" =>
+										                   [
+											                    "mp4",
+											                    "mp3",
+											                    "webm",
+																					"3gp",
+										                    ],
+														"requied"=>true
+								       		]
+						]
 
-					];
-		}
+				];
+	}
 
 
-			public static function configTable(){
-				return 	[
-							"config"=>["id"=>"pagination_data", "class"=>"table_responsive"],
-							"cells"=>
-						            [
-						                "title"=>
-						                      [
-						                        "name"=>"Title"
-						                      ],
-						                "user"=>
-						                      [
-						                         "name"=>"Author"
-						                      ],
-						                "status"=>
-						                      [
-						                        "name"=>"Status"
-						                      ],
-						                "id"=>
-						                      [
-						                        "name"=>"Actions"
-						                      ]
-						            ]
-						];
-			}
+	public static function configTable(){
+		return 	[
+					"config"=>["id"=>"pagination_data", "class"=>"table_responsive"],
+					"cells"=>
+				            [
+				                "title"=>
+				                      [
+				                        "name"=>"Title"
+				                      ],
+				                "user"=>
+				                      [
+				                         "name"=>"Author"
+				                      ],
+				                "status"=>
+				                      [
+				                        "name"=>"Status"
+				                      ],
+				                "id"=>
+				                      [
+				                        "name"=>"Actions"
+				                      ]
+				            ]
+				];
+	}
 
     public function getId()       	 { return $this->id;          }
 	public function getTitle()    	 { return $this->title;       }

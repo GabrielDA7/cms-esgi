@@ -59,7 +59,7 @@ class classUtils {
 
 	public static function removeNullColumns(&$columns) {
 		foreach ($columns as $key=>$value) {
-			if (is_null($value) || $value == "" || empty($value))
+			if (is_null($value) || $value == "" || (empty($value) && $value != 0))
 				unset($columns[$key]);
 		}
 	}
