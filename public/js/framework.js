@@ -307,7 +307,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
   });
 }
 
-function load_data_table(page, limit, action, order='desc', column_name) {
+function load_data_table(page, limit, action, order='desc', column_name='dateInserted') {
 
   var object = $.trim($(".list-init-object span:first-child").text());
   var objects = object + 's';
@@ -328,7 +328,7 @@ function load_data_table(page, limit, action, order='desc', column_name) {
     url = dirname + "ajax/list?object=" + object + "&sort=" + order + "&columnName=" + column_name + "&page=" + page + "&itemsPerPage=" + limit;
     $("#" + column_name + " i").removeClass().addClass(arrow);
   } else {
-    url = dirname + "ajax/list?object=" + object + "&page=" + page + "&itemsPerPage=" + limit;
+    url = dirname + "ajax/list?object=" + object + "&page=" + page + "&itemsPerPage=" + limit + "&sort=" + order + "&columnName=" + column_name ;
   }
 
   $.ajax({
@@ -346,11 +346,11 @@ function load_data_table(page, limit, action, order='desc', column_name) {
             if(k == "id") {
               if(object == "user") {
                  html += "<td><a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
-                 html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='delete'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
+                 html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
               } else {
-                html += "<td><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='share'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='status' value='" + element.status + "'/><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
+                html += "<td><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='submit'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
                 html +="<a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
-                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='delete'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
+                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
               }
             } else if(k == "status") {
               if(element.status == 1) {

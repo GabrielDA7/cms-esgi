@@ -73,34 +73,19 @@ Search nav bar
 	get the 3 lists and print them
 	view search.view.php (not created)
 
-home page
-  ajax list with item = 5 and order = desc / columns=dateInserted
-
-
-add a label which is the key of the input where it is a SELECT
-  (for the installation : back template / front template we don't know)
-
+add a label which is the key of the input where it is a SELECT (for the installation : back template / front template we don't know)
 Edit profile CSS
 View edit
-
-List comments
 Comment use modal
-
-////
-publish content add hidden input with name=status and value = 1 or 0 depend on actual status
-////
-
 go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
-
 add button or href to see RSS flux -> see files in bin/xml/
-
 installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
-
-statistic
-  put aaa($this->data); in indexController statisticAction above view
-
+statistic :put aaa($this->data); in indexController statisticAction above view
 vue parameters edit dbname / dbhost / dbuser / dbport / language
 
+-- DONE -- List comments
+-- DONE -- home page ajax list with item = 5 and order = desc / columns=dateInserted
+-- DONE -- publish content add hidden input with name=status and value = 1 or 0 depend on actual status
 -- DONE -- Add edition tools
 -- DONE -- errors == false print "the content has been added"
 -- DONE -- 404 page
