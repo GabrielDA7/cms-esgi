@@ -75,7 +75,7 @@ class Chapter extends BaseSql {
 								"number"=>
 											[
 												"label" => "Order of the chapter :",
-												"type"=>"number",
+												"type"=>"text",
 												"class"=>"row input-medium",
 												"readonly"=>"readonly",
 												"value"=>(isset($_POST["number"])? $_POST["number"] : ""),

@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>Page list</title>
+    <desc>List of video</desc>
+    <link>localhost/lab/uteach/video/list</link>
+    <item>
+      <id>7</id>
+      <title>php</title>
+      <url>public/img/videos/R&#xC3;&#x2030;ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4</url>
+      <dateInserted>2018-07-14 00:21:48</dateInserted>
+      <user_id>25</user_id>
+      <item>
+        <id>25</id>
+        <userName>lol</userName>
+        <avatar>public/img/avatars/default.jpg</avatar>
+        <objectName>User</objectName>
+        <link>localhost/lab/uteach/user/user?id=25</link>
+      </item>
+      <objectName>Video</objectName>
+      <link>localhost/lab/uteach/video/video?id=7</link>
+    </item>
+    <item>
+      <id>6</id>
+      <title>php</title>
+      <url>public/img/videos/R&#xC3;&#x2030;ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4</url>
+      <dateInserted>2018-07-14 00:21:33</dateInserted>
+      <user_id>25</user_id>
+      <item>
+        <id>25</id>
+        <userName>lol</userName>
+        <avatar>public/img/avatars/default.jpg</avatar>
+        <objectName>User</objectName>
+        <link>localhost/lab/uteach/user/user?id=25</link>
+      </item>
+      <objectName>Video</objectName>
+      <link>localhost/lab/uteach/video/video?id=6</link>
+    </item>
+    <item>
+      <id>5</id>
+      <title>php</title>
+      <url>public/img/videos/R&#xC3;&#x2030;ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4</url>
+      <dateInserted>2018-07-14 00:20:13</dateInserted>
+      <user_id>25</user_id>
+      <item>
+        <id>25</id>
+        <userName>lol</userName>
+        <avatar>public/img/avatars/default.jpg</avatar>
+        <objectName>User</objectName>
+        <link>localhost/lab/uteach/user/user?id=25</link>
+      </item>
+      <objectName>Video</objectName>
+      <link>localhost/lab/uteach/video/video?id=5</link>
+    </item>
+    <item>
+      <id>4</id>
+      <title>php</title>
+      <url>public/img/videos/R&#xC3;&#x2030;ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4</url>
+      <dateInserted>2018-07-14 00:19:52</dateInserted>
+      <user_id>25</user_id>
+      <item>
+        <id>25</id>
+        <userName>lol</userName>
+        <avatar>public/img/avatars/default.jpg</avatar>
+        <objectName>User</objectName>
+        <link>localhost/lab/uteach/user/user?id=25</link>
+      </item>
+      <objectName>Video</objectName>
+      <link>localhost/lab/uteach/video/video?id=4</link>
+    </item>
+    <item>
+      <id>3</id>
+      <title>php</title>
+      <url>public/img/videos/R&#xC3;&#x2030;ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4</url>
+      <dateInserted>2018-07-14 00:19:21</dateInserted>
+      <user_id>25</user_id>
+      <item>
+        <id>25</id>
+        <userName>lol</userName>
+        <avatar>public/img/avatars/default.jpg</avatar>
+        <objectName>User</objectName>
+        <link>localhost/lab/uteach/user/user?id=25</link>
+      </item>
+      <objectName>Video</objectName>
+      <link>localhost/lab/uteach/video/video?id=3</link>
+    </item>
+  </channel>
+</rss>

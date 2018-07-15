@@ -261,15 +261,15 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
             html += "  <div class='card-image'>";
             if(object != "video") {
               if( element.image != null ) {
-                html += "  <image src='" + dirname + element.image + "' alt='" + element.title + "'>";
+                html += "  <image src='" + element.image + "' alt='" + element.title + "'>";
               } else {
                 html += "  <image src='public/img/default.jpg' alt='" + element.title + "'>";
               }
             } else {
               html += "<video class='video-card' width='100%' height='100%' controls='controls'>";
-              html += "<source src='" + dirname + element.url + "' type='video/mp4' />";
-              html += "<source src='" + dirname + element.url + "' type='video/mp3' />";
-              html += "<source src='" + dirname + element.url + "' type='video/webm' />";
+              html += "<source src='" + element.url + "' type='video/mp4' />";
+              html += "<source src='" + element.url + "' type='video/mp3' />";
+              html += "<source src='" + element.url + "' type='video/webm' />";
               html += "</video>";
             }
             html += "  </div>";
@@ -504,7 +504,7 @@ function dhm(ms){
 function renderCommentResponse(element, intern) {
   html = "<div class='row comment-card M--start'>";
   html +=   "<div class='M1 no-padding align-center'>";
-  html +=     "<img class='avatar-img-medium' src='" + dirname + element.user[0].avatar + "' alt='avatar'>";
+  html +=     "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar'>";
   html +=   "</div>";
   if(intern == false) {
     html +=   "<div class='M11'>";
