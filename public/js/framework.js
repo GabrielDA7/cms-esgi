@@ -229,13 +229,17 @@ $(function() {
     var valueOption = $(this).find(':selected').attr('value');
     if(valueOption != ""){
       $("input[name='number']").prop("disabled", false);
-      $("input[name='number']").prop("readonly", false);
     } else {
       $("input[name='number']").val("");
-      $("input[name='number']").prop("readonly", "readonly");
       $("input[name='number']").prop("disabled", true);
     }
   });
+
+  $(document).on('click', '.flash-msg i', function() {
+    $('.flash-msg').remove();
+  });
+
+
 
 });
 
@@ -263,7 +267,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
               if( element.image != null ) {
                 html += "  <image src='" + element.image + "' alt='" + element.title + "'>";
               } else {
-                html += "  <image src='public/img/default.jpg' alt='" + element.title + "'>";
+                html += "  <image src='" + dirname + "public/img/default.jpg' alt='" + element.title + "'>";
               }
             } else {
               html += "<video class='video-card' width='100%' height='100%' controls='controls'>";

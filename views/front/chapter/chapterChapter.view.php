@@ -1,10 +1,10 @@
 <section id="front-chapter" class="container main-section">
-
 	<section id ="content-head">
-
 		<div class="row">
 			<div class="M12">
-				<a class="trainning-title" href="<?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK . '?id=' . $chapter->getTrainningId(); ?>"> Trainning name : <?= $chapter->getTitle(); ?></a>
+				<?php if ($chapter->getTrainning()->getTitle() != null): ?>
+					<a class="trainning-title" href="<?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK . '?id=' . $chapter->getTrainningId(); ?>"> Trainning name : <?= $chapter->getTrainning()->getTitle(); ?></a>
+				<?php endif; ?>
 			</div>
 		</div>
 

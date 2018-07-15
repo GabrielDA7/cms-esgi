@@ -1467,8 +1467,42 @@ textarea {
   color: white; }
 
 .error-msg {
+  display: flex;
+  align-content: center;
+  padding: 10px;
+  background-color: #222831;
   position: absolute;
+  top: 20px;
   right: 0; }
+
+.error-msg i {
+  color: white; }
+
+.error-msg .msg-content {
+  color: red; }
+
+.bar-error-msg {
+  background-color: red;
+  width: 5px; }
+
+.success-msg {
+  display: flex;
+  align-content: center;
+  padding: 10px;
+  background-color: #222831;
+  position: absolute;
+  top: 20px;
+  right: 0; }
+
+.success-msg i {
+  color: white; }
+
+.success-msg .msg-content {
+  color: green; }
+
+.bar-success-msg {
+  background-color: green;
+  width: 5px; }
 
 .no-padding {
   padding: 0; }
