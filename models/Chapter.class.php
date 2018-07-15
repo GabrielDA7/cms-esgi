@@ -46,7 +46,7 @@ class Chapter extends BaseSql {
 												"maxString"=>100,
 												"minString"=>2,
 												"required"=>true,
-												"class"=>"form-group input margin-bottom",
+												"class"=>"form-group input",
 												"value"=>(isset($_POST["title"])? $_POST["title"] : "")
 											],
 								"image"=>

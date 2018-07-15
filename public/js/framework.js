@@ -303,7 +303,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
   });
 }
 
-function load_data_table(page, limit, action, order='asc', column_name) {
+function load_data_table(page, limit, action, order='desc', column_name) {
 
   var object = $.trim($(".list-init-object span:first-child").text());
   var objects = object + 's';
@@ -436,7 +436,7 @@ function addChapterSubpart(){
               "</div>" +
               "<div class='content-hidden'>" +
                 "<div class='row'>" +
-                  "<input type='text' name='parts["+ idPart +"][title]' class='input form-group' placeholder='Title'>" +
+                  "<input type='text' name='parts["+ idPart +"][title]' class='input form-group margin-bottom' placeholder='Title'>" +
                 "</div>" +
                 "<div class='row'>" +
                   "<textarea name='parts["+ idPart +"][content]' class='form-group input tinymce' placeholder='Content'></textarea>" +

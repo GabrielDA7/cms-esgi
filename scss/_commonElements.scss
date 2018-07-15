@@ -237,6 +237,7 @@ html,body
 * Front
 */
 .front-main-content {
+  position: relative;
   flex-grow: 1;
 }
 
@@ -1101,6 +1102,10 @@ textarea {
 
 .success-msg .msg-content {
     color: green;
+}
+
+.flash-msg {
+  z-index: 1;
 }
 
 .bar-success-msg {

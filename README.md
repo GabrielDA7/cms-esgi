@@ -78,8 +78,6 @@ home page
   ajax list with item = 5 and order = desc / columns=dateInserted
 
 
-errors == false print "the content has been added"
-
 add a label which is the key of the input where it is a SELECT
   (for the installation : back template / front template we don't know)
 
@@ -96,10 +94,11 @@ go to profile when click on user(userame / avatar) in comment -> route = user/us
 add button or href to see RSS flux -> see files in bin/xml/
 
 statistic
-  put aaa($this->data); in indexController statisticAction above view 
+  put aaa($this->data); in indexController statisticAction above view
 parameters
   edit dbname / dbhost / dbuser / dbport / language
-
+  
+-- DONE -- errors == false print "the content has been added"
 -- DONE -- 404 page
 -- DONE -- modify every references to author in js file and replace by element.user.userName
 -- DONE -- VOIR element.trainning.title pour mettre le titre de la formation du chapitre voir le resulat du json (trainning a ete ajouté)

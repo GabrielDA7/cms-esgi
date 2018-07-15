@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <rss version="2.0">
   <channel>
-    <title>Page list</title>
-    <description>List of chapter</description>
+    <title>Page search</title>
+    <description>Search of chapter</description>
     <link>localhost/lab/uteach/chapter/list</link>
     <item>
       <id>3</id>

@@ -2,13 +2,13 @@
 class ViewUtils {
 
 	public static function getErrors($errors) {
-		if (isset($errors) && !empty($errors) && is_array($errors)) {
+		if (isset($errors) && is_array($errors)) {
 			include_once MODALS_FOLDER_NAME . "/errors.mdl.php";
 		}
 	}
 
 	public static function getSuccess($errors) {
-		if (isset($errors) && !empty($errors) && $errors == TRUE) {
+		if ($errors == FALSE) {
 			include_once MODALS_FOLDER_NAME . "/success.mdl.php";
 		}
 	}

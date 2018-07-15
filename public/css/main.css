@@ -808,6 +808,7 @@ html, body {
 * Front
 */
 .front-main-content {
+  position: relative;
   flex-grow: 1; }
 
 .front-template-content {
@@ -1499,6 +1500,9 @@ textarea {
 
 .success-msg .msg-content {
   color: green; }
+
+.flash-msg {
+  z-index: 1; }
 
 .bar-success-msg {
   background-color: green;

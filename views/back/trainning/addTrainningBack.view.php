@@ -1,4 +1,6 @@
 <section id="dashboard-add-tranning">
+  <?php ViewUtils::getErrors($errors); ?>
+  <?php ViewUtils::getSuccess($errors); ?>
   <div class="row">
     <div class="M4">
       <div class="back-title">
