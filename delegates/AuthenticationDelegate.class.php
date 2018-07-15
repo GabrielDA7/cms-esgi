@@ -49,7 +49,7 @@ class AuthenticationDelegate {
 	}
 
 	private function setDefaultViewTemplateNames(&$data) {
-		$data['view'] = HOME_VIEW;
+		$data['view'] = HOME_VIEWS;
 		$data['template'] = FRONT_TEMPLATE;
 	}
 }
