@@ -15,8 +15,6 @@ PHP > 7
 
                               |BACK|
 
-RSS only when page contains items
-
 paypal
 
 publish content (chapter / trainning)
@@ -36,7 +34,7 @@ view logs (see all logs files and can download them)
 -- SEE LATER -- find a way the change the working of setReferencedObjectsColumns() in objectDelegate  
                 We have to get the refernced object with a join query
 
-
+-- DONE -- RSS only when page contains items
 -- DONE -- parametersController (BDD)
 -- DONE -- reset password email
 -- DONE -- Creer nouvelle fct dans le ajaxController pour listeCommentaire qui prend en compte l'id
@@ -59,7 +57,7 @@ view logs (see all logs files and can download them)
 -- DONE -- Ajout et edition auteurs => session
 -- DONE -- Statistics
             create table statistic / viewed_trainning / viewed_chapter / viewed_video
-            create statisticViewDelegate OR in getById() insert in table
+            create statisticDelegate OR in getById() insert in table
             every going to statistic page -> insert stat OR every day ?
             statistic page get the latest stat
             set machine ip

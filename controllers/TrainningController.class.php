@@ -7,7 +7,7 @@ class TrainningController {
 	private $emailDelegate;
 	private $fileDelegate;
 	private $listDisplayDataDelegate;
-	private $statisticViewDelegate;
+	private $statisticDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -17,7 +17,7 @@ class TrainningController {
 		$this->emailDelegate = new EmailDelegate();
 		$this->fileDelegate = new FileDelegate(TRAINNING_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(TRAINNING_CLASS_NAME);
-		$this->statisticViewDelegate = new StatisticViewDelegate(TRAINNING_CLASS_NAME);
+		$this->statisticDelegate = new StatisticDelegate(TRAINNING_CLASS_NAME);
 	}
 
 	public function indexAction($params) {
@@ -65,7 +65,7 @@ class TrainningController {
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, TRAINNING_TRAINNING_VIEWS);
 		$this->objectDelegate->getById($this->data, $params, [CHAPTER_CLASS_NAME]);
-		$this->statisticViewDelegate->processAdd($params['GET']);
+		$this->statisticDelegate->processAdd($params['GET']);
 		$view = new View($this->data);
 	}
 }

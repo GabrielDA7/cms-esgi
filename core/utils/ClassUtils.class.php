@@ -64,6 +64,13 @@ class classUtils {
 		}
 	}
 
+	public static function removeDBColumns(&$columns) {
+		foreach ($columns as $key=>$value) {
+			if ($key == "table" || $key = "objectName" || $key == "db" || $key == "columns") 
+				unset($columns[$key]);
+		}
+	}
+
 	public static function removeUnderScoreFromForeignKeyColumn(&$column) {
 		$column = str_replace(UNDERSCORE, "", $column);
 	}

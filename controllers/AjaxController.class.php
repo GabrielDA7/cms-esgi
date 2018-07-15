@@ -4,6 +4,7 @@ class AjaxController {
 	private $objectDelegate;
 	private $listDisplayDataDelegate;
 	private $formDelegate;
+	private $rssDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -15,12 +16,14 @@ class AjaxController {
 		$this->objectDelegate = new ObjectDelegate($this->data, $objectName);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate($objectName);
 		$this->formDelegate = new FormDelegate($objectName);
+		$this->rssDelegate = new RssDelegate($objectName);
 	}
 
 	public function searchAction($params) {
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$this->objectDelegate->search($this->data, $params);
 		$this->listDisplayDataDelegate->process($this->data);
+		$this->rssDelegate->process($this->data);
 		$array = FormatUtils::formatDataToArray($this->data);
 		echo FormatUtils::formatToJson($array);
 	}
@@ -29,6 +32,7 @@ class AjaxController {
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$this->objectDelegate->getAll($this->data);
 		$this->listDisplayDataDelegate->process($this->data);
+		$this->rssDelegate->process($this->data);
 		$array = FormatUtils::formatDataToArray($this->data);
 		echo FormatUtils::formatToJson($array);
 	}

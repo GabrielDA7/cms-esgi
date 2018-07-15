@@ -112,8 +112,10 @@ class BaseSql extends QueryConstructorSql {
 			if ($foreignKeyColumns = ClassUtils::getForeignKeyColumns($object)) {
 				$this->setForeingObjectsColumns($object, $foreignKeyColumns);
 			}
-			if ($arrayColumns = ClassUtils::getIfExistArrayFromObject($object)) {
-				ClassUtils::setReferencedObjectsColumns([substr(key($arrayColumns), 0, -1)], $object);
+			if ($this->table == "comment") {
+				if ($arrayColumns = ClassUtils::getIfExistArrayFromObject($object)) {
+					ClassUtils::setReferencedObjectsColumns([substr(key($arrayColumns), 0, -1)], $object);
+				}
 			}
 			array_push($objectList, $object);
 		}
