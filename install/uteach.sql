@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 14 juil. 2018 à 19:03
+-- Généré le :  Dim 15 juil. 2018 à 14:46
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `chapter`;
 CREATE TABLE IF NOT EXISTS `chapter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `number` int(11) NOT NULL,
+  `number` int(11) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `trainning_id` int(11) DEFAULT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   KEY `video_id` (`video_id`),
   KEY `comment_id` (`comment_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `comment`
@@ -110,7 +110,13 @@ INSERT INTO `comment` (`id`, `user_id`, `dateInserted`, `content`, `report`, `ch
 (7, 25, '2018-07-14 18:12:06', 'ergtrgerg', 0, NULL, NULL, NULL, 6),
 (8, 25, '2018-07-14 18:38:58', 'ezfzefez', 1, 24, NULL, NULL, NULL),
 (9, 25, '2018-07-14 18:39:02', 'efreferf', 0, 24, NULL, NULL, NULL),
-(10, 25, '2018-07-14 18:53:27', 'fgbfgbgfb', 0, NULL, NULL, NULL, 8);
+(10, 25, '2018-07-14 18:53:27', 'fgbfgbgfb', 0, NULL, NULL, NULL, 8),
+(11, 25, '2018-07-14 19:14:03', 'erlkgklrze,g', 0, NULL, NULL, NULL, 8),
+(12, 25, '2018-07-14 19:27:12', 'rtkktrr', 0, NULL, NULL, NULL, 8),
+(13, 25, '2018-07-14 19:27:26', 'rtger,gergger', 0, NULL, NULL, NULL, 8),
+(14, 25, '2018-07-14 19:28:38', 'trhrthrth', 0, NULL, NULL, NULL, 8),
+(15, 25, '2018-07-14 20:28:52', 'kjnfdgjjdf', 0, NULL, NULL, NULL, 10),
+(16, 25, '2018-07-14 20:29:03', 'df,b;dfnvd;f', 0, NULL, NULL, NULL, 15);
 
 -- --------------------------------------------------------
 
@@ -176,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `trainning` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `user_id_2` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `trainning`
@@ -186,7 +192,10 @@ INSERT INTO `trainning` (`id`, `title`, `description`, `image`, `dateInserted`, 
 (36, 'ztzet', 'zetrzert', 'public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-13 20:11:12', 25),
 (37, 'hgvgvgh', 'jhhhvhg', 'public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-13 20:11:37', 58),
 (38, 'esgrtgztr', 'zthzrz', 'public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-13 20:12:07', 25),
-(39, 'php', 'eth', 'public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-13 20:12:22', 25);
+(39, 'php', 'eth', 'public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-13 20:12:22', 25),
+(40, 'AAAAAA', 'tyhrthyr', '/uteach/public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-14 23:00:19', 25),
+(41, 'AAAAAA', 'tyhrthyr', 'public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-14 23:02:05', 25),
+(42, 'php', 'zeezre', '/uteach/public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-14 23:07:34', 25);
 
 -- --------------------------------------------------------
 
@@ -211,14 +220,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `dateUpdated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `role` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `userName`, `pwd`, `pwdReset`, `avatar`, `token`, `status`, `dateInserted`, `dateUpdated`, `role`) VALUES
-(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '3le8vof2rpq8k0oo8s4wo0o80wk8g40gkogck00wk84ow0c4so', 1, '2018-03-20 19:48:58', '2018-07-13 19:05:27', 2),
+(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', '4sf24fks236ss48cg8s080okowkgwos84csock404gggkckc84', 1, '2018-03-20 19:48:58', '2018-07-14 20:41:36', 2),
 (33, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'v2l5jb39neoww4ow84w4ow40ooo44wswgogw4c4gg48088wgk', 0, '2018-03-24 22:03:33', NULL, 0),
 (34, 'Louis', 'Louis', 'louis@gmail.com', '', 'zerazer', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '3iuuy6vxv2w4cs4g8kccsww08wkgg4g048s848k8w8sg8wok04', 0, '2018-03-25 20:08:25', NULL, 0),
 (35, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'y4tci0mxs9cck844so48csggsosso8w4w004880csc8gk0k0s', 0, '2018-03-25 20:30:28', NULL, 0),
@@ -233,7 +242,10 @@ INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `use
 (44, 'Zefgizergzhg', 'Oiehfjboehoer', 'ezhfzghljzhglherg@gmail.com', '69d6ut4vyzs4sokcsckc8wc8ws8kwcck80so0kss8w4oggoo0g', 'mefhjgemohjoe', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '1rislwf8mrz4gw8scggkgc88g0kwkcswkwskog4k844wk40gw4', 0, '2018-05-11 18:36:30', NULL, 1),
 (58, 'Zernjzenrjzen', 'Erkjngerngjnrekj', 'decultot.louis@gmail.com', '3cd2h35goiqsokkgcs0ks00csc84oo4gk008coo8og8csw0o8g', 'ekjgnjkrengjknernge', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '58knyvm395c844w0c8co0sog8848wogowg0w04wsw444sc0ogk', 0, '2018-07-11 17:47:28', NULL, 1),
 (60, 'Kezjzetzejuzei', 'Kejrgerngrej', 'gabrieldaoud3112@gmail.com', '1', 'ekrgnjregnjerngzngjn', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, NULL, '65jqtmixoggsosg0cs4csg8gksw40gg4088s0k4o0skgswkkgk', 0, '2018-07-11 17:58:26', '2018-07-11 18:03:32', 1),
-(61, 'Eznlkezlk', 'Zekjnfjzkenfkj', 'zefnzenfzeknf@gmail.com', '26ux6vuiaukgckwwwo4oogk8gk40gcgwgok0cow44kksos8ws0', 'zekjfnjznzjkf', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '4pa6sfyafyqs84w4o084404gcgs8s840ssckgkkso4c4o808g4', 0, '2018-07-13 19:04:54', NULL, 1);
+(61, 'Eznlkezlk', 'Zekjnfjzkenfkj', 'zefnzenfzeknf@gmail.com', '26ux6vuiaukgckwwwo4oogk8gk40gcgwgok0cow44kksos8ws0', 'zekjfnjznzjkf', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '4pa6sfyafyqs84w4o084404gcgs8s840ssckgkkso4c4o808g4', 0, '2018-07-13 19:04:54', NULL, 1),
+(62, 'Gfddgh', 'Dgdgh', 'aaaaaa@gmail.com', '45qaw4upkg4k84okosggwow0w8ks808owk04sw0gw84kkcw4c8', 'dgdgn', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '3t6zfyzq74sg0okkcc00wwgow04wkog0w0cwkckk8884wgckgc', 0, '2018-07-14 20:36:03', NULL, 1),
+(63, 'Azeraze', 'Zertzregz', 'decultot.erferflouis@gmail.com', '4zbhvysjlcowoo04os848g8skkw0g4kckoo8gcowc0k480c4ck', 'zfgbgentrber', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '66cqz8nxzr8kc4ockoc4kkc0osg4ok80o84c4oo8ow48gkckkk', 0, '2018-07-14 20:37:12', NULL, 1),
+(64, 'Rgrgrz', 'Aefaefea', 'qzeffzerger@gmail.com', 'fw1wn6bjmi8scc4o00wkook4wwk8ck8ckcg8owosoc00wc0ok', 'ergzerg', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', '6d3wffuvhdgccg8w4gkcoww8so4sgg4s0wowgg0cw04gswksw8', 0, '2018-07-14 20:41:06', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -282,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `viewed_chapter` (
   PRIMARY KEY (`id`),
   KEY `chapter_id` (`chapter_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `viewed_chapter`
@@ -297,7 +309,9 @@ INSERT INTO `viewed_chapter` (`id`, `dateInserted`, `ip`, `chapter_id`, `user_id
 (6, '2018-07-14 13:27:08', '10.2.2', 20, NULL),
 (7, '2018-07-14 13:27:25', '20.2424.2', 22, NULL),
 (8, '2018-07-14 13:27:40', '444444', 21, NULL),
-(9, '2018-07-14 18:38:47', '::1', 24, NULL);
+(9, '2018-07-14 18:38:47', '::1', 24, NULL),
+(10, '2018-07-14 22:58:33', '::1', 20, NULL),
+(11, '2018-07-14 23:03:40', '::1', 22, NULL);
 
 -- --------------------------------------------------------
 
