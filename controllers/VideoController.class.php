@@ -6,7 +6,7 @@ class VideoController {
 	private $formDelegate;
 	private $fileDelegate;
 	private $listDisplayDataDelegate;
-	private $statisticViewDelegate;
+	private $statisticDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -15,7 +15,7 @@ class VideoController {
 		$this->formDelegate = new FormDelegate(VIDEO_CLASS_NAME);
 		$this->fileDelegate = new FileDelegate(VIDEO_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(VIDEO_CLASS_NAME);
-		$this->statisticViewDelegate = new StatisticViewDelegate(VIDEO_CLASS_NAME);
+		$this->statisticDelegate = new StatisticDelegate(VIDEO_CLASS_NAME);
 	}
 
 	public function indexAction($params) {
@@ -67,7 +67,7 @@ class VideoController {
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_VIDEO_VIEWS);
 		$this->objectDelegate->getById($this->data, $params);
-		$this->statisticViewDelegate->processAdd($params['GET']);
+		$this->statisticDelegate->processAdd($params['GET']);
 		$view = new View($this->data);
 	}
 }

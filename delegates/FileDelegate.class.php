@@ -69,12 +69,12 @@ class FileDelegate {
 		$filesUrl = [];
 		foreach ($files as $key => $value) {
 			if ($value['error'] == UPLOAD_ERR_OK) {
-				$tmp_name = $value["tmp_name"];
+				$tempName = $value["tmp_name"];
 				$fileName = basename($value["name"]);
 				$path = IMAGE_FOLDER_NAME . "/" . $folderName;
 				$this->createFolderIfNotExists($path);
 				$filesUrl += [$key => $path."/".$fileName];
-				move_uploaded_file($tmp_name, $path."/".$fileName);
+				move_uploaded_file($tempName, $path."/".$fileName);
 				$tempUrl = DIRNAME . $filesUrl[$key];
 				$filesUrl[$key] = $tempUrl;
 			}

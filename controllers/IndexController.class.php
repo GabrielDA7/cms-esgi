@@ -4,14 +4,14 @@ class IndexController {
 	private $authenticationDelegate;
 	private $formDelegate;
 	private $fileDelegate;
-	private $statisticViewDelegate;
+	private $statisticDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->formDelegate = new FormDelegate(INSTALLATION_CLASS_NAME);
 		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAME);
-		$this->statisticViewDelegate = new StatisticViewDelegate();
+		$this->statisticDelegate = new StatisticDelegate();
 	}
 
 	public function indexAction($params) {
@@ -43,7 +43,7 @@ class IndexController {
 
 	public function statisticAction($params){
 		$this->authenticationDelegate->process($this->data, $params, TRUE, STATISTIC_VIEWS);
-		$this->statisticViewDelegate->processGet($this->data);
+		$this->statisticDelegate->processGet($this->data);
 		$view = new View($this->data);
 	}
 

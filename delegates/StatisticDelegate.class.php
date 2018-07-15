@@ -1,5 +1,5 @@
 <?php
-class StatisticViewDelegate {
+class StatisticDelegate {
 	
 	private $objectName;
 	private $statisticObject;
