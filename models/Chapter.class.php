@@ -28,7 +28,7 @@ class Chapter extends BaseSql {
 	}
 
 	public function getColumnsToSearch() {
-		return ["title", "user_id", "trainning_id"];
+		return ["title", "user_id", "trainning_id", "status"];
 	}
 
 	public function unsetColumn($key) {
