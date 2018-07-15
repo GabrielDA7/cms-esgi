@@ -97,8 +97,11 @@ go to profile when click on user(userame / avatar) in comment -> route = user/us
 
 add button or href to see RSS flux -> see files in bin/xml/
 
+installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
+
 statistic
-  put aaa($this->data); in indexController statisticAction above view 
+  put aaa($this->data); in indexController statisticAction above view
+
 parameters
   edit dbname / dbhost / dbuser / dbport / language
 
