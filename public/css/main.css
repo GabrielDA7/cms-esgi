@@ -955,7 +955,7 @@ html, body {
   right: 35px;
   top: 75px; }
 
-#front-content .title {
+.title {
   margin-top: 35px;
   font-size: 36px;
   color: #222831;
@@ -1664,3 +1664,6 @@ textarea {
 
 .color-red {
   color: red; }
+
+#front-global-search {
+  padding-bottom: 35px; }

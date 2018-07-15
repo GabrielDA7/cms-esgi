@@ -15,6 +15,9 @@ PHP > 7
 
                               |BACK|
 
+Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
+avec itemsPerPage = 10 retourne + de resultat
+
 paypal
 
 premium
@@ -64,15 +67,9 @@ view logs (see all logs files and can download them)
 
                               |FRONT|
 
-VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper
-  arreter les requetes quand il n'y a pas de resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
+Ajouter la gestion de pagination pour la recherche
 
-Search nav bar
-	3 search ajax request :
-		training / chapter / video
-	get the 3 lists and print them
-	view search.view.php (not created)
-
+VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper arreter les requetes quand il n'y a pas de resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
 add a label which is the key of the input where it is a SELECT (for the installation : back template / front template we don't know)
 Edit profile CSS
 View edit
@@ -83,6 +80,7 @@ installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
 statistic :put aaa($this->data); in indexController statisticAction above view
 vue parameters edit dbname / dbhost / dbuser / dbport / language
 
+-- DONE -- Search nav bar 3 search ajax request :training / chapter / video get the 3 lists and print them view search.view.php (not created) index/search
 -- DONE -- List comments
 -- DONE -- home page ajax list with item = 5 and order = desc / columns=dateInserted
 -- DONE -- publish content add hidden input with name=status and value = 1 or 0 depend on actual status

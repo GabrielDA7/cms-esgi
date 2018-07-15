@@ -144,10 +144,18 @@ $(function() {
   });
 
   // Ajax call for load table
-  if( $("#pagination_data").length ) {
+  if( $("#pagination_data").length > 0 ) {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = 1;
     load_data_table(page, limit, 'init');
+  }
+
+  if( $("#front-global-search").length > 0) {
+    var limit = 12;
+    var page = 1;
+    load_data_list_card(page,'desc','dateInserted','chapter',limit, true, 'result-search-chapter', 'result-search-chapter-pagination', 'search');
+    load_data_list_card(page,'desc','dateInserted','trainning',limit, true, 'result-search-trainning', 'result-search-trainning-pagination', 'search');
+    load_data_list_card(page,'desc','dateInserted','video',limit, true, 'result-search-video', 'result-search-video-pagination', 'search');
   }
 
   $(document).on('click', '.table-data #pagination_links span', function() {
@@ -184,13 +192,13 @@ $(function() {
   if( $(".list-data").length > 0 ) {
     var page = 1;
     var object = $.trim($(".list-init-object span:first-child").text());
-    load_data_list_card(page,'desc', 'dateInserted', object,30, true, 'data-list');
+    load_data_list_card(page,'desc', 'dateInserted', object,10, true, 'data-list', 'pagination_links');
   }
 
   $(document).on('click', '.list-data #pagination_links span', function() {
     var page = $(this).attr("id");
     var object = $.trim($(".list-init-object span:first-child").text());
-    load_data_list_card(page,'desc', 'dateInserted', object ,30,true, 'data-list');
+    load_data_list_card(page,'desc', 'dateInserted', object ,30,true, 'data-list', pagination_links);
   });
 
   // COMMENTS
@@ -214,15 +222,15 @@ $(function() {
   });
 
   if( $("#recent-chapter").length > 0) {
-    load_data_list_card(1,'desc','dateInserted','chapter',5, false, 'recent-chapter');
+    load_data_list_card(1,'desc','dateInserted','chapter',5, false, 'recent-chapter', 'pagination_links');
   }
 
   if( $("#recent-trainning").length > 0) {
-    load_data_list_card(1,'desc','dateInserted','trainning',5, false, 'recent-trainning');
+    load_data_list_card(1,'desc','dateInserted','trainning',5, false, 'recent-trainning', 'pagination_links');
   }
 
   if( $("#recent-video").length > 0) {
-    load_data_list_card(1,'desc','dateInserted','video',5, false, 'recent-video');
+    load_data_list_card(1,'desc','dateInserted','video',5, false, 'recent-video', 'pagination_links');
   }
 
   $(document).on('change', '#dashboard-add-chapter select[name="trainning_id"]', function() {
@@ -239,13 +247,20 @@ $(function() {
     $('.flash-msg').remove();
   });
 
-
+  $("#global-search").enterKey(function () {
+    redirect(dirname + 'index/search');
+  });
 
 });
 
-function load_data_list_card(page,order='desc', column_name, object, itemsPerPage=30, pagination=true,div){
+function load_data_list_card(page,order='desc', column_name, object, itemsPerPage=30, pagination=true,div, pagination_div, action='init'){
   objects = object + 's';
-  url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
+  if(action == 'init') {
+    url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
+  } else {
+    str = $.trim($("#global-search").val());
+    url = dirname + "ajax/search?object=" + object + "&search=" + str + "&page=" + page + "&itemsPerPage=" + itemsPerPage + "&status=1";
+  }
   div = $('#' + div);
   linkObjectView = object + "/" + object;
 
@@ -293,13 +308,12 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
       }
       this.div.html(html);
       if(pagination == true && data[this.objects].length > 0) {
-        paginationLinks = $("#pagination_links");
+        paginationLinks = $("#" + pagination_div);
         html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
-        do {
-          i = 1;
+
+        for(i=1; i <= data["pagination"].pagesNumber+1; i++){
           html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
-          i++;
-        } while (i <= data["pagination"].pagesNumber)
+        }
         html += "<input type='button' class='button' value='Next' id='but_next' />"
         paginationLinks.html(html);
       }
@@ -624,4 +638,34 @@ function initialisationParamTiny(){
     }
   );
 
+}
+
+$.fn.enterKey = function (fnc) {
+    return this.each(function () {
+        $(this).keypress(function (ev) {
+            var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+            if (keycode == '13') {
+                fnc.call(this, ev);
+            }
+        })
+    })
+}
+
+function redirect (url) {
+    var ua        = navigator.userAgent.toLowerCase(),
+        isIE      = ua.indexOf('msie') !== -1,
+        version   = parseInt(ua.substr(4, 2), 10);
+
+    // Internet Explorer 8 and lower
+    if (isIE && version < 9) {
+        var link = document.createElement('a');
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+    }
+
+    // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like Internet Explorer 8 & lower does)
+    else {
+        window.location.href = url;
+    }
 }

@@ -424,7 +424,7 @@ html,body
   right: 35px; top: 75px;
 }
 
-#front-content .title {
+.title {
   margin-top: 35px;
   font-size: $font-size-L;
   color: $color-secondary;
@@ -1276,4 +1276,8 @@ textarea {
 
 .color-red {
   color: red;
+}
+
+#front-global-search {
+  padding-bottom: 35px;
 }

@@ -37,7 +37,7 @@
                     <?php } ?>
                     <div class="wrapper-icon">
                         <i class="fas fa-search icon-left"></i>
-                        <input class="input-medium input-icon" type="text">
+                        <input id="global-search" class="input-medium input-icon" type="text">
                     </div>
                   </div>
               </nav>
@@ -88,6 +88,13 @@
                         <figure>
                           <a href=""><i class="fas fa-envelope"></i></a>
                           <figcaption>Email</figcaption>
+                        </figure>
+                      </li>
+
+                      <li>
+                        <figure>
+                          <a href="" target="_blank"><i class="fas fa-rss-square"></i></a>
+                          <figcaption>RSS</figcaption>
                         </figure>
                       </li>
                 </ul>
