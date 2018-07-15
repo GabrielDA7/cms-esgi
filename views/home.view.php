@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div id="recent-chapter" class="row M--between">
+    <div id="recent-chapter" class="row">
     </div>
 
 
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div id="recent-trainning" class="row M--between">
+    <div id="recent-trainning" class="row">
     </div>
 
 
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div id="recent-video" class="row M--between">
+    <div id="recent-video" class="row">
     </div>
 </section>
 

@@ -8,7 +8,7 @@ class ViewUtils {
 	}
 
 	public static function getSuccess($errors) {
-		if ($errors == FALSE) {
+		if (isset($errors) && $errors == FALSE) {
 			include_once MODALS_FOLDER_NAME . "/success.mdl.php";
 		}
 	}

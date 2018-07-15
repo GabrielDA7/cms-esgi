@@ -257,6 +257,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
     success:function(data) {
       data = JSON.parse(data);
       var html = '';
+      var resultRequest = '';
       if( data[this.objects].length > 0) {
         link = this.linkObjectView;
         $.each(data[this.objects], function(index, element) {
@@ -286,16 +287,19 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
             html += " </div>";
         }, link);
       } else {
-        html = "No content";
+        html = "<div class='no-content'>" +
+                "<h3>No content yet !</h3>" +
+               "</div>";
       }
       this.div.html(html);
-
-      if(pagination == true) {
+      if(pagination == true && data[this.objects].length > 0) {
         paginationLinks = $("#pagination_links");
         html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
-        for(var i = 1; i<= data["pagination"].pagesNumber; i++){
+        do {
+          i = 1;
           html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
-        }
+          i++;
+        } while (i <= data["pagination"].pagesNumber)
         html += "<input type='button' class='button' value='Next' id='but_next' />"
         paginationLinks.html(html);
       }
@@ -327,13 +331,13 @@ function load_data_table(page, limit, action, order='desc', column_name) {
     url = dirname + "ajax/list?object=" + object + "&page=" + page + "&itemsPerPage=" + limit;
   }
 
-
   $.ajax({
     url: url,
     success:function(data) {
       data = JSON.parse(data);
       var html;
       var cpt;
+
       if( data[objects].length > 0) {
         $.each(data[objects], function (index, element) {
           cpt = index+1;
@@ -344,9 +348,15 @@ function load_data_table(page, limit, action, order='desc', column_name) {
                  html += "<td><a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
                  html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='delete'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
               } else {
-                html += "<td><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table'type='submit' name='share'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
+                html += "<td><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='share'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='status' value='" + element.status + "'/><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
                 html +="<a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
                 html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='delete'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
+              }
+            } else if(k == "status") {
+              if(element.status == 1) {
+                html+="<td class='color-green'><i class='fas fa-circle'></i></td>";
+              } else {
+                html+="<td class='color-red'><i class='fas fa-circle'></i></td>";
               }
             } else {
               if ( $.isArray(element[k])) {
@@ -368,7 +378,6 @@ function load_data_table(page, limit, action, order='desc', column_name) {
         html+="<td colspan='5'>No results</td>";
         html+="</tr>";
       }
-
       tb.html(html);
       $('.count-all-element').html(data["itemsNumber"]);
       $('.count-page-element').html(cpt);

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <rss version="2.0">
   <channel>
-    <title>Page list</title>
-    <description>List of video</description>
+    <title>Page search</title>
+    <description>Search of video</description>
     <link>localhost/lab/uteach/video/list</link>
     <item>
       <id>3</id>

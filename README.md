@@ -67,7 +67,6 @@ view logs (see all logs files and can download them)
 VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper
   arreter les requetes quand il n'y a pas de resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
 
-
 Search nav bar
 	3 search ajax request :
 		training / chapter / video
@@ -87,9 +86,9 @@ View edit
 List comments
 Comment use modal
 
+////
 publish content add hidden input with name=status and value = 1 or 0 depend on actual status
-
-Add edition tools
+////
 
 go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
 
@@ -99,13 +98,10 @@ installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
 
 statistic
   put aaa($this->data); in indexController statisticAction above view
-<<<<<<< HEAD
-=======
 
->>>>>>> b0fadf0cda012a72944ffabc0b028bb5d01e216e
-parameters
-  edit dbname / dbhost / dbuser / dbport / language
-  
+vue parameters edit dbname / dbhost / dbuser / dbport / language
+
+-- DONE -- Add edition tools
 -- DONE -- errors == false print "the content has been added"
 -- DONE -- 404 page
 -- DONE -- modify every references to author in js file and replace by element.user.userName
