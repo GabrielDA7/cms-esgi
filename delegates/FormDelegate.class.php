@@ -13,9 +13,11 @@ class FormDelegate {
 		$data['errors'] = null;
 		if(isset($params['POST']['submit'])) {
 			$data['errors'] = $this->checkForm($data['config'], $params["POST"], $params['FILES']);
-			if ($this->objectName === USER_CLASS_NAME && ClassUtils::getCallingFunction() == "addAction") {
+			if ($this->objectName === USER_CLASS_NAME && ClassUtils::getCallingFunction() == "addAction") 
 				$this->checkUserNameAndEmailDisponibility($data['errors'], $params["POST"]);
-			}
+			
+			if ($this->objectName === CHAPTER_CLASS_NAME && ClassUtils::getCallingFunction() == "addAction") 
+				$this->checkChapterNumberDisponibility($data['errors'], $params["POST"]);
 		}
 	}
 
@@ -64,20 +66,27 @@ class FormDelegate {
 	}
 
 	private function checkUserNameAndEmailDisponibility(&$errors, $post) {
-		if (isset($post['userName'])) {
-			$this->checkColumnDisponibility("userName", $errors, $post);
-		}
-		if (isset($post['email'])) {
-			$this->checkColumnDisponibility("email", $errors, $post);
+		$user = new User();
+		if (isset($post['userName']))
+			$this->checkColumnDisponibility("userName", $errors, $post, $user);
+
+		if (isset($post['email']))
+			$this->checkColumnDisponibility("email", $errors, $post, $user);
+	}
+
+	private function checkChapterNumberDisponibility(&$errors, $post) {
+		if (isset($post['number']) && isset($post['trainning_id'])) {
+			$chapter = New Chapter();
+			$chapter->setTrainningId($post['trainning_id']);
+			$this->checkColumnDisponibility("number", $errors, $post, $chapter);
 		}
 	}
 
-	private function checkColumnDisponibility($columnName, &$errors, $post) {
-		$user = new User();
+	private function checkColumnDisponibility($columnName, &$errors, $post, $object) {
 		$setter = "set" . ucfirst($columnName);
-		$user->$setter($post[$columnName]);
-		$user = $user->getWithParameters();
-		if (!empty($user)) {
+		$object->$setter($post[$columnName]);
+		$object = $object->getWithParameters();
+		if (!empty($object)) {
 			$errors[] = $columnName . " est déjà utilisé";
 		}
 	}

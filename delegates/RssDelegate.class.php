@@ -23,7 +23,7 @@ class RssDelegate {
 		$title = "Page " . $action;
 		$desc = ucfirst($action) . " of " . $this->objectName;
 		$link = $_SERVER['SERVER_NAME'] . DIRNAME . $this->objectName . "/list";
-		return ["title" => $title, "desc" => $desc, "link" => $link];
+		return ["title" => $title, "description" => $desc, "link" => $link];
 	}
 
 	private function createXmlFile() {
