@@ -131,6 +131,7 @@ class BaseSql extends QueryConstructorSql {
 				$foreignObject = $foreignObject->getById();
 				if ($objectName == USER_CLASS_NAME) {
 					$tempObject = new User();
+					$tempObject->setId($foreignObject->getId());
 					$tempObject->setUserName($foreignObject->getUsername());
 					$tempObject->setAvatar($foreignObject->getAvatar());
 					$foreignObject = $tempObject;

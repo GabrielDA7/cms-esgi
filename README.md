@@ -93,6 +93,7 @@ Add edition tools
 
 go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
 
+add button or href to see RSS flux -> see files in bin/xml/
 
 statistic
   put aaa($this->data); in indexController statisticAction above view 

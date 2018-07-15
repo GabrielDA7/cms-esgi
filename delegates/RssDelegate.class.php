@@ -67,18 +67,23 @@ class RssDelegate {
         ClassUtils::removeDBColumns($columns);
 
         foreach ($columns as $key => $value) {
-        	if (!is_array($value) && !is_object($value) && isset($value)) {
-	        	$element = $xmlFile->createElement($key);
-		        $element = $item->appendChild($element);
-		        $textElement = $xmlFile->createTextNode($value);
-		        $textElement = $element->appendChild($textElement);
-		    }
+        	if (!is_array($value) && isset($value)) {
+        		if (!is_object($value)) {
+		        	$element = $xmlFile->createElement($key);
+			        $element = $item->appendChild($element);
+			        $textElement = $xmlFile->createTextNode($value);
+			        $textElement = $element->appendChild($textElement);
+        		} elseif ($key != "db") {
+        			$this->addItem($xmlFile, $item, $value);
+		    	}
+        	}
         }
-		$this->computeLinkToContent($xmlFile, $item, $columns['id']);    
+		$this->computeLinkToContent($xmlFile, $item, $columns);    
 	}
 
-	private function computeLinkToContent(&$xmlFile, &$item, $id) {
-		$urlOfobject = $_SERVER['SERVER_NAME'] . DIRNAME . $this->objectName . "/" . $this->objectName . "?id=" . $id;
+	private function computeLinkToContent(&$xmlFile, &$item, $columns) {
+		$objectName = strtolower($columns['objectName']);
+		$urlOfobject = $_SERVER['SERVER_NAME'] . DIRNAME . $objectName . "/" . $objectName . "?id=" . $columns['id'];
         $link = $xmlFile->createElement("link");
         $link = $item->appendChild($link);
         $url = $xmlFile->createTextNode($urlOfobject);
