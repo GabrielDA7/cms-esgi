@@ -31,7 +31,11 @@ class ObjectDelegate {
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
 
-	public function getAll(&$data) {
+	public function getAll(&$data, $params) {
+		if (isset($params['GET']['status']) && $params['GET']['status'] == PUBLISHED_CONTENT) {
+			$this->getByParameters($data, $params['GET']);
+			return;
+		}
 		$object  = $data[$this->lowerCaseFirstObjectName];
 		$objects = $object->getAll($data);
 		$data['itemsNumber'] = $object->countItems();

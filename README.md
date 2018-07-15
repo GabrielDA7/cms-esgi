@@ -17,12 +17,6 @@ PHP > 7
 
 paypal
 
-publish content (chapter / trainning)
-  status in db 0 disabled 1 enabled
-  ajax list front -> don't show disabled
-
-
-
 replace space by underscore (file)
 
 passowrd -> sha1 + grain de sel
@@ -61,6 +55,9 @@ view logs (see all logs files and can download them)
             every going to statistic page -> insert stat OR every day ?
             statistic page get the latest stat
             set machine ip
+-- DONE -- publish content (chapter / trainning / video)
+            status in db 0 disabled 1 enabled
+            ajax list front -> don't show disabled
 
                               |FRONT|
 

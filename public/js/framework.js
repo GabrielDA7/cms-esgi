@@ -245,7 +245,7 @@ $(function() {
 
 function load_data_list_card(page,order='desc', column_name, object, itemsPerPage=30, pagination=true,div){
   objects = object + 's';
-  url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage;
+  url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
   div = $('#' + div);
   linkObjectView = object + "/" + object;
 
