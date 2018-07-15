@@ -18,11 +18,8 @@ class VideoController {
 		$this->statisticDelegate = new StatisticDelegate(VIDEO_CLASS_NAME);
 	}
 
-	public function indexAction($params) {
-	}
-
 	public function addAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, TRUE, VIDEO_ADD_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, VIDEO_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, VIDEO_FOLDER_NAME);
 		$this->objectDelegate->add($this->data, $params);
@@ -34,7 +31,7 @@ class VideoController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE, VIDEO_EDIT_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, VIDEO_EDIT_VIEWS);
 		$this->objectDelegate->getById($this->data, $params);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, VIDEO_FOLDER_NAME);
@@ -52,20 +49,22 @@ class VideoController {
 	}
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_LIST_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, VIDEO_LIST_VIEWS);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}
 
-	/**
-	 * Get the video by id
-	 */
+	public function publishAction($params) {
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE);
+		$this->objectDelegate->publishContent($this->data, $params);
+	}
+
 	public function videoAction($params) {
 		if (!isset($params['GET']['id'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, FALSE, VIDEO_VIDEO_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, VIDEO_VIDEO_VIEWS);
 		$this->objectDelegate->getById($this->data, $params);
 		$this->statisticDelegate->processAdd($params['GET']);
 		$view = new View($this->data);

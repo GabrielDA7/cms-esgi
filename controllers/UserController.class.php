@@ -18,20 +18,18 @@ class UserController {
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(USER_CLASS_NAME);
 	}
 
-	public function indexAction($params) {}
-
 	public function userAction($params) {
 		if (!isset($params['GET']['id']) && !isset($_SESSION['userId'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_USER_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_USER_VIEWS);
 		$this->userDelegate->getById($this->data, $params['GET']);
 		$view = new View($this->data);
 	}
 
 	public function addAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_ADD_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, AVATAR_FOLDER_NAME);
 		$this->userDelegate->add($this->data, $params);
@@ -43,7 +41,7 @@ class UserController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_EDIT_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, TRUE, USER_EDIT_VIEWS);
 		$this->userDelegate->getById($this->data, $params['POST']);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, AVATAR_FOLDER_NAME);
@@ -56,18 +54,18 @@ class UserController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE);
 		$this->userDelegate->delete($params, "", USER_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, TRUE, USER_LIST_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, USER_LIST_VIEWS);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}
 
 	public function loginAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_LOGIN_VIEWS, LOGIN_TEMPLATES);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_LOGIN_VIEWS, LOGIN_TEMPLATES);
 		$this->formDelegate->process($this->data, $params);
 		$this->userDelegate->login($this->data, $params);
 		$view = new View($this->data);
@@ -88,14 +86,14 @@ class UserController {
 		if (isset($params['POST']['id']) && isset($params['POST']['emailConfirm'])) {
 			$this->userDelegate->checkEmailConfirmation($this->data, $params);
 		}
-		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_CONFIRMATION_EMAIL_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_CONFIRMATION_EMAIL_VIEWS);
 		$this->userDelegate->getByParameters($this->data, $params['GET']);
 		$this->emailDelegate->sendEmailConfirmation($this->data);
 		$view = new View($this->data);
 	}
 
 	public function passwordResetEmailAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PASSWORD_RESET_EMAIL_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_PASSWORD_RESET_EMAIL_VIEWS);
 		$this->formDelegate->process($this->data, $params);
 		$view = new View($this->data);
 	}
@@ -106,13 +104,13 @@ class UserController {
 			RedirectUtils::redirect404();
 		}
 		if (isset($params['POST']['email'])) {
-			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS);
+			$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS);
 			$this->userDelegate->getByParameters($this->data, $params['POST']);
 			$this->emailDelegate->sendPasswordReset($this->data);
 			$this->userDelegate->update($this->data, $params);
 			$view = new View($this->data);
 		} else {
-			$this->authenticationDelegate->process($this->data, $params, FALSE, USER_PASSWORD_RESET_VIEWS);
+			$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_PASSWORD_RESET_VIEWS);
 			$this->userDelegate->getById($this->data, $params['POST']);
 			$this->formDelegate->process($this->data, $params);
 			$this->userDelegate->checkPasswordReset($this->data, $params);

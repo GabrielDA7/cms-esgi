@@ -6,6 +6,7 @@ class Chapter extends BaseSql {
 	protected $title;
 	protected $image;
 	protected $dateInserted;
+	protected $status;
 
 	protected $parts = [];
 
@@ -158,6 +159,7 @@ class Chapter extends BaseSql {
     public function getUserId()      { return $this->user_id;      }
     public function getUser()	     { return $this->user;	       }
     public function getDateInserted(){ return $this->dateInserted; }
+    public function getStatus() 	 { return $this->status;       }
 
 	public function setId($id) 					  { $this->id = $id; 					 }
 	public function setNumber($number) 		  	  { $this->number = $number; 			 }
@@ -169,5 +171,5 @@ class Chapter extends BaseSql {
     public function setUserId($user_id) 		  { $this->user_id = $user_id;     		 }
     public function setUser($user) 				  { $this->user = $user;   				 }
     public function setDateInserted($dateInserted){ $this->dateInserted = $dateInserted; }
-
+    public function setStatus($status) 		      { $this->status = $status; 		     }
 }

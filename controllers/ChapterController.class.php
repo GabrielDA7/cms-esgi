@@ -18,11 +18,8 @@ class ChapterController {
 		$this->statisticDelegate = new StatisticDelegate(CHAPTER_CLASS_NAME);
 	}
 
-	public function indexAction($params) {
-	}
-
 	public function addAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, TRUE, CHAPTER_ADD_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, CHAPTER_ADD_VIEWS);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, CHAPTER_IMAGES_FOLDER_NAME);
 		$this->objectDelegate->add($this->data, $params);
@@ -34,7 +31,7 @@ class ChapterController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE, CHAPTER_EDIT_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, CHAPTER_EDIT_VIEWS);
 		$this->objectDelegate->getById($this->data, $params, [PART_CLASS_NAME]);
 		$this->formDelegate->process($this->data, $params);
 		$this->objectDelegate->update($this->data, $params, "", CHAPTER_LIST_BACK_LINK);
@@ -51,9 +48,14 @@ class ChapterController {
 	}
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, FALSE, CHAPTER_LIST_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, CHAPTER_LIST_VIEWS);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
+	}
+
+	public function publishAction($params) {
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE);
+		$this->objectDelegate->publishContent($this->data, $params);
 	}
 
 	public function chapterAction($params) {
@@ -61,7 +63,7 @@ class ChapterController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, FALSE, CHAPTER_CHAPTER_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, CHAPTER_CHAPTER_VIEWS);
 		$this->objectDelegate->getById($this->data, $params, [PART_CLASS_NAME]);
 		$this->statisticDelegate->processAdd($params['GET']);
 		$view = new View($this->data);

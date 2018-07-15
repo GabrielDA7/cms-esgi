@@ -31,7 +31,11 @@ class ObjectDelegate {
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
 
-	public function getAll(&$data) {
+	public function getAll(&$data, $params) {
+		if (isset($params['GET']['status']) && $params['GET']['status'] == PUBLISHED_CONTENT) {
+			$this->getByParameters($data, $params['GET']);
+			return;
+		}
 		$object  = $data[$this->lowerCaseFirstObjectName];
 		$objects = $object->getAll($data);
 		$data['itemsNumber'] = $object->countItems();
@@ -62,6 +66,13 @@ class ObjectDelegate {
 			$this->setUserIdWithSession($childObject);
 			$childObject->insert();
 		}
+	}
+
+	public function publishContent($data, $params) {
+		$object = $data[$this->lowerCaseFirstObjectName];
+		$object->setStatus($params['POST']['status']);
+		$object->update();
+		RedirectUtils::directRedirect($_SERVER['HTTP_REFERER']);
 	}
 
 	private function setUserIdWithSession($object) {

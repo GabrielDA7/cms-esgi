@@ -17,11 +17,8 @@ PHP > 7
 
 paypal
 
-publish content (chapter / trainning)
-  status in db 0 disabled 1 enabled
-  ajax list front -> don't show disabled
-
-
+premium
+  new function in userDelegate
 
 replace space by underscore (file)
 
@@ -61,6 +58,9 @@ view logs (see all logs files and can download them)
             every going to statistic page -> insert stat OR every day ?
             statistic page get the latest stat
             set machine ip
+-- DONE -- publish content (chapter / trainning / video)
+            status in db 0 disabled 1 enabled
+            ajax list front -> don't show disabled
 
                               |FRONT|
 
@@ -87,14 +87,22 @@ View edit
 List comments
 Comment use modal
 
+publish content add hidden input with name=status and value = 1 or 0 depend on actual status
+
 Add edition tools
 
 go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
 
 add button or href to see RSS flux -> see files in bin/xml/
 
+installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
+
 statistic
   put aaa($this->data); in indexController statisticAction above view
+<<<<<<< HEAD
+=======
+
+>>>>>>> b0fadf0cda012a72944ffabc0b028bb5d01e216e
 parameters
   edit dbname / dbhost / dbuser / dbport / language
   

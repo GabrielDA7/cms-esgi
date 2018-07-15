@@ -30,7 +30,7 @@ class AjaxController {
 
 	public function listAction($params) {
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
-		$this->objectDelegate->getAll($this->data);
+		$this->objectDelegate->getAll($this->data, $params);
 		$this->listDisplayDataDelegate->process($this->data);
 		$this->rssDelegate->process($this->data);
 		$array = FormatUtils::formatDataToArray($this->data);

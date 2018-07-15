@@ -6,6 +6,7 @@ class Video extends BaseSql {
 	protected $url;
 	protected $description;
 	protected $dateInserted;
+	protected $status;
 
 	protected $part_id;
 	protected $user_id;
@@ -90,6 +91,7 @@ class Video extends BaseSql {
     public function getPartId() 	 { return $this->part_id;     }
     public function getUser()		 { return $this->user;	      }
     public function getDateInserted(){ return $this->dateInserted;}
+    public function getStatus() 	 { return $this->status;      }
 
     public function setId($id)              	   { $this->id = $id;                    }
     public function setTitle($title)        	   { $this->title = $title;         	 }
@@ -99,4 +101,5 @@ class Video extends BaseSql {
     public function setPartId($part_id) 		   { $this->part_id = $part_id; 		 }
     public function setUser($user) 				   { $this->user = $user;			     }
     public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted;}
+    public function setStatus($status) 			   { $this->status = $status; 			 }
 }
