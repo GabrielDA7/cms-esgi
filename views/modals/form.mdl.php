@@ -1,4 +1,5 @@
-<form method="<?= $config["config"]["method"] ?>" action="<?= $config["config"]["action"] ?>" enctype="<?= $config["config"]["enctype"] ?>">
+<form method="<?= $config["config"]["method"] ?>" action="<?= $config["config"]["action"] ?>" 
+	<?= (isset($config["config"]["enctype"])) ? "enctype='".$config["config"]["enctype"]."'>" : ">"; ?>
 
 	<?php foreach ($config["input"] as $name => $attributs):?>
 		<?php if(isset($attributs["label"]) && !empty($attributs["label"])): ?>

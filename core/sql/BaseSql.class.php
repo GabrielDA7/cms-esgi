@@ -68,9 +68,13 @@ class BaseSql extends QueryConstructorSql {
 		return $objectList;
 	}
 
-	public function getWithParameters() {
+	public function getWithParameters($data) {
+		if (isset($data)) {
+			$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
+			$limit = (isset($data['limit'])) ? $data['limit'] : null;
+		}
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = $this->constructSelectQuery($this->table, $this->columns);
+		$queryString = $this->constructSelectQuery($this->table, $this->columns, FALSE, $orderBy, $limit);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 		$response = $query->fetchAll();

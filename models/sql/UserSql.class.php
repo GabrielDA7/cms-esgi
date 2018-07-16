@@ -6,7 +6,7 @@ class UserSql extends BaseSql {
 	}
 
 	public function login() {
-		$user = $this->getWithParameters();
+		$user = $this->getWithParameters(null);
 		if (!empty($user)) {
 			$this->setSession($user[0]);
 		} else {
@@ -48,7 +48,7 @@ class UserSql extends BaseSql {
 
 	private function checkAdminStatus($id) {
 		$adminUser = ClassUtils::constructObjectWithParameters(array("id" => $id, "role" => ADMIN_ROLE), USER_CLASS_NAME);
-		$adminUser = $adminUser->getWithParameters();
+		$adminUser = $adminUser->getWithParameters(null);
 		return (!empty($adminUser)? TRUE : FALSE);
 	}
 }

@@ -76,6 +76,8 @@ define("INSTALLATION_ADMIN_LINK", "installation/admin");
 
 define("STATISTIC_INDEX_BACK_LINK", "index/statistic/back");
 
+define("PREMIUM_LIST_FRONT_LINK", "premium");
+
 define("USER_USER_FRONT_LINK", "user/user");
 define("USER_USER_BACK_LINK", "user/user/back");
 define("USER_EDIT_FRONT_LINK", "user/edit");

@@ -102,7 +102,7 @@ class classUtils {
 		$foreignKeyOfParentObject = [lcfirst(get_class($object)) . "_id"  => $object->getId()];
 	    foreach ($othersObjectsColumns as $objectName) {
 	      	$objectWithForeignKeyValue = ClassUtils::constructObjectWithParameters($foreignKeyOfParentObject, $objectName);
-	      	$referencedObjects = $objectWithForeignKeyValue->getWithParameters();
+	      	$referencedObjects = $objectWithForeignKeyValue->getWithParameters(null);
 	      	$setColumn = "set" . ucfirst($objectName) . "s";
 	      	if (method_exists($object, $setColumn)) {
 	      		$object->$setColumn($referencedObjects);

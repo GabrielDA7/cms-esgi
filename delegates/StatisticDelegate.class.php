@@ -28,7 +28,7 @@ class StatisticDelegate {
 	}
 
 	private function isViewAlreadyExists() {
-		$result = $this->statisticObject->getWithParameters();
+		$result = $this->statisticObject->getWithParameters(null);
 		if (!empty($result))
 			return TRUE;
 		return FALSE;

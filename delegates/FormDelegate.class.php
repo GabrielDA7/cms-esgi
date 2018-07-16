@@ -85,7 +85,7 @@ class FormDelegate {
 	private function checkColumnDisponibility($columnName, &$errors, $post, $object) {
 		$setter = "set" . ucfirst($columnName);
 		$object->$setter($post[$columnName]);
-		$object = $object->getWithParameters();
+		$object = $object->getWithParameters(null);
 		if (!empty($object)) {
 			$errors[] = $columnName . " est déjà utilisé";
 		}

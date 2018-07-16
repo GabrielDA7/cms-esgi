@@ -27,7 +27,8 @@ class ObjectDelegate {
 	public function getByParameters(&$data, $params) {
 		$object = $data[$this->lowerCaseFirstObjectName];
 		ClassUtils::setObjectColumns($object, $params);
-		$objects = $object->getWithParameters();
+		$objects = $object->getWithParameters($data);
+		$data['itemsNumber'] = $object->countItems();
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
 
