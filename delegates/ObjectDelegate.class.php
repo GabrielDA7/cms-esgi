@@ -92,6 +92,10 @@ class ObjectDelegate {
 	}
 
 	public function search(&$data, $params) {
+		if (isset($params['GET']['status']) && $params['GET']['status'] == PUBLISHED_CONTENT) {
+			$this->getByParameters($data, $params['GET']);
+			return;
+		}
 		$object = $data[$this->lowerCaseFirstObjectName];
 		$columnsToSearch = $object->getColumnsToSearch();
 		$objects = $object->getByWord($params['GET']['search'], $columnsToSearch, $data);
