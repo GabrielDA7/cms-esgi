@@ -9,6 +9,7 @@ class CommentController {
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->objectDelegate = new ObjectDelegate($this->data, COMMENT_CLASS_NAME);
+		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(COMMENT_CLASS_NAME);
 	}
 
 	public function responseAction($params) {
@@ -37,7 +38,13 @@ class CommentController {
 		}
 		$this->data['errors'] = FALSE;
 		$this->objectDelegate->update($this->data, $params);
-		RedirectUtils::directRedirect($_SERVER['HTTP_REFERER']);		
+		RedirectUtils::directRedirect($_SERVER['HTTP_REFERER']);
+	}
+
+	public function reportListAction($params) {
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, COMMENT_LIST_REPORT_VIEWS);
+		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
+		$view = new View($this->data);
 	}
 
 	public function deleteAction($params) {

@@ -313,6 +313,10 @@ function getCommentsSignaled(number = false, div){
         } else {
           divTofilled.html(data['comments'].length);
         }
+      } else {
+          $.each(dataComments, function(index, element) {
+            
+          });
       }
     }
   });

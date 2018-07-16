@@ -112,6 +112,8 @@ define("VIDEO_LIST_FRONT_LINK", "video/list");
 define("VIDEO_LIST_BACK_LINK", "video/list/back");
 define("VIDEO_ADD_BACK_LINK", "video/add/back");
 
+define("COMMENT_REPORT_BACK_LINK", "comment/reportList/back");
+
 define("INDEX_ERROR_LINK", "index/error");
 
 define("FACEBOOK_LINK", "");
@@ -164,6 +166,8 @@ define("CHAPTER_CHAPTER_VIEWS", ["front"=> "chapterChapter", "back" => "chapterC
 define("CHAPTER_ADD_VIEWS",     ["front"=> "", 			     "back" => "addChapterBack"]);
 define("CHAPTER_LIST_VIEWS",    ["front"=> "listChapter",    "back" => "listChapterBack"]);
 define("CHAPTER_EDIT_VIEWS",    ["front"=> "",    			 "back" => "editChapterBack"]);
+
+define("COMMENT_LIST_REPORT_VIEWS",    ["front"=> "",    			 "back" => "listReportCommentBack"]);
 
 /******************************
 ********** ROLE ***************
