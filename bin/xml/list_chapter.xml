@@ -5,530 +5,12 @@
     <description>List of chapter</description>
     <link>localhost/lab/uteach/chapter/list</link>
     <item>
-      <id>3</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 22:52:49</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=3</link>
-    </item>
-    <item>
-      <id>4</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 22:53:03</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=4</link>
-    </item>
-    <item>
-      <id>5</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:26:34</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=5</link>
-    </item>
-    <item>
-      <id>7</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:32:09</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=7</link>
-    </item>
-    <item>
-      <id>8</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:33:25</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=8</link>
-    </item>
-    <item>
-      <id>9</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:33:54</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=9</link>
-    </item>
-    <item>
-      <id>10</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:34:28</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=10</link>
-    </item>
-    <item>
-      <id>11</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:34:39</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=11</link>
-    </item>
-    <item>
-      <id>12</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:35:03</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=12</link>
-    </item>
-    <item>
-      <id>13</id>
-      <number>1</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:35:39</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=13</link>
-    </item>
-    <item>
-      <id>14</id>
-      <number>2</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:36:45</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=14</link>
-    </item>
-    <item>
-      <id>15</id>
-      <number>2</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:58:48</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=15</link>
-    </item>
-    <item>
-      <id>16</id>
-      <number>2</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:59:00</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=16</link>
-    </item>
-    <item>
-      <id>17</id>
-      <number>2</number>
-      <title>zzzrttrzztr</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 23:59:45</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=17</link>
-    </item>
-    <item>
       <id>18</id>
       <number>2</number>
       <title>zzzrttrzztr</title>
       <image>public/img/chapters/711px-PHP-logo.svg.png</image>
       <dateInserted>2018-07-14 00:00:04</dateInserted>
-      <status>1</status>
+      <status>0</status>
       <trainning_id>36</trainning_id>
       <item>
         <id>36</id>
@@ -536,7 +18,7 @@
         <description>zetrzert</description>
         <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
         <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
+        <status>1</status>
         <user_id>25</user_id>
         <item>
           <id>25</id>
@@ -560,11 +42,11 @@
       <link>localhost/lab/uteach/chapter/chapter?id=18</link>
     </item>
     <item>
-      <id>19</id>
+      <id>17</id>
       <number>2</number>
       <title>zzzrttrzztr</title>
       <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-14 00:00:28</dateInserted>
+      <dateInserted>2018-07-13 23:59:45</dateInserted>
       <status>1</status>
       <trainning_id>36</trainning_id>
       <item>
@@ -573,7 +55,7 @@
         <description>zetrzert</description>
         <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
         <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
+        <status>1</status>
         <user_id>25</user_id>
         <item>
           <id>25</id>
@@ -594,14 +76,14 @@
         <link>localhost/lab/uteach/user/user?id=25</link>
       </item>
       <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=19</link>
+      <link>localhost/lab/uteach/chapter/chapter?id=17</link>
     </item>
     <item>
-      <id>20</id>
+      <id>16</id>
       <number>2</number>
-      <title>zttzetzert</title>
+      <title>zzzrttrzztr</title>
       <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-14 00:01:05</dateInserted>
+      <dateInserted>2018-07-13 23:59:00</dateInserted>
       <status>1</status>
       <trainning_id>36</trainning_id>
       <item>
@@ -610,7 +92,7 @@
         <description>zetrzert</description>
         <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
         <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
+        <status>1</status>
         <user_id>25</user_id>
         <item>
           <id>25</id>
@@ -631,14 +113,14 @@
         <link>localhost/lab/uteach/user/user?id=25</link>
       </item>
       <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=20</link>
+      <link>localhost/lab/uteach/chapter/chapter?id=16</link>
     </item>
     <item>
-      <id>21</id>
+      <id>15</id>
       <number>2</number>
-      <title>zttzetzert</title>
+      <title>zzzrttrzztr</title>
       <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-14 00:01:11</dateInserted>
+      <dateInserted>2018-07-13 23:58:48</dateInserted>
       <status>1</status>
       <trainning_id>36</trainning_id>
       <item>
@@ -647,7 +129,7 @@
         <description>zetrzert</description>
         <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
         <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
+        <status>1</status>
         <user_id>25</user_id>
         <item>
           <id>25</id>
@@ -668,14 +150,14 @@
         <link>localhost/lab/uteach/user/user?id=25</link>
       </item>
       <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=21</link>
+      <link>localhost/lab/uteach/chapter/chapter?id=15</link>
     </item>
     <item>
-      <id>22</id>
+      <id>14</id>
       <number>2</number>
-      <title>zttzetzert</title>
+      <title>zzzrttrzztr</title>
       <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-14 00:01:20</dateInserted>
+      <dateInserted>2018-07-13 23:36:45</dateInserted>
       <status>1</status>
       <trainning_id>36</trainning_id>
       <item>
@@ -684,7 +166,7 @@
         <description>zetrzert</description>
         <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
         <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
+        <status>1</status>
         <user_id>25</user_id>
         <item>
           <id>25</id>
@@ -705,95 +187,23 @@
         <link>localhost/lab/uteach/user/user?id=25</link>
       </item>
       <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=22</link>
+      <link>localhost/lab/uteach/chapter/chapter?id=14</link>
     </item>
     <item>
-      <id>23</id>
-      <number>2</number>
-      <title>zttzetzert</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-14 00:01:26</dateInserted>
-      <status>1</status>
-      <trainning_id>36</trainning_id>
-      <item>
-        <id>36</id>
-        <title>ztzet</title>
-        <description>zetrzert</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:12</dateInserted>
-        <status>0</status>
-        <user_id>25</user_id>
-        <item>
-          <id>25</id>
-          <userName>lol</userName>
-          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=25</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=23</link>
-    </item>
-    <item>
-      <id>24</id>
-      <number>5</number>
-      <title>ekjrrenjfnjref</title>
-      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-14 20:35:06</dateInserted>
-      <status>1</status>
-      <trainning_id>37</trainning_id>
-      <item>
-        <id>37</id>
-        <title>hgvgvgh</title>
-        <description>jhhhvhg</description>
-        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-13 22:11:37</dateInserted>
-        <status>0</status>
-        <user_id>58</user_id>
-        <item>
-          <id>58</id>
-          <userName>ekjgnjkrengjknernge</userName>
-          <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=58</link>
-        </item>
-        <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=37</link>
-      </item>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lol</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=24</link>
-    </item>
-    <item>
-      <id>25</id>
+      <id>13</id>
       <number>1</number>
-      <title>zezre</title>
-      <dateInserted>2018-07-15 17:06:52</dateInserted>
+      <title>zzzrttrzztr</title>
+      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
+      <dateInserted>2018-07-13 23:35:39</dateInserted>
       <status>1</status>
-      <trainning_id>41</trainning_id>
+      <trainning_id>36</trainning_id>
       <item>
-        <id>41</id>
-        <title>AAAAAA</title>
-        <description>tyhrthyr</description>
+        <id>36</id>
+        <title>ztzet</title>
+        <description>zetrzert</description>
         <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-        <dateInserted>2018-07-15 01:02:05</dateInserted>
-        <status>0</status>
+        <dateInserted>2018-07-13 22:11:12</dateInserted>
+        <status>1</status>
         <user_id>25</user_id>
         <item>
           <id>25</id>
@@ -803,7 +213,7 @@
           <link>localhost/lab/uteach/user/user?id=25</link>
         </item>
         <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=41</link>
+        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
       </item>
       <user_id>25</user_id>
       <item>
@@ -814,20 +224,33 @@
         <link>localhost/lab/uteach/user/user?id=25</link>
       </item>
       <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=25</link>
+      <link>localhost/lab/uteach/chapter/chapter?id=13</link>
     </item>
     <item>
-      <id>26</id>
-      <title>dsdq</title>
-      <dateInserted>2018-07-15 22:41:27</dateInserted>
+      <id>12</id>
+      <number>1</number>
+      <title>zzzrttrzztr</title>
+      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
+      <dateInserted>2018-07-13 23:35:03</dateInserted>
       <status>1</status>
+      <trainning_id>36</trainning_id>
       <item>
+        <id>36</id>
+        <title>ztzet</title>
+        <description>zetrzert</description>
+        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
+        <dateInserted>2018-07-13 22:11:12</dateInserted>
+        <status>1</status>
+        <user_id>25</user_id>
         <item>
+          <id>25</id>
+          <userName>lol</userName>
+          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
           <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=</link>
+          <link>localhost/lab/uteach/user/user?id=25</link>
         </item>
         <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=</link>
+        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
       </item>
       <user_id>25</user_id>
       <item>
@@ -838,20 +261,33 @@
         <link>localhost/lab/uteach/user/user?id=25</link>
       </item>
       <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=26</link>
+      <link>localhost/lab/uteach/chapter/chapter?id=12</link>
     </item>
     <item>
-      <id>27</id>
-      <title>dsdqqsdqsd</title>
-      <dateInserted>2018-07-15 22:41:32</dateInserted>
+      <id>11</id>
+      <number>1</number>
+      <title>zzzrttrzztr</title>
+      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
+      <dateInserted>2018-07-13 23:34:39</dateInserted>
       <status>1</status>
+      <trainning_id>36</trainning_id>
       <item>
+        <id>36</id>
+        <title>ztzet</title>
+        <description>zetrzert</description>
+        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
+        <dateInserted>2018-07-13 22:11:12</dateInserted>
+        <status>1</status>
+        <user_id>25</user_id>
         <item>
+          <id>25</id>
+          <userName>lol</userName>
+          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
           <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=</link>
+          <link>localhost/lab/uteach/user/user?id=25</link>
         </item>
         <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=</link>
+        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
       </item>
       <user_id>25</user_id>
       <item>
@@ -862,20 +298,33 @@
         <link>localhost/lab/uteach/user/user?id=25</link>
       </item>
       <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=27</link>
+      <link>localhost/lab/uteach/chapter/chapter?id=11</link>
     </item>
     <item>
-      <id>28</id>
-      <title>qsdqsfqs</title>
-      <dateInserted>2018-07-15 22:42:23</dateInserted>
+      <id>10</id>
+      <number>1</number>
+      <title>zzzrttrzztr</title>
+      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
+      <dateInserted>2018-07-13 23:34:28</dateInserted>
       <status>1</status>
+      <trainning_id>36</trainning_id>
       <item>
+        <id>36</id>
+        <title>ztzet</title>
+        <description>zetrzert</description>
+        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
+        <dateInserted>2018-07-13 22:11:12</dateInserted>
+        <status>1</status>
+        <user_id>25</user_id>
         <item>
+          <id>25</id>
+          <userName>lol</userName>
+          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
           <objectName>User</objectName>
-          <link>localhost/lab/uteach/user/user?id=</link>
+          <link>localhost/lab/uteach/user/user?id=25</link>
         </item>
         <objectName>Trainning</objectName>
-        <link>localhost/lab/uteach/trainning/trainning?id=</link>
+        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
       </item>
       <user_id>25</user_id>
       <item>
@@ -886,7 +335,44 @@
         <link>localhost/lab/uteach/user/user?id=25</link>
       </item>
       <objectName>Chapter</objectName>
-      <link>localhost/lab/uteach/chapter/chapter?id=28</link>
+      <link>localhost/lab/uteach/chapter/chapter?id=10</link>
+    </item>
+    <item>
+      <id>9</id>
+      <number>1</number>
+      <title>zzzrttrzztr</title>
+      <image>public/img/chapters/711px-PHP-logo.svg.png</image>
+      <dateInserted>2018-07-13 23:33:54</dateInserted>
+      <status>1</status>
+      <trainning_id>36</trainning_id>
+      <item>
+        <id>36</id>
+        <title>ztzet</title>
+        <description>zetrzert</description>
+        <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
+        <dateInserted>2018-07-13 22:11:12</dateInserted>
+        <status>1</status>
+        <user_id>25</user_id>
+        <item>
+          <id>25</id>
+          <userName>lol</userName>
+          <avatar>/uteach/public/img/avatars/default.jpg</avatar>
+          <objectName>User</objectName>
+          <link>localhost/lab/uteach/user/user?id=25</link>
+        </item>
+        <objectName>Trainning</objectName>
+        <link>localhost/lab/uteach/trainning/trainning?id=36</link>
+      </item>
+      <user_id>25</user_id>
+      <item>
+        <id>25</id>
+        <userName>lol</userName>
+        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
+        <objectName>User</objectName>
+        <link>localhost/lab/uteach/user/user?id=25</link>
+      </item>
+      <objectName>Chapter</objectName>
+      <link>localhost/lab/uteach/chapter/chapter?id=9</link>
     </item>
   </channel>
 </rss>

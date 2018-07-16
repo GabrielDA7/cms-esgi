@@ -192,13 +192,51 @@ $(function() {
   if( $(".list-data").length > 0 ) {
     var page = 1;
     var object = $.trim($(".list-init-object span:first-child").text());
-    load_data_list_card(page,'desc', 'dateInserted', object,10, true, 'data-list', 'pagination_links');
+    load_data_list_card(page,'desc', 'dateInserted', object,24, true, 'data-list', 'pagination_links');
   }
 
   $(document).on('click', '.list-data #pagination_links span', function() {
     var page = $(this).attr("id");
     var object = $.trim($(".list-init-object span:first-child").text());
-    load_data_list_card(page,'desc', 'dateInserted', object ,30,true, 'data-list', pagination_links);
+    load_data_list_card(page,'desc', 'dateInserted', object ,24,true, 'data-list', 'pagination_links');
+  });
+
+  $(document).on('click', '.button-pagination-selector input[id^=but]', function() {
+    var buttonValue = $(this).attr("value");
+    var currentPage = parseInt($(this).siblings('.selected-pagination').attr('id'));
+    var numberSpan = $(this).siblings('span').length;
+    var page = currentPage;
+    if(buttonValue == 'Next') {
+      if(currentPage != numberSpan) {
+        page = (currentPage+1).toString();
+      }
+    } else {
+      if(currentPage != 1) {
+        page = (currentPage-1).toString();
+      }
+    }
+    if($('.list-init-object').length > 0) {
+      var object = $.trim($(".list-init-object span:first-child").text());
+      if($(".table-data").length > 0) {
+        var limit = $( ".pagination_selector option:selected" ).val();
+        load_data_table(page, limit, 'init');
+      } else {
+        load_data_list_card(page,'desc', 'dateInserted', object ,24,true, 'data-list', 'pagination_links');
+      }
+    } else {
+      var paginationIdDiv = $(this).parents().attr("id");
+      var listCardIdDiv = $(this).parents().parents().prev().attr("id");
+      var object = $(this).parents().siblings('.content-hidden').html();
+      load_data_list_card(page,'desc', 'dateInserted', object ,12,true, listCardIdDiv, paginationIdDiv, 'search');
+    }
+  });
+
+  $(document).on('click', '.pagination-global-search span', function() {
+    var page = $(this).attr("id");
+    var paginationIdDiv = $(this).parents().attr("id");
+    var listCardIdDiv = $(this).parents().parents().prev().attr("id");
+    var object = $(this).parents().siblings('.content-hidden').html();
+    load_data_list_card(page,'desc', 'dateInserted', object ,12,true, listCardIdDiv, paginationIdDiv, 'search');
   });
 
   // COMMENTS
@@ -222,15 +260,15 @@ $(function() {
   });
 
   if( $("#recent-chapter").length > 0) {
-    load_data_list_card(1,'desc','dateInserted','chapter',5, false, 'recent-chapter', 'pagination_links');
+    load_data_list_card(1,'desc','dateInserted','chapter',6, false, 'recent-chapter', 'pagination_links');
   }
 
   if( $("#recent-trainning").length > 0) {
-    load_data_list_card(1,'desc','dateInserted','trainning',5, false, 'recent-trainning', 'pagination_links');
+    load_data_list_card(1,'desc','dateInserted','trainning',6, false, 'recent-trainning', 'pagination_links');
   }
 
   if( $("#recent-video").length > 0) {
-    load_data_list_card(1,'desc','dateInserted','video',5, false, 'recent-video', 'pagination_links');
+    load_data_list_card(1,'desc','dateInserted','video',6, false, 'recent-video', 'pagination_links');
   }
 
   $(document).on('change', '#dashboard-add-chapter select[name="trainning_id"]', function() {
@@ -248,7 +286,9 @@ $(function() {
   });
 
   $("#global-search").enterKey(function () {
-    redirect(dirname + 'index/search');
+    if($("#global-search").val().length >= 2) {
+      redirect(dirname + 'index/search');
+    }
   });
 
 });
@@ -269,6 +309,8 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
     objects: objects,
     div: div,
     linkObjectView: linkObjectView,
+    page: page,
+    pagination_div : pagination_div,
     success:function(data) {
       data = JSON.parse(data);
       var html = '';
@@ -308,11 +350,14 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
       }
       this.div.html(html);
       if(pagination == true && data[this.objects].length > 0) {
-        paginationLinks = $("#" + pagination_div);
+        paginationLinks = $("#" + this.pagination_div);
         html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
-
-        for(i=1; i <= data["pagination"].pagesNumber+1; i++){
-          html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+        for(var i=1; i <= data["pagination"].pagesNumber; i++){
+          if(i==this.page) {
+              html += "<span class='selected-pagination' style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+          } else {
+              html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+          }
         }
         html += "<input type='button' class='button' value='Next' id='but_next' />"
         paginationLinks.html(html);
@@ -347,6 +392,7 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
 
   $.ajax({
     url: url,
+    page: page,
     success:function(data) {
       data = JSON.parse(data);
       var html;
@@ -398,7 +444,11 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
 
       html = "<input type='button' class='button' value='Previous' id='but_prev'/>";
       for(var i = 1; i<= data["pagination"].pagesNumber; i++){
-        html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+        if(i==this.page) {
+            html += "<span class='selected-pagination' style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+        } else {
+            html += "<span style='cursor:pointer; padding:6px; border:1px solid #ccc;' id='"+i+"'>" + i + "</span>";
+        }
       }
       html += "<input type='button' class='button' value='Next' id='but_next' />"
       paginationLinks.html(html);

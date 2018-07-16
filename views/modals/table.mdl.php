@@ -20,7 +20,7 @@
     of <span class="count-all-element"></span> entries</p>
   </div>
   <div class="M4">
-    <div id="pagination_links">
+    <div id="pagination_links" class="button-pagination-selector">
     </div>
   </div>
   <div class="M4">

@@ -19,7 +19,7 @@
 
 	<div class="row row-pagination M--center">
 	  <div class="M4">
-	    <div id="pagination_links" class="last">
+	    <div id="pagination_links" class="last button-pagination-selector">
 	    </div>
 	  </div>
 	</div>

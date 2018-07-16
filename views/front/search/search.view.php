@@ -9,7 +9,9 @@
     <div id="result-search-chapter" class="row">
     </div>
     <div class="row row-pagination M--center">
-      <div id="result-search-chapter-pagination" class="row">
+      <span class="content-hidden">chapter</span>
+      <div id="result-search-chapter-pagination" class="row pagination-global-search button-pagination-selector">
+
       </div>
     </div>
 
@@ -24,7 +26,9 @@
     <div id="result-search-trainning" class="row">
     </div>
     <div class="row row-pagination M--center">
-      <div id="result-search-trainning-pagination" class="row">
+      <span class="content-hidden">trainning</span>
+      <div id="result-search-trainning-pagination" class="row pagination-global-search button-pagination-selector">
+
       </div>
     </div>
 
@@ -39,7 +43,9 @@
     <div id="result-search-video" class="row">
     </div>
     <div class="row row-pagination M--center">
-      <div id="result-search-video-pagination" class="row">
+      <span class="content-hidden">video</span>
+      <div id="result-search-video-pagination" class="row pagination-global-search button-pagination-selecto">
+
       </div>
     </div>
 </section>

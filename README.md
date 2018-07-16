@@ -15,9 +15,6 @@ PHP > 7
 
                               |BACK|
 
-Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
-avec itemsPerPage = 10 retourne + de resultat
-
 paypal
 
 premium
@@ -34,6 +31,8 @@ view logs (see all logs files and can download them)
 -- SEE LATER -- find a way the change the working of setReferencedObjectsColumns() in objectDelegate  
                 We have to get the refernced object with a join query
 
+-- DONE -- Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
+           avec itemsPerPage = 10 retourne + de resultat
 -- DONE -- RSS only when page contains items
 -- DONE -- parametersController (BDD)
 -- DONE -- reset password email
@@ -67,9 +66,8 @@ view logs (see all logs files and can download them)
 
                               |FRONT|
 
-Ajouter la gestion de pagination pour la recherche
+Afficher plus de commentaire load_data_comment
 
-VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper arreter les requetes quand il n'y a pas de resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
 add a label which is the key of the input where it is a SELECT (for the installation : back template / front template we don't know)
 Edit profile CSS
 View edit
@@ -80,6 +78,9 @@ installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
 statistic :put aaa($this->data); in indexController statisticAction above view
 vue parameters edit dbname / dbhost / dbuser / dbport / language
 
+-- SEE LATER -- VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper arreter les requetes quand il n'y a pas de       --resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
+
+-- DONE -- Ajouter la gestion de pagination pour la recherche
 -- DONE -- Search nav bar 3 search ajax request :training / chapter / video get the 3 lists and print them view search.view.php (not created) index/search
 -- DONE -- List comments
 -- DONE -- home page ajax list with item = 5 and order = desc / columns=dateInserted
