@@ -291,7 +291,32 @@ $(function() {
     }
   });
 
+  /* Get signaled comments number */
+  if( $("#dashboard-left-menu").length > 0 ) {
+    getCommentsSignaled(true, "number-comments-signaled");
+  }
+
 });
+
+function getCommentsSignaled(number = false, div){
+  url = dirname + "ajax/search?object=comment&search=1&column_name=report";
+  $.ajax({
+    url: url,
+    div: div,
+    success:function(data) {
+      data = JSON.parse(data);
+      divTofilled = $("#" + div);
+      dataComments = data['comment']['comments'];
+      if(number == true) {
+        if(dataComments.length != 0) {
+          divTofilled.html(0);
+        } else {
+          divTofilled.html(data['comments'].length);
+        }
+      }
+    }
+  });
+}
 
 function load_data_list_card(page,order='desc', column_name, object, itemsPerPage=30, pagination=true,div, pagination_div, action='init'){
   objects = object + 's';

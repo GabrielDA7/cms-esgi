@@ -47,7 +47,7 @@
                 <a href="<?= DIRNAME.VIDEO_LIST_BACK_LINK;?>" class="menu-sub-item">Video list</a>
                 <a href="<?= DIRNAME.VIDEO_ADD_BACK_LINK;?>" class="menu-sub-item">Add video</a>
               </div>
-              <a href="" class="menu-item"><i class="fas fa-comments"></i>Comments</a>
+              <a href="" class="menu-item"><i class="fas fa-comments"></i>Comments<i id="number-comments-signaled"></i></a>
               <a href="" class="menu-item"><i class="fas fa-gem"></i>Premium</a>
               <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-users"></i>Users<i class="fas fa-chevron-down"></i></a>
               <div class="content-hidden sub-items">
