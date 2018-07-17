@@ -4,6 +4,7 @@ class View {
 	private $view;
 	private $template;
 	private $data = [];
+	private $scripts = [];
 
 	public function __construct($data = []) {
 		$this->data = $data;
@@ -21,6 +22,7 @@ class View {
 	public function __destruct() {
 		extract($this->data);
 		include $templatePath;
+		$this->includeScripts();
 	}
 
 	public function assign($key, $value) {
@@ -29,5 +31,32 @@ class View {
 
 	public function addModal($modal, $config, $errors = []) {
 		include MODALS_FOLDER_NAME . "/" . $modal.".mdl.php";
+	}
+
+	public function addScript($order, $scriptLink, $variables) {
+		$this->scripts[$order] = [$scriptLink => $variables];
+	}
+
+	private function includeScripts() {
+		for ($i = 0; $i < count($this->scripts); $i++) {
+			if ($this->scripts[$i]) {
+				$this->includeScript($this->scripts[$i]);
+			}
+		}
+	}
+
+	private function includeScript($scripts) {
+		foreach ($scripts as $link => $variables) {
+			if ($variables != null) {
+				echo "<script type='text/javascript'>";
+
+				foreach ($variables as $name => $value)
+					printf("var %s = '%s';", $name, $value);
+
+				echo "</script>";
+			}
+			echo "<script src='" . DIRNAME . $link . "'>";
+			echo "</script>";
+		}
 	}
 }
