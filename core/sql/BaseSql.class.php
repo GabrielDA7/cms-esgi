@@ -50,9 +50,10 @@ class BaseSql extends QueryConstructorSql {
 	}
 
 	public function countItems($counter = "id") {
-		$queryString = $this->constructCountQuery($this->table, $counter);
+		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
+		$queryString = $this->constructCountQuery($this->table, $counter, $this->columns);
 		$query = $this->db->prepare($queryString);
-		$query->execute();
+		$query->execute($this->columns);
 		$response = $query->fetchAll();
 		return ($counter == "id") ? $response[0]['itemsNumber'] : $response;
 	}
