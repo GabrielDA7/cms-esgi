@@ -27,11 +27,24 @@ class QueryConstructorSql {
 		return $query;
 	}
 
-	protected function constructCountQuery($table, $counter) {
+	protected function constructCountQuery($table, $counter, $columns, $like = FALSE, $username = FALSE) {
 		$query = "SELECT count(" . $counter . ") as itemsNumber";
 		if ($counter != "id")
 			$query .= COMMA . $counter . " as id";
 		$query .= " FROM " . $table;
+		if ($username)
+			$query .= ", user";
+		if (isset($columns)) {
+			if (!$like) {
+				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
+			} else {
+				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, "", " LIKE :keyword OR ", TRUE, FALSE, FALSE);
+				$query .= " LIKE :keyword";
+			}
+			if ($username) {
+				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
+			}
+		}
 		if ($counter != "id")
 			$query .= " GROUP BY " . $counter . " ORDER BY itemsNumber DESC LIMIT 3";
 		return $query;
