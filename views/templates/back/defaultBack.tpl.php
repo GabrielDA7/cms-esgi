@@ -69,8 +69,8 @@
       </section>
 
         <!-- Javascript -->
-        <?php $this->addScript(0, JQUERY_PATH, null); ?>
+        <?php $this->addScript(0, JQUERY_PATH); ?>
         <?php $this->addScript(1, FRAMEWORD_JS_PATH, ["dirname" => DIRNAME]); ?>
-        <?php $this->addScript(2, TINYMCE_PATH, null); ?>
+        <?php $this->addScript(2, TINYMCE_PATH); ?>
     </body>
 </html>

@@ -13,6 +13,7 @@
   </head>
 
   <body class="front-template-content">
+
       <header>
               <nav class="container-fluid" id="front-topnav">
                   <div class="left-nav">
@@ -105,7 +106,7 @@
       </footer>
 
     <!-- Javascript -->
-    <?php $this->addScript(0, JQUERY_PATH, null); ?>
+    <?php $this->addScript(0, JQUERY_PATH); ?>
     <?php $this->addScript(1, FRAMEWORD_JS_PATH, ["dirname" => DIRNAME, "isLogged" => json_encode(isLogged())]); ?>
   </body>
 </html>

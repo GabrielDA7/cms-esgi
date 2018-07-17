@@ -33,7 +33,7 @@ class View {
 		include MODALS_FOLDER_NAME . "/" . $modal.".mdl.php";
 	}
 
-	public function addScript($order, $scriptLink, $variables) {
+	public function addScript($order, $scriptLink, $variables = null) {
 		$this->scripts[$order] = [$scriptLink => $variables];
 	}
 

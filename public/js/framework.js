@@ -5,60 +5,6 @@ $(function() {
         return (typeof o == "undefined" || o === null) ? o : o[x];
     }, obj);
   }*/
-  /* ChartJs */
-  if ( $( "#dashboard-stat .myChart" ).length )
-  {
-      var selectedValue = $('#dashboard-stat .select-input').find(":selected").val();
-      var canvas = jQuery(".myChart");
-      var type;
-      var data;
-      var option;
-/*
-      if( selectedValue == 'popular_contents' ) {
-        type = "type: 'bar'";
-        data = "data: {
-                  labels: ["Course #1", "Trainning #1", "Trainning #2", "Course #3", "Video #1"],
-                  datasets: [
-                    {
-                      label: "Number of views",
-                      backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                      data: [2478,5267,734,784,433]
-                    }
-                  ]
-                }";
-        option = "options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          legend: { display: false },
-          title: {
-            display: false
-          }
-        }";
-      } else if ( selectValue == 'visits_evolution') {
-      } */
-      var chart = new Chart(canvas, {
-        type: 'bar',
-        data: {
-          labels: ["Course #1", "Trainning #1", "Trainning #2", "Course #3", "Video #1"],
-          datasets: [
-            {
-              label: "Number of views",
-              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-              data: [2478,5267,734,784,433]
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          legend: { display: false },
-          title: {
-            display: false
-          }
-        }
-      });
-  }
-
   /* Hambuger nav */
   $("#icon-expand-nav").click(function() {
       var x = $( "#myTopnav" );

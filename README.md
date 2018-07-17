@@ -33,20 +33,18 @@ paypal
 
 premium
   new function in userDelegate
+  new column in table video / trainning / chapter -> premium (boolean)
+  getByID -> checkPremium Status (synchrone) + check publish status
+
+views evolution
+statisitc premium
+
+Add table infos (Facebook / Twitter / Linkedin / Footer text)
 
 replace space by underscore (file)
 
-passowrd -> sha1 + grain de sel
-
-Remove database columns from objects (problem when object db is used more than once)
-
 view logs (see all logs files and can download them)
 
--- SEE LATER -- find a way the change the working of setReferencedObjectsColumns() in objectDelegate  
-                We have to get the refernced object with a join query
-
--- DONE -- Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
-           avec itemsPerPage = 10 retourne + de resultat
 -- DONE -- RSS only when page contains items
 -- DONE -- parametersController (BDD)
 -- DONE -- reset password email

@@ -16,7 +16,7 @@
           <div class="indicator">
             <p>Number of views</p>
             <div class="hr-separation"></div>
-            <p class="number-indicator">777</p>
+            <p class="number-indicator"><?= (isset($totalViews) ? $totalViews : 0)?></p>
           </div>
         </div>
       </div>
@@ -47,9 +47,19 @@
       <div class="row">
         <div class="M12">
           <div class="indicator">
-            <p>Top formation</p>
+            <p>Top Trainning</p>
             <div class="hr-separation"></div>
-            <p class="text-indicator">Formation #1</p>
+            <p class="text-indicator">
+              <?php 
+              try {
+                if (!isset($topTrainning[0]))
+                  throw new Exception("No index", 1);
+                echo $topTrainning[0]->getTrainning()->getTitle();
+              } catch (Exception $e) {
+                echo "No Top"; 
+              }
+              ?>    
+            </p>
           </div>
         </div>
       </div>
@@ -58,9 +68,19 @@
       <div class="row">
         <div class="M12">
           <div class="indicator">
-            <p>Top course</p>
+            <p>Top Chapter</p>
             <div class="hr-separation"></div>
-            <p class="text-indicator">Course #1</p>
+            <p class="text-indicator">
+              <?php 
+              try {
+                if (!isset($topChapter[0]))
+                  throw new Exception("No index", 1);
+                echo $topChapter[0]->getChapter()->getTitle();
+              } catch (Exception $e) {
+                echo "No Top"; 
+              }
+              ?>
+            </p>
           </div>
         </div>
       </div>
@@ -71,10 +91,29 @@
           <div class="indicator">
             <p>Top video</p>
             <div class="hr-separation"></div>
-            <p class="text-indicator">Video #1</p>
+            <p class="text-indicator">
+              <?php 
+              try {
+                if (!isset($topVideo[0]))
+                  throw new Exception("Error Processing Request", 1);
+                echo $topVideo[0]->getVideo()->getTitle();
+              } catch (Exception $e) {
+                echo "No Top"; 
+              }
+              ?>
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<?php $this->addScript(3, CHART_PATH); ?>
+<?php $this->addScript(4, STATISTIC_CHART_PATH, 
+  [
+    "topVideo" => json_encode(FormatUtils::formatDataToArray($topVideo)),
+    "topChapter" => json_encode(FormatUtils::formatDataToArray($topChapter)),
+    "topTrainning" => json_encode(FormatUtils::formatDataToArray($topTrainning))
+  ]); 
+?>

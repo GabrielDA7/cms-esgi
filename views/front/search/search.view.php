@@ -1,7 +1,7 @@
 <section id="front-global-search" class="container">
     <div class="row">
         <div class="M4 X12">
-            <p class="title">Chapters result</p>
+            <p class="title">Chapters results</p>
             <div class="hr-separation"></div>
         </div>
     </div>
@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="M5 X12">
-            <p class="title">Trainnings result</p>
+            <p class="title">Trainnings results</p>
             <div class="hr-separation"></div>
         </div>
     </div>
@@ -35,7 +35,7 @@
 
     <div class="row">
         <div class="M4 X12">
-            <p class="title">Videos result</p>
+            <p class="title">Videos results</p>
             <div class="hr-separation"></div>
         </div>
     </div>

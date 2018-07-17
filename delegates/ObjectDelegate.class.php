@@ -33,10 +33,8 @@ class ObjectDelegate {
 	}
 
 	public function getAll(&$data, $params) {
-		if (isset($params['GET']['status']) && $params['GET']['status'] == PUBLISHED_CONTENT) {
-			$this->getByParameters($data, $params['GET']);
+		if (!$this->isUnpublishedContentAuthorized($data, $params))
 			return;
-		}
 		$object  = $data[$this->lowerCaseFirstObjectName];
 		$objects = $object->getAll($data);
 		$data['itemsNumber'] = $object->countItems();
@@ -92,15 +90,18 @@ class ObjectDelegate {
 	}
 
 	public function search(&$data, $params) {
-		if (isset($params['GET']['status']) && $params['GET']['status'] == PUBLISHED_CONTENT) {
-			$this->getByParameters($data, $params['GET']);
+		if (!$this->isUnpublishedContentAuthorized($data, $params))
 			return;
-		}
 		$object = $data[$this->lowerCaseFirstObjectName];
 		$columnsToSearch = $object->getColumnsToSearch();
 		$objects = $object->getByWord($params['GET']['search'], $columnsToSearch, $data);
 		$data['itemsNumber'] = $object->countItems();
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
+	}
+
+	private function isUnpublishedContentAuthorized(&$data, $params) {
+		if (!isset($params['GET']['status']) || $params['GET']['status'] == PUBLISHED_CONTENT)
+			$this->getByParameters($data, $params['GET']);
 	}
 
 	public function getObjectName() 	   		  { return $this->objectName; 		  	    }
