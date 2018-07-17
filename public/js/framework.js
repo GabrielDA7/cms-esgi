@@ -1,5 +1,10 @@
 $(function() {
 
+  /*get = function(obj, key) {
+    return key.split(".").reduce(function(o, x) {
+        return (typeof o == "undefined" || o === null) ? o : o[x];
+    }, obj);
+  }*/
   /* ChartJs */
   if ( $( "#dashboard-stat .myChart" ).length )
   {

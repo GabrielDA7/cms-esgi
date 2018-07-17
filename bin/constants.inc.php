@@ -62,6 +62,10 @@ define("SPACE", " ");
 define("CSS_PATH", "public/css/main.css");
 define("LOGO_PATH", "public/img/logo.svg");
 define("DEFAULT_AVATAR", DIRNAME . "public/img/avatars/default.jpg");
+define("JQUERY_PATH", "node_modules/jquery/dist/jquery.min.js");
+define("FRAMEWORD_JS_PATH", "public/js/framework.js");
+define("TINYMCE_PATH", "public/js/tinymce/js/tinymce/tinymce.min.js");
+
 
 /******************************
 ********** ROUTES *************

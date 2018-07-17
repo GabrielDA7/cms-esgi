@@ -105,13 +105,7 @@
       </footer>
 
     <!-- Javascript -->
-    <?php $this->addScript(0, "node_modules/jquery/dist/jquery.min.js", null); ?>
-    <?php $this->addScript(1, "public/js/framework.js", ["dirname" => DIRNAME, "isLogged" => json_encode(isLogged())]); ?>
-
-    <!-- <script type="text/javascript">
-      var dirname = '<?= DIRNAME; ?>';
-      var isLogged = '<?= json_encode( isLogged()) ?>'
-    </script>
-    <script type="text/javascript" src="<?= DIRNAME; ?>public/js/framework.js"></script> -->
+    <?php $this->addScript(0, JQUERY_PATH, null); ?>
+    <?php $this->addScript(1, FRAMEWORD_JS_PATH, ["dirname" => DIRNAME, "isLogged" => json_encode(isLogged())]); ?>
   </body>
 </html>
