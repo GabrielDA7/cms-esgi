@@ -2,7 +2,20 @@
 
 ## c'est le projet annuel pour 3IW de ESGI
 
+                              |PROD|
+-- 1 --
+$uri = preg_replace("/\//", '', urldecode($uri[0]), 1); 
+in index.php->getUriExploded()
 
+-- 2 --
+if (isHttpProtocole()) {
+  RedirectUtils::redirectProtocoleHTTPS();
+}
+in index.php
+
+-- 3 --
+conf.inc.php
+INSTALLATION -> FALSE 
 
                               |SERVER|
 
@@ -15,7 +28,7 @@ PHP > 7
 
                               |BACK|
 
-FIXE le recherche pour les commentaires ( AJAX :http://localhost/uteach/ajax/search?object=comment&search=1&column_name=report )
+
 paypal
 
 premium
@@ -64,6 +77,7 @@ view logs (see all logs files and can download them)
 -- DONE -- publish content (chapter / trainning / video)
             status in db 0 disabled 1 enabled
             ajax list front -> don't show disabled
+-- DONE -- FIXE le recherche pour les commentaires ( AJAX :http://localhost/uteach/ajax/search?object=comment&search=1&column_name=report )
 
                               |FRONT|
 

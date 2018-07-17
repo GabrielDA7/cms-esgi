@@ -95,7 +95,16 @@ function getUriExploded() {
 	return $uriExploded;
 }
 
+function isHttpProtocole() {
+	return stripos($_SERVER['SERVER_PROTOCOL'], 'http') === 0;
+}
+
+
 spl_autoload_register('autoLoadExistingClass');
+
+/*if (isHttpProtocole()) {
+	RedirectUtils::redirectProtocoleHTTPS();
+}*/
 
 $uriExploded = getUriExploded();
 

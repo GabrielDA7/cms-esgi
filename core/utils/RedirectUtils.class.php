@@ -18,4 +18,9 @@ class RedirectUtils {
 		header(LOCATION . DIRNAME . INDEX_ERROR_LINK);
 		exit();
 	}
+
+	public static function redirectProtocoleHTTPS() {
+		$httpsUrl = str_replace("http", "https", $_SERVER['HTTP_REFERER']);
+		self::directRedirect($httpsUrl);
+	}
 }
