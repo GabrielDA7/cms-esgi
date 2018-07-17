@@ -100,8 +100,11 @@ class ObjectDelegate {
 	}
 
 	private function isUnpublishedContentAuthorized(&$data, $params) {
-		if (!isset($params['GET']['status']) || $params['GET']['status'] == PUBLISHED_CONTENT)
+		if (isset($params['GET']['status']) && $params['GET']['status'] == PUBLISHED_CONTENT) {
 			$this->getByParameters($data, $params['GET']);
+			return FALSE;
+		}
+		return TRUE;
 	}
 
 	public function getObjectName() 	   		  { return $this->objectName; 		  	    }
