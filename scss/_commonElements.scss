@@ -1285,3 +1285,46 @@ textarea {
 .selected-pagination{
   background-color: $color-tertiary;
 }
+
+/* PREMIUM FRONT */
+.offer {
+  width: 100%;
+  border: 2px solid #E8E8E8;
+  padding:10px 0px 10px 0px;
+  border-radius:5px;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2);
+}
+
+.options-offer-premium {
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+
+.option-offer-premium {
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  border-top: 2px solid $color-quaternary;
+}
+
+.option-offer-premium-last {
+  border-bottom: 2px solid $color-quaternary;
+}
+
+.price-offer-premium {
+  color: $color-tertiary;
+  font-size: $font-size-L;
+  font-weight: bold;
+}
+
+.premium-offers{
+  font-weight: 600;
+  padding-top: 35px;
+}
+
+.time-offer {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  color: $color-quaternary-dark;
+  font-size: $font-size-X;
+}

@@ -36,18 +36,18 @@ $(document).ready(function () {
         type: 'bar',
         data: {
           labels: [
-                    topTrainning[0].trainning[0].title, topChapter[0].chapter[0].title, topVideo[0].video[0].title,
-                    topTrainning[1].trainning[0].title, topChapter[1].chapter[0].title, topVideo[1].video[0].title,
-                    topTrainning[2].trainning[0].title, topChapter[2].chapter[0].title, topVideo[2].video[0].title
+                    topTrainning[0].trainning[0].title, topChapter[0].chapter[0].title, //topVideo[0].video[0].title,
+                    topTrainning[1].trainning[0].title, topChapter[1].chapter[0].title, //topVideo[1].video[0].title,
+                    topTrainning[2].trainning[0].title, topChapter[2].chapter[0].title, //topVideo[2].video[0].title
                   ],
           datasets: [
             {
               label: "Number of views",
               backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
               data: [
-                      topTrainning[0].trainning[0].views, topChapter[0].chapter[0].views, topVideo[0].video[0].views,
-                      topTrainning[1].trainning[0].views, topChapter[1].chapter[0].views, topVideo[1].video[0].views,
-                      topTrainning[2].trainning[0].views, topChapter[2].chapter[0].views, topVideo[2].video[0].views
+                      topTrainning[0].trainning[0].views, topChapter[0].chapter[0].views, //topVideo[0].video[0].views,
+                      topTrainning[1].trainning[0].views, topChapter[1].chapter[0].views, //topVideo[1].video[0].views,
+                      topTrainning[2].trainning[0].views, topChapter[2].chapter[0].views, //topVideo[2].video[0].views
                     ]
             }
           ]

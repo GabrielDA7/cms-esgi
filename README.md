@@ -4,7 +4,7 @@
 
                               |PROD|
 -- 1 --
-$uri = preg_replace("/\//", '', urldecode($uri[0]), 1); 
+$uri = preg_replace("/\//", '', urldecode($uri[0]), 1);
 in index.php->getUriExploded()
 
 -- 2 --
@@ -15,7 +15,7 @@ in index.php
 
 -- 3 --
 conf.inc.php
-INSTALLATION -> FALSE 
+INSTALLATION -> FALSE
 
                               |SERVER|
 
@@ -28,7 +28,8 @@ PHP > 7
 
                               |BACK|
 
-
+Corrige la recherche comment ...
+Fix parameters edition => modifie la route creer un controller appart avec le model
 paypal
 
 premium
@@ -79,6 +80,8 @@ view logs (see all logs files and can download them)
 
                               |FRONT|
 
+Ajouter form/list pour premium
+Ajouter form parameters
 Afficher list reported comments back
 Afficher plus de commentaire load_data_comment
 add a label which is the key of the input where it is a SELECT (for the installation : back template / front template we don't know)

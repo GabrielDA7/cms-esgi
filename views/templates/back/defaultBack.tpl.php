@@ -23,7 +23,6 @@
                 <div class="icon-bar">
                     <a class="active" href="<?= DIRNAME;?>"><i class="fas fa-home"></i></a>
                     <a href="<?= DIRNAME.USER_EDIT_BACK_LINK;?>"><i class="fas fa-user-circle"></i></a>
-                    <a href="#"><i class="far fa-bell"></i></a>
                     <a href="<?= DIRNAME.USER_DISCONNECT_LINK;?>"><i class="fas fa-power-off"></i></a>
                 </div>
             </div>
@@ -48,15 +47,18 @@
                 <a href="<?= DIRNAME.VIDEO_ADD_BACK_LINK;?>" class="menu-sub-item">Add video</a>
               </div>
               <a href="<?= DIRNAME.COMMENT_REPORT_BACK_LINK;?>" class="menu-item"><i class="fas fa-comments"></i>Comments<i id="number-comments-signaled"></i></a>
-              <a href="" class="menu-item"><i class="fas fa-gem"></i>Premium</a>
+              <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-gem"></i>Premium<i class="fas fa-chevron-down"></i></a>
+              <div class="content-hidden sub-items">
+                <a href="<?= DIRNAME.PREMIUM_LIST_BACK_LINK;?>" class="menu-sub-item">Premium offer list</a>
+                <a href="<?= DIRNAME.PREMIUM_ADD_BACK_LINK;?>" class="menu-sub-item">Add premium offer</a>
+              </div>
               <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-users"></i>Users<i class="fas fa-chevron-down"></i></a>
               <div class="content-hidden sub-items">
                 <a href="<?= DIRNAME.USER_LIST_BACK_LINK;?>" class="menu-sub-item">Users list</a>
               </div>
               <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-cogs"></i>Parameters<i class="fas fa-chevron-down"></i></a>
               <div class="content-hidden sub-items">
-                <a href="#" class="menu-sub-item">General parameters</a>
-                <a href="#" class="menu-sub-item">Appearance</a>
+                <a href="<?= DIRNAME.PARAMETER_EDIT_BACK_LINK;?>" class="menu-sub-item">General parameters</a>
               </div>
           </nav>
 

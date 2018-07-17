@@ -243,6 +243,7 @@ $(function() {
   });
 
   /* Get signaled comments number */
+
   if( $("#dashboard-left-menu").length > 0 ) {
     getCommentsSignaled(true, "number-comments-signaled");
   }
@@ -266,7 +267,7 @@ function getCommentsSignaled(number = false, div){
         }
       } else {
           $.each(dataComments, function(index, element) {
-            
+
           });
       }
     }
