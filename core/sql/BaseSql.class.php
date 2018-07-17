@@ -58,8 +58,8 @@ class BaseSql extends QueryConstructorSql {
 	}
 
 	public function getAll($data) {
-		$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
-		$limit = (isset($data['limit'])) ? $data['limit'] : null;
+		$orderBy = (isset($data) && isset($data['orderBy'])) ? $data['orderBy'] : null;
+		$limit = (isset($data) && isset($data['limit'])) ? $data['limit'] : null;
 		$queryString = $this->constructSelectQuery($this->table, null, FALSE, $orderBy, $limit);
 		$query = $this->db->prepare($queryString);
 		$query->execute();
@@ -69,10 +69,8 @@ class BaseSql extends QueryConstructorSql {
 	}
 
 	public function getWithParameters($data) {
-		if (isset($data)) {
-			$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
-			$limit = (isset($data['limit'])) ? $data['limit'] : null;
-		}
+		$orderBy = (isset($data) && isset($data['orderBy'])) ? $data['orderBy'] : null;
+		$limit = (isset($data) && isset($data['limit'])) ? $data['limit'] : null;
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
 		$queryString = $this->constructSelectQuery($this->table, $this->columns, FALSE, $orderBy, $limit);
 		$query = $this->db->prepare($queryString);
@@ -96,8 +94,8 @@ class BaseSql extends QueryConstructorSql {
 	}
 
 	public function getByWord($keyword, $columnsToSearch, $data) {
-		$orderBy = (isset($data['orderBy'])) ? $data['orderBy'] : null;
-		$limit = (isset($data['limit'])) ? $data['limit'] : null;
+		$orderBy = (isset($data) && isset($data['orderBy'])) ? $data['orderBy'] : null;
+		$limit = (isset($data) && isset($data['limit'])) ? $data['limit'] : null;
 		$searchUsername = in_array("user_id", $columnsToSearch);
 		$queryString = $this->constructSelectQuery($this->table, $columnsToSearch, TRUE, $orderBy, $limit, $searchUsername);
 		$query = $this->db->prepare($queryString);
