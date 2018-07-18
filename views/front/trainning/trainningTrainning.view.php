@@ -66,7 +66,7 @@
 					</div>
 					<?php if (isLogged()) : ?>
 						<form method="POST" action="<?= DIRNAME ?>comment/add" class="row-padding">
-							<input type="hidden" name="chapter_id" value="<?= $trainning->getId() ?>">
+							<input type="hidden" name="trainning_id" value="<?= $trainning->getId() ?>">
 							<div class="row">
 								<div class="M12 X12">
 											<textarea id="comment-text" class="input" name="content" placeholder="Enter a comment here"></textarea>
@@ -78,10 +78,8 @@
 								</div>
 							</div>
 						</form>
+					<?php endif ?>
 					<div id='comments-result' class='row'></div>
-				<?php else: ?>
-					<p>Log you for display comments</p>
-				<?php endif ?>
 			</section>
 
 

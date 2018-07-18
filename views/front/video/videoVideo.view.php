@@ -50,7 +50,7 @@
 			</div>
 			<?php if (isLogged()) : ?>
 				<form method="POST" action="<?= DIRNAME ?>comment/add" class="row-padding">
-					<input type="hidden" name="chapter_id" value="<?= $video->getId() ?>">
+					<input type="hidden" name="video_id" value="<?= $video->getId() ?>">
 					<div class="row">
 						<div class="M12 X12">
 									<textarea id="comment-text" class="input" name="content" placeholder="Enter a comment here"></textarea>

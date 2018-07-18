@@ -1530,10 +1530,16 @@ textarea {
   padding-right: 0; }
 
 .avatar-img-medium {
-  width: 40%;
+  width: 50px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
-  border-radius: 50%; }
+  border-radius: 50%;
+  object-fit: fill; }
+
+.avatar-img-edition {
+  width: 100px;
+  object-fit: fill;
+  border-radius: 30px; }
 
 .align-center {
   text-align: center; }
