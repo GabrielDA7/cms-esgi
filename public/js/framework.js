@@ -261,16 +261,12 @@ function getCommentsSignaled(number = false, div){
     success:function(data) {
       data = JSON.parse(data);
       divTofilled = $("#" + div);
-      dataComments = data['comment']['comments'];
+      dataComments = data['comments'];
       if(number == true) {
-        if(dataComments.length != 0) {
-          divTofilled.html(0);
-        } else {
-          divTofilled.html(data['comments'].length);
-        }
+        divTofilled.html(data['itemsNumber']);
       } else {
           $.each(dataComments, function(index, element) {
-
+            
           });
       }
     }
