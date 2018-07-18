@@ -117,4 +117,14 @@ class classUtils {
   				return [$key => $value];
   		}
   	}
+
+  	public static function safeGetArrayIndex($value, $index, $defaultValue = null, $dimension = 0) {
+  		$key = $index[$dimension];
+		if (!isset($value) || !isset($value[$key]))
+			return $defaultValue;
+		$dimension++;
+		if (!isset($index[$dimension]))
+			return $value[$key];
+		return self::safeGetArrayIndex($value[$key], $index, $defaultValue, $dimension);
+  	}
 }

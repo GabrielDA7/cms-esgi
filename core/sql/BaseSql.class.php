@@ -55,7 +55,7 @@ class BaseSql extends QueryConstructorSql {
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);
 		$response = $query->fetchAll();
-		return ($counter == "id") ? $response[0]['itemsNumber'] : $response;
+		return ($counter == "id") ? ClassUtils::safeGetArrayIndex($response, [0, 'itemsNumber']) : $response;
 	}
 
 	public function getAll($data) {
