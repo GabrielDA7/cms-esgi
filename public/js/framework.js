@@ -254,7 +254,7 @@ $(function() {
 });
 
 function getCommentsSignaled(number = false, div){
-  url = dirname + "ajax/search?object=comment&search=1&column_name=report";
+  url = dirname + "ajax/listcomment?object=comment&report=1";
   $.ajax({
     url: url,
     div: div,
