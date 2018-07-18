@@ -1,10 +1,13 @@
 $(function() {
 
-  /*get = function(obj, key) {
-    return key.split(".").reduce(function(o, x) {
-        return (typeof o == "undefined" || o === null) ? o : o[x];
-    }, obj);
-  }*/
+  getSafe = function (fn, defaultVal) {
+    try {
+        return fn();
+    } catch (e) {
+        return defaultVal;
+    }
+  }
+
   /* Hambuger nav */
   $("#icon-expand-nav").click(function() {
       var x = $( "#myTopnav" );

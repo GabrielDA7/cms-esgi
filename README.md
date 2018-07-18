@@ -37,6 +37,8 @@ premium
   new column in table video / trainning / chapter -> premium (boolean)
   getByID -> checkPremium Status (synchrone) + check publish status
 
+premium / status check authorisation
+
 views evolution
 statisitc premium
 

@@ -36,18 +36,24 @@ $(document).ready(function () {
         type: 'bar',
         data: {
           labels: [
-                    topTrainning[0].trainning[0].title, topChapter[0].chapter[0].title, //topVideo[0].video[0].title,
-                    topTrainning[1].trainning[0].title, topChapter[1].chapter[0].title, //topVideo[1].video[0].title,
-                    topTrainning[2].trainning[0].title, topChapter[2].chapter[0].title, //topVideo[2].video[0].title
+                    [getSafe(() => topTrainning[0].trainning[0].title), '#1Trainning'], 
+                    [getSafe(() => topChapter[0].chapter[0].title), '#1Chapter'], 
+                    [getSafe(() => topVideo[0].video[0].title), '#1Video'],
+                    [getSafe(() => topTrainning[1].trainning[0].title), '#2Trainning'], 
+                    [getSafe(() => topChapter[1].chapter[0].title), '#2Chapter'], 
+                    [getSafe(() => topVideo[1].video[0].title), '#2Video'],
+                    [getSafe(() => topTrainning[2].trainning[0].title), '#3Trainning'], 
+                    [getSafe(() => topChapter[2].chapter[0].title), '#3Chapter'], 
+                    [getSafe(() => topVideo[2].video[0].title), '#3Video']
                   ],
           datasets: [
             {
               label: "Number of views",
-              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
               data: [
-                      topTrainning[0].trainning[0].views, topChapter[0].chapter[0].views, //topVideo[0].video[0].views,
-                      topTrainning[1].trainning[0].views, topChapter[1].chapter[0].views, //topVideo[1].video[0].views,
-                      topTrainning[2].trainning[0].views, topChapter[2].chapter[0].views, //topVideo[2].video[0].views
+                      getSafe(() => topTrainning[0].views), getSafe(() => topChapter[0].views), getSafe(() => topVideo[0].video[0].views),
+                      getSafe(() => topTrainning[1].views), getSafe(() => topChapter[1].views), getSafe(() => topVideo[1].video[0].views),
+                      getSafe(() => topTrainning[2].views), getSafe(() => topChapter[2].views), getSafe(() => topVideo[2].video[0].views)
                     ]
             }
           ]
@@ -56,6 +62,13 @@ $(document).ready(function () {
           responsive: true,
           maintainAspectRatio: false,
           legend: { display: false },
+          scales: {
+            yAxes: [{
+              ticks: {
+                  beginAtZero: true
+              }
+            }]
+          },
           title: {
             display: false
           }
