@@ -38,7 +38,7 @@
                     <?php } ?>
                     <div class="wrapper-icon">
                         <i class="fas fa-search icon-left"></i>
-                        <input id="global-search" class="input-medium input-icon" type="text">
+                        <input id="global-search" class="input-medium input-icon" type="text" value="<?= isset($_GET['str']) ? $_GET['str'] : '' ?>">
                     </div>
                   </div>
               </nav>

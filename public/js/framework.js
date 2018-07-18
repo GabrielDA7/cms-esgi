@@ -242,8 +242,9 @@ $(function() {
   });
 
   $("#global-search").enterKey(function () {
-    if($("#global-search").val().length >= 2) {
-      redirect(dirname + 'index/search');
+    str = $("#global-search").val();
+    if(str.length >= 2) {
+      redirect(dirname + 'index/search?str=' + str);
     }
   });
 
