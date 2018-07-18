@@ -7,7 +7,7 @@
           <div class="indicator indicator-margin">
             <p>Number of subscribers</p>
             <div class="hr-separation"></div>
-            <p class="number-indicator">777</p>
+            <p class="number-indicator"><?= (isset($totalPremiums) ? $totalPremiums : 0)?></p>
           </div>
         </div>
       </div>

@@ -25,6 +25,7 @@ class StatisticDelegate {
 			$this->computeTopContents($data, $contentObjectName);
 			$this->computeTotalViews($data, $contentObjectName);
 		}
+		$this->computeTotalPremium($data);
 	}
 
 	private function isViewAlreadyExists() {
@@ -32,6 +33,12 @@ class StatisticDelegate {
 		if (!empty($result))
 			return TRUE;
 		return FALSE;
+	}
+
+	private function computeTotalPremium(&$data) {
+		$user = new User();
+		$user->setRole(PREMIUM_ROLE);
+		$data["totalPremiums"] = $user->countItems();
 	}
 
 	private function computeStatisticObject($params) {

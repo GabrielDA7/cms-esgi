@@ -47,7 +47,7 @@ class QueryConstructorSql {
 	}
 
 	protected function constructSelectStatisticsQuery($date) {
-		return "SELECT * FROM statistic WHERE date(dateInserted) = " . $date;
+		return "SELECT COUNT(ip) FROM statistic WHERE date(dateInserted) = " . $date;
 	}
 
 	private function computeFrom($table, $username) {
@@ -59,7 +59,10 @@ class QueryConstructorSql {
 		if (isset($columns) && !empty($columns)) {
 			$onlyPublishedContent = $this->isOnlyPublishedContent($columns, $table);
 			$query .= " WHERE ";
-			$query .= ($onlyPublishedContent) ? "(" : "";
+
+			if ($onlyPublishedContent) 
+				$query .= "(";
+
 			if (!$like) {
 				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {
