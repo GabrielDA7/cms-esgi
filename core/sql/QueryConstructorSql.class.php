@@ -51,7 +51,7 @@ class QueryConstructorSql {
 	}
 
 	private function computeFrom($table, $username) {
-		return "FROM " . $table . (($username) ? ", user" : "");
+		return " FROM " . $table . (($username) ? ", user" : "");
 	}
 
 	private function computeWhere($table, $columns = null, $like = FALSE, $username = FALSE) {
