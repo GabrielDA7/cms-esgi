@@ -46,8 +46,10 @@ class QueryConstructorSql {
 		return $query;
 	}
 
-	protected function constructSelectStatisticsQuery($date) {
-		return "SELECT COUNT(ip) FROM statistic WHERE date(dateInserted) = " . $date;
+	protected function constructSelectStatisticsQuery($numberOfTime) {
+		$query = "SELECT COUNT(ip) as views FROM statistic ";
+		$query .= "GROUP BY views HAVING DATE_SUB(dateInserted, INTERVAL ". $numberOfTime[0] . " " . $numberOfTime[1] .")";
+		return $query;
 	}
 
 	private function computeFrom($table, $username) {
