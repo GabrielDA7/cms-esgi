@@ -251,26 +251,30 @@ $(function() {
   /* Get signaled comments number */
 
   if( $("#dashboard-left-menu").length > 0 ) {
-    getCommentsSignaled(true, "number-comments-signaled");
+    getCommentsSignaled("number-comments-signaled", "dashboard-list-comment-report");
   }
 
 });
 
-function getCommentsSignaled(number = false, div){
+function getCommentsSignaled(divNumber, divList){
   url = dirname + "ajax/listcomment?object=comment&report=1";
   $.ajax({
     url: url,
-    div: div,
+    divNumber: divNumber,
+    divList: divList,
     success:function(data) {
       data = JSON.parse(data);
-      divTofilled = $("#" + div);
       dataComments = data['comments'];
-      if(number == true) {
-        divTofilled.html(data['itemsNumber']);
-      } else {
-          $.each(dataComments, function(index, element) {
+      if(divList.length > 0) {
+        divNumber = $("#" + divNumber);
+        divNumber.html(data['itemsNumber']);
 
-          });
+        $.each(dataComments, function(index, element) {
+          alert(JSON.stringify(element));
+        });
+      } else {
+        divNumber = $("#" + divNumber);
+        divNumber.html(data['itemsNumber']);
       }
     }
   });
@@ -511,7 +515,7 @@ function addChapterSubpart(){
 }
 
 function load_data_list_comment(object, id){
-  url = dirname + "ajax/listComment?object=comment&sort=desc" + "&columnName=date" + "&page=1&itemsPerPage=10&" + object + "_id=" + id;
+  url = dirname + "ajax/listComment?object=comment&sort=desc" + "&columnName=dateInserted" + "&page=1&itemsPerPage=10&" + object + "_id=" + id;
   div = $("#comments-result");
   paginationLinks = $("#pagination_links");
   $.ajax({
@@ -561,10 +565,36 @@ function dhm(ms){
     }
 }
 
+function renderCommentSignaled(element) {
+  html = "<div class='row comment-card M--start'>";
+  html +=   "<div class='M1 no-padding align-center'>";
+  html +=     "<a href='user/user?id=" + element.user[0].id + "'>"
+  html +=       "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar image'>";
+  html +=     "</a>"
+  html +=   "</div>";
+  html +=   "<div class='M11'>";
+  html +=     "<div class='row padding-bottom-comment'>";
+  html +=       "<div class='M3 no-padding'>";
+  html +=         "<strong>" + element.user[0].userName + "</strong><span class='grey-content'>" + getTimeDifference(element.dateInserted) + "</span>";
+  html +=       "</div>";
+  html +=       "<div class='M2 M--offset7 no-padding'>";
+  html +=         "<a class='align-right report-comment'><span class='content-hidden'>" + element.id + "</span><i class='fas fa-flag'></i></a>";
+  html +=       "</div>";
+  html +=     "</div>";
+  html +=     "<div class='row padding-bottom-comment'>";
+  html +=       "<p>" + element.content + "</p>";
+  html +=     "</div>";
+  html +=   "</div>";
+  html += "</div>";
+  return html;
+}
+
 function renderCommentResponse(element, intern) {
   html = "<div class='row comment-card M--start'>";
   html +=   "<div class='M1 no-padding align-center'>";
-  html +=     "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar'>";
+  html +=     "<a href='user/user?id=" + element.user[0].id + "'>"
+  html +=       "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar image'>";
+  html +=     "</a>"
   html +=   "</div>";
   if(intern == false) {
     html +=   "<div class='M11'>";

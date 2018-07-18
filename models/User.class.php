@@ -184,6 +184,7 @@ class User extends UserSql {
 																					]
 													],
 								"role"=>[
+												"type"=>"role",
 												"value"=>$user->getRole(),
 								],
 								"userName"=>

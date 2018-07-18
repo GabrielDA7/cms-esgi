@@ -38,18 +38,16 @@
 		<?php elseif ($attributs["type"] == "role"): ?>
 			<?php if (isset($attributs["value"])): ?>
 				<?php if($attributs["value"] == 0): ?>
-					<p class="user-role">Status : member</p>
+					<p class="form-group">Status : member</p>
 				<?php elseif($attributs["value"] == 1): ?>
-					<p class="user-role">Status : premium member</p>
+					<p class="form-group">Status : premium member</p>
 				<?php else: ?>
-					<p class="user-role">Status : admin</p>
+					<p class="form-group">Status : admin</p>
 				<? endif ?>
 			<?php endif ?>
 		<?php else: ?>
 			<?php if (isset($attributs["image"])) : ?>
-				<div class="row">
 					<image class="avatar-img-edition" src="<?= $attributs['image'] ?>" alt="avatar image"/>
-				</div>
 			<?php endif ?>
 			<input
 				<?= (isset($attributs["disabled"])) ? "disabled='". $attributs["disabled"] ."'" : "";?>

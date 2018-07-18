@@ -1148,6 +1148,7 @@ textarea {
   width: 100px;
   object-fit: fill;
   border-radius:30px;
+  margin-right: 30px;
 }
 
 .align-center{
@@ -1170,6 +1171,10 @@ textarea {
 .comment-card {
   width: 100%;
   padding-top: 20px;
+}
+
+.comment-card a {
+  text-decoration: none;
 }
 
 .answer-comment-input {
