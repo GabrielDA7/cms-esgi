@@ -36,15 +36,15 @@ $(document).ready(function () {
         type: 'bar',
         data: {
           labels: [
-                    [getSafe(() => topTrainning[0].trainning[0].title), '#1Trainning'], 
-                    [getSafe(() => topChapter[0].chapter[0].title), '#1Chapter'], 
-                    [getSafe(() => topVideo[0].video[0].title), '#1Video'],
-                    [getSafe(() => topTrainning[1].trainning[0].title), '#2Trainning'], 
-                    [getSafe(() => topChapter[1].chapter[0].title), '#2Chapter'], 
-                    [getSafe(() => topVideo[1].video[0].title), '#2Video'],
-                    [getSafe(() => topTrainning[2].trainning[0].title), '#3Trainning'], 
-                    [getSafe(() => topChapter[2].chapter[0].title), '#3Chapter'], 
-                    [getSafe(() => topVideo[2].video[0].title), '#3Video']
+                    [getSafe(() => topTrainning[0].trainning[0].title, "No one"), '#1Trainning'], 
+                    [getSafe(() => topChapter[0].chapter[0].title, "No one"), '#1Chapter'], 
+                    [getSafe(() => topVideo[0].video[0].title, "No one"), '#1Video'],
+                    [getSafe(() => topTrainning[1].trainning[0].title, "No one"), '#2Trainning'], 
+                    [getSafe(() => topChapter[1].chapter[0].title, "No one"), '#2Chapter'], 
+                    [getSafe(() => topVideo[1].video[0].title, "No one"), '#2Video'],
+                    [getSafe(() => topTrainning[2].trainning[0].title, "No one"), '#3Trainning'], 
+                    [getSafe(() => topChapter[2].chapter[0].title, "No one"), '#3Chapter'], 
+                    [getSafe(() => topVideo[2].video[0].title, "No one"), '#3Video']
                   ],
           datasets: [
             {

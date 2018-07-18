@@ -4,20 +4,9 @@ class QueryConstructorSql {
 	public function __construct() {}
 
 	protected function constructSelectQuery($table, $columns = null, $like = FALSE, $orderBy = null, $limit = null, $username = FALSE) {
-		$query = "SELECT DISTINCT " . $table . ".* FROM " . $table;
-		if ($username)
-			$query .= ", user";
-		if (isset($columns) && !empty($columns)) {
-			if (!$like) {
-				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
-			} else {
-				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, "", " LIKE :keyword OR ", TRUE, FALSE, FALSE);
-				$query .= " LIKE :keyword";
-			}
-			if ($username) {
-				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
-			}
-		}
+		$query = "SELECT DISTINCT " . $table . ".* ";
+		$query .= $this->computeFrom($table, $username);
+		$query .= $this->computeWhere($table, $columns, $like, $username);
 		if (isset($orderBy))
 			$query .= " ORDER BY " . FormatUtils::formatMapToStringWithSeparators($orderBy, "", SPACE, COMMA);
 		if (isset($limit))
@@ -25,24 +14,14 @@ class QueryConstructorSql {
 		return $query;
 	}
 
+
+
 	protected function constructCountQuery($table, $counter, $columns, $like = FALSE, $username = FALSE) {
-		$query = "SELECT count(" . $counter . ") as itemsNumber";
+		$query = "SELECT count(" . $counter . ") as itemsNumber ";
 		if ($counter != "id")
 			$query .= COMMA . $counter . " as id";
-		$query .= " FROM " . $table;
-		if ($username)
-			$query .= ", user";
-		if (isset($columns) && !empty($columns)) {
-			if (!$like) {
-				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
-			} else {
-				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, "", " LIKE :keyword OR ", TRUE, FALSE, FALSE);
-				$query .= " LIKE :keyword";
-			}
-			if ($username) {
-				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
-			}
-		}
+		$query .= $this->computeFrom($table, $username);
+		$query .= $this->computeWhere($table, $columns, $like, $username);
 		if ($counter != "id")
 			$query .= " GROUP BY " . $counter . " ORDER BY itemsNumber DESC LIMIT 3";
 		return $query;
@@ -69,5 +48,34 @@ class QueryConstructorSql {
 
 	protected function constructSelectStatisticsQuery($date) {
 		return "SELECT * FROM statistic WHERE date(dateInserted) = " . $date;
+	}
+
+	private function computeFrom($table, $username) {
+		return "FROM " . $table . (($username) ? ", user" : "");
+	}
+
+	private function computeWhere($table, $columns = null, $like = FALSE, $username = FALSE) {
+		$query = "";
+		if (isset($columns) && !empty($columns)) {
+			if ($key = array_search("status", $columns) && $table != "user") {
+				unset($columns[$key]);
+				$status = TRUE;
+			}
+			$query .= " WHERE ";
+			$query .= (isset($status) && $status) ? "(" : "";
+			if (!$like) {
+				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
+			} else {
+				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, "", " LIKE :keyword OR ", TRUE, FALSE, FALSE);
+				$query .= " LIKE :keyword";
+			}
+			if (isset($status) && $status) {
+				$query .= ") AND status=1";
+			}
+			if ($username) {
+				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
+			}
+		}
+		return $query;
 	}
 }
