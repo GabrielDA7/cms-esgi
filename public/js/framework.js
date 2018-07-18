@@ -229,8 +229,10 @@ $(function() {
     var valueOption = $(this).find(':selected').attr('value');
     if(valueOption != ""){
       $("input[name='number']").prop("disabled", false);
+      $("input[name='number']").attr("type", "number");
     } else {
       $("input[name='number']").val("");
+      $("input[name='number']").attr("type", "text");
       $("input[name='number']").prop("disabled", true);
     }
   });
@@ -266,7 +268,7 @@ function getCommentsSignaled(number = false, div){
         divTofilled.html(data['itemsNumber']);
       } else {
           $.each(dataComments, function(index, element) {
-            
+
           });
       }
     }

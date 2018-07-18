@@ -10,7 +10,7 @@
   </div>
 
   <div class="list-init-object">
-    <span>premium</span>
+    <span>premiumOffer</span>
   </div>
 
   <div class="row row-tools">
