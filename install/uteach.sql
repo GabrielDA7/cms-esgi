@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 18, 2018 at 07:17 PM
+-- Generation Time: Jul 18, 2018 at 08:01 PM
 -- Server version: 10.1.26-MariaDB-0+deb9u1
 -- PHP Version: 7.0.30-0+deb9u1
 
@@ -92,8 +92,8 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `user_id`, `dateInserted`, `content`, `report`, `chapter_id`, `trainning_id`, `video_id`, `comment_id`) VALUES
-(1, 25, '2018-07-14 15:25:17', 'kktrhkkh', 1, NULL, 39, NULL, 1),
-(2, 25, '2018-07-14 15:25:51', 'lkr,gz,rg', 1, NULL, 39, NULL, 1),
+(1, 25, '2018-07-14 15:25:17', 'kktrhkkh', 1, NULL, 39, NULL, NULL),
+(2, 25, '2018-07-14 15:25:51', 'lkr,gz,rg', 1, NULL, 39, NULL, NULL),
 (3, 25, '2018-07-14 15:25:56', 'r,h etkl,hkre', 1, NULL, 39, NULL, NULL),
 (4, 25, '2018-07-14 15:26:03', 'lk,hlk,keth\r\n', 1, NULL, 39, NULL, 3),
 (5, 25, '2018-07-14 15:30:27', 'tyytjty', 1, NULL, 39, NULL, NULL),
@@ -226,7 +226,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `userName`, `pwd`, `pwdReset`, `avatar`, `token`, `status`, `dateInserted`, `dateUpdated`, `role`) VALUES
-(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', 'rvo6f502klwogowcwgo4ocwsows0044g0wo88c8c4c0cwks0g', 1, '2018-03-20 19:48:58', '2018-07-14 20:41:36', 2),
+(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', '4rn54gqmaa2o8oo8888ocs4wkkco440okossgcwkow0sw0sswk', 1, '2018-03-20 19:48:58', '2018-07-14 20:41:36', 2),
 (33, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'v2l5jb39neoww4ow84w4ow40ooo44wswgogw4c4gg48088wgk', 0, '2018-03-24 22:03:33', NULL, 0),
 (34, 'Louis', 'Louis', 'louis@gmail.com', '', 'zerazer', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '3iuuy6vxv2w4cs4g8kccsww08wkgg4g048s848k8w8sg8wok04', 0, '2018-03-25 20:08:25', NULL, 0),
 (35, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'y4tci0mxs9cck844so48csggsosso8w4w004880csc8gk0k0s', 0, '2018-03-25 20:30:28', NULL, 0),
@@ -329,7 +329,8 @@ CREATE TABLE `viewed_trainning` (
 INSERT INTO `viewed_trainning` (`id`, `dateInserted`, `ip`, `trainning_id`, `user_id`) VALUES
 (1, '2018-07-14 13:09:20', '::1', 39, NULL),
 (2, '2018-07-14 13:17:37', '::1', 38, NULL),
-(3, '2018-07-14 18:40:02', '::1', 37, NULL);
+(3, '2018-07-14 18:40:02', '::1', 37, NULL),
+(4, '2018-07-18 17:29:51', '::1', 43, NULL);
 
 -- --------------------------------------------------------
 
@@ -490,7 +491,7 @@ ALTER TABLE `viewed_chapter`
 -- AUTO_INCREMENT for table `viewed_trainning`
 --
 ALTER TABLE `viewed_trainning`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `viewed_video`
 --

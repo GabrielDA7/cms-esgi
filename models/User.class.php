@@ -170,58 +170,56 @@ class User extends UserSql {
 	public static function configEditForm($data) {
 		$user = $data['user'];
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Save","submitClass" => "btn-filled-orange btn-small align-right form-group-bottom"],
 					"input"=>
 							[
-								"id"=>
-											[
-												"type"=>"hidden",
-												"placeholder"=>$user->getId(),
-												"value"=>$user->getId(),
-												"required"=>true,
-											],
+								"avatar"=>[
+														"image"=>$user->getAvatar(),
+														"type"=>"file",
+														"maxSize" => 1000000,
+														"extension" =>[
+																						 "jpg",
+																						 "png",
+																						 "jpeg"
+																					]
+													],
+								"role"=>[
+												"value"=>$user->getRole(),
+								],
 								"userName"=>
 											[
+												"label"=>"Username",
 												"type"=>"text",
-												"placeholder"=>$user->getUserName(),
+												"value"=>$user->getUserName(),
 												"maxString"=>100,
 												"minString"=>2,
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"firstName"=>
 											[
+												"label"=>"First name",
 												"type"=>"text",
-												"placeholder"=>$user->getFirstName(),
+												"value"=>$user->getFirstName(),
 												"maxString"=>255,
 												"minString"=>2,
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"lastName"=>
 											[
+												"label"=>"Last name",
 												"type"=>"text",
-												"placeholder"=>$user->getLastName(),
+												"value"=>$user->getLastName(),
 												"maxString"=>255,
 												"minString"=>2,
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"email"=>
 											[
+												"label"=>"Email",
 												"type"=>"email",
-												"placeholder"=>$user->getEmail(),
-												"class"=>"form-group input"
+												"value"=>$user->getEmail(),
+												"class"=>"input"
 											],
-								"avatar"=>
-
-					                      	[
-					                        	"type"=>"file",
-					                        	"maxSize" => 1000000,
-					                        	"extension" =>
-					                        					[
-						                                  			"jpg",
-						                                  			"png",
-						                                  			"jpeg"
-					                                		   	]
-					                     	]
 							]
 				];
 	}
@@ -367,7 +365,7 @@ class User extends UserSql {
     public function getRole()		  { return $this->role; 		 }
 
 
-    
+
     public function setId($id) 					   { $this->id = $id; 								  	 }
 	public function setLastName($lastName) 		   { $this->lastName = ucfirst(strtolower($lastName)); 	 }
 	public function setFirstName($firstName) 	   { $this->firstName = ucfirst(strtolower($firstName)); }
@@ -381,5 +379,5 @@ class User extends UserSql {
 	public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted; 				 }
 	public function setDateUpdated($dateUpdated)   { $this->dateUpdated = $dateUpdated; 				 }
 	public function setStatus($status) 			   { $this->status = $status; 							 }
-	public function setRole($role) 			   	   { $this->role = $role; 							 	 }  
+	public function setRole($role) 			   	   { $this->role = $role; 							 	 }
 }

@@ -798,6 +798,10 @@ textarea {
   font-size: $font-size-XS;
   font-weight: 600;
 }
+.input:focus{
+  border: 2px solid $color-tertiary;
+  border-radius: 5px;
+}
 
 
 .input-medium {
@@ -808,7 +812,7 @@ textarea {
   padding-left: 15px;
 }
 
-.input-medium:focus {
+.input-medium:focus{
   border: 2px solid $color-tertiary;
   border-radius: 5px;
 }
@@ -1327,4 +1331,10 @@ textarea {
   margin-bottom: 10px;
   color: $color-quaternary-dark;
   font-size: $font-size-X;
+}
+
+/* user front edit profil */
+.user-edit-container{
+  padding-top: 35px;
+  padding-bottom: 35px;
 }

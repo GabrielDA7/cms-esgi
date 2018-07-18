@@ -369,3 +369,52 @@ Action : Action not found
 Value : publicAction in IndexController
 Date : 07/18/2018 07:39:25 pm
 -------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 7:40 pm
+-----------------
+Url : http://localhost/lab/uteach/index/public/img/chapters/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in IndexController
+Date : 07/18/2018 07:40:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 7:40 pm
+-----------------
+Url : http://localhost/lab/uteach/index/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in IndexController
+Date : 07/18/2018 07:40:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 8:34 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/public/img/chapters/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/18/2018 08:34:21 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 8:34 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/public/img/chapters/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/18/2018 08:34:23 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 8:34 pm
+-----------------
+Url : http://localhost/lab/uteach/trainning/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in TrainningController
+Date : 07/18/2018 08:34:26 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 8:34 pm
+-----------------
+Url : http://localhost/lab/uteach//uteach/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : uteachAction in IndexController
+Date : 07/18/2018 08:34:27 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 8:36 pm
+-----------------
+Url : http://localhost/lab/uteach/trainning/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in TrainningController
+Date : 07/18/2018 08:36:00 pm
+-------------------------------------------------------
