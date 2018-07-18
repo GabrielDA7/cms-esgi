@@ -57,25 +57,30 @@ class QueryConstructorSql {
 	private function computeWhere($table, $columns = null, $like = FALSE, $username = FALSE) {
 		$query = "";
 		if (isset($columns) && !empty($columns)) {
-			if ($key = array_search("status", $columns) && $table != "user") {
-				unset($columns[$key]);
-				$status = TRUE;
-			}
+			$onlyPublishedContent = $this->isOnlyPublishedContent($columns, $table);
 			$query .= " WHERE ";
-			$query .= (isset($status) && $status) ? "(" : "";
+			$query .= ($onlyPublishedContent) ? "(" : "";
 			if (!$like) {
 				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {
 				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, "", " LIKE :keyword OR ", TRUE, FALSE, FALSE);
 				$query .= " LIKE :keyword";
 			}
-			if (isset($status) && $status) {
+			if ($onlyPublishedContent) 
 				$query .= ") AND status=1";
-			}
-			if ($username) {
+			
+			if ($username) 
 				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
-			}
+			
 		}
 		return $query;
+	}
+
+	private function isOnlyPublishedContent(&$columns, $table) {
+		if ($key = array_search("status", $columns) && $table != "user") {
+			unset($columns[$key]);
+			return TRUE;
+		}
+		return FALSE;
 	}
 }
