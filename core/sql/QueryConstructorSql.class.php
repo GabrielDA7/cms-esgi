@@ -7,7 +7,7 @@ class QueryConstructorSql {
 		$query = "SELECT DISTINCT " . $table . ".* FROM " . $table;
 		if ($username)
 			$query .= ", user";
-		if (isset($columns)) {
+		if (isset($columns) && !empty($columns)) {
 			if (!$like) {
 				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {
@@ -18,12 +18,10 @@ class QueryConstructorSql {
 				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
 			}
 		}
-		if (isset($orderBy)) {
+		if (isset($orderBy))
 			$query .= " ORDER BY " . FormatUtils::formatMapToStringWithSeparators($orderBy, "", SPACE, COMMA);
-		}
-		if (isset($limit)) {
+		if (isset($limit))
 			$query .= " LIMIT " . implode(COMMA, $limit);
-		}
 		return $query;
 	}
 
@@ -34,7 +32,7 @@ class QueryConstructorSql {
 		$query .= " FROM " . $table;
 		if ($username)
 			$query .= ", user";
-		if (isset($columns)) {
+		if (isset($columns) && !empty($columns)) {
 			if (!$like) {
 				$query .= " WHERE " . FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {

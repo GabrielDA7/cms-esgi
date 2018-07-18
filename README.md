@@ -46,6 +46,9 @@ replace space by underscore (file)
 
 view logs (see all logs files and can download them)
 
+-- DONE -- Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&
+            status=1";
+           avec itemsPerPage = 10 retourne + de resultat
 -- DONE -- RSS only when page contains items
 -- DONE -- parametersController (BDD)
 -- DONE -- reset password email

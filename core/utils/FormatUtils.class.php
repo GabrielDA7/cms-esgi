@@ -7,11 +7,10 @@ class FormatUtils {
 
 	public static function formatDataToArray($data) {
 		foreach ($data as $key => $value) {
-			if (is_array($value)) {
+			if (is_array($value))
 				$data[$key] = self::formatDataToArray($value);
-			} else if (is_object($value)) {
+			else if (is_object($value))
 				$data[$key] = self::formatObjectToArray($value);
-			}
 		}
 		return $data;
 	}
@@ -19,9 +18,8 @@ class FormatUtils {
 	public static function formatObjectToArray($object) {
 		$columns = $object->getColumns();
 	    foreach ($columns as $name => $value) {
-	    	if ((is_object($value) && get_class($value) != 'PDO') || is_array($value)) {
+	    	if ((is_object($value) && get_class($value) != 'PDO') || is_array($value))
 	    		$columns[$name] = self::formatDataToArray([$value]);
-	    	}
 	    }
 	    return $columns;
 	}
@@ -40,13 +38,12 @@ class FormatUtils {
 			$value = ($flagValue)? $value : "";
 			$value = ($doubleKey)? $key : $value;
 			$key = ($flagKey)? $key : "";
-			if (!(++$i === $numberOfItems)) {
+			if (!(++$i === $numberOfItems))
 				$separedValues .= $separatorBefore . $key . $separatorBetween . $value . $separatorAfter;
-	  		} else if ($value != "") {
+	  		else if ($value != "")
 	  			$separedValues .= $separatorBefore . $key . $separatorBetween . $value;
-	  		} else {
+	  		else
 	  			$separedValues .= $separatorBefore . $key;
-	  		}
 		}
 		return $separedValues;
 	}
