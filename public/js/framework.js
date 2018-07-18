@@ -251,7 +251,7 @@ $(function() {
   /* Get signaled comments number */
 
   if( $("#dashboard-left-menu").length > 0 ) {
-    getCommentsSignaled("number-comments-signaled", "dashboard-list-comment-report");
+    getCommentsSignaled("number-comments-signaled", "list-comments-report");
   }
 
 });
@@ -265,13 +265,16 @@ function getCommentsSignaled(divNumber, divList){
     success:function(data) {
       data = JSON.parse(data);
       dataComments = data['comments'];
+      html = '';
       if(divList.length > 0) {
         divNumber = $("#" + divNumber);
         divNumber.html(data['itemsNumber']);
 
         $.each(dataComments, function(index, element) {
-          alert(JSON.stringify(element));
+          html += renderCommentSignaled(element);
         });
+        divList = $("#" + divList);
+        divList.html(html);
       } else {
         divNumber = $("#" + divNumber);
         divNumber.html(data['itemsNumber']);
@@ -578,7 +581,10 @@ function renderCommentSignaled(element) {
   html +=         "<strong>" + element.user[0].userName + "</strong><span class='grey-content'>" + getTimeDifference(element.dateInserted) + "</span>";
   html +=       "</div>";
   html +=       "<div class='M2 M--offset7 no-padding'>";
-  html +=         "<a class='align-right report-comment'><span class='content-hidden'>" + element.id + "</span><i class='fas fa-flag'></i></a>";
+  html +=         "<form action='" + dirname + "comment/delete' method='POST'>"
+  html +=           "<input type='hidden' name='id' value='" + element.id + "'></input>";
+  html +=           "<input class='align-righ delete-comment' type='submit' name='submit' value='&times'></input>";
+  html +=         "</form>"
   html +=       "</div>";
   html +=     "</div>";
   html +=     "<div class='row padding-bottom-comment'>";

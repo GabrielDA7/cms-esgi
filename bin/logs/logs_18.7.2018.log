@@ -635,3 +635,24 @@ Action : Action not found
 Value : userAction in ChapterController
 Date : 07/18/2018 09:48:04 pm
 -------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 10:30 pm
+-----------------
+Url : http://localhost/lab/uteach/comment/delete
+Action : Attempt access
+Value : Access denied
+Date : 07/18/2018 10:30:15 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 10:30 pm
+-----------------
+Url : http://localhost/lab/uteach/comment/delete
+Action : Attempt access
+Value : Access denied
+Date : 07/18/2018 10:30:50 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 10:31 pm
+-----------------
+Url : http://localhost/lab/uteach/comment/delete
+Action : Attempt access
+Value : Access denied
+Date : 07/18/2018 10:31:32 pm
+-------------------------------------------------------

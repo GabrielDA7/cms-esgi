@@ -48,5 +48,11 @@ class CommentController {
 	}
 
 	public function deleteAction($params) {
+		if(!isset($params['POST']['submit']) || !isAdmin()) {
+			LogsUtils::process("logs", "Attempt access", "Access denied");
+			RedirectUtils::redirect404();
+		}
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, COMMENT_LIST_REPORT_VIEWS);
+		$this->objectDelegate->delete($params, "", COMMENT_REPORT_BACK_LINK);
 	}
 }
