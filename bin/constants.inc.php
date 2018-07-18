@@ -122,7 +122,7 @@ define("VIDEO_LIST_FRONT_LINK", "video/list");
 define("VIDEO_LIST_BACK_LINK", "video/list/back");
 define("VIDEO_ADD_BACK_LINK", "video/add/back");
 
-define("PARAMETER_EDIT_BACK_LINK", "index/parameters");
+define("PARAMETER_EDIT_BACK_LINK", "index/parameters/back");
 
 define("COMMENT_REPORT_BACK_LINK", "comment/reportList/back");
 
