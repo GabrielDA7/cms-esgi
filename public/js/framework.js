@@ -200,6 +200,16 @@ $(function() {
     load_data_list_comment(object, id);
   }
 
+  $(document).on('click', '#front-video video', function() {
+      var overlay = $("#open-video");
+      overlay.removeClass('content-hidden').addClass('wrap-flex');
+  });
+
+  $(document).on('click', '.close-video', function() {
+      var overlay = $("#open-video");
+      overlay.removeClass('wrap-flex').addClass('content-hidden');
+  });
+
   $(document).on('click', '.report-comment', function() {
     var modal = $("#report-comment-mdl");
     var btn = $(this);
@@ -566,6 +576,7 @@ function dhm(ms){
     if(days == 0 && hours == 0 && minutes == 0 && sec > 0) {
       return sec + "s";
     }
+    return "1s";
 }
 
 function renderCommentSignaled(element) {
