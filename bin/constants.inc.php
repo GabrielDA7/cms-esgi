@@ -159,32 +159,32 @@ define("USER_EDIT_VIEWS",  ["front"=> "editUser",  "back" => "editUserBack"]);
 define("USER_LIST_VIEWS",  ["front"=> "listUser",  "back" => "listUserBack"]);
 define("USER_LOGIN_VIEWS", ["front"=> "loginUser", "back" => "loginUserBack"]);
 define("USER_ADD_VIEWS",   ["front"=> "addUser",   "back" => "addUserBack"]);
-define("USER_CONFIRMATION_EMAIL_VIEWS",   ["front"=> "confirmationEmail",   "back" => ""]);
-define("USER_PASSWORD_RESET_VIEWS",   ["front"=> "passwordReset",   "back" => ""]);
-define("USER_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "passwordResetEmail",   "back" => ""]);
+define("USER_CONFIRMATION_EMAIL_VIEWS",   				 ["front"=> "confirmationEmail",   				"back" => ""]);
+define("USER_PASSWORD_RESET_VIEWS",   					 ["front"=> "passwordReset",   					"back" => ""]);
+define("USER_PASSWORD_RESET_EMAIL_VIEWS",   			 ["front"=> "passwordResetEmail",   			"back" => ""]);
 define("USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "confirmationResetPasswordEmail",   "back" => ""]);
 
 define("VIDEO_VIDEO_VIEWS", ["front"=> "videoVideo", "back" => "videoVideoBack"]);
-define("VIDEO_LIST_VIEWS", ["front"=> "listVideo", "back" => "listVideoBack"]);
-define("VIDEO_ADD_VIEWS", ["front"=> "", "back" => "addVideoBack"]);
+define("VIDEO_LIST_VIEWS",  ["front"=> "listVideo", "back" => "listVideoBack"]);
+define("VIDEO_ADD_VIEWS",   ["front"=> "", "back" => "addVideoBack"]);
 
 define("STATISTIC_VIEWS", ["front"=> "", "back" => "statisticBack"]);
 
-define("TRAINNING_TRAINNING_VIEWS",   ["front"=> "trainningTrainning", "back" => "trainningTrainningBack"]);
-define("TRAINNING_LIST_VIEWS",   	  ["front"=> "listTrainning",      "back" => "listTrainningBack"]);
-define("TRAINNING_ADD_VIEWS",   	  ["front"=> "",   			       "back" => "addTrainningBack"]);
+define("TRAINNING_TRAINNING_VIEWS", ["front"=> "trainningTrainning", "back" => "trainningTrainningBack"]);
+define("TRAINNING_LIST_VIEWS",   	["front"=> "listTrainning",      "back" => "listTrainningBack"]);
+define("TRAINNING_ADD_VIEWS",   	["front"=> "",   			     "back" => "addTrainningBack"]);
 
 define("CHAPTER_CHAPTER_VIEWS", ["front"=> "chapterChapter", "back" => "chapterChapterBack"]);
 define("CHAPTER_ADD_VIEWS",     ["front"=> "", 			     "back" => "addChapterBack"]);
 define("CHAPTER_LIST_VIEWS",    ["front"=> "listChapter",    "back" => "listChapterBack"]);
 define("CHAPTER_EDIT_VIEWS",    ["front"=> "",    			 "back" => "editChapterBack"]);
 
-define("COMMENT_LIST_REPORT_VIEWS",    ["front"=> "",    			 "back" => "listReportCommentBack"]);
+define("COMMENT_LIST_REPORT_VIEWS", ["front"=> "", "back" => "listReportCommentBack"]);
 
-define("PREMIUM_LIST_VIEWS", ["front"=>"listPremium",       "back" => "listPremiumBack"]);
-define("PREMIUM_ADD_VIEWS", ["front"=>"",         "back"=>"addPremiumBack"]);
+define("PREMIUM_LIST_VIEWS", ["front"=>"listPremium", "back" => "listPremiumBack"]);
+define("PREMIUM_ADD_VIEWS",  ["front"=>"",            "back"=>"addPremiumBack"]);
 
-define("PARAMETERS_VIEWS", ["front"=>"",  "back"=>"editParameterBack"]);
+define("PARAMETERS_VIEWS", ["front"=>"", "back"=>"editParameterBack"]);
 
 /******************************
 ********** ROLE ***************

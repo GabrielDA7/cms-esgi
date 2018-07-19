@@ -59,7 +59,7 @@
           </div>
           <div class="row M--center">
             <input type="hidden" name="duration" value="1">
-            <input type="hidden" name="cost" value="100">
+            <input type="hidden" name="price" value="100">
             <input type="submit" class="input-btn btn-filled-orange btn-icon" name="submit" value="choose">
           </div>
         </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="row M--center">
               <input type="hidden" name="duration" value="1">
-              <input type="hidden" name="cost" value="100">
+              <input type="hidden" name="price" value="100">
               <input type="submit" class="input-btn btn-filled-orange btn-icon" name="submit" value="choose">
             </div>
           </div>
@@ -113,7 +113,7 @@
             </div>
             <div class="row M--center">
               <input type="hidden" name="duration" value="1">
-              <input type="hidden" name="cost" value="100">
+              <input type="hidden" name="price" value="100">
               <input type="submit" class="input-btn btn-filled-orange btn-icon" name="submit" value="choose">
             </div>
           </div>

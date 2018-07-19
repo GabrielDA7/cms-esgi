@@ -9,35 +9,6 @@ class Premium {
 	protected $premiumOffer_Id;
 
 
-	public static function configTable(){
-		return 	[
-					"config"=>["id"=>"pagination_data", "class"=>"table_responsive"],
-					"cells"=>
-										[
-												"title"=>
-															[
-																"name"=>"Title"
-															],
-												"price"=>
-															[
-																 "name"=>"Price"
-															],
-												"duration"=>
-															[
-																	"name"=>"Duration"
-															],
-												"status"=>
-															[
-																"name"=>"Status"
-															],
-												"id"=>
-															[
-																"name"=>"Actions"
-															]
-										]
-				];
-	}
-
 
 	public function getId() 	   { return $this->id; 		  }
 	public function getStartDate() { return $this->startDate; }
