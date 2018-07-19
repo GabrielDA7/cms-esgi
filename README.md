@@ -41,6 +41,8 @@ premium
 
 premium / status check authorisation
 
+siteMap
+
 Add table infos (Facebook / Twitter / Linkedin / Footer text)
 
 replace space by underscore (file)

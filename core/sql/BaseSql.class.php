@@ -144,6 +144,7 @@ class BaseSql extends QueryConstructorSql {
 					$tempObject->setId($foreignObject->getId());
 					$tempObject->setUserName($foreignObject->getUsername());
 					$tempObject->setAvatar($foreignObject->getAvatar());
+					$tempObject->setEmail($foreignObject->getEmail());
 					$foreignObject = $tempObject;
 				}
 				$object->$setter($foreignObject);

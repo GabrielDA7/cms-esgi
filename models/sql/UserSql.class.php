@@ -49,10 +49,9 @@ class UserSql extends BaseSql {
 		if ($this->hasResult($query)) {
 			$this->updateUserRole($user->getId(), PREMIUM_ROLE);
 			return TRUE;
-		} else {
-			$this->updateUserRole($user->getId(), DEFAULT_ROLE);
-			return FALSE;
 		}
+		$this->updateUserRole($user->getId(), DEFAULT_ROLE);
+		return FALSE;
 	}
 
 	private function updateUserRole($id, $role) {

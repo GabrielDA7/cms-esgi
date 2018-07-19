@@ -13,7 +13,7 @@ class RssDelegate {
 		$xmlFile = $this->createXmlFile();
 		$action = str_replace("Action", "", ClassUtils::getCallingFunction());
 		$headerInfos = $this->computeHeaderInfos($action);
-		$channel = $this->initRssHeader($xmlFile, $headerInfos);
+		$channel = $this->initRssHeader($xmlFile, $headerInfos, $action);
 		$items = $data[lcfirst($this->objectName) . "s"];
 		$this->addItems($xmlFile, $channel, $items);
 		$xmlFile->save("bin/xml/" . $action . "_" . $this->objectName. ".xml");
@@ -22,7 +22,8 @@ class RssDelegate {
 	private function computeHeaderInfos($action) {
 		$title = "Page " . $action;
 		$desc = ucfirst($action) . " of " . $this->objectName;
-		$link = $_SERVER['SERVER_NAME'] . DIRNAME . $this->objectName . "/list";
+		$protocole = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
+		$link = $protocole . $_SERVER['SERVER_NAME'] . DIRNAME . $this->objectName . "/list";
 		return ["title" => $title, "description" => $desc, "link" => $link];
 	}
 
@@ -33,11 +34,18 @@ class RssDelegate {
 		return $xmlFile;
 	}
 
-	private function initRssHeader(&$xmlFile, $headerInfos)
+	private function initRssHeader(&$xmlFile, $headerInfos, $action)
 	{
         $root = $xmlFile->createElement("rss");
         $root->setAttribute("version", "2.0"); 
+        $root->setAttribute("xmlns:atom", "http://www.w3.org/2005/Atom");
         $root = $xmlFile->appendChild($root); 
+
+        $root = $xmlFile->createElement("atom:link");
+        $root->setAttribute("href", $headerInfos['link']); 
+        $root->setAttribute("rel", "self");
+        $root->setAttribute("type", "application/rss+xml");
+        $root = $xmlFile->appendChild($root);
         
         $channel = $xmlFile->createElement("channel");
         $channel = $root->appendChild($channel);
@@ -66,7 +74,20 @@ class RssDelegate {
         $columns = $itemObject->getColumns();
         ClassUtils::removeDBColumns($columns);
 
-        foreach ($columns as $key => $value) {
+        $title = $xmlFile->createElement("title");
+        $title = $item->appendChild($title);
+        $textElement = $xmlFile->createTextNode($itemObject->getTitle());
+		$textElement = $title->appendChild($textElement);
+        
+        $authorText = $itemObject->getUser()->getEmail() . "(" . $itemObject->getUser()->getUsername() . ")";
+        $author = $xmlFile->createElement("author");
+        $author = $item->appendChild($author);
+        $textElement = $xmlFile->createTextNode($authorText);
+		$textElement = $author->appendChild($textElement);
+
+
+
+        /*foreach ($columns as $key => $value) {
         	if (!is_array($value) && isset($value)) {
         		if (!is_object($value)) {
 		        	$element = $xmlFile->createElement($key);
@@ -77,16 +98,22 @@ class RssDelegate {
         			$this->addItem($xmlFile, $item, $value);
 		    	}
         	}
-        }
+        }*/
 		$this->computeLinkToContent($xmlFile, $item, $columns);    
 	}
 
 	private function computeLinkToContent(&$xmlFile, &$item, $columns) {
 		$objectName = strtolower($columns['objectName']);
-		$urlOfobject = $_SERVER['SERVER_NAME'] . DIRNAME . $objectName . "/" . $objectName . "?id=" . $columns['id'];
+		$protocole = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
+		$urlOfobject = $protocole . $_SERVER['SERVER_NAME'] . DIRNAME . $objectName . "/" . $objectName . "?id=" . $columns['id'];
         $link = $xmlFile->createElement("link");
         $link = $item->appendChild($link);
         $url = $xmlFile->createTextNode($urlOfobject);
         $url = $link->appendChild($url);
+
+        $guid = $xmlFile->createElement("guid");
+        $guid = $item->appendChild($guid);
+        $url = $xmlFile->createTextNode($urlOfobject);
+        $url = $guid->appendChild($url);
 	}
 }
