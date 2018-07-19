@@ -571,7 +571,7 @@ function dhm(ms){
 function renderCommentSignaled(element) {
   html = "<div class='row comment-card M--start'>";
   html +=   "<div class='M1 no-padding align-center'>";
-  html +=     "<a href='user/user?id=" + element.user[0].id + "'>"
+  html +=     "<a href='" + dirname + "user/user?id=" + element.user[0].id + "'>"
   html +=       "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar image'>";
   html +=     "</a>"
   html +=   "</div>";
