@@ -12,7 +12,7 @@
   </div>
 
   <div class="container">
-    <div class="premium-offers M--center M--between row">
+    <div class="premium-offers M--center M--around row">
       <div class="M2">
         <div class="offer">
           <div class="row M--end">
@@ -33,7 +33,7 @@
             </div>
           </div>
           <div class="row M--center">
-            
+
           </div>
         </div>
       </div>

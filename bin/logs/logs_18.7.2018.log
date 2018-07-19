@@ -656,3 +656,38 @@ Action : Attempt access
 Value : Access denied
 Date : 07/18/2018 10:31:32 pm
 -------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 11:15 pm
+-----------------
+Url : http://localhost/lab/uteach/trainning/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in TrainningController
+Date : 07/18/2018 11:15:59 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 11:16 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/public/img/chapters/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/18/2018 11:16:01 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 11:16 pm
+-----------------
+Url : http://localhost/lab/uteach/trainning/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in TrainningController
+Date : 07/18/2018 11:16:25 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 11:16 pm
+-----------------
+Url : http://localhost/lab/uteach/chapter/public/img/chapters/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/18/2018 11:16:45 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 18, 2018, 11:16 pm
+-----------------
+Url : http://localhost/lab/uteach/trainning/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in TrainningController
+Date : 07/18/2018 11:16:46 pm
+-------------------------------------------------------
