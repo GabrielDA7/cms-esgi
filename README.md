@@ -41,9 +41,6 @@ premium
 
 premium / status check authorisation
 
-views evolution
-statisitc premium
-
 Add table infos (Facebook / Twitter / Linkedin / Footer text)
 
 replace space by underscore (file)
@@ -84,6 +81,7 @@ view logs (see all logs files and can download them)
             status in db 0 disabled 1 enabled
             ajax list front -> don't show disabled
 -- DONE -- FIXE le recherche pour les commentaires ( AJAX :http://localhost/uteach/ajax/search?object=comment&search=1&column_name=report )
+-- DONE -- views evolution
 
                               |FRONT|
 
@@ -99,6 +97,7 @@ add button or href to see RSS flux -> see files in bin/xml/
 installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
 statistic :put aaa($this->data); in indexController statisticAction above view
 vue parameters edit dbname / dbhost / dbuser / dbport / language
+FIXER le probleme de chart BO des stats qui change toutes seules lorsque les deux types de chart on été affiché
 
 
 !!! REGARDER SI LES BUGS VIENNENT PAS DE MR GABRIEL DAOUD !!!
