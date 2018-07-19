@@ -17,6 +17,9 @@ in index.php
 conf.inc.php
 INSTALLATION -> FALSE
 
+-- 4 --
+Remove aaa and aaaa function in index.php
+
                               |SERVER|
 
 php.ini
@@ -28,8 +31,7 @@ PHP > 7
 
                               |BACK|
 
-Corrige la recherche comment ...
-Fix parameters edition => modifie la route creer un controller appart avec le model
+
 paypal
 
 premium
@@ -39,8 +41,7 @@ premium
 
 premium / status check authorisation
 
-views evolution
-statisitc premium
+siteMap
 
 Add table infos (Facebook / Twitter / Linkedin / Footer text)
 
@@ -82,6 +83,7 @@ view logs (see all logs files and can download them)
             status in db 0 disabled 1 enabled
             ajax list front -> don't show disabled
 -- DONE -- FIXE le recherche pour les commentaires ( AJAX :http://localhost/uteach/ajax/search?object=comment&search=1&column_name=report )
+-- DONE -- views evolution
 
                               |FRONT|
 
@@ -97,6 +99,11 @@ add button or href to see RSS flux -> see files in bin/xml/
 installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
 statistic :put aaa($this->data); in indexController statisticAction above view
 vue parameters edit dbname / dbhost / dbuser / dbport / language
+FIXER le probleme de chart BO des stats qui change toutes seules lorsque les deux types de chart on été affiché
+
+
+!!! REGARDER SI LES BUGS VIENNENT PAS DE MR GABRIEL DAOUD !!!
+
 
 -- SEE LATER -- Comment use modal
 -- SEE LATER -- VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper arreter les requetes quand il n'y a pas de       --resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
