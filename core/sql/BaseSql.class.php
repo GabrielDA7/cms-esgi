@@ -97,8 +97,7 @@ class BaseSql extends QueryConstructorSql {
 	public function getByWord($keyword, $columnsToSearch, $data) {
 		$orderBy = (isset($data) && isset($data['orderBy'])) ? $data['orderBy'] : null;
 		$limit = (isset($data) && isset($data['limit'])) ? $data['limit'] : null;
-		$searchUsername = in_array("user_id", $columnsToSearch);
-		$queryString = $this->constructSelectQuery($this->table, $columnsToSearch, TRUE, $orderBy, $limit, $searchUsername);
+		$queryString = $this->constructSelectQuery($this->table, $columnsToSearch, TRUE, $orderBy, $limit);
 		$query = $this->db->prepare($queryString);
 		$this->setKeyword($query, $keyword);
 		$query->execute();

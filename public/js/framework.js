@@ -592,7 +592,7 @@ function renderCommentSignaled(element) {
   html +=         "<strong>" + element.user[0].userName + "</strong><span class='grey-content'>" + getTimeDifference(element.dateInserted) + "</span>";
   html +=       "</div>";
   html +=       "<div class='M2 M--offset7 no-padding'>";
-  html +=         "<form action='" + dirname + "comment/delete' method='POST'>"
+  html +=         "<form action='" + dirname + "comment/delete/back' method='POST'>"
   html +=           "<input type='hidden' name='id' value='" + element.id + "'></input>";
   html +=           "<input class='align-righ delete-comment' type='submit' name='submit' value='&times'></input>";
   html +=         "</form>"

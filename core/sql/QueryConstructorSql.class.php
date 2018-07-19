@@ -3,10 +3,16 @@ class QueryConstructorSql {
 
 	public function __construct() {}
 
-	protected function constructSelectQuery($table, $columns = null, $like = FALSE, $orderBy = null, $limit = null, $username = FALSE) {
+	protected function constructSelectQuery($table, $columns = null, $like = FALSE, $orderBy = null, $limit = null) {
+		$searchUsername = FALSE;
+		$searchTrainningTitle = FALSE;
+		if (isset($columns)) {
+			$searchUsername = in_array("user_id", $columns);
+			$searchTrainningTitle = in_array("trainning_id", $columns);
+		}
 		$query = "SELECT DISTINCT " . $table . ".* ";
-		$query .= $this->computeFrom($table, $username);
-		$query .= $this->computeWhere($table, $columns, $like, $username);
+		$query .= $this->computeFrom($table, $searchUsername, $searchTrainningTitle);
+		$query .= $this->computeWhere($table, $columns, $like, $searchUsername, $searchTrainningTitle);
 		if (isset($orderBy))
 			$query .= " ORDER BY " . FormatUtils::formatMapToStringWithSeparators($orderBy, "", SPACE, COMMA);
 		if (isset($limit))
@@ -51,19 +57,21 @@ class QueryConstructorSql {
 		$query = "SELECT COUNT(DISTINCT ip) as views, dateInserted FROM (";
 		foreach ($tables as $table) {
 			$query .= "SELECT ip, date(dateInserted) as dateInserted FROM " . $table . " ";
-			$query .= "WHERE dateInserted BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()";
 			if ($table != end($tables))
 				$query .= " union all ";
 		}
-		$query .= ") t GROUP BY dateInserted";
+		$query .= ") t GROUP BY dateInserted ORDER BY dateInserted asc";
 		return $query;
 	}
 
-	private function computeFrom($table, $username) {
-		return " FROM " . $table . (($username) ? ", user" : "");
+	private function computeFrom($table, $searchUsername = FALSE, $searchTrainningTitle = FALSE) {
+		$query = " FROM " . $table; 
+		$query .= (($searchUsername) ? ", user" : "");
+		$query .= (($searchTrainningTitle) ? ", trainning" : "");
+		return $query;
 	}
 
-	private function computeWhere($table, $columns = null, $like = FALSE, $username = FALSE) {
+	private function computeWhere($table, $columns = null, $like = FALSE, $username = FALSE, $searchTrainningTitle = FALSE) {
 		$query = "";
 		if (isset($columns) && !empty($columns)) {
 			$onlyPublishedContent = $this->isOnlyPublishedContent($columns, $table);
@@ -80,7 +88,7 @@ class QueryConstructorSql {
 				$query .= " LIKE :keyword";
 			}
 			if ($onlyPublishedContent) 
-				$query .= ") AND status=1";
+				$query .= ") AND " . $table . ".status=1";
 
 
 			if (isset($date))
@@ -88,6 +96,8 @@ class QueryConstructorSql {
 			
 			if ($username) 
 				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
+			if ($searchTrainningTitle)
+				$query .= " OR (trainning.id=" . $table . ".trainning_id AND trainning.title LIKE :keyword)";
 			
 		}
 		return $query;
