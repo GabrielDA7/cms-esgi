@@ -46,9 +46,16 @@ class QueryConstructorSql {
 		return $query;
 	}
 
-	protected function constructSelectStatisticsQuery($numberOfTime) {
-		$query = "SELECT COUNT(ip) as views FROM statistic ";
-		$query .= "GROUP BY views HAVING DATE_SUB(dateInserted, INTERVAL ". $numberOfTime[0] . " " . $numberOfTime[1] .")";
+	protected function constructSelectStatisticsQuery() {
+		$tables = ["viewed_trainning", "viewed_chapter", "viewed_video"];
+		$query = "SELECT COUNT(DISTINCT ip) as views, dateInserted FROM (";
+		foreach ($tables as $table) {
+			$query .= "SELECT ip, date(dateInserted) as dateInserted FROM " . $table . " ";
+			$query .= "WHERE dateInserted BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()";
+			if ($table != end($tables))
+				$query .= " union all ";
+		}
+		$query .= ") t GROUP BY dateInserted";
 		return $query;
 	}
 
@@ -60,6 +67,7 @@ class QueryConstructorSql {
 		$query = "";
 		if (isset($columns) && !empty($columns)) {
 			$onlyPublishedContent = $this->isOnlyPublishedContent($columns, $table);
+			$date = $this->getIfContainDate($columns);
 			$query .= " WHERE ";
 
 			if ($onlyPublishedContent) 
@@ -73,6 +81,10 @@ class QueryConstructorSql {
 			}
 			if ($onlyPublishedContent) 
 				$query .= ") AND status=1";
+
+
+			if (isset($date))
+				$query .= "AND date(dateInserted) = " . $date;
 			
 			if ($username) 
 				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
@@ -87,5 +99,14 @@ class QueryConstructorSql {
 			return TRUE;
 		}
 		return FALSE;
+	}
+
+	private function getIfContainDate(&$columns) {
+		$date = null;
+		if ($key = array_search("dateInserted", $columns)) {
+			$date = $columns[$key];
+			unset($columns[$key]);
+		}
+		return $date;
 	}
 }

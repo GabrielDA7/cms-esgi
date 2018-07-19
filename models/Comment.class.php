@@ -7,8 +7,8 @@ class Comment extends BaseSql {
 	protected $report;
 	protected $comments = [];
 
-  protected $user_id;
-  protected $user;
+  	protected $user_id;
+  	protected $user;
 	protected $chapter_id;
 	protected $trainning_id;
 	protected $video_id;

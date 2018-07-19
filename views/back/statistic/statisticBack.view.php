@@ -36,7 +36,7 @@
       </div>
       <div class="row">
         <div class="M12">
-          <canvas class="myChart" width="300" height="320"></canvas>
+          <canvas class="myChart" id="statistic_chart" width="300" height="320"></canvas>
         </div>
       </div>
     </div>
@@ -114,6 +114,7 @@
   [
     "topVideo" => json_encode(FormatUtils::formatDataToArray($topVideo)),
     "topChapter" => json_encode(FormatUtils::formatDataToArray($topChapter)),
-    "topTrainning" => json_encode(FormatUtils::formatDataToArray($topTrainning))
+    "topTrainning" => json_encode(FormatUtils::formatDataToArray($topTrainning)),
+    "viewsHistory" => json_encode(FormatUtils::formatDataToArray($viewsHistory))
   ]); 
 ?>

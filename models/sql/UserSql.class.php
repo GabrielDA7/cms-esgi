@@ -23,7 +23,7 @@ class UserSql extends BaseSql {
 		$_SESSION['userName'] = $user->getUserName();
 		$_SESSION['token'] = $user->getToken();
 		$_SESSION['userId'] = $user->getid();
-		$_SESSION['premium'] = $this->checkPremiumDate($user->getid());
+		$_SESSION['premium'] = $this->checkPremiumDate($user);
 		$this->setConnectedStatus($user, CONNECTED_STATUS);
 		if ($this->checkAdminStatus($user->getid()) === TRUE) {
 			$_SESSION['admin'] = TRUE;
@@ -39,11 +39,26 @@ class UserSql extends BaseSql {
 		$user->update();
 	}
 
-	private function checkPremiumDate($id) {
+	private function checkPremiumDate($user) {
 		$queryString = "SELECT * FROM User u, Premium p WHERE p.User_id=u.id AND u.id=:id AND p.endDate>NOW()";
 		$query = $this->db->prepare($queryString);
-		$query->execute(array(":id" => $id));
-		return $this->hasResult($query);
+		$query->execute(array(":id" => $user->getid()));
+		if ($this->hasResult($query) && $user->getRole() == PREMIUM_ROLE)
+			return TRUE;
+		
+		if ($this->hasResult($query)) {
+			$this->updateUserRole($user->getId(), PREMIUM_ROLE);
+			return TRUE;
+		}
+		$this->updateUserRole($user->getId(), DEFAULT_ROLE);
+		return FALSE;
+	}
+
+	private function updateUserRole($id, $role) {
+		$user = new User();
+		$user->setId($id);
+		$user->setRole($role);
+		$user->update();
 	}
 
 	private function checkAdminStatus($id) {

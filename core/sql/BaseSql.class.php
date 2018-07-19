@@ -107,6 +107,13 @@ class BaseSql extends QueryConstructorSql {
 		return $objects;
 	}
 
+	public function getStatisticViewsHistory() {
+		$queryString = $this->constructSelectStatisticsQuery();
+		$query = $this->db->prepare($queryString);
+		$query->execute();
+		$response = $query->fetchAll();
+		return $this->createObjectsListFromDBResponse($response);
+	}
 
 	private function createObjectsListFromDBResponse($response) {
 		$objectList = array();
@@ -137,6 +144,7 @@ class BaseSql extends QueryConstructorSql {
 					$tempObject->setId($foreignObject->getId());
 					$tempObject->setUserName($foreignObject->getUsername());
 					$tempObject->setAvatar($foreignObject->getAvatar());
+					$tempObject->setEmail($foreignObject->getEmail());
 					$foreignObject = $tempObject;
 				}
 				$object->$setter($foreignObject);
