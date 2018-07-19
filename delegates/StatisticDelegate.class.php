@@ -14,6 +14,7 @@ class StatisticDelegate {
 		$this->computeStatisticObject($params);
 		if ($this->isViewAlreadyExists())
 			return;
+		$this->statisticObject->setDateInserted(null);
 		$this->statisticObject->insert();
 	}
 
@@ -52,9 +53,11 @@ class StatisticDelegate {
 		$contentId = $params['id'];
 		$contentSetter = "set" . $this->objectName . "Id";
 		$user_id = (isset($_SESSION['userID'])) ? $_SESSION['userID'] : null;
+		$todayDate = date("Y-m-d");
 		$this->statisticObject->setIp($ip);
 		$this->statisticObject->$contentSetter($contentId);
 		$this->statisticObject->setUserId($user_id);
+		$this->statisticObject->setDateInserted($todayDate);
 	}
 
 	private function computeTopContents(&$data, $contentObjectName) {

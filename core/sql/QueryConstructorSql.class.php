@@ -67,6 +67,7 @@ class QueryConstructorSql {
 		$query = "";
 		if (isset($columns) && !empty($columns)) {
 			$onlyPublishedContent = $this->isOnlyPublishedContent($columns, $table);
+			$date = $this->getIfContainDate($columns);
 			$query .= " WHERE ";
 
 			if ($onlyPublishedContent) 
@@ -80,6 +81,10 @@ class QueryConstructorSql {
 			}
 			if ($onlyPublishedContent) 
 				$query .= ") AND status=1";
+
+
+			if (isset($date))
+				$query .= "AND date(dateInserted) = " . $date;
 			
 			if ($username) 
 				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
@@ -94,5 +99,14 @@ class QueryConstructorSql {
 			return TRUE;
 		}
 		return FALSE;
+	}
+
+	private function getIfContainDate(&$columns) {
+		$date = null;
+		if ($key = array_search("dateInserted", $columns)) {
+			$date = $columns[$key];
+			unset($columns[$key]);
+		}
+		return $date;
 	}
 }
