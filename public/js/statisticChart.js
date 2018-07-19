@@ -71,11 +71,12 @@ $(document).ready(function () {
       var chart = new Chart(canvas, {
         type: 'bar',
         data: {
-          labels: getHistoryDate(viewsHistory),
+          labels: getHistoryViews(viewsHistory, "dateInserted"),
           datasets: [
           {
             label: "Number of views",
-            data: getHistoryViews(viewsHistory)
+            backgroundColor: ["#3e95cd"],
+            data: getHistoryViews(viewsHistory, "views")
           }
           ]
         },
@@ -97,19 +98,11 @@ $(document).ready(function () {
       });
     }
 
-    function getHistoryDate(array) {
-      var dates = [];
+    function getHistoryViews(array, property) {
+      var results = [];
       $.each(array, function(index, element) {
-        dates.push(element.dateInserted);
+        results.push(element[property]);
       });
-      return dates;
-    }
-
-    function getHistoryViews(array) {
-      var views = [];
-      $.each(array, function(index, element) {
-        views.push(element.views);
-      });
-      return views;
+      return results;
     }
 });
