@@ -17,6 +17,9 @@ in index.php
 conf.inc.php
 INSTALLATION -> FALSE
 
+-- 4 --
+Remove aaa and aaaa function in index.php
+
                               |SERVER|
 
 php.ini
@@ -28,8 +31,7 @@ PHP > 7
 
                               |BACK|
 
-Corrige la recherche comment ...
-Fix parameters edition => modifie la route creer un controller appart avec le model
+
 paypal
 
 premium
@@ -97,6 +99,10 @@ add button or href to see RSS flux -> see files in bin/xml/
 installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
 statistic :put aaa($this->data); in indexController statisticAction above view
 vue parameters edit dbname / dbhost / dbuser / dbport / language
+
+
+!!! REGARDER SI LES BUGS VIENNENT PAS DE MR GABRIEL DAOUD !!!
+
 
 -- SEE LATER -- Comment use modal
 -- SEE LATER -- VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper arreter les requetes quand il n'y a pas de       --resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)

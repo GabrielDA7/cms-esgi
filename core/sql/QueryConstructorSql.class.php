@@ -46,9 +46,16 @@ class QueryConstructorSql {
 		return $query;
 	}
 
-	protected function constructSelectStatisticsQuery($numberOfTime) {
-		$query = "SELECT COUNT(ip) as views FROM statistic ";
-		$query .= "GROUP BY views HAVING DATE_SUB(dateInserted, INTERVAL ". $numberOfTime[0] . " " . $numberOfTime[1] .")";
+	protected function constructSelectStatisticsQuery() {
+		$tables = ["viewed_trainning", "viewed_chapter", "viewed_video"];
+		$query = "SELECT COUNT(DISTINCT ip) as views, dateInserted FROM (";
+		foreach ($tables as $table) {
+			$query .= "SELECT ip, date(dateInserted) as dateInserted FROM " . $table . " ";
+			$query .= "WHERE dateInserted BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()";
+			if ($table != end($tables))
+				$query .= " union all ";
+		}
+		$query .= ") t GROUP BY dateInserted";
 		return $query;
 	}
 

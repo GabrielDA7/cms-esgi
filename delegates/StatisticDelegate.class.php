@@ -26,6 +26,12 @@ class StatisticDelegate {
 			$this->computeTotalViews($data, $contentObjectName);
 		}
 		$this->computeTotalPremium($data);
+		$this->computeViewsHistory($data);
+	}
+
+	private function computeViewsHistory(&$data) {
+		//$time = ["duration" => $params['GET']['duration'] ?? null, "type" => $params['GET']['type'] ?? null];
+		$data["viewsHistory"] = $this->statisticObject->getStatisticViewsHistory();
 	}
 
 	private function isViewAlreadyExists() {
