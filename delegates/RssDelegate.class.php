@@ -41,11 +41,11 @@ class RssDelegate {
         $root->setAttribute("xmlns:atom", "http://www.w3.org/2005/Atom");
         $root = $xmlFile->appendChild($root); 
 
-        $root = $xmlFile->createElement("atom:link");
-        $root->setAttribute("href", $headerInfos['link']); 
-        $root->setAttribute("rel", "self");
-        $root->setAttribute("type", "application/rss+xml");
-        $root = $xmlFile->appendChild($root);
+        $atom = $xmlFile->createElement("atom:link");
+        $atom->setAttribute("href", $headerInfos['link']); 
+        $atom->setAttribute("rel", "self");
+        $atom->setAttribute("type", "application/rss+xml");
+        $atom = $root->appendChild($atom);
         
         $channel = $xmlFile->createElement("channel");
         $channel = $root->appendChild($channel);

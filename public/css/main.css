@@ -1773,3 +1773,8 @@ textarea {
 .close-video {
   padding: 20px;
   font-size: 21px; }
+
+.rss-icon {
+  font-size:48px;
+  color:#ff6600;
+}

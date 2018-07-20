@@ -91,13 +91,6 @@
                           <figcaption>Email</figcaption>
                         </figure>
                       </li>
-
-                      <li>
-                        <figure>
-                          <a href="" target="_blank"><i class="fas fa-rss-square"></i></a>
-                          <figcaption>RSS</figcaption>
-                        </figure>
-                      </li>
                 </ul>
               </div>
             </div>

@@ -3,6 +3,7 @@
     <div class="M4">
       <div class="back-title">
         <h1>List of chapters</h1>
+        <a href="<?= DIRNAME ?>bin/xml/list_chapter.xml"><i class="fas fa-rss-square rss-icon"></i></a>
         <div class="hr-separation"></div>
       </div>
     </div>
