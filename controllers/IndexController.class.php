@@ -5,6 +5,7 @@ class IndexController {
 	private $formDelegate;
 	private $fileDelegate;
 	private $statisticDelegate;
+	private $siteMapDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -12,11 +13,13 @@ class IndexController {
 		$this->formDelegate = new FormDelegate(INSTALLATION_CLASS_NAME);
 		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAME);
 		$this->statisticDelegate = new StatisticDelegate();
+		$this->siteMapDelegate = new SiteMapDelegate();
 	}
 
 	public function indexAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, HOME_VIEWS);
 		$view = new View($this->data);
+		$this->siteMapDelegate->processStart();
 	}
 
 	public function contactAction($params) {
@@ -47,4 +50,7 @@ class IndexController {
 		$view = new View($this->data);
 	}
 
+	public function crawlAction($params) {
+		$this->siteMapDelegate->process($params);
+	}
 }
