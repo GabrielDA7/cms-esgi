@@ -5,10 +5,10 @@ $(document).ready(function () {
   topChapter = JSON.parse(topChapter);
   viewsHistory = JSON.parse(viewsHistory);
 
-  createChart();
+  initChart();
 
   $(document).change('select[name=chart_choice]', function() {
-    createChart();
+    initChart();
   });
 
   function createChart() {
@@ -20,21 +20,21 @@ $(document).ready(function () {
         createPopularContentChart(canvas);
       }
   }
-  
+
 
   function createPopularContentChart(canvas) {
       var chart = new Chart(canvas, {
         type: 'bar',
         data: {
           labels: [
-            [getSafe(() => topTrainning[0].trainning[0].title, "No one"), '#1Trainning'], 
-            [getSafe(() => topChapter[0].chapter[0].title, "No one"), '#1Chapter'], 
+            [getSafe(() => topTrainning[0].trainning[0].title, "No one"), '#1Trainning'],
+            [getSafe(() => topChapter[0].chapter[0].title, "No one"), '#1Chapter'],
             [getSafe(() => topVideo[0].video[0].title, "No one"), '#1Video'],
-            [getSafe(() => topTrainning[1].trainning[0].title, "No one"), '#2Trainning'], 
-            [getSafe(() => topChapter[1].chapter[0].title, "No one"), '#2Chapter'], 
+            [getSafe(() => topTrainning[1].trainning[0].title, "No one"), '#2Trainning'],
+            [getSafe(() => topChapter[1].chapter[0].title, "No one"), '#2Chapter'],
             [getSafe(() => topVideo[1].video[0].title, "No one"), '#2Video'],
-            [getSafe(() => topTrainning[2].trainning[0].title, "No one"), '#3Trainning'], 
-            [getSafe(() => topChapter[2].chapter[0].title, "No one"), '#3Chapter'], 
+            [getSafe(() => topTrainning[2].trainning[0].title, "No one"), '#3Trainning'],
+            [getSafe(() => topChapter[2].chapter[0].title, "No one"), '#3Chapter'],
             [getSafe(() => topVideo[2].video[0].title, "No one"), '#3Video']
           ],
           datasets: [
@@ -68,34 +68,35 @@ $(document).ready(function () {
     }
 
     function createVisitHistoryChart(canvas) {
+
       var chart = new Chart(canvas, {
-        type: 'bar',
-        data: {
-          labels: getHistoryViews(viewsHistory, "dateInserted"),
-          datasets: [
-          {
-            label: "Number of views",
-            backgroundColor: ["#3e95cd"],
-            data: getHistoryViews(viewsHistory, "views")
-          }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          legend: { display: false },
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
+          type: 'line',
+          data: {
+            labels: getHistoryViews(viewsHistory, "dateInserted"),
+            datasets: [{
+                data: getHistoryViews(viewsHistory, "views"),
+                label: "number of visits",
+                borderColor: "#3e95cd",
+                fill: false
+              },
+            ]
           },
-          title: {
-            display: false
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: { display: false },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            },
+            title: {
+              display: false
+            }
           }
-        }
-      });
+        });
     }
 
     function getHistoryViews(array, property) {
@@ -104,5 +105,16 @@ $(document).ready(function () {
         results.push(element[property]);
       });
       return results;
+    }
+
+    function resetCanvas(){
+      var chartContainer = $("#chart-container");
+      chartContainer.children('.myChart').remove();
+      chartContainer.append('<canvas class="myChart" id="statistic_chart" width="300" height="320"></canvas>');
+    }
+
+    function initChart() {
+      resetCanvas();
+      createChart();
     }
 });
