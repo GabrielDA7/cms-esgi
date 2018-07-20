@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<urlset>
+  <url>
+    <loc>/lab/uteach/bin/xml/list_trainning.xml</loc>
+    <lastmod>2018-07-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/bin/xml/list_video.xml</loc>
+    <lastmod>2018-07-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+</urlset>
