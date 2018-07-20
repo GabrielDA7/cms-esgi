@@ -154,7 +154,7 @@ class SiteMapDelegate {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
 		curl_setopt($curl, CURLOPT_HEADER, 0);
-		curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+		curl_setopt($curl, CURLOPT_TIMEOUT_MS, 100);
 		return $curl;
 	}
 
