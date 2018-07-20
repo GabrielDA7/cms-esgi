@@ -70,6 +70,9 @@ define("TINYMCE_PATH", "public/js/tinymce/js/tinymce/tinymce.min.js");
 define("CHART_PATH", "node_modules/chart.js/dist/Chart.min.js");
 define("STATISTIC_CHART_PATH", "public/js/statisticChart.js");
 
+define("TEMP_CRAWLER_LINKS_PATH", "bin/crawler/temp_links.xml");
+define("TEMP_CRAWLER_CRAWLED_LINKS_PATH", "bin/crawler/temp_links_crawled.xml");
+
 
 /******************************
 ********** ROUTES *************

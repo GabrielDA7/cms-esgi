@@ -41,7 +41,6 @@ premium
 
 premium / status check authorisation
 
-siteMap
 
 Add table infos (Facebook / Twitter / Linkedin / Footer text)
 
@@ -84,6 +83,7 @@ view logs (see all logs files and can download them)
             ajax list front -> don't show disabled
 -- DONE -- FIXE le recherche pour les commentaires ( AJAX :http://localhost/uteach/ajax/search?object=comment&search=1&column_name=report )
 -- DONE -- views evolution
+-- DONE -- siteMap
 
                               |FRONT|
 

@@ -25,9 +25,7 @@ class SiteMapDelegate {
 	}
 
 	private function isSiteMapIsInProcess($params) {
-		$filename = "bin/crawler/temp_links_crawled.xml";
-		$filename2 = "bin/crawler/temp_links.xml";
-		if ((file_exists($filename) || file_exists($filename)) && !isset($params['GET']['process']))
+		if ((file_exists(TEMP_CRAWLER_CRAWLED_LINKS_PATH) || file_exists(TEMP_CRAWLER_LINKS_PATH)) && !isset($params['GET']['process']))
 			return TRUE;
 		return FALSE;
 	}
@@ -41,13 +39,12 @@ class SiteMapDelegate {
 
 	private function deleteTempsFiles() {
 		sleep(5);
-		unlink("bin/crawler/temp_links.xml");
-		unlink("bin/crawler/temp_links_crawled.xml");
+		unlink(TEMP_CRAWLER_LINKS_PATH);
+		unlink(TEMP_CRAWLER_CRAWLED_LINKS_PATH);
 	}
 
 	private function computeXMLContentFromCrawledLinks($xmlFile, $todayDate) {
-		$filename = "bin/crawler/temp_links_crawled.xml";
-		$links = $this->getLinksFromFile($filename);
+		$links = $this->getLinksFromFile(TEMP_CRAWLER_CRAWLED_LINKS_PATH);
 		$root = $xmlFile->createElement("urlset");
         $root = $xmlFile->appendChild($root);
 		foreach ($links as $link) {
@@ -95,8 +92,7 @@ class SiteMapDelegate {
 	} 
 
 	private function getLinksFromLinksFiles() {
-		$filename = "bin/crawler/temp_links.xml";
-		$links = $this->getLinksFromFile($filename);
+		$links = $this->getLinksFromFile(TEMP_CRAWLER_LINKS_PATH);
 		$this->links = $links;
 	}
 
@@ -197,21 +193,19 @@ class SiteMapDelegate {
 		$xmlFile = $this->createXmlFile();
 		$this->removeCrawledLinks();
 		$this->computeXMLContentFromLinks($xmlFile, $this->links);
-		$xmlFile->save("bin/crawler/temp_links.xml");
+		$xmlFile->save(TEMP_CRAWLER_LINKS_PATH);
 	}
 
 	private function removeCrawledLinks() {
-		$filename = "bin/crawler/temp_links_crawled.xml";
-		$crawledLinks = $this->getLinksFromFile($filename);
+		$crawledLinks = $this->getLinksFromFile(TEMP_CRAWLER_CRAWLED_LINKS_PATH);
 		$this->links = array_diff($this->links, $crawledLinks);
 	}
 
 	private function createTempLinksCrawledFile($url) {
 		$xmlFile = $this->createXmlFile();
-		$filename = "bin/crawler/temp_links_crawled.xml";
-		$links = $this->getLinksFromFile($filename, $url);
+		$links = $this->getLinksFromFile(TEMP_CRAWLER_CRAWLED_LINKS_PATH, $url);
 		$this->computeXMLContentFromLinks($xmlFile, $links);
-		$xmlFile->save($filename);
+		$xmlFile->save(TEMP_CRAWLER_CRAWLED_LINKS_PATH);
 	}
 
 	private function createXmlFile() {
