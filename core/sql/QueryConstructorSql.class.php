@@ -75,10 +75,11 @@ class QueryConstructorSql {
 		$query = "";
 		if (isset($columns) && !empty($columns)) {
 			$onlyPublishedContent = $this->isOnlyPublishedContent($columns, $table);
+			$onlyNotPremiumContent = $this->isOnlyNotPremiumContent($table);
 			$date = $this->getIfContainDate($columns);
 			$query .= " WHERE ";
 
-			if ($onlyPublishedContent) 
+			if ($onlyPublishedContent || $onlyNotPremiumContent) 
 				$query .= "(";
 
 			if (!$like) {
@@ -87,8 +88,13 @@ class QueryConstructorSql {
 				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, "", " LIKE :keyword OR ", TRUE, FALSE, FALSE);
 				$query .= " LIKE :keyword";
 			}
-			if ($onlyPublishedContent) 
-				$query .= ") AND " . $table . ".status=1";
+			if ($onlyPublishedContent || $onlyNotPremiumContent) {
+				$query .= ") ";
+				if ($onlyPublishedContent)
+					$query .= "AND " . $table . ".status=1";
+				if ($onlyNotPremiumContent)
+					$query .= "AND premium=0";
+			}
 
 
 			if (isset($date))
@@ -108,6 +114,12 @@ class QueryConstructorSql {
 			unset($columns[$key]);
 			return TRUE;
 		}
+		return FALSE;
+	}
+
+	private function isOnlyNotPremiumContent($table) {
+		if ((!isset($_SESSION['premium']) || $_SESSION['premium']) && !isAdmin() && $table != "user")
+			return TRUE;
 		return FALSE;
 	}
 
