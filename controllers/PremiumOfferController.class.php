@@ -1,5 +1,5 @@
 <?php
-class PremiumController {
+class PremiumofferController {
 
 	private $authenticationDelegate;
 	private $objectDelegate;
@@ -30,7 +30,7 @@ class PremiumController {
 	}
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, PREMIUM_OFFER_LIST_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, PREMIUM_OFFER_LIST_VIEWS);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}

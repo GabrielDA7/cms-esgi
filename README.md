@@ -48,8 +48,7 @@ replace space by underscore (file)
 
 view logs (see all logs files and can download them)
 
--- DONE -- Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&
-            status=1";
+-- DONE -- Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
            avec itemsPerPage = 10 retourne + de resultat
 -- DONE -- RSS only when page contains items
 -- DONE -- parametersController (BDD)
@@ -92,7 +91,7 @@ Ajouter form parameters
 Afficher list reported comments back
 Afficher plus de commentaire load_data_comment
 add a label which is the key of the input where it is a SELECT (for the installation : back template / front template we don't know)
-Edit profile CSS
+Edit profile CSS()
 View edit
 go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
 add button or href to see RSS flux -> see files in bin/xml/
