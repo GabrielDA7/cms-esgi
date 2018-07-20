@@ -32,7 +32,7 @@
 				<?php if(isset($attributs["option"])): ?>
 					<?php foreach($attributs["option"] as $key => $value): ?>
 						<option value="<?= $key ?>"><?= $value ?></span>
-					<?php endforeach ?>
+					<?php endforeach; ?>
 				<?php endif; ?>
 			</select>
 		<?php elseif ($attributs["type"] == "role"): ?>
@@ -43,12 +43,12 @@
 					<p class="form-group">Status : premium member</p>
 				<?php else: ?>
 					<p class="form-group">Status : admin</p>
-				<? endif ?>
-			<?php endif ?>
+				<?php endif; ?>
+			<?php endif; ?>
 		<?php else: ?>
 			<?php if (isset($attributs["image"])) : ?>
 					<image class="avatar-img-edition" src="<?= $attributs['image'] ?>" alt="avatar image"/>
-			<?php endif ?>
+			<?php endif; ?>
 			<input
 				<?= (isset($attributs["disabled"])) ? "disabled='". $attributs["disabled"] ."'" : "";?>
 				<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
@@ -59,7 +59,7 @@
 				<?=(isset($attributs["required"])) ? "required='required'" : ""; ?>
 				<?=(isset($attributs["onclick"])) ? "onclick='".$attributs["onclick"]."'" : ""; ?>>
 		<?php endif; ?>
-	<?php endforeach;?>
+	<?php endforeach; ?>
 		<input class="btn form-group <?= $config["config"]["submitClass"]; ?>" type="submit" name="submit" value="<?= $config["config"]["submit"];?>">
 
 </form>
