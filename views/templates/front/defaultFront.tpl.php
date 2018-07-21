@@ -64,14 +64,14 @@
                 <ul id="footer-network">
                       <li>
                         <figure>
-                          <a href="<?php (isset($infos)) ? $infos->getFacebook() : '' ?>"><i class="fab fa-facebook"></i></a>
+                          <a href="<?= (isset($infos)) ? $infos->getFacebook() : '' ?>"><i class="fab fa-facebook"></i></a>
                           <figcaption>Facebook</figcaption>
                         </figure>
                       </li>
 
                       <li>
                         <figure>
-                          <a href="<?php (isset($infos)) ? $infos->getTwitter() : '' ?>"><i class="fab fa-twitter-square"></i></a>
+                          <a href="<?= (isset($infos)) ? $infos->getTwitter() : '' ?>"><i class="fab fa-twitter-square"></i></a>
                           <figcaption>Twitter</figcaption>
                         </figure>
                       </li>

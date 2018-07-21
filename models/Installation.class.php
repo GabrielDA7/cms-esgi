@@ -246,28 +246,28 @@ class Installation extends BaseSql {
 				];
 	}
 
-	public function getSiteName() 		{ return $this->siteName; }
-	public function getReasonRegister() {return $this->reasonRegister; }
-	public function getSiteDescription() {return $this->siteDescription; }
-	public function getEmail() {return $this->email;}
-	public function getTwitter() {return $this->twitter; }
-	public function getInstagram() {return $this->instagram; }
-	public function getLinkedin() { return $this->linkedin; }
-	public function getFacebook() { return $this->facebook; }
+	public function getSiteName() 		  { return $this->siteName; 		 }
+	public function getReasonRegister()   { return $this->reasonRegister; 	 }
+	public function getSiteDescription()  { return $this->siteDescription; 	 }
+	public function getEmail() 			  { return $this->email;			 }
+	public function getTwitter() 		  { return $this->twitter; 			 }
+	public function getInstagram()   	  { return $this->instagram; 		 }
+	public function getLinkedin() 		  { return $this->linkedin;  	 	 }
+	public function getFacebook() 		  { return $this->facebook; 		 }
 	public function getDbuser() 		  { return $this->dbuser; 			 }
 	public function getDbpwd() 			  { return $this->dbpwd; 			 }
 	public function getDbname() 		  { return $this->dbname; 			 }
 	public function getDbport() 		  { return $this->dbport; 			 }
 	public function getInstallationDone() { return $this->installation_Done; }
 
-		public function setSiteName($siteName) 		{ $this->siteName = $siteName; }
-		public function setReasonRegister($reasonRegister) {$this->reasonRegister = $reasonRegister; }
-		public function setSiteDescription($siteDescription) {$this->siteDescription = $siteDescription; }
-		public function setEmail($email) { $this->email = $email;}
-		public function setTwitter($twitter) {$this->twitter = $twitter; }
-		public function setInstagram($instagram) {$this->instagram = $instagram; }
-		public function setLinkedin($linkedin) { $this->linkedin = $linkedin; }
-		public function setFacebook($facebook) { $this->facebook = $facebook; }
+	public function setSiteName($siteName) 					{ $this->siteName = $siteName; 										 }
+	public function setReasonRegister($reasonRegister) 		{ $this->reasonRegister = $reasonRegister; 							 }
+	public function setSiteDescription($siteDescription) 	{ $this->siteDescription = $siteDescription; 						 }
+	public function setEmail($email) 						{ $this->email = $email;											 }
+	public function setTwitter($twitter) 					{ $this->twitter = $twitter; 										 }
+	public function setInstagram($instagram) 				{ $this->instagram = $instagram; 									 }
+	public function setLinkedin($linkedin) 					{ $this->linkedin = $linkedin; 										 }
+	public function setFacebook($facebook) 				 	{ $this->facebook = $facebook; 										 }
   	public function setDbuser($dbuser) 						{ $this->dbuser = $dbuser; 						 					 }
   	public function setDbpwd($dbpwd) 						{ $this->dbpwd = $dbpwd; 						 					 }
   	public function setDbname($dbname) 						{ $this->dbname = $dbname; 						 					 }

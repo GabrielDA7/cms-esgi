@@ -25,12 +25,6 @@ class IndexController {
 		$this->siteMapDelegate->processStart();
 	}
 
-	public function contactAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, CONTACT_VIEWS);
-		$this->siteInfosDelegate->process($this->data);
-		$view = new View($this->data);
-	}
-
 	public function errorAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, NOT_FOUND_VIEWS);
 		$this->siteInfosDelegate->process($this->data);
