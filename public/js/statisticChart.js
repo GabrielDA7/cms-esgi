@@ -5,25 +5,29 @@ $(document).ready(function () {
   topChapter = JSON.parse(topChapter);
   viewsHistory = JSON.parse(viewsHistory);
 
-  initChart();
+  var ctx = document.getElementById("statistic_chart").getContext("2d");
+  window.myChart = new Chart(ctx, createConfigPopularContentChart());
 
-  $(document).change('select[name=chart_choice]', function() {
-    initChart();
+
+  $(document).change('select[name=chart_choice]', function(chart) {
+    createChart();
   });
 
   function createChart() {
-      var selectedValue = $('select[name=chart_choice]').find(":selected").val();
-      var canvas = jQuery(".myChart");
-      if(selectedValue == 'visits_evolution' ) {
-        createVisitHistoryChart(canvas);
-      } else if (selectedValue == 'popular_contents') {
-        createPopularContentChart(canvas);
-      }
+    var chart = window.myChart;
+    chart.destroy();
+    var ctx = document.getElementById("statistic_chart").getContext("2d");
+    var selectedValue = $('select[name=chart_choice]').find(":selected").val();
+    if(selectedValue == 'visits_evolution' ) {
+        window.myChart = new Chart(ctx, createConfigVisitHistoryChart());
+    } else if (selectedValue == 'popular_contents') {
+        window.myChart = new Chart(ctx, createConfigPopularContentChart());
+    }
   }
 
 
-  function createPopularContentChart(canvas) {
-      var chart = new Chart(canvas, {
+  function createConfigPopularContentChart() {
+      var config = {
         type: 'bar',
         data: {
           labels: [
@@ -64,12 +68,12 @@ $(document).ready(function () {
             display: false
           }
         }
-      });
+      };
+      return config;
     }
 
-    function createVisitHistoryChart(canvas) {
-
-      var chart = new Chart(canvas, {
+    function createConfigVisitHistoryChart() {
+      var config = {
           type: 'line',
           data: {
             labels: getHistoryViews(viewsHistory, "dateInserted"),
@@ -96,7 +100,8 @@ $(document).ready(function () {
               display: false
             }
           }
-        });
+        };
+        return config;
     }
 
     function getHistoryViews(array, property) {
@@ -107,14 +112,24 @@ $(document).ready(function () {
       return results;
     }
 
-    function resetCanvas(){
-      var chartContainer = $("#chart-container");
-      chartContainer.children('.myChart').remove();
-      chartContainer.append('<canvas class="myChart" id="statistic_chart" width="300" height="320"></canvas>');
-    }
-
-    function initChart() {
-      resetCanvas();
-      createChart();
-    }
 });
+
+/*
+//Draw chart
+window.onload = function() {
+    var ctx = document.getElementById("chart").getContext("2d");
+    window.myLine = new Chart(ctx, config);
+};
+
+//Update type of chart
+$('#updateChart').click(function(e) {
+    var chart = window.myLine;
+    var types = ['line', 'bar', 'bubble'];
+
+    chart.config.type = types[Math.floor(Math.random()*3)];
+    chart.destroy();
+
+    var ctx = document.getElementById("chart").getContext("2d");
+    window.myLine = new Chart(ctx, chart.config);
+});
+*/
