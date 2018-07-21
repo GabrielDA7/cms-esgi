@@ -30,7 +30,7 @@ class User extends UserSql {
 	}
 
 	public function getColumnsToSearch() {
-		return ["userName", "lastName", "firstName", "email", "dateInserted", "dateUpdated", "status"];
+		return ["userName", "lastName", "firstName", "email"];
 	}
 
 	public function generateToken() {

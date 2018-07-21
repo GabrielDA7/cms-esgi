@@ -30,7 +30,6 @@ class PremiumofferController {
 	}
 
 	public function listAction($params) {
-		aaa($params);
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, PREMIUM_OFFER_LIST_VIEWS);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
