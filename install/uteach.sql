@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 21 juil. 2018 à 18:39
--- Version du serveur :  5.7.19
--- Version de PHP :  7.1.9
+-- Host: localhost:3306
+-- Generation Time: Jul 21, 2018 at 08:52 PM
+-- Server version: 10.1.26-MariaDB-0+deb9u1
+-- PHP Version: 7.0.30-0+deb9u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,18 +17,17 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `uteach`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `chapter`
+-- Table structure for table `chapter`
 --
 
-DROP TABLE IF EXISTS `chapter`;
-CREATE TABLE IF NOT EXISTS `chapter` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `chapter` (
+  `id` int(11) NOT NULL,
   `number` int(11) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
@@ -38,15 +35,11 @@ CREATE TABLE IF NOT EXISTS `chapter` (
   `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `premium` tinyint(1) NOT NULL DEFAULT '0',
-  `user_id` int(10) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `trainning_id` (`trainning_id`),
-  KEY `trainning_id_2` (`trainning_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+  `user_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `chapter`
+-- Dumping data for table `chapter`
 --
 
 INSERT INTO `chapter` (`id`, `number`, `title`, `image`, `trainning_id`, `dateInserted`, `status`, `premium`, `user_id`) VALUES
@@ -80,12 +73,11 @@ INSERT INTO `chapter` (`id`, `number`, `title`, `image`, `trainning_id`, `dateIn
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comment`
+-- Table structure for table `comment`
 --
 
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE IF NOT EXISTS `comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `content` text NOT NULL,
@@ -93,17 +85,11 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `chapter_id` int(11) DEFAULT NULL,
   `trainning_id` int(11) DEFAULT NULL,
   `video_id` int(11) DEFAULT NULL,
-  `comment_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `lesson_id` (`chapter_id`),
-  KEY `trainning_id` (`trainning_id`),
-  KEY `video_id` (`video_id`),
-  KEY `comment_id` (`comment_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
+  `comment_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `comment`
+-- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`id`, `user_id`, `dateInserted`, `content`, `report`, `chapter_id`, `trainning_id`, `video_id`, `comment_id`) VALUES
@@ -125,12 +111,11 @@ INSERT INTO `comment` (`id`, `user_id`, `dateInserted`, `content`, `report`, `ch
 -- --------------------------------------------------------
 
 --
--- Structure de la table `installation`
+-- Table structure for table `installation`
 --
 
-DROP TABLE IF EXISTS `installation`;
-CREATE TABLE IF NOT EXISTS `installation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `installation` (
+  `id` int(11) NOT NULL,
   `siteName` varchar(100) NOT NULL,
   `reasonRegister` text NOT NULL,
   `siteDescription` text NOT NULL,
@@ -138,12 +123,11 @@ CREATE TABLE IF NOT EXISTS `installation` (
   `twitter` varchar(255) DEFAULT NULL,
   `instagram` varchar(255) DEFAULT NULL,
   `linkedin` varchar(255) DEFAULT NULL,
-  `facebook` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  `facebook` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `installation`
+-- Dumping data for table `installation`
 --
 
 INSERT INTO `installation` (`id`, `siteName`, `reasonRegister`, `siteDescription`, `email`, `twitter`, `instagram`, `linkedin`, `facebook`) VALUES
@@ -152,24 +136,44 @@ INSERT INTO `installation` (`id`, `siteName`, `reasonRegister`, `siteDescription
 -- --------------------------------------------------------
 
 --
--- Structure de la table `part`
+-- Table structure for table `page`
 --
 
-DROP TABLE IF EXISTS `part`;
-CREATE TABLE IF NOT EXISTS `part` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `page` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `url` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `page`
+--
+
+INSERT INTO `page` (`id`, `title`, `status`, `url`) VALUES
+(1, 'Home', 1, ''),
+(2, 'Chapter', 1, 'chapter/list'),
+(3, 'Trainnings', 1, 'trainning/list'),
+(4, 'Videos', 1, 'video/list'),
+(5, 'Premium', 1, 'premiumoffer/list');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `part`
+--
+
+CREATE TABLE `part` (
+  `id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `chapter_id` int(11) DEFAULT NULL,
-  `user_id` int(10) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `chapter_id` (`chapter_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `user_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `part`
+-- Dumping data for table `part`
 --
 
 INSERT INTO `part` (`id`, `number`, `title`, `content`, `chapter_id`, `user_id`) VALUES
@@ -183,44 +187,50 @@ INSERT INTO `part` (`id`, `number`, `title`, `content`, `chapter_id`, `user_id`)
 -- --------------------------------------------------------
 
 --
--- Structure de la table `premium`
+-- Table structure for table `premium`
 --
 
-DROP TABLE IF EXISTS `premium`;
-CREATE TABLE IF NOT EXISTS `premium` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `premium` (
+  `id` int(11) NOT NULL,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
   `user_id` int(11) NOT NULL,
-  `premiumOffer_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `User_idUser` (`user_id`),
-  KEY `premiumOffer_id` (`premiumOffer_id`)
+  `premiumOffer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `trainning`
+-- Table structure for table `premiumoffer`
 --
 
-DROP TABLE IF EXISTS `trainning`;
-CREATE TABLE IF NOT EXISTS `trainning` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `premiumoffer` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `duration` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trainning`
+--
+
+CREATE TABLE `trainning` (
+  `id` int(10) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `premium` tinyint(1) NOT NULL DEFAULT '0',
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `user_id_2` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `trainning`
+-- Dumping data for table `trainning`
 --
 
 INSERT INTO `trainning` (`id`, `title`, `description`, `image`, `dateInserted`, `status`, `premium`, `user_id`) VALUES
@@ -237,12 +247,11 @@ INSERT INTO `trainning` (`id`, `title`, `description`, `image`, `dateInserted`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
   `firstName` varchar(100) NOT NULL,
   `lastName` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -255,12 +264,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   `status` tinyint(4) NOT NULL DEFAULT '0',
   `dateInserted` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `dateUpdated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `role` int(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
+  `role` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `userName`, `pwd`, `pwdReset`, `avatar`, `token`, `status`, `dateInserted`, `dateUpdated`, `role`) VALUES
@@ -287,12 +295,11 @@ INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `use
 -- --------------------------------------------------------
 
 --
--- Structure de la table `video`
+-- Table structure for table `video`
 --
 
-DROP TABLE IF EXISTS `video`;
-CREATE TABLE IF NOT EXISTS `video` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `video` (
+  `id` int(10) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text,
   `url` varchar(255) NOT NULL,
@@ -300,14 +307,11 @@ CREATE TABLE IF NOT EXISTS `video` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `premium` tinyint(1) NOT NULL DEFAULT '0',
   `user_id` int(11) NOT NULL,
-  `part_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `part_id` (`part_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `part_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `video`
+-- Dumping data for table `video`
 --
 
 INSERT INTO `video` (`id`, `title`, `description`, `url`, `dateInserted`, `status`, `premium`, `user_id`, `part_id`) VALUES
@@ -321,23 +325,19 @@ INSERT INTO `video` (`id`, `title`, `description`, `url`, `dateInserted`, `statu
 -- --------------------------------------------------------
 
 --
--- Structure de la table `viewed_chapter`
+-- Table structure for table `viewed_chapter`
 --
 
-DROP TABLE IF EXISTS `viewed_chapter`;
-CREATE TABLE IF NOT EXISTS `viewed_chapter` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `viewed_chapter` (
+  `id` int(11) NOT NULL,
   `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ip` varchar(50) NOT NULL,
   `chapter_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `chapter_id` (`chapter_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `viewed_chapter`
+-- Dumping data for table `viewed_chapter`
 --
 
 INSERT INTO `viewed_chapter` (`id`, `dateInserted`, `ip`, `chapter_id`, `user_id`) VALUES
@@ -360,23 +360,19 @@ INSERT INTO `viewed_chapter` (`id`, `dateInserted`, `ip`, `chapter_id`, `user_id
 -- --------------------------------------------------------
 
 --
--- Structure de la table `viewed_trainning`
+-- Table structure for table `viewed_trainning`
 --
 
-DROP TABLE IF EXISTS `viewed_trainning`;
-CREATE TABLE IF NOT EXISTS `viewed_trainning` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `viewed_trainning` (
+  `id` int(11) NOT NULL,
   `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ip` varchar(50) NOT NULL,
   `trainning_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `trainning_id` (`trainning_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `viewed_trainning`
+-- Dumping data for table `viewed_trainning`
 --
 
 INSERT INTO `viewed_trainning` (`id`, `dateInserted`, `ip`, `trainning_id`, `user_id`) VALUES
@@ -389,23 +385,19 @@ INSERT INTO `viewed_trainning` (`id`, `dateInserted`, `ip`, `trainning_id`, `use
 -- --------------------------------------------------------
 
 --
--- Structure de la table `viewed_video`
+-- Table structure for table `viewed_video`
 --
 
-DROP TABLE IF EXISTS `viewed_video`;
-CREATE TABLE IF NOT EXISTS `viewed_video` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `viewed_video` (
+  `id` int(11) NOT NULL,
   `dateInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ip` varchar(50) NOT NULL,
   `video_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `video_id` (`video_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `viewed_video`
+-- Dumping data for table `viewed_video`
 --
 
 INSERT INTO `viewed_video` (`id`, `dateInserted`, `ip`, `video_id`, `user_id`) VALUES
@@ -416,18 +408,191 @@ INSERT INTO `viewed_video` (`id`, `dateInserted`, `ip`, `video_id`, `user_id`) V
 (5, '2018-07-21 16:28:27', '::1', 8, NULL);
 
 --
--- Contraintes pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Contraintes pour la table `chapter`
+-- Indexes for table `chapter`
+--
+ALTER TABLE `chapter`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `trainning_id` (`trainning_id`),
+  ADD KEY `trainning_id_2` (`trainning_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lesson_id` (`chapter_id`),
+  ADD KEY `trainning_id` (`trainning_id`),
+  ADD KEY `video_id` (`video_id`),
+  ADD KEY `comment_id` (`comment_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `installation`
+--
+ALTER TABLE `installation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `page`
+--
+ALTER TABLE `page`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `part`
+--
+ALTER TABLE `part`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `chapter_id` (`chapter_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `premium`
+--
+ALTER TABLE `premium`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `User_idUser` (`user_id`),
+  ADD KEY `premiumOffer_id` (`premiumOffer_id`);
+
+--
+-- Indexes for table `premiumoffer`
+--
+ALTER TABLE `premiumoffer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `trainning`
+--
+ALTER TABLE `trainning`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `user_id_2` (`user_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `video`
+--
+ALTER TABLE `video`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `part_id` (`part_id`);
+
+--
+-- Indexes for table `viewed_chapter`
+--
+ALTER TABLE `viewed_chapter`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `chapter_id` (`chapter_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `viewed_trainning`
+--
+ALTER TABLE `viewed_trainning`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `trainning_id` (`trainning_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `viewed_video`
+--
+ALTER TABLE `viewed_video`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `video_id` (`video_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `chapter`
+--
+ALTER TABLE `chapter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT for table `installation`
+--
+ALTER TABLE `installation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `page`
+--
+ALTER TABLE `page`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `part`
+--
+ALTER TABLE `part`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `premium`
+--
+ALTER TABLE `premium`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `premiumoffer`
+--
+ALTER TABLE `premiumoffer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `trainning`
+--
+ALTER TABLE `trainning`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+--
+-- AUTO_INCREMENT for table `video`
+--
+ALTER TABLE `video`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `viewed_chapter`
+--
+ALTER TABLE `viewed_chapter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `viewed_trainning`
+--
+ALTER TABLE `viewed_trainning`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `viewed_video`
+--
+ALTER TABLE `viewed_video`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `chapter`
 --
 ALTER TABLE `chapter`
   ADD CONSTRAINT `chapter_ibfk_1` FOREIGN KEY (`trainning_id`) REFERENCES `trainning` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `chapter_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
@@ -437,51 +602,50 @@ ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_5` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `part`
+-- Constraints for table `part`
 --
 ALTER TABLE `part`
   ADD CONSTRAINT `part_ibfk_1` FOREIGN KEY (`chapter_id`) REFERENCES `chapter` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `part_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `premium`
+-- Constraints for table `premium`
 --
 ALTER TABLE `premium`
   ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `trainning`
+-- Constraints for table `trainning`
 --
 ALTER TABLE `trainning`
   ADD CONSTRAINT `trainning_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Contraintes pour la table `video`
+-- Constraints for table `video`
 --
 ALTER TABLE `video`
   ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `viewed_chapter`
+-- Constraints for table `viewed_chapter`
 --
 ALTER TABLE `viewed_chapter`
   ADD CONSTRAINT `viewed_chapter_ibfk_1` FOREIGN KEY (`chapter_id`) REFERENCES `chapter` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `viewed_chapter_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `viewed_trainning`
+-- Constraints for table `viewed_trainning`
 --
 ALTER TABLE `viewed_trainning`
   ADD CONSTRAINT `viewed_trainning_ibfk_1` FOREIGN KEY (`trainning_id`) REFERENCES `trainning` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `viewed_trainning_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `viewed_video`
+-- Constraints for table `viewed_video`
 --
 ALTER TABLE `viewed_video`
   ADD CONSTRAINT `viewed_video_ibfk_1` FOREIGN KEY (`video_id`) REFERENCES `video` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `viewed_video_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
