@@ -65,7 +65,7 @@ class classUtils {
 	}
 
 	public static function removeDBColumns(&$columns) {
-		foreach ($columns as $key=>$value) {
+		foreach ($columns as $key => $value) {
 			if ($key == "table" || $key = "objectName" || $key == "db" || $key == "columns") 
 				unset($columns[$key]);
 		}
