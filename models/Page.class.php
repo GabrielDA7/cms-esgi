@@ -18,5 +18,5 @@ class Page extends BaseSql {
   public function setId($id) 		      { $this->id = $id;  		     }
   public function setTitle($title) 		      { $this->title = $title;  		     }
   public function setStatus($status) 		      { $this->status = $status;  		     }
-  public function setUrl($url) 		      { $this->url = $url;  		     }
+  public function setReport($url) 		      { $this->url = $url;  		     }
 }

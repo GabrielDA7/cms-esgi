@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <atom:link href="http://localhost/Uteach/page/list" rel="self" type="application/rss+xml"/>
-  <channel>
-    <title>Page list</title>
-    <description>List of page</description>
-    <link>http://localhost/Uteach/page/list</link>
-  </channel>
-</rss>
