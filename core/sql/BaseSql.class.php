@@ -13,8 +13,10 @@ class BaseSql extends QueryConstructorSql {
 		try {
 			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
 		} catch(Exception $e) {
-			if ($_SERVER['REQUEST_URI'] != DIRNAME.INDEX_ERROR_LINK && INSTALLATION_DONE)
-				RedirectUtils::redirect404();
+			if (INSTALLATION_DONE) {
+				echo "The server has a problem. It will be available soon";
+				exit;
+			}
 		}
 	}
 
