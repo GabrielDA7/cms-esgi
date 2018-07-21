@@ -47,7 +47,7 @@ class ChapterController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE);
 		$this->objectDelegate->delete($params, "", CHAPTER_LIST_BACK_LINK);
 	}
 
