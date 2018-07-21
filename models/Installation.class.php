@@ -1,9 +1,6 @@
 <?php
-class Installation {
+class Installation extends BaseSql {
 
-	private $language;
-	private $front_Template;
-	private $back_Template;
 	private $dbuser;
 	private $dbpwd;
 	private $dbname;
@@ -99,7 +96,7 @@ class Installation {
 								"dbpwd"=>
 											[
 												"label"=>"Database password",
-												"type"=>"password",
+												"type"=>"text",
 												"placeholder"=>"Mot de passe",
 												"class"=>"form-group input"
 											],

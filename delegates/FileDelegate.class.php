@@ -30,8 +30,9 @@ class FileDelegate {
 	public function createDatabase() {
 		$fileContent = $this->getContentFromConfFile("install/uteach.sql");
 		$BaseSql = new BaseSql();
-		$BaseSql->createDatabase($fileContent);
-		RedirectUtils::redirect(INSTALLATION_SETTING_LINK);
+		if ($BaseSql->createDatabase($fileContent))
+			RedirectUtils::redirect(INSTALLATION_SETTING_LINK);
+		RedirectUtils::redirect(INSTALLATION_DATABASE_LINK);	
 	}
 
 	private function setConfData($installation) {

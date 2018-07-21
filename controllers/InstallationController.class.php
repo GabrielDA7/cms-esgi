@@ -5,12 +5,14 @@ class InstallationController {
 	private $formDelegate;
 	private $fileDelegate;
 	private $userDelegate;
+	private $objectDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->formDelegate = new FormDelegate(INSTALLATION_CLASS_NAME);
 		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAME);
+		$this->objectDelegate = new ObjectDelegate($this->data, INSTALLATION_CLASS_NAME);
 		$this->userDelegate = new UserDelegate($this->data);
 	}
 
@@ -31,7 +33,7 @@ class InstallationController {
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, INSTALLATION_SETTING_VIEWS, INSTALLATION_TEMPLATES);
 		$this->formDelegate->process($this->data, $params);
-		$this->fileDelegate->setting($this->data, $params['POST'], INSTALLATION_ADMIN_LINK);
+		$this->objectDelegate->add($this->data, $params, INSTALLATION_ADMIN_LINK);
 		$view = new View($this->data);
 	}
 

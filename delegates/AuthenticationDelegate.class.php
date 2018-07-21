@@ -7,7 +7,7 @@ class AuthenticationDelegate {
 		if ($checkAdmin && !isAdmin())
 			RedirectUtils::redirect404();
 		
-		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin']))
+		if ($checkToken || (isset($_SESSION['admin']) && $_SESSION['admin'])) 
       		$this->checkTokenValidity();
 
     	if (!empty($views)) {

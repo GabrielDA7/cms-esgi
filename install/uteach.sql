@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 20 juil. 2018 à 18:56
+-- Généré le :  sam. 21 juil. 2018 à 17:20
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   KEY `video_id` (`video_id`),
   KEY `comment_id` (`comment_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `comment`
@@ -119,16 +119,17 @@ INSERT INTO `comment` (`id`, `user_id`, `dateInserted`, `content`, `report`, `ch
 (15, 25, '2018-07-14 20:28:52', 'kjnfdgjjdf', 0, NULL, NULL, NULL, 10),
 (16, 25, '2018-07-14 20:29:03', 'df,b;dfnvd;f', 0, NULL, NULL, NULL, 15),
 (19, 25, '2018-07-18 19:01:21', 'azerazerezar', 0, 27, NULL, NULL, NULL),
-(24, 25, '2018-07-18 19:18:16', 'zrgjnkjzernkgnzr', 0, NULL, 43, NULL, NULL);
+(24, 25, '2018-07-18 19:18:16', 'zrgjnkjzernkgnzr', 0, NULL, 43, NULL, NULL),
+(25, 25, '2018-07-21 16:27:13', 'erk,gregk', 0, NULL, NULL, 8, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `parameter`
+-- Structure de la table `installation`
 --
 
-DROP TABLE IF EXISTS `parameter`;
-CREATE TABLE IF NOT EXISTS `parameter` (
+DROP TABLE IF EXISTS `installation`;
+CREATE TABLE IF NOT EXISTS `installation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `siteName` varchar(100) NOT NULL,
   `reasonRegister` text NOT NULL,
@@ -209,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `trainning` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `user_id_2` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `trainning`
@@ -223,7 +224,8 @@ INSERT INTO `trainning` (`id`, `title`, `description`, `image`, `dateInserted`, 
 (40, 'AAAAAA', 'tyhrthyr', '/uteach/public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-14 23:00:19', 1, 0, 25),
 (41, 'AAAAAA', 'tyhrthyr', 'public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-14 23:02:05', 1, 0, 25),
 (42, 'php', 'zeezre', '/uteach/public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-14 23:07:34', 1, 0, 25),
-(43, 'er,erglke,', 'kjengkjrnkg', '/uteach/public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-15 14:54:06', 1, 0, 25);
+(43, 'er,erglke,', 'kjengkjrnkg', '/uteach/public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-15 14:54:06', 1, 0, 25),
+(44, 'ezrterzzer', 'zertzert', '/Uteach/public/img/trainnings/711px-PHP-logo.svg.png', '2018-07-20 19:24:19', 0, 0, 25);
 
 -- --------------------------------------------------------
 
@@ -255,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `userName`, `pwd`, `pwdReset`, `avatar`, `token`, `status`, `dateInserted`, `dateUpdated`, `role`) VALUES
-(25, 'Louis', 'Louis', 'louis@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', 'eugqop7b2vsc840040884csgwwk08o48k8448wcs4os0844o4', 1, '2018-03-20 19:48:58', '2018-07-14 20:41:36', 2),
+(25, 'Zerzerzerzerze', 'Louis', 'ouizi@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', 'co7ay7cnctssk00owkgkcgog48ggg4gkgck4gs480swc4c040', 1, '2018-03-20 19:48:58', '2018-07-21 13:32:39', 2),
 (33, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'v2l5jb39neoww4ow84w4ow40ooo44wswgogw4c4gg48088wgk', 0, '2018-03-24 22:03:33', NULL, 0),
 (34, 'Louis', 'Louis', 'louis@gmail.com', '', 'zerazer', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '3iuuy6vxv2w4cs4g8kccsww08wkgg4g048s848k8w8sg8wok04', 0, '2018-03-25 20:08:25', NULL, 0),
 (35, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'y4tci0mxs9cck844so48csggsosso8w4w004880csc8gk0k0s', 0, '2018-03-25 20:30:28', NULL, 0),
@@ -273,7 +275,7 @@ INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `use
 (61, 'Eznlkezlk', 'Zekjnfjzkenfkj', 'zefnzenfzeknf@gmail.com', '26ux6vuiaukgckwwwo4oogk8gk40gcgwgok0cow44kksos8ws0', 'zekjfnjznzjkf', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '4pa6sfyafyqs84w4o084404gcgs8s840ssckgkkso4c4o808g4', 0, '2018-07-13 19:04:54', NULL, 1),
 (62, 'Gfddgh', 'Dgdgh', 'aaaaaa@gmail.com', '45qaw4upkg4k84okosggwow0w8ks808owk04sw0gw84kkcw4c8', 'dgdgn', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '3t6zfyzq74sg0okkcc00wwgow04wkog0w0cwkckk8884wgckgc', 0, '2018-07-14 20:36:03', NULL, 1),
 (63, 'Azeraze', 'Zertzregz', 'decultot.erferflouis@gmail.com', '4zbhvysjlcowoo04os848g8skkw0g4kckoo8gcowc0k480c4ck', 'zfgbgentrber', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, 'public/img/avatars/default.jpg', '66cqz8nxzr8kc4ockoc4kkc0osg4ok80o84c4oo8ow48gkckkk', 0, '2018-07-14 20:37:12', NULL, 1),
-(64, 'Rgrgrz', 'Aefaefea', 'qzeffzerger@gmail.com', 'fw1wn6bjmi8scc4o00wkook4wwk8ck8ckcg8owosoc00wc0ok', 'ergzerg', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', '6d3wffuvhdgccg8w4gkcoww8so4sgg4s0wowgg0cw04gswksw8', 0, '2018-07-14 20:41:06', NULL, 1);
+(64, 'Rgrgrz', 'Aefaefea', 'qzeffzerger@gmail.com', 'fw1wn6bjmi8scc4o00wkook4wwk8ck8ckcg8owosoc00wc0ok', 'ergzerg', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', '6d3wffuvhdgccg8w4gkcoww8so4sgg4s0wowgg0cw04gswksw8', 1, '2018-07-14 20:41:06', '2018-07-21 16:28:21', 1);
 
 -- --------------------------------------------------------
 
@@ -295,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `video` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `part_id` (`part_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `video`
@@ -306,7 +308,8 @@ INSERT INTO `video` (`id`, `title`, `description`, `url`, `dateInserted`, `statu
 (4, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:19:52', 0, 0, 25, NULL),
 (5, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:20:13', 0, 0, 25, NULL),
 (6, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:21:33', 0, 0, 25, NULL),
-(7, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:21:48', 0, 0, 25, NULL);
+(7, 'php', NULL, 'public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-13 22:21:48', 0, 0, 25, NULL),
+(8, 'rprprp', NULL, '/Uteach/public/img/videos/RÃ‰ACTION A CHAUD DES JOUEURS ! LA FRANCE EN FINALE.mp4', '2018-07-21 16:26:07', 1, 0, 25, NULL);
 
 -- --------------------------------------------------------
 
@@ -324,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `viewed_chapter` (
   PRIMARY KEY (`id`),
   KEY `chapter_id` (`chapter_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `viewed_chapter`
@@ -344,7 +347,8 @@ INSERT INTO `viewed_chapter` (`id`, `dateInserted`, `ip`, `chapter_id`, `user_id
 (11, '2018-07-14 23:03:40', '::1', 22, NULL),
 (12, '2018-07-15 20:00:02', '::1', 3, NULL),
 (13, '2018-07-16 17:07:11', '::1', 28, NULL),
-(14, '2018-07-16 19:12:24', '::1', 27, NULL);
+(14, '2018-07-16 19:12:24', '::1', 27, NULL),
+(15, '2018-07-20 19:21:08', '::1', 24, NULL);
 
 -- --------------------------------------------------------
 
@@ -391,7 +395,18 @@ CREATE TABLE IF NOT EXISTS `viewed_video` (
   PRIMARY KEY (`id`),
   KEY `video_id` (`video_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `viewed_video`
+--
+
+INSERT INTO `viewed_video` (`id`, `dateInserted`, `ip`, `video_id`, `user_id`) VALUES
+(1, '2018-07-21 16:26:40', '::1', 8, NULL),
+(2, '2018-07-21 16:27:13', '::1', 8, NULL),
+(3, '2018-07-21 16:27:22', '::1', 8, NULL),
+(4, '2018-07-21 16:27:23', '::1', 8, NULL),
+(5, '2018-07-21 16:28:27', '::1', 8, NULL);
 
 --
 -- Contraintes pour les tables déchargées
