@@ -118,7 +118,7 @@ class QueryConstructorSql {
 	}
 
 	private function isOnlyNotPremiumContent($table) {
-		if ((!isset($_SESSION['premium']) || $_SESSION['premium']) && !isAdmin() && $table != "user")
+		if ((!isset($_SESSION['premium']) || $_SESSION['premium']) && !isAdmin() && $table != "user" && $table != "page")
 			return TRUE;
 		return FALSE;
 	}
