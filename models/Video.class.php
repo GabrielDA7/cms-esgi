@@ -51,7 +51,15 @@ class Video extends BaseSql {
 																					"3gp",
 										                    ],
 														"required"=>true
-								       		]
+								       		],
+							"premium"=> [
+														"id"=>"only-premium",
+														"type"=>"checkbox",
+														"text"=>"Only for premium",
+														"checked"=>"checked",
+														"class"=>"row form-group",
+														"value"=>1
+													]
 						]
 
 				];
@@ -85,6 +93,14 @@ class Video extends BaseSql {
 																				],
 														"requied"=>true,
 														"value"=>(isset($_POST["url"])? $_POST["url"] : "")
+													],
+								"premium"=> [
+														"id"=>"only-premium",
+														"type"=>"checkbox",
+														"text"=>"Only for premium",
+														"checked"=>"checked",
+														"class"=>"row form-group",
+														"value"=>1
 													]
 						]
 

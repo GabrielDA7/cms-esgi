@@ -30,7 +30,7 @@ class ChapterController {
 	}
 
 	public function editAction($params) {
-		if(!isset($params['GET']['id']) || !isAdmin()) {
+		if(!isset($params['POST']['id']) || !isAdmin()) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}

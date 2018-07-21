@@ -14,7 +14,45 @@
 				<?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
 				<?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
 				<?= (isset($attributs["required"])) ? "required='required'" : ""; ?>></textarea>
+		<?php elseif ($attributs["type"] == "checkbox"): ?>
+			<div <?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>>
+				<input type="checkbox"
+				name="<?= $name; ?>"
+				<?=(isset($attributs["id"])) ? "id='".$attributs["id"]."'" : "";?>
+				<?= (isset($attributs["checked"])) ? "checked" : ""; ?>
+				<?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
+				>
+				<label for="<?= $name; ?>">Only for premium</label>
+			</div>
 
+		<?php elseif ($attributs["type"] == "parts"): ?>
+			<div
+				<?=(isset($attributs["id"])) ? "id='".$attributs["id"]."'" : "";?>
+				<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>>
+				<?php if(isset($attributs["value"])): ?>
+					<?php foreach ($attributs["value"] as $key => $value): ?>
+						<div id='chapterSubpart"+ idPart +"' class='form-group chapterParts'>
+											<div class='row subpartHead expand-div'>
+												<div class='M10'>
+													<p>Subpart " + idPart + "</p>
+												</div>
+												<div class='M2'>
+													<i class='fas fa-chevron-down btn-icon'></i>
+												</div>
+											</div>
+											<div class='content-hidden'>
+													<div class='row'>
+														<input type='text' name='parts["+ idPart +"][title]' class='input form-group margin-bottom' placeholder='Title'>
+													</div>
+													<div class='row'>
+														<textarea name='parts["+ idPart +"][content]' class='form-group input tinymce' placeholder='Content'></textarea>" +
+													</div>
+												<input type='hidden' name='parts["+ idPart +"][number]' value='" + idPart + "'></input>
+											</div>
+						 </div>
+					<?php endforeach ?>
+				<?endif;?>
+			</div>
 		<?php elseif ($attributs["type"] == "button"): ?>
 			<button
 			<?=(isset($attributs["id"])) ? "id='".$attributs["id"]."'" : "";?>

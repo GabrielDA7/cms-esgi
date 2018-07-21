@@ -89,7 +89,15 @@ class Chapter extends BaseSql {
 												"class"=>"input-btn btn-filled-blue form-group row",
 												"value"=>"Add part",
 												"onclick"=>"addChapterSubpart();"
-											]
+											],
+								"premium"=> [
+									"id"=>"only-premium",
+									"type"=>"checkbox",
+									"text"=>"Only for premium",
+									"checked"=>"checked",
+									"class"=>"row form-group",
+									"value"=>1
+								]
 						]
 
 				];
@@ -101,6 +109,56 @@ class Chapter extends BaseSql {
 					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit"],
 					"input"=>
 							[
+								"title"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"Title",
+												"maxString"=>100,
+												"minString"=>2,
+												"required"=>true,
+												"class"=>"form-group input",
+												"value"=>(isset($_POST["title"])? $_POST["title"] : "")
+											],
+								"image"=>
+											[
+														 "label" => "Upload image :",
+														 "type"=>"file",
+														 "maxSize" => 1000000,
+														 "extension" =>
+																			 [
+																					"jpg",
+																					"png",
+																					"jpeg"
+																				]
+													],
+								"trainning_id"=>
+											[
+												"label"=>"Choose a trainning :",
+												"type"=>"select",
+												"class"=>"row select-formation input-medium",
+												"option"=>
+															[
+																"" => "Pas de formation"
+															],
+												"value"=>(isset($_POST["trainning"])? $_POST["trainning"] : "Pas de formation")
+											],
+								"number"=>
+											[
+												"label" => "Number of the chapter :",
+												"type"=>"text",
+												"class"=>"row input-medium",
+												"disabled"=>"disabled",
+												"value"=>(isset($_POST["number"])? $_POST["number"] : ""),
+
+											],
+								"parts"=>
+											[
+												"id"=>"addChapterPart",
+												"type"=>"button",
+												"class"=>"input-btn btn-filled-blue form-group row",
+												"value"=>"Add part",
+												"onclick"=>"addChapterSubpart();"
+											],
 								"id"=>
 											[
 												"type"=>"hidden",
@@ -108,14 +166,18 @@ class Chapter extends BaseSql {
 												"value"=>$chapter->getId(),
 												"required"=>true,
 											],
-								"title"=>
-											[
-												"type"=>"text",
-												"placeholder"=>$chapter->getTitle(),
-												"maxString"=>100,
-												"minString"=>2,
-												"class"=>"form-group input"
-											]
+								"allParts"=>[
+													"type"=>"parts",
+													"value"=>$chapter->getParts(),
+								],
+								"premium"=> [
+									"id"=>"only-premium",
+									"type"=>"checkbox",
+									"text"=>"Only for premium",
+									"checked"=>"checked",
+									"name"=>"premium",
+									"value"=>1,
+								]
 							]
 				];
 	}

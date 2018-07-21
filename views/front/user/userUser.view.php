@@ -1,6 +1,6 @@
 <section id="front-user-user">
   <section class="container-fluid">
-    <?php ViewUtils::getErrors($errors); ?>
+    <?php ViewUtils::getErrors((isset($errors) ? $errors : null)); ?>
     <?php $user = ViewUtils::getUser($_GET['id']) ?>
     <div class="row">
         <div class="front-title">

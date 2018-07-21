@@ -21,7 +21,7 @@ class TrainningController {
 		$this->statisticDelegate = new StatisticDelegate(TRAINNING_CLASS_NAME);
 		$this->siteInfosDelegate = new SiteInfosDelegate();
 	}
-	
+
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, TRAINNING_ADD_VIEWS);
 		$this->siteInfosDelegate->process($this->data);
@@ -32,7 +32,7 @@ class TrainningController {
 	}
 
 	public function editAction($params) {
-		if(!isset($params['GET']['id']) || !isAdmin()) {
+		if(!isset($params['POST']['id']) || !isAdmin()) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}

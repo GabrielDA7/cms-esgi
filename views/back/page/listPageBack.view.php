@@ -1,4 +1,5 @@
-<section id="front-back-page" class="list-data">
+<section id="dashboard-list-chapter" class="table-data">
+
   <div class="row">
     <div class="M4">
       <div class="back-title">
@@ -12,6 +13,10 @@
     <span>page</span>
   </div>
 
-  <div id="data-list" class="row row-padding">
+  <div class="row M--center X--center">
+    <div class="M12">
+      <?php $this->addModal("table", $tableConfig); ?>
+    </div>
   </div>
+
 </section>

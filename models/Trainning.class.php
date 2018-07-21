@@ -64,7 +64,15 @@ class Trainning extends BaseSql {
 											                    "png",
 											                    "jpeg"
 										                    ]
-								       		]
+								       		],
+							"premium"=> [
+														"id"=>"only-premium",
+														"type"=>"checkbox",
+														"text"=>"Only for premium",
+														"checked"=>"checked",
+														"class"=>"row form-group",
+														"value"=>1
+													]
 						]
 
 				];

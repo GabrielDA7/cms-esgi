@@ -259,11 +259,23 @@ $(function() {
   });
 
   /* Get signaled comments number */
-
   if( $("#dashboard-left-menu").length > 0 ) {
     getCommentsSignaled("number-comments-signaled", "list-comments-report");
   }
 
+  if( $("#dashboard-edit-chapter").length > 0) {
+    var id = $('input[name="id"]').val();
+    load_data_chapter_part(id);
+  }
+
+  $("#only-premium").on('change', function() {
+    var actualValue = $("#only-premium").val();
+    if(actualValue == 1) {
+      $("#only-premium").attr("value", 0);
+    } else {
+      $("#only-premium").attr("value", 1);
+    }
+  });
 });
 
 function getCommentsSignaled(divNumber, divList){
@@ -402,11 +414,33 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
   });
 }
 
+function load_data_chapter_part(id) {
+  url = dirname + "ajax/list?object=part&sort=desc&columnName=number&page=1&itemsPerPage=500&chapter_id=" + id;
+  div = $("#comments-result");
+  paginationLinks = $("#pagination_links");
+  $.ajax({
+    url: url,
+    method: 'POST',
+    success:function(data) {
+      data = JSON.parse(data);
+      var html = '';
+      if( data['comments'].length > 0) {
+        $.each(data['parts'], function(index, element) {
+
+        });
+      } else {
+        html = "<p class='align-center'>No parts</p>";
+      }
+      div.html(html);
+    }
+  });
+}
+
 function load_data_table(page, limit, action, order='desc', column_name='dateInserted') {
 
   var object = $.trim($(".list-init-object span:first-child").text());
   var objects = object + 's';
-  if(object == 'premiumoffer') {
+  if(object == 'premiumoffer' || object == 'page') {
     column_name='id';
     order='asc';
   }
@@ -444,12 +478,14 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
           $.each(data["tableConfig"]["cells"], function(k,val) {
             if(k == "id") {
               if(object == "user") {
-                 html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/edit/back'><button class='button_table' type='submit'><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
-                 html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete/back'><button class='button_table' type='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
+                 html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/edit/back'><button class='button_table' type='submit' name='edit'><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
+                 html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete/back'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
+              } else if(object == "page") {
+                 html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='submit'><i class='fas fa-share-square'></i></button><input type='hidden' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
               } else {
-                html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' ><i class='fas fa-share-square'></i></button><input type='hidden' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input type='hidden' name='id' value='" + element[k] + "'/></form>"
-                html +="<form class='form_actions' method='POST' action='" + dirname + object + "/edit/back'><button class='button_table' type='submit' ><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
-                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete/back'><button class='button_table' type='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
+                html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='submit'><i class='fas fa-share-square'></i></button><input type='hidden' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input type='hidden' name='id' value='" + element[k] + "'/></form>";
+                html +="<form class='form_actions' method='POST' action='" + dirname + object + "/edit/back'><button class='button_table' type='submit' name='edit'><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
+                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
               }
             } else if(k == "status") {
               if(element.status == 1) {
@@ -483,7 +519,7 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
       } else {
         cpt = 0;
         html+="<tr>";
-        html+="<td colspan='5'>No results</td>";
+        html+="<td colspan='5' class='align-center'>No results</td>";
         html+="</tr>";
       }
       tb.html(html);
@@ -590,7 +626,7 @@ function load_data_list_comment(object, id){
           html += renderCommentResponse(element, false);
         });
       } else {
-        html = "No comments";
+        html = "<p class='align-center'>No comments</p>";
       }
       div.html(html);
     }
