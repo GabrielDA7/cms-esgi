@@ -10,12 +10,12 @@
 <section id="front-content" class="container">
     <div class="row">
         <div class="M4 X12">
-            <p class="title">Les derniers cours</p>
+            <p class="title">Last chapters</p>
             <div class="hr-separation"></div>
         </div>
         <div class="M3 M--offset5 X12">
           <div class="see-all">
-            <a href="<?= DIRNAME.CHAPTER_LIST_FRONT_LINK;?>">Voir tous les cours</a>
+            <a href="<?= DIRNAME.CHAPTER_LIST_FRONT_LINK;?>">See all chapters</a>
           </div>
         </div>
     </div>
@@ -26,12 +26,12 @@
 
     <div class="row">
         <div class="M5 X12">
-            <p class="title">Les dernières formations</p>
+            <p class="title">Last trainnings</p>
             <div class="hr-separation"></div>
         </div>
         <div class="M3 M--offset4 X12">
           <div class="see-all">
-            <a href="<?= DIRNAME.TRAINNING_LIST_FRONT_LINK;?>">Voir toutes les formations</a>
+            <a href="<?= DIRNAME.TRAINNING_LIST_FRONT_LINK;?>">See all trainnings</a>
           </div>
         </div>
     </div>
@@ -42,12 +42,12 @@
 
     <div class="row">
         <div class="M4 X12">
-            <p class="title">Les dernières vidéos</p>
+            <p class="title">Last videos</p>
             <div class="hr-separation"></div>
         </div>
         <div class="M3 M--offset5 X12">
             <div class="see-all">
-              <a href="<?= DIRNAME.VIDEO_LIST_FRONT_LINK;?>">Voir toutes les vidéos</a>
+              <a href="<?= DIRNAME.VIDEO_LIST_FRONT_LINK;?>">See all videos</a>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
 <section class="container-fluid">
   <div id="premium-container" class="row M--center M--middle X--center X--middle">
     <div class="M3 X12">
-      <a href="<?= DIRNAME.PREMIUM_LIST_FRONT_LINK;?>">Devenir premium<br/><i class="far fa-gem"></i></a>
+      <a href="<?= DIRNAME.PREMIUM_LIST_FRONT_LINK;?>">Become premium<br/><i class="far fa-gem"></i></a>
     </div>
   </div>
 </section>

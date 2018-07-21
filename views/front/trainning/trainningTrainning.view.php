@@ -10,7 +10,7 @@
 
 		<div class="row M--center">
 			<div class="M3">
-				<img class="img main-img" src="<?= ViewUtils::findImage($trainning->getImage()) ?>" alt="image du cours#1" title="image du cours#1" >
+				<img class="img main-img" src="<?= $trainning->getImage() ?>" alt="image trainning" title="image trainning" >
 			</div>
 		</div>
 
@@ -58,7 +58,7 @@
 					<span class="content-hidden">trainning</span>
 					<div class="row">
 							<div class="M3">
-								<p class="title-separator">Commentaires</p>
+								<p class="title-separator">Comments</p>
 							</div>
 							<div class="M12">
 								<div class="full-hr-separation"></div>
@@ -74,7 +74,7 @@
 							</div>
 							<div class="row">
 								<div class="M3 X12 M--offset9 wrapper-flex M--end form-group">
-											<input type="submit" id="comment-button" class="input-btn btn-filled-blue btn-icon" value="Commenter">
+											<input type="submit" id="comment-button" class="input-btn btn-filled-blue btn-icon" value="Comment">
 								</div>
 							</div>
 						</form>

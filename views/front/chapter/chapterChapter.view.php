@@ -10,7 +10,13 @@
 
 		<div class="row M--center">
 			<div class="M3">
-				<img class="img main-img" src="<?= ViewUtils::findImage($chapter->getImage()) ?>" alt="image du cours#1" title="image du cours#1" >
+				<img class="img main-img" src="<?= $chapter->getImage(); ?>" alt="image chapter" title="image chapter" >
+			</div>
+		</div>
+
+		<div class="row M--center">
+			<div class="M3 align-center">
+				<h3><?= $chapter->getTitle() ?></h3>
 			</div>
 		</div>
 
@@ -49,7 +55,7 @@
 			<span class="content-hidden">chapter</span>
 			<div class="row">
 					<div class="M3">
-						<p class="title-separator">Commentaires</p>
+						<p class="title-separator">Comments</p>
 					</div>
 					<div class="M12">
 						<div class="full-hr-separation"></div>
@@ -65,7 +71,7 @@
 					</div>
 					<div class="row">
 						<div class="M3 X12 M--offset9 wrapper-flex M--end form-group">
-									<input type="submit" id="comment-button" class="input-btn btn-filled-blue btn-icon" value="Commenter">
+									<input type="submit" id="comment-button" class="input-btn btn-filled-blue btn-icon" value="Comment">
 						</div>
 					</div>
 				</form>

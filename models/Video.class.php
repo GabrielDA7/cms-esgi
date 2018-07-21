@@ -50,7 +50,7 @@ class Video extends BaseSql {
 											                    "webm",
 																					"3gp",
 										                    ],
-														"requied"=>true
+														"required"=>true
 								       		]
 						]
 
