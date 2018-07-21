@@ -10,9 +10,9 @@ class PremiumofferController {
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
-		$this->objectDelegate = new ObjectDelegate($this->data, PREMIUM_OFFER_CLASS_NAME);
-		$this->formDelegate = new FormDelegate(PREMIUM_OFFER_CLASS_NAME);
-		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(PREMIUM_OFFER_CLASS_NAME);
+		$this->objectDelegate = new ObjectDelegate($this->data, PREMIUMOFFER_CLASS_NAME);
+		$this->formDelegate = new FormDelegate(PREMIUMOFFER_CLASS_NAME);
+		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(PREMIUMOFFER_CLASS_NAME);
 		$this->siteInfosDelegate = new SiteInfosDelegate();
 	}
 
