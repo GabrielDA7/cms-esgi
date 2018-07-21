@@ -7,6 +7,7 @@ class UserController {
 	private $emailDelegate;
 	private $fileDelegate;
 	private $listDisplayDataDelegate;
+	private $siteInfosDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -16,6 +17,7 @@ class UserController {
 		$this->emailDelegate = new EmailDelegate();
 		$this->fileDelegate = new FileDelegate(USER_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(USER_CLASS_NAME);
+		$this->siteInfosDelegate = new SiteInfosDelegate();
 	}
 
 	public function userAction($params) {
@@ -24,12 +26,14 @@ class UserController {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_USER_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->userDelegate->getById($this->data, $params['GET']);
 		$view = new View($this->data);
 	}
 
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_ADD_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, AVATAR_FOLDER_NAME);
 		$this->userDelegate->add($this->data, $params);
@@ -42,6 +46,7 @@ class UserController {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, TRUE, USER_EDIT_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->userDelegate->getById($this->data, $params['POST']);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, AVATAR_FOLDER_NAME);
@@ -60,12 +65,14 @@ class UserController {
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, USER_LIST_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}
 
 	public function loginAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_LOGIN_VIEWS, LOGIN_TEMPLATES);
+		$this->siteInfosDelegate->process($this->data);
 		$this->formDelegate->process($this->data, $params);
 		$this->userDelegate->login($this->data, $params);
 		$view = new View($this->data);
@@ -87,6 +94,7 @@ class UserController {
 			$this->userDelegate->checkEmailConfirmation($this->data, $params);
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_CONFIRMATION_EMAIL_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->userDelegate->getByParameters($this->data, $params['GET']);
 		$this->emailDelegate->sendEmailConfirmation($this->data);
 		$view = new View($this->data);
@@ -94,6 +102,7 @@ class UserController {
 
 	public function passwordResetEmailAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_PASSWORD_RESET_EMAIL_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->formDelegate->process($this->data, $params);
 		$view = new View($this->data);
 	}
@@ -103,6 +112,7 @@ class UserController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
+		$this->siteInfosDelegate->process($this->data);
 		if (isset($params['POST']['email'])) {
 			$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS);
 			$this->userDelegate->getByParameters($this->data, $params['POST']);

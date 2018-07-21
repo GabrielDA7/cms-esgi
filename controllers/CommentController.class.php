@@ -4,12 +4,14 @@ class CommentController {
 	private $authenticationDelegate;
 	private $objectDelegate;
 	private $formDelegate;
+	private $siteInfosDelegate;
 	private $data = [];
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
 		$this->objectDelegate = new ObjectDelegate($this->data, COMMENT_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(COMMENT_CLASS_NAME);
+		$this->siteInfosDelegate = new SiteInfosDelegate();
 	}
 
 	public function responseAction($params) {
@@ -43,6 +45,7 @@ class CommentController {
 
 	public function reportListAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, COMMENT_LIST_REPORT_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}

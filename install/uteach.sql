@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 21 juil. 2018 à 17:20
+-- Généré le :  sam. 21 juil. 2018 à 18:39
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -140,7 +140,14 @@ CREATE TABLE IF NOT EXISTS `installation` (
   `linkedin` varchar(255) DEFAULT NULL,
   `facebook` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `installation`
+--
+
+INSERT INTO `installation` (`id`, `siteName`, `reasonRegister`, `siteDescription`, `email`, `twitter`, `instagram`, `linkedin`, `facebook`) VALUES
+(1, 'erkklrgkl', 'krgrgllerlg', 'kgrkler,glkker', 'kregker,kg,kl@gmail.com', 'elkg,kegklke,g', 'oger,kgrg', 'gergrglkklre', 'lzkf,klze,fk,kze');
 
 -- --------------------------------------------------------
 
@@ -257,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `emailConfirm`, `userName`, `pwd`, `pwdReset`, `avatar`, `token`, `status`, `dateInserted`, `dateUpdated`, `role`) VALUES
-(25, 'Zerzerzerzerze', 'Louis', 'ouizi@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', 'co7ay7cnctssk00owkgkcgog48ggg4gkgck4gs480swc4c040', 1, '2018-03-20 19:48:58', '2018-07-21 13:32:39', 2),
+(25, 'Zerzerzerzerze', 'Louis', 'ouizi@gmail.com', '', 'lol', 'c1a1a4b81a220cf8195aa8560bae8a332d17cfe8', NULL, '/uteach/public/img/avatars/default.jpg', '5ftnckjizxs88kc8o8k44cko8c88ow00koo0gscoc84k4w0s4s', 1, '2018-03-20 19:48:58', '2018-07-21 13:32:39', 2),
 (33, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'v2l5jb39neoww4ow84w4ow40ooo44wswgogw4c4gg48088wgk', 0, '2018-03-24 22:03:33', NULL, 0),
 (34, 'Louis', 'Louis', 'louis@gmail.com', '', 'zerazer', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, '3iuuy6vxv2w4cs4g8kccsww08wkgg4g048s848k8w8sg8wok04', 0, '2018-03-25 20:08:25', NULL, 0),
 (35, 'Louis', 'Louis', 'louis@gmail.com', '', 'Lala', 'de271790913ea81742b7d31a70d85f50a3d3e5ae', NULL, NULL, 'y4tci0mxs9cck844so48csggsosso8w4w004880csc8gk0k0s', 0, '2018-03-25 20:30:28', NULL, 0),

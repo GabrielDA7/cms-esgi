@@ -7,6 +7,7 @@ class PageController {
 	private $fileDelegate;
 	private $listDisplayDataDelegate;
 	private $statisticDelegate;
+	private $siteInfosDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -16,10 +17,12 @@ class PageController {
 		$this->fileDelegate = new FileDelegate(PAGE_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(PAGE_CLASS_NAME);
 		$this->statisticDelegate = new StatisticDelegate(PAGE_CLASS_NAME);
+		$this->siteInfosDelegate = new SiteInfosDelegate();
 	}
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, PAGE_LIST_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}

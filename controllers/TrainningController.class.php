@@ -8,6 +8,7 @@ class TrainningController {
 	private $fileDelegate;
 	private $listDisplayDataDelegate;
 	private $statisticDelegate;
+	private $siteInfosDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -18,10 +19,12 @@ class TrainningController {
 		$this->fileDelegate = new FileDelegate(TRAINNING_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(TRAINNING_CLASS_NAME);
 		$this->statisticDelegate = new StatisticDelegate(TRAINNING_CLASS_NAME);
+		$this->siteInfosDelegate = new SiteInfosDelegate();
 	}
 	
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, TRAINNING_ADD_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, FORMATION_IMAGES_FOLDER_NAME);
 		$this->objectDelegate->add($this->data, $params);
@@ -34,6 +37,7 @@ class TrainningController {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, TRAINNING_EDIT_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->objectDelegate->getById($this->data, $params, [CHAPTER_CLASS_NAME]);
 		$this->formDelegate->process($this->data, $params);
 		$this->objectDelegate->update($this->data, $params, "", TRAINNING_LIST_BACK_LINK);
@@ -51,6 +55,7 @@ class TrainningController {
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, TRAINNING_LIST_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}
@@ -68,6 +73,7 @@ class TrainningController {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, TRAINNING_TRAINNING_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->objectDelegate->getById($this->data, $params, [CHAPTER_CLASS_NAME]);
 		$this->statisticDelegate->processAdd($params['GET']);
 		$view = new View($this->data);

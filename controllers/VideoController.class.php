@@ -7,6 +7,7 @@ class VideoController {
 	private $fileDelegate;
 	private $listDisplayDataDelegate;
 	private $statisticDelegate;
+	private $siteInfosDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -16,10 +17,12 @@ class VideoController {
 		$this->fileDelegate = new FileDelegate(VIDEO_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(VIDEO_CLASS_NAME);
 		$this->statisticDelegate = new StatisticDelegate(VIDEO_CLASS_NAME);
+		$this->siteInfosDelegate = new SiteInfosDelegate();
 	}
 
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, VIDEO_ADD_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, VIDEO_FOLDER_NAME);
 		$this->objectDelegate->add($this->data, $params);
@@ -32,6 +35,7 @@ class VideoController {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, VIDEO_EDIT_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->objectDelegate->getById($this->data, $params);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->process($this->data, $params, VIDEO_FOLDER_NAME);
@@ -50,6 +54,7 @@ class VideoController {
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, VIDEO_LIST_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}
@@ -67,6 +72,7 @@ class VideoController {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, VIDEO_VIDEO_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->objectDelegate->getById($this->data, $params);
 		$this->statisticDelegate->processAdd($params['GET']);
 		$view = new View($this->data);

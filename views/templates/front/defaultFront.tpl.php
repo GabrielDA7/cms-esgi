@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <title>Uteach</title>
+    <title><?= (isset($infos)) ? $infos->getSiteName() : '' ?></title>
     <meta charset="UTF-8">
     <meta name="description" content="Cours 1 integration">
     <meta name="keywords" content="HTML,CSS,JavaScript">
@@ -53,9 +53,9 @@
           <div id="footer" class="row">
             <div class="M8">
               <div class="footer-wrapper">
-                <p class="footer-title">Uteach</p>
+                <p class="footer-title"><?= (isset($infos)) ? $infos->getSiteName() : '' ?></p>
                 <p class="footer-content">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  <?= (isset($infos)) ? $infos->getSiteDescription() : '' ?>
                 </p>
               </div>
             </div>
@@ -66,28 +66,28 @@
                 <ul id="footer-network">
                       <li>
                         <figure>
-                          <a href=""><i class="fab fa-facebook"></i></a>
+                          <a href="<?php (isset($infos)) ? $infos->getFacebook() : '' ?>"><i class="fab fa-facebook"></i></a>
                           <figcaption>Facebook</figcaption>
                         </figure>
                       </li>
 
                       <li>
                         <figure>
-                          <a href=""><i class="fab fa-twitter-square"></i></a>
+                          <a href="<?php (isset($infos)) ? $infos->getTwitter() : '' ?>"><i class="fab fa-twitter-square"></i></a>
                           <figcaption>Twitter</figcaption>
                         </figure>
                       </li>
 
                       <li>
                         <figure>
-                          <a href=""><i class="fab fa-linkedin"></i></a>
+                          <a href="<?= (isset($infos)) ? $infos->getLinkedin() : '' ?>"><i class="fab fa-linkedin"></i></a>
                           <figcaption>Linkedin</figcaption>
                         </figure>
                       </li>
 
                       <li>
                         <figure>
-                          <a href=""><i class="fas fa-envelope"></i></a>
+                          <a href="<?= (isset($infos)) ? $infos->getEmail() : '' ?>"><i class="fas fa-envelope"></i></a>
                           <figcaption>Email</figcaption>
                         </figure>
                       </li>

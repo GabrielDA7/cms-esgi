@@ -6,6 +6,7 @@ class PremiumController {
 	private $formDelegate;
 	private $listDisplayDataDelegate;
 	private $statisticDelegate;
+	private $siteInfosDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -14,10 +15,12 @@ class PremiumController {
 		$this->formDelegate = new FormDelegate(PREMIUM_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(PREMIUM_OFFER_CLASS_NAME);
 		$this->statisticDelegate = new StatisticDelegate(PREMIUM_OFFER_CLASS_NAME);
+		$this->siteInfosDelegate = new SiteInfosDelegate();
 	}
 
 	public function addAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, PREMIUM_OFFER_ADD_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->formDelegate->process($this->data, $params);
 		$this->objectDelegate->add($this->data, $params);
 		$view = new View($this->data);
@@ -31,6 +34,7 @@ class PremiumController {
 
 	public function listAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, PREMIUM_OFFER_LIST_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);
 	}
