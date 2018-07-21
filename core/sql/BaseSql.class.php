@@ -13,13 +13,16 @@ class BaseSql extends QueryConstructorSql {
 		try {
 			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
 		} catch(Exception $e) {
-			RedirectUtils::redirect404();
+			if ($_SERVER['REQUEST_URI'] != DIRNAME.INDEX_ERROR_LINK && INSTALLATION_DONE)
+				RedirectUtils::redirect404();
 		}
 	}
 
 	public function createDatabase($fileContent) {
+		if (!isset($this->db))
+			return FALSE;
 		$query = $this->db->prepare($fileContent);
-		$query->execute();
+		return $query->execute();
 	}
 
 	public function insert($table = null) {

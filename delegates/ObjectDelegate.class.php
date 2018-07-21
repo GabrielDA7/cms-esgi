@@ -41,15 +41,20 @@ class ObjectDelegate {
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
 
-	public function add(&$data, $params) {
+	public function add(&$data, $params, $redirect = null) {
 		if ($data['errors'] === FALSE) {
 			$object = $data[$this->lowerCaseFirstObjectName];
 			ClassUtils::setObjectColumns($object, $params['POST']);
 			$this->setUserIdWithSession($object);
-			$data[$this->lowerCaseFirstObjectName]->setId($object->insert());
+			if (method_exists($data[$this->lowerCaseFirstObjectName], "setId")) 
+				$data[$this->lowerCaseFirstObjectName]->setId($object->insert());
+			else
+				$object->insert();
 			if ($arrayOfChidren = ClassUtils::getIfExistArrayFromObject($data[$this->lowerCaseFirstObjectName])) {
 				$this->addChildren($data, $arrayOfChidren);
 			}
+			if (isset($redirect))
+				RedirectUtils::redirect($redirect);
 		}
 	}
 
