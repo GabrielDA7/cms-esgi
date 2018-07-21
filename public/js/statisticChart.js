@@ -8,7 +8,6 @@ $(document).ready(function () {
   var ctx = document.getElementById("statistic_chart").getContext("2d");
   window.myChart = new Chart(ctx, createConfigPopularContentChart());
 
-
   $(document).change('select[name=chart_choice]', function(chart) {
     createChart();
   });
@@ -113,23 +112,3 @@ $(document).ready(function () {
     }
 
 });
-
-/*
-//Draw chart
-window.onload = function() {
-    var ctx = document.getElementById("chart").getContext("2d");
-    window.myLine = new Chart(ctx, config);
-};
-
-//Update type of chart
-$('#updateChart').click(function(e) {
-    var chart = window.myLine;
-    var types = ['line', 'bar', 'bubble'];
-
-    chart.config.type = types[Math.floor(Math.random()*3)];
-    chart.destroy();
-
-    var ctx = document.getElementById("chart").getContext("2d");
-    window.myLine = new Chart(ctx, chart.config);
-});
-*/
