@@ -96,15 +96,12 @@ class QueryConstructorSql {
 					$query .= "AND premium=0";
 			}
 
-
 			if (isset($date))
 				$query .= "AND date(dateInserted) = " . $date;
-			
 			if ($username) 
 				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
 			if ($searchTrainningTitle)
 				$query .= " OR (trainning.id=" . $table . ".trainning_id AND trainning.title LIKE :keyword)";
-			
 		}
 		return $query;
 	}
