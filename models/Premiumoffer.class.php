@@ -1,5 +1,5 @@
 <?php
-class PremiumOffer {
+class Premiumoffer extends BaseSql {
 
 	protected $id = null;
 	protected $title;
@@ -7,52 +7,46 @@ class PremiumOffer {
 	protected $status;
 	protected $price;
 
-	public static function configEditForm($data) {
-		$chapter = $data['chapter'];
-		return 	[
-			"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit"],
-			"input"=>
-			[
-				"id"=>
-				[
-					"type"=>"hidden",
-					"placeholder"=>$chapter->getId(),
-					"value"=>$chapter->getId(),
-					"required"=>true,
-				],
-				"title"=>
-				[
-					"type"=>"text",
-					"placeholder"=>$chapter->getTitle(),
-					"maxString"=>100,
-					"minString"=>2,
-					"class"=>"form-group input"
-				]
-			]
-		];
+	public function getColumns() {
+		return get_object_vars($this);
 	}
+
+	public function getColumnsToSearch() {
+		return ["title", "duration", "price", "status"];
+	}
+
+	public function unsetColumn($key) {
+		unset($this->$key);
+	}
+
 
 	public static function configAddForm($data) {
 		$chapter = $data['chapter'];
 		return 	[
-			"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit"],
+			"config"=>["method"=>"POST", "action"=> DIRNAME.PREMIUM_OFFER_ADD_BACK_LINK,"submit"=>"Add","submitClass"=>"input-btn btn-filled-orange btn-icon last"],
 			"input"=>
 			[
-				"id"=>
-				[
-					"type"=>"hidden",
-					"placeholder"=>$chapter->getId(),
-					"value"=>$chapter->getId(),
-					"required"=>true,
-				],
 				"title"=>
 				[
 					"type"=>"text",
-					"placeholder"=>$chapter->getTitle(),
+					"placeholder"=>"Offer name",
 					"maxString"=>100,
 					"minString"=>2,
 					"class"=>"form-group input"
-				]
+				],
+				"duration"=>
+				[
+					"label"=>"Duration (in month)",
+					"type"=>"number",
+					"class"=>"input-medium"
+				],
+				"price"=>
+				[
+					"label"=>"Price",
+					"type"=>"number",
+					"class"=>"input-medium"
+				],
+
 			]
 		];
 	}
@@ -96,7 +90,7 @@ class PremiumOffer {
 
 	public function setId($id) 				 { $this->id = $id; 			  }
 	public function setTitle($title) { $this->title = $title; }
-	public function setPrice($price) 	 { $this->price = $endDate; 	  }
+	public function setPrice($price) 	 { $this->price = $price; 	  }
+	public function setDuration($duration) 	 { $this->duration = $duration; 	  }
 	public function setStatus($status) 	 { $this->status = $status; 	  }
-	public function setUserId($user_Id) 	 { $this->user_Id = $user_Id; 	  }
 }

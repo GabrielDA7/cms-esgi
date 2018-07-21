@@ -13,21 +13,20 @@
   </head>
 
   <body>
-      <section id="installation">
-          <div class="container">
-							<div class="row X--center M--center">
-							    <div class="M3">
-							      <img src="<?= DIRNAME.LOGO_PATH;?>" alt="logo" title="logo">
-							    </div>
-							</div>
-
-							<div class="row X--center M--center">
-							    <div class="M3">
-							      <h1>Uteach</h1>
-							    </div>
-							</div>
-              <?php include $viewPath; ?>
+      <section id="installation" class="container-fluid">
+          <div class="row X--center M--center">
+              <div class="M3">
+                <img src="<?= DIRNAME.LOGO_PATH;?>" alt="logo" title="logo">
+              </div>
           </div>
+
+          <div class="row X--center M--center">
+              <div class="M3">
+                <h1>Uteach</h1>
+              </div>
+          </div>
+          <?php include $viewPath; ?>
+        </div>
       </section>
   </body>
 

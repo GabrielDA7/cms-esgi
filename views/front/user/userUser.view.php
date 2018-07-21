@@ -12,7 +12,7 @@
   <section class="container user-edit-container">
     <div class="row M--center">
         <div class="M12 X12">
-          <?php if($_SESSION['admin'] == true): ?>
+          <?php if(isset($_SESSION['admin'])): ?>
             <form method="POST" action="<?= DIRNAME ?>user/edit" enctype='multipart/form-data'>
 			           <image class="avatar-img-edition" src="<?= $user->getAvatar(); ?>" alt="avatar image"/>
 						     <input type='file' name="avatar">

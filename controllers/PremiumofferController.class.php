@@ -5,7 +5,6 @@ class PremiumofferController {
 	private $objectDelegate;
 	private $formDelegate;
 	private $listDisplayDataDelegate;
-	private $statisticDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -13,7 +12,6 @@ class PremiumofferController {
 		$this->objectDelegate = new ObjectDelegate($this->data, PREMIUM_OFFER_CLASS_NAME);
 		$this->formDelegate = new FormDelegate(PREMIUM_OFFER_CLASS_NAME);
 		$this->listDisplayDataDelegate = new ListDisplayDataDelegate(PREMIUM_OFFER_CLASS_NAME);
-		$this->statisticDelegate = new StatisticDelegate(PREMIUM_OFFER_CLASS_NAME);
 	}
 
 	public function addAction($params) {
@@ -30,7 +28,6 @@ class PremiumofferController {
 	}
 
 	public function listAction($params) {
-		aaa($params);
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, PREMIUM_OFFER_LIST_VIEWS);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);

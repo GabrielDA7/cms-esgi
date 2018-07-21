@@ -11,15 +11,15 @@ html,body
 
 // Dashboard login page --------------------------------------------------------
 #installation{
-  height: 100%;
   background-color: $color-secondary;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #222831;
+  min-height: 100%;
+  height:auto !important; /* modern Browser */
+  height:100%; /* IE */
 }
 
 #installation img {
-  width: 160px;
+  width: 120px;
   margin-left: 50%;
   transform: translateX(-50%);
 }
@@ -67,7 +67,7 @@ html,body
 #installation .installation-description {
   padding: 10px;
   color: $color-primary;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 // Dashboard nav menu ----------------------------------------------------------
@@ -975,6 +975,7 @@ table {
 tr:nth-of-type(odd) {
   background: #eee;
 }
+
 th:nth-child(1) {
     background: $color-tertiary;
 }

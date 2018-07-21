@@ -25,13 +25,10 @@
     <div class="M8">
       <div class="row">
         <div class="M6">
-          <div class="wrapper-icon">
-            <select class="select-input" name="chart_choice">
+            <select class="input-medium" name="chart_choice">
               <option value="popular_contents">Popular Contents</option>
               <option value="visits_evolution">Visits evolution</option>
             </select>
-            <i class="fas fa-chevron-down icon-right"></i>
-          </div>
         </div>
       </div>
       <div class="row">
@@ -50,15 +47,15 @@
             <p>Top Trainning</p>
             <div class="hr-separation"></div>
             <p class="text-indicator">
-              <?php 
+              <?php
               try {
                 if (!isset($topTrainning[0]))
                   throw new Exception("No index", 1);
                 echo $topTrainning[0]->getTrainning()->getTitle();
               } catch (Exception $e) {
-                echo "No Top"; 
+                echo "No Top";
               }
-              ?>    
+              ?>
             </p>
           </div>
         </div>
@@ -71,13 +68,13 @@
             <p>Top Chapter</p>
             <div class="hr-separation"></div>
             <p class="text-indicator">
-              <?php 
+              <?php
               try {
                 if (!isset($topChapter[0]))
                   throw new Exception("No index", 1);
                 echo $topChapter[0]->getChapter()->getTitle();
               } catch (Exception $e) {
-                echo "No Top"; 
+                echo "No Top";
               }
               ?>
             </p>
@@ -92,13 +89,13 @@
             <p>Top video</p>
             <div class="hr-separation"></div>
             <p class="text-indicator">
-              <?php 
+              <?php
               try {
                 if (!isset($topVideo[0]))
                   throw new Exception("Error Processing Request", 1);
                 echo $topVideo[0]->getVideo()->getTitle();
               } catch (Exception $e) {
-                echo "No Top"; 
+                echo "No Top";
               }
               ?>
             </p>
@@ -110,11 +107,11 @@
 </section>
 
 <?php $this->addScript(3, CHART_PATH); ?>
-<?php $this->addScript(4, STATISTIC_CHART_PATH, 
+<?php $this->addScript(4, STATISTIC_CHART_PATH,
   [
     "topVideo" => json_encode(FormatUtils::formatDataToArray($topVideo)),
     "topChapter" => json_encode(FormatUtils::formatDataToArray($topChapter)),
     "topTrainning" => json_encode(FormatUtils::formatDataToArray($topTrainning)),
     "viewsHistory" => json_encode(FormatUtils::formatDataToArray($viewsHistory))
-  ]); 
+  ]);
 ?>

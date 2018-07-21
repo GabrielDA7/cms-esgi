@@ -10,7 +10,7 @@
   </div>
 
   <div class="list-init-object">
-    <span>premiumOffer</span>
+    <span>premiumoffer</span>
   </div>
 
   <div class="row row-tools">
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="M2 M--offset6">
-      <a class="btn-extra-small btn-filled-orange btn btn-icon" href="<?= DIRNAME . PREMIUM_ADD_BACK_LINK; ?>">Add<i class="fas fa-plus"></i></a>
+      <a class="btn-extra-small btn-filled-orange btn btn-icon" href="<?= DIRNAME . PREMIUM_OFFER_ADD_BACK_LINK; ?>">Add<i class="fas fa-plus"></i></a>
     </div>
   </div>
 

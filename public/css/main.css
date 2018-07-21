@@ -1,5 +1,7 @@
 @charset "UTF-8";
 * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0; }
@@ -623,14 +625,16 @@ html, body {
 * DASHBORD
 */
 #installation {
-  height: 100%;
   background-color: #222831;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
+  background-color: #222831;
+  min-height: 100%;
+  height: auto !important;
+  /* modern Browser */
+  height: 100%;
+  /* IE */ }
 
 #installation img {
-  width: 160px;
+  width: 120px;
   margin-left: 50%;
   transform: translateX(-50%); }
 
