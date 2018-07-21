@@ -338,9 +338,9 @@ class User extends UserSql {
 															[
 																	"name"=>"Email"
 															],
-												"dateInserted"=>
+												"role"=>
 															[
-																"name"=>"Status"
+																"name"=>"Role"
 															],
 												"id"=>
 															[

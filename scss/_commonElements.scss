@@ -954,55 +954,31 @@ textarea {
   display: none;
 }
 
-.table-data table {
+table {
   margin-top: 10px;
   width: 100%;
   border-collapse: collapse;
 }
 
-.table-data thead {
-  color: $color-primary;
-  display: block;
-  width: 100%;
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+th:nth-child(1) {
+    background: $color-tertiary;
+}
+th {
+  background: $color-secondary;
+  color: white;
+  font-weight: bold;
+}
+td, th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
 }
 
-.table-data table tbody {
-  display:block;
-  max-height:410px;
-  overflow-y:scroll;
-}
-
-.table-data table thead, table tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-}
-
-.table-data tr {
-  border: 2px solid $color-quaternary;
-}
-
-.table-data thead tr th:first-child {
-  background-color: $color-tertiary;
-}
-
-.table-data thead tr th {
-  background-color: $color-secondary;
-  font-weight: 600;
-  font-size: $font-size-S;
-}
-
-.table-data tbody tr td {
+.center-column {
   text-align: center;
-  font-size: $font-size-S;
-}
-
-.table-data tbody tr td:first-child {
-  color: $color-tertiary;
-}
-
-.table-data tbody th,tbody td {
-    border: 2px solid $color-quaternary;
 }
 
 .pagination_selector{

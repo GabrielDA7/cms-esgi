@@ -1380,46 +1380,29 @@ textarea {
 .list-init-object {
   display: none; }
 
-.table-data table {
+table {
   margin-top: 10px;
   width: 100%;
   border-collapse: collapse; }
 
-.table-data thead {
+tr:nth-of-type(odd) {
+  background: #eee; }
+
+th:nth-child(1) {
+  background: #F96D00; }
+
+th {
+  background: #222831;
   color: white;
-  display: block;
-  width: 100%; }
+  font-weight: bold; }
 
-.table-data table tbody {
-  display: block;
-  max-height: 410px;
-  overflow-y: scroll; }
+td, th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left; }
 
-.table-data table thead, table tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed; }
-
-.table-data tr {
-  border: 2px solid #E8E8E8; }
-
-.table-data thead tr th:first-child {
-  background-color: #F96D00; }
-
-.table-data thead tr th {
-  background-color: #222831;
-  font-weight: 600;
-  font-size: 18px; }
-
-.table-data tbody tr td {
-  text-align: center;
-  font-size: 18px; }
-
-.table-data tbody tr td:first-child {
-  color: #F96D00; }
-
-.table-data tbody th, tbody td {
-  border: 2px solid #E8E8E8; }
+.center-column {
+  text-align: center; }
 
 .pagination_selector {
   display: block;

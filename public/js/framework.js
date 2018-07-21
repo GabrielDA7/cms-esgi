@@ -405,20 +405,29 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
           $.each(data["tableConfig"]["cells"], function(k,val) {
             if(k == "id") {
               if(object == "user") {
-                 html += "<td><a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
+                 html += "<td class='center-column'><a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
                  html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
               } else {
-                html += "<td><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='submit'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
+                html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='submit'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
                 html +="<a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
                 html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
               }
             } else if(k == "status") {
               if(element.status == 1) {
-                html+="<td class='color-green'><i class='fas fa-circle'></i></td>";
+                html+="<td class='color-green center-column'><i class='fas fa-circle'></i></td>";
               } else {
-                html+="<td class='color-red'><i class='fas fa-circle'></i></td>";
+                html+="<td class='color-red center-column'><i class='fas fa-circle'></i></td>";
               }
-            } else {
+            } else if (k == "role") {
+              if(element.role == 1) {
+                html += "<td>Premium</td>";
+              } else if(element.role == 0) {
+                html += "<td>Member</td>";
+              } else {
+                html += "<td>Admin</td>";
+              }
+            }
+            else {
               if ( $.isArray(element[k])) {
                 if(k == "trainning") {
                   html+="<td>"+element[k][0].title+"</td>";
