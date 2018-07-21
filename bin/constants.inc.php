@@ -89,9 +89,9 @@ define("INSTALLATION_ADMIN_LINK", "installation/admin");
 
 define("STATISTIC_INDEX_BACK_LINK", "index/statistic/back");
 
-define("PREMIUM_OFFER_LIST_FRONT_LINK", "premiumoffer/list");
-define("PREMIUM_OFFER_LIST_BACK_LINK", "premiumoffer/list/back");
-define("PREMIUM_OFFER_ADD_BACK_LINK", "premiumoffer/add/back");
+define("PREMIUMOFFER_LIST_FRONT_LINK", "premiumoffer/list");
+define("PREMIUMOFFER_LIST_BACK_LINK", "premiumoffer/list/back");
+define("PREMIUMOFFER_ADD_BACK_LINK", "premiumoffer/add/back");
 
 define("USER_USER_FRONT_LINK", "user/user");
 define("USER_USER_BACK_LINK", "user/user/back");
@@ -191,8 +191,8 @@ define("CHAPTER_EDIT_VIEWS",    ["front"=> "",    			 "back" => "editChapterBack
 
 define("COMMENT_LIST_REPORT_VIEWS", ["front"=> "", "back" => "listReportCommentBack"]);
 
-define("PREMIUM_OFFER_LIST_VIEWS", ["front"=>"listPremiumOffer", "back" => "listPremiumOfferBack"]);
-define("PREMIUM_OFFER_ADD_VIEWS",  ["front"=>"",            "back"=>"addPremiumOfferBack"]);
+define("PREMIUMOFFER_LIST_VIEWS", ["front"=>"listPremiumOffer", "back" => "listPremiumOfferBack"]);
+define("PREMIUMOFFER_ADD_VIEWS",  ["front"=>"",            "back"=>"addPremiumOfferBack"]);
 
 define("PARAMETERS_VIEWS", ["front"=>"", "back"=>"editParameterBack"]);
 

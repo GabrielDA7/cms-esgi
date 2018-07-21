@@ -9,7 +9,7 @@
 	<section class="container main-section">
 
 		<div class="row M--center">
-			<div class="M3">
+			<div class="M3 align-center">
 				<img class="img main-img" src="<?= $trainning->getImage() ?>" alt="image trainning" title="image trainning" >
 			</div>
 		</div>

@@ -22,7 +22,7 @@
                     <a href="<?= DIRNAME.CHAPTER_LIST_FRONT_LINK;?>">Chapter</a>
                     <a href="<?= DIRNAME.TRAINNING_LIST_FRONT_LINK;?>">Trainings</a>
                     <a href="<?= DIRNAME.VIDEO_LIST_FRONT_LINK;?>">Videos</a>
-                    <a href="<?= DIRNAME.PREMIUM_OFFER_LIST_FRONT_LINK;?>">Premium</a>
+                    <a href="<?= DIRNAME.PREMIUMOFFER_LIST_FRONT_LINK;?>">Premium</a>
                   </div>
 
                   <div class="right-nav">

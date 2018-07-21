@@ -23,7 +23,7 @@ class Premiumoffer extends BaseSql {
 	public static function configAddForm($data) {
 		$chapter = $data['chapter'];
 		return 	[
-			"config"=>["method"=>"POST", "action"=> DIRNAME.PREMIUM_OFFER_ADD_BACK_LINK,"submit"=>"Add","submitClass"=>"input-btn btn-filled-orange btn-icon last"],
+			"config"=>["method"=>"POST", "action"=> DIRNAME.PREMIUMOFFER_ADD_BACK_LINK,"submit"=>"Add","submitClass"=>"input-btn btn-filled-orange btn-icon last"],
 			"input"=>
 			[
 				"title"=>

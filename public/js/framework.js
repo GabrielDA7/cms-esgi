@@ -295,6 +295,11 @@ function getCommentsSignaled(divNumber, divList){
 
 function load_data_list_card(page,order='desc', column_name, object, itemsPerPage=30, pagination=true,div, pagination_div, action='init'){
   objects = object + 's';
+  if(object == 'premiumoffer') {
+    order = 'asc';
+    column_name='id';
+    pagination=false;
+  }
   if(action == 'init') {
     url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
   } else {
@@ -318,6 +323,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
       if( data[this.objects].length > 0) {
         link = this.linkObjectView;
         $.each(data[this.objects], function(index, element) {
+          if(object != 'premiumoffer') {
             html += "<div class='M2 X12'>"
             html += " <a href='" + link + "?id=" + element.id + "' class='card'>";
             html += "  <div class='card-image'>";
@@ -342,6 +348,36 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
             html += "  </div>";
             html += " </a>";
             html += " </div>";
+          } else {
+            html += "<div class='M2'>";
+            html +=   "<div class='offer'>";
+            html +=    "<div class='row M--end'>";
+            html +=     "<span class='time-offer'>" + element.duration + " month</span>";
+            html +=    "</div>";
+            html +=    "<div class='row M--center'>";
+            html +=       "<p class='price-offer-premium'>"+ element.price +" $</p>";
+            html +=   "</div>";
+            html +=   "<div class='row options-offer-premium'>";
+            html +=     "<div class='M12 option-offer-premium'>";
+            html +=         "Premium chapters";
+            html +=     "</div>";
+            html +=     "<div class='M12 option-offer-premium'>";
+            html +=       "Premium trainnings";
+            html +=     "</div>";
+            html +=     "<div class='M12 option-offer-premium option-offer-premium-last'>";
+            html +=       "Premium videos";
+            html +=     "</div>";
+            html +=    "</div>";
+            html +=   "<div class='row M--center'>";
+            html +=    "<form action='"+ dirname+"paiement/buy' method='POST'>";
+            html +=     "<input type='hidden' name='duration' value='"+ element.duration +"'>"
+            html +=     "<input type='hidden' name='price' value='"+element.price+"'>";
+            html +=     "<input type='submit' class='input-btn btn-filled-orange btn-icon' name='submit' value='Choose'>";
+            html +=    "</form>";
+            html +=   "</div>";
+            html +=   "</div>";
+            html +=  "</div>";
+          }
         }, link);
       } else {
         html = "<div class='no-content'>" +
@@ -370,7 +406,10 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
 
   var object = $.trim($(".list-init-object span:first-child").text());
   var objects = object + 's';
-
+  if(object == 'premiumoffer') {
+    column_name='id';
+    order='asc';
+  }
   var tb = $("#pagination_data tbody");
   var paginationLinks = $("#pagination_links");
 
@@ -405,12 +444,12 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
           $.each(data["tableConfig"]["cells"], function(k,val) {
             if(k == "id") {
               if(object == "user") {
-                 html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/edit'><button class='button_table' type='submit'><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
+                 html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/edit/back'><button class='button_table' type='submit'><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
                  html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete/back'><button class='button_table' type='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
               } else {
                 html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' ><i class='fas fa-share-square'></i></button><input type='hidden' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input type='hidden' name='id' value='" + element[k] + "'/></form>"
-                html +="<form class='form_actions' method='POST' action='" + dirname + object + "/edit'><button class='button_table' type='submit' ><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
-                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
+                html +="<form class='form_actions' method='POST' action='" + dirname + object + "/edit/back'><button class='button_table' type='submit' ><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
+                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete/back'><button class='button_table' type='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
               }
             } else if(k == "status") {
               if(element.status == 1) {

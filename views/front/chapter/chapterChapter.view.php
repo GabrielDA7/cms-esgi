@@ -9,7 +9,7 @@
 		</div>
 
 		<div class="row M--center">
-			<div class="M3">
+			<div class="M3 align-center">
 				<img class="img main-img" src="<?= $chapter->getImage(); ?>" alt="image chapter" title="image chapter" >
 			</div>
 		</div>

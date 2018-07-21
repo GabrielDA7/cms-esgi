@@ -49,8 +49,8 @@
               <a href="<?= DIRNAME.COMMENT_REPORT_BACK_LINK;?>" class="menu-item"><i class="fas fa-comments"></i>Comments<i id="number-comments-signaled"></i></a>
               <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-gem"></i>Premium<i class="fas fa-chevron-down"></i></a>
               <div class="content-hidden sub-items">
-                <a href="<?= DIRNAME.PREMIUM_OFFER_LIST_BACK_LINK;?>" class="menu-sub-item">Premium offer list</a>
-                <a href="<?= DIRNAME.PREMIUM_OFFER_ADD_BACK_LINK;?>" class="menu-sub-item">Add premium offer</a>
+                <a href="<?= DIRNAME.PREMIUMOFFER_LIST_BACK_LINK;?>" class="menu-sub-item">Premium offer list</a>
+                <a href="<?= DIRNAME.PREMIUMOFFER_ADD_BACK_LINK;?>" class="menu-sub-item">Add premium offer</a>
               </div>
               <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-users"></i>Users<i class="fas fa-chevron-down"></i></a>
               <div class="content-hidden sub-items">

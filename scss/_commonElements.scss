@@ -460,7 +460,7 @@ html,body
 #footer {
   background-color: $color-secondary;
   color: $color-primary;
-  padding-top: 15px;
+  padding: 25px;
 }
 
 #footer .footer-title {
@@ -820,6 +820,7 @@ textarea {
   width: $element-width-M;
   height: 30px;
   padding-left: 15px;
+  background-color: $color-primary;
 }
 
 .input-medium:focus{
@@ -878,7 +879,7 @@ textarea {
   cursor: pointer;
   font-size: $font-size-S;
   border: none;
-  background-color: none;
+  background-color: unset;
 }
 
 .wrapper-icon {
@@ -1325,6 +1326,7 @@ td, th {
   height: 30px;
   line-height: 30px;
   border-top: 2px solid $color-quaternary;
+  font-size: $font-size-XS;
 }
 
 .option-offer-premium-last {

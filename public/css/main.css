@@ -987,7 +987,7 @@ html, body {
 #footer {
   background-color: #222831;
   color: white;
-  padding-top: 15px; }
+  padding: 25px; }
 
 #footer .footer-title {
   color: white;
@@ -1283,7 +1283,8 @@ textarea {
   border-radius: 5px;
   width: 300px;
   height: 30px;
-  padding-left: 15px; }
+  padding-left: 15px;
+  background-color: white; }
 
 .input-medium:focus {
   border: 2px solid #F96D00;
@@ -1328,7 +1329,7 @@ textarea {
   cursor: pointer;
   font-size: 18px;
   border: none;
-  background-color: none; }
+  background-color: unset; }
 
 .wrapper-icon {
   position: relative; }
@@ -1713,7 +1714,8 @@ td, th {
   text-align: center;
   height: 30px;
   line-height: 30px;
-  border-top: 2px solid #E8E8E8; }
+  border-top: 2px solid #E8E8E8;
+  font-size: 14px; }
 
 .option-offer-premium-last {
   border-bottom: 2px solid #E8E8E8; }
