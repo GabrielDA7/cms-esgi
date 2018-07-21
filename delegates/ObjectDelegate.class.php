@@ -18,9 +18,13 @@ class ObjectDelegate {
 		$object = $data[$this->lowerCaseFirstObjectName];
 		$object->setId($params['GET']['id']);
 		$object = $object->getById();
-		if (!empty($othersTablesColumns)) {
+
+		if ($this->isPremiumContentNotAuthorized() && $object->getPremium() == 1) 
+			RedirectUtils::redirect($this->lowerCaseFirstObjectName . "/list");
+		
+		if (!empty($othersTablesColumns)) 
 			ClassUtils::setReferencedObjectsColumns($othersTablesColumns, $object);
-		}
+		
 		$data[$this->lowerCaseFirstObjectName] = $object;
 	}
 
@@ -110,6 +114,13 @@ class ObjectDelegate {
 			return FALSE;
 		}
 		return TRUE;
+	}
+
+	private function isPremiumContentNotAuthorized() {
+		if ((!isset($_SESSION['premium']) || !$_SESSION['premium']) && $this->objectName != USER_CLASS_NAME && !isAdmin()) {
+			return TRUE;
+		}
+		return FALSE;
 	}
 
 	public function getObjectName() 	   		  { return $this->objectName; 		  	    }
