@@ -144,16 +144,20 @@ class BaseSql extends QueryConstructorSql {
 				$foreignObject = ClassUtils::constructObjectWithId($value, $objectName);
 				$foreignObject = $foreignObject->getById();
 				if ($objectName == USER_CLASS_NAME) {
-					$tempObject = new User();
-					$tempObject->setId($foreignObject->getId());
-					$tempObject->setUserName($foreignObject->getUsername());
-					$tempObject->setAvatar($foreignObject->getAvatar());
-					$tempObject->setEmail($foreignObject->getEmail());
-					$foreignObject = $tempObject;
+					$this->setUserPublicInfos($foreignObject);
 				}
 				$object->$setter($foreignObject);
 			}
 		}
+	}
+
+	private function setUserPublicInfos(&$foreignObject) {
+		$tempObject = new User();
+		$tempObject->setId($foreignObject->getId());
+		$tempObject->setUserName($foreignObject->getUsername());
+		$tempObject->setAvatar($foreignObject->getAvatar());
+		$tempObject->setEmail($foreignObject->getEmail());
+		$foreignObject = $tempObject;
 	}
 
 	protected function hasResult($query) {

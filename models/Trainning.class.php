@@ -7,6 +7,7 @@ class Trainning extends BaseSql {
 	protected $image;
 	protected $dateInserted;
 	protected $status;
+	protected $premium;
 
 	protected $chapters = array();
 
@@ -114,6 +115,7 @@ class Trainning extends BaseSql {
     public function getUserId()		  { return $this->user_id;		    }
     public function getUser()	      { return $this->user;			    }
     public function getStatus()       { return $this->status;           }
+    public function getPremium() 	  { return $this->premium;          }
 
 	public function setId($id) 					   { $this->id = $id; 					  }
 	public function setTitle($title) 			   { $this->title = $title; 			  }
@@ -125,4 +127,5 @@ class Trainning extends BaseSql {
     public function setUserId($user_id)			   { $this->user_id = $user_id;			  }
     public function setUser($user)				   { $this->user = $user;			      }
     public function setStatus($status) 		       { $this->status = $status; 		      }
+    public function setPremium($premium) 	       { $this->premium = $premium; 		  }
 }

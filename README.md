@@ -34,18 +34,6 @@ PHP > 7
 
 paypal
 
-premium
-  new function in userDelegate
-  new column in table video / trainning / chapter -> premium (boolean)
-  getByID -> checkPremium Status (synchrone) + check publish status
-
-premium / status check authorisation
-
-
-Add table infos (Facebook / Twitter / Linkedin / Footer text)
-
-replace space by underscore (file)
-
 view logs (see all logs files and can download them)
 
 -- DONE -- Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
@@ -83,6 +71,8 @@ view logs (see all logs files and can download them)
 -- DONE -- FIXE le recherche pour les commentaires ( AJAX :http://localhost/uteach/ajax/search?object=comment&search=1&column_name=report )
 -- DONE -- views evolution
 -- DONE -- siteMap
+-- DONE -- premium / status check authorisation
+-- DONE -- Add table infos (Facebook / Twitter / Linkedin / Footer text)
 
                               |FRONT|
 
@@ -93,7 +83,7 @@ View edit
 go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
 installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
 vue parameters edit dbname / dbhost / dbuser / dbport / language
-
+list front cadena sur les contenus premium (premium=1)
 
 -- SEE LATER -- Comment use modal
 -- SEE LATER -- VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper arreter les requetes quand il n'y a pas de       --resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
@@ -114,3 +104,8 @@ vue parameters edit dbname / dbhost / dbuser / dbport / language
 -- DONE -- 404 page
 -- DONE -- modify every references to author in js file and replace by element.user.userName
 -- DONE -- VOIR element.trainning.title pour mettre le titre de la formation du chapitre voir le resulat du json (trainning a ete ajouté)
+
+                              |ERROR|
+
+Notice: Undefined variable: errors in C:\wamp64\www\uteach\views\front\user\userUser.view.php on line 3
+http://localhost/Uteach/user/user?id=25

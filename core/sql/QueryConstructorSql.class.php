@@ -75,7 +75,7 @@ class QueryConstructorSql {
 		$query = "";
 		if (isset($columns) && !empty($columns)) {
 			$onlyPublishedContent = $this->isOnlyPublishedContent($columns, $table);
-			$onlyNotPremiumContent = $this->isOnlyNotPremiumContent($table);
+			$onlyNotPremiumContent = $this->isOnlyNotPremiumContent($columns, $table);
 			$date = $this->getIfContainDate($columns);
 			$query .= " WHERE ";
 
@@ -96,15 +96,12 @@ class QueryConstructorSql {
 					$query .= "AND premium=0";
 			}
 
-
 			if (isset($date))
 				$query .= "AND date(dateInserted) = " . $date;
-			
 			if ($username) 
 				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
 			if ($searchTrainningTitle)
 				$query .= " OR (trainning.id=" . $table . ".trainning_id AND trainning.title LIKE :keyword)";
-			
 		}
 		return $query;
 	}
@@ -117,9 +114,11 @@ class QueryConstructorSql {
 		return FALSE;
 	}
 
-	private function isOnlyNotPremiumContent($table) {
-		if ((!isset($_SESSION['premium']) || $_SESSION['premium']) && !isAdmin() && $table != "user" && $table != "page")
+	private function isOnlyNotPremiumContent(&$columns, $table) {
+		if ($key = array_search("premium", $columns) && $table != "user") {
+			unset($columns[$key]);
 			return TRUE;
+		}
 		return FALSE;
 	}
 

@@ -48,7 +48,7 @@ class VideoController {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}
-		$this->authenticationDelegate->process($this->data, $params, TRUE);
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE);
 		$this->userDelegate->delete($params, "", VIDEO_LIST_BACK_LINK);
 	}
 
