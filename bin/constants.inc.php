@@ -10,7 +10,7 @@ define("TRAINNING_CLASS_NAME", "Trainning");
 define("COMMENT_CLASS_NAME", "Comment");
 define("INSTALLATION_CLASS_NAME", "Installation");
 define("PREMIUM_CLASS_NAME", "Premium");
-define("PREMIUM_OFFER_CLASS_NAME", "Premiumoffer");
+define("PREMIUMOFFER_CLASS_NAME", "Premiumoffer");
 define("PAGE_CLASS_NAME", "Page");
 
 /******************************
