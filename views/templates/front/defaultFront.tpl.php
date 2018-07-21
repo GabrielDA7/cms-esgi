@@ -18,11 +18,9 @@
               <nav class="container-fluid" id="front-topnav">
                   <div class="left-nav">
                     <img class="logo-nav" src="<?= DIRNAME.LOGO_PATH;?>" alt="logo" title="logo">
-                    <a href="<?= DIRNAME;?>" class="active">Home</a>
-                    <a href="<?= DIRNAME.CHAPTER_LIST_FRONT_LINK;?>">Chapter</a>
-                    <a href="<?= DIRNAME.TRAINNING_LIST_FRONT_LINK;?>">Trainings</a>
-                    <a href="<?= DIRNAME.VIDEO_LIST_FRONT_LINK;?>">Videos</a>
-                    <a href="<?= DIRNAME.PREMIUM_OFFER_LIST_FRONT_LINK;?>">Premium</a>
+                    <?php foreach ($pages as $page) : ?>
+                      <a href="<?= DIRNAME . $page->getUrl();?>" class="active"><?= $page->getTitle() ?></a>
+                    <?php endforeach; ?>
                   </div>
 
                   <div class="right-nav">

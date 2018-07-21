@@ -1,0 +1,63 @@
+IP + Date : ::1 - July 21, 2018, 4:12 pm
+-----------------
+Url : http://localhost/Uteach/user/user
+Action : Attempt access
+Value : Access denied
+Date : 07/21/2018 04:12:21 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 21, 2018, 4:13 pm
+-----------------
+Url : http://localhost/Uteach/premiumoffer/list/back
+Action : Controller not found
+Value : 
+Date : 07/21/2018 04:13:07 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 21, 2018, 4:27 pm
+-----------------
+Url : http://localhost/Uteach/chapter/public/img/chapters/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in ChapterController
+Date : 07/21/2018 04:27:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 21, 2018, 4:28 pm
+-----------------
+Url : http://localhost/Uteach/trainning/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in TrainningController
+Date : 07/21/2018 04:28:24 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 21, 2018, 6:03 pm
+-----------------
+Url : http://localhost/Uteach/installation/admin
+Action : Attempt access
+Value : Access denied
+Date : 07/21/2018 06:03:05 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 21, 2018, 6:31 pm
+-----------------
+Url : http://localhost/Uteach/trainning/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in TrainningController
+Date : 07/21/2018 06:31:18 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 21, 2018, 6:31 pm
+-----------------
+Url : http://localhost/Uteach/trainning/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in TrainningController
+Date : 07/21/2018 06:31:53 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 21, 2018, 6:38 pm
+-----------------
+Url : http://localhost/Uteach/trainning/public/img/trainnings/711px-PHP-logo.svg.png
+Action : Action not found
+Value : publicAction in TrainningController
+Date : 07/21/2018 06:38:24 pm
+-------------------------------------------------------
+IP + Date : ::1 - July 21, 2018, 6:56 pm
+-----------------
+Url : http://localhost/Uteach/installation/setting
+Action : Attempt access
+Value : Access denied
+Date : 07/21/2018 06:56:39 pm
+-------------------------------------------------------
