@@ -35,7 +35,7 @@
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</select>
-		<?php elseif ($attributs["type"] == "role"): ?>
+		<?php elseif ($attributs["type"] == "plainText"): ?>
 			<?php if (isset($attributs["value"])): ?>
 				<?php if($attributs["value"] == 0): ?>
 					<p class="form-group">Status : member</p>

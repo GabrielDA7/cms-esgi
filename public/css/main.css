@@ -1311,9 +1311,11 @@ textarea {
   color: green; }
 
 .button_table {
+  padding-right: 20px;
+  cursor: pointer;
   font-size: 18px;
   border: none;
-  background-color: white; }
+  background-color: none; }
 
 .wrapper-icon {
   position: relative; }

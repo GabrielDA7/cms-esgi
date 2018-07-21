@@ -405,12 +405,12 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
           $.each(data["tableConfig"]["cells"], function(k,val) {
             if(k == "id") {
               if(object == "user") {
-                 html += "<td class='center-column'><a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
-                 html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
+                 html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/edit'><button class='button_table' type='submit' name='submit'><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
+                 html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete/back'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
               } else {
-                html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='submit'><i class='fas fa-share-square'></i></button><input class='content-hidden' type='text' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form>"
-                html +="<a href='" + dirname + object + "/edit/back?id=" + element[k] + "'><i class='fas fa-edit'></i></a>";
-                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input class='content-hidden' type='text' name='id' value='" + element[k] + "'/></form></td>";
+                html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='submit'><i class='fas fa-share-square'></i></button><input type='hidden' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input type='hidden' name='id' value='" + element[k] + "'/></form>"
+                html +="<form class='form_actions' method='POST' action='" + dirname + object + "/edit'><button class='button_table' type='submit' name='submit'><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
+                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
               }
             } else if(k == "status") {
               if(element.status == 1) {
@@ -618,7 +618,7 @@ function renderCommentSignaled(element) {
 function renderCommentResponse(element, intern) {
   html = "<div class='row comment-card M--start'>";
   html +=   "<div class='M1 no-padding align-center'>";
-  html +=     "<a href='user/user?id=" + element.user[0].id + "'>"
+  html +=     "<a href='" + dirname + "user/user?id=" + element.user[0].id + "'>"
   html +=       "<img class='avatar-img-medium' src='" + element.user[0].avatar + "' alt='avatar image'>";
   html +=     "</a>"
   html +=   "</div>";

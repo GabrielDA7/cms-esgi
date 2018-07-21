@@ -57,6 +57,40 @@ class Video extends BaseSql {
 				];
 	}
 
+	public static function configEditForm($data){
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.VIDEO_EDIT_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Upload", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
+					"input"=>
+							[
+								"title"=>
+											[
+												"type"=>"text",
+												"placeholder"=>"Title",
+												"maxString"=>100,
+												"minString"=>2,
+												"required"=>true,
+												"class"=>"form-group input",
+												"value"=>(isset($_POST["title"])? $_POST["title"] : "")
+											],
+								"url"=>
+											[
+														 "type"=>"file",
+														 "class"=>"form-group",
+														 "extension" =>
+																			 [
+																					"mp4",
+																					"mp3",
+																					"webm",
+																					"3gp",
+																				],
+														"requied"=>true,
+														"value"=>(isset($_POST["url"])? $_POST["url"] : "")
+													]
+						]
+
+				];
+	}
+
 
 	public static function configTable(){
 		return 	[

@@ -88,25 +88,22 @@ view logs (see all logs files and can download them)
 
 Ajouter form/list pour premium
 Ajouter form parameters
-Afficher list reported comments back
 Afficher plus de commentaire load_data_comment
-add a label which is the key of the input where it is a SELECT (for the installation : back template / front template we don't know)
-Edit profile CSS()
 View edit
 go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
-add button or href to see RSS flux -> see files in bin/xml/
 installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
-statistic :put aaa($this->data); in indexController statisticAction above view
 vue parameters edit dbname / dbhost / dbuser / dbport / language
-FIXER le probleme de chart BO des stats qui change toutes seules lorsque les deux types de chart on été affiché
-
-
-!!! REGARDER SI LES BUGS VIENNENT PAS DE MR GABRIEL DAOUD !!!
 
 
 -- SEE LATER -- Comment use modal
 -- SEE LATER -- VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper arreter les requetes quand il n'y a pas de       --resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
 
+-- DONE -- Afficher list reported comments back
+-- DONE -- add a label which is the key of the input where it is a SELECT (for the installation : back template / front template we don't know)
+-- DONE -- Edit profile
+-- DONE -- statistic :put aaa($this->data); in indexController statisticAction above view
+-- DONE -- add button or href to see RSS flux -> see files in bin/xml/
+-- DONE -- FIXER le probleme de chart BO des stats qui change toutes seules lorsque les deux types de chart on été affiché
 -- DONE -- Ajouter la gestion de pagination pour la recherche
 -- DONE -- Search nav bar 3 search ajax request :training / chapter / video get the 3 lists and print them view search.view.php (not created) index/search
 -- DONE -- List comments

@@ -864,9 +864,11 @@ textarea {
 }
 
 .button_table {
+  padding-right: 20px;
+  cursor: pointer;
   font-size: $font-size-S;
   border: none;
-  background-color: $color-primary;
+  background-color: none;
 }
 
 .wrapper-icon {

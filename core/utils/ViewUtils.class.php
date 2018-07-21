@@ -19,4 +19,19 @@ class ViewUtils {
 		}
 		return DIRNAME . "public/img/default.jpg";
 	}
+
+	public static function getUser($id) {
+		$user = new User();
+		return $user->getById($id);
+	}
+
+	public static function getRoleUser($val) {
+		if($val == 1) {
+			return 'premium';
+		} else if($val == 0) {
+			return 'member';
+		} else {
+			return 'admin';
+		}
+	}
 }
