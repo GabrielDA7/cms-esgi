@@ -11,6 +11,7 @@ define("COMMENT_CLASS_NAME", "Comment");
 define("INSTALLATION_CLASS_NAME", "Installation");
 define("PREMIUM_CLASS_NAME", "Premium");
 define("PREMIUM_OFFER_CLASS_NAME", "PremiumOffer");
+define("PAGE_CLASS_NAME", "Page");
 
 /******************************
 ********** LABELS *************
@@ -88,9 +89,9 @@ define("INSTALLATION_ADMIN_LINK", "installation/admin");
 
 define("STATISTIC_INDEX_BACK_LINK", "index/statistic/back");
 
-define("PREMIUM_OFFER_LIST_FRONT_LINK", "premium/list");
-define("PREMIUM_OFFER_LIST_BACK_LINK", "premium/list/back");
-define("PREMIUM_OFFER_ADD_BACK_LINK", "premium/add/back");
+define("PREMIUM_OFFER_LIST_FRONT_LINK", "premiumoffer/list");
+define("PREMIUM_OFFER_LIST_BACK_LINK", "premiumoffer/list/back");
+define("PREMIUM_OFFER_ADD_BACK_LINK", "premiumoffer/add/back");
 
 define("USER_USER_FRONT_LINK", "user/user");
 define("USER_USER_BACK_LINK", "user/user/back");
@@ -125,6 +126,8 @@ define("VIDEO_VIDEO_BACK_LINK", "video/video/back");
 define("VIDEO_LIST_FRONT_LINK", "video/list");
 define("VIDEO_LIST_BACK_LINK", "video/list/back");
 define("VIDEO_ADD_BACK_LINK", "video/add/back");
+
+define("PAGE_LIST_BACK_LINK", "page/list/back");
 
 define("PARAMETER_EDIT_BACK_LINK", "index/parameters/back");
 
@@ -171,8 +174,11 @@ define("USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "confirmatio
 define("VIDEO_VIDEO_VIEWS", ["front"=> "videoVideo", "back" => "videoVideoBack"]);
 define("VIDEO_LIST_VIEWS",  ["front"=> "listVideo", "back" => "listVideoBack"]);
 define("VIDEO_ADD_VIEWS",   ["front"=> "", "back" => "addVideoBack"]);
+define("VIDEO_EDIT_VIEWS", ["front"=> "", "back"=>"editVideoBack"]);
 
 define("STATISTIC_VIEWS", ["front"=> "", "back" => "statisticBack"]);
+
+define("PAGE_LIST_VIEWS", ["front"=> "", "back"=>"listPageBack"]);
 
 define("TRAINNING_TRAINNING_VIEWS", ["front"=> "trainningTrainning", "back" => "trainningTrainningBack"]);
 define("TRAINNING_LIST_VIEWS",   	["front"=> "listTrainning",      "back" => "listTrainningBack"]);
