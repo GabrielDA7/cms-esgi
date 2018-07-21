@@ -10,7 +10,7 @@ html,body
 */
 
 // Dashboard login page --------------------------------------------------------
-#dashboard-login{
+#installation{
   height: 100%;
   background-color: $color-secondary;
   display: flex;
@@ -18,36 +18,36 @@ html,body
   justify-content: center;
 }
 
-#dashboard-login img {
+#installation img {
   width: 160px;
   margin-left: 50%;
   transform: translateX(-50%);
 }
 
-#dashboard-login h1 {
+#installation h1 {
   font-size: $font-size-XL;
   color: $color-primary;
   text-align: center;
   font-weight: bold;
 }
 
-#dashboard-login h1::first-letter {
+#installation h1::first-letter {
   color: $color-tertiary;
 }
 
-#dashboard-login input:nth-child(1) {
+#installation input:nth-child(1) {
   width: 100%;
 }
 
-#dashboard-login .input::placeholder {
+#installation .input::placeholder {
   color: $color-primary;
 }
 
-#dashboard-login .input {
+#installation .input {
   margin-top: 5px;
 }
 
-#dashboard-login .input-btn {
+#installation .input-btn {
   margin-left: 50%;
   transform: translateX(-50%);
   background-color: $color-tertiary;
@@ -55,9 +55,19 @@ html,body
   color: $color-primary;
 }
 
-#dashboard-login .form-group label {
+#installation .form-group label {
   color: $color-primary;
   font-weight: 600;
+}
+
+#installation .installation-subtitle {
+  padding: 10px;
+  color: $color-primary;
+}
+#installation .installation-description {
+  padding: 10px;
+  color: $color-primary;
+  margin-bottom: 10px; 
 }
 
 // Dashboard nav menu ----------------------------------------------------------

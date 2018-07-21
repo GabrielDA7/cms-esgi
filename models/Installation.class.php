@@ -23,46 +23,60 @@ class Installation {
 		return get_object_vars($this);
 	}
 
+
 	public static function configSettingForm($data){
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_SETTING_LINK, "submit"=>"Confirm", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
-								"language"=>
+								"siteName"=>
 											[
-												"type"=>"select",
-												"option"=>
-														[
-															"fr"=>"Francais",
-															"en"=>"English"
-														],
+												"label"=>"Site name",
+												"type"=>"text",
 												"required"=>true,
 												"class"=>"form-group input"
 											],
-								"front_Template"=>
+								"reasonRegister"=>
 											[
-												"type"=>"select",
-												"option"=>
-														[
-															"defaultFront"=>"Default",
-															"templateFront1"=>"Template 1",
-															"templateFront2"=>"Template 2"
-														],
+												"label"=>"Why users should register ?",
+												"type"=>"textarea",
 												"required"=>true,
 												"class"=>"form-group input"
 											],
-								"back_Template"=>
+								"siteDescription"=>
 											[
-												"type"=>"select",
-												"option"=>
-														[
-															"defaultBack"=>"Default",
-															"templateBack1"=>"Template 1",
-															"templateBack2"=>"Template 2"
-														],
+												"label"=>"Site description",
+												"type"=>"textarea",
 												"required"=>true,
 												"class"=>"form-group input"
-											]
+											],
+								"email"=>
+														[
+															"label"=>"Site email",
+															"type"=>"text",
+															"class"=>"form-group input"
+														],
+								"twitter"=>
+																	[
+																		"label"=>"Admin twitter link",
+																		"type"=>"text",
+																		"class"=>"form-group input"
+																	],
+								"instagram"=>[
+																					"label"=>"Admin instagram link",
+																					"type"=>"text",
+																					"class"=>"form-group input"
+															],
+								"linkedin"=>[
+																								"label"=>"Admin linkedin link",
+																								"type"=>"text",
+																								"class"=>"form-group input"
+																	],
+								"facebook"=>[
+																	"label"=>"Admin facebook link",
+																	"type"=>"text",
+																	"class"=>"form-group input"
+														]
 							]
 				];
 	}
@@ -74,6 +88,7 @@ class Installation {
 							[
 								"dbuser"=>
 											[
+												"label"=>"Database username",
 												"type"=>"text",
 												"placeholder"=>"Nom utilisateur",
 												"required"=>true,
@@ -83,12 +98,14 @@ class Installation {
 											],
 								"dbpwd"=>
 											[
-												"type"=>"text",
+												"label"=>"Database password",
+												"type"=>"password",
 												"placeholder"=>"Mot de passe",
 												"class"=>"form-group input"
 											],
 								"dbhost"=>
 											[
+												"label"=>"Database host",
 												"type"=>"text",
 												"placeholder"=>"Url",
 												"required"=>true,
@@ -98,6 +115,7 @@ class Installation {
 											],
 								"dbname"=>
 											[
+												"label"=>"Database name",
 												"type"=>"text",
 												"placeholder"=>"Nom de la base",
 												"required"=>true,
@@ -107,6 +125,7 @@ class Installation {
 											],
 								"dbport"=>
 											[
+												"label"=>"Database port",
 												"type"=>"number",
 												"placeholder"=>"Port",
 												"required"=>true,
@@ -123,6 +142,7 @@ class Installation {
 							[
 								"firstName"=>
 											[
+												"label"=>"First name",
 												"type"=>"text",
 												"placeholder"=>"First name",
 												"required"=>true,
@@ -132,6 +152,7 @@ class Installation {
 											],
 								"lastName"=>
 											[
+												"label"=>"Last name",
 												"type"=>"text",
 												"placeholder"=>"Last name",
 												"required"=>true,
@@ -141,6 +162,7 @@ class Installation {
 											],
 								"userName"=>
 											[
+												"label"=>"Username",
 												"type"=>"text",
 												"placeholder"=>"Username",
 												"required"=>true,
@@ -150,6 +172,7 @@ class Installation {
 											],
 								"email"=>
 											[
+												"label"=>"Email",
 												"type"=>"email",
 												"placeholder"=>"Email",
 												"required"=>true,
@@ -157,6 +180,7 @@ class Installation {
 											],
 								"pwd"=>
 											[
+												"label"=>"Password",
 												"type"=>"password",
 												"placeholder"=>"Password",
 												"required"=>true,

@@ -22,7 +22,8 @@ class InstallationController {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, INSTALLATION_INDEX_VIEWS, INSTALLATION_TEMPLATES);
 		$view = new View($this->data);
 	}
-
+	
+/*
 	public function settingAction($params) {
 		if (INSTALLATION_DONE) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
@@ -33,6 +34,7 @@ class InstallationController {
 		$this->fileDelegate->setting($this->data, $params['POST'], INSTALLATION_DATABASE_LINK);
 		$view = new View($this->data);
 	}
+*/
 
 	public function databaseAction($params) {
 		if (INSTALLATION_DONE) {
