@@ -3,8 +3,8 @@
 
 	<?php foreach ($config["input"] as $name => $attributs):?>
 		<?php if(isset($attributs["label"]) && !empty($attributs["label"])): ?>
-			<label class="form-label-top form-group <?= $attributs["labelClass"] ?>"
-				for="<?= $name; ?>"><?= $attributs["label"]; ?></label>
+			<label class="form-label-top form-group"
+				for="<?= $name; ?>"><?= $attributs["label"]; ?>></label>
 		<?php endif; ?>
 
 		<?php if($attributs["type"] == "textarea"): ?>
