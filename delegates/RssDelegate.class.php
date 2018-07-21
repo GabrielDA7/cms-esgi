@@ -8,7 +8,7 @@ class RssDelegate {
 	}
 
 	public function process($data) {
-		if ($this->objectName == "user" || $this->objectName == "premiumoffer")
+		if ($this->objectName == "user" || $this->objectName == "premiumoffer" || $this->objectName == "page")
 			return;
 		$xmlFile = $this->createXmlFile();
 		$action = str_replace("Action", "", ClassUtils::getCallingFunction());
