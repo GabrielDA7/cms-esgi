@@ -13,10 +13,11 @@ class FormDelegate {
 		$data['errors'] = null;
 		if(isset($params['POST']['submit'])) {
 			$data['errors'] = $this->checkForm($data['config'], $params["POST"], $params['FILES']);
-			if ($this->objectName === USER_CLASS_NAME && ClassUtils::getCallingFunction() == "addAction") 
+			$action = ClassUtils::getCallingFunction();
+			if ($this->objectName === USER_CLASS_NAME && $this->isActionToCheckDisponibility($action)) 
 				$this->checkUserNameAndEmailDisponibility($data['errors'], $params["POST"]);
 			
-			if ($this->objectName === CHAPTER_CLASS_NAME && ClassUtils::getCallingFunction() == "addAction") 
+			if ($this->objectName === CHAPTER_CLASS_NAME && $action == "addAction") 
 				$this->checkChapterNumberDisponibility($data['errors'], $params["POST"]);
 		}
 	}
@@ -70,6 +71,7 @@ class FormDelegate {
 		if (isset($post['userName']))
 			$this->checkColumnDisponibility("userName", $errors, $post, $user);
 
+		$user = new User();
 		if (isset($post['email']))
 			$this->checkColumnDisponibility("email", $errors, $post, $user);
 	}
@@ -85,9 +87,10 @@ class FormDelegate {
 	private function checkColumnDisponibility($columnName, &$errors, $post, $object) {
 		$setter = "set" . ucfirst($columnName);
 		$object->$setter($post[$columnName]);
-		$object = $object->getWithParameters(null);
-		if (!empty($object)) {
-			$errors[] = $columnName . " est déjà utilisé";
+		$objects = $object->getWithParameters(null);
+		if (!empty($objects)) {
+			if (!isset($_SESSION['userId']) || $objects[0]->getId() != $_SESSION['userId'])
+				$errors[] = $columnName . " est déjà utilisé";
 		}
 	}
 
@@ -153,6 +156,10 @@ class FormDelegate {
 			return in_array($path_parts['extension'], $fileExtension);
 		}
 		return true;
+	}
+
+	private function isActionToCheckDisponibility($action) {
+		return ($action == "addAction" || $action == "editAction");
 	}
 
 
