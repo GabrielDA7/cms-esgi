@@ -31,7 +31,7 @@ class InstallationController {
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, INSTALLATION_SETTING_VIEWS, INSTALLATION_TEMPLATES);
 		$this->formDelegate->process($this->data, $params);
-		$this->fileDelegate->setting($this->data, $params['POST'], INSTALLATION_DATABASE_LINK);
+		$this->fileDelegate->setting($this->data, $params['POST'], INSTALLATION_ADMIN_LINK);
 		$view = new View($this->data);
 	}
 
