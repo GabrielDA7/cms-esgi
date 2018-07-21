@@ -50,8 +50,8 @@
 												<input type='hidden' name='parts["+ idPart +"][number]' value='" + idPart + "'></input>
 											</div>
 						 </div>
-					<?php endforeach ?>
-				<?endif;?>
+					<?php endforeach; ?>
+				<?php endif; ?>
 			</div>
 		<?php elseif ($attributs["type"] == "button"): ?>
 			<button
@@ -95,7 +95,8 @@
 				<?=(isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
 				<?=(isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
 				<?=(isset($attributs["required"])) ? "required='required'" : ""; ?>
-				<?=(isset($attributs["onclick"])) ? "onclick='".$attributs["onclick"]."'" : ""; ?>>
+				<?=(isset($attributs["onclick"])) ? "onclick='".$attributs["onclick"]."'" : ""; ?>
+			>
 		<?php endif; ?>
 	<?php endforeach; ?>
 		<input class="btn form-group <?= $config["config"]["submitClass"]; ?>" type="submit" name="submit" value="<?= $config["config"]["submit"];?>">
