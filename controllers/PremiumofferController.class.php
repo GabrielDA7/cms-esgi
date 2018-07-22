@@ -55,7 +55,7 @@ class PremiumofferController {
 
 
 	public function listAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, PREMIUMOFFER_LIST_VIEWS);
+		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, PREMIUMOFFER_LIST_VIEWS);
 		$this->siteInfosDelegate->process($this->data);
 		$this->listDisplayDataDelegate->processCommonInformations($this->data, $params);
 		$view = new View($this->data);

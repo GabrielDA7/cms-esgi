@@ -97,7 +97,7 @@
       </footer>
 
     <!-- Javascript -->
-    <?php $this->addScript(0, JQUERY_PATH); ?>
-    <?php $this->addScript(1, FRAMEWORD_JS_PATH, ["dirname" => DIRNAME, "isLogged" => json_encode(isLogged())]); ?>
+    <?php $this->addScript(0, DIRNAME.JQUERY_PATH); ?>
+    <?php $this->addScript(1, DIRNAME.FRAMEWORD_JS_PATH, ["dirname" => DIRNAME, "isLogged" => json_encode(isLogged())]); ?>
   </body>
 </html>

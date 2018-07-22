@@ -71,8 +71,8 @@
       </section>
 
         <!-- Javascript -->
-        <?php $this->addScript(0, JQUERY_PATH); ?>
-        <?php $this->addScript(1, FRAMEWORD_JS_PATH, ["dirname" => DIRNAME]); ?>
-        <?php $this->addScript(2, TINYMCE_PATH); ?>
+        <?php $this->addScript(0, DIRNAME.JQUERY_PATH); ?>
+        <?php $this->addScript(1, DIRNAME.FRAMEWORD_JS_PATH, ["dirname" => DIRNAME]); ?>
+        <?php $this->addScript(2, DIRNAME.TINYMCE_PATH); ?>
     </body>
 </html>

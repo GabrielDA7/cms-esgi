@@ -9,14 +9,29 @@ class ComposerStaticInit51fe0770d9d8e34467d9e701d8d802d0
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PayPal' => 
+            array (
+                0 => __DIR__ . '/..' . '/paypal/rest-api-sdk-php/lib',
+            ),
         ),
     );
 
@@ -25,6 +40,7 @@ class ComposerStaticInit51fe0770d9d8e34467d9e701d8d802d0
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit51fe0770d9d8e34467d9e701d8d802d0::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit51fe0770d9d8e34467d9e701d8d802d0::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit51fe0770d9d8e34467d9e701d8d802d0::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

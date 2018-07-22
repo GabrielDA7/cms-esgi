@@ -117,8 +117,9 @@ class ObjectDelegate {
 	}
 
 	private function isPremiumContentNotAuthorized() {
-		if ((!isset($_SESSION['premium']) || !$_SESSION['premium']) && $this->objectName != USER_CLASS_NAME && !isAdmin()) {
-			return TRUE;
+		if ((!isset($_SESSION['premium']) || !$_SESSION['premium']) && !isAdmin()) {
+			if ($this->objectName != USER_CLASS_NAME && $this->objectName != PREMIUMOFFER_CLASS_NAME)
+				return TRUE;
 		}
 		return FALSE;
 	}

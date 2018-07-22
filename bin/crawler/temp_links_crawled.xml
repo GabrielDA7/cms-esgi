@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<links>
+  <link>/Uteach/</link>
+  <link>/Uteach/chapter/list</link>
+  <link>/Uteach/trainning/list</link>
+  <link>/Uteach/video/list</link>
+  <link>/Uteach/premiumoffer/list</link>
+  <link>/Uteach/user/login</link>
+  <link>/Uteach/user/add</link>
+</links>

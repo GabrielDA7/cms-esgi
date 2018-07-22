@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<links>
+  <link>&lt;br /&gt;
+&lt;b&gt;Notice&lt;/b&gt;:  Use of undefined constant PREMIUM_LIST_FRONT_LINK - assumed 'PREMIUM_LIST_FRONT_LINK' in &lt;b&gt;C:\wamp64\www\uteach\views\home.view.php&lt;/b&gt; on line &lt;b&gt;62&lt;/b&gt;&lt;br /&gt;
+/Uteach/PREMIUM_LIST_FRONT_LINK</link>
+  <link>/Uteach/bin/xml/list_chapter.xml</link>
+  <link>/Uteach/bin/xml/list_trainning.xml</link>
+  <link>/Uteach/bin/xml/list_video.xml</link>
+  <link>/Uteach/user/passwordResetEmail</link>
+</links>

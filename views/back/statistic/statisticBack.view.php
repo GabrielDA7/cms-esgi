@@ -106,8 +106,8 @@
   </div>
 </section>
 
-<?php $this->addScript(3, CHART_PATH); ?>
-<?php $this->addScript(4, STATISTIC_CHART_PATH,
+<?php $this->addScript(3, DIRNAME.CHART_PATH); ?>
+<?php $this->addScript(4, DIRNAME.STATISTIC_CHART_PATH,
   [
     "topVideo" => json_encode(FormatUtils::formatDataToArray($topVideo)),
     "topChapter" => json_encode(FormatUtils::formatDataToArray($topChapter)),
