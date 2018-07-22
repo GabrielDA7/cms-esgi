@@ -1,7 +1,7 @@
 <?php
 define("INSTALLATION_DONE", TRUE);
 
-define("LANGUAGE","french");
+define("LANGUAGE","fr");
 define("INSTALLATION_TEMPLATE", "installation");
 define("FRONT_TEMPLATE", "defaultFront");
 define("BACK_TEMPLATE", "defaultBack");
