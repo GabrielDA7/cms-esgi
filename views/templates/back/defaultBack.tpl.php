@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Uteach-Dashboard</title>
+        <title><?= (isset($infos)) ? $infos->getSiteName() : '' ?>-Dashboard</title>
         <meta charset="UTF-8">
         <meta name="description" content="Cours 1 integration">
         <meta name="keywords" content="CMS,Formation">

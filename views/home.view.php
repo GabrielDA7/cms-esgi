@@ -59,7 +59,7 @@
 <section class="container-fluid">
   <div id="premium-container" class="row M--center M--middle X--center X--middle">
     <div class="M3 X12">
-      <a href="<?= DIRNAME.PREMIUM_LIST_FRONT_LINK;?>">Become premium<br/><i class="far fa-gem"></i></a>
+      <a href="<?= DIRNAME.PREMIUMOFFER_LIST_FRONT_LINK;?>">Become premium<br/><i class="far fa-gem"></i></a>
     </div>
   </div>
 </section>

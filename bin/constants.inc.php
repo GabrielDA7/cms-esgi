@@ -71,6 +71,7 @@ define("FRAMEWORD_JS_PATH", "public/js/framework.js");
 define("TINYMCE_PATH", "public/js/tinymce/js/tinymce/tinymce.min.js");
 define("CHART_PATH", "node_modules/chart.js/dist/Chart.min.js");
 define("STATISTIC_CHART_PATH", "public/js/statisticChart.js");
+define("PAIEMENT_PATH", "public/js/paiement.js");
 
 define("TEMP_CRAWLER_LINKS_PATH", "bin/crawler/temp_links.xml");
 define("TEMP_CRAWLER_CRAWLED_LINKS_PATH", "bin/crawler/temp_links_crawled.xml");
@@ -137,6 +138,9 @@ define("PARAMETER_EDIT_BACK_LINK", "index/parameters/back");
 
 define("COMMENT_REPORT_BACK_LINK", "comment/reportList/back");
 
+define("PAYMENT_RECAP_LINK", "payment/recap");
+define("PAYMENT_EXECUTE", "payment/execute");
+
 define("INDEX_ERROR_LINK", "index/error");
 
 define("FACEBOOK_LINK", "");
@@ -154,53 +158,57 @@ define("INSTALLATION_TEMPLATES", ["front"=> INSTALLATION_TEMPLATE, "back" => INS
 /******************************
 ********** VIEWS **************
 *******************************/
-define("INSTALLATION_INDEX_VIEWS", 	  ["front"=> "installation", 		 "back" => "installation"]);
-define("INSTALLATION_SETTING_VIEWS",  ["front"=> "installationSetting",  "back" => "installationSetting"]);
-define("INSTALLATION_DATABASE_VIEWS", ["front"=> "installationDatabase", "back" => "installationDatabase"]);
-define("INSTALLATION_ADMIN_VIEWS", 	  ["front"=> "installationAdmin",    "back" => "installationAdmin"]);
+define("INSTALLATION_INDEX_VIEWS", 	  ["front" => "installation", 		  "back" => "installation"]);
+define("INSTALLATION_SETTING_VIEWS",  ["front" => "installationSetting",  "back" => "installationSetting"]);
+define("INSTALLATION_DATABASE_VIEWS", ["front" => "installationDatabase", "back" => "installationDatabase"]);
+define("INSTALLATION_ADMIN_VIEWS", 	  ["front" => "installationAdmin",    "back" => "installationAdmin"]);
 
-define("NOT_FOUND_VIEWS", ["front"=> "404",  "back" => "404"]);
-define("HOME_VIEWS", 	  ["front"=> "home", "back" => ""]);
-define("SEARCH_VIEWS", 	  ["front"=> "search", "back" => ""]);
+define("NOT_FOUND_VIEWS", ["front" => "404",    "back" => "404"]);
+define("HOME_VIEWS", 	  ["front" => "home",   "back" => ""]);
+define("SEARCH_VIEWS", 	  ["front" => "search", "back" => ""]);
 
-define("CONTACT_VIEWS", ["front"=> "contact", "back" => "listVideoBack"]);
+define("CONTACT_VIEWS", ["front" => "contact", "back" => "listVideoBack"]);
 
-define("USER_USER_VIEWS",  ["front"=> "userUser",  "back" => "userUserBack"]);
-define("USER_EDIT_VIEWS",  ["front"=> "editUser",  "back" => "editUserBack"]);
-define("USER_LIST_VIEWS",  ["front"=> "listUser",  "back" => "listUserBack"]);
-define("USER_LOGIN_VIEWS", ["front"=> "loginUser", "back" => "loginUserBack"]);
-define("USER_ADD_VIEWS",   ["front"=> "addUser",   "back" => "addUserBack"]);
-define("USER_CONFIRMATION_EMAIL_VIEWS",   				 ["front"=> "confirmationEmail",   				"back" => ""]);
-define("USER_PASSWORD_RESET_VIEWS",   					 ["front"=> "passwordReset",   					"back" => ""]);
-define("USER_PASSWORD_RESET_EMAIL_VIEWS",   			 ["front"=> "passwordResetEmail",   			"back" => ""]);
-define("USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS",   ["front"=> "confirmationResetPasswordEmail",   "back" => ""]);
+define("USER_USER_VIEWS",  ["front" => "userUser",  "back" => "userUserBack"]);
+define("USER_EDIT_VIEWS",  ["front" => "editUser",  "back" => "editUserBack"]);
+define("USER_LIST_VIEWS",  ["front" => "listUser",  "back" => "listUserBack"]);
+define("USER_LOGIN_VIEWS", ["front" => "loginUser", "back" => "loginUserBack"]);
+define("USER_ADD_VIEWS",   ["front" => "addUser",   "back" => "addUserBack"]);
+define("USER_CONFIRMATION_EMAIL_VIEWS",   				 ["front" => "confirmationEmail",   		   "back" => ""]);
+define("USER_PASSWORD_RESET_VIEWS",   					 ["front" => "passwordReset",   			   "back" => ""]);
+define("USER_PASSWORD_RESET_EMAIL_VIEWS",   			 ["front" => "passwordResetEmail",   		   "back" => ""]);
+define("USER_CONFIRMATION_PASSWORD_RESET_EMAIL_VIEWS",   ["front" => "confirmationResetPasswordEmail", "back" => ""]);
 
-define("VIDEO_VIDEO_VIEWS", ["front"=> "videoVideo", "back" => "videoVideoBack"]);
-define("VIDEO_LIST_VIEWS",  ["front"=> "listVideo", "back" => "listVideoBack"]);
-define("VIDEO_ADD_VIEWS",   ["front"=> "", "back" => "addVideoBack"]);
-define("VIDEO_EDIT_VIEWS", ["front"=> "", "back"=>"editVideoBack"]);
+define("VIDEO_VIDEO_VIEWS", ["front" => "videoVideo", "back" => "videoVideoBack"]);
+define("VIDEO_LIST_VIEWS",  ["front" => "listVideo",  "back" => "listVideoBack"]);
+define("VIDEO_ADD_VIEWS",   ["front" => "", 		  "back" => "addVideoBack"]);
+define("VIDEO_EDIT_VIEWS",  ["front" => "", 		  "back" =>"editVideoBack"]);
 
 define("STATISTIC_VIEWS", ["front"=> "", "back" => "statisticBack"]);
 
-define("PAGE_LIST_VIEWS", ["front"=> "", "back"=>"listPageBack"]);
+define("PAGE_LIST_VIEWS", ["front" => "", "back" =>"listPageBack"]);
 
-define("TRAINNING_TRAINNING_VIEWS", ["front"=> "trainningTrainning", "back" => "trainningTrainningBack"]);
-define("TRAINNING_LIST_VIEWS",   	["front"=> "listTrainning",      "back" => "listTrainningBack"]);
-define("TRAINNING_ADD_VIEWS",   	["front"=> "",   			     "back" => "addTrainningBack"]);
+define("TRAINNING_TRAINNING_VIEWS", ["front" => "trainningTrainning", "back" => "trainningTrainningBack"]);
+define("TRAINNING_LIST_VIEWS",   	["front" => "listTrainning",      "back" => "listTrainningBack"]);
+define("TRAINNING_ADD_VIEWS",   	["front" => "",   			      "back" => "addTrainningBack"]);
 define("TRAINNING_EDIT_VIEWS", ["front"=>"", "back"=>"editTrainningBack"]);
 
-define("CHAPTER_CHAPTER_VIEWS", ["front"=> "chapterChapter", "back" => "chapterChapterBack"]);
-define("CHAPTER_ADD_VIEWS",     ["front"=> "", 			     "back" => "addChapterBack"]);
-define("CHAPTER_LIST_VIEWS",    ["front"=> "listChapter",    "back" => "listChapterBack"]);
-define("CHAPTER_EDIT_VIEWS",    ["front"=> "",    			 "back" => "editChapterBack"]);
+define("CHAPTER_CHAPTER_VIEWS", ["front" => "chapterChapter", "back" => "chapterChapterBack"]);
+define("CHAPTER_ADD_VIEWS",     ["front" => "", 			  "back" => "addChapterBack"]);
+define("CHAPTER_LIST_VIEWS",    ["front" => "listChapter",    "back" => "listChapterBack"]);
+define("CHAPTER_EDIT_VIEWS",    ["front" => "",    			  "back" => "editChapterBack"]);
 
-define("COMMENT_LIST_REPORT_VIEWS", ["front"=> "", "back" => "listReportCommentBack"]);
+define("COMMENT_LIST_REPORT_VIEWS", ["front" => "", "back" => "listReportCommentBack"]);
+
+define("PREMIUMOFFER_LIST_VIEWS", ["front" => "listPremiumOffer", "back" => "listPremiumOfferBack"]);
+define("PREMIUMOFFER_ADD_VIEWS",  ["front" => "",            	  "back" =>"addPremiumOfferBack"]);
 
 define("PREMIUMOFFER_LIST_VIEWS", ["front"=>"listPremiumOffer", "back" => "listPremiumOfferBack"]);
 define("PREMIUMOFFER_ADD_VIEWS",  ["front"=>"",            "back"=>"addPremiumOfferBack"]);
 define("PREMIUMOFFER_EDIT_VIEWS",  ["front"=>"",            "back"=>"editPremiumOfferBack"]);
+define("PAYMENT_RECAP_VIEWS", ["front" => "paymentRecap", "back" => ""]);
 
-define("PARAMETERS_VIEWS", ["front"=>"", "back"=>"editParameterBack"]);
+define("PARAMETERS_VIEWS", ["front "=> "", "back" => "editParameterBack"]);
 
 /******************************
 ********** ROLE ***************

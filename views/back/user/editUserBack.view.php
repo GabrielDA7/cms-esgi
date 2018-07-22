@@ -19,6 +19,12 @@
                 <image class="avatar-img-edition" src="<?= $user->getAvatar(); ?>" alt="avatar image"/>
             <?php endif; ?>
           	<input type="file" maxfilesize=1000000 extension=jpg,png,jpeg></input>
+            <label class="form-label-top form-group" for="role">Role</label>
+            <select class="input-medium" name="role">
+              <option value="0" <?= (($user->getRole() == 0) ? "selected" : '') ?>>Member</option>
+              <option value="1" <?= (($user->getRole() == 1) ? "selected" : '') ?>>Premium member</option>
+              <option value="2" <?= (($user->getRole() == 2) ? "selected" : '') ?>>Admin member</option>
+            </select>
           	<p class="form-group">Status : <?= ViewUtils::getRoleUser($user->getRole()); ?></p>
           	<label class="form-label-top form-group" for="userName">Username</label>
           	<input class='input' type='text' name="userName" value='<?= $user->getUsername() ?>'>

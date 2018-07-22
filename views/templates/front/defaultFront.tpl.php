@@ -24,7 +24,7 @@
 
                   <div class="right-nav">
                     <?php if(isset($_SESSION['userName'])) { ?>
-                      <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_EDIT_BACK_LINK?>"><?= $_SESSION['userName']; ?></a>
+                      <a class="btn-filled-orange btn" href="<?= DIRNAME.USER_EDIT_BACK_LINK?>"><?= $_SESSION['userName']; ?></a>
                       <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.USER_DISCONNECT_LINK;?>">Logout</a>
                     <?php } else { ?>
                     <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_LOGIN_FRONT_LINK;?>">Sign in</a>
@@ -96,6 +96,8 @@
 
     <!-- Javascript -->
     <?php $this->addScript(0, DIRNAME.JQUERY_PATH); ?>
-    <?php $this->addScript(1, DIRNAME.FRAMEWORD_JS_PATH, ["dirname" => DIRNAME, "isLogged" => json_encode(isLogged()), "isPremium"=>(isset($_SESSION['premium']) ? json_encode($_SESSION['premium']) : 0), "isAdmin"=>(isset($_SESSION["admin"]) ? json_encode($_SESSION["admin"]) : 0)]); ?>
+    <?php $isPremium = (isset($_SESSION['premium']) ? $_SESSION['premium'] : false); ?>
+    <?php $isAdmin = (isset($_SESSION['admin']) ? $_SESSION['admin'] : false); ?>
+    <?php $this->addScript(1, DIRNAME.FRAMEWORD_JS_PATH, ["dirname" => DIRNAME, "isLogged" => json_encode(isLogged()), "isPremium"=>json_encode($isPremium), "isAdmin"=>json_encode($isAdmin)]); ?>
   </body>
 </html>

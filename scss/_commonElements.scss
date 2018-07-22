@@ -391,6 +391,10 @@ html,body
   margin-left: 25px;
 }
 
+#front-topnav .right-nav{
+  width: 50%;
+}
+
 
 // SLIDER ----------------------------------------------------------------------
 
@@ -1069,9 +1073,6 @@ td, th {
   margin-bottom: 15px;
 }
 
-#emailConfirm{
-  height: calc(100% - 80px);
-}
 
 .forgot-password {
   margin-bottom: 20px;
@@ -1331,6 +1332,10 @@ td, th {
 
 #front-global-search {
   padding-bottom: 35px;
+}
+
+.padding-bottom-sep {
+  padding-bottom: 15px;
 }
 
 .selected-pagination{

@@ -932,6 +932,9 @@ html, body {
   margin-right: 35px;
   margin-left: 25px; }
 
+#front-topnav .right-nav {
+  width: 50%; }
+
 #slider {
   height: 200px;
   width: 100%;
@@ -1481,9 +1484,6 @@ td, th {
   font-size: 14px;
   margin-bottom: 15px; }
 
-#emailConfirm {
-  height: calc(100% - 80px); }
-
 .forgot-password {
   margin-bottom: 20px; }
 
@@ -1719,6 +1719,9 @@ td, th {
 
 #front-global-search {
   padding-bottom: 35px; }
+
+.padding-bottom-sep {
+  padding-bottom: 15px; }
 
 .selected-pagination {
   background-color: #F96D00; }
