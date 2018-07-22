@@ -104,6 +104,7 @@ $(function() {
     load_data_table(page, limit, 'init');
   }
 
+
   if( $("#front-global-search").length > 0) {
     var limit = 12;
     var page = 1;
@@ -147,6 +148,10 @@ $(function() {
     var page = 1;
     var object = $.trim($(".list-init-object span:first-child").text());
     load_data_list_card(page,'desc', 'dateInserted', object,24, true, 'data-list', 'pagination_links');
+  }
+
+  if( $('#dashboard-edit-chapter').length > 0) {
+    initialisationParamTiny();
   }
 
   $(document).on('click', '.list-data #pagination_links span', function() {
@@ -384,7 +389,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
             html +=    "<form action='"+ dirname+"paiement/buy' method='POST'>";
             html +=     "<input type='hidden' name='duration' value='"+ element.duration +"'>"
             html +=     "<input type='hidden' name='price' value='"+element.price+"'>";
-            html +=     "<input type='submit' class='input-btn btn-filled-orange btn-icon' name='submit' value='Choose'>";
+            html +=     "<a href='"+ dirname +"payment/recap?id="+ element.id +"' >Choose</a>";
             html +=    "</form>";
             html +=   "</div>";
             html +=   "</div>";
@@ -478,14 +483,14 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
           $.each(data["tableConfig"]["cells"], function(k,val) {
             if(k == "id") {
               if(object == "user") {
-                 html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/edit/back'><button class='button_table' type='submit' name='edit'><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
+                 html += "<td class='center-column'><a class='button_table' href='" + dirname + object + "/edit/back?id=" + element.id + "'><i class='fas fa-edit'></i></a>";
                  html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete/back'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
               } else if(object == "page") {
                  html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='submit'><i class='fas fa-share-square'></i></button><input type='hidden' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
               } else {
                 html += "<td class='center-column'><form class='form_actions' method='POST' action='" + dirname + object + "/publish'><button class='button_table' type='submit' name='submit'><i class='fas fa-share-square'></i></button><input type='hidden' name='status' value='" + (element.status == 1 ? 0 : 1) + "'/><input type='hidden' name='id' value='" + element[k] + "'/></form>";
-                html +="<form class='form_actions' method='POST' action='" + dirname + object + "/edit/back'><button class='button_table' type='submit' name='edit'><i class='fas fa-edit'></i></button><input type='hidden' name='id' value='" + element.id + "'/></form>";
-                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
+                html +="<a class='button_table' href='" + dirname + object + "/edit/back?id=" +  element.id  + "'><i class='fas fa-edit'></i></a>";
+                html += "<form class='form_actions' method='POST' action='" + dirname + object + "/delete/back'><button class='button_table' type='submit' name='submit'><i class='fas fa-trash-alt'></i></button><input type='hidden' name='id' value='" + element[k] + "'/></form></td>";
               }
             } else if(k == "status") {
               if(element.status == 1) {
@@ -564,12 +569,11 @@ function getIdAndNameObject(object, select){
       var html;
       if( data[objects].length > 0) {
         $.each(data[objects], function (index, element) {
-          html += "<option value='" + element.id + "'>";
-          html += element.title;
-          html += "</option>";
+          select.append("<option value='" + element.id + "'>" + element.title + "</option>")
         });
-        select.append(html);
       }
+      var valueOption = $("select").attr("value");
+      var optionWithValue = $("select option[value='" + valueOption + "']").prop("selected", true);
     }
   });
 }
@@ -579,9 +583,12 @@ function closeDiv(div){
   elem.css("display","none");
 }
 
-
-var idPart = 1;
 function addChapterSubpart(){
+  if($("#numberPart").length > 0) {
+    var idPart = parseInt($("#numberPart").html())+1;
+  } else {
+    var idPart = 1;
+  }
   var html = "<div id='chapterSubpart"+ idPart +"' class='form-group chapterParts'>" +
               "<div class='row subpartHead expand-div'>" +
                 "<div class='M10'>" +
