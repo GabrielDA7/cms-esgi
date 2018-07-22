@@ -24,7 +24,7 @@
 
                   <div class="right-nav">
                     <?php if(isset($_SESSION['userName'])) { ?>
-                      <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_EDIT_BACK_LINK."?id=".$_SESSION['userId'];?>"><?= $_SESSION['userName']; ?></a>
+                      <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_EDIT_BACK_LINK?>"><?= $_SESSION['userName']; ?></a>
                       <a class="btn-extra-small btn-light-grey btn" href="<?= DIRNAME.USER_DISCONNECT_LINK;?>">Logout</a>
                     <?php } else { ?>
                     <a class="btn-small btn-filled-orange btn" href="<?= DIRNAME.USER_LOGIN_FRONT_LINK;?>">Sign in</a>
