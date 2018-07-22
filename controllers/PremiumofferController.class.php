@@ -31,7 +31,7 @@ class PremiumofferController {
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, PREMIUMOFFER_EDIT_VIEWS);
 		$this->siteInfosDelegate->process($this->data);
-		$this->objectDelegate->getById($this->data, $params, [PREMIUMOFFER_CLASS_NAME]);
+		$this->objectDelegate->getById($this->data, $params);
 		$this->formDelegate->process($this->data, $params);
 		$this->objectDelegate->update($this->data, $params, "", PREMIUMOFFER_LIST_BACK_LINK);
 		$view = new View($this->data);
