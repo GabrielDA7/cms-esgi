@@ -55,7 +55,7 @@ class View {
 
 				echo "</script>";
 			}
-			echo "<script src='" . DIRNAME . $link . "'>";
+			echo "<script src='" . $link . "'>";
 			echo "</script>";
 		}
 	}

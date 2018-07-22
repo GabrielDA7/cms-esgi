@@ -1,14 +1,74 @@
 <?xml version="1.0"?>
 <urlset>
   <url>
+    <loc>/lab/uteach/</loc>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/chapter/list</loc>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/trainning/list</loc>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/video/list</loc>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/premiumoffer/list</loc>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/user/login</loc>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/user/add</loc>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/PREMIUM_LIST_FRONT_LINK</loc>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/bin/xml/list_chapter.xml</loc>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
     <loc>/lab/uteach/bin/xml/list_trainning.xml</loc>
-    <lastmod>2018-07-20</lastmod>
+    <lastmod>2018-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>/lab/uteach/bin/xml/list_video.xml</loc>
-    <lastmod>2018-07-20</lastmod>
+    <lastmod>2018-07-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>/lab/uteach/user/passwordResetEmail</loc>
+    <lastmod>2018-07-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>

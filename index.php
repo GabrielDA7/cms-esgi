@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Europe/Paris');
 session_start();
 require "bin/conf.inc.php";
 require "bin/constants.inc.php";

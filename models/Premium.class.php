@@ -1,5 +1,5 @@
 <?php
-class Premium {
+class Premium extends BaseSql{
 
 	protected $id = null;
 	protected $startDate;
@@ -9,6 +9,13 @@ class Premium {
 	protected $premiumOffer_Id;
 
 
+	public function __construct() {
+		BaseSql::__construct();
+	}
+
+	public function getColumns() {
+		return get_object_vars($this);
+	}
 
 	public function getId() 	   { return $this->id; 		  }
 	public function getStartDate() { return $this->startDate; }

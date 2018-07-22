@@ -81,4 +81,23 @@ class UserDelegate extends ObjectDelegate {
 			$this->update($data, null, USER_LOGIN_FRONT_LINK);
 		}
 	}
+
+	public function addPremiumStatus($data) {
+		if ($data['errors'] === FALSE) {
+			$premium = $this->computePremium($data);
+			$premium->insert();
+		}
+	}
+
+	private function computePremium($data) {
+		$premiumoffer = $data['premiumoffer'];
+		$premium = new Premium();
+		$premium->setUserId($_SESSION['userId']);
+		$premium->setPremiumOfferId($premiumoffer->getID());
+		$today = date('Y-m-d h:i:s', time());
+		$premium->setStartDate($today);
+		$endDate = date('Y-m-d h:i:s', strtotime("+".$premiumoffer->getDuration()." months", strtotime($today)));
+		$premium->setEndDate($endDate);
+		return $premium;
+	}
 }
