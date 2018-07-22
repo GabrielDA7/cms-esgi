@@ -92,6 +92,7 @@ define("STATISTIC_INDEX_BACK_LINK", "index/statistic/back");
 define("PREMIUMOFFER_LIST_FRONT_LINK", "premiumoffer/list");
 define("PREMIUMOFFER_LIST_BACK_LINK", "premiumoffer/list/back");
 define("PREMIUMOFFER_ADD_BACK_LINK", "premiumoffer/add/back");
+define("PREMIUMOFFER_EDIT_BACK_LINK", "premiumoffer/edit/back");
 
 define("USER_USER_FRONT_LINK", "user/user");
 define("USER_USER_BACK_LINK", "user/user/back");
@@ -114,6 +115,7 @@ define("TRAINNING_TRAINNING_FRONT_LINK", "trainning/trainning");
 define("TRAINNING_ADD_BACK_LINK", "trainning/add/back");
 define("TRAINNING_LIST_BACK_LINK", "trainning/list/back");
 define("TRAINNING_LIST_FRONT_LINK", "trainning/list");
+define("TRAINNING_EDIT_BACK_LINK", "trainning/edit/back");
 
 define("CHAPTER_CHAPTER_FRONT_LINK", "chapter/chapter");
 define("CHAPTER_CHAPTER_BACK_LINK", "chapter/chapter/back");
@@ -127,6 +129,7 @@ define("VIDEO_VIDEO_BACK_LINK", "video/video/back");
 define("VIDEO_LIST_FRONT_LINK", "video/list");
 define("VIDEO_LIST_BACK_LINK", "video/list/back");
 define("VIDEO_ADD_BACK_LINK", "video/add/back");
+define("VIDEO_EDIT_BACK_LINK", "video/edit/back");
 
 define("PAGE_LIST_BACK_LINK", "page/list/back");
 
@@ -184,6 +187,7 @@ define("PAGE_LIST_VIEWS", ["front"=> "", "back"=>"listPageBack"]);
 define("TRAINNING_TRAINNING_VIEWS", ["front"=> "trainningTrainning", "back" => "trainningTrainningBack"]);
 define("TRAINNING_LIST_VIEWS",   	["front"=> "listTrainning",      "back" => "listTrainningBack"]);
 define("TRAINNING_ADD_VIEWS",   	["front"=> "",   			     "back" => "addTrainningBack"]);
+define("TRAINNING_EDIT_VIEWS", ["front"=>"", "back"=>"editTrainningBack"]);
 
 define("CHAPTER_CHAPTER_VIEWS", ["front"=> "chapterChapter", "back" => "chapterChapterBack"]);
 define("CHAPTER_ADD_VIEWS",     ["front"=> "", 			     "back" => "addChapterBack"]);
@@ -194,6 +198,7 @@ define("COMMENT_LIST_REPORT_VIEWS", ["front"=> "", "back" => "listReportCommentB
 
 define("PREMIUMOFFER_LIST_VIEWS", ["front"=>"listPremiumOffer", "back" => "listPremiumOfferBack"]);
 define("PREMIUMOFFER_ADD_VIEWS",  ["front"=>"",            "back"=>"addPremiumOfferBack"]);
+define("PREMIUMOFFER_EDIT_VIEWS",  ["front"=>"",            "back"=>"editPremiumOfferBack"]);
 
 define("PARAMETERS_VIEWS", ["front"=>"", "back"=>"editParameterBack"]);
 

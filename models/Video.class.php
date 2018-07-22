@@ -7,6 +7,7 @@ class Video extends BaseSql {
 	protected $description;
 	protected $dateInserted;
 	protected $status;
+	protected $premium;
 
 	protected $part_id;
 	protected $user_id;
@@ -66,6 +67,8 @@ class Video extends BaseSql {
 	}
 
 	public static function configEditForm($data){
+		$video = $data['video'];
+		$videoId = $video->getId();
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME.VIDEO_EDIT_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Upload", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
 					"input"=>
@@ -78,30 +81,40 @@ class Video extends BaseSql {
 												"minString"=>2,
 												"required"=>true,
 												"class"=>"form-group input",
-												"value"=>(isset($_POST["title"])? $_POST["title"] : "")
+												"value"=>$video->getTitle(),
 											],
 								"url"=>
 											[
-														 "type"=>"file",
-														 "class"=>"form-group",
-														 "extension" =>
-																			 [
-																					"mp4",
-																					"mp3",
-																					"webm",
-																					"3gp",
-																				],
-														"requied"=>true,
-														"value"=>(isset($_POST["url"])? $_POST["url"] : "")
+												"class"=>"upload-button",
+												"title"=>$video->getUrl(),
+												"value"=>$video->getUrl(),
+												"label" => "Upload image :",
+												"type"=>"file",
+												"maxSize" => 1000000,
+												"extension" =>
+																	[
+																		 "mp4",
+																		 "mp3",
+																		 "webm",
+																		 "3gp",
+																	 ],
+												"requied"=>true,
 													],
 								"premium"=> [
-									
-														"type"=>"checkbox",
-														"text"=>"Only for premium",
-														"checked"=>"checked",
-														"class"=>"row form-group",
-														"value"=>1
-													]
+																			"id"=>"only-premium",
+																			"type"=>"checkbox",
+																			"text"=>"Only for premium",
+																			"checked"=>(($video->getPremium() == 1) ? "checked" : ""),
+																			"name"=>"premium",
+																			"class"=>"row form-group",
+																			"value"=>$video->getPremium(),
+														],
+							   "id"=>[
+																							"type"=>"hidden",
+																							"placeholder"=>$video->getId(),
+																							"value"=>$video->getId(),
+																							"required"=>true,
+																	],
 						]
 
 				];
@@ -142,6 +155,7 @@ class Video extends BaseSql {
     public function getUser()		 { return $this->user;	      }
     public function getDateInserted(){ return $this->dateInserted;}
     public function getStatus() 	 { return $this->status;      }
+		public function getPremium() {return $this->premium; }
 
     public function setId($id)              	   { $this->id = $id;                    }
     public function setTitle($title)        	   { $this->title = $title;         	 }
@@ -152,4 +166,5 @@ class Video extends BaseSql {
     public function setUser($user) 				   { $this->user = $user;			     }
     public function setDateInserted($dateInserted) { $this->dateInserted = $dateInserted;}
     public function setStatus($status) 			   { $this->status = $status; 			 }
+		public function setPremium($premium)  {$this->premium = $premium ;}
 }

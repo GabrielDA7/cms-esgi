@@ -79,6 +79,64 @@ class Trainning extends BaseSql {
 				];
 	}
 
+	public static function configEditForm($data){
+		$trainning = $data['trainning'];
+		$trainningId = $trainning->getId();
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME.TRAINNING_EDIT_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Update", "submitClass"=>"input-btn btn-filled-orange btn-icon"],
+					"input"=>
+							[
+								"title"=>
+											[
+												"value"=>$trainning->getTitle(),
+												"type"=>"text",
+												"placeholder"=>"Title",
+												"maxString"=>100,
+												"minString"=>2,
+												"required"=>true,
+												"class"=>"form-group input"
+											],
+								"description"=>
+											[
+												"value"=>$trainning->getDescription(),
+												"type"=>"textarea",
+												"placeholder"=>"Description",
+												"class"=>"form-group input"
+											],
+								"image"=>[
+																	 "class"=>"upload-button",
+																	 "title"=>$trainning->getImage(),
+																	 "value"=>$trainning->getImage(),
+																	 "label" => "Upload image :",
+																	 "type"=>"file",
+																	 "maxSize" => 1000000,
+																	 "extension" =>
+																						 [
+																								".jpg",
+																								".png",
+																								".jpeg"
+																							]
+												],
+							"premium"=> [
+													"id"=>"only-premium",
+													"type"=>"checkbox",
+													"text"=>"Only for premium",
+													"checked"=>(($trainning->getPremium() == 1) ? "checked" : ""),
+													"name"=>"premium",
+													"class"=>"row form-group",
+													"value"=>$trainning->getPremium(),
+												],
+							"id"=>[
+																"type"=>"hidden",
+																"placeholder"=>$trainning->getId(),
+																"value"=>$trainning->getId(),
+																"required"=>true,
+										],
+						]
+
+				];
+	}
+
 	public static function configTable(){
 		return 	[
 					"config"=>["id"=>"pagination_data", "class"=>"table_responsive"],

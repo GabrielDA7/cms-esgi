@@ -2,7 +2,7 @@
 	<section id ="content-head">
 		<div class="row">
 			<div class="M12">
-				<?php if ($chapter->getTrainning()->getTitle() != null): ?>
+				<?php if ($chapter->getTrainning() != null): ?>
 					<a class="trainning-title" href="<?= DIRNAME . TRAINNING_TRAINNING_FRONT_LINK . '?id=' . $chapter->getTrainningId(); ?>"> Trainning name : <?= $chapter->getTrainning()->getTitle(); ?></a>
 				<?php endif; ?>
 			</div>

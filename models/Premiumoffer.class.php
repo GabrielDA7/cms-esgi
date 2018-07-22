@@ -51,6 +51,46 @@ class Premiumoffer extends BaseSql {
 		];
 	}
 
+	public static function configEditForm($data) {
+		$premiumoffer = $data['premiumoffer'];
+		return 	[
+			"config"=>["method"=>"POST", "action"=> DIRNAME.PREMIUMOFFER_EDIT_BACK_LINK,"submit"=>"Update","submitClass"=>"input-btn btn-filled-orange btn-icon last"],
+			"input"=>
+			[
+				"title"=>
+				[
+					"type"=>"text",
+					"placeholder"=>"Offer name",
+					"value"=>$premiumoffer->getTitle(),
+					"maxString"=>100,
+					"minString"=>2,
+					"class"=>"form-group input"
+				],
+				"duration"=>
+				[
+					"value"=>$premiumoffer->getDuration(),
+					"label"=>"Duration (in month)",
+					"type"=>"number",
+					"class"=>"input-medium"
+				],
+				"price"=>
+				[
+					"value"=>$premiumoffer->getPrice(),
+					"label"=>"Price",
+					"type"=>"number",
+					"class"=>"input-medium"
+				],
+				"id"=>[
+																"type"=>"hidden",
+																"placeholder"=>$premiumoffer->getId(),
+																"value"=>$premiumoffer->getId(),
+																"required"=>true,
+										],
+
+			]
+		];
+	}
+
 	public static function configTable(){
 		return 	[
 			"config"=>["id"=>"pagination_data", "class"=>"table_responsive"],

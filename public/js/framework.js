@@ -506,12 +506,20 @@ function load_data_table(page, limit, action, order='desc', column_name='dateIns
             else {
               if ( $.isArray(element[k])) {
                 if(k == "trainning") {
-                  html+="<td>"+element[k][0].title+"</td>";
+                  if(element[k][0].title == null) {
+                    html+="<td>No trainning</td>";
+                  } else {
+                    html+="<td>"+element[k][0].title+"</td>";
+                  }
                 } else {
                   html+="<td>"+element[k][0].userName+"</td>";
                 }
               } else {
-                html+="<td>"+element[k]+"</td>";
+                if(element[k] == null) {
+                  html+="<td>No trainning</td>";
+                } else {
+                  html+="<td>"+element[k]+"</td>";
+                }
               }
             }
           });

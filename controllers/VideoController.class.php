@@ -30,7 +30,7 @@ class VideoController {
 	}
 
 	public function editAction($params) {
-		if(!isset($params['POST']['id']) || !isAdmin()) {
+		if(!isset($params['GET']['id']) || !isAdmin()) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}

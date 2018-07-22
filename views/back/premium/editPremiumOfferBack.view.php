@@ -1,10 +1,10 @@
-<section id="dashboard-add-video">
+<section id="dashboard-add-premium">
   <?php ViewUtils::getErrors($errors); ?>
   <?php ViewUtils::getSuccess($errors); ?>
   <div class="row">
-    <div class="M4">
+    <div class="M8">
       <div class="back-title">
-        <h1>Edit Video</h1>
+        <h1>Edit premium offer</h1>
         <div class="hr-separation"></div>
       </div>
     </div>

@@ -221,6 +221,12 @@ class User extends UserSql {
 												"value"=>$user->getEmail(),
 												"class"=>"input"
 											],
+								"id"=>[
+																				"type"=>"hidden",
+																				"placeholder"=>$user->getId(),
+																				"value"=>$user->getId(),
+																				"required"=>true,
+														],
 							]
 				];
 	}

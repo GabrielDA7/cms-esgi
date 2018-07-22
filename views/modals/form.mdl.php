@@ -1,10 +1,4 @@
-<?php if(isset($config["config"]["GET"])) {
-	$action = $config["config"]["action"].$config["config"]["GET"];
-} else {
-	$action = $config["config"]["action"];
-}
-?>
-<form method="<?= $config["config"]["method"] ?>" action="<?= $action ?>"
+<form method="<?= $config["config"]["method"] ?>" action="<?= $config["config"]["action"] ?>"
 	<?= (isset($config["config"]["enctype"])) ? "enctype='".$config["config"]["enctype"]."'>" : ">"; ?>
 
 	<?php foreach ($config["input"] as $name => $attributs):?>
@@ -18,8 +12,8 @@
 				<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
 				name="<?= $name; ?>"
 				<?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
-				<?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
-				<?= (isset($attributs["required"])) ? "required='required'" : ""; ?>></textarea>
+				<?= (isset($attributs["required"])) ? "required='required'" : ""; ?>><?= (isset($attributs["value"])) ? $attributs["value"] : ""; ?>
+			</textarea>
 		<?php elseif ($attributs["type"] == "checkbox"): ?>
 			<div <?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>>
 				<input type="checkbox"

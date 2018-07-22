@@ -98,7 +98,7 @@ class Chapter extends BaseSql {
 									"checked"=>"checked",
 									"class"=>"row form-group",
 									"value"=>1
-								]
+								],
 						]
 
 				];
@@ -108,7 +108,7 @@ class Chapter extends BaseSql {
 		$chapter = $data['chapter'];
 		$chapterId = $chapter->getId();
 		return 	[
-					"config"=>["method"=>"GET", "action"=> DIRNAME.CHAPTER_EDIT_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit", "submitClass"=>"input-btn btn-filled-orange btn-icon last", "GET"=>"?id=$chapterId"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.CHAPTER_EDIT_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
 					"input"=>
 							[
 								"title"=>
