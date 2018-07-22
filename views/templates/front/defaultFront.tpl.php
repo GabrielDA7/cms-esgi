@@ -13,7 +13,6 @@
   </head>
 
   <body class="front-template-content">
-
       <header>
               <nav class="container-fluid" id="front-topnav">
                   <div class="left-nav">
@@ -41,7 +40,6 @@
                   </div>
               </nav>
       </header>
-
       <main class="front-main-content">
         <?php include $viewPath; ?>
       </main>
@@ -98,6 +96,6 @@
 
     <!-- Javascript -->
     <?php $this->addScript(0, DIRNAME.JQUERY_PATH); ?>
-    <?php $this->addScript(1, DIRNAME.FRAMEWORD_JS_PATH, ["dirname" => DIRNAME, "isLogged" => json_encode(isLogged())]); ?>
+    <?php $this->addScript(1, DIRNAME.FRAMEWORD_JS_PATH, ["dirname" => DIRNAME, "isLogged" => json_encode(isLogged()), "isPremium"=>(isset($_SESSION['premium']) ? json_encode($_SESSION['premium']) : 0), "isAdmin"=>(isset($_SESSION["admin"]) ? json_encode($_SESSION["admin"]) : 0)]); ?>
   </body>
 </html>

@@ -1,5 +1,4 @@
 $(function() {
-
   getSafe = function (fn, defaultVal) {
     try {
         return fn();
@@ -7,7 +6,6 @@ $(function() {
         return defaultVal;
     }
   }
-
   /* Hambuger nav */
   $("#icon-expand-nav").click(function() {
       var x = $( "#myTopnav" );
@@ -342,7 +340,11 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
         $.each(data[this.objects], function(index, element) {
           if(object != 'premiumoffer') {
             html += "<div class='M2 X12'>"
-            html += " <a href='" + link + "?id=" + element.id + "' class='card'>";
+            if(isPremium == false && isAdmin == false) {
+                html += " <a href='javascript:void(0)' class='card  card-lock'>";
+            } else {
+                html += " <a href='" + link + "?id=" + element.id + "' class='card'>";
+            }
             html += "  <div class='card-image'>";
             if(object != "video") {
               if( element.image != null ) {
@@ -363,6 +365,9 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
             html += "    <p class='card-content-title'>" + element.title + "</p>";
             html += "    <p class='card-content-author'>" + element.user[0].userName + "</p>";
             html += "  </div>";
+            if(isPremium == false && isAdmin == false) {
+              html +=   "<div class='lock-div'><div class='lock-logo'><i class='fas fa-lock'></i></div></div>"
+            }
             html += " </a>";
             html += " </div>";
           } else {
