@@ -240,7 +240,7 @@ $(function() {
     load_data_list_card(1,'desc','dateInserted','video',6, false, 'recent-video', 'pagination_links');
   }
 
-  $(document).on('change', '#dashboard-add-chapter select[name="trainning_id"]', function() {
+  $(document).on('change', 'select[name="trainning_id"]', function() {
     var valueOption = $(this).find(':selected').attr('value');
     if(valueOption != ""){
       $("input[name='number']").prop("disabled", false);
@@ -386,11 +386,7 @@ function load_data_list_card(page,order='desc', column_name, object, itemsPerPag
             html +=     "</div>";
             html +=    "</div>";
             html +=   "<div class='row M--center'>";
-            html +=    "<form action='"+ dirname+"paiement/buy' method='POST'>";
-            html +=     "<input type='hidden' name='duration' value='"+ element.duration +"'>"
-            html +=     "<input type='hidden' name='price' value='"+element.price+"'>";
-            html +=     "<a href='"+ dirname +"payment/recap?id="+ element.id +"' >Choose</a>";
-            html +=    "</form>";
+            html +=     "<a class='input-btn btn btn-filled-orange' href='"+ dirname +"payment/recap?id="+ element.id +"' >Choose</a>";
             html +=   "</div>";
             html +=   "</div>";
             html +=  "</div>";
@@ -574,6 +570,8 @@ function getIdAndNameObject(object, select){
       }
       var valueOption = $("select").attr("value");
       var optionWithValue = $("select option[value='" + valueOption + "']").prop("selected", true);
+      $("input[name='number']").prop("disabled",false);
+      $("input[name='number']").prop("type","number");
     }
   });
 }

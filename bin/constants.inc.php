@@ -120,6 +120,7 @@ define("CHAPTER_CHAPTER_BACK_LINK", "chapter/chapter/back");
 define("CHAPTER_LIST_FRONT_LINK", "chapter/list");
 define("CHAPTER_LIST_BACK_LINK", "chapter/list/back");
 define("CHAPTER_ADD_BACK_LINK", "chapter/add/back");
+define("CHAPTER_EDIT_BACK_LINK", "chapter/edit/back");
 
 define("VIDEO_VIDEO_FRONT_LINK", "video/video");
 define("VIDEO_VIDEO_BACK_LINK", "video/video/back");

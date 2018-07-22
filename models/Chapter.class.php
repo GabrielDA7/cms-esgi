@@ -58,9 +58,9 @@ class Chapter extends BaseSql {
 										         "maxSize" => 1000000,
 										         "extension" =>
 										                   [
-											                    "jpg",
-											                    "png",
-											                    "jpeg"
+											                    ".jpg",
+											                    ".png",
+											                    ".jpeg"
 										                    ]
 								       		],
 								"trainning_id"=>
@@ -70,9 +70,9 @@ class Chapter extends BaseSql {
 												"class"=>"row select-formation input-medium",
 												"option"=>
 															[
-																"" => "Pas de formation"
+																"" => "No trainning"
 															],
-												"value"=>(isset($_POST["trainning"])? $_POST["trainning"] : "Pas de formation")
+												"value"=>(isset($_POST["trainning"])? $_POST["trainning"] : "No trainning")
 											],
 								"number"=>
 											[
@@ -106,8 +106,9 @@ class Chapter extends BaseSql {
 
 	public static function configEditForm($data) {
 		$chapter = $data['chapter'];
+		$chapterId = $chapter->getId();
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit"],
+					"config"=>["method"=>"GET", "action"=> DIRNAME.CHAPTER_EDIT_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Edit", "submitClass"=>"input-btn btn-filled-orange btn-icon last", "GET"=>"?id=$chapterId"],
 					"input"=>
 							[
 								"title"=>
@@ -118,18 +119,21 @@ class Chapter extends BaseSql {
 												"minString"=>2,
 												"required"=>true,
 												"class"=>"form-group input",
-												"value"=>(isset($_POST["title"])? $_POST["title"] : "")
+												"value"=>$chapter->getTitle()
 											],
 								"image"=>
 											[
+														 "class"=>"upload-button",
+														 "title"=>$chapter->getImage(),
+														 "value"=>$chapter->getImage(),
 														 "label" => "Upload image :",
 														 "type"=>"file",
 														 "maxSize" => 1000000,
 														 "extension" =>
 																			 [
-																					"jpg",
-																					"png",
-																					"jpeg"
+																					".jpg",
+																					".png",
+																					".jpeg"
 																				]
 													],
 								"trainning_id"=>
@@ -139,9 +143,9 @@ class Chapter extends BaseSql {
 												"class"=>"row select-formation input-medium",
 												"option"=>
 															[
-																"" => "Pas de formation"
+																"" => "No trainning"
 															],
-												"value"=>(isset($_POST["trainning"])? $_POST["trainning"] : "Pas de formation")
+												"value"=>$chapter->getTrainningId()
 											],
 								"number"=>
 											[
@@ -149,7 +153,7 @@ class Chapter extends BaseSql {
 												"type"=>"text",
 												"class"=>"row input-medium",
 												"disabled"=>"disabled",
-												"value"=>(isset($_POST["number"])? $_POST["number"] : ""),
+												"value"=>$chapter->getNumber(),
 
 											],
 								"parts"=>
@@ -175,9 +179,10 @@ class Chapter extends BaseSql {
 									"id"=>"only-premium",
 									"type"=>"checkbox",
 									"text"=>"Only for premium",
-									"checked"=>"checked",
+									"checked"=>(($chapter->getPremium() == 1) ? "checked" : ""),
 									"name"=>"premium",
-									"value"=>1,
+									"class"=>"row form-group",
+									"value"=>$chapter->getPremium(),
 								]
 							]
 				];

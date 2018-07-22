@@ -1,4 +1,10 @@
-<form method="<?= $config["config"]["method"] ?>" action="<?= $config["config"]["action"] ?>"
+<?php if(isset($config["config"]["GET"])) {
+	$action = $config["config"]["action"].$config["config"]["GET"];
+} else {
+	$action = $config["config"]["action"];
+}
+?>
+<form method="<?= $config["config"]["method"] ?>" action="<?= $action ?>"
 	<?= (isset($config["config"]["enctype"])) ? "enctype='".$config["config"]["enctype"]."'>" : ">"; ?>
 
 	<?php foreach ($config["input"] as $name => $attributs):?>
@@ -19,7 +25,7 @@
 				<input type="checkbox"
 				name="<?= $name; ?>"
 				<?=(isset($attributs["id"])) ? "id='".$attributs["id"]."'" : "";?>
-				<?= (isset($attributs["checked"])) ? "checked" : ""; ?>
+				<?= (isset($attributs["checked"]) && $attributs["checked"] == 1) ? "checked" : ""; ?>
 				<?= (isset($attributs["value"])) ? "value='".$attributs["value"]."'" : ""; ?>
 				>
 				<label for="<?= $name; ?>">Only for premium</label>
@@ -31,10 +37,13 @@
 				<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>>
 				<?php if(isset($attributs["value"])): ?>
 					<?php foreach ($attributs["value"] as $key => $value): ?>
-						<div id='chapterSubpart"+ idPart +"' class='form-group chapterParts'>
+						<div class="content-hidden" id="numberPart">
+							<?= count($attributs["value"]);?>
+						</div>
+						<div id='chapterSubpart<?= $value->getNumber();?>' class='form-group chapterParts'>
 											<div class='row subpartHead expand-div'>
 												<div class='M10'>
-													<p>Subpart " + idPart + "</p>
+													<p>Subpart <?= $value->getNumber(); ?></p>
 												</div>
 												<div class='M2'>
 													<i class='fas fa-chevron-down btn-icon'></i>
@@ -42,12 +51,12 @@
 											</div>
 											<div class='content-hidden'>
 													<div class='row'>
-														<input type='text' name='parts["+ idPart +"][title]' class='input form-group margin-bottom' placeholder='Title'>
+														<input type='text' name='parts["<?= $value->getNumber(); ?>"][title]' class='input form-group margin-bottom' placeholder='Title' value="<?= $value->getTitle(); ?>">
 													</div>
 													<div class='row'>
-														<textarea name='parts["+ idPart +"][content]' class='form-group input tinymce' placeholder='Content'></textarea>" +
+														<textarea name='parts["<?= $value->getNumber(); ?>"][content]' class='form-group input tinymce' placeholder='Content'><?= $value->getContent(); ?></textarea>
 													</div>
-												<input type='hidden' name='parts["+ idPart +"][number]' value='" + idPart + "'></input>
+												<input type='hidden' name='parts["<?= $value->getNumber(); ?>"][number]' value='" <?= $value->getNumber(); ?> "'></input>
 											</div>
 						 </div>
 					<?php endforeach; ?>
@@ -61,9 +70,16 @@
 			<?=(isset($attributs["type"])) ? "type='".$attributs["type"]."'" : "";?>
 			<?=(isset($attributs["onclick"])) ? "onclick='".$attributs["onclick"]."'" : ""; ?>>
 			<?=(isset($attributs["value"])) ? $attributs["value"] : ""; ?></button>
-
+		<?php elseif ($attributs["type"] == "file"): ?>
+			<input type="file"
+			<?=(isset($attributs["value"])) ? "value=" . $attributs["value"] : ""; ?>
+			<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
+			<?=(isset($attributs["maxSize"]) ? "maxfilesize=" . $attributs["maxSize"] : ""); ?>
+			<?=(isset($attributs["extension"]) ? "extension=" . implode(",",$attributs["extension"]) : ""); ?>
+			><?=(isset($attributs["title"]) ? $attributs["title"] : ""); ?></input>
 		<?php elseif ($attributs["type"] == "select"): ?>
 			<select
+			<?=(isset($attributs["value"])) ? "value='" . $attributs["value"]. "'" : ""; ?>
 			<?=(isset($attributs["id"])) ? "id='".$attributs["id"]."'" : "";?>
 			<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
 			name="<?= $name; ?>">
