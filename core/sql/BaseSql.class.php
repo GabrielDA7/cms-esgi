@@ -138,6 +138,8 @@ class BaseSql extends QueryConstructorSql {
 
 	private function setForeingObjectsColumns(&$object, $foreignKeyColumns) {
 		foreach ($foreignKeyColumns as $key => $value) {
+			if (!isset($value))
+				continue;
 			$objectName = ucfirst(str_replace("_id", "", $key));
 			$setter = "set" . $objectName;
 			if (method_exists($object, $setter)) {
