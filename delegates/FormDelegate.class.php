@@ -52,12 +52,13 @@ class FormDelegate {
 			if (isset($attributs["minNum"]) && !self::minNum($post[$name], $attributs["minNum"])) {
 				$errorsMsg[]= $name ." doit être supérieur à ".$attributs["minNum"];
 			}
-
-			if (isset($attributs["maxSize"]) && !self::checkFileSize($files[$name], $attributs["maxSize"])) {
-				$errorsMsg[]= $name ." doit être inferieur à ".$attributs["maxSize"];
-			}
-			if (isset($attributs["extension"]) && !self::checkFileExtension($files[$name], $attributs["extension"])) {
-				$errorsMsg[]= $name ." extension n'est pas correct";
+			if (isset($files) && !empty($files)) {
+				if (isset($attributs["maxSize"]) && !self::checkFileSize($files[$name], $attributs["maxSize"])) {
+					$errorsMsg[]= $name ." doit être inferieur à ".$attributs["maxSize"];
+				}
+				if (isset($attributs["extension"]) && !self::checkFileExtension($files[$name], $attributs["extension"])) {
+					$errorsMsg[]= $name ." extension n'est pas correct";
+				}
 			}
 		}
 		if (empty($errorsMsg)) {
@@ -89,8 +90,9 @@ class FormDelegate {
 		$object->$setter($post[$columnName]);
 		$objects = $object->getWithParameters(null);
 		if (!empty($objects)) {
-			if (!isset($_SESSION['userId']) || $objects[0]->getId() != $_SESSION['userId'])
-				$errors[] = $columnName . " est déjà utilisé";
+			if ($this->isNotCurrentUserId($objects[0]->getId()) && $this->isNotEditedUser($objects[0]->getId(), $post)) {
+					$errors[] = $columnName . " est déjà utilisé";
+			}
 		}
 	}
 
@@ -160,6 +162,14 @@ class FormDelegate {
 
 	private function isActionToCheckDisponibility($action) {
 		return ($action == "addAction" || $action == "editAction");
+	}
+
+	private function isNotCurrentUserId($id) {
+		return !isset($_SESSION['userId']) || $id != $_SESSION['userId'];
+	}
+
+	private function isNotEditedUser($id, $post) {
+		return !isset($post['id']) || $id != $post['id'];
 	}
 
 

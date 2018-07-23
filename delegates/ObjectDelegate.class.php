@@ -16,7 +16,8 @@ class ObjectDelegate {
 
 	public function getById(&$data, $params, $othersTablesColumns = []) {
 		$object = $data[$this->lowerCaseFirstObjectName];
-		$object->setId($params['GET']['id']);
+		$id = (isset($params['GET']['id'])) ? $params['GET']['id'] : $params['POST']['id'];
+		$object->setId($id);
 		$object = $object->getById();
 
 		if ($this->isPremiumContentNotAuthorized() && $object->getPremium() == 1) 

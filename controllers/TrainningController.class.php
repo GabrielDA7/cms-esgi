@@ -32,7 +32,7 @@ class TrainningController {
 	}
 
 	public function editAction($params) {
-		if(!isset($params['GET']['id']) || !isAdmin()) {
+		if((!isset($params['GET']['id']) || !isAdmin()) && !isset($params['POST']['id'])) {
 			LogsUtils::process("logs", "Attempt access", "Access denied");
 			RedirectUtils::redirect404();
 		}

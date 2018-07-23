@@ -80,6 +80,7 @@ Ajouter form/list pour premium
 Ajouter form parameters
 Afficher plus de commentaire load_data_comment
 Home page min width when on usernae when logged
+edit display image instead of the link
 
 list front cadena sur les contenus premium (premium=1)
 

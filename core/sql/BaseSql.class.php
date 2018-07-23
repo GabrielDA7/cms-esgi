@@ -42,6 +42,7 @@ class BaseSql extends QueryConstructorSql {
 
 	public function update() {
 		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
+		ClassUtils::removeReferencedColumns($this->columns);
 		$queryString = $this->constructUpdateQuery($this->table, $this->columns);
 		$query = $this->db->prepare($queryString);
 		$query->execute($this->columns);

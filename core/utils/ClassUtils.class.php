@@ -24,9 +24,16 @@ class classUtils {
 				self::removeUnderScoreFromForeignKeyColumn($column);
 				$setter = 'set'.ucfirst($column);
 				if (method_exists($object, $setter)) {
-					$object->$setter($value);
+					$object->$setter(htmlspecialchars($value));
 				}
 			}
+		}
+	}
+
+	public static function removeReferencedColumns(&$columns) {
+		foreach ($columns as $key => $value) {
+			if (is_object($value))
+				unset($columns[$key]);
 		}
 	}
 
