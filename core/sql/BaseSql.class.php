@@ -11,7 +11,7 @@ class BaseSql extends QueryConstructorSql {
 		$this->table = (isset($table)) ? $table : strtolower(get_called_class());
 		$this->objectName = get_called_class();
 		try {
-			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
+			$this->db=new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD, [PDO::ATTR_PERSISTENT => true]);
 		} catch(Exception $e) {
 			if (INSTALLATION_DONE) {
 				echo "The server has a problem. It will be available soon";
