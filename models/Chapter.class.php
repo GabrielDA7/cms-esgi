@@ -209,6 +209,10 @@ class Chapter extends BaseSql {
 				                      [
 				                        "name"=>"Status"
 				                      ],
+				                "premium"=>
+											[
+												"name"=>"Premium",
+											],
 				                "id"=>
 				                      [
 				                        "name"=>"Actions"

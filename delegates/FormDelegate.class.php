@@ -25,8 +25,9 @@ class FormDelegate {
 	private function checkForm($config, $post, $files){
 		$errorsMsg = [];
 		foreach ($config["input"] as $name => $attributs) {
-			if (isset($post[$name]))
-				$this->checkForXSS($post[$name], $errorsMsg, $name);
+			if (!isset($post[$name]))
+				continue;
+			$this->checkForXSS($post[$name], $errorsMsg, $name);
 			if (isset($attributs["confirm"]) && $post[$name] != $post[$attributs["confirm"]]) {
 				$errorsMsg[]= $name ." ne correspond pas à ".$attributs["confirm"];
 			} else if (!isset($attributs["confirm"])) {
