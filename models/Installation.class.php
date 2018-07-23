@@ -1,6 +1,7 @@
 <?php
 class Installation extends BaseSql {
 
+	private $id;
 	private $dbuser;
 	private $dbpwd;
 	private $dbname;
@@ -198,44 +199,123 @@ class Installation extends BaseSql {
 	}
 
 	public static function configParametersForm($data){
+		$installation = $data['installations'][0];
 		return 	[
 					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_PARAMETER_LINK, "submit"=>"Valider", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
+								"id"=>
+											[
+												"type"=>"hidden",
+												"value"=>$installation->getId()
+											],
+								"siteName"=>
+											[
+												"label"=>"Site name",
+												"type"=>"text",
+												"required"=>true,
+												"value"=>$installation->getSiteName(),
+												"class"=>"form-group input"
+											],
+								"reasonRegister"=>
+											[
+												"label"=>"Why users should register ?",
+												"type"=>"textarea",
+												"required"=>true,
+												"value"=>$installation->getReasonRegister(),
+												"class"=>"form-group input"
+											],
+								"siteDescription"=>
+											[
+												"label"=>"Site description",
+												"type"=>"textarea",
+												"required"=>true,
+												"value"=>$installation->getSiteDescription(),
+												"class"=>"form-group input"
+											],
+								"email"=>
+											[
+												"label"=>"Site email",
+												"value"=>$installation->getEmail(),
+												"type"=>"text",
+												"class"=>"form-group input"
+											],
+								"twitter"=>
+											[
+												"label"=>"Admin twitter link",
+												"type"=>"text",
+												"value"=>$installation->getTwitter(),
+												"class"=>"form-group input"
+											],
+								"instagram"=>[
+												"label"=>"Admin instagram link",
+												"type"=>"text",
+												"value"=>$installation->getInstagram(),
+												"class"=>"form-group input"
+											],
+								"linkedin"=>[
+												"label"=>"Admin linkedin link",
+												"type"=>"text",
+												"value"=>$installation->getLinkedin(),
+												"class"=>"form-group input"
+											],
+								"facebook"=>[
+												"label"=>"Admin facebook link",
+												"type"=>"text",
+												"value"=>$installation->getFacebook(),
+												"class"=>"form-group input"
+											]
+
+							]
+				];
+	}
+
+	public static function configEditdatabaseForm($data) {
+		return 	[
+					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_EDIT_DATABASE_LINK, "submit"=>"Valider", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"input"=>
+							[
 								"dbuser"=>
 											[
+												"label"=>"DB user",
 												"type"=>"text",
 												"value"=>DBUSER,
 												"class"=>"form-group input"
 											],
 								"dbpwd"=>
 											[
+												"label"=>"DB password",
 												"type"=>"text",
 												"placeholder"=>"Password",
 												"class"=>"form-group input"
 											],
 								"dbhost"=>
 											[
+												"label"=>"DB url",
 												"type"=>"text",
 												"value"=>DBHOST,
 												"class"=>"form-group input"
 											],
 								"dbname"=>
 											[
+												"label"=>"DB name",
 												"type"=>"text",
 												"value"=>DBNAME,
 												"class"=>"form-group input"
 											],
 								"dbport"=>
 											[
+												"label"=>"DB port",
 												"type"=>"number",
 												"value"=>DBPORT,
 												"class"=>"form-group input"
 											]
+
 							]
 				];
 	}
 
+	public function getId() 		 	  { return $this->id;		 		 }
 	public function getSiteName() 		  { return $this->siteName; 		 }
 	public function getReasonRegister()   { return $this->reasonRegister; 	 }
 	public function getSiteDescription()  { return $this->siteDescription; 	 }
@@ -250,6 +330,7 @@ class Installation extends BaseSql {
 	public function getDbport() 		  { return $this->dbport; 			 }
 	public function getInstallationDone() { return $this->installation_Done; }
 
+	public function setId($id) 								{ $this->id = $id; 													 }
 	public function setSiteName($siteName) 					{ $this->siteName = $siteName; 										 }
 	public function setReasonRegister($reasonRegister) 		{ $this->reasonRegister = $reasonRegister; 							 }
 	public function setSiteDescription($siteDescription) 	{ $this->siteDescription = $siteDescription; 						 }

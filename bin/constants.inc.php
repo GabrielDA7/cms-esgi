@@ -88,6 +88,7 @@ define("INSTALLATION_DATABASE_LINK", "installation/database");
 define("INSTALLATION_CREATE_DATABASE_LINK", "installation/createdatabase");
 define("INSTALLATION_ADMIN_LINK", "installation/admin");
 define("INSTALLATION_PARAMETER_LINK", "installation/parameters/back");
+define("INSTALLATION_EDIT_DATABASE_LINK", "installation/editdatabase/back");
 
 define("STATISTIC_INDEX_BACK_LINK", "index/statistic/back");
 
@@ -158,6 +159,7 @@ define("INSTALLATION_SETTING_VIEWS",  ["front" => "installationSetting",  "back"
 define("INSTALLATION_DATABASE_VIEWS", ["front" => "installationDatabase", "back" => "installationDatabase"]);
 define("INSTALLATION_ADMIN_VIEWS", 	  ["front" => "installationAdmin",    "back" => "installationAdmin"]);
 define("INSTALLATION_PARAMETER_VIEWS",["front "=> "", 					  "back" => "editParameterBack"]);
+define("INSTALLATION_EDIT_DATABASE_VIEWS",["front "=> "", 			      "back" => "editDatabaseBack"]);
 
 define("NOT_FOUND_VIEWS", ["front" => "404",    "back" => "404"]);
 define("HOME_VIEWS", 	  ["front" => "home",   "back" => ""]);

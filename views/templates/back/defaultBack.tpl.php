@@ -59,6 +59,7 @@
               <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-cogs"></i>Parameters<i class="fas fa-chevron-down"></i></a>
               <div class="content-hidden sub-items">
                 <a href="<?= DIRNAME.INSTALLATION_PARAMETER_LINK;?>" class="menu-sub-item">General parameters</a>
+                <a href="<?= DIRNAME.INSTALLATION_EDIT_DATABASE_LINK;?>" class="menu-sub-item">Database</a>
               </div>
           </nav>
 

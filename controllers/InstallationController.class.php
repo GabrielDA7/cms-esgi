@@ -74,6 +74,15 @@ class InstallationController {
 	public function parametersAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, INSTALLATION_PARAMETER_VIEWS);
 		$this->siteInfosDelegate->process($this->data);
+		$this->objectDelegate->getAll($this->data, $params);
+		$this->formDelegate->process($this->data, $params);
+		$this->objectDelegate->update($this->data, $params);
+		$view = new View($this->data);
+	}
+
+	public function editdatabaseAction($params) {
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, INSTALLATION_EDIT_DATABASE_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
 		$this->formDelegate->process($this->data, $params);
 		$this->fileDelegate->setting($this->data, $params['POST']);
 		$view = new View($this->data);
