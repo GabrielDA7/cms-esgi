@@ -199,47 +199,37 @@ class Installation extends BaseSql {
 
 	public static function configParametersForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_DATABASE_LINK, "submit"=>"Valider", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_PARAMETER_LINK, "submit"=>"Valider", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
 								"dbuser"=>
 											[
 												"type"=>"text",
-												"placeholder"=>"Nom utilisateur",
-												"required"=>true,
-												"maxString"=>100,
-												"minString"=>2,
+												"value"=>DBUSER,
 												"class"=>"form-group input"
 											],
 								"dbpwd"=>
 											[
 												"type"=>"text",
-												"placeholder"=>"Mot de passe",
+												"placeholder"=>"Password",
 												"class"=>"form-group input"
 											],
 								"dbhost"=>
 											[
 												"type"=>"text",
-												"placeholder"=>"Url",
-												"required"=>true,
-												"maxString"=>255,
-												"minString"=>2,
+												"value"=>DBHOST,
 												"class"=>"form-group input"
 											],
 								"dbname"=>
 											[
 												"type"=>"text",
-												"placeholder"=>"Nom de la base",
-												"required"=>true,
-												"maxString"=>100,
-												"minString"=>2,
+												"value"=>DBNAME,
 												"class"=>"form-group input"
 											],
 								"dbport"=>
 											[
 												"type"=>"number",
-												"placeholder"=>"Port",
-												"required"=>true,
+												"value"=>DBPORT,
 												"class"=>"form-group input"
 											]
 							]

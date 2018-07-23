@@ -11,8 +11,6 @@ class IndexController {
 
 	public function __construct() {
 		$this->authenticationDelegate = new AuthenticationDelegate();
-		$this->formDelegate = new FormDelegate(INSTALLATION_CLASS_NAME);
-		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAME);
 		$this->statisticDelegate = new StatisticDelegate();
 		$this->siteMapDelegate = new SiteMapDelegate();
 		$this->siteInfosDelegate = new SiteInfosDelegate();
@@ -34,14 +32,6 @@ class IndexController {
 	public function searchAction($params) {
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, SEARCH_VIEWS);
 		$this->siteInfosDelegate->process($this->data);
-		$view = new View($this->data);
-	}
-
-	public function parametersAction($params) {
-		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, PARAMETERS_VIEWS);
-		$this->siteInfosDelegate->process($this->data);
-		$this->formDelegate->process($this->data, $params);
-		$this->fileDelegate->setting($this->data, $params['POST']);
 		$view = new View($this->data);
 	}
 

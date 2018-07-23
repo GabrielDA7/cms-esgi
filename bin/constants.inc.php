@@ -87,6 +87,7 @@ define("INSTALLATION_SETTING_LINK", "installation/setting");
 define("INSTALLATION_DATABASE_LINK", "installation/database");
 define("INSTALLATION_CREATE_DATABASE_LINK", "installation/createdatabase");
 define("INSTALLATION_ADMIN_LINK", "installation/admin");
+define("INSTALLATION_PARAMETER_LINK", "installation/parameters/back");
 
 define("STATISTIC_INDEX_BACK_LINK", "index/statistic/back");
 
@@ -134,8 +135,6 @@ define("VIDEO_EDIT_BACK_LINK", "video/edit/back");
 
 define("PAGE_LIST_BACK_LINK", "page/list/back");
 
-define("PARAMETER_EDIT_BACK_LINK", "index/parameters/back");
-
 define("COMMENT_REPORT_BACK_LINK", "comment/reportList/back");
 
 define("PAYMENT_RECAP_LINK", "payment/recap");
@@ -143,10 +142,6 @@ define("PAYMENT_EXECUTE", "payment/execute");
 
 define("INDEX_ERROR_LINK", "index/error");
 
-define("FACEBOOK_LINK", "");
-define("TWITTER_LINK", "");
-define("INSTAGRAM_LINK", "");
-define("LINKEDIN_LINK", "");
 
 /******************************
 ********** TEMPLATE ***********
@@ -162,6 +157,7 @@ define("INSTALLATION_INDEX_VIEWS", 	  ["front" => "installation", 		  "back" => 
 define("INSTALLATION_SETTING_VIEWS",  ["front" => "installationSetting",  "back" => "installationSetting"]);
 define("INSTALLATION_DATABASE_VIEWS", ["front" => "installationDatabase", "back" => "installationDatabase"]);
 define("INSTALLATION_ADMIN_VIEWS", 	  ["front" => "installationAdmin",    "back" => "installationAdmin"]);
+define("INSTALLATION_PARAMETER_VIEWS",["front "=> "", 					  "back" => "editParameterBack"]);
 
 define("NOT_FOUND_VIEWS", ["front" => "404",    "back" => "404"]);
 define("HOME_VIEWS", 	  ["front" => "home",   "back" => ""]);
@@ -205,7 +201,7 @@ define("PREMIUMOFFER_ADD_VIEWS",  ["front"=>"",            "back"=>"addPremiumOf
 define("PREMIUMOFFER_EDIT_VIEWS",  ["front"=>"",            "back"=>"editPremiumOfferBack"]);
 define("PAYMENT_RECAP_VIEWS", ["front" => "paymentRecap", "back" => ""]);
 
-define("PARAMETERS_VIEWS", ["front "=> "", "back" => "editParameterBack"]);
+
 
 /******************************
 ********** ROLE ***************

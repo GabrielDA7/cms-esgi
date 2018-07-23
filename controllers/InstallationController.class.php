@@ -6,6 +6,7 @@ class InstallationController {
 	private $fileDelegate;
 	private $userDelegate;
 	private $objectDelegate;
+	private $siteInfosDelegate;
 	private $data = [];
 
 	public function __construct() {
@@ -14,6 +15,7 @@ class InstallationController {
 		$this->fileDelegate = new FileDelegate(INSTALLATION_CLASS_NAME);
 		$this->objectDelegate = new ObjectDelegate($this->data, INSTALLATION_CLASS_NAME);
 		$this->userDelegate = new UserDelegate($this->data);
+		$this->siteInfosDelegate = new SiteInfosDelegate();
 	}
 
 	public function indexAction($params) {
@@ -67,5 +69,13 @@ class InstallationController {
 			RedirectUtils::redirect404();
 		}
 		$this->fileDelegate->createDatabase();
+	}
+
+	public function parametersAction($params) {
+		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE, INSTALLATION_PARAMETER_VIEWS);
+		$this->siteInfosDelegate->process($this->data);
+		$this->formDelegate->process($this->data, $params);
+		$this->fileDelegate->setting($this->data, $params['POST']);
+		$view = new View($this->data);
 	}
 }
