@@ -32,7 +32,6 @@ PHP > 7
                               |BACK|
 
 
-EDIT ?
 view logs (see all logs files and can download them)
 
 -- DONE -- Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";

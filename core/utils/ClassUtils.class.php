@@ -24,7 +24,7 @@ class classUtils {
 				self::removeUnderScoreFromForeignKeyColumn($column);
 				$setter = 'set'.ucfirst($column);
 				if (method_exists($object, $setter)) {
-					$object->$setter(htmlspecialchars($value));
+					$object->$setter($value);
 				}
 			}
 		}

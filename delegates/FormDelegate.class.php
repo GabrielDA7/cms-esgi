@@ -25,6 +25,8 @@ class FormDelegate {
 	private function checkForm($config, $post, $files){
 		$errorsMsg = [];
 		foreach ($config["input"] as $name => $attributs) {
+			if (isset($post[$name]))
+				$this->checkForXSS($post[$name], $errorsMsg, $name);
 			if (isset($attributs["confirm"]) && $post[$name] != $post[$attributs["confirm"]]) {
 				$errorsMsg[]= $name ." ne correspond pas à ".$attributs["confirm"];
 			} else if (!isset($attributs["confirm"])) {
@@ -65,6 +67,11 @@ class FormDelegate {
 			return FALSE;
 		}
 		return $errorsMsg;
+	}
+
+	private function checkForXSS($value, &$errorsMsg, $name) {
+		if (strpos($value, '<script') !== false)
+			$errorsMsg[] = $name ." n'est pas correct";
 	}
 
 	private function checkUserNameAndEmailDisponibility(&$errors, $post) {
