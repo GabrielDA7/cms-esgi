@@ -32,8 +32,7 @@ PHP > 7
                               |BACK|
 
 
-paypal
-
+EDIT ?
 view logs (see all logs files and can download them)
 
 -- DONE -- Problem AJAX : url = dirname + "ajax/list?object=" + object + "&page=" + page + "&sort=" + order + "&columnName=" + column_name +"&itemsPerPage=" + itemsPerPage + "&status=1";
@@ -73,21 +72,24 @@ view logs (see all logs files and can download them)
 -- DONE -- siteMap
 -- DONE -- premium / status check authorisation
 -- DONE -- Add table infos (Facebook / Twitter / Linkedin / Footer text)
+-- DONE -- paypal
 
                               |FRONT|
 
 Ajouter form/list pour premium
 Ajouter form parameters
 Afficher plus de commentaire load_data_comment
-View edit
-go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
-installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
-vue parameters edit dbname / dbhost / dbuser / dbport / language
+Home page min width when on usernae when logged
+
 list front cadena sur les contenus premium (premium=1)
 
 -- SEE LATER -- Comment use modal
 -- SEE LATER -- VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper arreter les requetes quand il n'y a pas de       --resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)
 
+-- DONE -- View edit
+-- DONE -- go to profile when click on user(userame / avatar) in comment -> route = user/user?id=x
+-- DONE -- installation -> css (conf.inc.php -> set INSTALLATION_DONE to FALSE)
+-- DONE -- vue parameters edit dbname / dbhost / dbuser / dbport / language
 -- DONE -- Afficher list reported comments back
 -- DONE -- add a label which is the key of the input where it is a SELECT (for the installation : back template / front template we don't know)
 -- DONE -- Edit profile

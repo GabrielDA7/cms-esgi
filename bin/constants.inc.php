@@ -200,9 +200,6 @@ define("CHAPTER_EDIT_VIEWS",    ["front" => "",    			  "back" => "editChapterBa
 
 define("COMMENT_LIST_REPORT_VIEWS", ["front" => "", "back" => "listReportCommentBack"]);
 
-define("PREMIUMOFFER_LIST_VIEWS", ["front" => "listPremiumOffer", "back" => "listPremiumOfferBack"]);
-define("PREMIUMOFFER_ADD_VIEWS",  ["front" => "",            	  "back" =>"addPremiumOfferBack"]);
-
 define("PREMIUMOFFER_LIST_VIEWS", ["front"=>"listPremiumOffer", "back" => "listPremiumOfferBack"]);
 define("PREMIUMOFFER_ADD_VIEWS",  ["front"=>"",            "back"=>"addPremiumOfferBack"]);
 define("PREMIUMOFFER_EDIT_VIEWS",  ["front"=>"",            "back"=>"editPremiumOfferBack"]);

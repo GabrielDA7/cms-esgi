@@ -22,7 +22,7 @@ class Video extends BaseSql {
     }
 
 	public function getColumnsToSearch() {
-		return ["title", "user_id", "part_id", "status"];
+		return ["title", "user_id", "part_id"];
 	}
 
 	public static function configAddForm($data){

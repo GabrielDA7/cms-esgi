@@ -27,7 +27,7 @@ class Trainning extends BaseSql {
 	}
 
 	public function getColumnsToSearch() {
-		return ["title", "user_id", "dateInserted", "status"];
+		return ["title", "user_id", "dateInserted"];
 	}
 
 	public function unsetColumn($key) {
