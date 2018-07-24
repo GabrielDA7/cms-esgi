@@ -81,7 +81,7 @@ class Installation extends BaseSql {
 
 	public static function configDatabaseForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_DATABASE_LINK, "submit"=>"Valider", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_DATABASE_LINK, "submit"=>"Validate", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
 								"dbuser"=>
@@ -135,7 +135,7 @@ class Installation extends BaseSql {
 
 	public static function configAdminForm($data){
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_ADMIN_LINK, "submit"=>"Valider", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_ADMIN_LINK, "submit"=>"Validate", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
 					"input"=>
 							[
 								"firstName"=>
@@ -201,7 +201,7 @@ class Installation extends BaseSql {
 	public static function configParametersForm($data){
 		$installation = $data['installations'][0];
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_PARAMETER_LINK, "submit"=>"Valider", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_PARAMETER_LINK, "submit"=>"Update", "submitClass" => "input-btn btn-filled-orange btn-icon last"],
 					"input"=>
 							[
 								"id"=>
@@ -215,7 +215,7 @@ class Installation extends BaseSql {
 												"type"=>"text",
 												"required"=>true,
 												"value"=>$installation->getSiteName(),
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"reasonRegister"=>
 											[
@@ -223,7 +223,7 @@ class Installation extends BaseSql {
 												"type"=>"textarea",
 												"required"=>true,
 												"value"=>$installation->getReasonRegister(),
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"siteDescription"=>
 											[
@@ -231,39 +231,39 @@ class Installation extends BaseSql {
 												"type"=>"textarea",
 												"required"=>true,
 												"value"=>$installation->getSiteDescription(),
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"email"=>
 											[
 												"label"=>"Site email",
 												"value"=>$installation->getEmail(),
 												"type"=>"text",
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"twitter"=>
 											[
 												"label"=>"Admin twitter link",
 												"type"=>"text",
 												"value"=>$installation->getTwitter(),
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"instagram"=>[
 												"label"=>"Admin instagram link",
 												"type"=>"text",
 												"value"=>$installation->getInstagram(),
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"linkedin"=>[
 												"label"=>"Admin linkedin link",
 												"type"=>"text",
 												"value"=>$installation->getLinkedin(),
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"facebook"=>[
 												"label"=>"Admin facebook link",
 												"type"=>"text",
 												"value"=>$installation->getFacebook(),
-												"class"=>"form-group input"
+												"class"=>"input"
 											]
 
 							]
@@ -272,7 +272,7 @@ class Installation extends BaseSql {
 
 	public static function configEditdatabaseForm($data) {
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_EDIT_DATABASE_LINK, "submit"=>"Valider", "submitClass" => "btn-filled-orange btn-full-width form-group-bottom"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME . INSTALLATION_EDIT_DATABASE_LINK, "submit"=>"Update", "submitClass" => "input-btn btn-filled-orange btn-icon last"],
 					"input"=>
 							[
 								"dbuser"=>
@@ -280,35 +280,35 @@ class Installation extends BaseSql {
 												"label"=>"DB user",
 												"type"=>"text",
 												"value"=>DBUSER,
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"dbpwd"=>
 											[
 												"label"=>"DB password",
 												"type"=>"text",
 												"placeholder"=>"Password",
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"dbhost"=>
 											[
 												"label"=>"DB url",
 												"type"=>"text",
 												"value"=>DBHOST,
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"dbname"=>
 											[
 												"label"=>"DB name",
 												"type"=>"text",
 												"value"=>DBNAME,
-												"class"=>"form-group input"
+												"class"=>"input"
 											],
 								"dbport"=>
 											[
 												"label"=>"DB port",
 												"type"=>"number",
 												"value"=>DBPORT,
-												"class"=>"form-group input"
+												"class"=>"input"
 											]
 
 							]

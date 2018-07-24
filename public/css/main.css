@@ -1373,6 +1373,7 @@ textarea {
   right: 10px; }
 
 .btn {
+  min-width: 60px;
   height: 30px;
   text-decoration: none;
   display: block;

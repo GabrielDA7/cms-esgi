@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<rss version="2.0">
-  <channel>
-    <title>Page search</title>
-    <description>Search of comment</description>
-    <link>localhost/lab/uteach/comment/list</link>
-  </channel>
-</rss>

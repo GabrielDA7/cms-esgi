@@ -60,33 +60,48 @@
               <div class="footer-wrapper">
                 <p class="footer-title">Contact</p>
                 <ul id="footer-network">
+                  <?php if(isset($infos)):?>
+                    <?php if( $infos->getFacebook() != null):?>
                       <li>
                         <figure>
-                          <a href="<?= (isset($infos)) ? $infos->getFacebook() : '' ?>"><i class="fab fa-facebook"></i></a>
+                          <a href="<?= $infos->getFacebook() ?>" target="_blank"><i class="fab fa-facebook"></i></a>
                           <figcaption>Facebook</figcaption>
                         </figure>
                       </li>
-
+                    <?php endif; ?>
+                    <?php if($infos->getTwitter() != null):?>
                       <li>
                         <figure>
-                          <a href="<?= (isset($infos)) ? $infos->getTwitter() : '' ?>"><i class="fab fa-twitter-square"></i></a>
+                          <a href="<?= $infos->getTwitter() ?>" target="_blank"><i class="fab fa-twitter-square"></i></a>
                           <figcaption>Twitter</figcaption>
                         </figure>
                       </li>
-
+                    <?php endif; ?>
+                    <?php if( $infos->getLinkedin() != null ):?>
                       <li>
                         <figure>
-                          <a href="<?= (isset($infos)) ? $infos->getLinkedin() : '' ?>"><i class="fab fa-linkedin"></i></a>
+                          <a href="<?= $infos->getLinkedin() ?>" target="_blank"><i class="fab fa-linkedin"></i></a>
                           <figcaption>Linkedin</figcaption>
                         </figure>
                       </li>
-
+                    <?php endif; ?>
+                    <?php if( $infos->getInstagram() != null ):?>
                       <li>
                         <figure>
-                          <a href="<?= (isset($infos)) ? $infos->getEmail() : '' ?>"><i class="fas fa-envelope"></i></a>
+                          <a href="<?= $infos->getInstagram() ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+                          <figcaption>Instagram</figcaption>
+                        </figure>
+                      </li>
+                    <?php endif; ?>
+                    <?php if( $infos->getEmail() != null ):?>
+                      <li>
+                        <figure>
+                          <a href="mailto:<?= $infos->getEmail() ?>" target="_blank"><i class="fas fa-envelope"></i></a>
                           <figcaption>Email</figcaption>
                         </figure>
                       </li>
+                    <?php endif; ?>
+                  <?php endif; ?>
                 </ul>
               </div>
             </div>

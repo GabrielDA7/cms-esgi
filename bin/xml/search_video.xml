@@ -1,8 +1,15 @@
 <?xml version="1.0"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <atom:link href="http://localhost/lab/uteach/video/list" rel="self" type="application/rss+xml"/>
   <channel>
     <title>Page search</title>
     <description>Search of video</description>
-    <link>localhost/lab/uteach/video/list</link>
+    <link>http://localhost/lab/uteach/video/list</link>
+    <item>
+      <title>rprprp</title>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/lab/uteach/video/video?id=8</link>
+      <guid>http://localhost/lab/uteach/video/video?id=8</guid>
+    </item>
   </channel>
 </rss>

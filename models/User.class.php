@@ -170,7 +170,7 @@ class User extends UserSql {
 	public static function configEditForm($data) {
 		$user = $data['user'];
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Save","submitClass" => "btn-filled-orange btn-small align-right form-group-bottom"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.USER_EDIT_FRONT_LINK, "enctype" => "multipart/form-data", "submit"=>"Update","submitClass" => "btn-filled-orange btn-small align-right form-group-bottom"],
 					"input"=>
 							[
 								"avatar"=>[

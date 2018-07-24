@@ -1,151 +1,45 @@
 <?xml version="1.0"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <atom:link href="http://localhost/lab/uteach/trainning/list" rel="self" type="application/rss+xml"/>
   <channel>
     <title>Page list</title>
     <description>List of trainning</description>
-    <link>localhost/lab/uteach/trainning/list</link>
+    <link>http://localhost/lab/uteach/trainning/list</link>
     <item>
-      <id>43</id>
       <title>er,erglke,</title>
-      <description>kjengkjrnkg</description>
-      <image>/uteach/public/img/trainnings/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-15 16:54:06</dateInserted>
-      <status>1</status>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lo</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Trainning</objectName>
-      <link>localhost/lab/uteach/trainning/trainning?id=43</link>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/lab/uteach/trainning/trainning?id=43</link>
+      <guid>http://localhost/lab/uteach/trainning/trainning?id=43</guid>
     </item>
     <item>
-      <id>42</id>
       <title>php</title>
-      <description>zeezre</description>
-      <image>/uteach/public/img/trainnings/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-15 01:07:34</dateInserted>
-      <status>1</status>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lo</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Trainning</objectName>
-      <link>localhost/lab/uteach/trainning/trainning?id=42</link>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/lab/uteach/trainning/trainning?id=42</link>
+      <guid>http://localhost/lab/uteach/trainning/trainning?id=42</guid>
     </item>
     <item>
-      <id>41</id>
       <title>AAAAAA</title>
-      <description>tyhrthyr</description>
-      <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-15 01:02:05</dateInserted>
-      <status>1</status>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lo</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Trainning</objectName>
-      <link>localhost/lab/uteach/trainning/trainning?id=41</link>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/lab/uteach/trainning/trainning?id=41</link>
+      <guid>http://localhost/lab/uteach/trainning/trainning?id=41</guid>
     </item>
     <item>
-      <id>40</id>
       <title>AAAAAA</title>
-      <description>tyhrthyr</description>
-      <image>/uteach/public/img/trainnings/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-15 01:00:19</dateInserted>
-      <status>1</status>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lo</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Trainning</objectName>
-      <link>localhost/lab/uteach/trainning/trainning?id=40</link>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/lab/uteach/trainning/trainning?id=40</link>
+      <guid>http://localhost/lab/uteach/trainning/trainning?id=40</guid>
     </item>
     <item>
-      <id>39</id>
       <title>php</title>
-      <description>eth</description>
-      <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 22:12:22</dateInserted>
-      <status>1</status>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lo</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Trainning</objectName>
-      <link>localhost/lab/uteach/trainning/trainning?id=39</link>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/lab/uteach/trainning/trainning?id=39</link>
+      <guid>http://localhost/lab/uteach/trainning/trainning?id=39</guid>
     </item>
     <item>
-      <id>38</id>
       <title>esgrtgztr</title>
-      <description>zthzrz</description>
-      <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 22:12:07</dateInserted>
-      <status>1</status>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lo</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Trainning</objectName>
-      <link>localhost/lab/uteach/trainning/trainning?id=38</link>
-    </item>
-    <item>
-      <id>37</id>
-      <title>hgvgvgh</title>
-      <description>jhhhvhg</description>
-      <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 22:11:37</dateInserted>
-      <status>1</status>
-      <user_id>58</user_id>
-      <item>
-        <id>58</id>
-        <userName>ekjgnjkrengjknernge</userName>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=58</link>
-      </item>
-      <objectName>Trainning</objectName>
-      <link>localhost/lab/uteach/trainning/trainning?id=37</link>
-    </item>
-    <item>
-      <id>36</id>
-      <title>ztzet</title>
-      <description>zetrzert</description>
-      <image>public/img/trainnings/711px-PHP-logo.svg.png</image>
-      <dateInserted>2018-07-13 22:11:12</dateInserted>
-      <status>1</status>
-      <user_id>25</user_id>
-      <item>
-        <id>25</id>
-        <userName>lo</userName>
-        <avatar>/uteach/public/img/avatars/default.jpg</avatar>
-        <objectName>User</objectName>
-        <link>localhost/lab/uteach/user/user?id=25</link>
-      </item>
-      <objectName>Trainning</objectName>
-      <link>localhost/lab/uteach/trainning/trainning?id=36</link>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/lab/uteach/trainning/trainning?id=38</link>
+      <guid>http://localhost/lab/uteach/trainning/trainning?id=38</guid>
     </item>
   </channel>
 </rss>

@@ -36,7 +36,7 @@
                 <a href="<?= DIRNAME . CHAPTER_LIST_BACK_LINK; ?>" class="menu-sub-item">Chapters list</a>
                 <a href="<?= DIRNAME . CHAPTER_ADD_BACK_LINK; ?>" class="menu-sub-item">Add Chapter</a>
               </div>
-              <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-graduation-cap"></i>Formations<i class="fas fa-chevron-down"></i></a>
+              <a href="javascript:void(0);" class="menu-item expand-div"><i class="fas fa-graduation-cap"></i>Trainnings<i class="fas fa-chevron-down"></i></a>
               <div class="content-hidden sub-items">
                 <a href="<?= DIRNAME . TRAINNING_LIST_BACK_LINK; ?>" class="menu-sub-item">Trainnings list</a>
                 <a href="<?= DIRNAME . TRAINNING_ADD_BACK_LINK; ?>" class="menu-sub-item">Add trainning</a>

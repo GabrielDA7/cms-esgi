@@ -70,7 +70,7 @@ class Video extends BaseSql {
 		$video = $data['video'];
 		$videoId = $video->getId();
 		return 	[
-					"config"=>["method"=>"POST", "action"=> DIRNAME.VIDEO_EDIT_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Upload", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
+					"config"=>["method"=>"POST", "action"=> DIRNAME.VIDEO_EDIT_BACK_LINK, "enctype" => "multipart/form-data", "submit"=>"Update", "submitClass"=>"input-btn btn-filled-orange btn-icon last"],
 					"input"=>
 							[
 								"title"=>
