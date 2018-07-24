@@ -79,29 +79,27 @@ class QueryConstructorSql {
 			$date = $this->getIfContainDate($columns);
 			$query .= " WHERE ";
 
-			if ($onlyPublishedContent || $onlyNotPremiumContent) 
-				$query .= "(";
-
 			if (!$like) {
 				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {
 				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, "", " LIKE :keyword OR ", TRUE, FALSE, FALSE);
 				$query .= " LIKE :keyword";
 			}
-			if ($onlyPublishedContent || $onlyNotPremiumContent) {
-				$query .= ") ";
-				if ($onlyPublishedContent)
-					$query .= "AND " . $table . ".status=1";
-				if ($onlyNotPremiumContent)
-					$query .= "AND premium=0";
-			}
 
-			if (isset($date))
-				$query .= "AND date(dateInserted) = " . $date;
 			if ($username) 
 				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
 			if ($searchTrainningTitle)
 				$query .= " OR (trainning.id=" . $table . ".trainning_id AND trainning.title LIKE :keyword)";
+
+			if ($onlyPublishedContent || $onlyNotPremiumContent) {
+				if ($onlyPublishedContent)
+					$query .= " AND " . $table . ".status=1";
+				if ($onlyNotPremiumContent)
+					$query .= " AND premium=0";
+			}
+
+			if (isset($date))
+				$query .= " AND date(dateInserted) = " . $date;
 		}
 		return $query;
 	}
