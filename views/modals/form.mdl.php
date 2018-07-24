@@ -12,8 +12,7 @@
 				<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
 				name="<?= $name; ?>"
 				<?= (isset($attributs["placeholder"])) ? "placeholder='".$attributs["placeholder"]."'" : ""; ?>
-				<?= (isset($attributs["required"])) ? "required='required'" : ""; ?>><?= (isset($attributs["value"])) ? $attributs["value"] : ""; ?>
-			</textarea>
+				<?= (isset($attributs["required"])) ? "required='required'" : ""; ?>><?= (isset($attributs["value"])) ? $attributs["value"] : ""; ?></textarea>
 		<?php elseif ($attributs["type"] == "checkbox"): ?>
 			<div <?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>>
 				<input type="checkbox"
@@ -66,6 +65,7 @@
 			<?=(isset($attributs["value"])) ? $attributs["value"] : ""; ?></button>
 		<?php elseif ($attributs["type"] == "file"): ?>
 			<input type="file"
+			name="<?= $name; ?>"
 			<?=(isset($attributs["value"])) ? "value=" . $attributs["value"] : ""; ?>
 			<?=(isset($attributs["class"])) ? "class='".$attributs["class"]."'" : "";?>
 			<?=(isset($attributs["maxSize"]) ? "maxfilesize=" . $attributs["maxSize"] : ""); ?>
@@ -79,7 +79,7 @@
 			name="<?= $name; ?>">
 				<?php if(isset($attributs["option"])): ?>
 					<?php foreach($attributs["option"] as $key => $value): ?>
-						<option value="<?= $key ?>"><?= $value ?></span>
+						<option value="<?= $key ?>"><?= $value ?></option>
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</select>

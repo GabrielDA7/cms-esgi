@@ -65,7 +65,7 @@
 							</div>
 					</div>
 					<?php if (isLogged()) : ?>
-						<form method="POST" action="<?= DIRNAME ?>comment/add" class="row-padding">
+						<form method="POST" action="<?= DIRNAME ?>comment/add" class="padding-comment">
 							<input type="hidden" name="trainning_id" value="<?= $trainning->getId() ?>">
 							<div class="row">
 								<div class="M12 X12">

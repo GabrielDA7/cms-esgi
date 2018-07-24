@@ -56,8 +56,9 @@ class Trainning extends BaseSql {
 											],
 								"image"=>
 											[
+														 "name"=>"image",
 										         "type"=>"file",
-												 "class"=>"form-group",
+												 	 	 "class"=>"form-group",
 										         "maxSize" => 1000000,
 										         "extension" =>
 										                   [
@@ -104,6 +105,7 @@ class Trainning extends BaseSql {
 												"class"=>"form-group input"
 											],
 								"image"=>[
+																	 "name"=>"image",
 																	 "class"=>"upload-button",
 																	 "title"=>$trainning->getImage(),
 																	 "value"=>$trainning->getImage(),

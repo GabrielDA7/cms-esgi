@@ -53,6 +53,7 @@ class Chapter extends BaseSql {
 											],
 								"image"=>
 											[
+														 "name"=>"image",
 														 "label" => "Upload image :",
 										         "type"=>"file",
 										         "maxSize" => 1000000,
@@ -123,6 +124,7 @@ class Chapter extends BaseSql {
 											],
 								"image"=>
 											[
+														 "name"=>"image",
 														 "class"=>"upload-button",
 														 "title"=>$chapter->getImage(),
 														 "value"=>$chapter->getImage(),

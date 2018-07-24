@@ -42,6 +42,7 @@ class Video extends BaseSql {
 											],
 								"url"=>
 											[
+															"name"=>"url",
 										         "type"=>"file",
 												 	 	 "class"=>"form-group",
 										         "extension" =>

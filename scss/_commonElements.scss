@@ -10,6 +10,13 @@ html,body
 */
 
 // Dashboard login page --------------------------------------------------------
+.hamburger__logo {
+  display: none;
+}
+
+.padding-comment{
+  padding-bottom: 25px;
+}
 #installation{
   background-color: $color-secondary;
   background-color: #222831;
@@ -398,17 +405,22 @@ html,body
 
 // SLIDER ----------------------------------------------------------------------
 
+.mySlides {
+  width: 100%;
+}
+
 #slider {
-  height: 200px;
+  height: 250px;
   width: 100%;
   display: -webkit-flex;
   display: flex;
   z-index: 0;
   position: relative;
+  background-color: black;
 }
 
 #slider img {
-  object-fit: fill;
+  object-fit: contain;
   width: 100%;
 }
 
@@ -422,7 +434,7 @@ html,body
   left: 0px;
 }
 
-#slider a {
+#slider .button-next-prev {
   display: block;
   width: 35px;
   height: 50px;
@@ -484,6 +496,7 @@ html,body
 
 #footer-network {
   display:flex;
+  flex-wrap: wrap;
   list-style:none;
   justify-content: space-between;
   margin-top: 10px;
@@ -596,7 +609,7 @@ html,body
 .card {
   display: block;
   height: 230px;
-  width: 100%;
+  width: 75%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 5px;
