@@ -5,7 +5,7 @@ class SiteMapDelegate {
 
 	public function processStart() {
 		$todayDate = date("Y-m-d");
-		if ($this->isTodayFileExist($todayDate))
+		if ($this->isTodayFileExist($todayDate) || $this->isSiteMapIsInProcess2($params))
 			return;
 		$this->addContentsLinksToTempLinksFile();
 		$fullUrl = $this->computeFullUrl(DIRNAME . "index/crawl");
@@ -47,6 +47,12 @@ class SiteMapDelegate {
 
 	private function isSiteMapIsInProcess($params) {
 		if ((file_exists(TEMP_CRAWLER_CRAWLED_LINKS_PATH)) && !isset($params['GET']['process']))
+			return TRUE;
+		return FALSE;
+	}
+
+	private function isSiteMapIsInProcess2($params) {
+		if (file_exists(TEMP_CRAWLER_CRAWLED_LINKS_PATH))
 			return TRUE;
 		return FALSE;
 	}
