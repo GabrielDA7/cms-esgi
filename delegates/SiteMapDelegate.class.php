@@ -4,6 +4,9 @@ class SiteMapDelegate {
 	private $links = [];
 
 	public function processStart() {
+		$todayDate = date("Y-m-d");
+		if ($this->isTodayFileExist($todayDate))
+			return;
 		$this->addContentsLinksToTempLinksFile();
 		$fullUrl = $this->computeFullUrl(DIRNAME . "index/crawl");
 		$fullUrl .= "?url=" . DIRNAME;
