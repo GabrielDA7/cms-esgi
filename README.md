@@ -75,13 +75,12 @@ view logs (see all logs files and can download them)
 
                               |FRONT|
 
-Ajouter form/list pour premium
-Ajouter form parameters
-Afficher plus de commentaire load_data_comment
-Home page min width when on usernae when logged
+-- DONE -- Ajouter form/list pour premium
+-- DONE -- Ajouter form parameters
+-- DONE -- Home page min width when on usernae when logged
 edit display image instead of the link
 
-list front cadena sur les contenus premium (premium=1)
+-- DONE -- list front cadena sur les contenus premium (premium=1)
 
 -- SEE LATER -- Comment use modal
 -- SEE LATER -- VOIR l'input de recherche au dessu des listes (trainning user chatper etc) une requete est envoyée a chaque lettre tapper arreter les requetes quand il n'y a pas de       --resultats et que l'utilisateur continue de tapper (ne pas faire de requtes inutiles)

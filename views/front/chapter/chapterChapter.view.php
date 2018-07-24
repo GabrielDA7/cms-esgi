@@ -10,7 +10,7 @@
 
 		<div class="row M--center">
 			<div class="M3 align-center">
-				<img class="img main-img" src="<?= $chapter->getImage(); ?>" alt="image chapter" title="image chapter" >
+				<img class="img main-img" src="<?= (($chapter->getImage() != null) ? $chapter->getImage() : DIRNAME.'public/img/default.jpg'); ?>" alt="image chapter" title="image chapter" >
 			</div>
 		</div>
 

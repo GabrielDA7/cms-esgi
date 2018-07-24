@@ -630,7 +630,7 @@ function addChapterSubpart(){
 }
 
 function load_data_list_comment(object, id){
-  url = dirname + "ajax/listComment?object=comment&sort=desc" + "&columnName=dateInserted" + "&page=1&itemsPerPage=10&" + object + "_id=" + id;
+  url = dirname + "ajax/listComment?object=comment&sort=desc" + "&columnName=dateInserted&" + object + "_id=" + id;
   div = $("#comments-result");
   paginationLinks = $("#pagination_links");
   $.ajax({
