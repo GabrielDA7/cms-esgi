@@ -4,6 +4,7 @@ class SiteMapDelegate {
 	private $links = [];
 
 	public function processStart() {
+		$this->addContentsLinksToTempLinksFile();
 		$fullUrl = $this->computeFullUrl(DIRNAME . "index/crawl");
 		$fullUrl .= "?url=" . DIRNAME;
 		$curl = $this->curlInitialization($fullUrl);
@@ -24,8 +25,25 @@ class SiteMapDelegate {
 		$this->sendNextUrlToCrawl();
 	}
 
+	private function addContentsLinksToTempLinksFile() {
+		$trainning = new Trainning();
+		$chapter = new Chapter();
+		$video = new Video();
+		$this->computeContentLinksUrl($trainning, "trainning");
+		$this->computeContentLinksUrl($chapter, "chapter");
+		$this->computeContentLinksUrl($video, "video");
+		$this->createTempLinksFile();
+	}
+
+	private function computeContentLinksUrl($object, $objectName) {
+		$objects = $object->getAll(null);
+		foreach ($objects as $object) {
+			$this->links[] = $objectName . "/" . $objectName . "?id=" . $object->getId();
+		}
+	}
+
 	private function isSiteMapIsInProcess($params) {
-		if ((file_exists(TEMP_CRAWLER_CRAWLED_LINKS_PATH) || file_exists(TEMP_CRAWLER_LINKS_PATH)) && !isset($params['GET']['process']))
+		if ((file_exists(TEMP_CRAWLER_CRAWLED_LINKS_PATH)) && !isset($params['GET']['process']))
 			return TRUE;
 		return FALSE;
 	}
