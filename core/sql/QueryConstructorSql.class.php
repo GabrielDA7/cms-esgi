@@ -117,7 +117,7 @@ class QueryConstructorSql {
 	}
 
 	private function isOnlyPublishedContent(&$columns, $table) {
-		if ($key = array_search("status", $columns) && $table != "user") {
+		if ($key = array_search("status", $columns) && !is_int($key) && $table != "user") {
 			unset($columns[$key]);
 			return TRUE;
 		}
@@ -125,7 +125,7 @@ class QueryConstructorSql {
 	}
 
 	private function isOnlyNotPremiumContent(&$columns, $table) {
-		if ($key = array_search("status", $columns) && $table != "user") {
+		if ($key = array_search("status", $columns) && !is_int($key) && $table != "user") {
 			unset($columns[$key]);
 			return TRUE;
 		}
@@ -134,9 +134,9 @@ class QueryConstructorSql {
 
 	private function getIfContainDate(&$columns) {
 		$date = null;
-		if (array_key_exists("dateInserted", $columns)) {
-			$date = $columns["dateInserted"];
-			unset($columns["dateInserted"]);
+		if ($key = array_search("dateInserted", $columns) && !is_int($key)) {
+			$date = $columns[$key];
+			unset($columns[$key]);
 		}
 		return $date;
 	}
