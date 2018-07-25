@@ -40,6 +40,7 @@ class TrainningController {
 		$this->siteInfosDelegate->process($this->data);
 		$this->objectDelegate->getById($this->data, $params, [CHAPTER_CLASS_NAME]);
 		$this->formDelegate->process($this->data, $params);
+		$this->fileDelegate->process($this->data, $params, FORMATION_IMAGES_FOLDER_NAME);
 		$this->objectDelegate->update($this->data, $params, "", TRAINNING_LIST_BACK_LINK);
 		$view = new View($this->data);
 	}

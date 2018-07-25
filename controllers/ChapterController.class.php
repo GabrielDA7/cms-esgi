@@ -38,6 +38,7 @@ class ChapterController {
 		$this->siteInfosDelegate->process($this->data);
 		$this->objectDelegate->getById($this->data, $params, [PART_CLASS_NAME]);
 		$this->formDelegate->process($this->data, $params);
+		$this->fileDelegate->process($this->data, $params, CHAPTER_IMAGES_FOLDER_NAME);
 		$this->objectDelegate->update($this->data, $params, "", CHAPTER_LIST_BACK_LINK);
 		$view = new View($this->data);
 	}
