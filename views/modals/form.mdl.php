@@ -43,6 +43,8 @@
 												</div>
 											</div>
 											<div class='content-hidden'>
+													<input type="hidden" name='parts["<?= $value->getNumber(); ?>"][id]' 
+														value="<?= $value->getId(); ?>">
 													<div class='row'>
 														<input type='text' name='parts["<?= $value->getNumber(); ?>"][title]' class='input form-group margin-bottom' placeholder='Title' value="<?= $value->getTitle(); ?>">
 													</div>

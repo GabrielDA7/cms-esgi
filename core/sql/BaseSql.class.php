@@ -55,11 +55,18 @@ class BaseSql extends QueryConstructorSql {
 		$query->execute($this->columns);
 	}
 
-	public function countItems($counter = "id") {
-		$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
-		$queryString = $this->constructCountQuery($this->table, $counter, $this->columns);
+	public function countItems($counter = "id", $keyword = null, $columnsToSearch = null) {
+		if (isset($keyword) && isset($columnsToSearch))
+			$this->columns = $columnsToSearch;
+		else 
+			$this->columns = ClassUtils::removeUnsusedColumns($this, get_class_vars(get_class()));
+		$queryString = $this->constructCountQuery($this->table, $counter, $this->columns, isset($keyword));
 		$query = $this->db->prepare($queryString);
-		$query->execute($this->columns);
+		if (isset($keyword)) {
+			$this->setKeyword($query, $keyword);
+			$query->execute();
+		} else 
+			$query->execute($this->columns);
 		$response = $query->fetchAll();
 		return ($counter == "id") ? ClassUtils::safeGetArrayIndex($response, [0, 'itemsNumber']) : $response;
 	}

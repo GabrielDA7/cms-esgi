@@ -102,10 +102,8 @@ class ObjectDelegate {
 	public function search(&$data, $params) {
 		$object = $data[$this->lowerCaseFirstObjectName];
 		$columnsToSearch = $object->getColumnsToSearch();
-		if (!$this->isUnpublishedContentAuthorized($data, $params))
-			$columnsToSearch[] = "status";
 		$objects = $object->getByWord($params['GET']['search'], $columnsToSearch, $data);
-		$data['itemsNumber'] = $object->countItems();
+		$data['itemsNumber'] = $object->countItems("id", $params['GET']['search'], $columnsToSearch);
 		$data[$this->lowerCaseFirstObjectName."s"] = $objects;
 	}
 

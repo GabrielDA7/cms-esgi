@@ -13,7 +13,8 @@ class EmailDelegate {
 		}
 		$user = $data['users'][0];
 		$subject = 'Confirmation de l\'email';
-		$body = '<form action="localhost' .  DIRNAME . USER_EMAIL_CONFIRM_LINK .'" method="POST">
+		$url = $this->computeFullUrl(DIRNAME . USER_EMAIL_CONFIRM_LINK);
+		$body = '<form action="' . $url .'" method="POST">
 		          <input type="hidden" name="id" value="'. $user->getId() .'">
 		          <input type="hidden" name="emailConfirm" value="'. $user->getEmailConfirm() .'">
 		          <input type="submit" name="submit" value="Confirm email">
@@ -82,5 +83,10 @@ class EmailDelegate {
 		        'allow_self_signed' => true
 		    )
 		);
+	}
+
+	private function computeFullUrl($url) {
+		$protocole = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
+		return $protocole . $_SERVER['SERVER_NAME'] . $url;
 	}
 }

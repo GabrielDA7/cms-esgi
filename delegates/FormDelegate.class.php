@@ -71,7 +71,7 @@ class FormDelegate {
 	}
 
 	private function checkForXSS($value, &$errorsMsg, $name) {
-		if (strpos($value, '<script') !== false)
+		if (!is_array($value) && strpos($value, '<script') !== false)
 			$errorsMsg[] = $name ." n'est pas correct";
 	}
 
@@ -86,7 +86,8 @@ class FormDelegate {
 	}
 
 	private function checkChapterNumberDisponibility(&$errors, $post) {
-		if (isset($post['number']) && isset($post['trainning_id'])) {
+		if (isset($post['number']) && $post['number'] != "" && isset($post['trainning_id']) && $post['trainning_id'] != "") {
+			aaa($post);
 			$chapter = New Chapter();
 			$chapter->setTrainningId($post['trainning_id']);
 			$this->checkColumnDisponibility("number", $errors, $post, $chapter);

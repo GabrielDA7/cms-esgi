@@ -11,7 +11,7 @@ class QueryConstructorSql {
 			$searchTrainningTitle = in_array("trainning_id", $columns);
 		}
 		$query = "SELECT DISTINCT " . $table . ".* ";
-		$query .= $this->computeFrom($table, $searchUsername, $searchTrainningTitle);
+		$query .= $this->computeFrom($table, $searchUsername, $searchTrainningTitle, $like);
 		$query .= $this->computeWhere($table, $columns, $like, $searchUsername, $searchTrainningTitle);
 		if (isset($orderBy))
 			$query .= " ORDER BY " . FormatUtils::formatMapToStringWithSeparators($orderBy, "", SPACE, COMMA);
@@ -26,7 +26,7 @@ class QueryConstructorSql {
 		$query = "SELECT count(" . $counter . ") as itemsNumber ";
 		if ($counter != "id")
 			$query .= COMMA . $counter . " as id";
-		$query .= $this->computeFrom($table, $username);
+		$query .= $this->computeFrom($table, $username, FALSE, $like);
 		$query .= $this->computeWhere($table, $columns, $like, $username);
 		if ($counter != "id")
 			$query .= " GROUP BY " . $counter . " ORDER BY itemsNumber DESC LIMIT 3";
@@ -64,10 +64,10 @@ class QueryConstructorSql {
 		return $query;
 	}
 
-	private function computeFrom($table, $searchUsername = FALSE, $searchTrainningTitle = FALSE) {
+	private function computeFrom($table, $searchUsername = FALSE, $searchTrainningTitle = FALSE, $like = FALSE) {
 		$query = " FROM " . $table; 
-		$query .= (($searchUsername) ? ", user" : "");
-		$query .= (($searchTrainningTitle) ? ", trainning" : "");
+		$query .= (($searchUsername && $like) ? ", user" : "");
+		$query .= (($searchTrainningTitle && $like) ? ", trainning" : "");
 		return $query;
 	}
 
@@ -78,28 +78,36 @@ class QueryConstructorSql {
 			$onlyNotPremiumContent = $this->isOnlyNotPremiumContent($columns, $table);
 			$date = $this->getIfContainDate($columns);
 			$query .= " WHERE ";
-
 			if (!$like) {
 				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, EQUAL.TWO_POINTS, " AND ", FALSE, TRUE);
 			} else {
 				$query .= FormatUtils::formatMapToStringWithSeparators($columns, $table.DOT, "", " LIKE :keyword OR ", TRUE, FALSE, FALSE);
 				$query .= " LIKE :keyword";
-			}
 
-			if ($username) 
-				$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
-			if ($searchTrainningTitle)
-				$query .= " OR (trainning.id=" . $table . ".trainning_id AND trainning.title LIKE :keyword)";
+				if ($username) 
+					$query .= " OR (user.id=" . $table . ".user_id AND user.username LIKE :keyword)";
+				if ($searchTrainningTitle)
+					$query .= " OR (trainning.id=" . $table . ".trainning_id AND trainning.title LIKE :keyword)";
+			}
 
 			if ($onlyPublishedContent || $onlyNotPremiumContent) {
-				if ($onlyPublishedContent)
-					$query .= " AND " . $table . ".status=1";
-				if ($onlyNotPremiumContent)
-					$query .= " AND premium=0";
+				if ($onlyPublishedContent) {
+					if (!empty($columns))
+						$query .= " AND ";
+					$query .=  " " . $table . ".status=1";
+				}
+				if ($onlyNotPremiumContent){
+					if (!empty($columns))
+						$query .= " AND ";
+					$query .= " " . $table . " premium=0";
+				}
 			}
 
-			if (isset($date))
-				$query .= " AND date(dateInserted) = " . $date;
+			if (isset($date)) {
+				if (empty($columns))
+						$query .= " AND ";
+				$query .= " date(dateInserted) = " . $date;
+			}
 		}
 		return $query;
 	}
@@ -113,7 +121,7 @@ class QueryConstructorSql {
 	}
 
 	private function isOnlyNotPremiumContent(&$columns, $table) {
-		if ($key = array_search("premium", $columns) && $table != "user") {
+		if ($key = array_search("status", $columns) && $table != "user") {
 			unset($columns[$key]);
 			return TRUE;
 		}
@@ -122,9 +130,9 @@ class QueryConstructorSql {
 
 	private function getIfContainDate(&$columns) {
 		$date = null;
-		if ($key = array_search("dateInserted", $columns)) {
-			$date = $columns[$key];
-			unset($columns[$key]);
+		if (array_key_exists("dateInserted", $columns)) {
+			$date = $columns["dateInserted"];
+			unset($columns["dateInserted"]);
 		}
 		return $date;
 	}
