@@ -58,7 +58,7 @@ class InstallationController {
 		}
 		$this->authenticationDelegate->process($this->data, $params, FALSE, FALSE, INSTALLATION_ADMIN_VIEWS, INSTALLATION_TEMPLATES);
 		$this->formDelegate->process($this->data, $params);
-		$this->userDelegate->add($this->data, $params, FALSE);
+		$this->userDelegate->addAdmin($this->data, $params);
 		$this->fileDelegate->setting($this->data, $params['POST'], USER_LOGIN_BACK_LINK);
 		$view = new View($this->data);
 	}

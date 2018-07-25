@@ -22,12 +22,16 @@ class QueryConstructorSql {
 
 
 
-	protected function constructCountQuery($table, $counter, $columns, $like = FALSE, $username = FALSE) {
+	protected function constructCountQuery($table, $counter, $columns, $like = FALSE) {
+		if (isset($columns)) {
+			$searchUsername = in_array("user_id", $columns);
+			$searchTrainningTitle = in_array("trainning_id", $columns);
+		}
 		$query = "SELECT count(" . $counter . ") as itemsNumber ";
 		if ($counter != "id")
 			$query .= COMMA . $counter . " as id";
 		$query .= $this->computeFrom($table, $username, FALSE, $like);
-		$query .= $this->computeWhere($table, $columns, $like, $username);
+		$query .= $this->computeWhere($table, $columns, $like, $searchUsername, $searchTrainningTitle);
 		if ($counter != "id")
 			$query .= " GROUP BY " . $counter . " ORDER BY itemsNumber DESC LIMIT 3";
 		return $query;

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <atom:link href="http://localhost/Uteach/part/list" rel="self" type="application/rss+xml"/>
+  <channel>
+    <title>Page list</title>
+    <description>List of part</description>
+    <link>http://localhost/Uteach/part/list</link>
+    <item>
+      <title>ertezrtzert</title>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/Uteach/part/part?id=4</link>
+      <guid>http://localhost/Uteach/part/part?id=4</guid>
+    </item>
+    <item>
+      <title>ertezrtzert</title>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/Uteach/part/part?id=6</link>
+      <guid>http://localhost/Uteach/part/part?id=6</guid>
+    </item>
+    <item>
+      <title>e,nfernfnekfn</title>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/Uteach/part/part?id=8</link>
+      <guid>http://localhost/Uteach/part/part?id=8</guid>
+    </item>
+    <item>
+      <title>ztzetzetzetzttrhrth</title>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/Uteach/part/part?id=10</link>
+      <guid>http://localhost/Uteach/part/part?id=10</guid>
+    </item>
+    <item>
+      <title>zertztrze</title>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/Uteach/part/part?id=3</link>
+      <guid>http://localhost/Uteach/part/part?id=3</guid>
+    </item>
+    <item>
+      <title>zertztrze</title>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/Uteach/part/part?id=5</link>
+      <guid>http://localhost/Uteach/part/part?id=5</guid>
+    </item>
+    <item>
+      <title>erkjfnerfj</title>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/Uteach/part/part?id=7</link>
+      <guid>http://localhost/Uteach/part/part?id=7</guid>
+    </item>
+    <item>
+      <title>fhfhf</title>
+      <author>ouizi@gmail.com(lol)</author>
+      <link>http://localhost/Uteach/part/part?id=9</link>
+      <guid>http://localhost/Uteach/part/part?id=9</guid>
+    </item>
+  </channel>
+</rss>

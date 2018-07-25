@@ -28,6 +28,18 @@ class UserDelegate extends ObjectDelegate {
 		}
 	}
 
+	public function addAdmin($data, $params) {
+		if ($data['errors'] === FALSE) {
+			$user = $data['user'];
+			ClassUtils::setObjectColumns($user, $params['POST']);
+			$user->setAvatar(DEFAULT_AVATAR);
+			$user->generateToken();
+			$user->setEmailConfirm(1);
+			$user->setRole(ADMIN_ROLE);
+			$user->insert();
+		}
+	}
+
 	public function update(&$data, $params, $redirectFront = null, $redirectBack = null) {
 		if ($data['errors'] === FALSE) {
 			$user = $data['user'];

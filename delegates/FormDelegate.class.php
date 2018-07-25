@@ -87,7 +87,6 @@ class FormDelegate {
 
 	private function checkChapterNumberDisponibility(&$errors, $post) {
 		if (isset($post['number']) && $post['number'] != "" && isset($post['trainning_id']) && $post['trainning_id'] != "") {
-			aaa($post);
 			$chapter = New Chapter();
 			$chapter->setTrainningId($post['trainning_id']);
 			$this->checkColumnDisponibility("number", $errors, $post, $chapter);

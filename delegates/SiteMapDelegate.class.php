@@ -5,9 +5,9 @@ class SiteMapDelegate {
 
 	public function processStart() {
 		$todayDate = date("Y-m-d");
-		if ($this->isTodayFileExist($todayDate) || $this->isSiteMapIsInProcess2($params))
+		if ($this->isTodayFileExist($todayDate) || $this->isSiteMapIsInProcess2())
 			return;
-		$this->addContentsLinksToTempLinksFile();
+		//$this->addContentsLinksToTempLinksFile();
 		$fullUrl = $this->computeFullUrl(DIRNAME . "index/crawl");
 		$fullUrl .= "?url=" . DIRNAME;
 		$curl = $this->curlInitialization($fullUrl);
@@ -51,7 +51,7 @@ class SiteMapDelegate {
 		return FALSE;
 	}
 
-	private function isSiteMapIsInProcess2($params) {
+	private function isSiteMapIsInProcess2() {
 		if (file_exists(TEMP_CRAWLER_CRAWLED_LINKS_PATH))
 			return TRUE;
 		return FALSE;
@@ -190,7 +190,7 @@ class SiteMapDelegate {
 		return $protocole . $_SERVER['SERVER_NAME'] . $url;
 	}
 
-	private function computeXMLContentFromLinks($xmlFile, $links) {
+	private function computeXMLContentFromLinks(&$xmlFile, $links) {
 		$root = $xmlFile->createElement("links");
         $root = $xmlFile->appendChild($root);
 		foreach ($links as $link) {
@@ -224,6 +224,8 @@ class SiteMapDelegate {
 	}
 
 	private function removeCrawledLinks() {
+		if (!file_exists(TEMP_CRAWLER_CRAWLED_LINKS_PATH))
+			return;
 		$crawledLinks = $this->getLinksFromFile(TEMP_CRAWLER_CRAWLED_LINKS_PATH);
 		$this->links = array_diff($this->links, $crawledLinks);
 	}
