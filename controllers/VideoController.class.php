@@ -49,7 +49,7 @@ class VideoController {
 			RedirectUtils::redirect404();
 		}
 		$this->authenticationDelegate->process($this->data, $params, TRUE, TRUE);
-		$this->userDelegate->delete($params, "", VIDEO_LIST_BACK_LINK);
+		$this->objectDelegate->delete($params, "", VIDEO_LIST_BACK_LINK);
 	}
 
 	public function listAction($params) {
