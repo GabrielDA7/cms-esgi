@@ -1,4 +1,7 @@
 $(function() {
+
+  window.idPart = 1;
+
   getSafe = function (fn, defaultVal) {
     try {
         return fn();
@@ -584,14 +587,12 @@ function closeDiv(div){
 
 function addChapterSubpart(){
   if($("#numberPart").length > 0) {
-    var idPart = parseInt($("#numberPart").html())+1;
-  } else {
-    var idPart = 1;
+    window.idPart = parseInt($("#numberPart").html())+1;
   }
-  var html = "<div id='chapterSubpart"+ idPart +"' class='form-group chapterParts'>" +
+  var html = "<div id='chapterSubpart"+ window.idPart +"' class='form-group chapterParts'>" +
               "<div class='row subpartHead expand-div'>" +
                 "<div class='M10'>" +
-                  "<p>Subpart " + idPart + "</p>" +
+                  "<p>Subpart " + window.idPart + "</p>" +
                 "</div>" +
                 "<div class='M2'>" +
                   "<i class='fas fa-chevron-down btn-icon'></i>" +
@@ -599,15 +600,15 @@ function addChapterSubpart(){
               "</div>" +
               "<div class='content-hidden'>" +
                 "<div class='row'>" +
-                  "<input type='text' name='parts["+ idPart +"][title]' class='input form-group margin-bottom' placeholder='Title'>" +
+                  "<input type='text' name='parts["+ window.idPart +"][title]' class='input form-group margin-bottom' placeholder='Title'>" +
                 "</div>" +
                 "<div class='row'>" +
-                  "<textarea name='parts["+ idPart +"][content]' class='form-group input tinymce' placeholder='Content'></textarea>" +
+                  "<textarea name='parts["+ window.idPart +"][content]' class='form-group input tinymce' placeholder='Content'></textarea>" +
                 "</div>" +
-                "<input type='hidden' name='parts["+ idPart +"][number]' value='" + idPart + "'></input>"
+                "<input type='hidden' name='parts["+ window.idPart +"][number]' value='" + window.idPart + "'></input>"
               "</div>" +
              "</div>";
-  var idbis = idPart - 1;
+  var idbis = window.idPart - 1;
   if( $("#chapterSubpart" + idbis).length ) {
     $("#chapterSubpart" + idbis).after(html);
   } else {
