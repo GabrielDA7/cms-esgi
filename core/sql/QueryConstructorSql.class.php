@@ -30,7 +30,7 @@ class QueryConstructorSql {
 		$query = "SELECT count(" . $counter . ") as itemsNumber ";
 		if ($counter != "id")
 			$query .= COMMA . $counter . " as id";
-		$query .= $this->computeFrom($table, $username, FALSE, $like);
+		$query .= $this->computeFrom($table, $searchUsername, $searchTrainningTitle, $like);
 		$query .= $this->computeWhere($table, $columns, $like, $searchUsername, $searchTrainningTitle);
 		if ($counter != "id")
 			$query .= " GROUP BY " . $counter . " ORDER BY itemsNumber DESC LIMIT 3";
