@@ -27,9 +27,9 @@ class QueryConstructorSql {
 			$searchUsername = in_array("user_id", $columns);
 			$searchTrainningTitle = in_array("trainning_id", $columns);
 		}
-		$query = "SELECT count(" . $counter . ") as itemsNumber ";
+		$query = "SELECT count(" $table . DOT . $counter . ") as itemsNumber ";
 		if ($counter != "id")
-			$query .= COMMA . $counter . " as id";
+			$query .= COMMA . $table. DOT . $counter . " as id";
 		$query .= $this->computeFrom($table, $searchUsername, $searchTrainningTitle, $like);
 		$query .= $this->computeWhere($table, $columns, $like, $searchUsername, $searchTrainningTitle);
 		if ($counter != "id")
