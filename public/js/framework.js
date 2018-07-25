@@ -83,7 +83,11 @@ $(function() {
   $(document).on('click', '.table-data #pagination_links span', function() {
     var limit = $( ".pagination_selector option:selected" ).val();
     var page = $(this).attr("id");
-    load_data_table(page, limit, 'init');
+    if($('.row-tools input').val().length > 0){
+      load_data_table(page, limit, 'search');
+    } else {
+      load_data_table(page, limit, 'init');
+    }
   });
 
   $(document).on('click', '.column_sort', function() {
@@ -145,7 +149,11 @@ $(function() {
       var object = $.trim($(".list-init-object span:first-child").text());
       if($(".table-data").length > 0) {
         var limit = $( ".pagination_selector option:selected" ).val();
-        load_data_table(page, limit, 'init');
+        if($('.row-tools input').val().length > 0){
+          load_data_table(page, limit, 'search');
+        } else {
+          load_data_table(page, limit, 'init');
+        }
       } else {
         load_data_list_card(page,'desc', 'dateInserted', object ,24,true, 'data-list', 'pagination_links');
       }
