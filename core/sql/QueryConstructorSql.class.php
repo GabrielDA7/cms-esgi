@@ -108,8 +108,8 @@ class QueryConstructorSql {
 			}
 
 			if (isset($date)) {
-				if (empty($columns))
-						$query .= " AND ";
+				if (!empty($columns))
+					$query .= " AND ";
 				$query .= " date(dateInserted) = " . $date;
 			}
 		}
